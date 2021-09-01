@@ -1,235 +1,6 @@
 require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 26:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.GithubActionLog = void 0;
-const core_1 = __nccwpck_require__(186);
-class GithubActionLog {
-    debug(...parts) {
-        (0, core_1.debug)(parts.join(" "));
-    }
-    info(...parts) {
-        (0, core_1.info)(parts.join(" "));
-    }
-    warn(...parts) {
-        (0, core_1.warning)(parts.join(" "));
-    }
-    error(...parts) {
-        (0, core_1.error)(parts.join(" "));
-    }
-}
-exports.GithubActionLog = GithubActionLog;
-
-
-/***/ }),
-
-/***/ 458:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.runSyftAction = exports.SyftGithubAction = exports.SYFT_VERSION = exports.SYFT_BINARY_NAME = void 0;
-const exec = __importStar(__nccwpck_require__(514));
-const cache = __importStar(__nccwpck_require__(784));
-const core = __importStar(__nccwpck_require__(186));
-const Syft_1 = __nccwpck_require__(442);
-const GithubActionLog_1 = __nccwpck_require__(26);
-exports.SYFT_BINARY_NAME = "syft";
-exports.SYFT_VERSION = "v0.21.0";
-class GithubSyftAction {
-    constructor(logger) {
-        this.log = logger;
-    }
-    execute({ input, format }) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let outStream = "";
-            let errStream = "";
-            const cmd = yield this.getSyftCommand();
-            const env = {
-                SYFT_CHECK_FOR_APP_UPDATE: "false",
-            };
-            // https://github.com/anchore/syft#configuration
-            let args = ["packages"];
-            if ("image" in input && input.image) {
-                args = [...args, `docker:${input.image}`];
-            }
-            else if ("path" in input && input.path) {
-                args = [...args, `dir:${input.path}`];
-            }
-            else {
-                throw new Error("Invalid input, no image or path specified");
-            }
-            args = [...args, "-o", format];
-            try {
-                const returnCode = yield exec.exec(cmd, args, {
-                    env,
-                    // outStream,
-                    // errStream,
-                    listeners: {
-                        stdout(buffer) {
-                            outStream += buffer.toString();
-                        },
-                        stderr(buffer) {
-                            errStream += buffer.toString();
-                        },
-                        debug(message) {
-                            errStream += message.toString();
-                        },
-                    },
-                });
-                if (returnCode > 0) {
-                    throw new Error("An error occurred running Syft");
-                }
-                return {
-                    report: outStream,
-                };
-            }
-            catch (e) {
-                this.log.error(e);
-                throw new Syft_1.SyftErrorImpl({
-                    error: e,
-                    out: outStream,
-                    err: errStream,
-                });
-            }
-        });
-    }
-    download() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const name = exports.SYFT_BINARY_NAME;
-            const version = exports.SYFT_VERSION;
-            const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
-            this.log.debug(`Installing ${name} ${version}`);
-            // Download the installer, and run
-            const installPath = yield cache.downloadTool(url);
-            // Make sure the tool's executable bit is set
-            yield exec.exec(`chmod +x ${installPath}`);
-            const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
-            yield exec.exec(cmd);
-            const path = `${installPath}_${name}/${name}`;
-            // Cache the downloaded file
-            return cache.cacheFile(path, name, name, version);
-        });
-    }
-    getSyftCommand() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const name = exports.SYFT_BINARY_NAME;
-            const version = exports.SYFT_VERSION;
-            let path = cache.find(name, version);
-            if (!path) {
-                // Not found, install it
-                path = yield this.download();
-            }
-            // Add tool to path for this and future actions to use
-            core.addPath(path);
-            return name;
-        });
-    }
-}
-exports.SyftGithubAction = GithubSyftAction;
-function runSyftAction() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            core.debug(new Date().toTimeString());
-            const syft = new GithubSyftAction(new GithubActionLog_1.GithubActionLog());
-            const output = yield syft.execute({
-                input: {
-                    path: core.getInput("path"),
-                    image: core.getInput("image"),
-                },
-                format: "spdx",
-                outputFile: core.getInput("outputFile"),
-            });
-            core.debug(new Date().toTimeString());
-            if ("report" in output) {
-                core.setOutput("spdx", output.report);
-            }
-            else {
-                core.error(JSON.stringify(output));
-            }
-        }
-        catch (e) {
-            if (e instanceof Syft_1.SyftErrorImpl) {
-                core.setFailed(`ERROR executing Syft: ${e.message}
-      Caused by: ${e.error}
-      STDOUT: ${e.out}
-      STDERR: ${e.err}`);
-            }
-            else if (e instanceof Error) {
-                core.setFailed(e.message);
-            }
-            else if (e instanceof Object) {
-                core.setFailed(e.toString());
-            }
-            else {
-                core.setFailed("An unknown error occurred");
-            }
-            throw e;
-        }
-    });
-}
-exports.runSyftAction = runSyftAction;
-
-
-/***/ }),
-
-/***/ 442:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SyftErrorImpl = void 0;
-/**
- * Provides a simple separation of syft output in the case of an error
- */
-class SyftErrorImpl extends Error {
-    constructor({ error, err, out }) {
-        super();
-        this.error = error;
-        this.err = err;
-        this.out = out;
-    }
-}
-exports.SyftErrorImpl = SyftErrorImpl;
-
-
-/***/ }),
-
 /***/ 241:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -5600,6 +5371,17 @@ module.exports = require("util");
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__nccwpck_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
@@ -5609,11 +5391,200 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-var exports = __webpack_exports__;
+// ESM COMPAT FLAG
+__nccwpck_require__.r(__webpack_exports__);
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const GithubSyftAction_1 = __nccwpck_require__(458);
-(0, GithubSyftAction_1.runSyftAction)();
+// EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
+var exec = __nccwpck_require__(514);
+// EXTERNAL MODULE: ./node_modules/@actions/tool-cache/lib/tool-cache.js
+var tool_cache = __nccwpck_require__(784);
+// EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
+var core = __nccwpck_require__(186);
+;// CONCATENATED MODULE: ./src/syft/Syft.ts
+/**
+ * Provides a simple separation of syft output in the case of an error
+ */
+class SyftErrorImpl extends Error {
+    constructor({ error, err, out }) {
+        super();
+        this.error = error;
+        this.err = err;
+        this.out = out;
+    }
+}
+
+;// CONCATENATED MODULE: ./src/github/GithubActionLog.ts
+
+class GithubActionLog {
+    debug(...parts) {
+        (0,core.debug)(parts.join(" "));
+    }
+    info(...parts) {
+        (0,core.info)(parts.join(" "));
+    }
+    warn(...parts) {
+        (0,core.warning)(parts.join(" "));
+    }
+    error(...parts) {
+        (0,core.error)(parts.join(" "));
+    }
+}
+
+;// CONCATENATED MODULE: ./src/github/SyftGithubAction.ts
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+const SYFT_BINARY_NAME = "syft";
+const SYFT_VERSION = "v0.21.0";
+class SyftGithubAction {
+    constructor(logger) {
+        this.log = logger;
+    }
+    execute({ input, format }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let outStream = "";
+            let errStream = "";
+            const cmd = yield this.getSyftCommand();
+            const env = {
+                SYFT_CHECK_FOR_APP_UPDATE: "false",
+            };
+            // https://github.com/anchore/syft#configuration
+            let args = ["packages"];
+            if ("image" in input && input.image) {
+                args = [...args, `docker:${input.image}`];
+            }
+            else if ("path" in input && input.path) {
+                args = [...args, `dir:${input.path}`];
+            }
+            else {
+                throw new Error("Invalid input, no image or path specified");
+            }
+            args = [...args, "-o", format];
+            try {
+                const exitCode = yield core.group("Syft Output", () => __awaiter(this, void 0, void 0, function* () {
+                    core.info(`Executing: ${cmd} ${args.join(" ")}`);
+                    return exec.exec(cmd, args, {
+                        env,
+                        // outStream,
+                        // errStream,
+                        listeners: {
+                            stdout(buffer) {
+                                outStream += buffer.toString();
+                            },
+                            stderr(buffer) {
+                                errStream += buffer.toString();
+                            },
+                            debug(message) {
+                                errStream += message.toString();
+                            },
+                        },
+                    });
+                }));
+                if (exitCode > 0) {
+                    throw new Error("An error occurred running Syft");
+                }
+                return {
+                    report: outStream,
+                };
+            }
+            catch (e) {
+                this.log.error(e);
+                throw new SyftErrorImpl({
+                    error: e,
+                    out: outStream,
+                    err: errStream,
+                });
+            }
+        });
+    }
+    download() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const name = SYFT_BINARY_NAME;
+            const version = SYFT_VERSION;
+            const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
+            this.log.debug(`Installing ${name} ${version}`);
+            // Download the installer, and run
+            const installPath = yield tool_cache.downloadTool(url);
+            // Make sure the tool's executable bit is set
+            yield exec.exec(`chmod +x ${installPath}`);
+            const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
+            yield exec.exec(cmd);
+            const path = `${installPath}_${name}/${name}`;
+            // Cache the downloaded file
+            return tool_cache.cacheFile(path, name, name, version);
+        });
+    }
+    getSyftCommand() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const name = SYFT_BINARY_NAME;
+            const version = SYFT_VERSION;
+            let path = tool_cache.find(name, version);
+            if (!path) {
+                // Not found, install it
+                path = yield this.download();
+            }
+            // Add tool to path for this and future actions to use
+            core.addPath(path);
+            return name;
+        });
+    }
+}
+function runSyftAction() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            core.debug(new Date().toTimeString());
+            const syft = new SyftGithubAction(new GithubActionLog());
+            const output = yield syft.execute({
+                input: {
+                    path: core.getInput("path"),
+                    image: core.getInput("image"),
+                },
+                format: core.getInput("format") || "spdx",
+                outputFile: core.getInput("outputFile"),
+            });
+            core.debug(new Date().toTimeString());
+            if ("report" in output) {
+                core.setOutput("spdx", output.report);
+            }
+            else {
+                core.error(JSON.stringify(output));
+            }
+        }
+        catch (e) {
+            if (e instanceof SyftErrorImpl) {
+                core.setFailed(`ERROR executing Syft: ${e.message}
+      Caused by: ${e.error}
+      STDOUT: ${e.out}
+      STDERR: ${e.err}`);
+            }
+            else if (e instanceof Error) {
+                core.setFailed(e.message);
+            }
+            else if (e instanceof Object) {
+                core.setFailed(e.toString());
+            }
+            else {
+                core.setFailed("An unknown error occurred");
+            }
+            throw e;
+        }
+    });
+}
+
+;// CONCATENATED MODULE: ./src/main.ts
+
+runSyftAction();
 
 })();
 

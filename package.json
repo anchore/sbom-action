@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "description": "GitHub Action for creating software bill of materials",
-  "main": "lib/main.js",
+  "main": "src/main.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --noEmit",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
