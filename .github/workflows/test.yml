@@ -15,10 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          npm install
-      - run: |
-          npm run all
+      - run: npm ci
+      - run: npm audit --production
+      - run: npm run package
 
   test:
     runs-on: ubuntu-latest
@@ -36,10 +35,9 @@ jobs:
             docker push localhost:5000/match-coverage/$distro:latest
           done
       - run: npm ci
-      - run: npm audit --production
       - run: npm test
 
-  test-action: # make sure the action works on a clean machine without building
+  test-as-action: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
