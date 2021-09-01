@@ -13,6 +13,8 @@ inputs:
     required: false
     description: "A registry to pull images from"
 outputs:
+  file:
+    description: 'SBOM file reference'
   sbom:
     description: "The SBOM in SPDX format"
 runs:

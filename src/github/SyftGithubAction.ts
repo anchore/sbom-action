@@ -4,6 +4,7 @@ import * as cache from "@actions/tool-cache";
 import * as core from "@actions/core";
 import { Syft, SyftErrorImpl, SyftOptions, SyftOutput } from "../syft/Syft";
 import { GithubActionLog } from "./GithubActionLog";
+import * as fs from "fs";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
@@ -62,6 +63,12 @@ export class SyftGithubAction implements Syft {
       if (exitCode > 0) {
         throw new Error("An error occurred running Syft");
       }
+
+      const path = fs.mkdtempSync("sbom-action");
+      const fileName = `${path}/sbom.${format}`;
+      fs.writeFileSync(fileName, outStream);
+      core.setOutput("file", fileName);
+
       return {
         report: outStream,
       };
