@@ -1,57 +1,57 @@
 require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 109:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ 26:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.GithubActionLog = void 0;
 const core_1 = __nccwpck_require__(186);
-const Syft_1 = __nccwpck_require__(442);
-function run() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            core_1.debug(new Date().toTimeString());
-            const output = yield Syft_1.syft.execute({
-                input: {
-                    path: core_1.getInput("path"),
-                    image: core_1.getInput("image"),
-                },
-                format: "spdx",
-            });
-            core_1.debug(new Date().toTimeString());
-            if ("report" in output) {
-                core_1.setOutput("spdx", output.report);
-            }
-            else {
-                core_1.error(JSON.stringify(output));
-            }
-        }
-        catch (e) {
-            core_1.setFailed(e.message);
-        }
-    });
+class GithubActionLog {
+    debug(...parts) {
+        (0, core_1.debug)(parts.join(" "));
+    }
+    info(...parts) {
+        (0, core_1.info)(parts.join(" "));
+    }
+    warn(...parts) {
+        (0, core_1.warning)(parts.join(" "));
+    }
+    error(...parts) {
+        (0, core_1.error)(parts.join(" "));
+    }
 }
-run();
+exports.GithubActionLog = GithubActionLog;
 
 
 /***/ }),
 
-/***/ 442:
+/***/ 458:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -61,102 +61,176 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.syft = exports.GithubActionSyft = exports.CaptureStream = exports.TeeStream = void 0;
-const stream_1 = __nccwpck_require__(413);
-const tool_cache_1 = __importDefault(__nccwpck_require__(784));
-const core_1 = __importDefault(__nccwpck_require__(186));
-const exec_1 = __nccwpck_require__(514);
-const SYFT_BINARY_NAME = "syft";
-const SYFT_VERSION = "v0.21.0";
-class TeeStream extends stream_1.Writable {
-    constructor(...streams) {
-        super();
-        this.streams = [];
-        this.streams = streams;
+exports.runSyftAction = exports.GithubSyftAction = exports.SYFT_VERSION = exports.SYFT_BINARY_NAME = void 0;
+const exec = __importStar(__nccwpck_require__(514));
+const cache = __importStar(__nccwpck_require__(784));
+const core = __importStar(__nccwpck_require__(186));
+const Syft_1 = __nccwpck_require__(442);
+const GithubActionLog_1 = __nccwpck_require__(26);
+exports.SYFT_BINARY_NAME = "syft";
+exports.SYFT_VERSION = "v0.21.0";
+class GithubSyftAction {
+    constructor(logger) {
+        this.log = logger;
     }
-    _write(chunk, encoding, callback) {
-        for (const stream of this.streams) {
-            stream._write(chunk, encoding, callback);
-        }
-    }
-}
-exports.TeeStream = TeeStream;
-class CaptureStream extends stream_1.Writable {
-    constructor() {
-        super(...arguments);
-        this.contents = "";
-    }
-    _write(chunk, encoding, callback) {
-        this.contents += chunk.toString();
-    }
-}
-exports.CaptureStream = CaptureStream;
-class GithubActionSyft {
-    constructor() {
-        this.download = () => __awaiter(this, void 0, void 0, function* () {
-            const name = SYFT_BINARY_NAME;
-            const version = SYFT_VERSION;
-            const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
-            core_1.default.debug(`Installing ${name} ${version}`);
-            // Download the installer, and run
-            const installPath = yield tool_cache_1.default.downloadTool(url);
-            // Make sure the tool's executable bit is set
-            yield exec_1.exec(`chmod +x ${installPath}`);
-            const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
-            yield exec_1.exec(cmd);
-            const grypePath = `${installPath}_${name}/${name}`;
-            // Cache the downloaded file
-            return tool_cache_1.default.cacheFile(grypePath, name, name, version);
-        });
-    }
-    execute({ input, format, }) {
+    execute({ input, format }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const outStream = new CaptureStream();
-            const errStream = new CaptureStream();
-            const cmd = yield this.download();
+            let outStream = "";
+            let errStream = "";
+            const cmd = yield this.getSyftCommand();
             const env = {
                 SYFT_CHECK_FOR_APP_UPDATE: "false",
             };
             // https://github.com/anchore/syft#configuration
             let args = ["packages"];
-            if ("image" in input) {
+            if ("image" in input && input.image) {
                 args = [...args, `docker:${input.image}`];
             }
-            else {
+            else if ("path" in input && input.path) {
                 args = [...args, `dir:${input.path}`];
+            }
+            else {
+                throw new Error("Invalid input, no image or path specified");
             }
             args = [...args, "-o", format];
             try {
-                yield exec_1.exec(cmd, args, {
+                const returnCode = yield exec.exec(cmd, args, {
                     env,
-                    outStream,
-                    errStream,
+                    // outStream,
+                    // errStream,
+                    listeners: {
+                        stdout(buffer) {
+                            outStream += buffer.toString();
+                        },
+                        stderr(buffer) {
+                            errStream += buffer.toString();
+                        },
+                        debug(message) {
+                            errStream += message.toString();
+                        },
+                    },
                 });
+                if (returnCode > 0) {
+                    throw new Error("An error occurred running Syft");
+                }
                 return {
-                    report: outStream.contents,
+                    report: outStream,
                 };
             }
             catch (e) {
-                return {
+                this.log.error(e);
+                throw new Syft_1.SyftErrorImpl({
                     error: e,
-                    out: outStream.contents,
-                    err: errStream.contents,
-                };
+                    out: outStream,
+                    err: errStream,
+                });
             }
         });
     }
+    download() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const name = exports.SYFT_BINARY_NAME;
+            const version = exports.SYFT_VERSION;
+            const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
+            this.log.debug(`Installing ${name} ${version}`);
+            // Download the installer, and run
+            const installPath = yield cache.downloadTool(url);
+            // Make sure the tool's executable bit is set
+            yield exec.exec(`chmod +x ${installPath}`);
+            const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
+            yield exec.exec(cmd);
+            const path = `${installPath}_${name}/${name}`;
+            // Cache the downloaded file
+            return cache.cacheFile(path, name, name, version);
+        });
+    }
+    getSyftCommand() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const name = exports.SYFT_BINARY_NAME;
+            const version = exports.SYFT_VERSION;
+            let path = cache.find(name, version);
+            if (!path) {
+                // Not found, install it
+                path = yield this.download();
+            }
+            // Add tool to path for this and future actions to use
+            core.addPath(path);
+            return name;
+        });
+    }
 }
-exports.GithubActionSyft = GithubActionSyft;
-exports.syft = new GithubActionSyft();
+exports.GithubSyftAction = GithubSyftAction;
+function runSyftAction() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            core.debug(new Date().toTimeString());
+            const syft = new GithubSyftAction(new GithubActionLog_1.GithubActionLog());
+            const output = yield syft.execute({
+                input: {
+                    path: core.getInput("path"),
+                    image: core.getInput("image"),
+                },
+                format: "spdx",
+                outputFile: core.getInput("outputFile"),
+            });
+            core.debug(new Date().toTimeString());
+            if ("report" in output) {
+                core.setOutput("spdx", output.report);
+            }
+            else {
+                core.error(JSON.stringify(output));
+            }
+        }
+        catch (e) {
+            if (e instanceof Syft_1.SyftErrorImpl) {
+                core.setFailed(`ERROR executing Syft: ${e.message}
+      Caused by: ${e.error}
+      STDOUT: ${e.out}
+      STDERR: ${e.err}`);
+            }
+            else if (e instanceof Error) {
+                core.setFailed(e.message);
+            }
+            else if (e instanceof Object) {
+                core.setFailed(e.toString());
+            }
+            else {
+                core.setFailed("An unknown error occurred");
+            }
+            throw e;
+        }
+    });
+}
+exports.runSyftAction = runSyftAction;
 
 
 /***/ }),
 
-/***/ 351:
+/***/ 442:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SyftErrorImpl = void 0;
+/**
+ * Provides a simple separation of syft output in the case of an error
+ */
+class SyftErrorImpl extends Error {
+    constructor({ error, err, out }) {
+        super();
+        this.error = error;
+        this.err = err;
+        this.out = out;
+    }
+}
+exports.SyftErrorImpl = SyftErrorImpl;
+
+
+/***/ }),
+
+/***/ 241:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -290,7 +364,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
-const command_1 = __nccwpck_require__(351);
+const command_1 = __nccwpck_require__(241);
 const file_command_1 = __nccwpck_require__(717);
 const utils_1 = __nccwpck_require__(278);
 const os = __importStar(__nccwpck_require__(87));
@@ -781,7 +855,7 @@ const os = __importStar(__nccwpck_require__(87));
 const events = __importStar(__nccwpck_require__(614));
 const child = __importStar(__nccwpck_require__(129));
 const path = __importStar(__nccwpck_require__(622));
-const io = __importStar(__nccwpck_require__(436));
+const io = __importStar(__nccwpck_require__(351));
 const ioUtil = __importStar(__nccwpck_require__(962));
 const timers_1 = __nccwpck_require__(213);
 /* eslint-disable @typescript-eslint/unbound-method */
@@ -2161,7 +2235,7 @@ exports.getCmdPath = getCmdPath;
 
 /***/ }),
 
-/***/ 436:
+/***/ 351:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -2773,7 +2847,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.evaluateVersions = exports.isExplicitVersion = exports.findFromManifest = exports.getManifestFromRepo = exports.findAllVersions = exports.find = exports.cacheFile = exports.cacheDir = exports.extractZip = exports.extractXar = exports.extractTar = exports.extract7z = exports.downloadTool = exports.HTTPError = void 0;
 const core = __importStar(__nccwpck_require__(186));
-const io = __importStar(__nccwpck_require__(436));
+const io = __importStar(__nccwpck_require__(351));
 const fs = __importStar(__nccwpck_require__(747));
 const mm = __importStar(__nccwpck_require__(473));
 const os = __importStar(__nccwpck_require__(87));
@@ -5531,13 +5605,19 @@ module.exports = require("util");
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __nccwpck_require__(109);
-/******/ 	module.exports = __webpack_exports__;
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+var exports = __webpack_exports__;
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const GithubSyftAction_1 = __nccwpck_require__(458);
+(0, GithubSyftAction_1.runSyftAction)();
+
+})();
+
+module.exports = __webpack_exports__;
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map
