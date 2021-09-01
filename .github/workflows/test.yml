@@ -1,0 +1,58 @@
+name: 'build-test'
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+    branches:
+      - main
+      - 'releases/*'
+
+jobs:
+  build: # make sure build/ci work properly
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          npm install
+      - run: |
+          npm run all
+
+  test:
+    runs-on: ubuntu-latest
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build images
+        run: |
+          for distro in alpine centos debian; do
+            docker build -t localhost:5000/match-coverage/$distro ./tests/fixtures/image-$distro-match-coverage
+            docker push localhost:5000/match-coverage/$distro:latest
+          done
+      - run: npm ci
+      - run: npm audit --production
+      - run: npm test
+
+  test-action: # make sure the action works on a clean machine without building
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: sbom-action
+
+      - uses: ./
+        id: dirscan
+
+      - run: |
+          echo DIR SCAN SBOM:
+          echo ${{ steps.dirscan.output.spdx }}
+
+      - uses: ./
+        id: imagescan
+        with:
+          image: alpine:latest
+      - run: |
+          echo IMAGE SCAN SBOM:
+          echo ${{ steps.imagescan.output.spdx }}

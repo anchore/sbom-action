@@ -1,0 +1,681 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SPDX alpine 1`] = `
+"SPDXVersion: SPDX_2.2
+DataLicense: CC0_1.0
+SPDXID: SPDXRef_DOCUMENT
+DocumentName: localhost:5000/match_coverage/alpine:latest
+DocumentNamespace: https://anchore.com/syft/image/localhost:5000/match_coverage/alpine:latest
+LicenseListVersion: 3.14
+Creator: Organization: Anchore, Inc
+Creator: Tool: syft_0.21.0
+
+
+##### Package: libvncserver
+
+PackageName: libvncserver
+SPDXID: SPDXRef_Package_apk_libvncserver
+PackageVersion: 0.9.9
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: GPL_2.0_or_later
+PackageLicenseDeclared: GPL_2.0_or_later
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:alpine/libvncserver@0.9.9?arch=x86_64
+
+"
+`;
+
+exports[`SPDX debian 1`] = `
+"SPDXVersion: SPDX_2.2
+DataLicense: CC0_1.0
+SPDXID: SPDXRef_DOCUMENT
+DocumentName: localhost:5000/match_coverage/debian:latest
+DocumentNamespace: https://anchore.com/syft/image/localhost:5000/match_coverage/debian:latest
+LicenseListVersion: 3.14
+Creator: Organization: Anchore, Inc
+Creator: Tool: syft_0.21.0
+
+
+##### Package: apt
+
+PackageName: apt
+SPDXID: SPDXRef_Package_deb_apt
+PackageVersion: 1.8.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:apt:apt:1.8.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:deb/debian/apt@1.8.2?arch=amd64
+
+##### Package: bundler
+
+PackageName: bundler
+SPDXID: SPDXRef_Package_gem_bundler
+PackageVersion: 2.1.4
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: MIT
+PackageLicenseDeclared: MIT
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby_lang:bundler:2.1.4:*:*:*:*:rails:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby_lang:bundler:2.1.4:*:*:*:*:rails:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby_lang:bundler:2.1.4:*:*:*:*:ruby:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby_lang:bundler:2.1.4:*:*:*:*:ruby:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:bundler:bundler:2.1.4:*:*:*:*:rails:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:bundler:bundler:2.1.4:*:*:*:*:ruby:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:rails:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:ruby:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby_lang:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby_lang:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:bundler:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:gem/bundler@2.1.4
+
+##### Package: example_java_app_maven
+
+PackageName: example_java_app_maven
+SPDXID: SPDXRef_Package_java_archive_example_java_app_maven
+PackageVersion: 0.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:maven/org.anchore/example_java_app_maven@0.1.0
+
+##### Package: joda_time
+
+PackageName: joda_time
+SPDXID: SPDXRef_Package_java_archive_joda_time
+PackageVersion: 2.9.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:maven:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:java:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:maven/joda_time/joda_time@2.9.2
+
+##### Package: npm
+
+PackageName: npm
+SPDXID: SPDXRef_Package_npm_npm
+PackageVersion: 6.14.6
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: Artistic_2.0
+PackageLicenseDeclared: Artistic_2.0
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/npm@6.14.6
+
+##### Package: Pygments
+
+PackageName: Pygments
+SPDXID: SPDXRef_Package_Pygments
+PackageVersion: 2.6.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:python:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:python:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:python:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:python:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:python:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:python:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:python:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:python:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:python:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:python:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:python:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:python:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:pypi/Pygments@2.6.1
+
+"
+`;
+
+exports[`SPDX npm 1`] = `
+"SPDXVersion: SPDX_2.2
+DataLicense: CC0_1.0
+SPDXID: SPDXRef_DOCUMENT
+DocumentNamespace: https://anchore.com/syft/image/
+LicenseListVersion: 3.14
+Creator: Organization: Anchore, Inc
+Creator: Tool: syft_0.21.0
+
+
+##### Package: chownr
+
+PackageName: chownr
+SPDXID: SPDXRef_Package_npm_chownr
+PackageVersion: 2.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/chownr@2.0.0
+
+##### Package: fs_minipass
+
+PackageName: fs_minipass
+SPDXID: SPDXRef_Package_npm_fs_minipass
+PackageVersion: 2.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/fs_minipass@2.1.0
+
+##### Package: js_tokens
+
+PackageName: js_tokens
+SPDXID: SPDXRef_Package_npm_js_tokens
+PackageVersion: 4.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/js_tokens@4.0.0
+
+##### Package: loose_envify
+
+PackageName: loose_envify
+SPDXID: SPDXRef_Package_npm_loose_envify
+PackageVersion: 1.4.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/loose_envify@1.4.0
+
+##### Package: minipass
+
+PackageName: minipass
+SPDXID: SPDXRef_Package_npm_minipass
+PackageVersion: 3.1.3
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/minipass@3.1.3
+
+##### Package: minizlib
+
+PackageName: minizlib
+SPDXID: SPDXRef_Package_npm_minizlib
+PackageVersion: 2.1.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/minizlib@2.1.2
+
+##### Package: mkdirp
+
+PackageName: mkdirp
+SPDXID: SPDXRef_Package_npm_mkdirp
+PackageVersion: 1.0.4
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/mkdirp@1.0.4
+
+##### Package: object_assign
+
+PackageName: object_assign
+SPDXID: SPDXRef_Package_npm_object_assign
+PackageVersion: 4.1.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/object_assign@4.1.1
+
+##### Package: prop_types
+
+PackageName: prop_types
+SPDXID: SPDXRef_Package_npm_prop_types
+PackageVersion: 15.7.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/prop_types@15.7.2
+
+##### Package: react
+
+PackageName: react
+SPDXID: SPDXRef_Package_npm_react
+PackageVersion: 16.14.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/react@16.14.0
+
+##### Package: react_is
+
+PackageName: react_is
+SPDXID: SPDXRef_Package_npm_react_is
+PackageVersion: 16.13.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/react_is@16.13.1
+
+##### Package: tar
+
+PackageName: tar
+SPDXID: SPDXRef_Package_npm_tar
+PackageVersion: 6.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/tar@6.1.0
+
+##### Package: yallist
+
+PackageName: yallist
+SPDXID: SPDXRef_Package_npm_yallist
+PackageVersion: 4.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/yallist@4.0.0
+
+"
+`;
+
+exports[`SPDX yarn 1`] = `
+"SPDXVersion: SPDX_2.2
+DataLicense: CC0_1.0
+SPDXID: SPDXRef_DOCUMENT
+DocumentNamespace: https://anchore.com/syft/image/
+LicenseListVersion: 3.14
+Creator: Organization: Anchore, Inc
+Creator: Tool: syft_0.21.0
+
+
+##### Package: loose_envify
+
+PackageName: loose_envify
+SPDXID: SPDXRef_Package_npm_loose_envify
+PackageVersion: 1.4.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/loose_envify@1.4.0
+
+##### Package: object_assign
+
+PackageName: object_assign
+SPDXID: SPDXRef_Package_npm_object_assign
+PackageVersion: 4.1.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/object_assign@4.1.1
+
+##### Package: prop_types
+
+PackageName: prop_types
+SPDXID: SPDXRef_Package_npm_prop_types
+PackageVersion: 15.7.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/prop_types@15.7.2
+
+##### Package: react
+
+PackageName: react
+SPDXID: SPDXRef_Package_npm_react
+PackageVersion: 16.14.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/react@16.14.0
+
+##### Package: react_is
+
+PackageName: react_is
+SPDXID: SPDXRef_Package_npm_react_is
+PackageVersion: 16.13.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/react_is@16.13.1
+
+##### Package: trim
+
+PackageName: trim
+SPDXID: SPDXRef_Package_npm_trim
+PackageVersion: 0.0.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:node.js:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:nodejs:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/trim@0.0.2
+
+"
+`;

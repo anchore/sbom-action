@@ -1,0 +1,20 @@
+name: 'Anchore SBOM Action'
+description: 'Creates an SBOM (Software Bill Of Materials) from your code and container images'
+author: 'Anchore'
+inputs:
+  path:
+    required: false
+    description: "A path on the filesystem to scan"
+    default: "."
+  image:
+    required: false
+    description: "A container image to scan"
+  registry:
+    required: false
+    description: "A registry to pull images from"
+outputs:
+  spdx:
+    description: "The SBOM in SPDX format"
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

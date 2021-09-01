@@ -1,0 +1,54 @@
+{
+  "name": "@anchore/sbom-action",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GitHub Action for creating software bill of materials",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
+    "lint": "eslint src/**/*.ts",
+    "package": "ncc build --source-map --license licenses.txt",
+    "test": "jest",
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anchore/sbom-action.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.4.0",
+    "@actions/exec": "^1.1.0",
+    "@actions/tool-cache": "^1.7.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.3.3",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@typescript-eslint/parser": "^4.28.3",
+    "@vercel/ncc": "^0.29.0",
+    "eslint": "^7.31.0",
+    "eslint-plugin-github": "^4.1.1",
+    "eslint-plugin-jest": "^24.3.6",
+    "husky": "^7.0.2",
+    "jest": "^27.1.0",
+    "js-yaml": "^4.1.0",
+    "prettier": "2.2.1",
+    "pretty-quick": "^3.1.1",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
