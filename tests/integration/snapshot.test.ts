@@ -9,7 +9,11 @@ const testSource = async (source: string): Promise<string> => {
   const spyOutput = jest
     .spyOn(core, "setOutput")
     .mockImplementation((name, value) => {
-      spdx = value;
+      switch(name) {
+        case "sbom":
+          spdx = value;
+          break;
+      }
     });
 
   const spyInput = jest

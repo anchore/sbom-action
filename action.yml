@@ -13,7 +13,7 @@ inputs:
     required: false
     description: "A registry to pull images from"
 outputs:
-  spdx:
+  sbom:
     description: "The SBOM in SPDX format"
 runs:
   using: 'node12'

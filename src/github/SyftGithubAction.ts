@@ -128,7 +128,7 @@ export async function runSyftAction(): Promise<void> {
     core.debug(new Date().toTimeString());
 
     if ("report" in output) {
-      core.setOutput("spdx", output.report);
+      core.setOutput("sbom", output.report);
     } else {
       core.error(JSON.stringify(output));
     }

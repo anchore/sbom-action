@@ -49,7 +49,7 @@ jobs:
 
       - run: |
           echo DIR SCAN SBOM:
-          echo ${{ steps.dirscan.output.spdx }}
+          echo ${{ steps.dirscan.outputs.sbom }}
 
       - uses: ./
         id: imagescan
@@ -57,4 +57,4 @@ jobs:
           image: alpine:latest
       - run: |
           echo IMAGE SCAN SBOM:
-          echo ${{ steps.imagescan.output.spdx }}
+          echo ${{ steps.imagescan.outputs.sbom }}
