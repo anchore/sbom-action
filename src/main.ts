@@ -1,3 +1,3 @@
-import { runSyftAction } from "./github/GithubSyftAction";
+import { runSyftAction } from "./github/SyftGithubAction";
 
 runSyftAction();

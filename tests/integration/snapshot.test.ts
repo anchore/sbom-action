@@ -1,4 +1,4 @@
-import { runSyftAction } from "../../src/github/GithubSyftAction";
+import { runSyftAction } from "../../src/github/SyftGithubAction";
 import * as core from "@actions/core";
 
 jest.setTimeout(30000);

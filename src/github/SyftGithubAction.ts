@@ -8,7 +8,7 @@ import { GithubActionLog } from "./GithubActionLog";
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
 
-export class GithubSyftAction implements Syft {
+export class SyftGithubAction implements Syft {
   log: Log;
 
   constructor(logger: Log) {
@@ -39,23 +39,27 @@ export class GithubSyftAction implements Syft {
     args = [...args, "-o", format];
 
     try {
-      const returnCode = await exec.exec(cmd, args, {
-        env,
-        // outStream,
-        // errStream,
-        listeners: {
-          stdout(buffer) {
-            outStream += buffer.toString();
+      const exitCode = await core.group("Syft Output", async () => {
+        core.info(`Executing: ${cmd} ${args.join(" ")}`);
+        return exec.exec(cmd, args, {
+          env,
+          // outStream,
+          // errStream,
+          listeners: {
+            stdout(buffer) {
+              outStream += buffer.toString();
+            },
+            stderr(buffer) {
+              errStream += buffer.toString();
+            },
+            debug(message) {
+              errStream += message.toString();
+            },
           },
-          stderr(buffer) {
-            errStream += buffer.toString();
-          },
-          debug(message) {
-            errStream += message.toString();
-          },
-        },
+        });
       });
-      if (returnCode > 0) {
+
+      if (exitCode > 0) {
         throw new Error("An error occurred running Syft");
       }
       return {
@@ -112,7 +116,7 @@ export class GithubSyftAction implements Syft {
 export async function runSyftAction(): Promise<void> {
   try {
     core.debug(new Date().toTimeString());
-    const syft = new GithubSyftAction(new GithubActionLog());
+    const syft = new SyftGithubAction(new GithubActionLog());
     const output = await syft.execute({
       input: {
         path: core.getInput("path"),
