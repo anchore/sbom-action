@@ -34,9 +34,10 @@ const testSource = async (source: string): Promise<string> => {
 
   // FIXME these tests are already flaky because SPDX format is not sorted currently
   return spdx
-    .replace(/Created[:][^\n]+/g, "")
-    .replace(/-/g, "_")
-    .replace(/python_/g, "");
+    .replace(/[Cc]reated["]?[:][^\n]+/g, "")
+    .split("\n")
+    .sort()
+    .join("\n");
 };
 
 describe("SPDX", () => {

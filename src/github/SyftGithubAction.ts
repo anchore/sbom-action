@@ -122,7 +122,7 @@ export async function runSyftAction(): Promise<void> {
         path: core.getInput("path"),
         image: core.getInput("image"),
       },
-      format: "spdx",
+      format: (core.getInput("format") as SyftOptions["format"]) || "spdx",
       outputFile: core.getInput("outputFile"),
     });
     core.debug(new Date().toTimeString());
