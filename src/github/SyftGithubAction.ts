@@ -136,6 +136,7 @@ export async function runSyftAction(): Promise<void> {
 
     if ("report" in output) {
       // need to escape multiline strings a specific way:
+      // https://github.community/t/set-output-truncates-multiline-strings/16852/5
       const content = output.report
         .replace("%", "%25")
         .replace("\n", "%0A")
