@@ -11,7 +11,9 @@
     "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
+    "prepare": "husky install",
+    "precommit": "pretty-quick --staged && npm run package"
   },
   "repository": {
     "type": "git",
@@ -38,17 +40,12 @@
     "eslint": "^7.31.0",
     "eslint-plugin-github": "^4.1.1",
     "eslint-plugin-jest": "^24.3.6",
-    "husky": "^7.0.2",
+    "husky": "^7.0.0",
     "jest": "^27.1.0",
     "js-yaml": "^4.1.0",
     "prettier": "2.2.1",
     "pretty-quick": "^3.1.1",
     "ts-jest": "^27.0.5",
     "typescript": "^4.4.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged && npm run package"
-    }
   }
 }
