@@ -9,13 +9,13 @@ const testSource = async (source: string): Promise<string> => {
   const spyOutput = jest
     .spyOn(core, "setOutput")
     .mockImplementation((name, value) => {
-      switch(name) {
+      switch (name) {
         case "sbom":
           // this needs to be unescaped because of multi-line strings
           spdx = value
-            .replace("\n", "%0A")
-            .replace("\r", "%0D")
-            .replace("%", "%25");
+            .replace("%0A", "\n")
+            .replace("%0D", "\r")
+            .replace("%25", "%");
           break;
       }
     });
