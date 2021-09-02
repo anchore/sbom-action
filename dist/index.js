@@ -5430,6 +5430,8 @@ class GithubActionLog {
     }
 }
 
+// EXTERNAL MODULE: external "fs"
+var external_fs_ = __nccwpck_require__(747);
 ;// CONCATENATED MODULE: ./src/github/SyftGithubAction.ts
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -5440,6 +5442,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+
 
 
 
@@ -5494,6 +5497,10 @@ class SyftGithubAction {
                 if (exitCode > 0) {
                     throw new Error("An error occurred running Syft");
                 }
+                const path = external_fs_.mkdtempSync("sbom-action");
+                const fileName = `${path}/sbom.${format}`;
+                external_fs_.writeFileSync(fileName, outStream);
+                core.setOutput("file", fileName);
                 return {
                     report: outStream,
                 };
@@ -5555,7 +5562,12 @@ function runSyftAction() {
             });
             core.debug(new Date().toTimeString());
             if ("report" in output) {
-                core.setOutput("spdx", output.report);
+                // need to escape multiline strings a specific way:
+                const content = output.report
+                    .replace("%", "%25")
+                    .replace("\n", "%0A")
+                    .replace("\r", "%0D");
+                core.setOutput("sbom", content);
             }
             else {
                 core.error(JSON.stringify(output));

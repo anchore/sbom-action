@@ -13,7 +13,7 @@
     "test": "jest",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
     "prepare": "husky install",
-    "precommit": "pretty-quick --staged && npm run package"
+    "precommit": "pretty-quick --staged && npm run package && git add dist/"
   },
   "repository": {
     "type": "git",
