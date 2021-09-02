@@ -135,7 +135,12 @@ export async function runSyftAction(): Promise<void> {
     core.debug(new Date().toTimeString());
 
     if ("report" in output) {
-      core.setOutput("sbom", output.report);
+      // need to escape multiline strings a specific way:
+      const content = output.report
+        .replace("%", "%25")
+        .replace("\n", "%0A")
+        .replace("\r", "%0D");
+      core.setOutput("sbom", content);
     } else {
       core.error(JSON.stringify(output));
     }

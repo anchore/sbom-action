@@ -11,7 +11,11 @@ const testSource = async (source: string): Promise<string> => {
     .mockImplementation((name, value) => {
       switch(name) {
         case "sbom":
-          spdx = value;
+          // this needs to be unescaped because of multi-line strings
+          spdx = value
+            .replace("\n", "%0A")
+            .replace("\r", "%0D")
+            .replace("%", "%25");
           break;
       }
     });
