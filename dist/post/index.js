@@ -16625,6 +16625,10 @@ function WorkflowArtifacts_uploadArtifact({ name, file, rootDirectory, }) {
     });
 }
 
+// EXTERNAL MODULE: external "os"
+var external_os_ = __nccwpck_require__(2087);
+// EXTERNAL MODULE: external "path"
+var external_path_ = __nccwpck_require__(5622);
 ;// CONCATENATED MODULE: ./src/github/SyftGithubAction.ts
 var SyftGithubAction_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -16635,6 +16639,8 @@ var SyftGithubAction_awaiter = (undefined && undefined.__awaiter) || function (t
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+
+
 
 
 
@@ -16701,8 +16707,8 @@ class SyftGithubAction {
                     const { repo, runId } = github.context;
                     const writeFile = true;
                     if (writeFile) {
-                        const path = fs.mkdtempSync("sbom-action");
-                        const filePath = `${path}/${fileName}`;
+                        const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
+                        const filePath = `${tempPath}/${fileName}`;
                         fs.writeFileSync(filePath, outStream);
                         core.setOutput("file", filePath);
                         const artifacts = listWorkflowArtifacts({
@@ -16717,7 +16723,7 @@ class SyftGithubAction {
                             repo,
                             run: runId,
                             file: fileName,
-                            rootDirectory: path,
+                            rootDirectory: tempPath,
                             name: fileName,
                         });
                     }

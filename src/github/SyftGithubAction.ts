@@ -10,6 +10,8 @@ import { getClient } from "./GithubClient";
 import { uploadReleaseAsset } from "./Releases";
 import { Release } from "@octokit/webhooks-types";
 import { listWorkflowArtifacts, uploadArtifact } from "./WorkflowArtifacts";
+import * as os from "os";
+import path from "path";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
@@ -76,8 +78,10 @@ export class SyftGithubAction implements Syft {
 
         const writeFile = true;
         if (writeFile) {
-          const path = fs.mkdtempSync("sbom-action");
-          const filePath = `${path}/${fileName}`;
+          const tempPath = fs.mkdtempSync(
+            path.join(os.tmpdir(), "sbom-action-")
+          );
+          const filePath = `${tempPath}/${fileName}`;
           fs.writeFileSync(filePath, outStream);
           core.setOutput("file", filePath);
 
@@ -95,7 +99,7 @@ export class SyftGithubAction implements Syft {
             repo,
             run: runId,
             file: fileName,
-            rootDirectory: path,
+            rootDirectory: tempPath,
             name: fileName,
           });
         }

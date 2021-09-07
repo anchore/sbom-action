@@ -16442,6 +16442,35 @@ module.exports = require("zlib");
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__nccwpck_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__nccwpck_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__nccwpck_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -16625,6 +16654,11 @@ function uploadArtifact({ name, file, rootDirectory, }) {
     });
 }
 
+// EXTERNAL MODULE: external "os"
+var external_os_ = __nccwpck_require__(2087);
+// EXTERNAL MODULE: external "path"
+var external_path_ = __nccwpck_require__(5622);
+var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
 ;// CONCATENATED MODULE: ./src/github/SyftGithubAction.ts
 var SyftGithubAction_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -16635,6 +16669,8 @@ var SyftGithubAction_awaiter = (undefined && undefined.__awaiter) || function (t
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+
+
 
 
 
@@ -16701,8 +16737,8 @@ class SyftGithubAction {
                     const { repo, runId } = lib_github.context;
                     const writeFile = true;
                     if (writeFile) {
-                        const path = external_fs_.mkdtempSync("sbom-action");
-                        const filePath = `${path}/${fileName}`;
+                        const tempPath = external_fs_.mkdtempSync(external_path_default().join(external_os_.tmpdir(), "sbom-action-"));
+                        const filePath = `${tempPath}/${fileName}`;
                         external_fs_.writeFileSync(filePath, outStream);
                         lib_core.setOutput("file", filePath);
                         const artifacts = WorkflowArtifacts_listWorkflowArtifacts({
@@ -16717,7 +16753,7 @@ class SyftGithubAction {
                             repo,
                             run: runId,
                             file: fileName,
-                            rootDirectory: path,
+                            rootDirectory: tempPath,
                             name: fileName,
                         });
                     }
