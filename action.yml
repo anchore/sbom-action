@@ -12,6 +12,10 @@ inputs:
   registry:
     required: false
     description: "A registry to pull images from"
+  github_token:
+    description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
+    required: false
+    default: ${{ github.token }}
 outputs:
   file:
     description: "SBOM file reference"
@@ -19,4 +23,5 @@ outputs:
     description: "The SBOM in SPDX format"
 runs:
   using: "node12"
-  main: "dist/index.js"
+  main: "dist/main.js"
+  post: "dist/main.js"

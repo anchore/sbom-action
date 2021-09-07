@@ -2,9 +2,14 @@ import { Log } from "../syft/Log";
 import * as exec from "@actions/exec";
 import * as cache from "@actions/tool-cache";
 import * as core from "@actions/core";
+import * as github from "@actions/github";
 import { Syft, SyftErrorImpl, SyftOptions, SyftOutput } from "../syft/Syft";
 import { GithubActionLog } from "./GithubActionLog";
 import * as fs from "fs";
+import { getClient } from "./GithubClient";
+import { uploadReleaseAsset } from "./Releases";
+import { Release } from "@octokit/webhooks-types";
+import { listWorkflowArtifacts, uploadArtifact } from "./WorkflowArtifacts";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
@@ -39,6 +44,7 @@ export class SyftGithubAction implements Syft {
 
     args = [...args, "-o", format];
 
+    let error: unknown;
     try {
       const exitCode = await core.group("Syft Output", async () => {
         core.info(`Executing: ${cmd} ${args.join(" ")}`);
@@ -61,25 +67,63 @@ export class SyftGithubAction implements Syft {
       });
 
       if (exitCode > 0) {
-        throw new Error("An error occurred running Syft");
+        error = new Error("An error occurred running Syft");
+      } else {
+        const fileName = `sbom.${format}`;
+
+        const client = getClient(core.getInput("github_token"));
+        const { repo, runId } = github.context;
+
+        const writeFile = true;
+        if (writeFile) {
+          const path = fs.mkdtempSync("sbom-action");
+          const filePath = `${path}/${fileName}`;
+          fs.writeFileSync(filePath, outStream);
+          core.setOutput("file", filePath);
+
+          const artifacts = listWorkflowArtifacts({
+            client,
+            repo,
+            run: runId,
+          });
+
+          core.info("Workflow artifacts associated with run:");
+          core.info(JSON.stringify(artifacts));
+
+          await uploadArtifact({
+            client,
+            repo,
+            run: runId,
+            file: fileName,
+            rootDirectory: path,
+            name: fileName,
+          });
+        }
+
+        if (github.context.eventName === "release") {
+          const release = github.context.payload as Release;
+          uploadReleaseAsset({
+            client,
+            repo,
+            release,
+            fileName,
+            contents: outStream,
+          });
+        }
+
+        return {
+          report: outStream,
+        };
       }
-
-      const path = fs.mkdtempSync("sbom-action");
-      const fileName = `${path}/sbom.${format}`;
-      fs.writeFileSync(fileName, outStream);
-      core.setOutput("file", fileName);
-
-      return {
-        report: outStream,
-      };
     } catch (e) {
       this.log.error(e);
-      throw new SyftErrorImpl({
-        error: e,
-        out: outStream,
-        err: errStream,
-      });
+      error = e;
     }
+    throw new SyftErrorImpl({
+      error,
+      out: outStream,
+      err: errStream,
+    });
   }
 
   async download(): Promise<string> {
@@ -122,7 +166,12 @@ export class SyftGithubAction implements Syft {
 
 export async function runSyftAction(): Promise<void> {
   try {
-    core.debug(new Date().toTimeString());
+    const start = new Date();
+    core.debug(`-------------------------------------------------------------`);
+    core.debug(`Running SBOM action: ${start.toTimeString()}`);
+    core.info(`Got github context:`);
+    core.info(JSON.stringify(github.context));
+
     const syft = new SyftGithubAction(new GithubActionLog());
     const output = await syft.execute({
       input: {
@@ -132,7 +181,12 @@ export async function runSyftAction(): Promise<void> {
       format: (core.getInput("format") as SyftOptions["format"]) || "spdx",
       outputFile: core.getInput("outputFile"),
     });
-    core.debug(new Date().toTimeString());
+    core.debug(
+      `SBOM action completed in: ${
+        (new Date().getMilliseconds() - start.getMilliseconds()) / 1000
+      }s`
+    );
+    core.debug(`-------------------------------------------------------------`);
 
     if ("report" in output) {
       // need to escape multiline strings a specific way:
