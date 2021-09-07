@@ -89,7 +89,7 @@ export class SyftGithubAction implements Syft {
           fs.writeFileSync(filePath, outStream);
           core.setOutput("file", filePath);
 
-          const artifacts = listWorkflowArtifacts({
+          const artifacts = await listWorkflowArtifacts({
             client,
             repo,
             run: runId,

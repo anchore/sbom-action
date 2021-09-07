@@ -16738,7 +16738,7 @@ class SyftGithubAction {
                         const filePath = `${tempPath}/${fileName}`;
                         fs.writeFileSync(filePath, outStream);
                         core.setOutput("file", filePath);
-                        const artifacts = listWorkflowArtifacts({
+                        const artifacts = yield listWorkflowArtifacts({
                             client,
                             repo,
                             run: runId,

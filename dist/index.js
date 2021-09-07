@@ -16768,7 +16768,7 @@ class SyftGithubAction {
                         const filePath = `${tempPath}/${fileName}`;
                         external_fs_.writeFileSync(filePath, outStream);
                         lib_core.setOutput("file", filePath);
-                        const artifacts = WorkflowArtifacts_listWorkflowArtifacts({
+                        const artifacts = yield WorkflowArtifacts_listWorkflowArtifacts({
                             client,
                             repo,
                             run: runId,
