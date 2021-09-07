@@ -16759,9 +16759,10 @@ class SyftGithubAction {
                     error = new Error("An error occurred running Syft");
                 }
                 else {
-                    const fileName = `sbom.${format}`;
                     const client = getClient(core.getInput("github_token"));
-                    const { repo, runId } = github.context;
+                    const { repo, job, action, sha, runId } = github.context;
+                    const suffix = `${job}-${action}-${sha}`;
+                    const fileName = `sbom-${suffix}.${format}`;
                     const writeFile = true;
                     if (writeFile) {
                         const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
