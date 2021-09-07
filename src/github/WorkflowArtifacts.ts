@@ -3,6 +3,7 @@ import path from "path";
 import * as artifact from "@actions/artifact";
 import * as core from "@actions/core";
 import { GithubClientProp, GithubRepo } from "./GithubClient";
+import { DownloadHttpClient } from "@actions/artifact/lib/internal/download-http-client";
 
 export type WorkflowArtifactProps = GithubClientProp & {
   repo: GithubRepo;
@@ -10,16 +11,16 @@ export type WorkflowArtifactProps = GithubClientProp & {
 };
 
 export interface Artifact {
-  id: number;
-  node_id: string;
+  // id: number;
+  // node_id: string;
   name: string;
-  size_in_bytes: number;
-  url: string;
-  archive_download_url: string;
-  expired: boolean;
-  created_at: string | null;
-  expires_at: string | null;
-  updated_at: string | null;
+  // size_in_bytes: number;
+  // url: string;
+  // archive_download_url: string;
+  // expired: boolean;
+  // created_at: string | null;
+  // expires_at: string | null;
+  // updated_at: string | null;
 }
 
 export async function listWorkflowArtifacts({
@@ -27,6 +28,16 @@ export async function listWorkflowArtifacts({
   repo,
   run,
 }: WorkflowArtifactProps): Promise<Artifact[]> {
+  const useInternalClient = true;
+  if (useInternalClient) {
+    const downloadClient = new DownloadHttpClient();
+    const response = await downloadClient.listArtifacts();
+    return response.value;
+    // .map((a) => ({
+    //   name: a.name,
+    //   // url: a.url,
+    // }));
+  }
   const response = await client.rest.actions.listWorkflowRunArtifacts({
     ...repo,
     run_id: run,

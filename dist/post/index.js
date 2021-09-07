@@ -16593,6 +16593,8 @@ function renameReleaseAsset({ client, repo, assetId, newName, }) {
 
 // EXTERNAL MODULE: ./node_modules/@actions/artifact/lib/artifact-client.js
 var artifact_client = __nccwpck_require__(2605);
+// EXTERNAL MODULE: ./node_modules/@actions/artifact/lib/internal/download-http-client.js
+var download_http_client = __nccwpck_require__(8538);
 ;// CONCATENATED MODULE: ./src/github/WorkflowArtifacts.ts
 var WorkflowArtifacts_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -16607,8 +16609,19 @@ var WorkflowArtifacts_awaiter = (undefined && undefined.__awaiter) || function (
 
 
 
+
 function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
+        const useInternalClient = true;
+        if (useInternalClient) {
+            const downloadClient = new download_http_client.DownloadHttpClient();
+            const response = yield downloadClient.listArtifacts();
+            return response.value;
+            // .map((a) => ({
+            //   name: a.name,
+            //   // url: a.url,
+            // }));
+        }
         const response = yield client.rest.actions.listWorkflowRunArtifacts(Object.assign(Object.assign({}, repo), { run_id: run, per_page: 100, page: 1 }));
         lib_core.info("------------------ listWorkflowRunArtifacts ------------------ ");
         lib_core.info(JSON.stringify(response));
