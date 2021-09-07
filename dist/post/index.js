@@ -15,7 +15,7 @@ const artifact_client_1 = __nccwpck_require__(8802);
 function create() {
     return artifact_client_1.DefaultArtifactClient.create();
 }
-__webpack_unused_export__ = create;
+exports.U = create;
 //# sourceMappingURL=artifact-client.js.map
 
 /***/ }),
@@ -16442,6 +16442,35 @@ module.exports = require("zlib");
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__nccwpck_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__nccwpck_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__nccwpck_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -16471,6 +16500,7 @@ var external_fs_ = __nccwpck_require__(5747);
 var external_os_ = __nccwpck_require__(2087);
 // EXTERNAL MODULE: external "path"
 var external_path_ = __nccwpck_require__(5622);
+var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
 // EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
 var lib_exec = __nccwpck_require__(1514);
 // EXTERNAL MODULE: ./node_modules/@actions/tool-cache/lib/tool-cache.js
@@ -16550,7 +16580,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
     });
 };
 
-function Releases_uploadReleaseAsset({ client, repo, release, fileName, contents, label, contentType, }) {
+function uploadReleaseAsset({ client, repo, release, fileName, contents, label, contentType, }) {
     return __awaiter(this, void 0, void 0, function* () {
         yield client.rest.repos.uploadReleaseAsset(Object.assign(Object.assign({}, repo), { release_id: release.id, baseUrl: release.upload_url, name: fileName, 
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -16612,7 +16642,7 @@ var WorkflowArtifacts_awaiter = (undefined && undefined.__awaiter) || function (
 
 function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
-        const useInternalClient = false;
+        const useInternalClient = true;
         if (useInternalClient) {
             const downloadClient = new download_http_client.DownloadHttpClient();
             const response = yield downloadClient.listArtifacts();
@@ -16635,11 +16665,11 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
 }
 function WorkflowArtifacts_downloadArtifact({ name, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
-        const client = artifact.create();
+        const client = artifact_client/* create */.U();
         const response = yield client.downloadArtifact(name);
-        core.info("------------------------ Artifact Download ---------------------");
-        core.info(`${response.artifactName}  //// ${response.downloadPath}`);
-        core.info(`Dir contains: ${JSON.stringify(fs.readdirSync(response.downloadPath))}`);
+        lib_core.info("------------------------ Artifact Download ---------------------");
+        lib_core.info(`${response.artifactName}  //// ${response.downloadPath}`);
+        lib_core.info(`Dir contains: ${JSON.stringify(external_fs_.readdirSync(response.downloadPath))}`);
         return `${response.downloadPath}/${response.artifactName}`;
     });
 }
@@ -16745,29 +16775,24 @@ class SyftGithubAction {
                         });
                         core.info("Workflow artifacts associated with run:");
                         core.info(JSON.stringify(artifacts));
-                        const existingSbom = downloadArtifact({
-                            client,
-                            // repo,
-                            name: fileName,
-                        });
-                        core.info("Existing SBOM artifact:");
-                        core.info(JSON.stringify(existingSbom));
+                        try {
+                            const existingSbom = yield downloadArtifact({
+                                client,
+                                // repo,
+                                name: fileName,
+                            });
+                            core.info("Existing SBOM artifact:");
+                            core.info(JSON.stringify(existingSbom));
+                        }
+                        catch (e) {
+                            core.info(`${e}`);
+                        }
                         yield uploadArtifact({
                             client,
                             repo,
                             run: runId,
                             file: filePath,
                             name: fileName,
-                        });
-                    }
-                    if (github.context.eventName === "release") {
-                        const release = github.context.payload;
-                        uploadReleaseAsset({
-                            client,
-                            repo,
-                            release,
-                            fileName,
-                            contents: outStream,
                         });
                     }
                     return {
@@ -16885,6 +16910,30 @@ function runPostBuildAction() {
                 repo,
                 run: runId,
             });
+            if (lib_github.context.eventName === "release") {
+                lib_core.info("Running release, attaching SBOMs");
+                const release = lib_github.context.payload;
+                for (const artifact of artifacts) {
+                    lib_core.info(`Found artifact: ${artifact.name}`);
+                    if (/^sbom-.*/.test(artifact.name)) {
+                        lib_core.info(`Found SBOM artifact: ${artifact.name}`);
+                        const file = yield WorkflowArtifacts_downloadArtifact({
+                            client,
+                            name: artifact.name,
+                        });
+                        lib_core.info(`Got SBOM file: ${JSON.stringify(file)}`);
+                        const contents = external_fs_.readFileSync(file);
+                        const fileName = external_path_default().basename(file);
+                        yield uploadReleaseAsset({
+                            client,
+                            repo,
+                            release,
+                            fileName,
+                            contents: contents.toString(),
+                        });
+                    }
+                }
+            }
             lib_core.info("Workflow artifacts associated with run:");
             lib_core.info(JSON.stringify(artifacts));
         }

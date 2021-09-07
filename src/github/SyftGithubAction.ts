@@ -98,14 +98,18 @@ export class SyftGithubAction implements Syft {
           core.info("Workflow artifacts associated with run:");
           core.info(JSON.stringify(artifacts));
 
-          const existingSbom = downloadArtifact({
-            client,
-            // repo,
-            name: fileName,
-          });
+          try {
+            const existingSbom = await downloadArtifact({
+              client,
+              // repo,
+              name: fileName,
+            });
 
-          core.info("Existing SBOM artifact:");
-          core.info(JSON.stringify(existingSbom));
+            core.info("Existing SBOM artifact:");
+            core.info(JSON.stringify(existingSbom));
+          } catch (e) {
+            core.info(`${e}`);
+          }
 
           await uploadArtifact({
             client,
@@ -113,17 +117,6 @@ export class SyftGithubAction implements Syft {
             run: runId,
             file: filePath,
             name: fileName,
-          });
-        }
-
-        if (github.context.eventName === "release") {
-          const release = github.context.payload as Release;
-          uploadReleaseAsset({
-            client,
-            repo,
-            release,
-            fileName,
-            contents: outStream,
           });
         }
 
@@ -248,6 +241,31 @@ export async function runPostBuildAction(): Promise<void> {
       repo,
       run: runId,
     });
+
+    if (github.context.eventName === "release") {
+      core.info("Running release, attaching SBOMs");
+      const release = github.context.payload as Release;
+      for (const artifact of artifacts) {
+        core.info(`Found artifact: ${artifact.name}`);
+        if (/^sbom-.*/.test(artifact.name)) {
+          core.info(`Found SBOM artifact: ${artifact.name}`);
+          const file = await downloadArtifact({
+            client,
+            name: artifact.name,
+          });
+          core.info(`Got SBOM file: ${JSON.stringify(file)}`);
+          const contents = fs.readFileSync(file);
+          const fileName = path.basename(file);
+          await uploadReleaseAsset({
+            client,
+            repo,
+            release,
+            fileName,
+            contents: contents.toString(),
+          });
+        }
+      }
+    }
 
     core.info("Workflow artifacts associated with run:");
     core.info(JSON.stringify(artifacts));

@@ -28,7 +28,7 @@ export async function listWorkflowArtifacts({
   repo,
   run,
 }: WorkflowArtifactProps): Promise<Artifact[]> {
-  const useInternalClient = false;
+  const useInternalClient = true;
   if (useInternalClient) {
     const downloadClient = new DownloadHttpClient();
     const response = await downloadClient.listArtifacts();

@@ -16580,7 +16580,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
     });
 };
 
-function uploadReleaseAsset({ client, repo, release, fileName, contents, label, contentType, }) {
+function Releases_uploadReleaseAsset({ client, repo, release, fileName, contents, label, contentType, }) {
     return __awaiter(this, void 0, void 0, function* () {
         yield client.rest.repos.uploadReleaseAsset(Object.assign(Object.assign({}, repo), { release_id: release.id, baseUrl: release.upload_url, name: fileName, 
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -16642,7 +16642,7 @@ var WorkflowArtifacts_awaiter = (undefined && undefined.__awaiter) || function (
 
 function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
-        const useInternalClient = false;
+        const useInternalClient = true;
         if (useInternalClient) {
             const downloadClient = new download_http_client.DownloadHttpClient();
             const response = yield downloadClient.listArtifacts();
@@ -16663,7 +16663,7 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
         return response.data.artifacts;
     });
 }
-function downloadArtifact({ name, }) {
+function WorkflowArtifacts_downloadArtifact({ name, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const client = artifact_client/* create */.U();
         const response = yield client.downloadArtifact(name);
@@ -16775,29 +16775,24 @@ class SyftGithubAction {
                         });
                         lib_core.info("Workflow artifacts associated with run:");
                         lib_core.info(JSON.stringify(artifacts));
-                        const existingSbom = downloadArtifact({
-                            client,
-                            // repo,
-                            name: fileName,
-                        });
-                        lib_core.info("Existing SBOM artifact:");
-                        lib_core.info(JSON.stringify(existingSbom));
+                        try {
+                            const existingSbom = yield WorkflowArtifacts_downloadArtifact({
+                                client,
+                                // repo,
+                                name: fileName,
+                            });
+                            lib_core.info("Existing SBOM artifact:");
+                            lib_core.info(JSON.stringify(existingSbom));
+                        }
+                        catch (e) {
+                            lib_core.info(`${e}`);
+                        }
                         yield uploadArtifact({
                             client,
                             repo,
                             run: runId,
                             file: filePath,
                             name: fileName,
-                        });
-                    }
-                    if (lib_github.context.eventName === "release") {
-                        const release = lib_github.context.payload;
-                        uploadReleaseAsset({
-                            client,
-                            repo,
-                            release,
-                            fileName,
-                            contents: outStream,
                         });
                     }
                     return {
@@ -16915,6 +16910,30 @@ function runPostBuildAction() {
                 repo,
                 run: runId,
             });
+            if (github.context.eventName === "release") {
+                core.info("Running release, attaching SBOMs");
+                const release = github.context.payload;
+                for (const artifact of artifacts) {
+                    core.info(`Found artifact: ${artifact.name}`);
+                    if (/^sbom-.*/.test(artifact.name)) {
+                        core.info(`Found SBOM artifact: ${artifact.name}`);
+                        const file = yield downloadArtifact({
+                            client,
+                            name: artifact.name,
+                        });
+                        core.info(`Got SBOM file: ${JSON.stringify(file)}`);
+                        const contents = fs.readFileSync(file);
+                        const fileName = path.basename(file);
+                        yield uploadReleaseAsset({
+                            client,
+                            repo,
+                            release,
+                            fileName,
+                            contents: contents.toString(),
+                        });
+                    }
+                }
+            }
             core.info("Workflow artifacts associated with run:");
             core.info(JSON.stringify(artifacts));
         }
