@@ -28,7 +28,7 @@ jobs:
           path: ./
 
       - uses: ./
-        id: npm-scan
+        #        id: npm-scan
         with:
           path: ./tests/fixtures/npm-project
 
