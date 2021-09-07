@@ -6,6 +6,7 @@ on: # rebuild any PRs and main branch changes
   #    branches:
   #      - main
   #      - 'releases/*'
+  release:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
