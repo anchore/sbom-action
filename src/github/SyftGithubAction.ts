@@ -215,3 +215,39 @@ export async function runSyftAction(): Promise<void> {
     throw e;
   }
 }
+
+export async function runPostBuildAction(): Promise<void> {
+  try {
+    const start = new Date();
+    core.debug(`-------------------------------------------------------------`);
+    core.debug(`Running POST SBOM action: ${start.toTimeString()}`);
+    core.info(`Got github context:`);
+    core.info(JSON.stringify(github.context));
+
+    const client = getClient(core.getInput("github_token"));
+    const { repo, runId } = github.context;
+
+    const artifacts = listWorkflowArtifacts({
+      client,
+      repo,
+      run: runId,
+    });
+
+    core.info("Workflow artifacts associated with run:");
+    core.info(JSON.stringify(artifacts));
+  } catch (e: unknown) {
+    if (e instanceof SyftErrorImpl) {
+      core.setFailed(`ERROR executing Syft: ${e.message}
+      Caused by: ${e.error}
+      STDOUT: ${e.out}
+      STDERR: ${e.err}`);
+    } else if (e instanceof Error) {
+      core.setFailed(e.message);
+    } else if (e instanceof Object) {
+      core.setFailed(e.toString());
+    } else {
+      core.setFailed("An unknown error occurred");
+    }
+    throw e;
+  }
+}

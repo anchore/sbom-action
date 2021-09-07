@@ -16472,12 +16472,12 @@ var tool_cache = __nccwpck_require__(7784);
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var lib_core = __nccwpck_require__(2186);
 // EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
-var github = __nccwpck_require__(5438);
+var lib_github = __nccwpck_require__(5438);
 ;// CONCATENATED MODULE: ./src/syft/Syft.ts
 /**
  * Provides a simple separation of syft output in the case of an error
  */
-class SyftErrorImpl extends Error {
+class Syft_SyftErrorImpl extends Error {
     constructor({ error, err, out }) {
         super();
         this.error = error;
@@ -16508,12 +16508,12 @@ var external_fs_ = __nccwpck_require__(5747);
 ;// CONCATENATED MODULE: ./src/github/GithubClient.ts
 
 
-function getClient(githubToken) {
+function GithubClient_getClient(githubToken) {
     // This should be a token with access to your repository scoped in as a secret.
     // The YML workflow will need to set myToken with the GitHub Secret Token
     // myToken: ${{ secrets.GITHUB_TOKEN }}
     // https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token#about-the-github_token-secret
-    return github.getOctokit(githubToken, {
+    return lib_github.getOctokit(githubToken, {
         throttle: {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
@@ -16601,7 +16601,7 @@ var WorkflowArtifacts_awaiter = (undefined && undefined.__awaiter) || function (
 };
 
 
-function listWorkflowArtifacts({ client, repo, run, }) {
+function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const response = yield client.rest.actions.listWorkflowRunArtifacts(Object.assign(Object.assign({}, repo), { run_id: run, per_page: 100, page: 1 }));
         lib_core.info("------------------ listWorkflowRunArtifacts ------------------ ");
@@ -16615,7 +16615,9 @@ function listWorkflowArtifacts({ client, repo, run, }) {
 function uploadArtifact({ name, file, rootDirectory, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const client = artifact_client/* create */.U();
-        yield client.uploadArtifact(name, [file], rootDirectory, {});
+        const info = yield client.uploadArtifact(name, [file], rootDirectory, {});
+        lib_core.info("-------------------------------- Artifact Upload --------------");
+        lib_core.info(JSON.stringify(info));
     });
 }
 
@@ -16691,15 +16693,15 @@ class SyftGithubAction {
                 }
                 else {
                     const fileName = `sbom.${format}`;
-                    const client = getClient(lib_core.getInput("github_token"));
-                    const { repo, runId } = github.context;
+                    const client = GithubClient_getClient(lib_core.getInput("github_token"));
+                    const { repo, runId } = lib_github.context;
                     const writeFile = true;
                     if (writeFile) {
                         const path = external_fs_.mkdtempSync("sbom-action");
                         const filePath = `${path}/${fileName}`;
                         external_fs_.writeFileSync(filePath, outStream);
                         lib_core.setOutput("file", filePath);
-                        const artifacts = listWorkflowArtifacts({
+                        const artifacts = WorkflowArtifacts_listWorkflowArtifacts({
                             client,
                             repo,
                             run: runId,
@@ -16715,8 +16717,8 @@ class SyftGithubAction {
                             name: fileName,
                         });
                     }
-                    if (github.context.eventName === "release") {
-                        const release = github.context.payload;
+                    if (lib_github.context.eventName === "release") {
+                        const release = lib_github.context.payload;
                         uploadReleaseAsset({
                             client,
                             repo,
@@ -16734,7 +16736,7 @@ class SyftGithubAction {
                 this.log.error(e);
                 error = e;
             }
-            throw new SyftErrorImpl({
+            throw new Syft_SyftErrorImpl({
                 error,
                 out: outStream,
                 err: errStream,
@@ -16780,7 +16782,7 @@ function runSyftAction() {
             lib_core.debug(`-------------------------------------------------------------`);
             lib_core.debug(`Running SBOM action: ${start.toTimeString()}`);
             lib_core.info(`Got github context:`);
-            lib_core.info(JSON.stringify(github.context));
+            lib_core.info(JSON.stringify(lib_github.context));
             const syft = new SyftGithubAction(new GithubActionLog());
             const output = yield syft.execute({
                 input: {
@@ -16806,7 +16808,7 @@ function runSyftAction() {
             }
         }
         catch (e) {
-            if (e instanceof SyftErrorImpl) {
+            if (e instanceof Syft_SyftErrorImpl) {
                 lib_core.setFailed(`ERROR executing Syft: ${e.message}
       Caused by: ${e.error}
       STDOUT: ${e.out}
@@ -16820,6 +16822,44 @@ function runSyftAction() {
             }
             else {
                 lib_core.setFailed("An unknown error occurred");
+            }
+            throw e;
+        }
+    });
+}
+function runPostBuildAction() {
+    return SyftGithubAction_awaiter(this, void 0, void 0, function* () {
+        try {
+            const start = new Date();
+            core.debug(`-------------------------------------------------------------`);
+            core.debug(`Running POST SBOM action: ${start.toTimeString()}`);
+            core.info(`Got github context:`);
+            core.info(JSON.stringify(github.context));
+            const client = getClient(core.getInput("github_token"));
+            const { repo, runId } = github.context;
+            const artifacts = listWorkflowArtifacts({
+                client,
+                repo,
+                run: runId,
+            });
+            core.info("Workflow artifacts associated with run:");
+            core.info(JSON.stringify(artifacts));
+        }
+        catch (e) {
+            if (e instanceof SyftErrorImpl) {
+                core.setFailed(`ERROR executing Syft: ${e.message}
+      Caused by: ${e.error}
+      STDOUT: ${e.out}
+      STDERR: ${e.err}`);
+            }
+            else if (e instanceof Error) {
+                core.setFailed(e.message);
+            }
+            else if (e instanceof Object) {
+                core.setFailed(e.toString());
+            }
+            else {
+                core.setFailed("An unknown error occurred");
             }
             throw e;
         }

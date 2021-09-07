@@ -1,5 +1,4 @@
 import * as artifact from "@actions/artifact";
-import { ArtifactClient } from "@actions/artifact";
 import { GithubClientProp, GithubRepo } from "./GithubClient";
 import * as core from "@actions/core";
 
@@ -55,5 +54,7 @@ export async function uploadArtifact({
   rootDirectory,
 }: UploadArtifactProps): Promise<void> {
   const client = artifact.create();
-  await client.uploadArtifact(name, [file], rootDirectory, {});
+  const info = await client.uploadArtifact(name, [file], rootDirectory, {});
+  core.info("-------------------------------- Artifact Upload --------------");
+  core.info(JSON.stringify(info));
 }
