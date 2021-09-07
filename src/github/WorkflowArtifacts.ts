@@ -59,7 +59,7 @@ export async function uploadArtifact({
   core.info("-------------------------- Artifact Upload ---------------------");
   core.info(`${name} //// ${fileName}  //// ${rootDirectory}`);
   core.info(`Dir contains: ${JSON.stringify(fs.readdirSync(rootDirectory))}`);
-  const info = await client.uploadArtifact(fileName, [file], rootDirectory, {});
+  const info = await client.uploadArtifact(name, [fileName], rootDirectory, {});
   core.info("-------------------------- Artifact Upload ---------------------");
   core.info(JSON.stringify(info));
 }

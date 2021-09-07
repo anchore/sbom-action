@@ -16656,7 +16656,7 @@ function uploadArtifact({ name, file, }) {
         lib_core.info("-------------------------- Artifact Upload ---------------------");
         lib_core.info(`${name} //// ${fileName}  //// ${rootDirectory}`);
         lib_core.info(`Dir contains: ${JSON.stringify(external_fs_.readdirSync(rootDirectory))}`);
-        const info = yield client.uploadArtifact(fileName, [file], rootDirectory, {});
+        const info = yield client.uploadArtifact(name, [fileName], rootDirectory, {});
         lib_core.info("-------------------------- Artifact Upload ---------------------");
         lib_core.info(JSON.stringify(info));
     });

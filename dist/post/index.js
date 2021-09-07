@@ -16626,7 +16626,7 @@ function WorkflowArtifacts_uploadArtifact({ name, file, }) {
         core.info("-------------------------- Artifact Upload ---------------------");
         core.info(`${name} //// ${fileName}  //// ${rootDirectory}`);
         core.info(`Dir contains: ${JSON.stringify(fs.readdirSync(rootDirectory))}`);
-        const info = yield client.uploadArtifact(fileName, [file], rootDirectory, {});
+        const info = yield client.uploadArtifact(name, [fileName], rootDirectory, {});
         core.info("-------------------------- Artifact Upload ---------------------");
         core.info(JSON.stringify(info));
     });
