@@ -159,9 +159,8 @@ export class SyftGithubAction implements Syft {
 
   async getSyftCommand(): Promise<string> {
     const name = SYFT_BINARY_NAME;
-    const version = SYFT_VERSION;
 
-    let syftBinary = cache.find(name, version);
+    let syftBinary = cache.find(name, SYFT_VERSION);
     if (!syftBinary) {
       // Not found, install it
       syftBinary = await this.download();
@@ -253,9 +252,12 @@ export async function runPostBuildAction(): Promise<void> {
     } else {
       const isRefPush = eventName === "push" && /^refs\/tags.*/.test(ref);
       if (isRefPush) {
+        const tag = ref.replace(/^refs\/tags\//, "");
+        core.info(`Getting release by tag: ${tag}`);
+
         const response = await client.rest.repos.getReleaseByTag({
           ...repo,
-          tag: ref.replace(/^refs\/tags/, ""),
+          tag,
         });
         release = response.data as Release;
       }

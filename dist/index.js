@@ -16831,8 +16831,7 @@ class SyftGithubAction {
     getSyftCommand() {
         return SyftGithubAction_awaiter(this, void 0, void 0, function* () {
             const name = SYFT_BINARY_NAME;
-            const version = SYFT_VERSION;
-            let syftBinary = tool_cache.find(name, version);
+            let syftBinary = tool_cache.find(name, SYFT_VERSION);
             if (!syftBinary) {
                 // Not found, install it
                 syftBinary = yield this.download();
@@ -16920,7 +16919,9 @@ function runPostBuildAction() {
             else {
                 const isRefPush = eventName === "push" && /^refs\/tags.*/.test(ref);
                 if (isRefPush) {
-                    const response = yield client.rest.repos.getReleaseByTag(Object.assign(Object.assign({}, repo), { tag: ref.replace(/^refs\/tags/, "") }));
+                    const tag = ref.replace(/^refs\/tags\//, "");
+                    core.info(`Getting release by tag: ${tag}`);
+                    const response = yield client.rest.repos.getReleaseByTag(Object.assign(Object.assign({}, repo), { tag }));
                     release = response.data;
                 }
             }
