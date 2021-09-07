@@ -242,6 +242,9 @@ export async function runPostBuildAction(): Promise<void> {
       run: runId,
     });
 
+    core.info("Workflow artifacts associated with run:");
+    core.info(JSON.stringify(artifacts));
+
     if (github.context.eventName === "release") {
       core.info("Running release, attaching SBOMs");
       const release = github.context.payload as Release;
@@ -266,9 +269,6 @@ export async function runPostBuildAction(): Promise<void> {
         }
       }
     }
-
-    core.info("Workflow artifacts associated with run:");
-    core.info(JSON.stringify(artifacts));
   } catch (e: unknown) {
     if (e instanceof SyftErrorImpl) {
       core.setFailed(`ERROR executing Syft: ${e.message}

@@ -16910,6 +16910,8 @@ function runPostBuildAction() {
                 repo,
                 run: runId,
             });
+            lib_core.info("Workflow artifacts associated with run:");
+            lib_core.info(JSON.stringify(artifacts));
             if (lib_github.context.eventName === "release") {
                 lib_core.info("Running release, attaching SBOMs");
                 const release = lib_github.context.payload;
@@ -16934,8 +16936,6 @@ function runPostBuildAction() {
                     }
                 }
             }
-            lib_core.info("Workflow artifacts associated with run:");
-            lib_core.info(JSON.stringify(artifacts));
         }
         catch (e) {
             if (e instanceof Syft_SyftErrorImpl) {
