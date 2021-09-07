@@ -1,11 +1,11 @@
-name: 'build-test'
+name: "build-test"
 on: # rebuild any PRs and main branch changes
   pull_request:
-    branches: [ main ]
+    branches: [main]
   push:
-#    branches:
-#      - main
-#      - 'releases/*'
+  #    branches:
+  #      - main
+  #      - 'releases/*'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -19,7 +19,20 @@ jobs:
       - run: npm audit --production
       - run: npm run package
 
+  test-me:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: ./
+
+      - uses: ./
+        id: dirscan
+        with:
+          path: ./tests/fixtures/yarn-project
+
   test:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     services:
       registry:
@@ -38,6 +51,7 @@ jobs:
       - run: npm test
 
   test-as-action: # make sure the action works on a clean machine without building
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
