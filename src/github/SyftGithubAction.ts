@@ -146,24 +146,24 @@ export class SyftGithubAction implements Syft {
 
     const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
     await exec.exec(cmd);
-    const path = `${installPath}_${name}/${name}`;
+    const syftBinary = `${installPath}_${name}/${name}`;
 
     // Cache the downloaded file
-    return cache.cacheFile(path, name, name, version);
+    return cache.cacheFile(syftBinary, name, name, version);
   }
 
   async getSyftCommand(): Promise<string> {
     const name = SYFT_BINARY_NAME;
     const version = SYFT_VERSION;
 
-    let path = cache.find(name, version);
-    if (!path) {
+    let syftBinary = cache.find(name, version);
+    if (!syftBinary) {
       // Not found, install it
-      path = await this.download();
+      syftBinary = await this.download();
     }
 
     // Add tool to path for this and future actions to use
-    core.addPath(path);
+    core.addPath(syftBinary);
     return name;
   }
 }
