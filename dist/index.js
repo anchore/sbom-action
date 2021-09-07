@@ -16904,7 +16904,7 @@ function runPostBuildAction() {
             core.info(`Got github context:`);
             core.info(JSON.stringify(github.context));
             const client = getClient(core.getInput("github_token"));
-            const { repo, runId } = github.context;
+            const { eventName, ref, payload, repo, runId } = github.context;
             const artifacts = yield listWorkflowArtifacts({
                 client,
                 repo,
@@ -16912,9 +16912,20 @@ function runPostBuildAction() {
             });
             core.info("Workflow artifacts associated with run:");
             core.info(JSON.stringify(artifacts));
-            if (github.context.eventName === "release") {
+            let release = undefined;
+            // FIXME: what's the right way to detect a release?
+            if (eventName === "release") {
+                release = payload;
+            }
+            else {
+                const isRefPush = eventName === "push" && /^refs\/tags.*/.test(ref);
+                if (isRefPush) {
+                    const response = yield client.rest.repos.getReleaseByTag(Object.assign(Object.assign({}, repo), { tag: ref.replace(/^refs\/tags/, "") }));
+                    release = response.data;
+                }
+            }
+            if (release) {
                 core.info("Running release, attaching SBOMs");
-                const release = github.context.payload;
                 for (const artifact of artifacts) {
                     core.info(`Found artifact: ${artifact.name}`);
                     if (/^sbom-.*/.test(artifact.name)) {
