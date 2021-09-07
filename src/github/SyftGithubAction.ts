@@ -1,17 +1,17 @@
-import { Log } from "../syft/Log";
+import * as fs from "fs";
+import * as os from "os";
+import path from "path";
 import * as exec from "@actions/exec";
 import * as cache from "@actions/tool-cache";
 import * as core from "@actions/core";
 import * as github from "@actions/github";
+import { Release } from "@octokit/webhooks-types";
 import { Syft, SyftErrorImpl, SyftOptions, SyftOutput } from "../syft/Syft";
 import { GithubActionLog } from "./GithubActionLog";
-import * as fs from "fs";
 import { getClient } from "./GithubClient";
 import { uploadReleaseAsset } from "./Releases";
-import { Release } from "@octokit/webhooks-types";
+import { Log } from "../syft/Log";
 import { listWorkflowArtifacts, uploadArtifact } from "./WorkflowArtifacts";
-import * as os from "os";
-import path from "path";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
@@ -98,8 +98,7 @@ export class SyftGithubAction implements Syft {
             client,
             repo,
             run: runId,
-            file: fileName,
-            rootDirectory: tempPath,
+            file: filePath,
             name: fileName,
           });
         }

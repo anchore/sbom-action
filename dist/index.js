@@ -16494,6 +16494,13 @@ var __webpack_exports__ = {};
 // ESM COMPAT FLAG
 __nccwpck_require__.r(__webpack_exports__);
 
+// EXTERNAL MODULE: external "fs"
+var external_fs_ = __nccwpck_require__(5747);
+// EXTERNAL MODULE: external "os"
+var external_os_ = __nccwpck_require__(2087);
+// EXTERNAL MODULE: external "path"
+var external_path_ = __nccwpck_require__(5622);
+var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
 // EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
 var exec = __nccwpck_require__(1514);
 // EXTERNAL MODULE: ./node_modules/@actions/tool-cache/lib/tool-cache.js
@@ -16532,8 +16539,6 @@ class GithubActionLog {
     }
 }
 
-// EXTERNAL MODULE: external "fs"
-var external_fs_ = __nccwpck_require__(5747);
 ;// CONCATENATED MODULE: ./src/github/GithubClient.ts
 
 
@@ -16631,6 +16636,7 @@ var WorkflowArtifacts_awaiter = (undefined && undefined.__awaiter) || function (
 
 
 
+
 function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const response = yield client.rest.actions.listWorkflowRunArtifacts(Object.assign(Object.assign({}, repo), { run_id: run, per_page: 100, page: 1 }));
@@ -16642,23 +16648,20 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
         return response.data.artifacts;
     });
 }
-function uploadArtifact({ name, file, rootDirectory, }) {
+function uploadArtifact({ name, file, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
+        const fileName = `./${external_path_default().basename(file)}`;
+        const rootDirectory = external_path_default().dirname(file);
         const client = artifact_client/* create */.U();
         lib_core.info("-------------------------- Artifact Upload ---------------------");
-        lib_core.info(`${name} //// ${file}  //// ${rootDirectory}`);
+        lib_core.info(`${name} //// ${fileName}  //// ${rootDirectory}`);
         lib_core.info(`Dir contains: ${JSON.stringify(external_fs_.readdirSync(rootDirectory))}`);
-        const info = yield client.uploadArtifact(name, [file], rootDirectory, {});
+        const info = yield client.uploadArtifact(fileName, [file], rootDirectory, {});
         lib_core.info("-------------------------- Artifact Upload ---------------------");
         lib_core.info(JSON.stringify(info));
     });
 }
 
-// EXTERNAL MODULE: external "os"
-var external_os_ = __nccwpck_require__(2087);
-// EXTERNAL MODULE: external "path"
-var external_path_ = __nccwpck_require__(5622);
-var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
 ;// CONCATENATED MODULE: ./src/github/SyftGithubAction.ts
 var SyftGithubAction_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -16752,8 +16755,7 @@ class SyftGithubAction {
                             client,
                             repo,
                             run: runId,
-                            file: fileName,
-                            rootDirectory: tempPath,
+                            file: filePath,
                             name: fileName,
                         });
                     }
