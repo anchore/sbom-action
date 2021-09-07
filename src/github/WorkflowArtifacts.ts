@@ -1,6 +1,7 @@
 import * as artifact from "@actions/artifact";
 import { GithubClientProp, GithubRepo } from "./GithubClient";
 import * as core from "@actions/core";
+import * as fs from "fs";
 
 export type WorkflowArtifactProps = GithubClientProp & {
   repo: GithubRepo;
@@ -54,7 +55,10 @@ export async function uploadArtifact({
   rootDirectory,
 }: UploadArtifactProps): Promise<void> {
   const client = artifact.create();
+  core.info("-------------------------- Artifact Upload ---------------------");
+  core.info(`${name} //// ${file}  //// ${rootDirectory}`);
+  core.info(`Dir contains: ${JSON.stringify(fs.readdirSync(rootDirectory))}`);
   const info = await client.uploadArtifact(name, [file], rootDirectory, {});
-  core.info("-------------------------------- Artifact Upload --------------");
+  core.info("-------------------------- Artifact Upload ---------------------");
   core.info(JSON.stringify(info));
 }

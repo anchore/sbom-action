@@ -16601,6 +16601,7 @@ var WorkflowArtifacts_awaiter = (undefined && undefined.__awaiter) || function (
 };
 
 
+
 function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const response = yield client.rest.actions.listWorkflowRunArtifacts(Object.assign(Object.assign({}, repo), { run_id: run, per_page: 100, page: 1 }));
@@ -16615,8 +16616,11 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
 function uploadArtifact({ name, file, rootDirectory, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const client = artifact_client/* create */.U();
+        lib_core.info("-------------------------- Artifact Upload ---------------------");
+        lib_core.info(`${name} //// ${file}  //// ${rootDirectory}`);
+        lib_core.info(`Dir contains: ${JSON.stringify(external_fs_.readdirSync(rootDirectory))}`);
         const info = yield client.uploadArtifact(name, [file], rootDirectory, {});
-        lib_core.info("-------------------------------- Artifact Upload --------------");
+        lib_core.info("-------------------------- Artifact Upload ---------------------");
         lib_core.info(JSON.stringify(info));
     });
 }
