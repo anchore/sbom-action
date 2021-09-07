@@ -32,6 +32,8 @@ export async function listWorkflowArtifacts({
   if (useInternalClient) {
     const downloadClient = new DownloadHttpClient();
     const response = await downloadClient.listArtifacts();
+    core.info("--------------------- listArtifacts -------------------");
+    core.info(JSON.stringify(response));
     return response.value;
     // .map((a) => ({
     //   name: a.name,
@@ -53,6 +55,23 @@ export async function listWorkflowArtifacts({
   }
 
   return response.data.artifacts;
+}
+
+export type DownloadArtifactProps = GithubClientProp & {
+  name: string;
+};
+
+export async function downloadArtifact({
+  name,
+}: DownloadArtifactProps): Promise<string> {
+  const client = artifact.create();
+  const response = await client.downloadArtifact(name);
+  core.info("------------------------ Artifact Download ---------------------");
+  core.info(`${response.artifactName}  //// ${response.downloadPath}`);
+  core.info(
+    `Dir contains: ${JSON.stringify(fs.readdirSync(response.downloadPath))}`
+  );
+  return `${response.downloadPath}/${response.artifactName}`;
 }
 
 export type UploadArtifactProps = WorkflowArtifactProps & {

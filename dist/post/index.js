@@ -16616,6 +16616,8 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
         if (useInternalClient) {
             const downloadClient = new download_http_client.DownloadHttpClient();
             const response = yield downloadClient.listArtifacts();
+            lib_core.info("--------------------- listArtifacts -------------------");
+            lib_core.info(JSON.stringify(response));
             return response.value;
             // .map((a) => ({
             //   name: a.name,
@@ -16629,6 +16631,16 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
             throw new Error("Unable to retrieve listWorkflowRunArtifacts");
         }
         return response.data.artifacts;
+    });
+}
+function WorkflowArtifacts_downloadArtifact({ name, }) {
+    return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
+        const client = artifact.create();
+        const response = yield client.downloadArtifact(name);
+        core.info("------------------------ Artifact Download ---------------------");
+        core.info(`${response.artifactName}  //// ${response.downloadPath}`);
+        core.info(`Dir contains: ${JSON.stringify(fs.readdirSync(response.downloadPath))}`);
+        return `${response.downloadPath}/${response.artifactName}`;
     });
 }
 function WorkflowArtifacts_uploadArtifact({ name, file, }) {
@@ -16733,6 +16745,13 @@ class SyftGithubAction {
                         });
                         core.info("Workflow artifacts associated with run:");
                         core.info(JSON.stringify(artifacts));
+                        const existingSbom = downloadArtifact({
+                            client,
+                            // repo,
+                            name: fileName,
+                        });
+                        core.info("Existing SBOM artifact:");
+                        core.info(JSON.stringify(existingSbom));
                         yield uploadArtifact({
                             client,
                             repo,

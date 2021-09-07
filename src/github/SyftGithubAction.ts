@@ -11,7 +11,11 @@ import { GithubActionLog } from "./GithubActionLog";
 import { getClient } from "./GithubClient";
 import { uploadReleaseAsset } from "./Releases";
 import { Log } from "../syft/Log";
-import { listWorkflowArtifacts, uploadArtifact } from "./WorkflowArtifacts";
+import {
+  listWorkflowArtifacts,
+  downloadArtifact,
+  uploadArtifact,
+} from "./WorkflowArtifacts";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
@@ -93,6 +97,15 @@ export class SyftGithubAction implements Syft {
 
           core.info("Workflow artifacts associated with run:");
           core.info(JSON.stringify(artifacts));
+
+          const existingSbom = downloadArtifact({
+            client,
+            // repo,
+            name: fileName,
+          });
+
+          core.info("Existing SBOM artifact:");
+          core.info(JSON.stringify(existingSbom));
 
           await uploadArtifact({
             client,
