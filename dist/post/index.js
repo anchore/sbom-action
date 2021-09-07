@@ -16620,7 +16620,7 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
 }
 function WorkflowArtifacts_uploadArtifact({ name, file, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
-        const fileName = `./${path.basename(file)}`;
+        const fileName = path.basename(file);
         const rootDirectory = path.dirname(file);
         const client = artifact.create();
         core.info("-------------------------- Artifact Upload ---------------------");

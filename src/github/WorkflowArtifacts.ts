@@ -53,7 +53,7 @@ export async function uploadArtifact({
   name,
   file,
 }: UploadArtifactProps): Promise<void> {
-  const fileName = `./${path.basename(file)}`;
+  const fileName = path.basename(file);
   const rootDirectory = path.dirname(file);
   const client = artifact.create();
   core.info("-------------------------- Artifact Upload ---------------------");
