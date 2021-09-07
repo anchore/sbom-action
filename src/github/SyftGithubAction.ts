@@ -243,7 +243,7 @@ export async function runPostBuildAction(): Promise<void> {
     const client = getClient(core.getInput("github_token"));
     const { repo, runId } = github.context;
 
-    const artifacts = listWorkflowArtifacts({
+    const artifacts = await listWorkflowArtifacts({
       client,
       repo,
       run: runId,

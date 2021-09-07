@@ -16612,7 +16612,7 @@ var WorkflowArtifacts_awaiter = (undefined && undefined.__awaiter) || function (
 
 function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
-        const useInternalClient = true;
+        const useInternalClient = false;
         if (useInternalClient) {
             const downloadClient = new download_http_client.DownloadHttpClient();
             const response = yield downloadClient.listArtifacts();
@@ -16880,7 +16880,7 @@ function runPostBuildAction() {
             lib_core.info(JSON.stringify(lib_github.context));
             const client = GithubClient_getClient(lib_core.getInput("github_token"));
             const { repo, runId } = lib_github.context;
-            const artifacts = WorkflowArtifacts_listWorkflowArtifacts({
+            const artifacts = yield WorkflowArtifacts_listWorkflowArtifacts({
                 client,
                 repo,
                 run: runId,
