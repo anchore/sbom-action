@@ -16650,13 +16650,12 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
 }
 function uploadArtifact({ name, file, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
-        const fileName = external_path_default().basename(file);
         const rootDirectory = external_path_default().dirname(file);
         const client = artifact_client/* create */.U();
         lib_core.info("-------------------------- Artifact Upload ---------------------");
-        lib_core.info(`${name} //// ${fileName}  //// ${rootDirectory}`);
+        lib_core.info(`${name} //// ${file}  //// ${rootDirectory}`);
         lib_core.info(`Dir contains: ${JSON.stringify(external_fs_.readdirSync(rootDirectory))}`);
-        const info = yield client.uploadArtifact(name, [fileName], rootDirectory, {});
+        const info = yield client.uploadArtifact(name, [file], rootDirectory, {});
         lib_core.info("-------------------------- Artifact Upload ---------------------");
         lib_core.info(JSON.stringify(info));
     });

@@ -53,13 +53,12 @@ export async function uploadArtifact({
   name,
   file,
 }: UploadArtifactProps): Promise<void> {
-  const fileName = path.basename(file);
   const rootDirectory = path.dirname(file);
   const client = artifact.create();
   core.info("-------------------------- Artifact Upload ---------------------");
-  core.info(`${name} //// ${fileName}  //// ${rootDirectory}`);
+  core.info(`${name} //// ${file}  //// ${rootDirectory}`);
   core.info(`Dir contains: ${JSON.stringify(fs.readdirSync(rootDirectory))}`);
-  const info = await client.uploadArtifact(name, [fileName], rootDirectory, {});
+  const info = await client.uploadArtifact(name, [file], rootDirectory, {});
   core.info("-------------------------- Artifact Upload ---------------------");
   core.info(JSON.stringify(info));
 }

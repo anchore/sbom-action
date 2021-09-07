@@ -16620,13 +16620,12 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
 }
 function WorkflowArtifacts_uploadArtifact({ name, file, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
-        const fileName = path.basename(file);
         const rootDirectory = path.dirname(file);
         const client = artifact.create();
         core.info("-------------------------- Artifact Upload ---------------------");
-        core.info(`${name} //// ${fileName}  //// ${rootDirectory}`);
+        core.info(`${name} //// ${file}  //// ${rootDirectory}`);
         core.info(`Dir contains: ${JSON.stringify(fs.readdirSync(rootDirectory))}`);
-        const info = yield client.uploadArtifact(name, [fileName], rootDirectory, {});
+        const info = yield client.uploadArtifact(name, [file], rootDirectory, {});
         core.info("-------------------------- Artifact Upload ---------------------");
         core.info(JSON.stringify(info));
     });
