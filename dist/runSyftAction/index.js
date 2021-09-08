@@ -16920,7 +16920,7 @@ function attachReleaseArtifacts() {
             let release = undefined;
             // FIXME: what's the right way to detect a release?
             if (eventName === "release") {
-                release = payload;
+                release = payload.release;
                 core.info(`Got RELEASE object:`);
                 core.info(JSON.stringify(release));
             }

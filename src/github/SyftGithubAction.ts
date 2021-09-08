@@ -5,7 +5,7 @@ import * as exec from "@actions/exec";
 import * as cache from "@actions/tool-cache";
 import * as core from "@actions/core";
 import * as github from "@actions/github";
-import { Release } from "@octokit/webhooks-types";
+import { Release, ReleaseEvent } from "@octokit/webhooks-types";
 import { Syft, SyftErrorImpl, SyftOptions, SyftOutput } from "../syft/Syft";
 import { GithubActionLog } from "./GithubActionLog";
 import { getClient } from "./GithubClient";
@@ -265,7 +265,7 @@ export async function attachReleaseArtifacts(): Promise<void> {
 
     // FIXME: what's the right way to detect a release?
     if (eventName === "release") {
-      release = payload as Release;
+      release = (payload as ReleaseEvent).release;
       core.info(`Got RELEASE object:`);
       core.info(JSON.stringify(release));
     } else {
