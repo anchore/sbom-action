@@ -16498,6 +16498,7 @@ __nccwpck_require__.r(__webpack_exports__);
 var external_fs_ = __nccwpck_require__(5747);
 // EXTERNAL MODULE: external "os"
 var external_os_ = __nccwpck_require__(2087);
+var external_os_default = /*#__PURE__*/__nccwpck_require__.n(external_os_);
 // EXTERNAL MODULE: external "path"
 var external_path_ = __nccwpck_require__(5622);
 var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
@@ -16642,6 +16643,7 @@ var WorkflowArtifacts_awaiter = (undefined && undefined.__awaiter) || function (
 
 
 
+
 function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const useInternalClient = true;
@@ -16668,8 +16670,8 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
 function WorkflowArtifacts_downloadArtifact({ name, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const client = artifact_client/* create */.U();
-        // FIXME download to temp dir
-        const response = yield client.downloadArtifact(name);
+        const tempPath = external_fs_.mkdtempSync(external_path_default().join(external_os_default().tmpdir(), "sbom-action-"));
+        const response = yield client.downloadArtifact(name, tempPath);
         lib_core.info("------------------------ Artifact Download ---------------------");
         lib_core.info(`${response.artifactName}  //// ${response.downloadPath}`);
         lib_core.info(`Dir contains: ${JSON.stringify(external_fs_.readdirSync(response.downloadPath))}`);
@@ -16763,9 +16765,22 @@ class SyftGithubAction {
                 }
                 else {
                     const client = GithubClient_getClient(lib_core.getInput("github_token"));
-                    const { repo, job, action, sha, runId } = lib_github.context;
-                    const suffix = `${job}-${action}-${sha}`;
-                    const fileName = `sbom-${suffix}.${format}`;
+                    const { repo, job, action, runId } = lib_github.context;
+                    const getFileName = (suffix) => `sbom-${job}-${suffix}.${format}`;
+                    // TODO is there a better way to get a step number?
+                    let suffix = action;
+                    if (!suffix || suffix === "__self") {
+                        const artifacts = yield WorkflowArtifacts_listWorkflowArtifacts({
+                            client,
+                            repo,
+                            run: runId,
+                        });
+                        suffix = "1";
+                        while (artifacts.find((a) => a.name === getFileName(suffix))) {
+                            suffix = `${parseInt(suffix) + 1}`;
+                        }
+                    }
+                    const fileName = getFileName(suffix);
                     const writeFile = true;
                     if (writeFile) {
                         const tempPath = external_fs_.mkdtempSync(external_path_default().join(external_os_.tmpdir(), "sbom-action-"));

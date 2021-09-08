@@ -80,10 +80,27 @@ export class SyftGithubAction implements Syft {
         error = new Error("An error occurred running Syft");
       } else {
         const client = getClient(core.getInput("github_token"));
-        const { repo, job, action, sha, runId } = github.context;
+        const { repo, job, action, runId } = github.context;
 
-        const suffix = `${job}-${action}-${sha}`;
-        const fileName = `sbom-${suffix}.${format}`;
+        const getFileName = (suffix: string): string =>
+          `sbom-${job}-${suffix}.${format}`;
+
+        // TODO is there a better way to get a step number?
+        let suffix = action;
+        if (!suffix || suffix === "__self") {
+          const artifacts = await listWorkflowArtifacts({
+            client,
+            repo,
+            run: runId,
+          });
+
+          suffix = "1";
+          while (artifacts.find((a) => a.name === getFileName(suffix))) {
+            suffix = `${parseInt(suffix) + 1}`;
+          }
+        }
+
+        const fileName = getFileName(suffix);
 
         const writeFile = true;
         if (writeFile) {

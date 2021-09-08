@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import path from "path";
+import os from "os";
 import * as artifact from "@actions/artifact";
 import * as core from "@actions/core";
 import { GithubClientProp, GithubRepo } from "./GithubClient";
@@ -65,8 +66,8 @@ export async function downloadArtifact({
   name,
 }: DownloadArtifactProps): Promise<string> {
   const client = artifact.create();
-  // FIXME download to temp dir
-  const response = await client.downloadArtifact(name);
+  const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
+  const response = await client.downloadArtifact(name, tempPath);
   core.info("------------------------ Artifact Download ---------------------");
   core.info(`${response.artifactName}  //// ${response.downloadPath}`);
   core.info(
