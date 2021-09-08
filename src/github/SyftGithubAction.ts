@@ -322,7 +322,7 @@ export async function runPostBuildAction(): Promise<void> {
               release,
               fileName,
               contents: contents.toString(),
-              label: "sbom",
+              // label: "sbom",
               contentType: "text/plain",
             });
           } catch (e) {

@@ -16978,7 +16978,7 @@ function runPostBuildAction() {
                                 release,
                                 fileName,
                                 contents: contents.toString(),
-                                label: "sbom",
+                                // label: "sbom",
                                 contentType: "text/plain",
                             });
                         }
