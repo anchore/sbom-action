@@ -72,7 +72,7 @@ jobs:
       - uses: ./
         id: dirscan
         with:
-          file_name: sbom.spdx
+          file_name: sbom
 
       - run: |
           echo DIR SCAN SBOM:
@@ -101,4 +101,4 @@ jobs:
 
       - uses: ./attach
         with:
-          file_name: sbom.spdx
+          file_name: sbom
