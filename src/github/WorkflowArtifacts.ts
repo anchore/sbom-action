@@ -65,6 +65,7 @@ export async function downloadArtifact({
   name,
 }: DownloadArtifactProps): Promise<string> {
   const client = artifact.create();
+  // FIXME download to temp dir
   const response = await client.downloadArtifact(name);
   core.info("------------------------ Artifact Download ---------------------");
   core.info(`${response.artifactName}  //// ${response.downloadPath}`);

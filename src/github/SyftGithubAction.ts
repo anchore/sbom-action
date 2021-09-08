@@ -251,7 +251,7 @@ export async function runPostBuildAction(): Promise<void> {
     if (eventName === "release") {
       release = payload as Release;
     } else {
-      const isRefPush = eventName === "push" && /^refs\/tags.*/.test(ref);
+      const isRefPush = eventName === "push" && /^refs\/tags\/.*/.test(ref);
       if (isRefPush) {
         const tag = ref.replace(/^refs\/tags\//, "");
         core.info(`Getting release by tag: ${tag}`);
@@ -283,6 +283,8 @@ export async function runPostBuildAction(): Promise<void> {
             release,
             fileName,
             contents: contents.toString(),
+            label: "sbom",
+            contentType: "text/plain",
           });
         }
       }

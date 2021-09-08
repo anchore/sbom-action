@@ -16666,6 +16666,7 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
 function WorkflowArtifacts_downloadArtifact({ name, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const client = artifact_client/* create */.U();
+        // FIXME download to temp dir
         const response = yield client.downloadArtifact(name);
         lib_core.info("------------------------ Artifact Download ---------------------");
         lib_core.info(`${response.artifactName}  //// ${response.downloadPath}`);
@@ -16918,7 +16919,7 @@ function runPostBuildAction() {
                 release = payload;
             }
             else {
-                const isRefPush = eventName === "push" && /^refs\/tags.*/.test(ref);
+                const isRefPush = eventName === "push" && /^refs\/tags\/.*/.test(ref);
                 if (isRefPush) {
                     const tag = ref.replace(/^refs\/tags\//, "");
                     core.info(`Getting release by tag: ${tag}`);
@@ -16945,6 +16946,8 @@ function runPostBuildAction() {
                             release,
                             fileName,
                             contents: contents.toString(),
+                            label: "sbom",
+                            contentType: "text/plain",
                         });
                     }
                 }
