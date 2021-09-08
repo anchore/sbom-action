@@ -22,7 +22,7 @@ import {
 } from "./WorkflowArtifacts";
 
 export const SYFT_BINARY_NAME = "syft";
-export const SYFT_VERSION = "v0.21.0";
+export const SYFT_VERSION = "v0.22.0";
 
 export class SyftGithubAction implements Syft {
   log: Log;
@@ -60,8 +60,6 @@ export class SyftGithubAction implements Syft {
         core.info(`Executing: ${cmd} ${args.join(" ")}`);
         return exec.exec(cmd, args, {
           env,
-          // outStream,
-          // errStream,
           listeners: {
             stdout(buffer) {
               outStream += buffer.toString();
@@ -204,8 +202,8 @@ export async function runSyftAction(): Promise<void> {
     const start = new Date();
     core.debug(`-------------------------------------------------------------`);
     core.debug(`Running SBOM action: ${start.toTimeString()}`);
-    core.info(`Got github context:`);
-    core.info(JSON.stringify(github.context));
+    core.debug(`Got github context:`);
+    core.debug(JSON.stringify(github.context));
 
     const syft = new SyftGithubAction(new GithubActionLog());
     const output = await syft.execute({
@@ -243,21 +241,21 @@ export async function runSyftAction(): Promise<void> {
     } else if (e instanceof Error) {
       core.setFailed(e.message);
     } else if (e instanceof Object) {
-      core.setFailed(e.toString());
+      core.setFailed(JSON.stringify(e));
     } else {
-      core.setFailed("An unknown error occurred");
+      core.setFailed(`An unknown error occurred: ${e}`);
     }
     throw e;
   }
 }
 
-export async function runPostBuildAction(): Promise<void> {
+export async function attachReleaseArtifacts(): Promise<void> {
   try {
     const start = new Date();
     core.debug(`-------------------------------------------------------------`);
     core.debug(`Running POST SBOM action: ${start.toTimeString()}`);
-    core.info(`Got github context:`);
-    core.info(JSON.stringify(github.context));
+    core.debug(`Got github context:`);
+    core.debug(JSON.stringify(github.context));
 
     const client = getClient(core.getInput("github_token"));
     const { eventName, ref, payload, repo, runId } = github.context;
@@ -268,8 +266,8 @@ export async function runPostBuildAction(): Promise<void> {
       run: runId,
     });
 
-    core.info("Workflow artifacts associated with run:");
-    core.info(JSON.stringify(artifacts));
+    core.debug("Workflow artifacts associated with run:");
+    core.debug(JSON.stringify(artifacts));
 
     let release: Release | undefined = undefined;
 
@@ -291,16 +289,19 @@ export async function runPostBuildAction(): Promise<void> {
     }
 
     if (release) {
-      core.info("Running release, attaching SBOMs");
+      const format =
+        (core.getInput("format") as SyftOptions["format"]) || "spdx";
+
+      core.info(`Attaching SBOMs to release ${release.tag_name}`);
       for (const artifact of artifacts) {
-        core.info(`Found artifact: ${artifact.name}`);
-        if (/^sbom-.*/.test(artifact.name)) {
+        core.debug(`Found artifact: ${artifact.name}`);
+        if (new RegExp(`^sbom.*\\.${format}$`).test(artifact.name)) {
           core.info(`Found SBOM artifact: ${artifact.name}`);
           const file = await downloadArtifact({
             client,
             name: artifact.name,
           });
-          core.info(`Got SBOM file: ${JSON.stringify(file)}`);
+          core.debug(`Got SBOM file: ${JSON.stringify(file)}`);
           const contents = fs.readFileSync(file);
           const fileName = path.basename(file);
 
