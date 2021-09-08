@@ -82,8 +82,13 @@ export class SyftGithubAction implements Syft {
         const client = getClient(core.getInput("github_token"));
         const { repo, job, action, runId } = github.context;
 
-        const getFileName = (suffix: string): string =>
-          `sbom-${job}-${suffix}.${format}`;
+        const getFileName = (suffix: string): string => {
+          const fileName = core.getInput("file_name");
+          if (fileName) {
+            return fileName;
+          }
+          return `sbom-${job}-${suffix}.${format}`;
+        };
 
         // TODO is there a better way to get a step number?
         let suffix = action;

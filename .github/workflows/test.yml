@@ -29,7 +29,7 @@ jobs:
           path: ./
 
       - uses: ./
-        #        id: npm-scan
+        # id: npm-scan
         with:
           path: ./tests/fixtures/npm-project
 
@@ -58,7 +58,6 @@ jobs:
       - run: npm test
 
   test-as-action: # make sure the action works on a clean machine without building
-    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -82,6 +81,7 @@ jobs:
         id: imagescan
         with:
           image: alpine:latest
+          file_name: sbom.spdx
       - run: |
           echo IMAGE SCAN SBOM:
           echo "${{ steps.imagescan.outputs.file }}"
