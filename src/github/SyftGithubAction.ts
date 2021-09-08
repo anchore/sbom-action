@@ -9,7 +9,11 @@ import { Release } from "@octokit/webhooks-types";
 import { Syft, SyftErrorImpl, SyftOptions, SyftOutput } from "../syft/Syft";
 import { GithubActionLog } from "./GithubActionLog";
 import { getClient } from "./GithubClient";
-import { uploadReleaseAsset } from "./Releases";
+import {
+  deleteReleaseAsset,
+  listReleaseAssets,
+  uploadReleaseAsset,
+} from "./Releases";
 import { Log } from "../syft/Log";
 import {
   listWorkflowArtifacts,
@@ -277,25 +281,37 @@ export async function runPostBuildAction(): Promise<void> {
           core.info(`Got SBOM file: ${JSON.stringify(file)}`);
           const contents = fs.readFileSync(file);
           const fileName = path.basename(file);
-          await client.rest.repos.uploadReleaseAsset({
-            ...repo,
-            release_id: release.id,
-            url: release.upload_url,
-            name: fileName,
-            data: contents.toString(),
-            label: "sbom",
-            contentType: "text/plain",
-          });
 
-          // await uploadReleaseAsset({
-          //   client,
-          //   repo,
-          //   release,
-          //   fileName,
-          //   contents: contents.toString(),
-          //   label: "sbom",
-          //   contentType: "text/plain",
-          // });
+          try {
+            const assets = await listReleaseAssets({
+              client,
+              repo,
+              release,
+            });
+
+            const asset = assets.find((a) => a.name === fileName);
+            if (asset) {
+              await deleteReleaseAsset({
+                client,
+                repo,
+                release,
+                asset,
+              });
+            }
+
+            await uploadReleaseAsset({
+              client,
+              repo,
+              release,
+              fileName,
+              contents: contents.toString(),
+              label: "sbom",
+              contentType: "text/plain",
+            });
+          } catch (e) {
+            core.warning(`Unable to upload asset: ${artifact.name}`);
+            core.warning(`${e}`);
+          }
         }
       }
     }

@@ -26,11 +26,9 @@ export async function uploadReleaseAsset({
   await client.rest.repos.uploadReleaseAsset({
     ...repo,
     release_id: release.id,
-    baseUrl: release.upload_url,
+    url: release.upload_url,
     name: fileName,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    data: Buffer.from(contents),
+    data: contents,
     label,
     mediaType: contentType ? { format: contentType } : undefined,
   });
@@ -77,11 +75,11 @@ export async function renameReleaseAssetByName({
   const assets = await listReleaseAssets({ client, repo, release });
   for (const asset of assets) {
     if (asset.name === fileName) {
-      renameReleaseAsset({
+      await renameReleaseAsset({
         client,
         repo,
         release,
-        assetId: asset.id,
+        asset,
         newName: newFileName,
       });
     }
@@ -89,19 +87,34 @@ export async function renameReleaseAssetByName({
 }
 
 export type RenameReleaseAssetProps = ReleaseProps & {
-  assetId: number;
+  asset: ReleaseAsset;
   newName: string;
 };
 
 export async function renameReleaseAsset({
   client,
   repo,
-  assetId,
+  asset,
   newName,
 }: RenameReleaseAssetProps): Promise<void> {
-  client.rest.repos.updateReleaseAsset({
+  await client.rest.repos.updateReleaseAsset({
     ...repo,
-    asset_id: assetId,
+    asset_id: asset.id,
     name: newName,
+  });
+}
+
+export type DeleteReleaseAssetProps = ReleaseProps & {
+  asset: ReleaseAsset;
+};
+
+export async function deleteReleaseAsset({
+  client,
+  repo,
+  asset,
+}: DeleteReleaseAssetProps): Promise<void> {
+  await client.rest.repos.deleteReleaseAsset({
+    ...repo,
+    asset_id: asset.id,
   });
 }

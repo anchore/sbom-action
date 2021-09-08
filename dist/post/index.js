@@ -16569,12 +16569,66 @@ function GithubClient_getClient(githubToken) {
     });
 }
 
+;// CONCATENATED MODULE: ./src/github/Releases.ts
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+function uploadReleaseAsset({ client, repo, release, fileName, contents, label, contentType, }) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield client.rest.repos.uploadReleaseAsset(Object.assign(Object.assign({}, repo), { release_id: release.id, url: release.upload_url, name: fileName, data: contents, label, mediaType: contentType ? { format: contentType } : undefined }));
+    });
+}
+function listReleaseAssets({ client, repo, release, }) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = yield client.rest.repos.listReleaseAssets(Object.assign(Object.assign({}, repo), { release_id: release.id }));
+        if (response.status >= 400) {
+            throw new Error("Bad response from listReleaseAssets");
+        }
+        lib_core.info("---------------------- listReleaseAssets ---------------------- ");
+        lib_core.info(JSON.stringify(response));
+        return response.data.sort((a, b) => a.name.localeCompare(b.name));
+    });
+}
+function renameReleaseAssetByName({ client, repo, release, fileName, newFileName, }) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const assets = yield listReleaseAssets({ client, repo, release });
+        for (const asset of assets) {
+            if (asset.name === fileName) {
+                yield renameReleaseAsset({
+                    client,
+                    repo,
+                    release,
+                    asset,
+                    newName: newFileName,
+                });
+            }
+        }
+    });
+}
+function renameReleaseAsset({ client, repo, asset, newName, }) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield client.rest.repos.updateReleaseAsset(Object.assign(Object.assign({}, repo), { asset_id: asset.id, name: newName }));
+    });
+}
+function deleteReleaseAsset({ client, repo, asset, }) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield client.rest.repos.deleteReleaseAsset(Object.assign(Object.assign({}, repo), { asset_id: asset.id }));
+    });
+}
+
 // EXTERNAL MODULE: ./node_modules/@actions/artifact/lib/artifact-client.js
 var artifact_client = __nccwpck_require__(2605);
 // EXTERNAL MODULE: ./node_modules/@actions/artifact/lib/internal/download-http-client.js
 var download_http_client = __nccwpck_require__(8538);
 ;// CONCATENATED MODULE: ./src/github/WorkflowArtifacts.ts
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var WorkflowArtifacts_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -16589,7 +16643,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 
 function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
-    return __awaiter(this, void 0, void 0, function* () {
+    return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const useInternalClient = true;
         if (useInternalClient) {
             const downloadClient = new download_http_client.DownloadHttpClient();
@@ -16612,7 +16666,7 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
     });
 }
 function WorkflowArtifacts_downloadArtifact({ name, }) {
-    return __awaiter(this, void 0, void 0, function* () {
+    return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const client = artifact_client/* create */.U();
         // FIXME download to temp dir
         const response = yield client.downloadArtifact(name);
@@ -16623,7 +16677,7 @@ function WorkflowArtifacts_downloadArtifact({ name, }) {
     });
 }
 function WorkflowArtifacts_uploadArtifact({ name, file, }) {
-    return __awaiter(this, void 0, void 0, function* () {
+    return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const rootDirectory = path.dirname(file);
         const client = artifact.create();
         core.info("-------------------------- Artifact Upload ---------------------");
@@ -16645,6 +16699,7 @@ var SyftGithubAction_awaiter = (undefined && undefined.__awaiter) || function (t
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+
 
 
 
@@ -16887,16 +16942,35 @@ function runPostBuildAction() {
                         lib_core.info(`Got SBOM file: ${JSON.stringify(file)}`);
                         const contents = external_fs_.readFileSync(file);
                         const fileName = external_path_default().basename(file);
-                        yield client.rest.repos.uploadReleaseAsset(Object.assign(Object.assign({}, repo), { release_id: release.id, url: release.upload_url, name: fileName, data: contents.toString(), label: "sbom", contentType: "text/plain" }));
-                        // await uploadReleaseAsset({
-                        //   client,
-                        //   repo,
-                        //   release,
-                        //   fileName,
-                        //   contents: contents.toString(),
-                        //   label: "sbom",
-                        //   contentType: "text/plain",
-                        // });
+                        try {
+                            const assets = yield listReleaseAssets({
+                                client,
+                                repo,
+                                release,
+                            });
+                            const asset = assets.find((a) => a.name === fileName);
+                            if (asset) {
+                                yield deleteReleaseAsset({
+                                    client,
+                                    repo,
+                                    release,
+                                    asset,
+                                });
+                            }
+                            yield uploadReleaseAsset({
+                                client,
+                                repo,
+                                release,
+                                fileName,
+                                contents: contents.toString(),
+                                label: "sbom",
+                                contentType: "text/plain",
+                            });
+                        }
+                        catch (e) {
+                            lib_core.warning(`Unable to upload asset: ${artifact.name}`);
+                            lib_core.warning(`${e}`);
+                        }
                     }
                 }
             }
