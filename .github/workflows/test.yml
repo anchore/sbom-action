@@ -91,3 +91,7 @@ jobs:
           echo ----------------------------------
           echo
           cat "${{ steps.imagescan.outputs.file }}"
+
+      - uses: ./attach
+        with:
+          file_name: sbom.spdx

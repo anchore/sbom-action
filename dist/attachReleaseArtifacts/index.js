@@ -16714,7 +16714,7 @@ var SyftGithubAction_awaiter = (undefined && undefined.__awaiter) || function (t
 
 
 const SYFT_BINARY_NAME = "syft";
-const SYFT_VERSION = "v0.22.0";
+const SYFT_VERSION = "v0.21.0";
 class SyftGithubAction {
     constructor(logger) {
         this.log = logger;

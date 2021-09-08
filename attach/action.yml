@@ -26,4 +26,4 @@ outputs:
     description: "The SBOM in SPDX format"
 runs:
   using: "node12"
-  main: "dist/attachReleaseArtifacts/index.js"
+  main: "../dist/attachReleaseArtifacts/index.js"

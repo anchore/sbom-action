@@ -22,7 +22,7 @@ import {
 } from "./WorkflowArtifacts";
 
 export const SYFT_BINARY_NAME = "syft";
-export const SYFT_VERSION = "v0.22.0";
+export const SYFT_VERSION = "v0.21.0";
 
 export class SyftGithubAction implements Syft {
   log: Log;
