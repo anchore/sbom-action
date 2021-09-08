@@ -16714,7 +16714,13 @@ const SYFT_VERSION = "v0.21.0";
 function getFileName(job, action, suffix, format) {
     let fileName = lib_core.getInput("file_name");
     if (!fileName) {
-        const stepName = !action || action === "__self" ? "" : `-${action}`;
+        let stepName = `-${action}`;
+        if (!action || action === "__self") {
+            stepName = "";
+        }
+        else if (action.startsWith("__self")) {
+            stepName = action.substr("__self_".length);
+        }
         fileName = `sbom-${job}${stepName}`;
     }
     if (suffix) {
