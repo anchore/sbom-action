@@ -16719,8 +16719,8 @@ function getFileName(job, action, suffix, format) {
         if (!action || action === "__self") {
             stepName = "";
         }
-        else if (action.startsWith("__self")) {
-            stepName = action.substr("__self_".length);
+        else if (action.startsWith("__self_")) {
+            stepName = `-${action.substr("__self_".length)}`;
         }
         fileName = `sbom-${job}${stepName}`;
     }
