@@ -54,8 +54,8 @@ export async function listReleaseAssets({
     throw new Error("Bad response from listReleaseAssets");
   }
 
-  core.info("---------------------- listReleaseAssets ---------------------- ");
-  core.info(JSON.stringify(response));
+  core.debug("--------------------- listReleaseAssets ---------------------- ");
+  core.debug(JSON.stringify(response));
 
   return response.data.sort((a, b) => a.name.localeCompare(b.name));
 }

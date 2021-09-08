@@ -16498,7 +16498,6 @@ __nccwpck_require__.r(__webpack_exports__);
 var external_fs_ = __nccwpck_require__(5747);
 // EXTERNAL MODULE: external "os"
 var external_os_ = __nccwpck_require__(2087);
-var external_os_default = /*#__PURE__*/__nccwpck_require__.n(external_os_);
 // EXTERNAL MODULE: external "path"
 var external_path_ = __nccwpck_require__(5622);
 var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
@@ -16592,8 +16591,8 @@ function Releases_listReleaseAssets({ client, repo, release, }) {
         if (response.status >= 400) {
             throw new Error("Bad response from listReleaseAssets");
         }
-        core.info("---------------------- listReleaseAssets ---------------------- ");
-        core.info(JSON.stringify(response));
+        core.debug("--------------------- listReleaseAssets ---------------------- ");
+        core.debug(JSON.stringify(response));
         return response.data.sort((a, b) => a.name.localeCompare(b.name));
     });
 }
@@ -16650,17 +16649,13 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
         if (useInternalClient) {
             const downloadClient = new download_http_client.DownloadHttpClient();
             const response = yield downloadClient.listArtifacts();
-            lib_core.info("--------------------- listArtifacts -------------------");
-            lib_core.info(JSON.stringify(response));
+            lib_core.debug("--------------------- listArtifacts -------------------");
+            lib_core.debug(JSON.stringify(response));
             return response.value;
-            // .map((a) => ({
-            //   name: a.name,
-            //   // url: a.url,
-            // }));
         }
         const response = yield client.rest.actions.listWorkflowRunArtifacts(Object.assign(Object.assign({}, repo), { run_id: run, per_page: 100, page: 1 }));
-        lib_core.info("------------------ listWorkflowRunArtifacts ------------------ ");
-        lib_core.info(JSON.stringify(response));
+        lib_core.debug("------------------ listWorkflowRunArtifacts ------------------ ");
+        lib_core.debug(JSON.stringify(response));
         if (response.status >= 400) {
             throw new Error("Unable to retrieve listWorkflowRunArtifacts");
         }
@@ -16669,12 +16664,12 @@ function WorkflowArtifacts_listWorkflowArtifacts({ client, repo, run, }) {
 }
 function WorkflowArtifacts_downloadArtifact({ name, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
-        const client = artifact_client/* create */.U();
-        const tempPath = external_fs_.mkdtempSync(external_path_default().join(external_os_default().tmpdir(), "sbom-action-"));
+        const client = artifact.create();
+        const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
         const response = yield client.downloadArtifact(name, tempPath);
-        lib_core.info("------------------------ Artifact Download ---------------------");
-        lib_core.info(`${response.artifactName}  //// ${response.downloadPath}`);
-        lib_core.info(`Dir contains: ${JSON.stringify(external_fs_.readdirSync(response.downloadPath))}`);
+        core.debug("----------------------- Artifact Download ---------------------");
+        core.debug(`${response.artifactName}  //// ${response.downloadPath}`);
+        core.debug(`Dir contains: ${JSON.stringify(fs.readdirSync(response.downloadPath))}`);
         return `${response.downloadPath}/${response.artifactName}`;
     });
 }
@@ -16682,12 +16677,13 @@ function uploadArtifact({ name, file, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const rootDirectory = external_path_default().dirname(file);
         const client = artifact_client/* create */.U();
-        lib_core.info("-------------------------- Artifact Upload ---------------------");
-        lib_core.info(`${name} //// ${file}  //// ${rootDirectory}`);
-        lib_core.info(`Dir contains: ${JSON.stringify(external_fs_.readdirSync(rootDirectory))}`);
+        lib_core.info(`Uploading artifact: ${file}`);
+        lib_core.debug("------------------------- Artifact Upload ---------------------");
+        lib_core.debug(`${name} //// ${file}  //// ${rootDirectory}`);
+        lib_core.debug(`Dir contains: ${JSON.stringify(external_fs_.readdirSync(rootDirectory))}`);
         const info = yield client.uploadArtifact(name, [file], rootDirectory, {});
-        lib_core.info("-------------------------- Artifact Upload ---------------------");
-        lib_core.info(JSON.stringify(info));
+        lib_core.debug("------------------------- Artifact Upload ---------------------");
+        lib_core.debug(JSON.stringify(info));
     });
 }
 
@@ -16715,6 +16711,17 @@ var SyftGithubAction_awaiter = (undefined && undefined.__awaiter) || function (t
 
 const SYFT_BINARY_NAME = "syft";
 const SYFT_VERSION = "v0.21.0";
+function getFileName(job, action, suffix, format) {
+    const fileName = lib_core.getInput("file_name");
+    if (fileName) {
+        return fileName;
+    }
+    let stepName = !action || action === "__self" ? "" : `-${action}`;
+    if (suffix) {
+        stepName += `-${suffix}`;
+    }
+    return `sbom-${job}${stepName}.${format}`;
+}
 class SyftGithubAction {
     constructor(logger) {
         this.log = logger;
@@ -16764,60 +16771,30 @@ class SyftGithubAction {
                 else {
                     const client = GithubClient_getClient(lib_core.getInput("github_token"));
                     const { repo, job, action, runId } = lib_github.context;
-                    const getFileName = (suffix) => {
-                        const fileName = lib_core.getInput("file_name");
-                        if (fileName) {
-                            return fileName;
-                        }
-                        return `sbom-${job}-${suffix}.${format}`;
-                    };
-                    // TODO is there a better way to get a step number?
-                    let suffix = action;
-                    if (!suffix || suffix === "__self") {
-                        const artifacts = yield WorkflowArtifacts_listWorkflowArtifacts({
-                            client,
-                            repo,
-                            run: runId,
-                        });
-                        suffix = "1";
-                        while (artifacts.find((a) => a.name === getFileName(suffix))) {
-                            suffix = `${parseInt(suffix) + 1}`;
-                        }
+                    const artifacts = yield WorkflowArtifacts_listWorkflowArtifacts({
+                        client,
+                        repo,
+                        run: runId,
+                    });
+                    lib_core.debug("Workflow artifacts associated with run:");
+                    lib_core.debug(JSON.stringify(artifacts));
+                    // TODO is there a better way to get a reliable unique step number?
+                    let suffix = 0;
+                    while (artifacts.find((a) => a.name === getFileName(job, action, suffix, format))) {
+                        suffix++;
                     }
-                    const fileName = getFileName(suffix);
-                    const writeFile = true;
-                    if (writeFile) {
-                        const tempPath = external_fs_.mkdtempSync(external_path_default().join(external_os_.tmpdir(), "sbom-action-"));
-                        const filePath = `${tempPath}/${fileName}`;
-                        external_fs_.writeFileSync(filePath, outStream);
-                        lib_core.setOutput("file", filePath);
-                        const artifacts = yield WorkflowArtifacts_listWorkflowArtifacts({
-                            client,
-                            repo,
-                            run: runId,
-                        });
-                        lib_core.info("Workflow artifacts associated with run:");
-                        lib_core.info(JSON.stringify(artifacts));
-                        try {
-                            const existingSbom = yield WorkflowArtifacts_downloadArtifact({
-                                client,
-                                // repo,
-                                name: fileName,
-                            });
-                            lib_core.info("Existing SBOM artifact:");
-                            lib_core.info(JSON.stringify(existingSbom));
-                        }
-                        catch (e) {
-                            lib_core.info(`${e}`);
-                        }
-                        yield uploadArtifact({
-                            client,
-                            repo,
-                            run: runId,
-                            file: filePath,
-                            name: fileName,
-                        });
-                    }
+                    const fileName = getFileName(job, action, suffix, format);
+                    const tempPath = external_fs_.mkdtempSync(external_path_default().join(external_os_.tmpdir(), "sbom-action-"));
+                    const filePath = `${tempPath}/${fileName}`;
+                    external_fs_.writeFileSync(filePath, outStream);
+                    lib_core.setOutput("file", filePath);
+                    yield uploadArtifact({
+                        client,
+                        repo,
+                        run: runId,
+                        file: filePath,
+                        name: fileName,
+                    });
                     return {
                         report: outStream,
                     };

@@ -24,6 +24,23 @@ import {
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
 
+function getFileName(
+  job: string,
+  action: string,
+  suffix: number,
+  format: string
+): string {
+  const fileName = core.getInput("file_name");
+  if (fileName) {
+    return fileName;
+  }
+  let stepName = !action || action === "__self" ? "" : `-${action}`;
+  if (suffix) {
+    stepName += `-${suffix}`;
+  }
+  return `sbom-${job}${stepName}.${format}`;
+}
+
 export class SyftGithubAction implements Syft {
   log: Log;
 
@@ -80,70 +97,39 @@ export class SyftGithubAction implements Syft {
         const client = getClient(core.getInput("github_token"));
         const { repo, job, action, runId } = github.context;
 
-        const getFileName = (suffix: string): string => {
-          const fileName = core.getInput("file_name");
-          if (fileName) {
-            return fileName;
-          }
-          return `sbom-${job}-${suffix}.${format}`;
-        };
+        const artifacts = await listWorkflowArtifacts({
+          client,
+          repo,
+          run: runId,
+        });
 
-        // TODO is there a better way to get a step number?
-        let suffix = action;
-        if (!suffix || suffix === "__self") {
-          const artifacts = await listWorkflowArtifacts({
-            client,
-            repo,
-            run: runId,
-          });
+        core.debug("Workflow artifacts associated with run:");
+        core.debug(JSON.stringify(artifacts));
 
-          suffix = "1";
-          while (artifacts.find((a) => a.name === getFileName(suffix))) {
-            suffix = `${parseInt(suffix) + 1}`;
-          }
+        // TODO is there a better way to get a reliable unique step number?
+        let suffix = 0;
+        while (
+          artifacts.find(
+            (a) => a.name === getFileName(job, action, suffix, format)
+          )
+        ) {
+          suffix++;
         }
 
-        const fileName = getFileName(suffix);
+        const fileName = getFileName(job, action, suffix, format);
 
-        const writeFile = true;
-        if (writeFile) {
-          const tempPath = fs.mkdtempSync(
-            path.join(os.tmpdir(), "sbom-action-")
-          );
-          const filePath = `${tempPath}/${fileName}`;
-          fs.writeFileSync(filePath, outStream);
-          core.setOutput("file", filePath);
+        const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
+        const filePath = `${tempPath}/${fileName}`;
+        fs.writeFileSync(filePath, outStream);
+        core.setOutput("file", filePath);
 
-          const artifacts = await listWorkflowArtifacts({
-            client,
-            repo,
-            run: runId,
-          });
-
-          core.info("Workflow artifacts associated with run:");
-          core.info(JSON.stringify(artifacts));
-
-          try {
-            const existingSbom = await downloadArtifact({
-              client,
-              // repo,
-              name: fileName,
-            });
-
-            core.info("Existing SBOM artifact:");
-            core.info(JSON.stringify(existingSbom));
-          } catch (e) {
-            core.info(`${e}`);
-          }
-
-          await uploadArtifact({
-            client,
-            repo,
-            run: runId,
-            file: filePath,
-            name: fileName,
-          });
-        }
+        await uploadArtifact({
+          client,
+          repo,
+          run: runId,
+          file: filePath,
+          name: fileName,
+        });
 
         return {
           report: outStream,
@@ -252,6 +238,7 @@ export async function runSyftAction(): Promise<void> {
 export async function attachReleaseArtifacts(): Promise<void> {
   try {
     const start = new Date();
+
     core.debug(`-------------------------------------------------------------`);
     core.debug(`Running POST SBOM action: ${start.toTimeString()}`);
     core.debug(`Got github context:`);

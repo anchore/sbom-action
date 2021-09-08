@@ -33,14 +33,11 @@ export async function listWorkflowArtifacts({
   if (useInternalClient) {
     const downloadClient = new DownloadHttpClient();
     const response = await downloadClient.listArtifacts();
-    core.info("--------------------- listArtifacts -------------------");
-    core.info(JSON.stringify(response));
+    core.debug("--------------------- listArtifacts -------------------");
+    core.debug(JSON.stringify(response));
     return response.value;
-    // .map((a) => ({
-    //   name: a.name,
-    //   // url: a.url,
-    // }));
   }
+
   const response = await client.rest.actions.listWorkflowRunArtifacts({
     ...repo,
     run_id: run,
@@ -48,8 +45,8 @@ export async function listWorkflowArtifacts({
     page: 1,
   });
 
-  core.info("------------------ listWorkflowRunArtifacts ------------------ ");
-  core.info(JSON.stringify(response));
+  core.debug("------------------ listWorkflowRunArtifacts ------------------ ");
+  core.debug(JSON.stringify(response));
 
   if (response.status >= 400) {
     throw new Error("Unable to retrieve listWorkflowRunArtifacts");
@@ -68,9 +65,9 @@ export async function downloadArtifact({
   const client = artifact.create();
   const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
   const response = await client.downloadArtifact(name, tempPath);
-  core.info("------------------------ Artifact Download ---------------------");
-  core.info(`${response.artifactName}  //// ${response.downloadPath}`);
-  core.info(
+  core.debug("----------------------- Artifact Download ---------------------");
+  core.debug(`${response.artifactName}  //// ${response.downloadPath}`);
+  core.debug(
     `Dir contains: ${JSON.stringify(fs.readdirSync(response.downloadPath))}`
   );
   return `${response.downloadPath}/${response.artifactName}`;
@@ -87,10 +84,11 @@ export async function uploadArtifact({
 }: UploadArtifactProps): Promise<void> {
   const rootDirectory = path.dirname(file);
   const client = artifact.create();
-  core.info("-------------------------- Artifact Upload ---------------------");
-  core.info(`${name} //// ${file}  //// ${rootDirectory}`);
-  core.info(`Dir contains: ${JSON.stringify(fs.readdirSync(rootDirectory))}`);
+  core.info(`Uploading artifact: ${file}`);
+  core.debug("------------------------- Artifact Upload ---------------------");
+  core.debug(`${name} //// ${file}  //// ${rootDirectory}`);
+  core.debug(`Dir contains: ${JSON.stringify(fs.readdirSync(rootDirectory))}`);
   const info = await client.uploadArtifact(name, [file], rootDirectory, {});
-  core.info("-------------------------- Artifact Upload ---------------------");
-  core.info(JSON.stringify(info));
+  core.debug("------------------------- Artifact Upload ---------------------");
+  core.debug(JSON.stringify(info));
 }
