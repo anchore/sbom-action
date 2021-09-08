@@ -30,15 +30,15 @@ function getFileName(
   suffix: number,
   format: string
 ): string {
-  const fileName = core.getInput("file_name");
-  if (fileName) {
-    return fileName;
+  let fileName = core.getInput("file_name");
+  if (!fileName) {
+    const stepName = !action || action === "__self" ? "" : `-${action}`;
+    fileName = `sbom-${job}${stepName}`;
   }
-  let stepName = !action || action === "__self" ? "" : `-${action}`;
   if (suffix) {
-    stepName += `-${suffix}`;
+    fileName += `-${suffix}`;
   }
-  return `sbom-${job}${stepName}.${format}`;
+  return `${fileName}.${format}`;
 }
 
 export class SyftGithubAction implements Syft {

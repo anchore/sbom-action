@@ -16712,15 +16712,15 @@ var SyftGithubAction_awaiter = (undefined && undefined.__awaiter) || function (t
 const SYFT_BINARY_NAME = "syft";
 const SYFT_VERSION = "v0.21.0";
 function getFileName(job, action, suffix, format) {
-    const fileName = lib_core.getInput("file_name");
-    if (fileName) {
-        return fileName;
+    let fileName = lib_core.getInput("file_name");
+    if (!fileName) {
+        const stepName = !action || action === "__self" ? "" : `-${action}`;
+        fileName = `sbom-${job}${stepName}`;
     }
-    let stepName = !action || action === "__self" ? "" : `-${action}`;
     if (suffix) {
-        stepName += `-${suffix}`;
+        fileName += `-${suffix}`;
     }
-    return `sbom-${job}${stepName}.${format}`;
+    return `${fileName}.${format}`;
 }
 class SyftGithubAction {
     constructor(logger) {
