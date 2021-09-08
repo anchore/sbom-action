@@ -266,6 +266,8 @@ export async function attachReleaseArtifacts(): Promise<void> {
     // FIXME: what's the right way to detect a release?
     if (eventName === "release") {
       release = payload as Release;
+      core.info(`Got RELEASE object:`);
+      core.info(JSON.stringify(release));
     } else {
       const isRefPush = eventName === "push" && /^refs\/tags\/.*/.test(ref);
       if (isRefPush) {

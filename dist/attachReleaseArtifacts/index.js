@@ -16922,6 +16922,8 @@ function attachReleaseArtifacts() {
             // FIXME: what's the right way to detect a release?
             if (eventName === "release") {
                 release = payload;
+                lib_core.info(`Got RELEASE object:`);
+                lib_core.info(JSON.stringify(release));
             }
             else {
                 const isRefPush = eventName === "push" && /^refs\/tags\/.*/.test(ref);
