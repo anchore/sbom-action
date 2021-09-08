@@ -277,15 +277,25 @@ export async function runPostBuildAction(): Promise<void> {
           core.info(`Got SBOM file: ${JSON.stringify(file)}`);
           const contents = fs.readFileSync(file);
           const fileName = path.basename(file);
-          await uploadReleaseAsset({
-            client,
-            repo,
-            release,
-            fileName,
-            contents: contents.toString(),
+          await client.rest.repos.uploadReleaseAsset({
+            ...repo,
+            release_id: release.id,
+            url: release.upload_url,
+            name: fileName,
+            data: contents.toString(),
             label: "sbom",
             contentType: "text/plain",
           });
+
+          // await uploadReleaseAsset({
+          //   client,
+          //   repo,
+          //   release,
+          //   fileName,
+          //   contents: contents.toString(),
+          //   label: "sbom",
+          //   contentType: "text/plain",
+          // });
         }
       }
     }
