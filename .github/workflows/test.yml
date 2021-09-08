@@ -10,6 +10,7 @@ on: # rebuild any PRs and main branch changes
   release:
     types:
       - created
+      - edited
 
       # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
