@@ -21,7 +21,7 @@ jobs:
       - run: npm audit --production
       - run: npm run package
 
-  test-me:
+  test-on-fixture-dirs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -32,6 +32,11 @@ jobs:
         # id: npm-scan
         with:
           path: ./tests/fixtures/npm-project
+
+      - uses: ./
+        # id: yarn-scan
+        with:
+          path: ./tests/fixtures/yarn-project
 
       - uses: ./
         id: yarn-scan
@@ -66,6 +71,8 @@ jobs:
 
       - uses: ./
         id: dirscan
+        with:
+          file_name: sbom.spdx
 
       - run: |
           echo DIR SCAN SBOM:
