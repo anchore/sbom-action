@@ -48,7 +48,6 @@ jobs:
           path: ./tests/fixtures/yarn-project
 
       - uses: ./
-        id: yarn-scan
         with:
           path: ./tests/fixtures/yarn-project
           artifact_name: SBOM.txt
