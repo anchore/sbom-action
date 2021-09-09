@@ -39,3 +39,14 @@ export function getClient(githubToken: string): GithubClient {
 export interface GithubClientProp {
   client: GithubClient;
 }
+
+export async function suppressOutput<T>(call: () => Promise<T>): Promise<T> {
+  const info = core.info;
+  try {
+    return await call();
+  } finally {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    core.info = info;
+  }
+}

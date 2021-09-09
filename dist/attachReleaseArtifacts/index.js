@@ -16510,37 +16510,16 @@ var tool_cache = __nccwpck_require__(7784);
 var lib_core = __nccwpck_require__(2186);
 // EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
 var lib_github = __nccwpck_require__(5438);
-;// CONCATENATED MODULE: ./src/syft/Syft.ts
-/**
- * Provides a simple separation of syft output in the case of an error
- */
-class Syft_SyftErrorImpl extends Error {
-    constructor({ error, err, out }) {
-        super();
-        this.error = error;
-        this.err = err;
-        this.out = out;
-    }
-}
-
-;// CONCATENATED MODULE: ./src/github/GithubActionLog.ts
-
-class GithubActionLog_GithubActionLog {
-    debug(...parts) {
-        debug(parts.join(" "));
-    }
-    info(...parts) {
-        info(parts.join(" "));
-    }
-    warn(...parts) {
-        warning(parts.join(" "));
-    }
-    error(...parts) {
-        error(parts.join(" "));
-    }
-}
-
 ;// CONCATENATED MODULE: ./src/github/GithubClient.ts
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 
 
 function GithubClient_getClient(githubToken) {
@@ -16569,9 +16548,22 @@ function GithubClient_getClient(githubToken) {
         },
     });
 }
+function GithubClient_suppressOutput(call) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const info = lib_core.info;
+        try {
+            return yield call();
+        }
+        finally {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            lib_core.info = info;
+        }
+    });
+}
 
 ;// CONCATENATED MODULE: ./src/github/Releases.ts
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var Releases_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -16582,12 +16574,12 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 };
 
 function uploadReleaseAsset({ client, repo, release, fileName, contents, label, contentType, }) {
-    return __awaiter(this, void 0, void 0, function* () {
+    return Releases_awaiter(this, void 0, void 0, function* () {
         yield client.rest.repos.uploadReleaseAsset(Object.assign(Object.assign({}, repo), { release_id: release.id, url: release.upload_url, name: fileName, data: contents, label, mediaType: contentType ? { format: contentType } : undefined }));
     });
 }
 function listReleaseAssets({ client, repo, release, }) {
-    return __awaiter(this, void 0, void 0, function* () {
+    return Releases_awaiter(this, void 0, void 0, function* () {
         const response = yield client.rest.repos.listReleaseAssets(Object.assign(Object.assign({}, repo), { release_id: release.id }));
         if (response.status >= 400) {
             throw new Error("Bad response from listReleaseAssets");
@@ -16598,7 +16590,7 @@ function listReleaseAssets({ client, repo, release, }) {
     });
 }
 function renameReleaseAssetByName({ client, repo, release, fileName, newFileName, }) {
-    return __awaiter(this, void 0, void 0, function* () {
+    return Releases_awaiter(this, void 0, void 0, function* () {
         const assets = yield listReleaseAssets({ client, repo, release });
         for (const asset of assets) {
             if (asset.name === fileName) {
@@ -16614,12 +16606,12 @@ function renameReleaseAssetByName({ client, repo, release, fileName, newFileName
     });
 }
 function renameReleaseAsset({ client, repo, asset, newName, }) {
-    return __awaiter(this, void 0, void 0, function* () {
+    return Releases_awaiter(this, void 0, void 0, function* () {
         yield client.rest.repos.updateReleaseAsset(Object.assign(Object.assign({}, repo), { asset_id: asset.id, name: newName }));
     });
 }
 function deleteReleaseAsset({ client, repo, asset, }) {
-    return __awaiter(this, void 0, void 0, function* () {
+    return Releases_awaiter(this, void 0, void 0, function* () {
         yield client.rest.repos.deleteReleaseAsset(Object.assign(Object.assign({}, repo), { asset_id: asset.id }));
     });
 }
@@ -16638,6 +16630,7 @@ var WorkflowArtifacts_awaiter = (undefined && undefined.__awaiter) || function (
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+
 
 
 
@@ -16667,7 +16660,7 @@ function downloadArtifact({ name, }) {
     return WorkflowArtifacts_awaiter(this, void 0, void 0, function* () {
         const client = artifact_client/* create */.U();
         const tempPath = external_fs_.mkdtempSync(external_path_default().join(external_os_default().tmpdir(), "sbom-action-"));
-        const response = yield client.downloadArtifact(name, tempPath);
+        const response = yield GithubClient_suppressOutput(() => WorkflowArtifacts_awaiter(this, void 0, void 0, function* () { return client.downloadArtifact(name, tempPath); }));
         lib_core.debug("----------------------- Artifact Download ---------------------");
         lib_core.debug(`${response.artifactName}  //// ${response.downloadPath}`);
         lib_core.debug(`Dir contains: ${JSON.stringify(external_fs_.readdirSync(response.downloadPath))}`);
@@ -16682,7 +16675,7 @@ function WorkflowArtifacts_uploadArtifact({ name, file, }) {
         core.debug("------------------------- Artifact Upload ---------------------");
         core.debug(`${name} //// ${file}  //// ${rootDirectory}`);
         core.debug(`Dir contains: ${JSON.stringify(fs.readdirSync(rootDirectory))}`);
-        const info = yield client.uploadArtifact(name, [file], rootDirectory, {});
+        const info = yield suppressOutput(() => WorkflowArtifacts_awaiter(this, void 0, void 0, function* () { return client.uploadArtifact(name, [file], rootDirectory, {}); }));
         core.debug("------------------------- Artifact Upload ---------------------");
         core.debug(JSON.stringify(info));
     });
@@ -16708,12 +16701,11 @@ var SyftGithubAction_awaiter = (undefined && undefined.__awaiter) || function (t
 
 
 
-
-
 const SYFT_BINARY_NAME = "syft";
 const SYFT_VERSION = "v0.21.0";
-function getFileName(job, action, suffix, format) {
-    let fileName = core.getInput("file_name");
+function getFileName(suffix) {
+    const { job, action } = github.context;
+    let fileName = core.getInput("output_file");
     if (!fileName) {
         let stepName = `-${action}`;
         if (!action || action === "__self") {
@@ -16727,127 +16719,144 @@ function getFileName(job, action, suffix, format) {
     if (suffix) {
         fileName += `-${suffix}`;
     }
+    const format = getSbomFormat();
     return `${fileName}.${format}`;
 }
-class SyftGithubAction {
-    constructor(logger) {
-        this.log = logger;
-    }
-    execute({ input, format }) {
-        return SyftGithubAction_awaiter(this, void 0, void 0, function* () {
-            let outStream = "";
-            let errStream = "";
-            const cmd = yield this.getSyftCommand();
-            const env = {
-                SYFT_CHECK_FOR_APP_UPDATE: "false",
-            };
-            // https://github.com/anchore/syft#configuration
-            let args = ["packages"];
-            if ("image" in input && input.image) {
-                args = [...args, `docker:${input.image}`];
-            }
-            else if ("path" in input && input.path) {
-                args = [...args, `dir:${input.path}`];
+/**
+ * Gets a reference to the syft command and executes the syft action
+ * @param input syft input parameters
+ * @param format syft output format
+ */
+function executeSyft({ input, format }) {
+    return SyftGithubAction_awaiter(this, void 0, void 0, function* () {
+        let outStream = "";
+        let errStream = "";
+        const cmd = yield getSyftCommand();
+        const env = {
+            SYFT_CHECK_FOR_APP_UPDATE: "false",
+        };
+        // https://github.com/anchore/syft#configuration
+        let args = ["packages"];
+        if ("image" in input && input.image) {
+            args = [...args, `docker:${input.image}`];
+        }
+        else if ("path" in input && input.path) {
+            args = [...args, `dir:${input.path}`];
+        }
+        else {
+            throw new Error("Invalid input, no image or path specified");
+        }
+        args = [...args, "-o", format];
+        let error;
+        try {
+            const exitCode = yield core.group("Syft Output", () => SyftGithubAction_awaiter(this, void 0, void 0, function* () {
+                core.info(`Executing: ${cmd} ${args.join(" ")}`);
+                return exec.exec(cmd, args, {
+                    env,
+                    listeners: {
+                        stdout(buffer) {
+                            outStream += buffer.toString();
+                        },
+                        stderr(buffer) {
+                            errStream += buffer.toString();
+                        },
+                        debug(message) {
+                            core.debug(message);
+                        },
+                    },
+                });
+            }));
+            if (exitCode > 0) {
+                error = new Error("An error occurred running Syft");
             }
             else {
-                throw new Error("Invalid input, no image or path specified");
+                return outStream;
             }
-            args = [...args, "-o", format];
-            let error;
-            try {
-                const exitCode = yield core.group("Syft Output", () => SyftGithubAction_awaiter(this, void 0, void 0, function* () {
-                    core.info(`Executing: ${cmd} ${args.join(" ")}`);
-                    return exec.exec(cmd, args, {
-                        env,
-                        listeners: {
-                            stdout(buffer) {
-                                outStream += buffer.toString();
-                            },
-                            stderr(buffer) {
-                                errStream += buffer.toString();
-                            },
-                            debug(message) {
-                                errStream += message.toString();
-                            },
-                        },
-                    });
-                }));
-                if (exitCode > 0) {
-                    error = new Error("An error occurred running Syft");
-                }
-                else {
-                    const client = getClient(core.getInput("github_token"));
-                    const { repo, job, action, runId } = github.context;
-                    const artifacts = yield listWorkflowArtifacts({
-                        client,
-                        repo,
-                        run: runId,
-                    });
-                    core.debug("Workflow artifacts associated with run:");
-                    core.debug(JSON.stringify(artifacts));
-                    // TODO is there a better way to get a reliable unique step number?
-                    let suffix = 0;
-                    while (artifacts.find((a) => a.name === getFileName(job, action, suffix, format))) {
-                        suffix++;
-                    }
-                    const fileName = getFileName(job, action, suffix, format);
-                    const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
-                    const filePath = `${tempPath}/${fileName}`;
-                    fs.writeFileSync(filePath, outStream);
-                    core.setOutput("file", filePath);
-                    yield uploadArtifact({
-                        client,
-                        repo,
-                        run: runId,
-                        file: filePath,
-                        name: fileName,
-                    });
-                    return {
-                        report: outStream,
-                    };
-                }
-            }
-            catch (e) {
-                this.log.error(e);
-                error = e;
-            }
-            throw new SyftErrorImpl({
-                error,
-                out: outStream,
-                err: errStream,
-            });
-        });
-    }
-    download() {
-        return SyftGithubAction_awaiter(this, void 0, void 0, function* () {
-            const name = SYFT_BINARY_NAME;
-            const version = SYFT_VERSION;
-            const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
-            this.log.debug(`Installing ${name} ${version}`);
-            // Download the installer, and run
-            const installPath = yield cache.downloadTool(url);
-            // Make sure the tool's executable bit is set
-            yield exec.exec(`chmod +x ${installPath}`);
-            const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
-            yield exec.exec(cmd);
-            const syftBinary = `${installPath}_${name}/${name}`;
+        }
+        catch (e) {
+            error = e;
+        }
+        core.error(outStream);
+        core.error(errStream);
+        throw error;
+    });
+}
+/**
+ * Downloads the appropriate Syft binary for the platform
+ */
+function downloadSyft() {
+    return SyftGithubAction_awaiter(this, void 0, void 0, function* () {
+        const name = SYFT_BINARY_NAME;
+        const version = SYFT_VERSION;
+        const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
+        core.debug(`Installing ${name} ${version}`);
+        // Download the installer, and run
+        const installPath = yield cache.downloadTool(url);
+        // Make sure the tool's executable bit is set
+        yield exec.exec(`chmod +x ${installPath}`);
+        const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
+        yield exec.exec(cmd);
+        return `${installPath}_${name}/${name}`;
+    });
+}
+/**
+ * Gets the Syft command to run via exec
+ */
+function getSyftCommand() {
+    return SyftGithubAction_awaiter(this, void 0, void 0, function* () {
+        const name = SYFT_BINARY_NAME;
+        const version = SYFT_VERSION;
+        let syftBinary = cache.find(name, version);
+        if (!syftBinary) {
+            // Not found; download and install it
+            syftBinary = yield downloadSyft();
             // Cache the downloaded file
-            return cache.cacheFile(syftBinary, name, name, version);
+            syftBinary = yield cache.cacheFile(syftBinary, name, name, version);
+        }
+        // Add tool to path for this and future actions to use
+        core.addPath(syftBinary);
+        return name;
+    });
+}
+/**
+ * Returns the SBOM format as specified by the user, defaults to SPDX
+ */
+function getSbomFormat() {
+    return lib_core.getInput("format") || "spdx";
+}
+/**
+ * Uploads a SBOM as a workflow artifact
+ * @param contents SBOM file contents
+ */
+function uploadSbomArtifact(contents) {
+    return SyftGithubAction_awaiter(this, void 0, void 0, function* () {
+        const client = getClient(core.getInput("github_token"));
+        const { repo, runId } = github.context;
+        const artifacts = yield listWorkflowArtifacts({
+            client,
+            repo,
+            run: runId,
         });
-    }
-    getSyftCommand() {
-        return SyftGithubAction_awaiter(this, void 0, void 0, function* () {
-            const name = SYFT_BINARY_NAME;
-            let syftBinary = cache.find(name, SYFT_VERSION);
-            if (!syftBinary) {
-                // Not found, install it
-                syftBinary = yield this.download();
-            }
-            // Add tool to path for this and future actions to use
-            core.addPath(syftBinary);
-            return name;
+        core.debug("Workflow artifacts associated with run:");
+        core.debug(JSON.stringify(artifacts));
+        // is there a better way to get a reliable unique step number?
+        let suffix = 0;
+        while (artifacts.find((a) => a.name === getFileName(suffix))) {
+            suffix++;
+        }
+        const fileName = getFileName(suffix);
+        const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
+        const filePath = `${tempPath}/${fileName}`;
+        fs.writeFileSync(filePath, contents);
+        core.setOutput("file", filePath);
+        yield uploadArtifact({
+            client,
+            repo,
+            run: runId,
+            file: filePath,
+            name: fileName,
         });
-    }
+    });
 }
 function runSyftAction() {
     return SyftGithubAction_awaiter(this, void 0, void 0, function* () {
@@ -16857,21 +16866,20 @@ function runSyftAction() {
             core.debug(`Running SBOM action: ${start.toTimeString()}`);
             core.debug(`Got github context:`);
             core.debug(JSON.stringify(github.context));
-            const syft = new SyftGithubAction(new GithubActionLog());
-            const output = yield syft.execute({
+            const output = yield executeSyft({
                 input: {
                     path: core.getInput("path"),
                     image: core.getInput("image"),
                 },
-                format: core.getInput("format") || "spdx",
-                outputFile: core.getInput("outputFile"),
+                format: getSbomFormat(),
             });
             core.debug(`SBOM action completed in: ${(new Date().getMilliseconds() - start.getMilliseconds()) / 1000}s`);
             core.debug(`-------------------------------------------------------------`);
-            if ("report" in output) {
+            if (output) {
+                yield uploadSbomArtifact(output);
                 // need to escape multiline strings a specific way:
                 // https://github.community/t/set-output-truncates-multiline-strings/16852/5
-                const content = output.report
+                const content = output
                     .replace("%", "%25")
                     .replace("\n", "%0A")
                     .replace("\r", "%0D");
@@ -16882,13 +16890,7 @@ function runSyftAction() {
             }
         }
         catch (e) {
-            if (e instanceof SyftErrorImpl) {
-                core.setFailed(`ERROR executing Syft: ${e.message}
-      Caused by: ${e.error}
-      STDOUT: ${e.out}
-      STDERR: ${e.err}`);
-            }
-            else if (e instanceof Error) {
+            if (e instanceof Error) {
                 core.setFailed(e.message);
             }
             else if (e instanceof Object) {
@@ -16935,7 +16937,7 @@ function attachReleaseArtifacts() {
                 }
             }
             if (release) {
-                const format = lib_core.getInput("format") || "spdx";
+                const format = getSbomFormat();
                 lib_core.info(`Attaching SBOMs to release ${release.tag_name}`);
                 for (const artifact of artifacts) {
                     lib_core.debug(`Found artifact: ${artifact.name}`);
@@ -16982,20 +16984,14 @@ function attachReleaseArtifacts() {
             }
         }
         catch (e) {
-            if (e instanceof Syft_SyftErrorImpl) {
-                lib_core.setFailed(`ERROR executing Syft: ${e.message}
-      Caused by: ${e.error}
-      STDOUT: ${e.out}
-      STDERR: ${e.err}`);
-            }
-            else if (e instanceof Error) {
+            if (e instanceof Error) {
                 lib_core.setFailed(e.message);
             }
             else if (e instanceof Object) {
-                lib_core.setFailed(e.toString());
+                lib_core.setFailed(JSON.stringify(e));
             }
             else {
-                lib_core.setFailed("An unknown error occurred");
+                lib_core.setFailed(`An unknown error occurred: ${e}`);
             }
             throw e;
         }

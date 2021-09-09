@@ -6,15 +6,13 @@ import * as cache from "@actions/tool-cache";
 import * as core from "@actions/core";
 import * as github from "@actions/github";
 import { Release, ReleaseEvent } from "@octokit/webhooks-types";
-import { Syft, SyftErrorImpl, SyftOptions, SyftOutput } from "../syft/Syft";
-import { GithubActionLog } from "./GithubActionLog";
+import { SyftOptions } from "../syft/Syft";
 import { getClient } from "./GithubClient";
 import {
   deleteReleaseAsset,
   listReleaseAssets,
   uploadReleaseAsset,
 } from "./Releases";
-import { Log } from "../syft/Log";
 import {
   listWorkflowArtifacts,
   downloadArtifact,
@@ -24,13 +22,9 @@ import {
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
 
-function getFileName(
-  job: string,
-  action: string,
-  suffix: number,
-  format: string
-): string {
-  let fileName = core.getInput("file_name");
+function getFileName(suffix: number): string {
+  const { job, action } = github.context;
+  let fileName = core.getInput("output_file");
   if (!fileName) {
     let stepName = `-${action}`;
     if (!action || action === "__self") {
@@ -43,149 +37,160 @@ function getFileName(
   if (suffix) {
     fileName += `-${suffix}`;
   }
+  const format = getSbomFormat();
   return `${fileName}.${format}`;
 }
 
-export class SyftGithubAction implements Syft {
-  log: Log;
+/**
+ * Gets a reference to the syft command and executes the syft action
+ * @param input syft input parameters
+ * @param format syft output format
+ */
+async function executeSyft({ input, format }: SyftOptions): Promise<string> {
+  let outStream = "";
+  let errStream = "";
 
-  constructor(logger: Log) {
-    this.log = logger;
+  const cmd = await getSyftCommand();
+
+  const env: { [key: string]: string } = {
+    SYFT_CHECK_FOR_APP_UPDATE: "false",
+  };
+
+  // https://github.com/anchore/syft#configuration
+  let args = ["packages"];
+
+  if ("image" in input && input.image) {
+    args = [...args, `docker:${input.image}`];
+  } else if ("path" in input && input.path) {
+    args = [...args, `dir:${input.path}`];
+  } else {
+    throw new Error("Invalid input, no image or path specified");
   }
 
-  async execute({ input, format }: SyftOptions): Promise<SyftOutput> {
-    let outStream = "";
-    let errStream = "";
+  args = [...args, "-o", format];
 
-    const cmd = await this.getSyftCommand();
-
-    const env: { [key: string]: string } = {
-      SYFT_CHECK_FOR_APP_UPDATE: "false",
-    };
-
-    // https://github.com/anchore/syft#configuration
-    let args = ["packages"];
-
-    if ("image" in input && input.image) {
-      args = [...args, `docker:${input.image}`];
-    } else if ("path" in input && input.path) {
-      args = [...args, `dir:${input.path}`];
-    } else {
-      throw new Error("Invalid input, no image or path specified");
-    }
-
-    args = [...args, "-o", format];
-
-    let error: unknown;
-    try {
-      const exitCode = await core.group("Syft Output", async () => {
-        core.info(`Executing: ${cmd} ${args.join(" ")}`);
-        return exec.exec(cmd, args, {
-          env,
-          listeners: {
-            stdout(buffer) {
-              outStream += buffer.toString();
-            },
-            stderr(buffer) {
-              errStream += buffer.toString();
-            },
-            debug(message) {
-              errStream += message.toString();
-            },
+  let error: unknown;
+  try {
+    const exitCode = await core.group("Syft Output", async () => {
+      core.info(`Executing: ${cmd} ${args.join(" ")}`);
+      return exec.exec(cmd, args, {
+        env,
+        listeners: {
+          stdout(buffer) {
+            outStream += buffer.toString();
           },
-        });
+          stderr(buffer) {
+            errStream += buffer.toString();
+          },
+          debug(message) {
+            core.debug(message);
+          },
+        },
       });
-
-      if (exitCode > 0) {
-        error = new Error("An error occurred running Syft");
-      } else {
-        const client = getClient(core.getInput("github_token"));
-        const { repo, job, action, runId } = github.context;
-
-        const artifacts = await listWorkflowArtifacts({
-          client,
-          repo,
-          run: runId,
-        });
-
-        core.debug("Workflow artifacts associated with run:");
-        core.debug(JSON.stringify(artifacts));
-
-        // TODO is there a better way to get a reliable unique step number?
-        let suffix = 0;
-        while (
-          artifacts.find(
-            (a) => a.name === getFileName(job, action, suffix, format)
-          )
-        ) {
-          suffix++;
-        }
-
-        const fileName = getFileName(job, action, suffix, format);
-
-        const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
-        const filePath = `${tempPath}/${fileName}`;
-        fs.writeFileSync(filePath, outStream);
-        core.setOutput("file", filePath);
-
-        await uploadArtifact({
-          client,
-          repo,
-          run: runId,
-          file: filePath,
-          name: fileName,
-        });
-
-        return {
-          report: outStream,
-        };
-      }
-    } catch (e) {
-      this.log.error(e);
-      error = e;
-    }
-    throw new SyftErrorImpl({
-      error,
-      out: outStream,
-      err: errStream,
     });
+
+    if (exitCode > 0) {
+      error = new Error("An error occurred running Syft");
+    } else {
+      return outStream;
+    }
+  } catch (e) {
+    error = e;
   }
 
-  async download(): Promise<string> {
-    const name = SYFT_BINARY_NAME;
-    const version = SYFT_VERSION;
+  core.error(outStream);
+  core.error(errStream);
+  throw error;
+}
 
-    const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
+/**
+ * Downloads the appropriate Syft binary for the platform
+ */
+export async function downloadSyft(): Promise<string> {
+  const name = SYFT_BINARY_NAME;
+  const version = SYFT_VERSION;
 
-    this.log.debug(`Installing ${name} ${version}`);
+  const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
 
-    // Download the installer, and run
-    const installPath = await cache.downloadTool(url);
+  core.debug(`Installing ${name} ${version}`);
 
-    // Make sure the tool's executable bit is set
-    await exec.exec(`chmod +x ${installPath}`);
+  // Download the installer, and run
+  const installPath = await cache.downloadTool(url);
 
-    const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
-    await exec.exec(cmd);
-    const syftBinary = `${installPath}_${name}/${name}`;
+  // Make sure the tool's executable bit is set
+  await exec.exec(`chmod +x ${installPath}`);
+
+  const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
+  await exec.exec(cmd);
+
+  return `${installPath}_${name}/${name}`;
+}
+
+/**
+ * Gets the Syft command to run via exec
+ */
+async function getSyftCommand(): Promise<string> {
+  const name = SYFT_BINARY_NAME;
+  const version = SYFT_VERSION;
+
+  let syftBinary = cache.find(name, version);
+  if (!syftBinary) {
+    // Not found; download and install it
+    syftBinary = await downloadSyft();
 
     // Cache the downloaded file
-    return cache.cacheFile(syftBinary, name, name, version);
+    syftBinary = await cache.cacheFile(syftBinary, name, name, version);
   }
 
-  async getSyftCommand(): Promise<string> {
-    const name = SYFT_BINARY_NAME;
+  // Add tool to path for this and future actions to use
+  core.addPath(syftBinary);
+  return name;
+}
 
-    let syftBinary = cache.find(name, SYFT_VERSION);
-    if (!syftBinary) {
-      // Not found, install it
-      syftBinary = await this.download();
-    }
+/**
+ * Returns the SBOM format as specified by the user, defaults to SPDX
+ */
+export function getSbomFormat(): SyftOptions["format"] {
+  return (core.getInput("format") as SyftOptions["format"]) || "spdx";
+}
 
-    // Add tool to path for this and future actions to use
-    core.addPath(syftBinary);
-    return name;
+/**
+ * Uploads a SBOM as a workflow artifact
+ * @param contents SBOM file contents
+ */
+export async function uploadSbomArtifact(contents: string): Promise<void> {
+  const client = getClient(core.getInput("github_token"));
+  const { repo, runId } = github.context;
+
+  const artifacts = await listWorkflowArtifacts({
+    client,
+    repo,
+    run: runId,
+  });
+
+  core.debug("Workflow artifacts associated with run:");
+  core.debug(JSON.stringify(artifacts));
+
+  // is there a better way to get a reliable unique step number?
+  let suffix = 0;
+  while (artifacts.find((a) => a.name === getFileName(suffix))) {
+    suffix++;
   }
+
+  const fileName = getFileName(suffix);
+
+  const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
+  const filePath = `${tempPath}/${fileName}`;
+  fs.writeFileSync(filePath, contents);
+  core.setOutput("file", filePath);
+
+  await uploadArtifact({
+    client,
+    repo,
+    run: runId,
+    file: filePath,
+    name: fileName,
+  });
 }
 
 export async function runSyftAction(): Promise<void> {
@@ -196,14 +201,12 @@ export async function runSyftAction(): Promise<void> {
     core.debug(`Got github context:`);
     core.debug(JSON.stringify(github.context));
 
-    const syft = new SyftGithubAction(new GithubActionLog());
-    const output = await syft.execute({
+    const output = await executeSyft({
       input: {
         path: core.getInput("path"),
         image: core.getInput("image"),
       },
-      format: (core.getInput("format") as SyftOptions["format"]) || "spdx",
-      outputFile: core.getInput("outputFile"),
+      format: getSbomFormat(),
     });
     core.debug(
       `SBOM action completed in: ${
@@ -212,10 +215,12 @@ export async function runSyftAction(): Promise<void> {
     );
     core.debug(`-------------------------------------------------------------`);
 
-    if ("report" in output) {
+    if (output) {
+      await uploadSbomArtifact(output);
+
       // need to escape multiline strings a specific way:
       // https://github.community/t/set-output-truncates-multiline-strings/16852/5
-      const content = output.report
+      const content = output
         .replace("%", "%25")
         .replace("\n", "%0A")
         .replace("\r", "%0D");
@@ -224,12 +229,7 @@ export async function runSyftAction(): Promise<void> {
       core.error(JSON.stringify(output));
     }
   } catch (e: unknown) {
-    if (e instanceof SyftErrorImpl) {
-      core.setFailed(`ERROR executing Syft: ${e.message}
-      Caused by: ${e.error}
-      STDOUT: ${e.out}
-      STDERR: ${e.err}`);
-    } else if (e instanceof Error) {
+    if (e instanceof Error) {
       core.setFailed(e.message);
     } else if (e instanceof Object) {
       core.setFailed(JSON.stringify(e));
@@ -283,8 +283,7 @@ export async function attachReleaseArtifacts(): Promise<void> {
     }
 
     if (release) {
-      const format =
-        (core.getInput("format") as SyftOptions["format"]) || "spdx";
+      const format = getSbomFormat();
 
       core.info(`Attaching SBOMs to release ${release.tag_name}`);
       for (const artifact of artifacts) {
@@ -333,17 +332,12 @@ export async function attachReleaseArtifacts(): Promise<void> {
       }
     }
   } catch (e: unknown) {
-    if (e instanceof SyftErrorImpl) {
-      core.setFailed(`ERROR executing Syft: ${e.message}
-      Caused by: ${e.error}
-      STDOUT: ${e.out}
-      STDERR: ${e.err}`);
-    } else if (e instanceof Error) {
+    if (e instanceof Error) {
       core.setFailed(e.message);
     } else if (e instanceof Object) {
-      core.setFailed(e.toString());
+      core.setFailed(JSON.stringify(e));
     } else {
-      core.setFailed("An unknown error occurred");
+      core.setFailed(`An unknown error occurred: ${e}`);
     }
     throw e;
   }

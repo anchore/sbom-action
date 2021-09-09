@@ -3,7 +3,7 @@ import path from "path";
 import os from "os";
 import * as artifact from "@actions/artifact";
 import * as core from "@actions/core";
-import { GithubClientProp, GithubRepo } from "./GithubClient";
+import { GithubClientProp, GithubRepo, suppressOutput } from "./GithubClient";
 import { DownloadHttpClient } from "@actions/artifact/lib/internal/download-http-client";
 
 export type WorkflowArtifactProps = GithubClientProp & {
@@ -33,8 +33,10 @@ export async function listWorkflowArtifacts({
   if (useInternalClient) {
     const downloadClient = new DownloadHttpClient();
     const response = await downloadClient.listArtifacts();
+
     core.debug("--------------------- listArtifacts -------------------");
     core.debug(JSON.stringify(response));
+
     return response.value;
   }
 
@@ -64,12 +66,16 @@ export async function downloadArtifact({
 }: DownloadArtifactProps): Promise<string> {
   const client = artifact.create();
   const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
-  const response = await client.downloadArtifact(name, tempPath);
+  const response = await suppressOutput(async () =>
+    client.downloadArtifact(name, tempPath)
+  );
+
   core.debug("----------------------- Artifact Download ---------------------");
   core.debug(`${response.artifactName}  //// ${response.downloadPath}`);
   core.debug(
     `Dir contains: ${JSON.stringify(fs.readdirSync(response.downloadPath))}`
   );
+
   return `${response.downloadPath}/${response.artifactName}`;
 }
 
@@ -85,10 +91,15 @@ export async function uploadArtifact({
   const rootDirectory = path.dirname(file);
   const client = artifact.create();
   core.info(`Uploading artifact: ${file}`);
+
   core.debug("------------------------- Artifact Upload ---------------------");
   core.debug(`${name} //// ${file}  //// ${rootDirectory}`);
+
   core.debug(`Dir contains: ${JSON.stringify(fs.readdirSync(rootDirectory))}`);
-  const info = await client.uploadArtifact(name, [file], rootDirectory, {});
+  const info = await suppressOutput(async () =>
+    client.uploadArtifact(name, [file], rootDirectory, {})
+  );
+
   core.debug("------------------------- Artifact Upload ---------------------");
   core.debug(JSON.stringify(info));
 }

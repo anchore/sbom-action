@@ -1,6 +1,7 @@
 # Anchore SBOM Action
 
-A GitHub Action for creating software bill of materials (SBOM) using Syft.
+A GitHub Action for creating software bill of materials (SBOM)
+using [Syft](https://github.com/anchore/syft).
 
 ## Basic Usage
 
@@ -8,13 +9,10 @@ A GitHub Action for creating software bill of materials (SBOM) using Syft.
 - uses: anchore/sbom-action@v1
 ```
 
-And that's it!
-
-This will by default execute a Syft scan of the root directory
-of the workspace and output a SBOM in SPDX format
-report to the workflow log. It will also detect
-if being run during a `release` and upload
-a release asset of the SBOM named `sbom.spdx`.
+By default, this action will execute a Syft scan in the workspace directory
+and upload a workflow artifact SBOM in SPDX format. It will also detect
+if being run during a `release` and attach the SBOM
+as a release asset.
 
 ## Example Usage
 
@@ -37,3 +35,37 @@ Use the `path` parameter, relative to the repository root
   with:
     path: ./build/
 ```
+
+### Naming the SBOM output
+
+By default, this action will upload an artifact named `sbom-<job-name>[-<step-number>].<format>`, for
+example:
+
+```yaml
+build:
+  steps:
+    - uses: anchore/sbom-action@v1
+    - uses: anchore/sbom-action@v1
+```
+
+Will create 2 artifacts:
+
+```text
+sbom-build.spdx
+sbom-build-2.spdx
+```
+
+You may need to name these artifacts differently, simply
+use the `output_file` parameter:
+
+```yaml
+- uses: anchore/sbom-action@v1
+  with:
+    output_file: sbom.spdx
+```
+
+### Development
+
+Note this makes extensive use of Github Action debug logging,
+which can be enabled as [described here](https://github.com/actions/toolkit/blob/master/docs/action-debugging.md)
+by setting a secret in your repository of `ACTIONS_STEP_DEBUG` to `true`
