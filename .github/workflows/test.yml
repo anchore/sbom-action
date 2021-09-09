@@ -16,14 +16,14 @@ on: # rebuild any PRs and main branch changes
   workflow_dispatch:
 
 jobs:
-  build: # make sure build/ci work properly
-    if: ${{ false }}
+  build: # make sure build/ci work properly and there is no faked build ncc built scripts
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
       - run: npm audit --production
       - run: npm run package
+      - run: git status --porcelain
 
   test-on-fixture-dirs:
     runs-on: ubuntu-latest
@@ -53,7 +53,6 @@ jobs:
           artifact_name: SBOM.txt
 
   test:
-    if: ${{ false }}
     runs-on: ubuntu-latest
     services:
       registry:
