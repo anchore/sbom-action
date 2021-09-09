@@ -1,6 +1,6 @@
 # Anchore SBOM Action
 
-A GitHub Action for creating software bill of materials (SBOM)
+A GitHub Action for creating a software bill of materials (SBOM)
 using [Syft](https://github.com/anchore/syft).
 
 ## Basic Usage
@@ -81,20 +81,8 @@ use the `artifact_name` parameter:
     artifact_name: sbom.spdx
 ```
 
-### Development
+### Diagnostics
 
-Note this makes extensive use of Github Action debug logging,
+This action makes extensive use of GitHub Action debug logging,
 which can be enabled as [described here](https://github.com/actions/toolkit/blob/master/docs/action-debugging.md)
-by setting a secret in your repository of `ACTIONS_STEP_DEBUG` to `true`
-
-To run tests locally, you will need a local docker instance and registry along with a few
-known images from the fixtures. Just run:
-
-```shell
-docker run -d -p 5000:5000 --name registry registry:2
-# ... and a set of images built:
-for distro in alpine centos debian; do
-  docker build -t localhost:5000/match-coverage/$distro ./tests/fixtures/image-$distro-match-coverage
-  docker push localhost:5000/match-coverage/$distro:latest
-done
-```
+by setting a secret in your repository of `ACTIONS_STEP_DEBUG` to `true`.

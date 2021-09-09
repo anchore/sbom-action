@@ -156,12 +156,6 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
   const { repo } = github.context;
   const client = getClient(repo, core.getInput("github_token"));
 
-  const artifacts = await client.listWorkflowArtifacts();
-
-  core.debug("Workflow artifacts associated with run:");
-  core.debug(JSON.stringify(artifacts));
-
-  // is there a better way to get a reliable unique step number?
   const fileName = getArtifactName();
 
   const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
@@ -326,7 +320,6 @@ export async function attachReleaseArtifacts(): Promise<void> {
             release,
             fileName,
             contents: contents.toString(),
-            // label: "sbom",
             contentType: "text/plain",
           });
         } catch (e) {
