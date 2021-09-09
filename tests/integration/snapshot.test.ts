@@ -1,25 +1,25 @@
 import { runSyftAction } from "../../src/github/SyftGithubAction";
-import * as artifactClient from "../../src/github/WorkflowArtifacts";
 import * as core from "@actions/core";
 import * as github from "@actions/github";
-import { Artifact } from "../../src/github/WorkflowArtifacts";
 import * as fs from "fs";
 import * as client from "../../src/github/GithubClient";
-import { GithubClient } from "../../src/github/GithubClient";
 
 jest.setTimeout(30000);
 Date.now = jest.fn(() => 1482363367071);
 
 const testSource = async (source: string): Promise<string> => {
   let spdx = "";
-  const artifacts: Artifact[] = [];
+  const artifacts: client.Artifact[] = [];
 
   // @ts-ignore
   (github as unknown).context = {
     eventName: "release",
     ref: "v0.0.0",
     payload: {},
-    repo: "test-repo",
+    repo: {
+      owner: "test-org",
+      repo: "test-repo",
+    },
     runId: 1,
     job: "a_job",
     action: "__self",
@@ -29,24 +29,14 @@ const testSource = async (source: string): Promise<string> => {
     .spyOn(client, "getClient")
     .mockImplementation(() => {
       return {
-        rest: {
-          actions: {},
-          repos: {},
+        listWorkflowArtifacts() {
+          return Promise.resolve(artifacts);
         },
-      } as GithubClient;
-    });
-
-  const spyListArtifacts = jest
-    .spyOn(artifactClient, "listWorkflowArtifacts")
-    .mockImplementation(() => {
-      return Promise.resolve(artifacts);
-    });
-
-  const spyUploadArtifact = jest
-    .spyOn(artifactClient, "uploadArtifact")
-    .mockImplementation(({ file }) => {
-      spdx = fs.readFileSync(file).toString();
-      return Promise.resolve();
+        uploadWorkflowArtifact({ file }) {
+          spdx = fs.readFileSync(file).toString();
+          return Promise.resolve();
+        },
+      } as client.GithubClient;
     });
 
   const spyOutput = jest
@@ -80,8 +70,6 @@ const testSource = async (source: string): Promise<string> => {
     spyInput.mockRestore();
     spyOutput.mockRestore();
     spyGetClient.mockRestore();
-    spyListArtifacts.mockRestore();
-    spyUploadArtifact.mockRestore();
   }
 
   // FIXME these tests are already flaky because SPDX format is not sorted currently

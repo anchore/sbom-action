@@ -6,23 +6,16 @@ import * as cache from "@actions/tool-cache";
 import * as core from "@actions/core";
 import * as github from "@actions/github";
 import { Release, ReleaseEvent } from "@octokit/webhooks-types";
-import { SyftOptions } from "../syft/Syft";
-import { getClient } from "./GithubClient";
-import {
-  deleteReleaseAsset,
-  listReleaseAssets,
-  uploadReleaseAsset,
-} from "./Releases";
-import {
-  listWorkflowArtifacts,
-  downloadArtifact,
-  uploadArtifact,
-} from "./WorkflowArtifacts";
+import { SyftOptions } from "../Syft";
+import { dashWrap, getClient } from "./GithubClient";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
 
-function getFileName(): string {
+/**
+ * Tries to get a unique artifact name or otherwise as appropriate as possible
+ */
+function getArtifactName(): string {
   const fileName = core.getInput("artifact_name");
   if (fileName) {
     return fileName;
@@ -160,20 +153,16 @@ export function getSbomFormat(): SyftOptions["format"] {
  * @param contents SBOM file contents
  */
 export async function uploadSbomArtifact(contents: string): Promise<void> {
-  const client = getClient(core.getInput("github_token"));
-  const { repo, runId } = github.context;
+  const { repo } = github.context;
+  const client = getClient(repo, core.getInput("github_token"));
 
-  const artifacts = await listWorkflowArtifacts({
-    client,
-    repo,
-    run: runId,
-  });
+  const artifacts = await client.listWorkflowArtifacts();
 
   core.debug("Workflow artifacts associated with run:");
   core.debug(JSON.stringify(artifacts));
 
   // is there a better way to get a reliable unique step number?
-  const fileName = getFileName();
+  const fileName = getArtifactName();
 
   const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
   const filePath = `${tempPath}/${fileName}`;
@@ -184,15 +173,17 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
     fs.copyFileSync(filePath, outputFile);
   }
 
-  await uploadArtifact({
-    client,
-    repo,
-    run: runId,
+  await client.uploadWorkflowArtifact({
     file: filePath,
     name: fileName,
   });
 }
 
+/**
+ * Gets a boolean input value if supplied, otherwise returns the default
+ * @param name name of the input
+ * @param defaultValue default value to return if not set
+ */
 function getBooleanInput(name: string, defaultValue: boolean): boolean {
   const val = core.getInput(name);
   if (val === "") {
@@ -243,7 +234,7 @@ export async function runSyftAction(): Promise<void> {
     } else {
       core.error(JSON.stringify(output));
     }
-  } catch (e: unknown) {
+  } catch (e) {
     if (e instanceof Error) {
       core.setFailed(e.message);
     } else if (e instanceof Object) {
@@ -273,92 +264,78 @@ export async function attachReleaseArtifacts(): Promise<void> {
     core.debug(`Got github context:`);
     core.debug(JSON.stringify(github.context));
 
-    const client = getClient(core.getInput("github_token"));
-    const { eventName, ref, payload, repo, runId } = github.context;
-
-    const artifacts = await listWorkflowArtifacts({
-      client,
-      repo,
-      run: runId,
-    });
-
-    core.debug("Workflow artifacts associated with run:");
-    core.debug(JSON.stringify(artifacts));
+    const { eventName, ref, payload, repo } = github.context;
+    const client = getClient(repo, core.getInput("github_token"));
 
     let release: Release | undefined = undefined;
 
     // FIXME: what's the right way to detect a release?
     if (eventName === "release") {
       release = (payload as ReleaseEvent).release;
-      core.debug(`Got RELEASE object:`);
+      core.debug(dashWrap("releaseEvent"));
       core.debug(JSON.stringify(release));
     } else {
       const isRefPush = eventName === "push" && /^refs\/tags\/.*/.test(ref);
       if (isRefPush) {
         const tag = ref.replace(/^refs\/tags\//, "");
-        core.info(`Getting release by tag: ${tag}`);
-
-        const response = await client.rest.repos.getReleaseByTag({
-          ...repo,
-          tag,
-        });
-        release = response.data as Release;
+        release = await client.getRelease({ tag });
       }
     }
 
     if (release) {
       // ^sbom.*\\.${format}$`;
       const sbomArtifactInput = core.getInput("sbom_artifact_match");
-      const sbomArtifactPattern = sbomArtifactInput || `^${getFileName()}$`;
+      const sbomArtifactPattern = sbomArtifactInput || `^${getArtifactName()}$`;
       const matcher = new RegExp(sbomArtifactPattern);
 
-      core.info(`Attaching SBOMs to release ${release.tag_name}`);
-      for (const artifact of artifacts) {
-        core.debug(`Found artifact: ${artifact.name}`);
-        if (matcher.test(artifact.name)) {
-          core.info(`Found SBOM artifact: ${artifact.name}`);
-          const file = await downloadArtifact({
-            client,
-            name: artifact.name,
+      const artifacts = await client.listWorkflowArtifacts();
+      const matched = artifacts.filter((a) => {
+        const matches = matcher.test(a.name);
+        if (matches) {
+          core.debug(`Found artifact: ${a.name}`);
+        } else {
+          core.debug(`Artifact: ${a.name} not matching ${sbomArtifactPattern}`);
+        }
+        return matches;
+      });
+
+      core.info(dashWrap(`Attaching SBOMs to release ${release.tag_name}`));
+      for (const artifact of matched) {
+        const file = await client.downloadWorkflowArtifact({
+          name: artifact.name,
+        });
+
+        core.debug(`Got SBOM file: ${JSON.stringify(file)}`);
+        const contents = fs.readFileSync(file);
+        const fileName = path.basename(file);
+
+        try {
+          const assets = await client.listReleaseAssets({
+            release,
           });
-          core.debug(`Got SBOM file: ${JSON.stringify(file)}`);
-          const contents = fs.readFileSync(file);
-          const fileName = path.basename(file);
 
-          try {
-            const assets = await listReleaseAssets({
-              client,
-              repo,
+          const asset = assets.find((a) => a.name === fileName);
+          if (asset) {
+            await client.deleteReleaseAsset({
               release,
+              asset,
             });
-
-            const asset = assets.find((a) => a.name === fileName);
-            if (asset) {
-              await deleteReleaseAsset({
-                client,
-                repo,
-                release,
-                asset,
-              });
-            }
-
-            await uploadReleaseAsset({
-              client,
-              repo,
-              release,
-              fileName,
-              contents: contents.toString(),
-              // label: "sbom",
-              contentType: "text/plain",
-            });
-          } catch (e) {
-            core.warning(`Unable to upload asset: ${artifact.name}`);
-            core.warning(`${e}`);
           }
+
+          await client.uploadReleaseAsset({
+            release,
+            fileName,
+            contents: contents.toString(),
+            // label: "sbom",
+            contentType: "text/plain",
+          });
+        } catch (e) {
+          core.warning(`Unable to upload asset: ${artifact.name}`);
+          core.warning(`${e}`);
         }
       }
     }
-  } catch (e: unknown) {
+  } catch (e) {
     if (e instanceof Error) {
       core.setFailed(e.message);
     } else if (e instanceof Object) {
