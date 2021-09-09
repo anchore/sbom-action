@@ -22,23 +22,21 @@ import {
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
 
-function getFileName(suffix: number): string {
+function getFileName(): string {
+  const fileName = core.getInput("output_file");
+  if (fileName) {
+    return fileName;
+  }
+
   const { job, action } = github.context;
-  let fileName = core.getInput("output_file");
-  if (!fileName) {
-    let stepName = `-${action}`;
-    if (!action || action === "__self") {
-      stepName = "";
-    } else if (action.startsWith("__self_")) {
-      stepName = `-${action.substr("__self_".length)}`;
-    }
-    fileName = `sbom-${job}${stepName}`;
-  }
-  if (suffix) {
-    fileName += `-${suffix}`;
-  }
   const format = getSbomFormat();
-  return `${fileName}.${format}`;
+  let stepName = `-${action}`;
+  if (!action || action === "__self") {
+    stepName = "";
+  } else if (action.startsWith("__self_")) {
+    stepName = `-${action.substr("__self_".length)}`;
+  }
+  return `sbom-${job}${stepName}.${format}`;
 }
 
 /**
@@ -92,6 +90,9 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
     if (exitCode > 0) {
       error = new Error("An error occurred running Syft");
     } else {
+      core.debug("Syft stderr:");
+      core.debug(errStream);
+
       return outStream;
     }
   } catch (e) {
@@ -172,17 +173,16 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
   core.debug(JSON.stringify(artifacts));
 
   // is there a better way to get a reliable unique step number?
-  let suffix = 0;
-  while (artifacts.find((a) => a.name === getFileName(suffix))) {
-    suffix++;
-  }
-
-  const fileName = getFileName(suffix);
+  const fileName = getFileName();
 
   const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
   const filePath = `${tempPath}/${fileName}`;
   fs.writeFileSync(filePath, contents);
-  core.setOutput("file", filePath);
+
+  const outputFile = core.getInput("output_file");
+  if (outputFile) {
+    fs.copyFileSync(filePath, outputFile);
+  }
 
   await uploadArtifact({
     client,
@@ -193,6 +193,14 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
   });
 }
 
+function getBooleanInput(name: string, defaultValue: boolean): boolean {
+  const val = core.getInput(name);
+  if (val === "") {
+    return defaultValue;
+  }
+  return Boolean(val);
+}
+
 export async function runSyftAction(): Promise<void> {
   try {
     const start = new Date();
@@ -200,6 +208,9 @@ export async function runSyftAction(): Promise<void> {
     core.debug(`Running SBOM action: ${start.toTimeString()}`);
     core.debug(`Got github context:`);
     core.debug(JSON.stringify(github.context));
+
+    const doUpload = getBooleanInput("upload_artifact", true);
+    const outputVariable = core.getInput("output_var");
 
     const output = await executeSyft({
       input: {
@@ -216,15 +227,19 @@ export async function runSyftAction(): Promise<void> {
     core.debug(`-------------------------------------------------------------`);
 
     if (output) {
-      await uploadSbomArtifact(output);
+      if (doUpload) {
+        await uploadSbomArtifact(output);
+      }
 
-      // need to escape multiline strings a specific way:
-      // https://github.community/t/set-output-truncates-multiline-strings/16852/5
-      const content = output
-        .replace("%", "%25")
-        .replace("\n", "%0A")
-        .replace("\r", "%0D");
-      core.setOutput("sbom", content);
+      if (outputVariable) {
+        // need to escape multiline strings a specific way:
+        // https://github.community/t/set-output-truncates-multiline-strings/16852/5
+        const content = output
+          .replace("%", "%25")
+          .replace("\n", "%0A")
+          .replace("\r", "%0D");
+        core.setOutput(outputVariable, content);
+      }
     } else {
       core.error(JSON.stringify(output));
     }
@@ -240,7 +255,16 @@ export async function runSyftAction(): Promise<void> {
   }
 }
 
+/**
+ * Attaches the SBOM assets to a release if run in release mode
+ */
 export async function attachReleaseArtifacts(): Promise<void> {
+  const doRelease = getBooleanInput("upload_release_assets", true);
+
+  if (!doRelease) {
+    return;
+  }
+
   try {
     const start = new Date();
 
@@ -283,12 +307,15 @@ export async function attachReleaseArtifacts(): Promise<void> {
     }
 
     if (release) {
-      const format = getSbomFormat();
+      // ^sbom.*\\.${format}$`;
+      const sbomArtifactInput = core.getInput("sbom_artifact_match");
+      const sbomArtifactPattern = sbomArtifactInput || `^${getFileName()}$`;
+      const matcher = new RegExp(sbomArtifactPattern);
 
       core.info(`Attaching SBOMs to release ${release.tag_name}`);
       for (const artifact of artifacts) {
         core.debug(`Found artifact: ${artifact.name}`);
-        if (new RegExp(`^sbom.*\\.${format}$`).test(artifact.name)) {
+        if (matcher.test(artifact.name)) {
           core.info(`Found SBOM artifact: ${artifact.name}`);
           const file = await downloadArtifact({
             client,

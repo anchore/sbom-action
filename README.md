@@ -36,9 +36,23 @@ Use the `path` parameter, relative to the repository root
     path: ./build/
 ```
 
+### Attach a combined SBOM
+
+The action will detect being run in a `release` and
+automatically upload all SBOMs as release assets. However,
+it may be desirable to upload SBOMs generated with other tools or using Syft
+outside of this action. To do this, specify a regular expression using
+the `sbom_artifact_match` pararmeter, for example:
+
+```yaml
+- uses: anchore/sbom-action@v1
+  sbom_artifact_match: "*.sbom"
+```
+
 ### Naming the SBOM output
 
-By default, this action will upload an artifact named `sbom-<job-name>[-<step-number>].<format>`, for
+By default, this action will upload an artifact named
+`sbom-<job-name>[-<step-id|step-number>].<format>`, for
 example:
 
 ```yaml
@@ -46,22 +60,25 @@ build:
   steps:
     - uses: anchore/sbom-action@v1
     - uses: anchore/sbom-action@v1
+    - uses: anchore/sbom-action@v1
+      id: myid
 ```
 
-Will create 2 artifacts:
+Will create 3 artifacts:
 
 ```text
 sbom-build.spdx
 sbom-build-2.spdx
+sbom-build-myid.spdx
 ```
 
 You may need to name these artifacts differently, simply
-use the `output_file` parameter:
+use the `artifact_name` parameter:
 
 ```yaml
 - uses: anchore/sbom-action@v1
   with:
-    output_file: sbom.spdx
+    artifact_name: sbom.spdx
 ```
 
 ### Development

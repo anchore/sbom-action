@@ -47,6 +47,12 @@ jobs:
         with:
           path: ./tests/fixtures/yarn-project
 
+      - uses: ./
+        id: yarn-scan
+        with:
+          path: ./tests/fixtures/yarn-project
+          artifact_name: SBOM.txt
+
   test:
     if: ${{ false }}
     runs-on: ubuntu-latest
@@ -76,7 +82,7 @@ jobs:
       - uses: ./
         id: dirscan
         with:
-          file_name: sbom
+          artifact_name: sbom.spdx
 
       - run: |
           echo DIR SCAN SBOM:
@@ -92,7 +98,7 @@ jobs:
         id: imagescan
         with:
           image: alpine:latest
-          file_name: sbom
+          artifact_name: sbom.spdx
       - run: |
           echo IMAGE SCAN SBOM:
           echo "${{ steps.imagescan.outputs.file }}"
@@ -105,4 +111,4 @@ jobs:
 
       - uses: ./attach
         with:
-          file_name: sbom
+          artifact_name: sbom.spdx

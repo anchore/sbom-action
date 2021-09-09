@@ -16706,24 +16706,21 @@ var SyftGithubAction_awaiter = (undefined && undefined.__awaiter) || function (t
 
 const SYFT_BINARY_NAME = "syft";
 const SYFT_VERSION = "v0.21.0";
-function getFileName(suffix) {
-    const { job, action } = github.context;
-    let fileName = core.getInput("output_file");
-    if (!fileName) {
-        let stepName = `-${action}`;
-        if (!action || action === "__self") {
-            stepName = "";
-        }
-        else if (action.startsWith("__self_")) {
-            stepName = `-${action.substr("__self_".length)}`;
-        }
-        fileName = `sbom-${job}${stepName}`;
+function getFileName() {
+    const fileName = lib_core.getInput("output_file");
+    if (fileName) {
+        return fileName;
     }
-    if (suffix) {
-        fileName += `-${suffix}`;
-    }
+    const { job, action } = lib_github.context;
     const format = getSbomFormat();
-    return `${fileName}.${format}`;
+    let stepName = `-${action}`;
+    if (!action || action === "__self") {
+        stepName = "";
+    }
+    else if (action.startsWith("__self_")) {
+        stepName = `-${action.substr("__self_".length)}`;
+    }
+    return `sbom-${job}${stepName}.${format}`;
 }
 /**
  * Gets a reference to the syft command and executes the syft action
@@ -16773,6 +16770,8 @@ function executeSyft({ input, format }) {
                 error = new Error("An error occurred running Syft");
             }
             else {
+                core.debug("Syft stderr:");
+                core.debug(errStream);
                 return outStream;
             }
         }
@@ -16843,15 +16842,14 @@ function uploadSbomArtifact(contents) {
         core.debug("Workflow artifacts associated with run:");
         core.debug(JSON.stringify(artifacts));
         // is there a better way to get a reliable unique step number?
-        let suffix = 0;
-        while (artifacts.find((a) => a.name === getFileName(suffix))) {
-            suffix++;
-        }
-        const fileName = getFileName(suffix);
+        const fileName = getFileName();
         const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
         const filePath = `${tempPath}/${fileName}`;
         fs.writeFileSync(filePath, contents);
-        core.setOutput("file", filePath);
+        const outputFile = core.getInput("output_file");
+        if (outputFile) {
+            fs.copyFileSync(filePath, outputFile);
+        }
         yield uploadArtifact({
             client,
             repo,
@@ -16861,6 +16859,13 @@ function uploadSbomArtifact(contents) {
         });
     });
 }
+function getBooleanInput(name, defaultValue) {
+    const val = lib_core.getInput(name);
+    if (val === "") {
+        return defaultValue;
+    }
+    return Boolean(val);
+}
 function runSyftAction() {
     return SyftGithubAction_awaiter(this, void 0, void 0, function* () {
         try {
@@ -16869,6 +16874,8 @@ function runSyftAction() {
             core.debug(`Running SBOM action: ${start.toTimeString()}`);
             core.debug(`Got github context:`);
             core.debug(JSON.stringify(github.context));
+            const doUpload = getBooleanInput("upload_artifact", true);
+            const outputVariable = core.getInput("output_var");
             const output = yield executeSyft({
                 input: {
                     path: core.getInput("path"),
@@ -16879,14 +16886,18 @@ function runSyftAction() {
             core.debug(`SBOM action completed in: ${(new Date().getMilliseconds() - start.getMilliseconds()) / 1000}s`);
             core.debug(`-------------------------------------------------------------`);
             if (output) {
-                yield uploadSbomArtifact(output);
-                // need to escape multiline strings a specific way:
-                // https://github.community/t/set-output-truncates-multiline-strings/16852/5
-                const content = output
-                    .replace("%", "%25")
-                    .replace("\n", "%0A")
-                    .replace("\r", "%0D");
-                core.setOutput("sbom", content);
+                if (doUpload) {
+                    yield uploadSbomArtifact(output);
+                }
+                if (outputVariable) {
+                    // need to escape multiline strings a specific way:
+                    // https://github.community/t/set-output-truncates-multiline-strings/16852/5
+                    const content = output
+                        .replace("%", "%25")
+                        .replace("\n", "%0A")
+                        .replace("\r", "%0D");
+                    core.setOutput(outputVariable, content);
+                }
             }
             else {
                 core.error(JSON.stringify(output));
@@ -16906,8 +16917,15 @@ function runSyftAction() {
         }
     });
 }
+/**
+ * Attaches the SBOM assets to a release if run in release mode
+ */
 function attachReleaseArtifacts() {
     return SyftGithubAction_awaiter(this, void 0, void 0, function* () {
+        const doRelease = getBooleanInput("upload_release_assets", true);
+        if (!doRelease) {
+            return;
+        }
         try {
             const start = new Date();
             lib_core.debug(`-------------------------------------------------------------`);
@@ -16940,11 +16958,14 @@ function attachReleaseArtifacts() {
                 }
             }
             if (release) {
-                const format = getSbomFormat();
+                // ^sbom.*\\.${format}$`;
+                const sbomArtifactInput = lib_core.getInput("sbom_artifact_match");
+                const sbomArtifactPattern = sbomArtifactInput || `^${getFileName()}$`;
+                const matcher = new RegExp(sbomArtifactPattern);
                 lib_core.info(`Attaching SBOMs to release ${release.tag_name}`);
                 for (const artifact of artifacts) {
                     lib_core.debug(`Found artifact: ${artifact.name}`);
-                    if (new RegExp(`^sbom.*\\.${format}$`).test(artifact.name)) {
+                    if (matcher.test(artifact.name)) {
                         lib_core.info(`Found SBOM artifact: ${artifact.name}`);
                         const file = yield downloadArtifact({
                             client,
