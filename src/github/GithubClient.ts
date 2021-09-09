@@ -43,6 +43,9 @@ export interface GithubClientProp {
 export async function suppressOutput<T>(call: () => Promise<T>): Promise<T> {
   const info = core.info;
   try {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    core.info = core.debug;
     return await call();
   } finally {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

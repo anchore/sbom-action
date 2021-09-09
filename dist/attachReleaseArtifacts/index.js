@@ -16552,6 +16552,9 @@ function GithubClient_suppressOutput(call) {
     return __awaiter(this, void 0, void 0, function* () {
         const info = lib_core.info;
         try {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            lib_core.info = lib_core.debug;
             return yield call();
         }
         finally {
