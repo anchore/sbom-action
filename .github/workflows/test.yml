@@ -24,6 +24,7 @@ jobs:
       - run: npm audit --production
       - run: npm run package
       - run: git status --porcelain
+      - run: git diff --exit-code
 
   test-on-fixture-dirs:
     runs-on: ubuntu-latest
