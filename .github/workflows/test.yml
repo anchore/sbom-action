@@ -84,6 +84,7 @@ jobs:
 
       - run: |
           echo "${{ steps.syft.outputs.cmd }}"
+          "${{ steps.syft.outputs.cmd }}" dir:.
 
       - uses: ./
         id: dirscan
