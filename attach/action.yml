@@ -6,6 +6,12 @@ inputs:
     required: false
     description: "A regex to find SBOM artifacts to attach to a release"
     default: "^sbom-.*\\.spdx$"
+
+  github_token:
+    description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
+    required: false
+    default: ${{ github.token }}
+
 runs:
   using: "node12"
   main: "../dist/attachReleaseArtifacts/index.js"
