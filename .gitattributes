@@ -1,1 +1,2 @@
-dist/** linguist-generated=true
+* text eol=lf
+dist/** -diff linguist-generated=true
