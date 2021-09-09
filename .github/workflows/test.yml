@@ -79,7 +79,7 @@ jobs:
         with:
           path: ./
 
-      - uses: ./downloadSyft
+      - uses: ./download
         id: syft
 
       - run: |
