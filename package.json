@@ -9,7 +9,7 @@
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
-    "package": "ncc build src/runSyftAction.ts -m -o dist/runSyftAction --source-map --license licenses.txt && ncc build src/attachReleaseArtifacts.ts -m -o dist/attachReleaseArtifacts --source-map --license licenses.txt",
+    "package": "ncc build src/runSyftAction.ts -m -o dist/runSyftAction --source-map --license licenses.txt && ncc build src/attachReleaseArtifacts.ts -m -o dist/attachReleaseArtifacts --source-map --license licenses.txt && ncc build src/downloadSyft.ts -m -o dist/downloadSyft --source-map --license licenses.txt",
     "test": "jest",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
     "prepare": "husky install",

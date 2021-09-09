@@ -79,6 +79,12 @@ jobs:
         with:
           path: ./
 
+      - uses: ./downloadSyft
+        id: syft
+
+      - run: |
+          echo "${{ steps.syft.outputs.cmd }}"
+
       - uses: ./
         id: dirscan
         with:

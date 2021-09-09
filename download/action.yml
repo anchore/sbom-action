@@ -1,0 +1,9 @@
+name: "Anchore SBOM Action / Download Syft"
+description: "Downloads Syft to the Action tool cache and provides a reference"
+author: "Anchore"
+outputs:
+  cmd:
+    description: "Syft command  reference"
+runs:
+  using: "node12"
+  main: "../dist/downloadSyft/index.js"

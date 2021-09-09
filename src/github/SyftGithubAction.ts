@@ -123,7 +123,7 @@ export async function downloadSyft(): Promise<string> {
 /**
  * Gets the Syft command to run via exec
  */
-async function getSyftCommand(): Promise<string> {
+export async function getSyftCommand(): Promise<string> {
   const name = SYFT_BINARY_NAME;
   const version = SYFT_VERSION;
 

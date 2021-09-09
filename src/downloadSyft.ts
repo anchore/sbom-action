@@ -1,3 +1,7 @@
-import { downloadSyft } from "./github/SyftGithubAction";
+import * as core from "@actions/core";
+import { getSyftCommand } from "./github/SyftGithubAction";
 
-downloadSyft();
+(async () => {
+  const cmd = await getSyftCommand();
+  core.setOutput("cmd", cmd);
+})();
