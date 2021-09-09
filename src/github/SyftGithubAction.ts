@@ -23,7 +23,7 @@ export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
 
 function getFileName(): string {
-  const fileName = core.getInput("output_file");
+  const fileName = core.getInput("artifact_name");
   if (fileName) {
     return fileName;
   }

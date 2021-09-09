@@ -82,32 +82,21 @@ jobs:
         id: dirscan
         with:
           artifact_name: sbom.spdx
-
+          output_var: sbom
       - run: |
           echo DIR SCAN SBOM:
-          echo "${{ steps.dirscan.outputs.file }}"
-          echo
           echo "${{ steps.dirscan.outputs.sbom }}"
-          echo
-          echo ----------------------------------
-          echo
-          cat "${{ steps.dirscan.outputs.file }}"
 
       - uses: ./
         id: imagescan
         with:
           image: alpine:latest
           artifact_name: sbom.spdx
+          output_file: my.sbom
       - run: |
           echo IMAGE SCAN SBOM:
-          echo "${{ steps.imagescan.outputs.file }}"
-          echo
-          echo "${{ steps.imagescan.outputs.sbom }}"
-          echo
-          echo ----------------------------------
-          echo
-          cat "${{ steps.imagescan.outputs.file }}"
+          cat my.sbom
 
       - uses: ./attach
         with:
-          artifact_name: sbom.spdx
+          sbom_artifact_match: sbom.spdx

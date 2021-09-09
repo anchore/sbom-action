@@ -16706,7 +16706,7 @@ var SyftGithubAction_awaiter = (undefined && undefined.__awaiter) || function (t
 const SYFT_BINARY_NAME = "syft";
 const SYFT_VERSION = "v0.21.0";
 function getFileName() {
-    const fileName = lib_core.getInput("output_file");
+    const fileName = lib_core.getInput("artifact_name");
     if (fileName) {
         return fileName;
     }
