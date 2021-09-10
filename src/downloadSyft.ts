@@ -1,7 +1,10 @@
 import * as core from "@actions/core";
-import { getSyftCommand } from "./github/SyftGithubAction";
+import {
+  getSyftCommand,
+  runAndFailBuildOnException,
+} from "./github/SyftGithubAction";
 
-(async () => {
+runAndFailBuildOnException(async () => {
   const cmd = await getSyftCommand();
   core.setOutput("cmd", cmd);
-})();
+});

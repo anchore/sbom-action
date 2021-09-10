@@ -12,7 +12,7 @@ import * as os from "os";
 import path from "path";
 import stream from "stream";
 import { SyftOptions } from "../Syft";
-import { dashWrap, getClient } from "./GithubClient";
+import { dashWrap, debugLog, getClient } from "./GithubClient";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
@@ -72,48 +72,41 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
 
   args = [...args, "-o", format];
 
-  let error: unknown;
-  try {
-    // Execute in a group so the syft output is collapsed in the GitHub log
-    core.info(`[command]${cmd} ${args.join(" ")}`);
+  // Execute in a group so the syft output is collapsed in the GitHub log
+  core.info(`[command]${cmd} ${args.join(" ")}`);
 
-    // Need to implement this /dev/null writable stream so the entire contents
-    // of the SBOM is not written to the GitHub action log. the listener below
-    // will actually capture the output
-    const outStream = new stream.Writable({
-      write(buffer, encoding, next) {
-        next();
+  // Need to implement this /dev/null writable stream so the entire contents
+  // of the SBOM is not written to the GitHub action log. the listener below
+  // will actually capture the output
+  const outStream = new stream.Writable({
+    write(buffer, encoding, next) {
+      next();
+    },
+  });
+
+  const exitCode = await exec.exec(cmd, args, {
+    env,
+    outStream,
+    listeners: {
+      stdout(buffer) {
+        stdout += buffer.toString();
       },
-    });
-
-    const exitCode = await exec.exec(cmd, args, {
-      env,
-      outStream,
-      listeners: {
-        stdout(buffer) {
-          stdout += buffer.toString();
-        },
-        stderr(buffer) {
-          stderr += buffer.toString();
-        },
-        debug(message) {
-          core.debug(message);
-        },
+      stderr(buffer) {
+        stderr += buffer.toString();
       },
-    });
+      debug(message) {
+        core.debug(message);
+      },
+    },
+  });
 
-    if (exitCode > 0) {
-      error = new Error("An error occurred running Syft");
-    } else {
-      return stdout;
-    }
-  } catch (e) {
-    error = e;
+  if (exitCode > 0) {
+    core.debug(stdout);
+    core.error(stderr);
+    throw new Error("An error occurred running Syft");
+  } else {
+    return stdout;
   }
-
-  core.error(stdout);
-  core.error(stderr);
-  throw error;
 }
 
 /**
@@ -146,17 +139,19 @@ export async function getSyftCommand(): Promise<string> {
   const name = SYFT_BINARY_NAME;
   const version = SYFT_VERSION;
 
-  let syftBinary = cache.find(name, version);
-  if (!syftBinary) {
-    // Not found; download and install it
-    syftBinary = await downloadSyft();
+  let syftPath = cache.find(name, version);
+  if (!syftPath) {
+    // Not found; download and install it; returns a path to the binary
+    syftPath = await downloadSyft();
 
     // Cache the downloaded file
-    syftBinary = await cache.cacheFile(syftBinary, name, name, version);
+    syftPath = await cache.cacheFile(syftPath, name, name, version);
   }
 
+  core.debug(`Got Syft path: ${syftPath} binary at: ${syftPath}/${name}`);
+
   // Add tool to path for this and future actions to use
-  core.addPath(syftBinary);
+  core.addPath(syftPath);
   return name;
 }
 
@@ -186,8 +181,8 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
     fs.copyFileSync(filePath, outputFile);
   }
 
-  core.info(dashWrap(`Uploading workflow artifacts`));
-  core.info(`Artifact: ${filePath}`);
+  core.info(dashWrap("Uploading workflow artifacts"));
+  core.info(filePath);
 
   await client.uploadWorkflowArtifact({
     file: filePath,
@@ -208,183 +203,179 @@ function getBooleanInput(name: string, defaultValue: boolean): boolean {
   return Boolean(val);
 }
 
-export async function runSyftAction(): Promise<void> {
-  try {
-    core.info(dashWrap(`Running SBOM Action`));
+/**
+ * Optionally fetches the target SBOM in order to provide some information
+ * on changes
+ */
+async function comparePullRequestTargetArtifact(): Promise<void> {
+  const doCompare = getBooleanInput("compare_pulls", false);
+  const { eventName, payload, repo } = github.context;
+  if (doCompare && eventName === "pull_request") {
+    const client = getClient(repo, core.getInput("github_token"));
 
-    core.debug(`Got github context:`);
-    core.debug(JSON.stringify(github.context));
-
-    const start = Date.now();
-
-    const doUpload = getBooleanInput("upload_artifact", true);
-    const comparePulls = getBooleanInput("compare_pulls", false);
-    const outputVariable = core.getInput("output_var");
-
-    const output = await executeSyft({
-      input: {
-        path: core.getInput("path"),
-        image: core.getInput("image"),
-      },
-      format: getSbomFormat(),
+    const pr = (payload as PullRequestEvent).pull_request;
+    const branchWorkflow = await client.findLatestWorkflowRunForBranch({
+      branch: pr.base.ref,
     });
 
-    core.info(`SBOM scan completed in: ${(Date.now() - start) / 1000}s`);
+    debugLog("Got branchWorkflow:", branchWorkflow);
 
-    if (output) {
-      const { eventName, payload, repo } = github.context;
-      if (comparePulls && eventName === "pull_request") {
-        const client = getClient(repo, core.getInput("github_token"));
+    if (branchWorkflow) {
+      const baseBranchArtifacts = await client.listWorkflowRunArtifacts({
+        runId: branchWorkflow.id,
+      });
 
-        const pr = (payload as PullRequestEvent).pull_request;
-        const branchWorkflow = await client.findLatestWorkflowRunForBranch({
-          branch: pr.base.ref,
-        });
+      debugLog("Got baseBranchArtifacts:", baseBranchArtifacts);
 
-        core.debug("Got branchWorkflow");
-        core.debug(JSON.stringify(branchWorkflow));
-
-        if (branchWorkflow) {
-          const baseBranchArtifacts = await client.listWorkflowRunArtifacts({
-            runId: branchWorkflow.id,
+      for (const artifact of baseBranchArtifacts) {
+        if (artifact.name === getArtifactName()) {
+          const baseArtifact = await client.downloadWorkflowRunArtifact({
+            artifactId: artifact.id,
           });
 
-          core.debug("Got baseBranchArtifacts");
-          core.debug(JSON.stringify(baseBranchArtifacts));
-
-          for (const artifact of baseBranchArtifacts) {
-            if (artifact.name === getArtifactName()) {
-              const baseArtifact = await client.downloadWorkflowRunArtifact({
-                artifactId: artifact.id,
-              });
-
-              core.info(
-                `Downloaded SBOM from ${pr.base.ref} to ${baseArtifact}`
-              );
-            }
-          }
+          core.info(
+            `Downloaded SBOM from ref '${pr.base.ref}' to ${baseArtifact}`
+          );
         }
       }
+    }
+  }
+}
 
-      const priorArtifact = process.env[PRIOR_ARTIFACT_ENV_VAR];
-      if (priorArtifact) {
-        core.info(`Prior artifact: ${priorArtifact}`);
-      }
+export async function runSyftAction(): Promise<void> {
+  core.info(dashWrap("Running SBOM Action"));
 
-      if (doUpload) {
-        await uploadSbomArtifact(output);
-      }
+  debugLog(`Got github context:`, github.context);
+
+  const start = Date.now();
+
+  const doUpload = getBooleanInput("upload_artifact", true);
+  const outputVariable = core.getInput("output_var");
+
+  const output = await executeSyft({
+    input: {
+      path: core.getInput("path"),
+      image: core.getInput("image"),
+    },
+    format: getSbomFormat(),
+  });
+
+  core.info(`SBOM scan completed in: ${(Date.now() - start) / 1000}s`);
+
+  if (output) {
+    await comparePullRequestTargetArtifact();
+
+    const priorArtifact = process.env[PRIOR_ARTIFACT_ENV_VAR];
+    if (priorArtifact) {
+      core.info(`Prior artifact: ${priorArtifact}`);
+    }
+
+    if (doUpload) {
+      await uploadSbomArtifact(output);
 
       core.exportVariable(PRIOR_ARTIFACT_ENV_VAR, getArtifactName());
+    }
 
-      if (outputVariable) {
-        // need to escape multiline strings a specific way:
-        // https://github.community/t/set-output-truncates-multiline-strings/16852/5
-        const content = output
-          .replace("%", "%25")
-          .replace("\n", "%0A")
-          .replace("\r", "%0D");
-        core.setOutput(outputVariable, content);
-      }
-    } else {
-      core.error(JSON.stringify(output));
+    if (outputVariable) {
+      // need to escape multiline strings a specific way:
+      // https://github.community/t/set-output-truncates-multiline-strings/16852/5
+      const content = output
+        .replace("%", "%25")
+        .replace("\n", "%0A")
+        .replace("\r", "%0D");
+      core.setOutput(outputVariable, content);
     }
-  } catch (e) {
-    if (e instanceof Error) {
-      core.setFailed(e.message);
-    } else if (e instanceof Object) {
-      core.setFailed(JSON.stringify(e));
-    } else {
-      core.setFailed(`An unknown error occurred: ${e}`);
-    }
-    throw e;
+  } else {
+    throw new Error(`No Syft output: ${JSON.stringify(output)}`);
   }
 }
 
 /**
  * Attaches the SBOM assets to a release if run in release mode
  */
-export async function attachReleaseArtifacts(): Promise<void> {
+export async function attachReleaseAssets(): Promise<void> {
   const doRelease = getBooleanInput("upload_release_assets", true);
 
   if (!doRelease) {
     return;
   }
 
-  try {
-    core.debug(dashWrap(`Got github context:`));
-    core.debug(JSON.stringify(github.context));
+  debugLog("Got github context:", github.context);
 
-    const { eventName, ref, payload, repo } = github.context;
-    const client = getClient(repo, core.getInput("github_token"));
+  const { eventName, ref, payload, repo } = github.context;
+  const client = getClient(repo, core.getInput("github_token"));
 
-    let release: Release | undefined = undefined;
+  let release: Release | undefined = undefined;
 
-    // FIXME: what's the right way to detect a release?
-    if (eventName === "release") {
-      release = (payload as ReleaseEvent).release;
-      core.debug(dashWrap("releaseEvent"));
-      core.debug(JSON.stringify(release));
-    } else {
-      const isRefPush = eventName === "push" && /^refs\/tags\/.*/.test(ref);
-      if (isRefPush) {
-        const tag = ref.replace(/^refs\/tags\//, "");
-        release = await client.findRelease({ tag });
-      }
+  // FIXME: what's the right way to detect a release?
+  if (eventName === "release") {
+    release = (payload as ReleaseEvent).release;
+    debugLog("Got releaseEvent:", release);
+  } else {
+    const isRefPush = eventName === "push" && /^refs\/tags\/.*/.test(ref);
+    if (isRefPush) {
+      const tag = ref.replace(/^refs\/tags\//, "");
+      release = await client.findRelease({ tag });
     }
+  }
 
-    if (release) {
-      // ^sbom.*\\.${format}$`;
-      const sbomArtifactInput = core.getInput("sbom_artifact_match");
-      const sbomArtifactPattern = sbomArtifactInput || `^${getArtifactName()}$`;
-      const matcher = new RegExp(sbomArtifactPattern);
+  if (release) {
+    // ^sbom.*\\.${format}$`;
+    const sbomArtifactInput = core.getInput("sbom_artifact_match");
+    const sbomArtifactPattern = sbomArtifactInput || `^${getArtifactName()}$`;
+    const matcher = new RegExp(sbomArtifactPattern);
 
-      const artifacts = await client.listWorkflowArtifacts();
-      const matched = artifacts.filter((a) => {
-        const matches = matcher.test(a.name);
-        if (matches) {
-          core.debug(`Found artifact: ${a.name}`);
-        } else {
-          core.debug(`Artifact: ${a.name} not matching ${sbomArtifactPattern}`);
-        }
-        return matches;
+    const artifacts = await client.listWorkflowArtifacts();
+    const matched = artifacts.filter((a) => {
+      const matches = matcher.test(a.name);
+      if (matches) {
+        core.debug(`Found artifact: ${a.name}`);
+      } else {
+        core.debug(`Artifact: ${a.name} not matching ${sbomArtifactPattern}`);
+      }
+      return matches;
+    });
+
+    core.info(dashWrap(`Attaching SBOMs to release: '${release.tag_name}'`));
+    for (const artifact of matched) {
+      const file = await client.downloadWorkflowArtifact({
+        name: artifact.name,
       });
 
-      core.info(dashWrap(`Attaching SBOMs to release ${release.tag_name}`));
-      for (const artifact of matched) {
-        const file = await client.downloadWorkflowArtifact({
-          name: artifact.name,
+      core.info(file);
+      const contents = fs.readFileSync(file);
+      const fileName = path.basename(file);
+
+      const assets = await client.listReleaseAssets({
+        release,
+      });
+
+      const asset = assets.find((a) => a.name === fileName);
+      if (asset) {
+        await client.deleteReleaseAsset({
+          release,
+          asset,
         });
-
-        core.info(`SBOM: ${file}`);
-        const contents = fs.readFileSync(file);
-        const fileName = path.basename(file);
-
-        try {
-          const assets = await client.listReleaseAssets({
-            release,
-          });
-
-          const asset = assets.find((a) => a.name === fileName);
-          if (asset) {
-            await client.deleteReleaseAsset({
-              release,
-              asset,
-            });
-          }
-
-          await client.uploadReleaseAsset({
-            release,
-            fileName,
-            contents: contents.toString(),
-            contentType: "text/plain",
-          });
-        } catch (e) {
-          core.warning(`Unable to upload asset: ${artifact.name}`);
-          core.warning(`${e}`);
-        }
       }
+
+      await client.uploadReleaseAsset({
+        release,
+        fileName,
+        contents: contents.toString(),
+        contentType: "text/plain",
+      });
     }
+  }
+}
+
+/**
+ * Executes the provided callback and wraps any exceptions in a build failure
+ */
+export async function runAndFailBuildOnException<T>(
+  fn: () => Promise<T>
+): Promise<T | void> {
+  try {
+    return await fn();
   } catch (e) {
     if (e instanceof Error) {
       core.setFailed(e.message);
@@ -393,6 +384,5 @@ export async function attachReleaseArtifacts(): Promise<void> {
     } else {
       core.setFailed(`An unknown error occurred: ${e}`);
     }
-    throw e;
   }
 }

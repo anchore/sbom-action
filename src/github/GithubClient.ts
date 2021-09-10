@@ -66,8 +66,7 @@ export class GithubClient {
     const downloadClient = new DownloadHttpClient();
     const response = await downloadClient.listArtifacts();
 
-    core.debug(dashWrap("listWorkflowArtifacts"));
-    core.debug(JSON.stringify(response));
+    debugLog("listWorkflowArtifacts response:", response);
 
     return response.value;
   }
@@ -83,10 +82,11 @@ export class GithubClient {
       client.downloadArtifact(name, tempPath)
     );
 
-    core.debug(dashWrap("downloadArtifact"));
-    core.debug(`${response.artifactName}  //// ${response.downloadPath}`);
-    core.debug(
-      `Dir contains: ${JSON.stringify(fs.readdirSync(response.downloadPath))}`
+    debugLog(
+      "downloadArtifact response:",
+      response,
+      "dir:",
+      core.isDebug() && fs.readdirSync(response.downloadPath)
     );
 
     return `${response.downloadPath}/${response.artifactName}`;
@@ -107,10 +107,13 @@ export class GithubClient {
     const rootDirectory = path.dirname(file);
     const client = createArtifactClient();
 
-    core.debug(dashWrap("uploadArtifact"));
-    core.debug(`Uploading artifact: ${file}`);
-    core.debug(`Name: ${name} // file: ${file} // dir: ${rootDirectory}`);
-    core.debug(`Dir: ${JSON.stringify(fs.readdirSync(rootDirectory))}`);
+    debugLog(
+      "uploadArtifact:",
+      name,
+      file,
+      rootDirectory,
+      core.isDebug() && fs.readdirSync(rootDirectory)
+    );
 
     const info = await suppressOutput(async () =>
       client.uploadArtifact(name, [file], rootDirectory, {
@@ -118,8 +121,7 @@ export class GithubClient {
       })
     );
 
-    core.debug("uploadArtifact response:");
-    core.debug(JSON.stringify(info));
+    debugLog("uploadArtifact response:", info);
   }
 
   // --------------- COMPLETED WORKFLOW METHODS ------------------
@@ -140,8 +142,7 @@ export class GithubClient {
       page: 1,
     });
 
-    core.debug(dashWrap("listWorkflowRunArtifacts"));
-    core.debug(JSON.stringify(response));
+    debugLog("listWorkflowRunArtifacts response:", response);
 
     if (response.status >= 400) {
       throw new Error("Unable to retrieve listWorkflowRunArtifacts");
@@ -158,7 +159,7 @@ export class GithubClient {
     branch,
   }: {
     branch: string;
-  }): Promise<WorkflowRun> {
+  }): Promise<WorkflowRun | undefined> {
     const response = await this.client.rest.actions.listWorkflowRunsForRepo({
       ...this.repo,
       branch,
@@ -167,8 +168,7 @@ export class GithubClient {
       page: 1,
     });
 
-    core.debug(dashWrap("findLatestWorkflowRunForBranch"));
-    core.debug(JSON.stringify(response));
+    debugLog("findLatestWorkflowRunForBranch response:", response);
 
     if (response.status >= 400) {
       throw new Error("Unable to findLatestWorkflowRunForBranch");
@@ -192,18 +192,15 @@ export class GithubClient {
       archive_format: "zip",
     });
 
-    core.debug("downloadArtifact response:");
-    core.debug(JSON.stringify(response));
+    debugLog("downloadWorkflowRunArtifact response:", response);
 
     const artifactZip = await cache.downloadTool(response.url);
 
-    core.debug("downloadTool response:");
-    core.debug(JSON.stringify(artifactZip));
+    debugLog("downloadTool response:", artifactZip);
 
     const artifactPath = await cache.extractZip(artifactZip);
 
-    core.debug("extractZip response:");
-    core.debug(JSON.stringify(artifactPath));
+    debugLog("extractZip response:", artifactPath);
 
     for (const file of fs.readdirSync(artifactPath)) {
       const filePath = `${artifactPath}/${file}`;
@@ -256,8 +253,7 @@ export class GithubClient {
       throw new Error("Bad response from listReleaseAssets");
     }
 
-    core.debug(dashWrap("listReleaseAssets"));
-    core.debug(JSON.stringify(response));
+    debugLog("listReleaseAssets response:", response);
 
     return response.data.sort((a, b) => a.name.localeCompare(b.name));
   }
@@ -289,8 +285,7 @@ export class GithubClient {
       });
       return response.data as Release;
     } catch (e) {
-      core.debug("Error while fetching release by tag name:");
-      core.debug(JSON.stringify(e));
+      debugLog("Error while fetching release by tag name:", e);
       return undefined;
     }
   }
@@ -365,4 +360,20 @@ export function dashWrap(str: string): string {
     out = out.substr(0, width);
   }
   return out;
+}
+
+/**
+ * Logs all objects passed in debug outputting strings directly and
+ * calling JSON.stringify on other elements
+ */
+export function debugLog(...args: unknown[]): void {
+  if (core.isDebug()) {
+    for (const arg of args) {
+      if (typeof arg === "string") {
+        core.debug(arg);
+      } else {
+        core.debug(JSON.stringify(arg));
+      }
+    }
+  }
 }

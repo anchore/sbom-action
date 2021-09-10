@@ -35,12 +35,10 @@ jobs:
           path: ./
 
       - uses: ./
-        # id: npm-scan
         with:
           path: ./tests/fixtures/npm-project
 
       - uses: ./
-        # id: yarn-scan
         with:
           path: ./tests/fixtures/yarn-project
 

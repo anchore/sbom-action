@@ -1,9 +1,10 @@
 import {
-  attachReleaseArtifacts,
+  attachReleaseAssets,
+  runAndFailBuildOnException,
   runSyftAction,
 } from "./github/SyftGithubAction";
 
-(async () => {
+runAndFailBuildOnException(async () => {
   await runSyftAction();
-  await attachReleaseArtifacts();
-})();
+  await attachReleaseAssets();
+});

@@ -27,10 +27,3 @@ export interface SyftOptions {
   input: SyftDirectoryInput | SyftRegistryInput | SyftImageInput;
   format: "spdx" | "spdx-json" | "cyclonedx" | "table" | "text" | "json";
 }
-
-/**
- * Syft interface, for options and types
- */
-export interface Syft {
-  execute: (options: SyftOptions) => Promise<string>;
-}
