@@ -1,0 +1,108 @@
+name: "build-test"
+on: # rebuild any PRs and main branch changes
+  pull_request:
+    branches: [main]
+  push:
+    branches:
+      - main
+      - "releases/*"
+      - basic-spdx-functionality
+  release:
+    types:
+      - created
+      - edited
+
+      # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build: # make sure build/ci work properly and there is no faked build ncc built scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm audit --production
+      - run: npm run package
+      - run: git status --porcelain
+      - run: git diff
+      - run: git diff --exit-code
+
+  test-on-fixture-dirs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: ./
+
+      - uses: ./
+        with:
+          path: ./tests/fixtures/npm-project
+
+      - uses: ./
+        with:
+          path: ./tests/fixtures/yarn-project
+
+      - uses: ./
+        id: yarn-scan
+        with:
+          path: ./tests/fixtures/yarn-project
+
+      - uses: ./
+        with:
+          path: ./tests/fixtures/yarn-project
+          artifact_name: SBOM.txt
+
+  test:
+    runs-on: ubuntu-latest
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build images
+        run: |
+          for distro in alpine centos debian; do
+            docker build -t localhost:5000/match-coverage/$distro ./tests/fixtures/image-$distro-match-coverage
+            docker push localhost:5000/match-coverage/$distro:latest
+          done
+      - run: npm ci
+      - run: npm test
+
+  test-as-action: # make sure the action works on a clean machine without building
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: ./
+
+      - uses: ./download
+        id: syft
+
+      - run: |
+          echo "${{ steps.syft.outputs.cmd }}"
+          "${{ steps.syft.outputs.cmd }}" dir:.
+
+      - uses: ./
+        id: dirscan
+        with:
+          artifact_name: sbom.spdx
+          output_var: sbom
+      - run: |
+          echo DIR SCAN SBOM:
+          echo "${{ steps.dirscan.outputs.sbom }}"
+
+      - uses: ./
+        id: imagescan
+        with:
+          image: alpine:latest
+          artifact_name: sbom.spdx
+          output_file: my.sbom
+      - run: |
+          echo IMAGE SCAN SBOM:
+          cat my.sbom
+
+      - uses: ./attach
+        with:
+          sbom_artifact_match: sbom.spdx
