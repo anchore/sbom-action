@@ -223,11 +223,11 @@ export class GithubClient {
    */
   async uploadReleaseAsset({
     release,
-    fileName,
+    assetName,
     contents,
     contentType,
   }: ReleaseProps & {
-    fileName: string;
+    assetName: string;
     contents: string;
     contentType?: string;
   }): Promise<void> {
@@ -235,7 +235,7 @@ export class GithubClient {
       ...this.repo,
       release_id: release.id,
       url: release.upload_url,
-      name: fileName,
+      name: assetName,
       data: contents,
       mediaType: contentType ? { format: contentType } : undefined,
     });

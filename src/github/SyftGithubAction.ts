@@ -344,13 +344,13 @@ export async function attachReleaseAssets(): Promise<void> {
 
       core.info(file);
       const contents = fs.readFileSync(file);
-      const fileName = path.basename(file);
+      const assetName = path.basename(file);
 
       const assets = await client.listReleaseAssets({
         release,
       });
 
-      const asset = assets.find((a) => a.name === fileName);
+      const asset = assets.find((a) => a.name === assetName);
       if (asset) {
         await client.deleteReleaseAsset({
           release,
@@ -360,7 +360,7 @@ export async function attachReleaseAssets(): Promise<void> {
 
       await client.uploadReleaseAsset({
         release,
-        fileName,
+        assetName,
         contents: contents.toString(),
         contentType: "text/plain",
       });
