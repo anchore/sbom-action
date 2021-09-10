@@ -33,6 +33,13 @@ export interface Artifact {
 }
 
 /**
+ * Basic workflow run information
+ */
+export interface WorkflowRun {
+  id: number;
+}
+
+/**
  * Provides a basic shim to interact with the necessary Github APIs
  */
 export class GithubClient {
@@ -142,6 +149,33 @@ export class GithubClient {
     }
 
     return response.data.artifacts;
+  }
+
+  /**
+   * Lists the workflow run artifacts for a completed workflow
+   * @param runId the workflow run number
+   */
+  async findLatestWorkflowRunForBranch({
+    branch,
+  }: {
+    branch: string;
+  }): Promise<WorkflowRun> {
+    const response = await this.client.rest.actions.listWorkflowRunsForRepo({
+      ...this.repo,
+      branch,
+      status: "success",
+      per_page: 2,
+      page: 1,
+    });
+
+    core.debug(dashWrap("findLatestWorkflowRunForBranch"));
+    core.debug(JSON.stringify(response));
+
+    if (response.status >= 400) {
+      throw new Error("Unable to retrieve listWorkflowRunArtifacts");
+    }
+
+    return response.data.workflow_runs[0];
   }
 
   // --------------- RELEASE ASSET METHODS ------------------

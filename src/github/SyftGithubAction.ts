@@ -6,7 +6,11 @@ import * as exec from "@actions/exec";
 import * as cache from "@actions/tool-cache";
 import * as core from "@actions/core";
 import * as github from "@actions/github";
-import { Release, ReleaseEvent } from "@octokit/webhooks-types";
+import {
+  PullRequestEvent,
+  Release,
+  ReleaseEvent,
+} from "@octokit/webhooks-types";
 import { SyftOptions } from "../Syft";
 import { dashWrap, getClient } from "./GithubClient";
 
@@ -227,6 +231,28 @@ export async function runSyftAction(): Promise<void> {
     core.debug(`-------------------------------------------------------------`);
 
     if (output) {
+      const { eventName, payload, repo } = github.context;
+      if (eventName === "pull_request") {
+        const client = getClient(repo, core.getInput("github_token"));
+
+        const pr = (payload as PullRequestEvent).pull_request;
+        const branchWorkflow = await client.findLatestWorkflowRunForBranch({
+          branch: pr.base.ref,
+        });
+
+        core.info("Got branchWorkflow");
+        core.info(JSON.stringify(branchWorkflow));
+
+        if (branchWorkflow) {
+          const baseBranchArtifacts = await client.listWorkflowRunArtifacts({
+            runId: branchWorkflow.id,
+          });
+
+          core.info("Got baseBranchArtifacts");
+          core.info(JSON.stringify(baseBranchArtifacts));
+        }
+      }
+
       const priorArtifact = process.env[PRIOR_ARTIFACT_ENV_VAR];
       if (priorArtifact) {
         core.info(`Prior artifact: ${priorArtifact}`);
