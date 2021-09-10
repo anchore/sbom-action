@@ -46,40 +46,28 @@ export class GithubClient {
 
   // --------------- WORKFLOW ARTIFACT METHODS ------------------
 
+  /**
+   * Lists the workflow artifacts for the current workflow
+   */
   async listWorkflowArtifacts(): Promise<Artifact[]> {
     // The REST listWorkflowRunArtifacts endpoint does not seem to work during
     // the workflow run, presumably the are available afterwards much like the
     // Github UI only shows artifacts after completion of a run, so we have
     // to do a little bit of hackery here. We _could_ download all artifacts
     // using a supported API, but internally it's using this anyway
-    const useInternalClient = true;
-    if (useInternalClient) {
-      const downloadClient = new DownloadHttpClient();
-      const response = await downloadClient.listArtifacts();
+    const downloadClient = new DownloadHttpClient();
+    const response = await downloadClient.listArtifacts();
 
-      core.debug(dashWrap("listWorkflowArtifacts"));
-      core.debug(JSON.stringify(response));
-
-      return response.value;
-    }
-
-    const response = await this.client.rest.actions.listWorkflowRunArtifacts({
-      ...this.repo,
-      run_id: github.context.runId,
-      per_page: 100,
-      page: 1,
-    });
-
-    core.debug(dashWrap("listWorkflowRunArtifacts"));
+    core.debug(dashWrap("listWorkflowArtifacts"));
     core.debug(JSON.stringify(response));
 
-    if (response.status >= 400) {
-      throw new Error("Unable to retrieve listWorkflowRunArtifacts");
-    }
-
-    return response.data.artifacts;
+    return response.value;
   }
 
+  /**
+   * Downloads a workflow artifact for the current workflow run
+   * @param name artifact name
+   */
   async downloadWorkflowArtifact({ name }: { name: string }): Promise<string> {
     const client = artifact.create();
     const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
@@ -95,6 +83,12 @@ export class GithubClient {
 
     return `${response.downloadPath}/${response.artifactName}`;
   }
+
+  /**
+   * Uploads a workflow artifact for the current workflow run
+   * @param name name of the artifact
+   * @param file file to upload
+   */
   async uploadWorkflowArtifact({
     name,
     file,
@@ -122,18 +116,51 @@ export class GithubClient {
     core.debug(JSON.stringify(info));
   }
 
+  // --------------- COMPLETED WORKFLOW METHODS ------------------
+
+  /**
+   * Lists the workflow run artifacts for a completed workflow
+   * @param runId the workflow run number
+   */
+  async listWorkflowRunArtifacts({
+    runId,
+  }: {
+    runId: number;
+  }): Promise<Artifact[]> {
+    const response = await this.client.rest.actions.listWorkflowRunArtifacts({
+      ...this.repo,
+      run_id: runId,
+      per_page: 100,
+      page: 1,
+    });
+
+    core.debug(dashWrap("listWorkflowRunArtifacts"));
+    core.debug(JSON.stringify(response));
+
+    if (response.status >= 400) {
+      throw new Error("Unable to retrieve listWorkflowRunArtifacts");
+    }
+
+    return response.data.artifacts;
+  }
+
   // --------------- RELEASE ASSET METHODS ------------------
 
+  /**
+   * Uploads a release asset
+   * @param release release object
+   * @param fileName name of the asset
+   * @param contents contents of the asset
+   * @param contentType content type of the asset
+   */
   async uploadReleaseAsset({
     release,
     fileName,
     contents,
-    label,
     contentType,
   }: ReleaseProps & {
     fileName: string;
     contents: string;
-    label?: string;
     contentType?: string;
   }): Promise<void> {
     await this.client.rest.repos.uploadReleaseAsset({
@@ -142,11 +169,13 @@ export class GithubClient {
       url: release.upload_url,
       name: fileName,
       data: contents,
-      label,
       mediaType: contentType ? { format: contentType } : undefined,
     });
   }
 
+  /**
+   * Lists assets for a release
+   */
   async listReleaseAssets({ release }: ReleaseProps): Promise<ReleaseAsset[]> {
     const response = await this.client.rest.repos.listReleaseAssets({
       ...this.repo,
@@ -162,6 +191,9 @@ export class GithubClient {
     return response.data.sort((a, b) => a.name.localeCompare(b.name));
   }
 
+  /**
+   * Deletes a release asset
+   */
   async deleteReleaseAsset({
     asset,
   }: ReleaseProps & {
@@ -173,7 +205,11 @@ export class GithubClient {
     });
   }
 
-  async getRelease({ tag }: { tag: string }): Promise<Release | undefined> {
+  /**
+   * Finds a release by tag name
+   * @param tag
+   */
+  async findRelease({ tag }: { tag: string }): Promise<Release | undefined> {
     core.debug(`Getting release by tag: ${tag}`);
     try {
       const response = await this.client.rest.repos.getReleaseByTag({
@@ -189,6 +225,11 @@ export class GithubClient {
   }
 }
 
+/**
+ * Returns a GitHubClient
+ * @param repo repository to use
+ * @param githubToken authentication token
+ */
 export function getClient(repo: GithubRepo, githubToken: string): GithubClient {
   // This should be a token with access to your repository scoped in as a secret.
   // The YML workflow will need to set myToken with the GitHub Secret Token
@@ -220,10 +261,6 @@ export function getClient(repo: GithubRepo, githubToken: string): GithubClient {
   });
 
   return new GithubClient(octokit, repo);
-}
-
-export interface GithubClientProp {
-  client: GithubClient;
 }
 
 /**

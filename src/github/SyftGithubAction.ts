@@ -294,7 +294,7 @@ export async function attachReleaseArtifacts(): Promise<void> {
       const isRefPush = eventName === "push" && /^refs\/tags\/.*/.test(ref);
       if (isRefPush) {
         const tag = ref.replace(/^refs\/tags\//, "");
-        release = await client.getRelease({ tag });
+        release = await client.findRelease({ tag });
       }
     }
 
