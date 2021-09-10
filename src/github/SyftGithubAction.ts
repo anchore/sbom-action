@@ -75,7 +75,7 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   // Execute in a group so the syft output is collapsed in the GitHub log
   core.info(`[command]${cmd} ${args.join(" ")}`);
 
-  // Need to implement this /dev/null writable stream so the entire contents
+  // This /dev/null writable stream is required so the entire contents
   // of the SBOM is not written to the GitHub action log. the listener below
   // will actually capture the output
   const outStream = new stream.Writable({
