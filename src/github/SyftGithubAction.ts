@@ -25,15 +25,15 @@ function getArtifactName(): string {
   }
 
   const { job, action } = github.context;
-  const format = getSbomFormat();
   // when run without an id, we get various auto-generated names, like:
   // __self __self_2 __anchore_sbom-action  __anchore_sbom-action_2 etc.
   // so just keep the number at the end if there is one, otherwise
   // this will not match an id unless for some reason it starts with __
-  let stepName = action.replace(/__[_-a-z]+/, "");
+  let stepName = action.replace(/__[-_a-z]+/, "");
   if (stepName) {
     stepName = `-${stepName}`;
   }
+  const format = getSbomFormat();
   return `sbom-${job}${stepName}.${format}`;
 }
 
