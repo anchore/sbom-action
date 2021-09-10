@@ -230,7 +230,6 @@ export async function runSyftAction(): Promise<void> {
     });
 
     core.info(`SBOM scan completed in: ${(Date.now() - start) / 1000}s`);
-    core.debug(`-------------------------------------------------------------`);
 
     if (output) {
       const { eventName, payload, repo } = github.context;
@@ -313,11 +312,7 @@ export async function attachReleaseArtifacts(): Promise<void> {
   }
 
   try {
-    const start = new Date();
-
-    core.debug(`-------------------------------------------------------------`);
-    core.debug(`Running POST SBOM action: ${start.toTimeString()}`);
-    core.debug(`Got github context:`);
+    core.debug(dashWrap(`Got github context:`));
     core.debug(JSON.stringify(github.context));
 
     const { eventName, ref, payload, repo } = github.context;

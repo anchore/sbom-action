@@ -356,5 +356,13 @@ async function suppressOutput<T>(fn: () => Promise<T>): Promise<T> {
  * Wraps a string in dashes
  */
 export function dashWrap(str: string): string {
-  return `---------------------- ${str} ----------------------`;
+  let out = ` ${str} `;
+  const width = 80;
+  while (out.length < width) {
+    out = `-${out}-`;
+  }
+  if (out.length > width) {
+    out = out.substr(0, width);
+  }
+  return out;
 }
