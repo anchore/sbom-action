@@ -35,7 +35,7 @@
     "@actions/tool-cache": "^1.7.1",
     "@octokit/core": "^3.5.1",
     "@octokit/webhooks": "^9.13.0",
-    "@octokit/webhooks-types": "^4.4.0"
+    "@octokit/webhooks-types": "^4.6.0"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
