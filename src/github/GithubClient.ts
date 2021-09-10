@@ -1,12 +1,13 @@
-import fs from "fs";
-import path from "path";
-import os from "os";
-import { GitHub } from "@actions/github/lib/utils";
-import * as github from "@actions/github";
-import * as core from "@actions/core";
-import { Release } from "@octokit/webhooks-types";
+import { create as createArtifactClient } from "@actions/artifact";
 import { DownloadHttpClient } from "@actions/artifact/lib/internal/download-http-client";
-import * as artifact from "@actions/artifact";
+import * as core from "@actions/core";
+import * as github from "@actions/github";
+import { GitHub } from "@actions/github/lib/utils";
+import * as cache from "@actions/tool-cache";
+import { Release } from "@octokit/webhooks-types";
+import fs from "fs";
+import os from "os";
+import path from "path";
 
 export type GithubRepo = { owner: string; repo: string };
 
@@ -76,7 +77,7 @@ export class GithubClient {
    * @param name artifact name
    */
   async downloadWorkflowArtifact({ name }: { name: string }): Promise<string> {
-    const client = artifact.create();
+    const client = createArtifactClient();
     const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
     const response = await suppressOutput(async () =>
       client.downloadArtifact(name, tempPath)
@@ -104,7 +105,7 @@ export class GithubClient {
     file: string;
   }): Promise<void> {
     const rootDirectory = path.dirname(file);
-    const client = artifact.create();
+    const client = createArtifactClient();
 
     core.debug(dashWrap("uploadArtifact"));
     core.debug(`Uploading artifact: ${file}`);
@@ -131,7 +132,7 @@ export class GithubClient {
     runId,
   }: {
     runId: number;
-  }): Promise<Artifact[]> {
+  }): Promise<(Artifact & { id: number })[]> {
     const response = await this.client.rest.actions.listWorkflowRunArtifacts({
       ...this.repo,
       run_id: runId,
@@ -162,7 +163,7 @@ export class GithubClient {
       ...this.repo,
       branch,
       status: "success",
-      per_page: 2,
+      per_page: 100,
       page: 1,
     });
 
@@ -170,10 +171,48 @@ export class GithubClient {
     core.debug(JSON.stringify(response));
 
     if (response.status >= 400) {
-      throw new Error("Unable to retrieve listWorkflowRunArtifacts");
+      throw new Error("Unable to findLatestWorkflowRunForBranch");
     }
 
     return response.data.workflow_runs[0];
+  }
+
+  /**
+   * Downloads the artifact and returns a reference to the file
+   * @param artifactId the artifact id to download
+   */
+  async downloadWorkflowRunArtifact({
+    artifactId,
+  }: {
+    artifactId: number;
+  }): Promise<string> {
+    const response = await this.client.rest.actions.downloadArtifact({
+      ...this.repo,
+      artifact_id: artifactId,
+      archive_format: "zip",
+    });
+
+    core.info("downloadArtifact response:");
+    core.info(JSON.stringify(response));
+
+    const artifactZip = await cache.downloadTool(response.url);
+
+    core.info("downloadTool response:");
+    core.info(JSON.stringify(artifactZip));
+
+    const artifactPath = await cache.extractZip(artifactZip);
+
+    core.info("extractZip response:");
+    core.info(JSON.stringify(artifactPath));
+
+    for (const file of fs.readdirSync(artifactPath)) {
+      const filePath = `${artifactPath}/${file}`;
+      if (fs.existsSync(filePath)) {
+        return filePath;
+      }
+    }
+
+    return "";
   }
 
   // --------------- RELEASE ASSET METHODS ------------------

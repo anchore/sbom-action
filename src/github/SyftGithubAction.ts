@@ -1,16 +1,16 @@
-import * as fs from "fs";
-import * as os from "os";
-import path from "path";
-import stream from "stream";
-import * as exec from "@actions/exec";
-import * as cache from "@actions/tool-cache";
 import * as core from "@actions/core";
+import * as exec from "@actions/exec";
 import * as github from "@actions/github";
+import * as cache from "@actions/tool-cache";
 import {
   PullRequestEvent,
   Release,
   ReleaseEvent,
 } from "@octokit/webhooks-types";
+import * as fs from "fs";
+import * as os from "os";
+import path from "path";
+import stream from "stream";
 import { SyftOptions } from "../Syft";
 import { dashWrap, getClient } from "./GithubClient";
 
@@ -218,6 +218,7 @@ export async function runSyftAction(): Promise<void> {
     const start = Date.now();
 
     const doUpload = getBooleanInput("upload_artifact", true);
+    const comparePulls = getBooleanInput("compare_pulls", true);
     const outputVariable = core.getInput("output_var");
 
     const output = await executeSyft({
@@ -233,7 +234,7 @@ export async function runSyftAction(): Promise<void> {
 
     if (output) {
       const { eventName, payload, repo } = github.context;
-      if (eventName === "pull_request") {
+      if (comparePulls && eventName === "pull_request") {
         const client = getClient(repo, core.getInput("github_token"));
 
         const pr = (payload as PullRequestEvent).pull_request;
@@ -241,16 +242,27 @@ export async function runSyftAction(): Promise<void> {
           branch: pr.base.ref,
         });
 
-        core.info("Got branchWorkflow");
-        core.info(JSON.stringify(branchWorkflow));
+        core.debug("Got branchWorkflow");
+        core.debug(JSON.stringify(branchWorkflow));
 
         if (branchWorkflow) {
           const baseBranchArtifacts = await client.listWorkflowRunArtifacts({
             runId: branchWorkflow.id,
           });
 
-          core.info("Got baseBranchArtifacts");
-          core.info(JSON.stringify(baseBranchArtifacts));
+          core.debug("Got baseBranchArtifacts");
+          core.debug(JSON.stringify(baseBranchArtifacts));
+
+          for (const artifact of baseBranchArtifacts) {
+            if (artifact.name === getArtifactName()) {
+              const baseArtifact = await client.downloadWorkflowRunArtifact({
+                artifactId: artifact.id,
+              });
+
+              core.info(`Downloaded baseArtifact to ${baseArtifact}`);
+              core.info(`.. with contents: ${fs.readFileSync(baseArtifact)}`);
+            }
+          }
         }
       }
 
