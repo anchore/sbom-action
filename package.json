@@ -25,7 +25,7 @@
     "node",
     "setup"
   ],
-  "author": "",
+  "author": "Keith Zantow <kzantow@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@actions/artifact": "^0.5.2",
