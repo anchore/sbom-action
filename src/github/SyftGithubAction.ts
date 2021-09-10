@@ -68,36 +68,30 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
 
   args = [...args, "-o", format];
 
-  const outStream = new stream.Writable({
-    write(buffer, encoding, next) {
-      stdout += buffer.toString();
-      next();
-    },
-  });
-
-  const errStream = new stream.Writable({
-    write(buffer, encoding, next) {
-      stderr += buffer.toString();
-      next();
-    },
-  });
-
   let error: unknown;
   try {
     // Execute in a group so the syft output is collapsed in the GitHub log
     core.info(`Executing: ${cmd} ${args.join(" ")}`);
     const exitCode = await core.group("Syft Output", async () => {
+      // Need to implement this /dev/null writable stream so the entire contents
+      // of the SBOM is not written to the GitHub action log. the listener below
+      // will actually capture the output
+      const outStream = new stream.Writable({
+        write(buffer, encoding, next) {
+          next();
+        },
+      });
+
       return exec.exec(cmd, args, {
         env,
         outStream,
-        errStream,
         listeners: {
-          // stdout(buffer) {
-          //   stdout += buffer.toString();
-          // },
-          // stderr(buffer) {
-          //   stderr += buffer.toString();
-          // },
+          stdout(buffer) {
+            stdout += buffer.toString();
+          },
+          stderr(buffer) {
+            stderr += buffer.toString();
+          },
           debug(message) {
             core.debug(message);
           },
@@ -108,9 +102,6 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
     if (exitCode > 0) {
       error = new Error("An error occurred running Syft");
     } else {
-      core.debug("Syft stderr:");
-      core.debug(stderr);
-
       return stdout;
     }
   } catch (e) {
@@ -237,7 +228,10 @@ export async function runSyftAction(): Promise<void> {
     core.debug(`-------------------------------------------------------------`);
 
     if (output) {
-      core.info(`Prior artifact: ${process.env[PRIOR_ARTIFACT_ENV_VAR]}`);
+      const priorArtifact = process.env[PRIOR_ARTIFACT_ENV_VAR];
+      if (priorArtifact) {
+        core.info(`Prior artifact: ${priorArtifact}`);
+      }
 
       if (doUpload) {
         await uploadSbomArtifact(output);
