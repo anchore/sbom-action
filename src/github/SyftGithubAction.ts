@@ -72,31 +72,30 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   try {
     // Execute in a group so the syft output is collapsed in the GitHub log
     core.info(`Executing: ${cmd} ${args.join(" ")}`);
-    const exitCode = await core.group("Syft Output", async () => {
-      // Need to implement this /dev/null writable stream so the entire contents
-      // of the SBOM is not written to the GitHub action log. the listener below
-      // will actually capture the output
-      const outStream = new stream.Writable({
-        write(buffer, encoding, next) {
-          next();
-        },
-      });
 
-      return exec.exec(cmd, args, {
-        env,
-        outStream,
-        listeners: {
-          stdout(buffer) {
-            stdout += buffer.toString();
-          },
-          stderr(buffer) {
-            stderr += buffer.toString();
-          },
-          debug(message) {
-            core.debug(message);
-          },
+    // Need to implement this /dev/null writable stream so the entire contents
+    // of the SBOM is not written to the GitHub action log. the listener below
+    // will actually capture the output
+    const outStream = new stream.Writable({
+      write(buffer, encoding, next) {
+        next();
+      },
+    });
+
+    const exitCode = await exec.exec(cmd, args, {
+      env,
+      outStream,
+      listeners: {
+        stdout(buffer) {
+          stdout += buffer.toString();
         },
-      });
+        stderr(buffer) {
+          stderr += buffer.toString();
+        },
+        debug(message) {
+          core.debug(message);
+        },
+      },
     });
 
     if (exitCode > 0) {
