@@ -46,8 +46,8 @@ function getArtifactName(): string {
  * @param format syft output format
  */
 async function executeSyft({ input, format }: SyftOptions): Promise<string> {
-  let outStream = "";
-  let errStream = "";
+  let stdout = "";
+  let stderr = "";
 
   const cmd = await getSyftCommand();
 
@@ -68,7 +68,19 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
 
   args = [...args, "-o", format];
 
-  const out = new stream.Writable();
+  const outStream = new stream.Writable({
+    write(buffer, encoding, next) {
+      stdout += buffer.toString();
+      next();
+    },
+  });
+
+  const errStream = new stream.Writable({
+    write(buffer, encoding, next) {
+      stderr += buffer.toString();
+      next();
+    },
+  });
 
   let error: unknown;
   try {
@@ -77,14 +89,15 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
     const exitCode = await core.group("Syft Output", async () => {
       return exec.exec(cmd, args, {
         env,
-        outStream: out,
+        outStream,
+        errStream,
         listeners: {
-          stdout(buffer) {
-            outStream += buffer.toString();
-          },
-          stderr(buffer) {
-            errStream += buffer.toString();
-          },
+          // stdout(buffer) {
+          //   stdout += buffer.toString();
+          // },
+          // stderr(buffer) {
+          //   stderr += buffer.toString();
+          // },
           debug(message) {
             core.debug(message);
           },
@@ -96,16 +109,16 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
       error = new Error("An error occurred running Syft");
     } else {
       core.debug("Syft stderr:");
-      core.debug(errStream);
+      core.debug(stderr);
 
-      return outStream;
+      return stdout;
     }
   } catch (e) {
     error = e;
   }
 
-  core.error(outStream);
-  core.error(errStream);
+  core.error(stdout);
+  core.error(stderr);
   throw error;
 }
 
