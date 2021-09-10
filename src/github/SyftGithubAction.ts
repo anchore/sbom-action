@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as os from "os";
 import path from "path";
+import stream from "stream";
 import * as exec from "@actions/exec";
 import * as cache from "@actions/tool-cache";
 import * as core from "@actions/core";
@@ -67,13 +68,16 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
 
   args = [...args, "-o", format];
 
+  const out = new stream.Writable();
+
   let error: unknown;
   try {
     // Execute in a group so the syft output is collapsed in the GitHub log
+    core.info(`Executing: ${cmd} ${args.join(" ")}`);
     const exitCode = await core.group("Syft Output", async () => {
-      core.info(`Executing: ${cmd} ${args.join(" ")}`);
       return exec.exec(cmd, args, {
         env,
+        outStream: out,
         listeners: {
           stdout(buffer) {
             outStream += buffer.toString();
