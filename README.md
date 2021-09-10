@@ -36,7 +36,7 @@ Use the `path` parameter, relative to the repository root
     path: ./build/
 ```
 
-### Attach a combined SBOM
+### Attach SBOMs to a release explicitly
 
 The action will detect being run in a `release` and
 automatically upload all SBOMs as release assets. However,
@@ -45,7 +45,7 @@ outside of this action. To do this, specify a regular expression using
 the `sbom_artifact_match` pararmeter, for example:
 
 ```yaml
-- uses: anchore/sbom-action@v1
+- uses: anchore/sbom-action/attach@v1
   sbom_artifact_match: "*.sbom"
 ```
 
