@@ -26,4 +26,3 @@ inputs:
 runs:
   using: "node12"
   main: "dist/runSyftAction/index.js"
-  post: "dist/attachReleaseArtifacts/index.js"

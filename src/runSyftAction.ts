@@ -1,3 +1,7 @@
-import { runSyftAction } from "./github/SyftGithubAction";
+import {
+  attachReleaseArtifacts,
+  runSyftAction,
+} from "./github/SyftGithubAction";
 
 runSyftAction();
+attachReleaseArtifacts();
