@@ -3,5 +3,7 @@ import {
   runSyftAction,
 } from "./github/SyftGithubAction";
 
-runSyftAction();
-attachReleaseArtifacts();
+(async () => {
+  await runSyftAction();
+  await attachReleaseArtifacts();
+})();
