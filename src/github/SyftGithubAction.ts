@@ -17,17 +17,22 @@ export const SYFT_VERSION = "v0.21.0";
  */
 function getArtifactName(): string {
   const fileName = core.getInput("artifact_name");
+
+  // if there is an explicit filename just return it, this could cause issues
+  // where earlier sboms are overwritten by later ones
   if (fileName) {
     return fileName;
   }
 
   const { job, action } = github.context;
   const format = getSbomFormat();
-  let stepName = `-${action}`;
-  if (!action || action === "__self") {
-    stepName = "";
-  } else if (action.startsWith("__self_")) {
-    stepName = `-${action.substr("__self_".length)}`;
+  // when run without an id, we get various auto-generated names, like:
+  // __self __self_2 __anchore_sbom-action  __anchore_sbom-action_2 etc.
+  // so just keep the number at the end if there is one, otherwise
+  // this will not match an id unless for some reason it starts with __
+  let stepName = action.replace(/__[_-a-z]+/, "");
+  if (stepName) {
+    stepName = `-${stepName}`;
   }
   return `sbom-${job}${stepName}.${format}`;
 }
@@ -62,6 +67,7 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
 
   let error: unknown;
   try {
+    // Execute in a group so the syft output is collapsed in the GitHub log
     const exitCode = await core.group("Syft Output", async () => {
       core.info(`Executing: ${cmd} ${args.join(" ")}`);
       return exec.exec(cmd, args, {
