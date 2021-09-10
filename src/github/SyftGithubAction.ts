@@ -222,6 +222,11 @@ export async function runSyftAction(): Promise<void> {
         await uploadSbomArtifact(output);
       }
 
+      const VAR_NAME = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
+      core.info(`process.env.${VAR_NAME}: ${process.env[VAR_NAME]}`);
+      core.info(`prior_artifact: ${core.getInput("prior_artifact")}`);
+      core.exportVariable(VAR_NAME, getArtifactName());
+
       if (outputVariable) {
         // need to escape multiline strings a specific way:
         // https://github.community/t/set-output-truncates-multiline-strings/16852/5
