@@ -75,7 +75,7 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   let error: unknown;
   try {
     // Execute in a group so the syft output is collapsed in the GitHub log
-    core.info(`Executing: ${cmd} ${args.join(" ")}`);
+    core.info(`[command]${cmd} ${args.join(" ")}`);
 
     // Need to implement this /dev/null writable stream so the entire contents
     // of the SBOM is not written to the GitHub action log. the listener below
@@ -186,6 +186,9 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
     fs.copyFileSync(filePath, outputFile);
   }
 
+  core.info(dashWrap(`Uploading workflow artifacts`));
+  core.info(`Artifact: ${filePath}`);
+
   await client.uploadWorkflowArtifact({
     file: filePath,
     name: fileName,
@@ -207,11 +210,12 @@ function getBooleanInput(name: string, defaultValue: boolean): boolean {
 
 export async function runSyftAction(): Promise<void> {
   try {
-    const start = new Date();
-    core.debug(`-------------------------------------------------------------`);
-    core.debug(`Running SBOM action: ${start.toTimeString()}`);
+    core.info(dashWrap(`Running SBOM Action`));
+
     core.debug(`Got github context:`);
     core.debug(JSON.stringify(github.context));
+
+    const start = Date.now();
 
     const doUpload = getBooleanInput("upload_artifact", true);
     const outputVariable = core.getInput("output_var");
@@ -223,11 +227,8 @@ export async function runSyftAction(): Promise<void> {
       },
       format: getSbomFormat(),
     });
-    core.debug(
-      `SBOM action completed in: ${
-        (new Date().getMilliseconds() - start.getMilliseconds()) / 1000
-      }s`
-    );
+
+    core.info(`SBOM scan completed in: ${(Date.now() - start) / 1000}s`);
     core.debug(`-------------------------------------------------------------`);
 
     if (output) {
@@ -347,7 +348,7 @@ export async function attachReleaseArtifacts(): Promise<void> {
           name: artifact.name,
         });
 
-        core.debug(`Got SBOM file: ${JSON.stringify(file)}`);
+        core.info(`SBOM: ${file}`);
         const contents = fs.readFileSync(file);
         const fileName = path.basename(file);
 

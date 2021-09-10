@@ -105,14 +105,12 @@ export class GithubClient {
   }): Promise<void> {
     const rootDirectory = path.dirname(file);
     const client = artifact.create();
-    core.info(`Uploading artifact: ${file}`);
 
     core.debug(dashWrap("uploadArtifact"));
-    core.debug(`${name} //// ${file}  //// ${rootDirectory}`);
+    core.debug(`Uploading artifact: ${file}`);
+    core.debug(`Name: ${name} // file: ${file} // dir: ${rootDirectory}`);
+    core.debug(`Dir: ${JSON.stringify(fs.readdirSync(rootDirectory))}`);
 
-    core.debug(
-      `Dir contains: ${JSON.stringify(fs.readdirSync(rootDirectory))}`
-    );
     const info = await suppressOutput(async () =>
       client.uploadArtifact(name, [file], rootDirectory, {
         continueOnError: false,
