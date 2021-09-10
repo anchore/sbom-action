@@ -224,7 +224,6 @@ export async function runSyftAction(): Promise<void> {
 
       const VAR_NAME = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
       core.info(`process.env.${VAR_NAME}: ${process.env[VAR_NAME]}`);
-      core.info(`prior_artifact: ${core.getInput("prior_artifact")}`);
       core.exportVariable(VAR_NAME, getArtifactName());
 
       if (outputVariable) {
