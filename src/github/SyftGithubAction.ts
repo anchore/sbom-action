@@ -12,6 +12,8 @@ import { dashWrap, getClient } from "./GithubClient";
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
 
+const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
+
 /**
  * Tries to get a unique artifact name or otherwise as appropriate as possible
  */
@@ -218,13 +220,13 @@ export async function runSyftAction(): Promise<void> {
     core.debug(`-------------------------------------------------------------`);
 
     if (output) {
+      core.info(`Prior artifact: ${process.env[PRIOR_ARTIFACT_ENV_VAR]}`);
+
       if (doUpload) {
         await uploadSbomArtifact(output);
       }
 
-      const VAR_NAME = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
-      core.info(`process.env.${VAR_NAME}: ${process.env[VAR_NAME]}`);
-      core.exportVariable(VAR_NAME, getArtifactName());
+      core.exportVariable(PRIOR_ARTIFACT_ENV_VAR, getArtifactName());
 
       if (outputVariable) {
         // need to escape multiline strings a specific way:
