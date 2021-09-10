@@ -265,9 +265,11 @@ export async function runSyftAction(): Promise<void> {
   if (output) {
     await comparePullRequestTargetArtifact();
 
+    // We may want to develop a supply chain during the build, this is one
+    // potential way to do so:
     const priorArtifact = process.env[PRIOR_ARTIFACT_ENV_VAR];
     if (priorArtifact) {
-      core.info(`Prior artifact: ${priorArtifact}`);
+      core.debug(`Prior artifact: ${priorArtifact}`);
     }
 
     if (doUpload) {
