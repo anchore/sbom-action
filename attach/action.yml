@@ -14,4 +14,4 @@ inputs:
 
 runs:
   using: "node12"
-  main: "../dist/attachReleaseArtifacts/index.js"
+  main: "../dist/attachReleaseAssets/index.js"
