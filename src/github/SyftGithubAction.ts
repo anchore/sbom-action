@@ -218,7 +218,7 @@ export async function runSyftAction(): Promise<void> {
     const start = Date.now();
 
     const doUpload = getBooleanInput("upload_artifact", true);
-    const comparePulls = getBooleanInput("compare_pulls", true);
+    const comparePulls = getBooleanInput("compare_pulls", false);
     const outputVariable = core.getInput("output_var");
 
     const output = await executeSyft({
@@ -259,8 +259,9 @@ export async function runSyftAction(): Promise<void> {
                 artifactId: artifact.id,
               });
 
-              core.info(`Downloaded baseArtifact to ${baseArtifact}`);
-              core.info(`.. with contents: ${fs.readFileSync(baseArtifact)}`);
+              core.info(
+                `Downloaded SBOM from ${pr.base.ref} to ${baseArtifact}`
+              );
             }
           }
         }

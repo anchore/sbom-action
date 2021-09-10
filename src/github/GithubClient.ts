@@ -192,18 +192,18 @@ export class GithubClient {
       archive_format: "zip",
     });
 
-    core.info("downloadArtifact response:");
-    core.info(JSON.stringify(response));
+    core.debug("downloadArtifact response:");
+    core.debug(JSON.stringify(response));
 
     const artifactZip = await cache.downloadTool(response.url);
 
-    core.info("downloadTool response:");
-    core.info(JSON.stringify(artifactZip));
+    core.debug("downloadTool response:");
+    core.debug(JSON.stringify(artifactZip));
 
     const artifactPath = await cache.extractZip(artifactZip);
 
-    core.info("extractZip response:");
-    core.info(JSON.stringify(artifactPath));
+    core.debug("extractZip response:");
+    core.debug(JSON.stringify(artifactPath));
 
     for (const file of fs.readdirSync(artifactPath)) {
       const filePath = `${artifactPath}/${file}`;
