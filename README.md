@@ -102,20 +102,20 @@ No input parameters.
 
 Output parameters:
 
-| Parameter | Description                    |
-| --------- | ------------------------------ |
-| `cmd`     | a reference to the Syft binary |
+| Parameter | Description                     |
+| --------- | ------------------------------- |
+| `cmd`     | a reference to the Syft binary. |
 
 `cmd` can be referenced in a workflow like other output parameters:
 `${{ steps.<step-id>.outputs.cmd }}`
 
 ### anchore/sbom-action/attach
 
-A sub-action to [attach multiple SBOMs](attach/action.yml) to workflows and releases.
+A sub-action to [attach multiple SBOMs](attach/action.yml) to releases.
 
-| Parameter             | Description                      | Default            |
-| --------------------- | -------------------------------- | ------------------ |
-| `sbom-artifact-match` | A pattern to find SBOM artifacts | `^sbom-.*\\.spdx$` |
+| Parameter             | Description                       | Default            |
+| --------------------- | --------------------------------- | ------------------ |
+| `sbom-artifact-match` | A pattern to find SBOM artifacts. | `^sbom-.*\\.spdx$` |
 
 ## Diagnostics
 
