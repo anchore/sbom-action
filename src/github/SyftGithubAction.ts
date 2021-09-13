@@ -23,7 +23,7 @@ const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
  * Tries to get a unique artifact name or otherwise as appropriate as possible
  */
 function getArtifactName(): string {
-  const fileName = core.getInput("artifact_name");
+  const fileName = core.getInput("artifact-name");
 
   // if there is an explicit filename just return it, this could cause issues
   // where earlier sboms are overwritten by later ones
@@ -168,7 +168,7 @@ export function getSbomFormat(): SyftOptions["format"] {
  */
 export async function uploadSbomArtifact(contents: string): Promise<void> {
   const { repo } = github.context;
-  const client = getClient(repo, core.getInput("github_token"));
+  const client = getClient(repo, core.getInput("github-token"));
 
   const fileName = getArtifactName();
 
@@ -211,7 +211,7 @@ async function comparePullRequestTargetArtifact(): Promise<void> {
   const doCompare = getBooleanInput("compare_pulls", false);
   const { eventName, payload, repo } = github.context;
   if (doCompare && eventName === "pull_request") {
-    const client = getClient(repo, core.getInput("github_token"));
+    const client = getClient(repo, core.getInput("github-token"));
 
     const pr = (payload as PullRequestEvent).pull_request;
     const branchWorkflow = await client.findLatestWorkflowRunForBranch({
@@ -305,7 +305,7 @@ export async function attachReleaseAssets(): Promise<void> {
   debugLog("Got github context:", github.context);
 
   const { eventName, ref, payload, repo } = github.context;
-  const client = getClient(repo, core.getInput("github_token"));
+  const client = getClient(repo, core.getInput("github-token"));
 
   let release: Release | undefined = undefined;
 
@@ -323,7 +323,7 @@ export async function attachReleaseAssets(): Promise<void> {
 
   if (release) {
     // ^sbom.*\\.${format}$`;
-    const sbomArtifactInput = core.getInput("sbom_artifact_match");
+    const sbomArtifactInput = core.getInput("sbom-artifact-match");
     const sbomArtifactPattern = sbomArtifactInput || `^${getArtifactName()}$`;
     const matcher = new RegExp(sbomArtifactPattern);
 
