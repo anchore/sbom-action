@@ -6,7 +6,7 @@ using [Syft](https://github.com/anchore/syft).
 ## Basic Usage
 
 ```yaml
-- uses: anchore/sbom-action@v1
+- uses: anchore/sbom-action@main
 ```
 
 By default, this action will execute a Syft scan in the workspace directory
@@ -21,7 +21,7 @@ as a release asset.
 Use the `image` parameter
 
 ```yaml
-- uses: anchore/sbom-action@v1
+- uses: anchore/sbom-action@main
   with:
     image: example/image_name
 ```
@@ -31,7 +31,7 @@ Use the `image` parameter
 Use the `path` parameter, relative to the repository root
 
 ```yaml
-- uses: anchore/sbom-action@v1
+- uses: anchore/sbom-action@main
   with:
     path: ./build/
 ```
@@ -45,7 +45,7 @@ outside of this action. To do this, specify a regular expression using
 the `sbom-artifact-match` pararmeter, for example:
 
 ```yaml
-- uses: anchore/sbom-action/attach@v1
+- uses: anchore/sbom-action/attach@main
   sbom-artifact-match: "*.sbom"
 ```
 
@@ -58,9 +58,9 @@ example:
 ```yaml
 build:
   steps:
-    - uses: anchore/sbom-action@v1
-    - uses: anchore/sbom-action@v1
-    - uses: anchore/sbom-action@v1
+    - uses: anchore/sbom-action@main
+    - uses: anchore/sbom-action@main
+    - uses: anchore/sbom-action@main
       id: myid
 ```
 
@@ -76,7 +76,7 @@ You may need to name these artifacts differently, simply
 use the `artifact_name` parameter:
 
 ```yaml
-- uses: anchore/sbom-action@v1
+- uses: anchore/sbom-action@main
   with:
     artifact_name: sbom.spdx
 ```
