@@ -2,12 +2,12 @@ name: "Anchore SBOM Action / Attach SBOM to Release"
 description: "Creates an SBOM (Software Bill Of Materials) from your code and container images"
 author: "Anchore"
 inputs:
-  sbom_artifact_match:
+  sbom-artifact-match:
     required: false
     description: "A regex to find SBOM artifacts to attach to a release"
     default: "^sbom-.*\\.spdx$"
 
-  github_token:
+  github-token:
     description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
     required: false
     default: ${{ github.token }}

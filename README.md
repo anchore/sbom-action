@@ -42,11 +42,11 @@ The action will detect being run in a `release` and
 automatically upload all SBOMs as release assets. However,
 it may be desirable to upload SBOMs generated with other tools or using Syft
 outside of this action. To do this, specify a regular expression using
-the `sbom_artifact_match` pararmeter, for example:
+the `sbom-artifact-match` pararmeter, for example:
 
 ```yaml
 - uses: anchore/sbom-action/attach@v1
-  sbom_artifact_match: "*.sbom"
+  sbom-artifact-match: "*.sbom"
 ```
 
 ### Naming the SBOM output

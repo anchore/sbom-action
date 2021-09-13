@@ -105,4 +105,4 @@ jobs:
 
       - uses: ./attach
         with:
-          sbom_artifact_match: sbom.spdx
+          sbom-artifact-match: sbom.spdx
