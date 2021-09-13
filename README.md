@@ -46,7 +46,7 @@ the `sbom-artifact-match` pararmeter, for example:
 
 ```yaml
 - uses: anchore/sbom-action/attach@main
-  sbom-artifact-match: "*.sbom"
+  sbom-artifact-match: "*.spdx"
 ```
 
 ### Naming the SBOM output
@@ -73,15 +73,51 @@ sbom-build-myid.spdx
 ```
 
 You may need to name these artifacts differently, simply
-use the `artifact_name` parameter:
+use the `artifact-name` parameter:
 
 ```yaml
 - uses: anchore/sbom-action@main
   with:
-    artifact_name: sbom.spdx
+    artifact-name: sbom.spdx
 ```
 
-### Diagnostics
+## Configuration
+
+### anchore/sbom-action
+
+The main [SBOM action](action.yml), responsible for generating SBOMs
+and attaching them to your wofklow and releases.
+
+| Parameter       | Description                                                              | Default                       |
+| --------------- | ------------------------------------------------------------------------ | ----------------------------- |
+| `path`          | A path on the filesystem to scan. This is mutually exclusive to `image`. | \<current directory>          |
+| `image`         | A container image to scan. This is mutually exclusive to `path`.         |
+| `artifact-name` | The name to use for the generated SBOM artifact                          | `sbom-\<job>-\<step-id>.spdx` |
+
+### anchore/sbom-action/download
+
+A sub-action to [download Syft](download/action.yml).
+
+No input parameters.
+
+Output parameters:
+
+| Parameter | Description                    |
+| --------- | ------------------------------ |
+| `cmd`     | a reference to the Syft binary |
+
+`cmd` can be referenced in a workflow like other output parameters:
+`${{ steps.<step-id>.outputs.cmd }}`
+
+### anchore/sbom-action/attach
+
+A sub-action to [attach multiple SBOMs](attach/action.yml) to workflows and releases.
+
+| Parameter             | Description                      | Default            |
+| --------------------- | -------------------------------- | ------------------ |
+| `sbom-artifact-match` | A pattern to find SBOM artifacts | `^sbom-.*\\.spdx$` |
+
+## Diagnostics
 
 This action makes extensive use of GitHub Action debug logging,
 which can be enabled as [described here](https://github.com/actions/toolkit/blob/master/docs/action-debugging.md)
