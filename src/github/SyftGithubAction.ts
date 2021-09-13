@@ -176,7 +176,7 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
   const filePath = `${tempPath}/${fileName}`;
   fs.writeFileSync(filePath, contents);
 
-  const outputFile = core.getInput("output_file");
+  const outputFile = core.getInput("output-file");
   if (outputFile) {
     fs.copyFileSync(filePath, outputFile);
   }
@@ -208,7 +208,7 @@ function getBooleanInput(name: string, defaultValue: boolean): boolean {
  * on changes
  */
 async function comparePullRequestTargetArtifact(): Promise<void> {
-  const doCompare = getBooleanInput("compare_pulls", false);
+  const doCompare = getBooleanInput("compare-pulls", false);
   const { eventName, payload, repo } = github.context;
   if (doCompare && eventName === "pull_request") {
     const client = getClient(repo, core.getInput("github-token"));
@@ -249,8 +249,8 @@ export async function runSyftAction(): Promise<void> {
 
   const start = Date.now();
 
-  const doUpload = getBooleanInput("upload_artifact", true);
-  const outputVariable = core.getInput("output_var");
+  const doUpload = getBooleanInput("upload-artifact", true);
+  const outputVariable = core.getInput("output-var");
 
   const output = await executeSyft({
     input: {
@@ -296,7 +296,7 @@ export async function runSyftAction(): Promise<void> {
  * Attaches the SBOM assets to a release if run in release mode
  */
 export async function attachReleaseAssets(): Promise<void> {
-  const doRelease = getBooleanInput("upload_release_assets", true);
+  const doRelease = getBooleanInput("upload-release-assets", true);
 
   if (!doRelease) {
     return;
