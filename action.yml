@@ -12,10 +12,6 @@ inputs:
     required: false
     description: "A container image to scan"
 
-  registry:
-    required: false
-    description: "A registry to pull images from"
-
   github-token:
     description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
     required: false
