@@ -159,7 +159,7 @@ export async function getSyftCommand(): Promise<string> {
  * Returns the SBOM format as specified by the user, defaults to SPDX
  */
 export function getSbomFormat(): SyftOptions["format"] {
-  return (core.getInput("format") as SyftOptions["format"]) || "spdx";
+  return (core.getInput("format") as SyftOptions["format"]) || "spdx-json";
 }
 
 /**
