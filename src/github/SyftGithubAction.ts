@@ -250,7 +250,6 @@ export async function runSyftAction(): Promise<void> {
   const start = Date.now();
 
   const doUpload = getBooleanInput("upload-artifact", true);
-  const outputVariable = core.getInput("output-var");
 
   const output = await executeSyft({
     input: {
@@ -276,16 +275,6 @@ export async function runSyftAction(): Promise<void> {
       await uploadSbomArtifact(output);
 
       core.exportVariable(PRIOR_ARTIFACT_ENV_VAR, getArtifactName());
-    }
-
-    if (outputVariable) {
-      // need to escape multiline strings a specific way:
-      // https://github.community/t/set-output-truncates-multiline-strings/16852/5
-      const content = output
-        .replace("%", "%25")
-        .replace("\n", "%0A")
-        .replace("\r", "%0D");
-      core.setOutput(outputVariable, content);
     }
   } else {
     throw new Error(`No Syft output: ${JSON.stringify(output)}`);
