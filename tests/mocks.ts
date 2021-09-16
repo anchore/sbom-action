@@ -161,7 +161,9 @@ export const mocks = {
                 assets.splice(idx, 1);
               },
               getReleaseByTag() {
-                return release;
+                return Promise.resolve({
+                  data: release,
+                });
               },
             },
           },
@@ -174,6 +176,6 @@ export const mocks = {
 import { ExecOptions } from "@actions/exec";
 import { Context } from "@actions/github/lib/context";
 import { Release, WorkflowRun } from "@octokit/webhooks-types";
-import fs from "fs";
-import os from "os";
-import path from "path";
+import * as fs from "fs";
+import * as os from "os";
+import * as path from "path";

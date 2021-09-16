@@ -1,10 +1,11 @@
 // @ts-ignore
-import { Release } from "@octokit/webhooks-types";
-import * as githubClient from "../src/github/GithubClient";
 import { mocks, release, workflowRun } from "./mocks";
 for (const mock of Object.keys(mocks)) {
   jest.mock(mock, mocks[mock]);
 }
+
+import { Release } from "@octokit/webhooks-types";
+import * as githubClient from "../src/github/GithubClient";
 
 jest.setTimeout(30000);
 Date.now = jest.fn(() => 1482363367071);
@@ -59,12 +60,12 @@ describe("Github Client", () => {
     expect(assets.length).toBe(startLength);
   });
 
-  it("calls artifact methods", async () => {
+  it("calls workflow run for branch methods", async () => {
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
       "token"
     );
-    const run = client.findLatestWorkflowRunForBranch({
+    const run = await client.findLatestWorkflowRunForBranch({
       branch: "main",
     });
     expect(run).toBe(workflowRun);
@@ -75,7 +76,7 @@ describe("Github Client", () => {
       { owner: "test-owner", repo: "test-repo" },
       "token"
     );
-    const r = client.findRelease({
+    const r = await client.findRelease({
       tag: "main",
     });
     expect(r).toBe(release);

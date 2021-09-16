@@ -1,26 +1,14 @@
 import {
-  PullRequestEvent,
-  PushEvent,
-  ReleaseAsset,
-  ReleaseEvent,
-} from "@octokit/webhooks-types";
-import * as fs from "fs";
-import os from "os";
-import path from "path";
-import { GithubClient } from "../src/github/GithubClient";
-import * as action from "../src/github/SyftGithubAction";
-import { runAndFailBuildOnException } from "../src/github/SyftGithubAction";
-import {
   artifacts,
   assets,
   inputs,
-  // @ts-ignore
   latestRun,
   mocks,
   outputs,
   release,
   setContext,
   setInputs,
+  // @ts-ignore
 } from "./mocks";
 for (const mock of Object.keys(mocks)) {
   jest.mock(mock, mocks[mock]);
@@ -85,6 +73,19 @@ jest.mock("../src/github/GithubClient", () => {
     debugLog() {},
   };
 });
+
+import {
+  PullRequestEvent,
+  PushEvent,
+  ReleaseAsset,
+  ReleaseEvent,
+} from "@octokit/webhooks-types";
+import * as fs from "fs";
+import * as os from "os";
+import * as path from "path";
+import { GithubClient } from "../src/github/GithubClient";
+import * as action from "../src/github/SyftGithubAction";
+import { runAndFailBuildOnException } from "../src/github/SyftGithubAction";
 
 jest.setTimeout(30000);
 Date.now = jest.fn(() => 1482363367071);
