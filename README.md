@@ -93,7 +93,7 @@ and attaching them to your wofklow and releases.
 | `path`          | A path on the filesystem to scan. This is mutually exclusive to `image`.                                | \<current directory>        |
 | `image`         | A container image to scan. This is mutually exclusive to `path`.                                        |
 | `artifact-name` | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output) | `sbom-<job>-<step-id>.spdx` |
-| `format`        | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`, `table`                            | `spdx-json`                 |
+| `format`        | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`, `table`, `text`, `json`            | `spdx-json`                 |
 
 ### anchore/sbom-action/download
 
