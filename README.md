@@ -88,11 +88,14 @@ use the `artifact-name` parameter:
 The main [SBOM action](action.yml), responsible for generating SBOMs
 and attaching them to your wofklow and releases.
 
-| Parameter       | Description                                                                                             | Default                     |
-| --------------- | ------------------------------------------------------------------------------------------------------- | --------------------------- |
-| `path`          | A path on the filesystem to scan. This is mutually exclusive to `image`.                                | \<current directory>        |
-| `image`         | A container image to scan. This is mutually exclusive to `path`.                                        |
-| `artifact-name` | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output) | `sbom-<job>-<step-id>.spdx` |
+| Parameter           | Description                                                                                             | Default                     |
+| ------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------- |
+| `path`              | A path on the filesystem to scan. This is mutually exclusive to `image`.                                | \<current directory>        |
+| `image`             | A container image to scan. This is mutually exclusive to `path`.                                        |
+| `registry`          | The container registry to use                                                                           |
+| `registry-username` | The registry username                                                                                   |
+| `registry-password` | The registry password                                                                                   |
+| `artifact-name`     | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output) | `sbom-<job>-<step-id>.spdx` |
 
 ### anchore/sbom-action/download
 

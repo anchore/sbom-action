@@ -59,6 +59,21 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
     SYFT_CHECK_FOR_APP_UPDATE: "false",
   };
 
+  const registry = core.getInput("registry");
+  if (registry) {
+    env.SYFT_REGISTRY_AUTH_AUTHORITY = registry;
+  }
+
+  const registryUser = core.getInput("registry-username");
+  if (registryUser) {
+    env.SYFT_REGISTRY_AUTH_USERNAME = registryUser;
+  }
+
+  const registryPass = core.getInput("registry-password");
+  if (registryPass) {
+    env.SYFT_REGISTRY_AUTH_PASSWORD = registryPass;
+  }
+
   // https://github.com/anchore/syft#configuration
   let args = ["packages"];
 

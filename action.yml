@@ -12,6 +12,18 @@ inputs:
     required: false
     description: "A container image to scan"
 
+  registry:
+    required: false
+    description: "A container registry to connect to"
+
+  registry-username:
+    required: false
+    description: "The registry username"
+
+  registry-password:
+    required: false
+    description: "The registry password"
+
   github-token:
     description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
     required: false
