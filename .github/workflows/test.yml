@@ -89,6 +89,7 @@ jobs:
         with:
           artifact-name: sbom.spdx
           output-var: sbom
+          format: spdx
       - run: |
           echo DIR SCAN SBOM:
           echo "${{ steps.dirscan.outputs.sbom }}"
