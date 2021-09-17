@@ -69,7 +69,7 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   };
 
   // https://github.com/anchore/syft#configuration
-  let args = ["packages"];
+  let args = ["packages", "-vv"];
 
   if ("image" in input && input.image) {
     args = [...args, `docker:${input.image}`];
@@ -93,25 +93,27 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
     },
   });
 
-  const exitCode = await exec.exec(cmd, args, {
-    env,
-    outStream,
-    listeners: {
-      stdout(buffer) {
-        stdout += buffer.toString();
+  const exitCode = await core.group("Executing Syft...", async () =>
+    exec.exec(cmd, args, {
+      env,
+      outStream,
+      listeners: {
+        stdout(buffer) {
+          stdout += buffer.toString();
+        },
+        stderr(buffer) {
+          core.info(buffer.toString());
+          stderr += buffer.toString();
+        },
+        debug(message) {
+          core.debug(message);
+        },
       },
-      stderr(buffer) {
-        stderr += buffer.toString();
-      },
-      debug(message) {
-        core.debug(message);
-      },
-    },
-  });
+    })
+  );
 
   if (exitCode > 0) {
     core.debug(stdout);
-    core.error(stderr);
     throw new Error("An error occurred running Syft");
   } else {
     return stdout;

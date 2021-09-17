@@ -71,6 +71,9 @@ export function getMocks() {
           },
           exportVariable() {
           },
+          group(_name: string, callback: () => Promise<any>) {
+            return callback();
+          }
         };
       },
 
