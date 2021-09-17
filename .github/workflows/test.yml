@@ -88,10 +88,11 @@ jobs:
         id: dirscan
         with:
           artifact-name: sbom.spdx
-          output-var: sbom
+          output-file: dirscan-sbom.spdx
+          format: spdx
       - run: |
           echo DIR SCAN SBOM:
-          echo "${{ steps.dirscan.outputs.sbom }}"
+          cat dirscan-sbom.spdx
 
       - uses: ./
         id: imagescan

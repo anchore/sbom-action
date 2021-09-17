@@ -12,6 +12,11 @@ inputs:
     required: false
     description: "A container image to scan"
 
+  format:
+    required: false
+    description: "The SBOM format to export"
+    default: "spdx-json"
+
   github-token:
     description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
     required: false
