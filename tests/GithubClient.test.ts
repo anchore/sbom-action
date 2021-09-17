@@ -1,5 +1,7 @@
 // @ts-ignore
-import { mocks, release, workflowRun, setReturnStatus } from "./mocks";
+import { getMocks } from "./mocks"
+const { data, mocks, setReturnStatus } = getMocks();
+const { release, workflowRun } = data;
 for (const mock of Object.keys(mocks)) {
   jest.mock(mock, mocks[mock]);
 }

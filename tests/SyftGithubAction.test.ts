@@ -1,15 +1,14 @@
-import {
+// @ts-ignore
+import { getMocks } from "./mocks";
+const { data, setInputs, setContext, mocks } = getMocks();
+const {
   artifacts,
   assets,
   inputs,
   latestRun,
-  mocks,
   outputs,
   release,
-  setContext,
-  setInputs,
-  // @ts-ignore
-} from "./mocks";
+} = data;
 for (const mock of Object.keys(mocks)) {
   jest.mock(mock, mocks[mock]);
 }
@@ -92,7 +91,6 @@ Date.now = jest.fn(() => 1482363367071);
 
 describe("Action", () => {
   beforeEach(() => {
-    for (const k of Object.keys(inputs)) { delete inputs[k]; }
     for (const k of Object.keys(outputs)) { delete outputs[k]; }
     artifacts.splice(0, artifacts.length);
     assets.splice(0, assets.length);
