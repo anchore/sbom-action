@@ -20,6 +20,13 @@ export const SYFT_VERSION = "v0.21.0";
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
 
 /**
+ * Returns the SBOM format as specified by the user, defaults to SPDX
+ */
+export function getSbomFormat(): SyftOptions["format"] {
+  return (core.getInput("format") as SyftOptions["format"]) || "spdx";
+}
+
+/**
  * Tries to get a unique artifact name or otherwise as appropriate as possible
  */
 function getArtifactName(): string {
@@ -42,6 +49,52 @@ function getArtifactName(): string {
   }
   const format = getSbomFormat();
   return `sbom-${job}${stepName}.${format}`;
+}
+
+/**
+ * Downloads the appropriate Syft binary for the platform
+ */
+export async function downloadSyft(): Promise<string> {
+  const name = SYFT_BINARY_NAME;
+  const version = SYFT_VERSION;
+
+  const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
+
+  core.debug(`Installing ${name} ${version}`);
+
+  // Download the installer, and run
+  const installPath = await cache.downloadTool(url);
+
+  // Make sure the tool's executable bit is set
+  await exec.exec(`chmod +x ${installPath}`);
+
+  const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
+  await exec.exec(cmd);
+
+  return `${installPath}_${name}/${name}`;
+}
+
+/**
+ * Gets the Syft command to run via exec
+ */
+export async function getSyftCommand(): Promise<string> {
+  const name = SYFT_BINARY_NAME;
+  const version = SYFT_VERSION;
+
+  let syftPath = cache.find(name, version);
+  if (!syftPath) {
+    // Not found; download and install it; returns a path to the binary
+    syftPath = await downloadSyft();
+
+    // Cache the downloaded file
+    syftPath = await cache.cacheFile(syftPath, name, name, version);
+  }
+
+  core.debug(`Got Syft path: ${syftPath} binary at: ${syftPath}/${name}`);
+
+  // Add tool to path for this and future actions to use
+  core.addPath(syftPath);
+  return name;
 }
 
 /**
@@ -110,59 +163,6 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
 }
 
 /**
- * Downloads the appropriate Syft binary for the platform
- */
-export async function downloadSyft(): Promise<string> {
-  const name = SYFT_BINARY_NAME;
-  const version = SYFT_VERSION;
-
-  const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
-
-  core.debug(`Installing ${name} ${version}`);
-
-  // Download the installer, and run
-  const installPath = await cache.downloadTool(url);
-
-  // Make sure the tool's executable bit is set
-  await exec.exec(`chmod +x ${installPath}`);
-
-  const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
-  await exec.exec(cmd);
-
-  return `${installPath}_${name}/${name}`;
-}
-
-/**
- * Gets the Syft command to run via exec
- */
-export async function getSyftCommand(): Promise<string> {
-  const name = SYFT_BINARY_NAME;
-  const version = SYFT_VERSION;
-
-  let syftPath = cache.find(name, version);
-  if (!syftPath) {
-    // Not found; download and install it; returns a path to the binary
-    syftPath = await downloadSyft();
-
-    // Cache the downloaded file
-    syftPath = await cache.cacheFile(syftPath, name, name, version);
-  }
-
-  core.debug(`Got Syft path: ${syftPath} binary at: ${syftPath}/${name}`);
-
-  // Add tool to path for this and future actions to use
-  core.addPath(syftPath);
-  return name;
-}
-
-/**
- * Returns the SBOM format as specified by the user, defaults to SPDX
- */
-export function getSbomFormat(): SyftOptions["format"] {
-  return (core.getInput("format") as SyftOptions["format"]) || "spdx";
-}
-
-/**
  * Uploads a SBOM as a workflow artifact
  * @param contents SBOM file contents
  */
@@ -197,10 +197,10 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
  */
 function getBooleanInput(name: string, defaultValue: boolean): boolean {
   const val = core.getInput(name);
-  if (val === "") {
+  if (val === undefined || val === "") {
     return defaultValue;
   }
-  return Boolean(val);
+  return val.toLowerCase() === "true";
 }
 
 /**
