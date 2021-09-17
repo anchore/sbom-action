@@ -52,7 +52,7 @@ the `sbom-artifact-match` pararmeter, for example:
 ### Naming the SBOM output
 
 By default, this action will upload an artifact named
-`<repo>>-<job-name>[-<step-id|step-number>].<extension>`, for
+`<repo>-<job-name>[-<step-id|step-number>].<extension>`, for
 example:
 
 ```yaml
