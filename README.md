@@ -119,6 +119,7 @@ and attaching them to your wofklow and releases.
 | `registry-username` | The registry username                                                                                      |
 | `registry-password` | The registry password                                                                                      |
 | `artifact-name`     | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output)    | `sbom-<job>-<step-id>.spdx` |
+| `format`            | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`                                        | `spdx-json`                 |
 
 ### anchore/sbom-action/download
 

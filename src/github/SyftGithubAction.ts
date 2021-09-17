@@ -41,7 +41,16 @@ function getArtifactName(): string {
     stepName = `-${stepName}`;
   }
   const format = getSbomFormat();
-  return `sbom-${job}${stepName}.${format}`;
+  let extension: string = format;
+  switch (format) {
+    case "spdx-json":
+      extension = "spdx.json";
+      break;
+    case "json":
+      extension = "syft.json";
+      break;
+  }
+  return `sbom-${job}${stepName}.${extension}`;
 }
 
 /**
@@ -78,7 +87,7 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   }
 
   // https://github.com/anchore/syft#configuration
-  let args = ["packages"];
+  let args = ["packages", "-vv"];
 
   if ("image" in input && input.image) {
     if (registry) {
@@ -106,25 +115,27 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
     },
   });
 
-  const exitCode = await exec.exec(cmd, args, {
-    env,
-    outStream,
-    listeners: {
-      stdout(buffer) {
-        stdout += buffer.toString();
+  const exitCode = await core.group("Executing Syft...", async () =>
+    exec.exec(cmd, args, {
+      env,
+      outStream,
+      listeners: {
+        stdout(buffer) {
+          stdout += buffer.toString();
+        },
+        stderr(buffer) {
+          core.info(buffer.toString());
+          stderr += buffer.toString();
+        },
+        debug(message) {
+          core.debug(message);
+        },
       },
-      stderr(buffer) {
-        stderr += buffer.toString();
-      },
-      debug(message) {
-        core.debug(message);
-      },
-    },
-  });
+    })
+  );
 
   if (exitCode > 0) {
     core.debug(stdout);
-    core.error(stderr);
     throw new Error("An error occurred running Syft");
   } else {
     return stdout;
@@ -181,7 +192,7 @@ export async function getSyftCommand(): Promise<string> {
  * Returns the SBOM format as specified by the user, defaults to SPDX
  */
 export function getSbomFormat(): SyftOptions["format"] {
-  return (core.getInput("format") as SyftOptions["format"]) || "spdx";
+  return (core.getInput("format") as SyftOptions["format"]) || "spdx-json";
 }
 
 /**
@@ -219,10 +230,10 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
  */
 function getBooleanInput(name: string, defaultValue: boolean): boolean {
   const val = core.getInput(name);
-  if (val === "") {
+  if (val === undefined || val === "") {
     return defaultValue;
   }
-  return Boolean(val);
+  return val.toLowerCase() === "true";
 }
 
 /**
@@ -272,7 +283,6 @@ export async function runSyftAction(): Promise<void> {
   const start = Date.now();
 
   const doUpload = getBooleanInput("upload-artifact", true);
-  const outputVariable = core.getInput("output-var");
 
   const output = await executeSyft({
     input: {
@@ -298,16 +308,6 @@ export async function runSyftAction(): Promise<void> {
       await uploadSbomArtifact(output);
 
       core.exportVariable(PRIOR_ARTIFACT_ENV_VAR, getArtifactName());
-    }
-
-    if (outputVariable) {
-      // need to escape multiline strings a specific way:
-      // https://github.community/t/set-output-truncates-multiline-strings/16852/5
-      const content = output
-        .replace("%", "%25")
-        .replace("\n", "%0A")
-        .replace("\r", "%0D");
-      core.setOutput(outputVariable, content);
     }
   } else {
     throw new Error(`No Syft output: ${JSON.stringify(output)}`);
