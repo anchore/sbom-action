@@ -73,7 +73,6 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   }
 
   if (registry && registryUser && registryPass) {
-    env.SYFT_REGISTRY_AUTH_AUTHORITY = registry;
     env.SYFT_REGISTRY_AUTH_USERNAME = registryUser;
     env.SYFT_REGISTRY_AUTH_PASSWORD = registryPass;
   }
