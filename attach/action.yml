@@ -5,7 +5,7 @@ inputs:
   sbom-artifact-match:
     required: false
     description: "A regex to find SBOM artifacts to attach to a release"
-    default: "^sbom-.*\\.spdx$"
+    default: ".*\\.spdx$"
 
   github-token:
     description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
