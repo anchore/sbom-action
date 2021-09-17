@@ -92,6 +92,8 @@ Date.now = jest.fn(() => 1482363367071);
 
 describe("Action", () => {
   beforeEach(() => {
+    for (const k of Object.keys(inputs)) { delete inputs[k]; }
+    for (const k of Object.keys(outputs)) { delete outputs[k]; }
     artifacts.splice(0, artifacts.length);
     assets.splice(0, assets.length);
   });
@@ -102,7 +104,7 @@ describe("Action", () => {
       "upload-artifact": "true",
     });
     setContext({
-      eventName: "release",
+      eventName: "push",
       ref: "v0.0.0",
       payload: {
         ref: "v45435",
@@ -112,18 +114,18 @@ describe("Action", () => {
         repo: "test-repo",
       },
       runId: 1,
-      job: "a_job",
-      action: "__self",
+      job: "default-import-job",
+      action: "__anchore_sbom-action",
     } as any);
 
     const artifactLength = artifacts.length;
     const assetLength = assets.length;
 
     await action.runSyftAction();
+    await action.attachReleaseAssets();
 
     expect(artifacts.length).toBe(artifactLength + 1);
     expect(assets.length).toBe(assetLength);
-    // expect(outputs).toBe("download-tool-path_syft/syft");
   });
 
   it("runs with release uploads inputs", async () => {
@@ -131,7 +133,6 @@ describe("Action", () => {
       image: "org/img",
       "github-token": "asdf",
       "upload-artifact": "true",
-      "output-var": "my-output",
       "output-file": `${fs.mkdtempSync(
         path.join(os.tmpdir(), "sbom-action-")
       )}/sbom.spdx`,
@@ -151,8 +152,8 @@ describe("Action", () => {
         repo: "test-repo",
       },
       runId: 1,
-      job: "a_job",
-      action: "__self",
+      job: "release-job",
+      action: "release-action",
     } as any);
 
     const artifactLength = artifacts.length;
@@ -161,13 +162,47 @@ describe("Action", () => {
     await action.runSyftAction();
 
     expect(fs.existsSync(inputs["output-file"])).toBeTruthy();
-    expect(outputs["my-output"]).toBeDefined();
 
     await action.attachReleaseAssets();
 
     expect(artifacts.length).toBe(artifactLength + 1);
     expect(assets.length).toBe(assetLength + 1);
-    // expect(path).toBe("download-tool-path_syft/syft");
+  });
+
+  it("runs without uploading anything", async () => {
+    setInputs({
+      image: "org/img",
+      "github-token": "asdf",
+      "upload-artifact": "false",
+      "upload-release-assets": "false",
+    });
+    setContext({
+      eventName: "release",
+      ref: "v0.0.0",
+      payload: {
+        release: {
+          id: 4095345,
+          name: "v3.5.6",
+        },
+      } as ReleaseEvent,
+      repo: {
+        owner: "test-org",
+        repo: "test-repo",
+      },
+      runId: 1,
+      job: "release-job",
+      action: "release-action",
+    } as any);
+
+    const artifactLength = artifacts.length;
+    const assetLength = assets.length;
+
+    await action.runSyftAction();
+
+    await action.attachReleaseAssets();
+
+    expect(artifacts.length).toBe(artifactLength);
+    expect(assets.length).toBe(assetLength);
   });
 
   it("runs pull-request compare", async () => {

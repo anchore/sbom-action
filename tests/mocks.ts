@@ -40,7 +40,7 @@ export const mocks = {
       get info() {
         return () => {};
       },
-      set info(i) {},
+      set info(_i) {},
       debug() {},
       addPath() {},
       isDebug() {

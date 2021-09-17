@@ -197,10 +197,10 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
  */
 function getBooleanInput(name: string, defaultValue: boolean): boolean {
   const val = core.getInput(name);
-  if (val === "") {
+  if (val === undefined || val === "") {
     return defaultValue;
   }
-  return Boolean(val);
+  return val.toLowerCase() === "true";
 }
 
 /**
