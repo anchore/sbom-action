@@ -60,6 +60,10 @@ const testSource = async (source: string): Promise<string> => {
         return source.startsWith("dir:") ? source.substr(4) : "";
       case "image":
         return source.startsWith("dir:") ? "" : source;
+      case "format":
+        // SPDX-json is not consistently sorted,
+        // so we sort text SPDX output for snapshots
+        return "spdx";
     }
     return "";
   });
