@@ -19,9 +19,7 @@
                   "policy_id": "48e6f7d6-1765-11e8-b5f9-8b6f228548b6",
                   "registry": "*",
                   "repository": "*",
-                  "whitelist_ids": [
-                    "37fd763e-1765-11e8-add4-3b16c029ac5c"
-                  ]
+                  "whitelist_ids": ["37fd763e-1765-11e8-add4-3b16c029ac5c"]
                 }
               ],
               "name": "Default bundle",
@@ -154,9 +152,7 @@
                     "policy_id": "48e6f7d6-1765-11e8-b5f9-8b6f228548b6",
                     "registry": "*",
                     "repository": "*",
-                    "whitelist_ids": [
-                      "37fd763e-1765-11e8-add4-3b16c029ac5c"
-                    ]
+                    "whitelist_ids": ["37fd763e-1765-11e8-add4-3b16c029ac5c"]
                   }
                 ],
                 "name": "Default bundle",
@@ -290,9 +286,7 @@
                 "policy_id": "48e6f7d6-1765-11e8-b5f9-8b6f228548b6",
                 "registry": "*",
                 "repository": "*",
-                "whitelist_ids": [
-                  "37fd763e-1765-11e8-add4-3b16c029ac5c"
-                ]
+                "whitelist_ids": ["37fd763e-1765-11e8-add4-3b16c029ac5c"]
               },
               "matched_whitelisted_images_rule": false,
               "result": {
