@@ -41,7 +41,16 @@ function getArtifactName(): string {
     stepName = `-${stepName}`;
   }
   const format = getSbomFormat();
-  return `sbom-${job}${stepName}.${format}`;
+  let extension: string = format;
+  switch (format) {
+    case "spdx-json":
+      extension = "spdx.json";
+      break;
+    case "json":
+      extension = "syft.json";
+      break;
+  }
+  return `sbom-${job}${stepName}.${extension}`;
 }
 
 /**
