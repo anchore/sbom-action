@@ -36,7 +36,7 @@ Use the `path` parameter, relative to the repository root
     path: ./build/
 ```
 
-### Attach SBOMs to a release explicitly
+### Attach SBOMs to a release
 
 The action will detect being run in a `release` and
 automatically upload all SBOMs as release assets. However,
@@ -52,11 +52,11 @@ the `sbom-artifact-match` pararmeter, for example:
 ### Naming the SBOM output
 
 By default, this action will upload an artifact named
-`sbom-<job-name>[-<step-id|step-number>].<format>`, for
+`<repo>>-<job-name>[-<step-id|step-number>].<extension>`, for
 example:
 
 ```yaml
-build:
+build-sbom:
   steps:
     - uses: anchore/sbom-action@main
     - uses: anchore/sbom-action@main
@@ -67,9 +67,9 @@ build:
 Will create 3 artifacts:
 
 ```text
-sbom-build.spdx
-sbom-build-2.spdx
-sbom-build-myid.spdx
+my-repo-build-sbom.spdx.json
+my-repo-build-sbom-2.spdx.json
+my-repo-build-sbom-myid.spdx.json
 ```
 
 You may need to name these artifacts differently, simply
@@ -114,9 +114,9 @@ Output parameters:
 
 A sub-action to [attach multiple SBOMs](attach/action.yml) to releases.
 
-| Parameter             | Description                       | Default            |
-| --------------------- | --------------------------------- | ------------------ |
-| `sbom-artifact-match` | A pattern to find SBOM artifacts. | `^sbom-.*\\.spdx$` |
+| Parameter             | Description                       | Default             |
+| --------------------- | --------------------------------- | ------------------- |
+| `sbom-artifact-match` | A pattern to find SBOM artifacts. | `.*\\.spdx\\.json$` |
 
 ## Diagnostics
 
