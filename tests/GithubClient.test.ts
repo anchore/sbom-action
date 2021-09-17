@@ -1,5 +1,5 @@
 // @ts-ignore
-import { mocks, release, workflowRun } from "./mocks";
+import { mocks, release, workflowRun, setReturnStatus } from "./mocks";
 for (const mock of Object.keys(mocks)) {
   jest.mock(mock, mocks[mock]);
 }
@@ -11,6 +11,10 @@ jest.setTimeout(30000);
 Date.now = jest.fn(() => 1482363367071);
 
 describe("Github Client", () => {
+  beforeEach(() => {
+    setReturnStatus(200);
+  });
+
   it("calls release asset methods", async () => {
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
@@ -113,5 +117,41 @@ describe("Github Client", () => {
     });
 
     expect(artifact).toBeDefined();
+  });
+
+  it("fails when return status is error", async () => {
+    setReturnStatus(500);
+    const client = githubClient.getClient(
+      { owner: "test-owner", repo: "test-repo" },
+      "token"
+    );
+    try {
+      await client.listWorkflowRunArtifacts({
+        runId: 1
+      });
+      expect("exception thrown").toBeUndefined();
+    } catch(e) {
+      expect(e).toBeDefined();
+    }
+
+    try {
+      await client.findLatestWorkflowRunForBranch({
+        branch: "main"
+      });
+      expect("exception thrown").toBeUndefined();
+    } catch(e) {
+      expect(e).toBeDefined();
+    }
+
+    try {
+      await client.listReleaseAssets({
+        release: {
+          id: 2134
+        } as any
+      });
+      expect("exception thrown").toBeUndefined();
+    } catch(e) {
+      expect(e).toBeDefined();
+    }
   });
 });

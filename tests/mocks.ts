@@ -25,6 +25,12 @@ export function setContext(c: Context) {
   context = c;
 }
 
+export let returnStatus = 200;
+
+export function setReturnStatus(status: number) {
+  returnStatus = status;
+}
+
 export const mocks = {
   "@actions/core": () => {
     return {
@@ -122,7 +128,7 @@ export const mocks = {
             actions: {
               listWorkflowRunArtifacts() {
                 return Promise.resolve({
-                  status: 200,
+                  status: returnStatus,
                   data: {
                     artifacts,
                   },
@@ -135,7 +141,7 @@ export const mocks = {
               },
               listWorkflowRunsForRepo() {
                 return Promise.resolve({
-                  status: 200,
+                  status: returnStatus,
                   data: {
                     workflow_runs: [workflowRun],
                   },
@@ -145,7 +151,7 @@ export const mocks = {
             repos: {
               listReleaseAssets() {
                 return Promise.resolve({
-                  status: 200,
+                  status: returnStatus,
                   data: assets,
                 });
               },
