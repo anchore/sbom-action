@@ -14,7 +14,7 @@ inputs:
 
   format:
     required: false
-    description: "The output format to use"
+    description: "The SBOM format to export"
     default: "spdx-json"
 
   github-token:
