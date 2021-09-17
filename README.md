@@ -16,7 +16,7 @@ as a release asset.
 
 ## Example Usage
 
-### Scan a docker image
+### Scan a local container image
 
 Use the `image` parameter
 
@@ -24,6 +24,29 @@ Use the `image` parameter
 - uses: anchore/sbom-action@main
   with:
     image: example/image_name
+```
+
+### Scan an image in an external registry
+
+Use the `image` and `registry` parameters
+
+```yaml
+- uses: anchore/sbom-action@main
+  with:
+    image: alpine:latest
+    registry: ghcr.io
+```
+
+If you need to authenticate, add credentials using
+`registry-username` and `registry-password`:
+
+```yaml
+- uses: anchore/sbom-action@main
+  with:
+    image: alpine:latest
+    registry: ghcr.io
+    registry-username: mr_awesome
+    registry-password: ${{ secrets.GHCR_PASSWORD }}
 ```
 
 ### Scan a specific directory
@@ -88,14 +111,14 @@ use the `artifact-name` parameter:
 The main [SBOM action](action.yml), responsible for generating SBOMs
 and attaching them to your wofklow and releases.
 
-| Parameter           | Description                                                                                             | Default                     |
-| ------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------- |
-| `path`              | A path on the filesystem to scan. This is mutually exclusive to `image`.                                | \<current directory>        |
-| `image`             | A container image to scan. This is mutually exclusive to `path`.                                        |
-| `registry`          | The container registry to use                                                                           |
-| `registry-username` | The registry username                                                                                   |
-| `registry-password` | The registry password                                                                                   |
-| `artifact-name`     | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output) | `sbom-<job>-<step-id>.spdx` |
+| Parameter           | Description                                                                                                | Default                     |
+| ------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------- |
+| `path`              | A path on the filesystem to scan. This is mutually exclusive to `image`.                                   | \<current directory>        |
+| `image`             | A container image to scan. This is mutually exclusive to `path`.                                           |
+| `registry`          | The container registry to use, either a domain name or a full URL (e.g. `ghcr.io` or `http://my-registry`) |
+| `registry-username` | The registry username                                                                                      |
+| `registry-password` | The registry password                                                                                      |
+| `artifact-name`     | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output)    | `sbom-<job>-<step-id>.spdx` |
 
 ### anchore/sbom-action/download
 

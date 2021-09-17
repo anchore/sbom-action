@@ -59,18 +59,22 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
     SYFT_CHECK_FOR_APP_UPDATE: "false",
   };
 
-  const registry = core.getInput("registry");
-  if (registry) {
-    env.SYFT_REGISTRY_AUTH_AUTHORITY = registry;
-  }
-
+  let registry = core.getInput("registry");
   const registryUser = core.getInput("registry-username");
-  if (registryUser) {
-    env.SYFT_REGISTRY_AUTH_USERNAME = registryUser;
+  const registryPass = core.getInput("registry-password");
+
+  if (registry) {
+    if (registry.startsWith("https://")) {
+      registry = registry.substring("https://".length);
+    } else if (registry.startsWith("http://")) {
+      env.SYFT_REGISTRY_INSECURE_USE_HTTP = "true";
+      registry = registry.substring("http://".length);
+    }
   }
 
-  const registryPass = core.getInput("registry-password");
-  if (registryPass) {
+  if (registry && registryUser && registryPass) {
+    env.SYFT_REGISTRY_AUTH_AUTHORITY = registry;
+    env.SYFT_REGISTRY_AUTH_USERNAME = registryUser;
     env.SYFT_REGISTRY_AUTH_PASSWORD = registryPass;
   }
 
