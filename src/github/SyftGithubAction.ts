@@ -78,7 +78,11 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   let args = ["packages"];
 
   if ("image" in input && input.image) {
-    args = [...args, `docker:${input.image}`];
+    if (registry) {
+      args = [...args, `registry:${registry}/${input.image}`];
+    } else {
+      args = [...args, `docker:${input.image}`];
+    }
   } else if ("path" in input && input.path) {
     args = [...args, `dir:${input.path}`];
   } else {
