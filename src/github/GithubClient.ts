@@ -41,10 +41,64 @@ export interface WorkflowRun {
 }
 
 /**
+ * Suppress info output by redirecting to debug
+ * @param fn function to call for duration of output suppression
+ */
+async function suppressOutput<T>(fn: () => Promise<T>): Promise<T> {
+  const info = core.info;
+  try {
+    try {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      core.info = core.debug;
+    } catch (e) {}
+    return await fn();
+  } finally {
+    try {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      core.info = info;
+    } catch (e) {}
+  }
+}
+
+/**
+ * Wraps a string in dashes
+ */
+export function dashWrap(str: string): string {
+  let out = ` ${str} `;
+  const width = 80;
+  while (out.length < width) {
+    out = `-${out}-`;
+  }
+  if (out.length > width) {
+    out = out.substr(0, width);
+  }
+  return out;
+}
+
+/**
+ * Logs all objects passed in debug outputting strings directly and
+ * calling JSON.stringify on other elements
+ */
+export function debugLog(...args: unknown[]): void {
+  if (core.isDebug()) {
+    for (const arg of args) {
+      if (typeof arg === "string") {
+        core.debug(arg);
+      } else {
+        core.debug(JSON.stringify(arg));
+      }
+    }
+  }
+}
+
+/**
  * Provides a basic shim to interact with the necessary Github APIs
  */
 export class GithubClient {
   client: InstanceType<typeof GitHub>;
+
   repo: GithubRepo;
 
   constructor(client: InstanceType<typeof GitHub>, repo: GithubRepo) {
@@ -327,53 +381,4 @@ export function getClient(repo: GithubRepo, githubToken: string): GithubClient {
   });
 
   return new GithubClient(octokit, repo);
-}
-
-/**
- * Suppress info output by redirecting to debug
- * @param fn function to call for duration of output suppression
- */
-async function suppressOutput<T>(fn: () => Promise<T>): Promise<T> {
-  const info = core.info;
-  try {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    core.info = core.debug;
-    return await fn();
-  } finally {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    core.info = info;
-  }
-}
-
-/**
- * Wraps a string in dashes
- */
-export function dashWrap(str: string): string {
-  let out = ` ${str} `;
-  const width = 80;
-  while (out.length < width) {
-    out = `-${out}-`;
-  }
-  if (out.length > width) {
-    out = out.substr(0, width);
-  }
-  return out;
-}
-
-/**
- * Logs all objects passed in debug outputting strings directly and
- * calling JSON.stringify on other elements
- */
-export function debugLog(...args: unknown[]): void {
-  if (core.isDebug()) {
-    for (const arg of args) {
-      if (typeof arg === "string") {
-        core.debug(arg);
-      } else {
-        core.debug(JSON.stringify(arg));
-      }
-    }
-  }
 }
