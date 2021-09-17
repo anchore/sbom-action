@@ -1,4 +1,3 @@
-// @ts-ignore
 import { getMocks } from "./mocks";
 const { data, setInputs, setContext, mocks } = getMocks();
 const {
@@ -19,12 +18,11 @@ jest.mock("../src/github/GithubClient", () => {
       return Promise.resolve(artifacts);
     },
     uploadWorkflowArtifact({ name, file }) {
-      const artifact = fs.readFileSync(file).toString();
       artifacts.push({
         id: artifacts.length,
         name,
         file,
-      });
+      } as never);
       return Promise.resolve();
     },
     repo: {
@@ -34,10 +32,10 @@ jest.mock("../src/github/GithubClient", () => {
     listWorkflowRunArtifacts() {
       return Promise.resolve(artifacts);
     },
-    findRelease({ tag }) {
+    findRelease() {
       return Promise.resolve(release);
     },
-    findLatestWorkflowRunForBranch({ branch }) {
+    findLatestWorkflowRunForBranch() {
       return Promise.resolve(latestRun);
     },
     deleteReleaseAsset({ asset }) {
@@ -47,15 +45,15 @@ jest.mock("../src/github/GithubClient", () => {
     },
     downloadWorkflowArtifact({ name }) {
       const f = artifacts.find((a: any) => a.name === name);
-      return Promise.resolve(f && f.file);
+      return Promise.resolve(f && f.file || "");
     },
-    downloadWorkflowRunArtifact({ artifactId }) {
+    downloadWorkflowRunArtifact() {
       return Promise.resolve("downloaded-artifact-path");
     },
-    listReleaseAssets({ release }) {
+    listReleaseAssets() {
       return Promise.resolve(assets);
     },
-    uploadReleaseAsset({ release, assetName, contents, contentType }) {
+    uploadReleaseAsset({ assetName }) {
       assets.push({
         name: assetName,
       } as ReleaseAsset);
@@ -68,8 +66,12 @@ jest.mock("../src/github/GithubClient", () => {
     getClient() {
       return client;
     },
-    dashWrap() {},
-    debugLog() {},
+    dashWrap() {
+      // ignore
+    },
+    debugLog() {
+      // ignore
+    },
   };
 });
 
