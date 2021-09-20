@@ -26,7 +26,7 @@ To scan a container image using the docker daemon use the `image` parameter:
     image: example/image_name
 ```
 
-With a container registry:
+To use an specific container registry, prefix the image with the domain:
 
 ```yaml
 - uses: anchore/sbom-action@main
@@ -34,27 +34,24 @@ With a container registry:
     image: ghcr.io/example/image_name:tag
 ```
 
-### Scan an image in an external registry
-
-Use the `image` and `registry` parameters
-
-```yaml
-- uses: anchore/sbom-action@main
-  with:
-    image: alpine:latest
-    registry: ghcr.io
-```
-
-If you need to authenticate, add credentials using
+To authenticate with the registry, add credentials using
 `registry-username` and `registry-password`:
 
 ```yaml
 - uses: anchore/sbom-action@main
   with:
-    image: alpine:latest
-    registry: ghcr.io
+    image: my-registry.com/my/image
     registry-username: mr_awesome
-    registry-password: ${{ secrets.GHCR_PASSWORD }}
+    registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+```
+
+To connect directly to a registry without using the docker daemon,
+prefix the `image` name with `http://` or `https://`:
+
+```yaml
+- uses: anchore/sbom-action@main
+  with:
+    image: http://my-registry.com/my/image
 ```
 
 ### Scan a specific directory
@@ -121,15 +118,14 @@ use the `artifact-name` parameter:
 The main [SBOM action](action.yml), responsible for generating SBOMs
 and uploading them as workflow artifacts and release assets.
 
-| Parameter           | Description                                                                                                | Default                     |
-| ------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------- |
-| `path`              | A path on the filesystem to scan. This is mutually exclusive to `image`.                                   | \<current directory>        |
-| `image`             | A container image to scan. This is mutually exclusive to `path`.                                           |
-| `registry`          | The container registry to use, either a domain name or a full URL (e.g. `ghcr.io` or `http://my-registry`) |
-| `registry-username` | The registry username                                                                                      |
-| `registry-password` | The registry password                                                                                      |
-| `artifact-name`     | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output)    | `sbom-<job>-<step-id>.spdx` |
-| `format`            | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`                                        | `spdx-json`                 |
+| Parameter           | Description                                                                                                                                  | Default                     |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| `path`              | A path on the filesystem to scan. This is mutually exclusive to `image`.                                                                     | \<current directory>        |
+| `image`             | A container image to scan. This is mutually exclusive to `path`. See [Scan a container image](#scan-a-container-image) for more information. |
+| `registry-username` | The registry username to use when connecting to an external registry                                                                         |
+| `registry-password` | The registry password to use when connecting to an external registry                                                                         |
+| `artifact-name`     | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output)                                      | `sbom-<job>-<step-id>.spdx` |
+| `format`            | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`                                                                          | `spdx-json`                 |
 
 ### anchore/sbom-action/release-sbom
 

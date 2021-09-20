@@ -24,6 +24,13 @@ export function getMocks() {
     } as WorkflowRun;
 
     context: Context = {} as Context;
+
+    execArgs: {
+      cmd: string,
+      args: string[],
+      opts: ExecOptions,
+      env: { [key: string]: string }
+    } = {} as any;
   }
 
   const data = Object.freeze(new Data());
@@ -130,6 +137,10 @@ export function getMocks() {
 
       "@actions/exec": () => ({
         exec(cmd: string, args: string[], opts: ExecOptions) {
+          data.execArgs.cmd = cmd;
+          data.execArgs.args = args;
+          data.execArgs.opts = opts;
+          data.execArgs.env = opts.env as any;
           if (opts) {
             const out = opts.listeners?.stdout;
             if (out) {

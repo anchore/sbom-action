@@ -71,21 +71,13 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
     SYFT_CHECK_FOR_APP_UPDATE: "false",
   };
 
-  let registry = core.getInput("registry");
   const registryUser = core.getInput("registry-username");
   const registryPass = core.getInput("registry-password");
 
-  if (registry) {
-    if (registry.startsWith("https://")) {
-      registry = registry.substring("https://".length);
-    } else if (registry.startsWith("http://")) {
-      env.SYFT_REGISTRY_INSECURE_USE_HTTP = "true";
-      registry = registry.substring("http://".length);
-    }
-  }
-
-  if (registry && registryUser && registryPass) {
+  if (registryUser) {
     env.SYFT_REGISTRY_AUTH_USERNAME = registryUser;
+  }
+  if (registryPass) {
     env.SYFT_REGISTRY_AUTH_PASSWORD = registryPass;
   }
 
@@ -93,10 +85,17 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   let args = ["packages", "-vv"];
 
   if ("image" in input && input.image) {
-    if (registry) {
-      args = [...args, `registry:${registry}/${input.image}`];
+    let image = input.image;
+
+    if (image.startsWith("https://")) {
+      image = image.substring("https://".length);
+      args = [...args, `registry:${image}`];
+    } else if (image.startsWith("http://")) {
+      env.SYFT_REGISTRY_INSECURE_USE_HTTP = "true";
+      image = image.substring("http://".length);
+      args = [...args, `registry:${image}`];
     } else {
-      args = [...args, `docker:${input.image}`];
+      args = [...args, `docker:${image}`];
     }
   } else if ("path" in input && input.path) {
     args = [...args, `dir:${input.path}`];

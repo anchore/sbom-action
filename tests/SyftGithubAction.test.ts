@@ -247,4 +247,68 @@ describe("Action", () => {
       expect("should not throw exception").toBeUndefined();
     }
   });
+
+  it("sets up registry scheme with https", async () => {
+    setInputs({
+      image: "https://somewhere/org/img",
+    });
+    setContext({
+      eventName: "pull_request",
+      ref: "v0.0.0",
+      payload: {
+        pull_request: {
+          base: {
+            ref: "asdf",
+          },
+        },
+      } as PullRequestEvent,
+      repo: {
+        owner: "test-org",
+        repo: "test-repo",
+      },
+      runId: 1,
+      job: "pr_job_job",
+      action: "__self",
+    } as any);
+
+    await action.runSyftAction();
+
+    const { cmd, args, env } = data.execArgs;
+
+    expect(cmd).toBe("syft");
+    expect(args).toContain("registry:somewhere/org/img");
+    expect(env.SYFT_REGISTRY_INSECURE_USE_HTTP).toBeFalsy();
+  });
+
+  it("sets up insecure registry scheme with http", async () => {
+    setInputs({
+      image: "http://somewhere/org/img",
+    });
+    setContext({
+      eventName: "pull_request",
+      ref: "v0.0.0",
+      payload: {
+        pull_request: {
+          base: {
+            ref: "asdf",
+          },
+        },
+      } as PullRequestEvent,
+      repo: {
+        owner: "test-org",
+        repo: "test-repo",
+      },
+      runId: 1,
+      job: "pr_job_job",
+      action: "__self",
+    } as any);
+
+    await action.runSyftAction();
+
+    const { cmd, args, env } = data.execArgs;
+
+    expect(cmd).toBe("syft");
+    expect(args).toContain("registry:somewhere/org/img");
+    expect(env.SYFT_REGISTRY_INSECURE_USE_HTTP).toBe("true");
+  });
 });
