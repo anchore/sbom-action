@@ -336,6 +336,11 @@ export async function attachReleaseAssets(): Promise<void> {
       return matches;
     });
 
+    if (!matched.length && sbomArtifactInput) {
+      core.warning(`WARNING: no SBOMs found matching ${sbomArtifactInput}`);
+      return;
+    }
+
     core.info(dashWrap(`Attaching SBOMs to release: '${release.tag_name}'`));
     for (const artifact of matched) {
       const file = await client.downloadWorkflowArtifact({
