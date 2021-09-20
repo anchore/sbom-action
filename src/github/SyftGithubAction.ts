@@ -31,7 +31,11 @@ function getArtifactName(): string {
     return fileName;
   }
 
-  const { job, action } = github.context;
+  const {
+    repo: { repo },
+    job,
+    action,
+  } = github.context;
   // when run without an id, we get various auto-generated names, like:
   // __self __self_2 __anchore_sbom-action  __anchore_sbom-action_2 etc.
   // so just keep the number at the end if there is one, otherwise
@@ -50,7 +54,7 @@ function getArtifactName(): string {
       extension = "syft.json";
       break;
   }
-  return `sbom-${job}${stepName}.${extension}`;
+  return `${repo}-${job}${stepName}.${extension}`;
 }
 
 /**
@@ -60,7 +64,6 @@ function getArtifactName(): string {
  */
 async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   let stdout = "";
-  let stderr = "";
 
   const cmd = await getSyftCommand();
 
@@ -125,7 +128,6 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
         },
         stderr(buffer) {
           core.info(buffer.toString());
-          stderr += buffer.toString();
         },
         debug(message) {
           core.debug(message);
@@ -359,6 +361,11 @@ export async function attachReleaseAssets(): Promise<void> {
       }
       return matches;
     });
+
+    if (!matched.length && sbomArtifactInput) {
+      core.warning(`WARNING: no SBOMs found matching ${sbomArtifactInput}`);
+      return;
+    }
 
     core.info(dashWrap(`Attaching SBOMs to release: '${release.tag_name}'`));
     for (const artifact of matched) {

@@ -1,15 +1,17 @@
 /**
  * Get all the mocks and mock data
  */
+import {Artifact} from "../src/github/GithubClient";
+
 export function getMocks() {
   class Data {
-    artifacts: any = [];
+    artifacts: (Artifact & { id: number, file: string })[] = [];
 
-    assets: any = [];
+    assets: ReleaseAsset[] = [];
 
     workflowRun: WorkflowRun = {
       id: 4309583450,
-    } as any;
+    } as never;
 
     inputs: { [key: string]: string } = {};
 
@@ -37,7 +39,7 @@ export function getMocks() {
     },
     setContext(context: Context) {
       for (const k of Object.keys(data.context)) {
-        delete (data.context as any)[k];
+        delete (data.context as never)[k];
       }
       Object.assign(data.context, context);
     },
@@ -56,22 +58,22 @@ export function getMocks() {
           setFailed(msg: string) {
             data.outputs["@actions/core/setFailed"] = msg;
           },
-          get info() {
-            return () => {
-            };
-          },
-          set info(_i) {
+          info() {
+            // ignore
           },
           debug() {
+            // ignore
           },
           addPath() {
+            // ignore
           },
           isDebug() {
             return false;
           },
           exportVariable() {
+            // ignore
           },
-          group(_name: string, callback: () => Promise<any>) {
+          group(_name: string, callback: () => Promise<unknown>) {
             return callback();
           }
         };
@@ -98,7 +100,7 @@ export function getMocks() {
                   id: data.artifacts.length,
                   name: path.basename(name),
                   file,
-                });
+                } as never);
               },
               downloadArtifact(name: string, tempPath: string) {
                 fs.writeFileSync(`${tempPath}/${name}`, "file");
@@ -176,15 +178,15 @@ export function getMocks() {
                       data: data.assets,
                     });
                   },
-                  uploadReleaseAsset({name}: any) {
+                  uploadReleaseAsset({name}: ReleaseAsset) {
                     data.assets.push({
                       id: data.assets.length,
                       name,
-                    });
+                    } as never);
                     return Promise.resolve();
                   },
-                  deleteReleaseAsset({id}: any) {
-                    const idx = data.assets.findIndex((a: any) => a.id === id);
+                  deleteReleaseAsset({id}: ReleaseAsset) {
+                    const idx = data.assets.findIndex(a => a.id === id);
                     data.assets.splice(idx, 1);
                   },
                   getReleaseByTag() {
@@ -198,13 +200,13 @@ export function getMocks() {
           },
         };
       },
-    } as { [key: string]: () => any }
+    } as { [key: string]: () => unknown }
   };
 }
 
 import { ExecOptions } from "@actions/exec";
 import { Context } from "@actions/github/lib/context";
-import { Release, WorkflowRun } from "@octokit/webhooks-types";
+import {Release, ReleaseAsset, WorkflowRun} from "@octokit/webhooks-types";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
