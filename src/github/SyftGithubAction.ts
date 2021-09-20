@@ -60,7 +60,6 @@ function getArtifactName(): string {
  */
 async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   let stdout = "";
-  let stderr = "";
 
   const cmd = await getSyftCommand();
 
@@ -103,7 +102,6 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
         },
         stderr(buffer) {
           core.info(buffer.toString());
-          stderr += buffer.toString();
         },
         debug(message) {
           core.debug(message);

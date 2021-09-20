@@ -1,4 +1,3 @@
-// @ts-ignore
 import { getMocks } from "./mocks"
 const { data, mocks, setReturnStatus } = getMocks();
 const { release, workflowRun } = data;
