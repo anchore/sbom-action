@@ -31,7 +31,11 @@ function getArtifactName(): string {
     return fileName;
   }
 
-  const { job, action } = github.context;
+  const {
+    repo: { repo },
+    job,
+    action,
+  } = github.context;
   // when run without an id, we get various auto-generated names, like:
   // __self __self_2 __anchore_sbom-action  __anchore_sbom-action_2 etc.
   // so just keep the number at the end if there is one, otherwise
@@ -50,7 +54,7 @@ function getArtifactName(): string {
       extension = "syft.json";
       break;
   }
-  return `sbom-${job}${stepName}.${extension}`;
+  return `${repo}-${job}${stepName}.${extension}`;
 }
 
 /**
