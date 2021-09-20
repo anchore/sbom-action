@@ -18,7 +18,7 @@ and upload the SBOM as a release asset.
 
 ### Scan a container image
 
-To scan a container image using the docker daemon use the `image` parameter:
+To scan a container image from the Docker daemon, use the `image` parameter:
 
 ```yaml
 - uses: anchore/sbom-action@main
@@ -26,7 +26,7 @@ To scan a container image using the docker daemon use the `image` parameter:
     image: example/image_name
 ```
 
-To use an specific container registry, prefix the image with the domain:
+To use a specific container registry, prefix the image with the domain:
 
 ```yaml
 - uses: anchore/sbom-action@main
@@ -45,7 +45,7 @@ To authenticate with the registry, add credentials using
     registry-password: ${{ secrets.REGISTRY_PASSWORD }}
 ```
 
-To connect directly to a registry without using the docker daemon,
+To connect directly to a registry without using the Docker daemon,
 prefix the `image` name with `http://` or `https://`:
 
 ```yaml
