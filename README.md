@@ -11,14 +11,14 @@ using [Syft](https://github.com/anchore/syft).
 
 By default, this action will execute a Syft scan in the workspace directory
 and upload a workflow artifact SBOM in SPDX format. It will also detect
-if being run during a `release` and attach the SBOM
-as a release asset.
+if being run during a [GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+and upload the SBOM as a release asset.
 
 ## Example Usage
 
-### Scan a docker image
+### Scan a container image
 
-Use the `image` parameter
+To scan a container image using the docker daemon use the `image` parameter:
 
 ```yaml
 - uses: anchore/sbom-action@main
@@ -26,9 +26,17 @@ Use the `image` parameter
     image: example/image_name
 ```
 
+With a container registry:
+
+```yaml
+- uses: anchore/sbom-action@main
+  with:
+    image: ghcr.io/example/image_name:tag
+```
+
 ### Scan a specific directory
 
-Use the `path` parameter, relative to the repository root
+Use the `path` parameter, relative to the repository root:
 
 ```yaml
 - uses: anchore/sbom-action@main
@@ -36,16 +44,18 @@ Use the `path` parameter, relative to the repository root
     path: ./build/
 ```
 
-### Attach SBOMs to a release
+### Upload SBOMs as release assets
 
-The action will detect being run in a `release` and
-automatically upload all SBOMs as release assets. However,
+The `sbom-action` will detect being run during a
+[GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+and automatically upload all SBOMs as release assets. However,
 it may be desirable to upload SBOMs generated with other tools or using Syft
-outside of this action. To do this, specify a regular expression using
-the `sbom-artifact-match` pararmeter, for example:
+outside this action. To do this, use the `anchore/sbom-action/release-sbom` sub-action
+and specify a regular expression with the `sbom-artifact-match`
+parameter:
 
 ```yaml
-- uses: anchore/sbom-action/attach@main
+- uses: anchore/sbom-action/release-sbom@main
   sbom-artifact-match: ".*\\.spdx$"
 ```
 
@@ -86,7 +96,7 @@ use the `artifact-name` parameter:
 ### anchore/sbom-action
 
 The main [SBOM action](action.yml), responsible for generating SBOMs
-and attaching them to your wofklow and releases.
+and uploading them as workflow artifacts and release assets.
 
 | Parameter       | Description                                                                                             | Default                     |
 | --------------- | ------------------------------------------------------------------------------------------------------- | --------------------------- |
@@ -95,28 +105,28 @@ and attaching them to your wofklow and releases.
 | `artifact-name` | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output) | `sbom-<job>-<step-id>.spdx` |
 | `format`        | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`                                     | `spdx-json`                 |
 
-### anchore/sbom-action/download
+### anchore/sbom-action/release-sbom
 
-A sub-action to [download Syft](download/action.yml).
+A sub-action to [upload multiple SBOMs](release-sbom/action.yml) to GitHub releases.
+
+| Parameter             | Description                       | Default             |
+| --------------------- | --------------------------------- | ------------------- |
+| `sbom-artifact-match` | A pattern to find SBOM artifacts. | `.*\\.spdx\\.json$` |
+
+### anchore/sbom-action/download-syft
+
+A sub-action to [download Syft](download-syft/action.yml).
 
 No input parameters.
 
 Output parameters:
 
-| Parameter | Description                     |
-| --------- | ------------------------------- |
-| `cmd`     | a reference to the Syft binary. |
+| Parameter | Description                                                        |
+| --------- | ------------------------------------------------------------------ |
+| `cmd`     | a reference to the [Syft](https://github.com/anchore/syft) binary. |
 
 `cmd` can be referenced in a workflow like other output parameters:
 `${{ steps.<step-id>.outputs.cmd }}`
-
-### anchore/sbom-action/attach
-
-A sub-action to [attach multiple SBOMs](attach/action.yml) to releases.
-
-| Parameter             | Description                       | Default             |
-| --------------------- | --------------------------------- | ------------------- |
-| `sbom-artifact-match` | A pattern to find SBOM artifacts. | `.*\\.spdx\\.json$` |
 
 ## Diagnostics
 
