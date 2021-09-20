@@ -107,3 +107,7 @@ jobs:
       - uses: ./attach
         with:
           sbom-artifact-match: sbom.spdx
+
+      - uses: ./attach
+        with:
+          sbom-artifact-match: "^dont-match-anything$"

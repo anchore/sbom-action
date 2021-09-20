@@ -1,9 +1,13 @@
 {
-  "plugins": ["import"],
-  "extends": ["airbnb-typescript", "prettier"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "ecmaVersion": 2020,
+    "sourceType": "module"
   },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
   "rules": {
     "@typescript-eslint/quotes": [
       "error",
@@ -11,7 +15,8 @@
       { "allowTemplateLiterals": true }
     ],
     "@typescript-eslint/comma-dangle": "off",
-    "react/jsx-filename-extension": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "env": {
     "node": true,

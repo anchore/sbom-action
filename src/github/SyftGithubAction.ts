@@ -64,7 +64,6 @@ function getArtifactName(): string {
  */
 async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   let stdout = "";
-  let stderr = "";
 
   const cmd = await getSyftCommand();
 
@@ -107,7 +106,6 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
         },
         stderr(buffer) {
           core.info(buffer.toString());
-          stderr += buffer.toString();
         },
         debug(message) {
           core.debug(message);
@@ -341,6 +339,11 @@ export async function attachReleaseAssets(): Promise<void> {
       }
       return matches;
     });
+
+    if (!matched.length && sbomArtifactInput) {
+      core.warning(`WARNING: no SBOMs found matching ${sbomArtifactInput}`);
+      return;
+    }
 
     core.info(dashWrap(`Attaching SBOMs to release: '${release.tag_name}'`));
     for (const artifact of matched) {
