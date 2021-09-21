@@ -250,7 +250,7 @@ describe("Action", () => {
 
   it("sets up registry scheme with https", async () => {
     setInputs({
-      image: "https://somewhere/org/img",
+      image: "somewhere/org/img",
     });
     setContext({
       eventName: "pull_request",
@@ -276,13 +276,16 @@ describe("Action", () => {
     const { cmd, args, env } = data.execArgs;
 
     expect(cmd).toBe("syft");
-    expect(args).toContain("registry:somewhere/org/img");
-    expect(env.SYFT_REGISTRY_INSECURE_USE_HTTP).toBeFalsy();
+    expect(args).toContain("somewhere/org/img");
+    expect(env.SYFT_REGISTRY_AUTH_USERNAME).toBeFalsy();
+    expect(env.SYFT_REGISTRY_AUTH_PASSWORD).toBeFalsy();
   });
 
   it("sets up insecure registry scheme with http", async () => {
     setInputs({
-      image: "http://somewhere/org/img",
+      image: "somewhere/org/img",
+      "registry-username": "mr_awesome",
+      "registry-password": "super_secret",
     });
     setContext({
       eventName: "pull_request",
@@ -309,6 +312,7 @@ describe("Action", () => {
 
     expect(cmd).toBe("syft");
     expect(args).toContain("registry:somewhere/org/img");
-    expect(env.SYFT_REGISTRY_INSECURE_USE_HTTP).toBe("true");
+    expect(env.SYFT_REGISTRY_AUTH_USERNAME).toBe("mr_awesome");
+    expect(env.SYFT_REGISTRY_AUTH_PASSWORD).toBe("super_secret");
   });
 });
