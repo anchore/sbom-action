@@ -35,6 +35,13 @@ jest.mock("../src/github/GithubClient", () => {
     findRelease() {
       return Promise.resolve(release);
     },
+    findDraftRelease() {
+      return Promise.resolve({
+        ...release,
+        draft: true,
+        target_commitish: "main", // ?
+      });
+    },
     findLatestWorkflowRunForBranch() {
       return Promise.resolve(latestRun);
     },
