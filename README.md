@@ -59,18 +59,18 @@ Use the `path` parameter, relative to the repository root:
     path: ./build/
 ```
 
-### Upload SBOMs as release assets
+### Publishing SBOMs with releases
 
 The `sbom-action` will detect being run during a
 [GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
 and automatically upload all SBOMs as release assets. However,
 it may be desirable to upload SBOMs generated with other tools or using Syft
-outside this action. To do this, use the `anchore/sbom-action/release-sbom` sub-action
+outside this action. To do this, use the `anchore/sbom-action/publish-sbom` sub-action
 and specify a regular expression with the `sbom-artifact-match`
 parameter:
 
 ```yaml
-- uses: anchore/sbom-action/release-sbom@main
+- uses: anchore/sbom-action/publish-sbom@main
   sbom-artifact-match: ".*\\.spdx$"
 ```
 
@@ -122,9 +122,9 @@ and uploading them as workflow artifacts and release assets.
 | `artifact-name`     | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output)                                      | `sbom-<job>-<step-id>.spdx` |
 | `format`            | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`                                                                          | `spdx-json`                 |
 
-### anchore/sbom-action/release-sbom
+### anchore/sbom-action/publish-sbom
 
-A sub-action to [upload multiple SBOMs](release-sbom/action.yml) to GitHub releases.
+A sub-action to [upload multiple SBOMs](publish-sbom/action.yml) to GitHub releases.
 
 | Parameter             | Description                       | Default             |
 | --------------------- | --------------------------------- | ------------------- |

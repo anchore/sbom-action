@@ -104,10 +104,10 @@ jobs:
           echo IMAGE SCAN SBOM:
           cat my.sbom
 
-      - uses: ./release-sbom # anchore/sbom-action/release-sbom
+      - uses: ./publish-sbom # anchore/sbom-action/publish-sbom
         with:
           sbom-artifact-match: sbom.spdx
 
-      - uses: ./release-sbom # anchore/sbom-action/release-sbom
+      - uses: ./publish-sbom # anchore/sbom-action/publish-sbom
         with:
           sbom-artifact-match: "^dont-match-anything$"
