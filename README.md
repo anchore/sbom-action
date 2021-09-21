@@ -26,7 +26,10 @@ To scan a container image from the Docker daemon, use the `image` parameter:
     image: example/image_name
 ```
 
-To use a specific container registry, prefix the image with the domain:
+To use a specific container registry, prefix the image with the domain. This will
+attempt to use the Docker daemon and by association, any previously configured
+credentials. If the Docker daemon is not available, a direct connection to the
+registry will be attempted:
 
 ```yaml
 - uses: anchore/sbom-action@main
@@ -34,7 +37,8 @@ To use a specific container registry, prefix the image with the domain:
     image: ghcr.io/example/image_name:tag
 ```
 
-To authenticate with the registry, add credentials using
+To use an authenticated direct connection to the registry, regardless of the
+Docker daemon availability, add credentials using
 `registry-username` and `registry-password`:
 
 ```yaml
@@ -43,15 +47,6 @@ To authenticate with the registry, add credentials using
     image: my-registry.com/my/image
     registry-username: mr_awesome
     registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-```
-
-To connect directly to a registry without using the Docker daemon,
-prefix the `image` name with `http://` or `https://`:
-
-```yaml
-- uses: anchore/sbom-action@main
-  with:
-    image: http://my-registry.com/my/image
 ```
 
 ### Scan a specific directory

@@ -76,26 +76,23 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
 
   if (registryUser) {
     env.SYFT_REGISTRY_AUTH_USERNAME = registryUser;
-  }
-  if (registryPass) {
-    env.SYFT_REGISTRY_AUTH_PASSWORD = registryPass;
+    if (registryPass) {
+      env.SYFT_REGISTRY_AUTH_PASSWORD = registryPass;
+    } else {
+      core.warning(
+        "WARNING: registry-username specified without registry-password"
+      );
+    }
   }
 
   // https://github.com/anchore/syft#configuration
   let args = ["packages", "-vv"];
 
   if ("image" in input && input.image) {
-    let image = input.image;
-
-    if (image.startsWith("https://")) {
-      image = image.substring("https://".length);
-      args = [...args, `registry:${image}`];
-    } else if (image.startsWith("http://")) {
-      env.SYFT_REGISTRY_INSECURE_USE_HTTP = "true";
-      image = image.substring("http://".length);
-      args = [...args, `registry:${image}`];
+    if (registryUser) {
+      args = [...args, `registry:${input.image}`];
     } else {
-      args = [...args, `docker:${image}`];
+      args = [...args, `${input.image}`];
     }
   } else if ("path" in input && input.path) {
     args = [...args, `dir:${input.path}`];
