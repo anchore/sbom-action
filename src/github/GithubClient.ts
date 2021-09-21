@@ -343,6 +343,34 @@ export class GithubClient {
       return undefined;
     }
   }
+
+  /**
+   * Finds a draft release by ref
+   * @param tag
+   */
+  async findDraftRelease({
+    ref,
+  }: {
+    ref: string;
+  }): Promise<Release | undefined> {
+    core.debug(`Getting draft release by ref: ${ref}`);
+    try {
+      const response = await this.client.rest.repos.listReleases({
+        ...this.repo,
+      });
+      const releases = (response.data as Release[]).map((r) => {
+        if (r.draft) {
+          core.info("Found draft release:");
+          core.info(JSON.stringify(r));
+        }
+        return r;
+      });
+      return releases.find((r) => r.target_commitish === ref);
+    } catch (e) {
+      debugLog("Error while fetching release by tag name:", e);
+      return undefined;
+    }
+  }
 }
 
 /**

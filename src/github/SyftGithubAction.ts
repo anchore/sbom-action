@@ -306,7 +306,7 @@ export async function attachReleaseAssets(): Promise<void> {
 
   debugLog("Got github context:", github.context);
 
-  const { eventName, ref, payload, repo } = github.context;
+  const { eventName, ref, payload, repo, sha } = github.context;
   const client = getClient(repo, core.getInput("github-token"));
 
   let release: Release | undefined = undefined;
@@ -316,10 +316,14 @@ export async function attachReleaseAssets(): Promise<void> {
     release = (payload as ReleaseEvent).release;
     debugLog("Got releaseEvent:", release);
   } else {
-    const isRefPush = eventName === "push" && /^refs\/tags\/.*/.test(ref);
+    const releaseRefPrefix = core.getInput("release-ref") || "refs/tags/";
+    const isRefPush = eventName === "push" && ref.startsWith(releaseRefPrefix);
     if (isRefPush) {
-      const tag = ref.replace(/^refs\/tags\//, "");
+      const tag = ref.substring(releaseRefPrefix.length);
       release = await client.findRelease({ tag });
+      if (!release) {
+        release = await client.findDraftRelease({ ref: sha });
+      }
     }
   }
 

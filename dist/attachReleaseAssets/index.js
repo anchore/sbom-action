@@ -16517,6 +16517,30 @@ class GithubClient {
             }
         });
     }
+    /**
+     * Finds a draft release by ref
+     * @param tag
+     */
+    findDraftRelease({ ref, }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            core.debug(`Getting draft release by ref: ${ref}`);
+            try {
+                const response = yield this.client.rest.repos.listReleases(Object.assign({}, this.repo));
+                const releases = response.data.map((r) => {
+                    if (r.draft) {
+                        core.info("Found draft release:");
+                        core.info(JSON.stringify(r));
+                    }
+                    return r;
+                });
+                return releases.find((r) => r.target_commitish === ref);
+            }
+            catch (e) {
+                debugLog("Error while fetching release by tag name:", e);
+                return undefined;
+            }
+        });
+    }
 }
 exports.GithubClient = GithubClient;
 /**
@@ -16856,7 +16880,7 @@ function attachReleaseAssets() {
             return;
         }
         (0, GithubClient_1.debugLog)("Got github context:", github.context);
-        const { eventName, ref, payload, repo } = github.context;
+        const { eventName, ref, payload, repo, sha } = github.context;
         const client = (0, GithubClient_1.getClient)(repo, core.getInput("github-token"));
         let release = undefined;
         // FIXME: what's the right way to detect a release?
@@ -16865,10 +16889,14 @@ function attachReleaseAssets() {
             (0, GithubClient_1.debugLog)("Got releaseEvent:", release);
         }
         else {
-            const isRefPush = eventName === "push" && /^refs\/tags\/.*/.test(ref);
+            const releaseRefPrefix = core.getInput("release-ref") || "refs/tags/";
+            const isRefPush = eventName === "push" && ref.startsWith(releaseRefPrefix);
             if (isRefPush) {
-                const tag = ref.replace(/^refs\/tags\//, "");
+                const tag = ref.substring(releaseRefPrefix.length);
                 release = yield client.findRelease({ tag });
+                if (!release) {
+                    release = yield client.findDraftRelease({ ref: sha });
+                }
             }
         }
         if (release) {
