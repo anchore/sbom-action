@@ -26,8 +26,9 @@ To scan a container image from the Docker daemon, use the `image` parameter:
     image: example/image_name
 ```
 
-To use a specific container registry, prefix the image with the domain. This will
-attempt to use the Docker daemon and by association, any previously configured
+To use a specific container registry, specify a typical _registry path_ to the
+image including the registry host. This will
+attempt to use the Docker daemon and by association any previously configured
 credentials. If the Docker daemon is not available, a direct connection to the
 registry will be attempted:
 
@@ -37,7 +38,7 @@ registry will be attempted:
     image: ghcr.io/example/image_name:tag
 ```
 
-To use an authenticated direct connection to the registry, regardless of the
+To use an authenticated direct connection to the registry regardless of the
 Docker daemon availability, add credentials using
 `registry-username` and `registry-password`:
 
