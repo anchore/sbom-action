@@ -248,7 +248,7 @@ describe("Action", () => {
     }
   });
 
-  it("sets up registry scheme with https", async () => {
+  it("does not include docker scheme by default", async () => {
     setInputs({
       image: "somewhere/org/img",
     });
@@ -281,7 +281,7 @@ describe("Action", () => {
     expect(env.SYFT_REGISTRY_AUTH_PASSWORD).toBeFalsy();
   });
 
-  it("sets up insecure registry scheme with http", async () => {
+  it("uses registry scheme with username and password", async () => {
     setInputs({
       image: "somewhere/org/img",
       "registry-username": "mr_awesome",
