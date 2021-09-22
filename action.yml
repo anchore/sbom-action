@@ -12,6 +12,14 @@ inputs:
     required: false
     description: "A container image to scan"
 
+  registry-username:
+    required: false
+    description: "The registry username"
+
+  registry-password:
+    required: false
+    description: "The registry password"
+
   format:
     required: false
     description: "The SBOM format to export"

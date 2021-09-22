@@ -16673,10 +16673,26 @@ function executeSyft({ input, format }) {
         const env = {
             SYFT_CHECK_FOR_APP_UPDATE: "false",
         };
+        const registryUser = core.getInput("registry-username");
+        const registryPass = core.getInput("registry-password");
+        if (registryUser) {
+            env.SYFT_REGISTRY_AUTH_USERNAME = registryUser;
+            if (registryPass) {
+                env.SYFT_REGISTRY_AUTH_PASSWORD = registryPass;
+            }
+            else {
+                core.warning("WARNING: registry-username specified without registry-password");
+            }
+        }
         // https://github.com/anchore/syft#configuration
         let args = ["packages", "-vv"];
         if ("image" in input && input.image) {
-            args = [...args, `docker:${input.image}`];
+            if (registryUser) {
+                args = [...args, `registry:${input.image}`];
+            }
+            else {
+                args = [...args, `${input.image}`];
+            }
         }
         else if ("path" in input && input.path) {
             args = [...args, `dir:${input.path}`];

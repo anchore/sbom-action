@@ -75,14 +75,14 @@ jobs:
         with:
           path: ./
 
-      - uses: ./download
+      - uses: ./download-syft # anchore/sbom-action/download-syft
         id: syft
 
       - run: |
           echo "${{ steps.syft.outputs.cmd }}"
           "${{ steps.syft.outputs.cmd }}" dir:.
 
-      - uses: ./
+      - uses: ./ # anchore/sbom-action
         id: dirscan
         with:
           artifact-name: sbom.spdx
@@ -92,7 +92,7 @@ jobs:
           echo DIR SCAN SBOM:
           cat dirscan-sbom.spdx
 
-      - uses: ./
+      - uses: ./ # anchore/sbom-action
         id: imagescan
         with:
           image: alpine:latest
@@ -102,10 +102,10 @@ jobs:
           echo IMAGE SCAN SBOM:
           cat my.sbom
 
-      - uses: ./attach
+      - uses: ./publish-sbom # anchore/sbom-action/publish-sbom
         with:
           sbom-artifact-match: sbom.spdx
 
-      - uses: ./attach
+      - uses: ./publish-sbom # anchore/sbom-action/publish-sbom
         with:
           sbom-artifact-match: "^dont-match-anything$"

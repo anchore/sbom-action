@@ -254,4 +254,72 @@ describe("Action", () => {
       expect("should not throw exception").toBeUndefined();
     }
   });
+
+  it("does not include docker scheme by default", async () => {
+    setInputs({
+      image: "somewhere/org/img",
+    });
+    setContext({
+      eventName: "pull_request",
+      ref: "v0.0.0",
+      payload: {
+        pull_request: {
+          base: {
+            ref: "asdf",
+          },
+        },
+      } as PullRequestEvent,
+      repo: {
+        owner: "test-org",
+        repo: "test-repo",
+      },
+      runId: 1,
+      job: "pr_job_job",
+      action: "__self",
+    } as any);
+
+    await action.runSyftAction();
+
+    const { cmd, args, env } = data.execArgs;
+
+    expect(cmd).toBe("syft");
+    expect(args).toContain("somewhere/org/img");
+    expect(env.SYFT_REGISTRY_AUTH_USERNAME).toBeFalsy();
+    expect(env.SYFT_REGISTRY_AUTH_PASSWORD).toBeFalsy();
+  });
+
+  it("uses registry scheme with username and password", async () => {
+    setInputs({
+      image: "somewhere/org/img",
+      "registry-username": "mr_awesome",
+      "registry-password": "super_secret",
+    });
+    setContext({
+      eventName: "pull_request",
+      ref: "v0.0.0",
+      payload: {
+        pull_request: {
+          base: {
+            ref: "asdf",
+          },
+        },
+      } as PullRequestEvent,
+      repo: {
+        owner: "test-org",
+        repo: "test-repo",
+      },
+      runId: 1,
+      job: "pr_job_job",
+      action: "__self",
+    } as any);
+
+    await action.runSyftAction();
+
+    const { cmd, args, env } = data.execArgs;
+
+    expect(cmd).toBe("syft");
+    expect(args).toContain("registry:somewhere/org/img");
+    expect(env.SYFT_REGISTRY_AUTH_USERNAME).toBe("mr_awesome");
+    expect(env.SYFT_REGISTRY_AUTH_PASSWORD).toBe("super_secret");
+  });
 });
