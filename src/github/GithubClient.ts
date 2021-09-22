@@ -79,17 +79,22 @@ export function dashWrap(str: string): string {
 
 /**
  * Logs all objects passed in debug outputting strings directly and
- * calling JSON.stringify on other elements
+ * calling JSON.stringify on other elements in a group with the given label
  */
-export function debugLog(...args: unknown[]): void {
+export function debugInspect(label: string, ...args: unknown[]): void {
   if (core.isDebug()) {
-    for (const arg of args) {
-      if (typeof arg === "string") {
-        core.debug(arg);
-      } else {
-        core.debug(JSON.stringify(arg));
+    core.group(label, async () => {
+      for (const arg of args) {
+        if (typeof arg === "string") {
+          core.debug(arg);
+        } else if (arg instanceof Error) {
+          core.debug(arg.message);
+          core.debug(JSON.stringify(arg.stack));
+        } else {
+          core.debug(JSON.stringify(arg));
+        }
       }
-    }
+    });
   }
 }
 
@@ -120,7 +125,7 @@ export class GithubClient {
     const downloadClient = new DownloadHttpClient();
     const response = await downloadClient.listArtifacts();
 
-    debugLog("listWorkflowArtifacts response:", response);
+    debugInspect("listWorkflowArtifacts response:", response);
 
     return response.value;
   }
@@ -136,7 +141,7 @@ export class GithubClient {
       client.downloadArtifact(name, tempPath)
     );
 
-    debugLog(
+    debugInspect(
       "downloadArtifact response:",
       response,
       "dir:",
@@ -161,7 +166,7 @@ export class GithubClient {
     const rootDirectory = path.dirname(file);
     const client = createArtifactClient();
 
-    debugLog(
+    debugInspect(
       "uploadArtifact:",
       name,
       file,
@@ -175,7 +180,7 @@ export class GithubClient {
       })
     );
 
-    debugLog("uploadArtifact response:", info);
+    debugInspect("uploadArtifact response:", info);
   }
 
   // --------------- COMPLETED WORKFLOW METHODS ------------------
@@ -196,7 +201,7 @@ export class GithubClient {
       page: 1,
     });
 
-    debugLog("listWorkflowRunArtifacts response:", response);
+    debugInspect("listWorkflowRunArtifacts response:", response);
 
     if (response.status >= 400) {
       throw new Error("Unable to retrieve listWorkflowRunArtifacts");
@@ -222,7 +227,7 @@ export class GithubClient {
       page: 1,
     });
 
-    debugLog("findLatestWorkflowRunForBranch response:", response);
+    debugInspect("findLatestWorkflowRunForBranch response:", response);
 
     if (response.status >= 400) {
       throw new Error("Unable to findLatestWorkflowRunForBranch");
@@ -246,15 +251,15 @@ export class GithubClient {
       archive_format: "zip",
     });
 
-    debugLog("downloadWorkflowRunArtifact response:", response);
+    debugInspect("downloadWorkflowRunArtifact response:", response);
 
     const artifactZip = await cache.downloadTool(response.url);
 
-    debugLog("downloadTool response:", artifactZip);
+    debugInspect("downloadTool response:", artifactZip);
 
     const artifactPath = await cache.extractZip(artifactZip);
 
-    debugLog("extractZip response:", artifactPath);
+    debugInspect("extractZip response:", artifactPath);
 
     for (const file of fs.readdirSync(artifactPath)) {
       const filePath = `${artifactPath}/${file}`;
@@ -307,7 +312,7 @@ export class GithubClient {
       throw new Error("Bad response from listReleaseAssets");
     }
 
-    debugLog("listReleaseAssets response:", response);
+    debugInspect("listReleaseAssets response:", response);
 
     return response.data.sort((a, b) => a.name.localeCompare(b.name));
   }
@@ -339,7 +344,7 @@ export class GithubClient {
       });
       return response.data as Release;
     } catch (e) {
-      debugLog("Error while fetching release by tag name:", e);
+      debugInspect("Error while fetching release by tag name:", e);
       return undefined;
     }
   }
@@ -356,7 +361,7 @@ export class GithubClient {
     tag?: string;
     ref?: string;
   }): Promise<Release | undefined> {
-    debugLog(`Getting draft release by tag: ${ref} and/or ref: ${ref}`);
+    debugInspect(`Getting draft release by tag: ${ref} and/or ref: ${ref}`);
     try {
       const response = await this.client.rest.repos.listReleases({
         ...this.repo,
@@ -365,7 +370,7 @@ export class GithubClient {
         .filter((r) => r.draft)
         .find((r) => r.tag_name === tag || r.target_commitish === ref);
     } catch (e) {
-      debugLog("Error while fetching release by tag name:", e);
+      debugInspect("Error while fetching release by tag name:", e);
       return undefined;
     }
   }

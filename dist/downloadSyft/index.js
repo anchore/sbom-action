@@ -16337,7 +16337,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getClient = exports.GithubClient = exports.debugLog = exports.dashWrap = void 0;
+exports.getClient = exports.GithubClient = exports.debugInspect = exports.dashWrap = void 0;
 const artifact_1 = __nccwpck_require__(2605);
 const download_http_client_1 = __nccwpck_require__(8538);
 const core = __importStar(__nccwpck_require__(2186));
@@ -16389,21 +16389,27 @@ function dashWrap(str) {
 exports.dashWrap = dashWrap;
 /**
  * Logs all objects passed in debug outputting strings directly and
- * calling JSON.stringify on other elements
+ * calling JSON.stringify on other elements in a group with the given label
  */
-function debugLog(...args) {
+function debugInspect(label, ...args) {
     if (core.isDebug()) {
-        for (const arg of args) {
-            if (typeof arg === "string") {
-                core.debug(arg);
+        core.group(label, () => __awaiter(this, void 0, void 0, function* () {
+            for (const arg of args) {
+                if (typeof arg === "string") {
+                    core.debug(arg);
+                }
+                else if (arg instanceof Error) {
+                    core.debug(arg.message);
+                    core.debug(JSON.stringify(arg.stack));
+                }
+                else {
+                    core.debug(JSON.stringify(arg));
+                }
             }
-            else {
-                core.debug(JSON.stringify(arg));
-            }
-        }
+        }));
     }
 }
-exports.debugLog = debugLog;
+exports.debugInspect = debugInspect;
 /**
  * Provides a basic shim to interact with the necessary Github APIs
  */
@@ -16425,7 +16431,7 @@ class GithubClient {
             // using a supported API, but internally it's using this anyway
             const downloadClient = new download_http_client_1.DownloadHttpClient();
             const response = yield downloadClient.listArtifacts();
-            debugLog("listWorkflowArtifacts response:", response);
+            debugInspect("listWorkflowArtifacts response:", response);
             return response.value;
         });
     }
@@ -16438,7 +16444,7 @@ class GithubClient {
             const client = (0, artifact_1.create)();
             const tempPath = fs_1.default.mkdtempSync(path_1.default.join(os_1.default.tmpdir(), "sbom-action-"));
             const response = yield suppressOutput(() => __awaiter(this, void 0, void 0, function* () { return client.downloadArtifact(name, tempPath); }));
-            debugLog("downloadArtifact response:", response, "dir:", core.isDebug() && fs_1.default.readdirSync(response.downloadPath));
+            debugInspect("downloadArtifact response:", response, "dir:", core.isDebug() && fs_1.default.readdirSync(response.downloadPath));
             return `${response.downloadPath}/${response.artifactName}`;
         });
     }
@@ -16451,13 +16457,13 @@ class GithubClient {
         return __awaiter(this, void 0, void 0, function* () {
             const rootDirectory = path_1.default.dirname(file);
             const client = (0, artifact_1.create)();
-            debugLog("uploadArtifact:", name, file, rootDirectory, core.isDebug() && fs_1.default.readdirSync(rootDirectory));
+            debugInspect("uploadArtifact:", name, file, rootDirectory, core.isDebug() && fs_1.default.readdirSync(rootDirectory));
             const info = yield suppressOutput(() => __awaiter(this, void 0, void 0, function* () {
                 return client.uploadArtifact(name, [file], rootDirectory, {
                     continueOnError: false,
                 });
             }));
-            debugLog("uploadArtifact response:", info);
+            debugInspect("uploadArtifact response:", info);
         });
     }
     // --------------- COMPLETED WORKFLOW METHODS ------------------
@@ -16468,7 +16474,7 @@ class GithubClient {
     listWorkflowRunArtifacts({ runId, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield this.client.rest.actions.listWorkflowRunArtifacts(Object.assign(Object.assign({}, this.repo), { run_id: runId, per_page: 100, page: 1 }));
-            debugLog("listWorkflowRunArtifacts response:", response);
+            debugInspect("listWorkflowRunArtifacts response:", response);
             if (response.status >= 400) {
                 throw new Error("Unable to retrieve listWorkflowRunArtifacts");
             }
@@ -16482,7 +16488,7 @@ class GithubClient {
     findLatestWorkflowRunForBranch({ branch, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield this.client.rest.actions.listWorkflowRunsForRepo(Object.assign(Object.assign({}, this.repo), { branch, status: "success", per_page: 100, page: 1 }));
-            debugLog("findLatestWorkflowRunForBranch response:", response);
+            debugInspect("findLatestWorkflowRunForBranch response:", response);
             if (response.status >= 400) {
                 throw new Error("Unable to findLatestWorkflowRunForBranch");
             }
@@ -16496,11 +16502,11 @@ class GithubClient {
     downloadWorkflowRunArtifact({ artifactId, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield this.client.rest.actions.downloadArtifact(Object.assign(Object.assign({}, this.repo), { artifact_id: artifactId, archive_format: "zip" }));
-            debugLog("downloadWorkflowRunArtifact response:", response);
+            debugInspect("downloadWorkflowRunArtifact response:", response);
             const artifactZip = yield cache.downloadTool(response.url);
-            debugLog("downloadTool response:", artifactZip);
+            debugInspect("downloadTool response:", artifactZip);
             const artifactPath = yield cache.extractZip(artifactZip);
-            debugLog("extractZip response:", artifactPath);
+            debugInspect("extractZip response:", artifactPath);
             for (const file of fs_1.default.readdirSync(artifactPath)) {
                 const filePath = `${artifactPath}/${file}`;
                 if (fs_1.default.existsSync(filePath)) {
@@ -16532,7 +16538,7 @@ class GithubClient {
             if (response.status >= 400) {
                 throw new Error("Bad response from listReleaseAssets");
             }
-            debugLog("listReleaseAssets response:", response);
+            debugInspect("listReleaseAssets response:", response);
             return response.data.sort((a, b) => a.name.localeCompare(b.name));
         });
     }
@@ -16556,7 +16562,7 @@ class GithubClient {
                 return response.data;
             }
             catch (e) {
-                debugLog("Error while fetching release by tag name:", e);
+                debugInspect("Error while fetching release by tag name:", e);
                 return undefined;
             }
         });
@@ -16568,7 +16574,7 @@ class GithubClient {
      */
     findDraftRelease({ tag, ref, }) {
         return __awaiter(this, void 0, void 0, function* () {
-            debugLog(`Getting draft release by tag: ${ref} and/or ref: ${ref}`);
+            debugInspect(`Getting draft release by tag: ${ref} and/or ref: ${ref}`);
             try {
                 const response = yield this.client.rest.repos.listReleases(Object.assign({}, this.repo));
                 return response.data
@@ -16576,7 +16582,7 @@ class GithubClient {
                     .find((r) => r.tag_name === tag || r.target_commitish === ref);
             }
             catch (e) {
-                debugLog("Error while fetching release by tag name:", e);
+                debugInspect("Error while fetching release by tag name:", e);
                 return undefined;
             }
         });
@@ -16763,13 +16769,13 @@ function executeSyft({ input, format }) {
                         core.info(buffer.toString());
                     },
                     debug(message) {
-                        (0, GithubClient_1.debugLog)(message);
+                        core.debug(message);
                     },
                 },
             });
         }));
         if (exitCode > 0) {
-            (0, GithubClient_1.debugLog)(stdout);
+            (0, GithubClient_1.debugInspect)("Syft stdout:", stdout);
             throw new Error("An error occurred running Syft");
         }
         else {
@@ -16785,7 +16791,7 @@ function downloadSyft() {
         const name = exports.SYFT_BINARY_NAME;
         const version = exports.SYFT_VERSION;
         const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
-        (0, GithubClient_1.debugLog)(`Installing ${name} ${version}`);
+        core.debug(`Installing ${name} ${version}`);
         // Download the installer, and run
         const installPath = yield cache.downloadTool(url);
         // Make sure the tool's executable bit is set
@@ -16810,7 +16816,7 @@ function getSyftCommand() {
             // Cache the downloaded file
             syftPath = yield cache.cacheFile(syftPath, name, name, version);
         }
-        (0, GithubClient_1.debugLog)(`Got Syft path: ${syftPath} binary at: ${syftPath}/${name}`);
+        core.debug(`Got Syft path: ${syftPath} binary at: ${syftPath}/${name}`);
         // Add tool to path for this and future actions to use
         core.addPath(syftPath);
         return name;
@@ -16875,12 +16881,12 @@ function comparePullRequestTargetArtifact() {
             const branchWorkflow = yield client.findLatestWorkflowRunForBranch({
                 branch: pr.base.ref,
             });
-            (0, GithubClient_1.debugLog)("Got branchWorkflow:", branchWorkflow);
+            (0, GithubClient_1.debugInspect)("Got branchWorkflow:", branchWorkflow);
             if (branchWorkflow) {
                 const baseBranchArtifacts = yield client.listWorkflowRunArtifacts({
                     runId: branchWorkflow.id,
                 });
-                (0, GithubClient_1.debugLog)("Got baseBranchArtifacts:", baseBranchArtifacts);
+                (0, GithubClient_1.debugInspect)("Got baseBranchArtifacts:", baseBranchArtifacts);
                 for (const artifact of baseBranchArtifacts) {
                     if (artifact.name === getArtifactName()) {
                         const baseArtifact = yield client.downloadWorkflowRunArtifact({
@@ -16896,7 +16902,7 @@ function comparePullRequestTargetArtifact() {
 function runSyftAction() {
     return __awaiter(this, void 0, void 0, function* () {
         core.info((0, GithubClient_1.dashWrap)("Running SBOM Action"));
-        (0, GithubClient_1.debugLog)(`Got github context:`, github.context);
+        (0, GithubClient_1.debugInspect)(`Got github context:`, github.context);
         const start = Date.now();
         const doUpload = getBooleanInput("upload-artifact", true);
         const output = yield executeSyft({
@@ -16913,7 +16919,7 @@ function runSyftAction() {
             // potential way to do so:
             const priorArtifact = process.env[PRIOR_ARTIFACT_ENV_VAR];
             if (priorArtifact) {
-                (0, GithubClient_1.debugLog)(`Prior artifact: ${priorArtifact}`);
+                core.debug(`Prior artifact: ${priorArtifact}`);
             }
             if (doUpload) {
                 yield uploadSbomArtifact(output);
@@ -16935,7 +16941,7 @@ function attachReleaseAssets() {
         if (!doRelease) {
             return;
         }
-        (0, GithubClient_1.debugLog)("Got github context:", github.context);
+        (0, GithubClient_1.debugInspect)("Got github context:", github.context);
         const { eventName, ref, payload, repo } = github.context;
         const client = (0, GithubClient_1.getClient)(repo, core.getInput("github-token"));
         let release = undefined;
@@ -16943,7 +16949,7 @@ function attachReleaseAssets() {
         if (eventName === "release") {
             // Obviously if this is run during a release
             release = payload.release;
-            (0, GithubClient_1.debugLog)("Got releaseEvent:", release);
+            (0, GithubClient_1.debugInspect)("Got releaseEvent:", release);
         }
         else {
             // We may have a tag-based workflow that creates releases or even drafts
@@ -16954,12 +16960,12 @@ function attachReleaseAssets() {
                 const tag = ref.substring(releaseRefPrefix.length);
                 release = yield client.findRelease({ tag });
                 if (release) {
-                    (0, GithubClient_1.debugLog)("Found release for ref push:", release);
+                    (0, GithubClient_1.debugInspect)("Found release for ref push:", release);
                 }
                 else {
                     release = yield client.findDraftRelease({ tag, ref: push.ref });
                     if (release) {
-                        (0, GithubClient_1.debugLog)("Found DRAFT release for ref push:", release);
+                        (0, GithubClient_1.debugInspect)("Found DRAFT release for ref push:", release);
                     }
                 }
             }
@@ -16973,20 +16979,20 @@ function attachReleaseAssets() {
             let matched = artifacts.filter((a) => {
                 const matches = matcher.test(a.name);
                 if (matches) {
-                    (0, GithubClient_1.debugLog)(`Found artifact: ${a.name}`);
+                    core.debug(`Found artifact: ${a.name}`);
                 }
                 else {
-                    (0, GithubClient_1.debugLog)(`Artifact: ${a.name} not matching ${sbomArtifactPattern}`);
+                    core.debug(`Artifact: ${a.name} not matching ${sbomArtifactPattern}`);
                 }
                 return matches;
             });
             // We may have a release run based on a prior build from another workflow
             if (eventName === "release" && !matched.length) {
-                (0, GithubClient_1.debugLog)("Searching for release artifacts from prior workflow");
+                core.info("No artifacts found in this workflow. Searching for release artifacts from prior workflow...");
                 const latestRun = yield client.findLatestWorkflowRunForBranch({
                     branch: release.target_commitish,
                 });
-                (0, GithubClient_1.debugLog)("Got latest run for prior workflow", latestRun);
+                (0, GithubClient_1.debugInspect)("Got latest run for prior workflow", latestRun);
                 if (latestRun) {
                     const runArtifacts = yield client.listWorkflowRunArtifacts({
                         runId: latestRun.id,
@@ -16994,10 +17000,10 @@ function attachReleaseAssets() {
                     matched = runArtifacts.filter((a) => {
                         const matches = matcher.test(a.name);
                         if (matches) {
-                            (0, GithubClient_1.debugLog)(`Found run artifact: ${a.name}`);
+                            core.debug(`Found run artifact: ${a.name}`);
                         }
                         else {
-                            (0, GithubClient_1.debugLog)(`Run artifact: ${a.name} not matching ${sbomArtifactPattern}`);
+                            core.debug(`Run artifact: ${a.name} not matching ${sbomArtifactPattern}`);
                         }
                         return matches;
                     });

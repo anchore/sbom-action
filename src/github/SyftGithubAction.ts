@@ -13,7 +13,7 @@ import * as os from "os";
 import path from "path";
 import stream from "stream";
 import { SyftOptions } from "../Syft";
-import { dashWrap, debugLog, getClient } from "./GithubClient";
+import { dashWrap, debugInspect, getClient } from "./GithubClient";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
@@ -127,14 +127,14 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
           core.info(buffer.toString());
         },
         debug(message) {
-          debugLog(message);
+          core.debug(message);
         },
       },
     })
   );
 
   if (exitCode > 0) {
-    debugLog(stdout);
+    debugInspect("Syft stdout:", stdout);
     throw new Error("An error occurred running Syft");
   } else {
     return stdout;
@@ -150,7 +150,7 @@ export async function downloadSyft(): Promise<string> {
 
   const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
 
-  debugLog(`Installing ${name} ${version}`);
+  core.debug(`Installing ${name} ${version}`);
 
   // Download the installer, and run
   const installPath = await cache.downloadTool(url);
@@ -180,7 +180,7 @@ export async function getSyftCommand(): Promise<string> {
     syftPath = await cache.cacheFile(syftPath, name, name, version);
   }
 
-  debugLog(`Got Syft path: ${syftPath} binary at: ${syftPath}/${name}`);
+  core.debug(`Got Syft path: ${syftPath} binary at: ${syftPath}/${name}`);
 
   // Add tool to path for this and future actions to use
   core.addPath(syftPath);
@@ -250,14 +250,14 @@ async function comparePullRequestTargetArtifact(): Promise<void> {
       branch: pr.base.ref,
     });
 
-    debugLog("Got branchWorkflow:", branchWorkflow);
+    debugInspect("Got branchWorkflow:", branchWorkflow);
 
     if (branchWorkflow) {
       const baseBranchArtifacts = await client.listWorkflowRunArtifacts({
         runId: branchWorkflow.id,
       });
 
-      debugLog("Got baseBranchArtifacts:", baseBranchArtifacts);
+      debugInspect("Got baseBranchArtifacts:", baseBranchArtifacts);
 
       for (const artifact of baseBranchArtifacts) {
         if (artifact.name === getArtifactName()) {
@@ -277,7 +277,7 @@ async function comparePullRequestTargetArtifact(): Promise<void> {
 export async function runSyftAction(): Promise<void> {
   core.info(dashWrap("Running SBOM Action"));
 
-  debugLog(`Got github context:`, github.context);
+  debugInspect(`Got github context:`, github.context);
 
   const start = Date.now();
 
@@ -300,7 +300,7 @@ export async function runSyftAction(): Promise<void> {
     // potential way to do so:
     const priorArtifact = process.env[PRIOR_ARTIFACT_ENV_VAR];
     if (priorArtifact) {
-      debugLog(`Prior artifact: ${priorArtifact}`);
+      core.debug(`Prior artifact: ${priorArtifact}`);
     }
 
     if (doUpload) {
@@ -323,7 +323,7 @@ export async function attachReleaseAssets(): Promise<void> {
     return;
   }
 
-  debugLog("Got github context:", github.context);
+  debugInspect("Got github context:", github.context);
 
   const { eventName, ref, payload, repo } = github.context;
   const client = getClient(repo, core.getInput("github-token"));
@@ -334,7 +334,7 @@ export async function attachReleaseAssets(): Promise<void> {
   if (eventName === "release") {
     // Obviously if this is run during a release
     release = (payload as ReleaseEvent).release;
-    debugLog("Got releaseEvent:", release);
+    debugInspect("Got releaseEvent:", release);
   } else {
     // We may have a tag-based workflow that creates releases or even drafts
     const releaseRefPrefix = core.getInput("release-ref") || "refs/tags/";
@@ -344,11 +344,11 @@ export async function attachReleaseAssets(): Promise<void> {
       const tag = ref.substring(releaseRefPrefix.length);
       release = await client.findRelease({ tag });
       if (release) {
-        debugLog("Found release for ref push:", release);
+        debugInspect("Found release for ref push:", release);
       } else {
         release = await client.findDraftRelease({ tag, ref: push.ref });
         if (release) {
-          debugLog("Found DRAFT release for ref push:", release);
+          debugInspect("Found DRAFT release for ref push:", release);
         }
       }
     }
@@ -364,21 +364,23 @@ export async function attachReleaseAssets(): Promise<void> {
     let matched = artifacts.filter((a) => {
       const matches = matcher.test(a.name);
       if (matches) {
-        debugLog(`Found artifact: ${a.name}`);
+        core.debug(`Found artifact: ${a.name}`);
       } else {
-        debugLog(`Artifact: ${a.name} not matching ${sbomArtifactPattern}`);
+        core.debug(`Artifact: ${a.name} not matching ${sbomArtifactPattern}`);
       }
       return matches;
     });
 
     // We may have a release run based on a prior build from another workflow
     if (eventName === "release" && !matched.length) {
-      debugLog("Searching for release artifacts from prior workflow");
+      core.info(
+        "No artifacts found in this workflow. Searching for release artifacts from prior workflow..."
+      );
       const latestRun = await client.findLatestWorkflowRunForBranch({
         branch: release.target_commitish,
       });
 
-      debugLog("Got latest run for prior workflow", latestRun);
+      debugInspect("Got latest run for prior workflow", latestRun);
 
       if (latestRun) {
         const runArtifacts = await client.listWorkflowRunArtifacts({
@@ -388,9 +390,9 @@ export async function attachReleaseAssets(): Promise<void> {
         matched = runArtifacts.filter((a) => {
           const matches = matcher.test(a.name);
           if (matches) {
-            debugLog(`Found run artifact: ${a.name}`);
+            core.debug(`Found run artifact: ${a.name}`);
           } else {
-            debugLog(
+            core.debug(
               `Run artifact: ${a.name} not matching ${sbomArtifactPattern}`
             );
           }
