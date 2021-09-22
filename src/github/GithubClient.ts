@@ -30,6 +30,8 @@ interface ReleaseProps {
  * Basic artifact interface returned via listWorkflowArtifacts
  */
 export interface Artifact {
+  // Workflow run artifact will have an ID
+  id?: number;
   name: string;
 }
 
@@ -133,8 +135,12 @@ export class GithubClient {
   /**
    * Downloads a workflow artifact for the current workflow run
    * @param name artifact name
+   * @param id specified if using a workflow run artifact
    */
-  async downloadWorkflowArtifact({ name }: { name: string }): Promise<string> {
+  async downloadWorkflowArtifact({ name, id }: Artifact): Promise<string> {
+    if (id) {
+      return this.downloadWorkflowRunArtifact({ artifactId: id });
+    }
     const client = createArtifactClient();
     const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
     const response = await suppressOutput(async () =>

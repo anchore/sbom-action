@@ -408,9 +408,7 @@ export async function attachReleaseAssets(): Promise<void> {
 
     core.info(dashWrap(`Attaching SBOMs to release: '${release.tag_name}'`));
     for (const artifact of matched) {
-      const file = await client.downloadWorkflowArtifact({
-        name: artifact.name,
-      });
+      const file = await client.downloadWorkflowArtifact(artifact);
 
       core.info(file);
       const contents = fs.readFileSync(file);

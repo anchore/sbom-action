@@ -16438,9 +16438,13 @@ class GithubClient {
     /**
      * Downloads a workflow artifact for the current workflow run
      * @param name artifact name
+     * @param id specified if using a workflow run artifact
      */
-    downloadWorkflowArtifact({ name }) {
+    downloadWorkflowArtifact({ name, id }) {
         return __awaiter(this, void 0, void 0, function* () {
+            if (id) {
+                return this.downloadWorkflowRunArtifact({ artifactId: id });
+            }
             const client = (0, artifact_1.create)();
             const tempPath = fs_1.default.mkdtempSync(path_1.default.join(os_1.default.tmpdir(), "sbom-action-"));
             const response = yield suppressOutput(() => __awaiter(this, void 0, void 0, function* () { return client.downloadArtifact(name, tempPath); }));
@@ -17015,9 +17019,7 @@ function attachReleaseAssets() {
             }
             core.info((0, GithubClient_1.dashWrap)(`Attaching SBOMs to release: '${release.tag_name}'`));
             for (const artifact of matched) {
-                const file = yield client.downloadWorkflowArtifact({
-                    name: artifact.name,
-                });
+                const file = yield client.downloadWorkflowArtifact(artifact);
                 core.info(file);
                 const contents = fs.readFileSync(file);
                 const assetName = path_1.default.basename(file);
