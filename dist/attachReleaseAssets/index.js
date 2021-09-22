@@ -16519,21 +16519,17 @@ class GithubClient {
     }
     /**
      * Finds a draft release by ref
-     * @param tag
+     * @param tag release tag_name to search by
+     * @param ref release target_commitish to search by
      */
-    findDraftRelease({ ref, }) {
+    findDraftRelease({ tag, ref, }) {
         return __awaiter(this, void 0, void 0, function* () {
-            core.debug(`Getting draft release by ref: ${ref}`);
+            debugLog(`Getting draft release by tag: ${ref} and/or ref: ${ref}`);
             try {
                 const response = yield this.client.rest.repos.listReleases(Object.assign({}, this.repo));
-                const releases = response.data.map((r) => {
-                    if (r.draft) {
-                        core.info("Found draft release:");
-                        core.info(JSON.stringify(r));
-                    }
-                    return r;
-                });
-                return releases.find((r) => r.target_commitish === ref);
+                return response.data
+                    .filter((r) => r.draft)
+                    .find((r) => r.tag_name === tag || r.target_commitish === ref);
             }
             catch (e) {
                 debugLog("Error while fetching release by tag name:", e);
@@ -16723,13 +16719,13 @@ function executeSyft({ input, format }) {
                         core.info(buffer.toString());
                     },
                     debug(message) {
-                        core.debug(message);
+                        (0, GithubClient_1.debugLog)(message);
                     },
                 },
             });
         }));
         if (exitCode > 0) {
-            core.debug(stdout);
+            (0, GithubClient_1.debugLog)(stdout);
             throw new Error("An error occurred running Syft");
         }
         else {
@@ -16745,7 +16741,7 @@ function downloadSyft() {
         const name = exports.SYFT_BINARY_NAME;
         const version = exports.SYFT_VERSION;
         const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
-        core.debug(`Installing ${name} ${version}`);
+        (0, GithubClient_1.debugLog)(`Installing ${name} ${version}`);
         // Download the installer, and run
         const installPath = yield cache.downloadTool(url);
         // Make sure the tool's executable bit is set
@@ -16770,7 +16766,7 @@ function getSyftCommand() {
             // Cache the downloaded file
             syftPath = yield cache.cacheFile(syftPath, name, name, version);
         }
-        core.debug(`Got Syft path: ${syftPath} binary at: ${syftPath}/${name}`);
+        (0, GithubClient_1.debugLog)(`Got Syft path: ${syftPath} binary at: ${syftPath}/${name}`);
         // Add tool to path for this and future actions to use
         core.addPath(syftPath);
         return name;
@@ -16873,7 +16869,7 @@ function runSyftAction() {
             // potential way to do so:
             const priorArtifact = process.env[PRIOR_ARTIFACT_ENV_VAR];
             if (priorArtifact) {
-                core.debug(`Prior artifact: ${priorArtifact}`);
+                (0, GithubClient_1.debugLog)(`Prior artifact: ${priorArtifact}`);
             }
             if (doUpload) {
                 yield uploadSbomArtifact(output);
@@ -16896,22 +16892,31 @@ function attachReleaseAssets() {
             return;
         }
         (0, GithubClient_1.debugLog)("Got github context:", github.context);
-        const { eventName, ref, payload, repo, sha } = github.context;
+        const { eventName, ref, payload, repo } = github.context;
         const client = (0, GithubClient_1.getClient)(repo, core.getInput("github-token"));
         let release = undefined;
-        // FIXME: what's the right way to detect a release?
+        // Try to detect a release
         if (eventName === "release") {
+            // Obviously if this is run during a release
             release = payload.release;
             (0, GithubClient_1.debugLog)("Got releaseEvent:", release);
         }
         else {
+            // We may have a tag-based workflow that creates releases or even drafts
             const releaseRefPrefix = core.getInput("release-ref") || "refs/tags/";
             const isRefPush = eventName === "push" && ref.startsWith(releaseRefPrefix);
+            const push = payload;
             if (isRefPush) {
                 const tag = ref.substring(releaseRefPrefix.length);
                 release = yield client.findRelease({ tag });
-                if (!release) {
-                    release = yield client.findDraftRelease({ ref: sha });
+                if (release) {
+                    (0, GithubClient_1.debugLog)("Found release for ref push:", release);
+                }
+                else {
+                    release = yield client.findDraftRelease({ tag, ref: push.ref });
+                    if (release) {
+                        (0, GithubClient_1.debugLog)("Found DRAFT release for ref push:", release);
+                    }
                 }
             }
         }
@@ -16921,16 +16926,39 @@ function attachReleaseAssets() {
             const sbomArtifactPattern = sbomArtifactInput || `^${getArtifactName()}$`;
             const matcher = new RegExp(sbomArtifactPattern);
             const artifacts = yield client.listWorkflowArtifacts();
-            const matched = artifacts.filter((a) => {
+            let matched = artifacts.filter((a) => {
                 const matches = matcher.test(a.name);
                 if (matches) {
-                    core.debug(`Found artifact: ${a.name}`);
+                    (0, GithubClient_1.debugLog)(`Found artifact: ${a.name}`);
                 }
                 else {
-                    core.debug(`Artifact: ${a.name} not matching ${sbomArtifactPattern}`);
+                    (0, GithubClient_1.debugLog)(`Artifact: ${a.name} not matching ${sbomArtifactPattern}`);
                 }
                 return matches;
             });
+            // We may have a release run based on a prior build from another workflow
+            if (eventName === "release" && !matched.length) {
+                (0, GithubClient_1.debugLog)("Searching for release artifacts from prior workflow");
+                const latestRun = yield client.findLatestWorkflowRunForBranch({
+                    branch: release.target_commitish,
+                });
+                (0, GithubClient_1.debugLog)("Got latest run for prior workflow", latestRun);
+                if (latestRun) {
+                    const runArtifacts = yield client.listWorkflowRunArtifacts({
+                        runId: latestRun.id,
+                    });
+                    matched = runArtifacts.filter((a) => {
+                        const matches = matcher.test(a.name);
+                        if (matches) {
+                            (0, GithubClient_1.debugLog)(`Found run artifact: ${a.name}`);
+                        }
+                        else {
+                            (0, GithubClient_1.debugLog)(`Run artifact: ${a.name} not matching ${sbomArtifactPattern}`);
+                        }
+                        return matches;
+                    });
+                }
+            }
             if (!matched.length && sbomArtifactInput) {
                 core.warning(`WARNING: no SBOMs found matching ${sbomArtifactInput}`);
                 return;

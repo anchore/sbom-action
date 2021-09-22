@@ -39,7 +39,8 @@ jest.mock("../src/github/GithubClient", () => {
       return Promise.resolve({
         ...release,
         draft: true,
-        target_commitish: "main", // ?
+        target_commitish: "main",
+        tag_name: "v3.6.1",
       });
     },
     findLatestWorkflowRunForBranch() {

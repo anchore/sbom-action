@@ -346,26 +346,24 @@ export class GithubClient {
 
   /**
    * Finds a draft release by ref
-   * @param tag
+   * @param tag release tag_name to search by
+   * @param ref release target_commitish to search by
    */
   async findDraftRelease({
+    tag,
     ref,
   }: {
-    ref: string;
+    tag?: string;
+    ref?: string;
   }): Promise<Release | undefined> {
-    core.debug(`Getting draft release by ref: ${ref}`);
+    debugLog(`Getting draft release by tag: ${ref} and/or ref: ${ref}`);
     try {
       const response = await this.client.rest.repos.listReleases({
         ...this.repo,
       });
-      const releases = (response.data as Release[]).map((r) => {
-        if (r.draft) {
-          core.info("Found draft release:");
-          core.info(JSON.stringify(r));
-        }
-        return r;
-      });
-      return releases.find((r) => r.target_commitish === ref);
+      return (response.data as Release[])
+        .filter((r) => r.draft)
+        .find((r) => r.tag_name === tag || r.target_commitish === ref);
     } catch (e) {
       debugLog("Error while fetching release by tag name:", e);
       return undefined;
