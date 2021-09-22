@@ -18,19 +18,7 @@ and upload the SBOM as a release asset.
 
 ### Scan a container image
 
-To scan a container image from the Docker daemon, use the `image` parameter:
-
-```yaml
-- uses: anchore/sbom-action@main
-  with:
-    image: example/image_name
-```
-
-To use a specific container registry, specify a typical _registry path_ to the
-image including the registry host. This will
-attempt to use the Docker daemon and by association any previously configured
-credentials. If the Docker daemon is not available, a direct connection to the
-registry will be attempted:
+To scan a container image, use the `image` parameter:
 
 ```yaml
 - uses: anchore/sbom-action@main
@@ -38,9 +26,15 @@ registry will be attempted:
     image: ghcr.io/example/image_name:tag
 ```
 
-To use an authenticated direct connection to the registry regardless of the
-Docker daemon availability, add credentials using
-`registry-username` and `registry-password`:
+The image will be fetched using the Docker daemon if available,
+which will use any authentication available to the daemon.
+
+If the Docker daemon is not available, the action will retrieve the image
+directly from the container registry.
+
+It is also possible to directly connect to the container registry with the
+`registry-username` and `registry-password` parameters. This will always bypass the
+Docker daemon:
 
 ```yaml
 - uses: anchore/sbom-action@main
