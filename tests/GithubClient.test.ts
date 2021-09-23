@@ -1,5 +1,5 @@
 import { getMocks } from "./mocks"
-const { data, mocks, setReturnStatus } = getMocks();
+const { data, mocks, setData, restoreInitialData } = getMocks();
 const { release, workflowRun } = data;
 for (const mock of Object.keys(mocks)) {
   jest.mock(mock, mocks[mock]);
@@ -13,7 +13,7 @@ Date.now = jest.fn(() => 1482363367071);
 
 describe("Github Client", () => {
   beforeEach(() => {
-    setReturnStatus(200);
+    restoreInitialData();
   });
 
   it("calls release asset methods", async () => {
@@ -121,7 +121,11 @@ describe("Github Client", () => {
   });
 
   it("fails when return status is error", async () => {
-    setReturnStatus(500);
+    setData({
+      returnStatus: {
+        status: 500,
+      },
+    });
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
       "token"

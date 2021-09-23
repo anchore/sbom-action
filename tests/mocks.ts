@@ -1,8 +1,6 @@
 /**
  * Get all the mocks and mock data
  */
-import {Artifact} from "../src/github/GithubClient";
-
 export function getMocks() {
   class Data {
     artifacts: (Artifact & { id: number, file: string })[] = [];
@@ -17,13 +15,30 @@ export function getMocks() {
 
     outputs: { [key: string]: string } = {};
 
-    release: Release = {} as Release;
+    release: Release = {} as never;
 
     latestRun: WorkflowRun = {
       id: 1245,
-    } as WorkflowRun;
+    } as never;
 
-    context: Context = {} as Context;
+    context: Omit<Context, "payload"> & { payload?: PartialDeep<PullRequestEvent | PushEvent | ReleaseEvent> } = {
+      eventName: "pull_request",
+      ref: "v0.0.0",
+      payload: {
+        pull_request: {
+          base: {
+            ref: "asdf",
+          },
+        },
+      },
+      repo: {
+        owner: "test-org",
+        repo: "test-repo",
+      },
+      runId: 1,
+      job: "pr_job_job",
+      action: "__self",
+    } as never;
 
     execArgs: {
       cmd: string,
@@ -31,28 +46,41 @@ export function getMocks() {
       opts: ExecOptions,
       env: { [key: string]: string }
     } = {} as any;
+
+    returnStatus: { status: number } = {
+      status: 200,
+    };
   }
 
   const data = Object.freeze(new Data());
-  let returnStatus = 200;
+  const initialState = Object.freeze(JSON.parse(JSON.stringify(data)));
+
+  const setData = (newData: PartialDeep<Data>) => {
+    for (const d of Object.keys(newData)) {
+      const prop: any = (data as any)[d];
+      const newProp: any = (newData as any)[d];
+      if (Array.isArray(prop)) {
+        prop.splice(0, prop.length);
+        prop.push(...newProp);
+      } else if (typeof prop === "object") {
+        for (const k of Object.keys(prop)) {
+          delete prop[k];
+        }
+      } else {
+        (data as any)[d] = newProp;
+      }
+      Object.assign(prop, newProp);
+    }
+  };
+
+  const restoreInitialData = () => {
+    setData(JSON.parse(JSON.stringify(initialState)));
+  };
 
   return {
     data,
-    setInputs(inputs: { [key: string]: string }) {
-      for (const k of Object.keys(data.inputs)) {
-        delete data.inputs[k];
-      }
-      Object.assign(data.inputs, inputs);
-    },
-    setContext(context: Context) {
-      for (const k of Object.keys(data.context)) {
-        delete (data.context as never)[k];
-      }
-      Object.assign(data.context, context);
-    },
-    setReturnStatus(status: number) {
-      returnStatus = status;
-    },
+    setData,
+    restoreInitialData,
     mocks: {
       "@actions/core": () => {
         return {
@@ -162,7 +190,7 @@ export function getMocks() {
                 actions: {
                   listWorkflowRunArtifacts() {
                     return Promise.resolve({
-                      status: returnStatus,
+                      status: data.returnStatus.status,
                       data: {
                         artifacts: data.artifacts,
                       },
@@ -175,7 +203,7 @@ export function getMocks() {
                   },
                   listWorkflowRunsForRepo() {
                     return Promise.resolve({
-                      status: returnStatus,
+                      status: data.returnStatus.status,
                       data: {
                         workflow_runs: [data.workflowRun],
                       },
@@ -185,7 +213,7 @@ export function getMocks() {
                 repos: {
                   listReleaseAssets() {
                     return Promise.resolve({
-                      status: returnStatus,
+                      status: data.returnStatus.status,
                       data: data.assets,
                     });
                   },
@@ -215,9 +243,16 @@ export function getMocks() {
   };
 }
 
+import { PartialDeep } from "type-fest";
+import { Artifact } from "../src/github/GithubClient";
 import { ExecOptions } from "@actions/exec";
 import { Context } from "@actions/github/lib/context";
-import {Release, ReleaseAsset, WorkflowRun} from "@octokit/webhooks-types";
+import {
+  PullRequestEvent, PushEvent,
+  Release,
+  ReleaseAsset, ReleaseEvent,
+  WorkflowRun
+} from "@octokit/webhooks-types";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";

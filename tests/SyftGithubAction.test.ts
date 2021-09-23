@@ -1,5 +1,5 @@
 import { getMocks } from "./mocks";
-const { data, setInputs, setContext, mocks } = getMocks();
+const { data, setData, restoreInitialData, mocks } = getMocks();
 const {
   artifacts,
   assets,
@@ -77,14 +77,13 @@ jest.mock("../src/github/GithubClient", () => {
     dashWrap() {
       // ignore
     },
-    debugLog() {
+    debugInspect() {
       // ignore
     },
   };
 });
 
 import {
-  PullRequestEvent,
   PushEvent,
   ReleaseAsset,
   ReleaseEvent,
@@ -101,30 +100,26 @@ Date.now = jest.fn(() => 1482363367071);
 
 describe("Action", () => {
   beforeEach(() => {
-    for (const k of Object.keys(outputs)) { delete outputs[k]; }
-    artifacts.splice(0, artifacts.length);
-    assets.splice(0, assets.length);
+    restoreInitialData();
   });
+
   it("runs with default inputs", async () => {
-    setInputs({
-      path: ".",
-      "github-token": "asdf",
-      "upload-artifact": "true",
-    });
-    setContext({
-      eventName: "push",
-      ref: "v0.0.0",
-      payload: {
-        ref: "v45435",
-      } as PushEvent,
-      repo: {
-        owner: "test-org",
-        repo: "test-repo",
+    setData({
+      inputs: {
+        path: ".",
+        "github-token": "asdf",
+        "upload-artifact": "true",
       },
-      runId: 1,
-      job: "default-import-job",
-      action: "__anchore_sbom-action",
-    } as any);
+      context: {
+        ...data.context,
+        eventName: "push",
+        payload: {
+          ref: "v45435",
+        } as PushEvent,
+        job: "default-import-job",
+        action: "__anchore_sbom-action",
+      }
+    });
 
     const artifactLength = artifacts.length;
     const assetLength = assets.length;
@@ -137,32 +132,29 @@ describe("Action", () => {
   });
 
   it("runs with release uploads inputs", async () => {
-    setInputs({
-      image: "org/img",
-      "github-token": "asdf",
-      "upload-artifact": "true",
-      "output-file": `${fs.mkdtempSync(
+    setData({
+      inputs: {
+        image: "org/img",
+          "github-token": "asdf",
+        "upload-artifact": "true",
+        "output-file": `${fs.mkdtempSync(
         path.join(os.tmpdir(), "sbom-action-")
       )}/sbom.spdx`,
-      "upload-release-assets": "true",
-    });
-    setContext({
-      eventName: "release",
-      ref: "v0.0.0",
-      payload: {
-        release: {
-          id: 4095345,
-          name: "v3.5.6",
-        },
-      } as ReleaseEvent,
-      repo: {
-        owner: "test-org",
-        repo: "test-repo",
+        "upload-release-assets": "true",
       },
-      runId: 1,
-      job: "release-job",
-      action: "release-action",
-    } as any);
+      context: {
+        ...data.context,
+        eventName: "release",
+        payload: {
+          release: {
+            id: 4095345,
+            name: "v3.5.6",
+          },
+        } as ReleaseEvent,
+        job: "release-job",
+        action: "release-action",
+      }
+    });
 
     const artifactLength = artifacts.length;
     const assetLength = assets.length;
@@ -178,29 +170,26 @@ describe("Action", () => {
   });
 
   it("runs without uploading anything", async () => {
-    setInputs({
-      image: "org/img",
-      "github-token": "asdf",
-      "upload-artifact": "false",
-      "upload-release-assets": "false",
-    });
-    setContext({
-      eventName: "release",
-      ref: "v0.0.0",
-      payload: {
-        release: {
-          id: 4095345,
-          name: "v3.5.6",
-        },
-      } as ReleaseEvent,
-      repo: {
-        owner: "test-org",
-        repo: "test-repo",
+    setData({
+      inputs:{
+        image: "org/img",
+        "github-token": "asdf",
+        "upload-artifact": "false",
+        "upload-release-assets": "false",
       },
-      runId: 1,
-      job: "release-job",
-      action: "release-action",
-    } as any);
+      context:{
+        ...data.context,
+        eventName: "release",
+        payload: {
+          release: {
+            id: 4095345,
+            name: "v3.5.6",
+          },
+        } as ReleaseEvent,
+        job: "release-job",
+        action: "release-action",
+      }
+    });
 
     const artifactLength = artifacts.length;
     const assetLength = assets.length;
@@ -214,29 +203,16 @@ describe("Action", () => {
   });
 
   it("runs pull-request compare", async () => {
-    setInputs({
-      image: "org/img",
-      "github-token": "asdf",
-      "compare-pulls": "true",
-    });
-    setContext({
-      eventName: "pull_request",
-      ref: "v0.0.0",
-      payload: {
-        pull_request: {
-          base: {
-            ref: "asdf",
-          },
-        },
-      } as PullRequestEvent,
-      repo: {
-        owner: "test-org",
-        repo: "test-repo",
+    setData({
+      inputs:{
+        image: "org/img",
+        "github-token": "asdf",
+        "compare-pulls": "true",
       },
-      runId: 1,
-      job: "pr_job_job",
-      action: "__self",
-    } as any);
+      context: {
+        ...data.context,
+      }
+    });
 
     const artifactLength = artifacts.length;
 
@@ -257,27 +233,11 @@ describe("Action", () => {
   });
 
   it("does not include docker scheme by default", async () => {
-    setInputs({
-      image: "somewhere/org/img",
+    setData({
+      inputs:{
+        image: "somewhere/org/img",
+      }
     });
-    setContext({
-      eventName: "pull_request",
-      ref: "v0.0.0",
-      payload: {
-        pull_request: {
-          base: {
-            ref: "asdf",
-          },
-        },
-      } as PullRequestEvent,
-      repo: {
-        owner: "test-org",
-        repo: "test-repo",
-      },
-      runId: 1,
-      job: "pr_job_job",
-      action: "__self",
-    } as any);
 
     await action.runSyftAction();
 
@@ -290,29 +250,13 @@ describe("Action", () => {
   });
 
   it("uses registry scheme with username and password", async () => {
-    setInputs({
-      image: "somewhere/org/img",
-      "registry-username": "mr_awesome",
-      "registry-password": "super_secret",
-    });
-    setContext({
-      eventName: "pull_request",
-      ref: "v0.0.0",
-      payload: {
-        pull_request: {
-          base: {
-            ref: "asdf",
-          },
-        },
-      } as PullRequestEvent,
-      repo: {
-        owner: "test-org",
-        repo: "test-repo",
+    setData({
+      inputs:{
+        image: "somewhere/org/img",
+        "registry-username": "mr_awesome",
+        "registry-password": "super_secret",
       },
-      runId: 1,
-      job: "pr_job_job",
-      action: "__self",
-    } as any);
+    });
 
     await action.runSyftAction();
 
