@@ -5,7 +5,6 @@ const {
   assets,
   inputs,
   latestRun,
-  outputs,
   release,
 } = data;
 for (const mock of Object.keys(mocks)) {
@@ -226,7 +225,7 @@ describe("Action", () => {
       await runAndFailBuildOnException(() => {
         return Promise.reject("fail");
       });
-      expect(outputs["@actions/core/setFailed"]).toBeDefined();
+      expect(data.failed.message).toBeDefined();
     } catch (e) {
       expect("should not throw exception").toBeUndefined();
     }

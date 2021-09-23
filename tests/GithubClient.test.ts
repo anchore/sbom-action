@@ -7,6 +7,7 @@ for (const mock of Object.keys(mocks)) {
 
 import { Release } from "@octokit/webhooks-types";
 import * as githubClient from "../src/github/GithubClient";
+import { debugInspect } from "../src/github/GithubClient";
 
 jest.setTimeout(30000);
 Date.now = jest.fn(() => 1482363367071);
@@ -159,4 +160,16 @@ describe("Github Client", () => {
       expect(e).toBeDefined();
     }
   });
+
+  it("debugInspect works", () => {
+    debugInspect("the_label", { the: "obj" });
+  });
+
+  it("finds a draft release", () => {
+    setData({
+      releases: [{
+
+      }]
+    })
+  })
 });

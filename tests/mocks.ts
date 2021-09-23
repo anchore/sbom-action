@@ -17,6 +17,8 @@ export function getMocks() {
 
     release: Release = {} as never;
 
+    releases: Release[] = [];
+
     latestRun: WorkflowRun = {
       id: 1245,
     } as never;
@@ -45,11 +47,13 @@ export function getMocks() {
       args: string[],
       opts: ExecOptions,
       env: { [key: string]: string }
-    } = {} as any;
+    } = {} as never;
 
     returnStatus: { status: number } = {
       status: 200,
     };
+
+    failed: { message?: string } = {};
   }
 
   const data = Object.freeze(new Data());
@@ -91,7 +95,7 @@ export function getMocks() {
             data.outputs[name] = value;
           },
           setFailed(msg: string) {
-            data.outputs["@actions/core/setFailed"] = msg;
+            data.failed.message = msg;
           },
           info() {
             // ignore
@@ -117,10 +121,10 @@ export function getMocks() {
       "@actions/artifact/lib/internal/download-http-client": () => {
         return {
           DownloadHttpClient: class {
-            listArtifacts() {
-              return Promise.resolve({
+            async listArtifacts() {
+              return {
                 value: data.artifacts,
-              });
+              };
             }
           },
         };
@@ -164,7 +168,7 @@ export function getMocks() {
       }),
 
       "@actions/exec": () => ({
-        exec(cmd: string, args: string[], opts: ExecOptions) {
+        async exec(cmd: string, args: string[], opts: ExecOptions) {
           data.execArgs.cmd = cmd;
           data.execArgs.args = args;
           data.execArgs.opts = opts;
@@ -175,7 +179,7 @@ export function getMocks() {
               out(Buffer.from("syft output"));
             }
           }
-          return Promise.resolve(0);
+          return 0;
         },
       }),
 
@@ -188,51 +192,53 @@ export function getMocks() {
             return {
               rest: {
                 actions: {
-                  listWorkflowRunArtifacts() {
-                    return Promise.resolve({
+                  async listWorkflowRunArtifacts() {
+                    return {
                       status: data.returnStatus.status,
                       data: {
                         artifacts: data.artifacts,
                       },
-                    });
+                    };
                   },
-                  downloadArtifact() {
-                    return Promise.resolve({
+                  async downloadArtifact() {
+                    return {
                       url: "http://artifact",
-                    });
+                    };
                   },
-                  listWorkflowRunsForRepo() {
-                    return Promise.resolve({
+                  async listWorkflowRunsForRepo() {
+                    return {
                       status: data.returnStatus.status,
                       data: {
                         workflow_runs: [data.workflowRun],
                       },
-                    });
+                    };
                   },
                 },
                 repos: {
-                  listReleaseAssets() {
-                    return Promise.resolve({
+                  async listReleaseAssets() {
+                    return {
                       status: data.returnStatus.status,
                       data: data.assets,
-                    });
+                    };
                   },
-                  uploadReleaseAsset({name}: ReleaseAsset) {
+                  async uploadReleaseAsset({name}: ReleaseAsset) {
                     data.assets.push({
                       id: data.assets.length,
                       name,
                     } as never);
-                    return Promise.resolve();
                   },
-                  deleteReleaseAsset({id}: ReleaseAsset) {
+                  async deleteReleaseAsset({id}: ReleaseAsset) {
                     const idx = data.assets.findIndex(a => a.id === id);
                     data.assets.splice(idx, 1);
                   },
-                  getReleaseByTag() {
-                    return Promise.resolve({
+                  async getReleaseByTag() {
+                    return {
                       data: data.release,
-                    });
+                    };
                   },
+                  async listReleases() {
+                    return data.releases;
+                  }
                 },
               },
             };
