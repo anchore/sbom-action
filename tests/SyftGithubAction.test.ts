@@ -1,11 +1,10 @@
-import { getMocks } from "./mocks";
+import {context, getMocks} from "./mocks";
 const { data, setData, restoreInitialData, mocks } = getMocks();
 const {
   artifacts,
   assets,
   inputs,
   latestRun,
-  release,
 } = data;
 for (const mock of Object.keys(mocks)) {
   jest.mock(mock, mocks[mock]);
@@ -32,11 +31,11 @@ jest.mock("../src/github/GithubClient", () => {
       return Promise.resolve(artifacts);
     },
     findRelease() {
-      return Promise.resolve(release);
+      return Promise.resolve(data.releases[0]);
     },
     findDraftRelease() {
       return Promise.resolve({
-        ...release,
+        ...data.releases[0],
         draft: true,
         target_commitish: "main",
         tag_name: "v3.6.1",
@@ -83,9 +82,7 @@ jest.mock("../src/github/GithubClient", () => {
 });
 
 import {
-  PushEvent,
   ReleaseAsset,
-  ReleaseEvent,
 } from "@octokit/webhooks-types";
 import * as fs from "fs";
 import * as os from "os";
@@ -102,22 +99,18 @@ describe("Action", () => {
     restoreInitialData();
   });
 
-  it("runs with default inputs", async () => {
+  it("runs with default inputs on push", async () => {
     setData({
       inputs: {
         path: ".",
-        "github-token": "asdf",
-        "upload-artifact": "true",
       },
       context: {
-        ...data.context,
-        eventName: "push",
-        payload: {
-          ref: "v45435",
-        } as PushEvent,
+        ...context.push({
+          ref: "main",
+        }),
         job: "default-import-job",
         action: "__anchore_sbom-action",
-      }
+      },
     });
 
     const artifactLength = artifacts.length;
@@ -134,25 +127,18 @@ describe("Action", () => {
     setData({
       inputs: {
         image: "org/img",
-          "github-token": "asdf",
         "upload-artifact": "true",
         "output-file": `${fs.mkdtempSync(
         path.join(os.tmpdir(), "sbom-action-")
       )}/sbom.spdx`,
         "upload-release-assets": "true",
       },
-      context: {
-        ...data.context,
-        eventName: "release",
-        payload: {
-          release: {
-            id: 4095345,
-            name: "v3.5.6",
-          },
-        } as ReleaseEvent,
-        job: "release-job",
-        action: "release-action",
-      }
+      context: context.release({
+        release: {
+          id: 4095345,
+          name: "v3.5.6",
+        },
+      }),
     });
 
     const artifactLength = artifacts.length;
@@ -170,24 +156,17 @@ describe("Action", () => {
 
   it("runs without uploading anything", async () => {
     setData({
-      inputs:{
+      inputs: {
         image: "org/img",
-        "github-token": "asdf",
         "upload-artifact": "false",
         "upload-release-assets": "false",
       },
-      context:{
-        ...data.context,
-        eventName: "release",
-        payload: {
-          release: {
-            id: 4095345,
-            name: "v3.5.6",
-          },
-        } as ReleaseEvent,
-        job: "release-job",
-        action: "release-action",
-      }
+      context: context.release({
+        release: {
+          id: 4095345,
+          name: "v3.5.6",
+        },
+      }),
     });
 
     const artifactLength = artifacts.length;
@@ -205,12 +184,15 @@ describe("Action", () => {
     setData({
       inputs:{
         image: "org/img",
-        "github-token": "asdf",
         "compare-pulls": "true",
       },
-      context: {
-        ...data.context,
-      }
+      context: context.pull_request({
+        pull_request: {
+          base: {
+            ref: "asdf",
+          },
+        },
+      }),
     });
 
     const artifactLength = artifacts.length;

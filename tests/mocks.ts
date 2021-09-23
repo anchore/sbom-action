@@ -7,40 +7,17 @@ export function getMocks() {
 
     assets: ReleaseAsset[] = [];
 
-    workflowRun: WorkflowRun = {
-      id: 4309583450,
-    } as never;
+    workflowRun: WorkflowRun = {} as never;
 
     inputs: { [key: string]: string } = {};
 
     outputs: { [key: string]: string } = {};
 
-    release: Release = {} as never;
-
     releases: Release[] = [];
 
-    latestRun: WorkflowRun = {
-      id: 1245,
-    } as never;
+    latestRun: WorkflowRun = {} as never;
 
-    context: Omit<Context, "payload"> & { payload?: PartialDeep<PullRequestEvent | PushEvent | ReleaseEvent> } = {
-      eventName: "pull_request",
-      ref: "v0.0.0",
-      payload: {
-        pull_request: {
-          base: {
-            ref: "asdf",
-          },
-        },
-      },
-      repo: {
-        owner: "test-org",
-        repo: "test-repo",
-      },
-      runId: 1,
-      job: "pr_job_job",
-      action: "__self",
-    } as never;
+    context: Omit<Context, "payload"> & { payload?: PartialDeep<PullRequestEvent | PushEvent | ReleaseEvent> } = context.push({}) as never;
 
     execArgs: {
       cmd: string,
@@ -70,10 +47,10 @@ export function getMocks() {
         for (const k of Object.keys(prop)) {
           delete prop[k];
         }
+        Object.assign(prop, newProp);
       } else {
         (data as any)[d] = newProp;
       }
-      Object.assign(prop, newProp);
     }
   };
 
@@ -231,9 +208,9 @@ export function getMocks() {
                     const idx = data.assets.findIndex(a => a.id === id);
                     data.assets.splice(idx, 1);
                   },
-                  async getReleaseByTag() {
+                  async getReleaseByTag({ tag }: any) {
                     return {
-                      data: data.release,
+                      data: data.releases.find(r => r.tag_name === tag),
                     };
                   },
                   async listReleases() {
@@ -248,6 +225,42 @@ export function getMocks() {
     } as { [key: string]: () => unknown }
   };
 }
+
+const contextBase = {
+  ref: "v0.0.0",
+  payload: {},
+  repo: {
+    owner: "test-org",
+    repo: "test-repo",
+  },
+  runId: 1,
+  job: "my_job",
+  action: "__anchore_sbom-action_2",
+};
+
+export const context = {
+  pull_request(payload: PartialDeep<PullRequestEvent>) {
+    return {
+      ...contextBase,
+      eventName: "pull_request",
+      payload,
+    };
+  },
+  push(payload: PartialDeep<PushEvent>) {
+    return {
+      ...contextBase,
+      eventName: "push",
+      payload,
+    };
+  },
+  release(payload: PartialDeep<ReleaseEvent>) {
+    return {
+      ...contextBase,
+      eventName: "release",
+      payload,
+    };
+  }
+};
 
 import { PartialDeep } from "type-fest";
 import { Artifact } from "../src/github/GithubClient";

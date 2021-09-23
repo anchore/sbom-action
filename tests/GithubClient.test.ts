@@ -1,6 +1,6 @@
 import { getMocks } from "./mocks"
 const { data, mocks, setData, restoreInitialData } = getMocks();
-const { release, workflowRun } = data;
+const { workflowRun } = data;
 for (const mock of Object.keys(mocks)) {
   jest.mock(mock, mocks[mock]);
 }
@@ -78,14 +78,20 @@ describe("Github Client", () => {
   });
 
   it("calls findRelease methods", async () => {
+    setData({
+      releases: [{
+        id: 2,
+        tag_name: "main"
+      }],
+    })
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
       "token"
     );
-    const r = await client.findRelease({
+    const r: any = await client.findRelease({
       tag: "main",
     });
-    expect(r).toBe(release);
+    expect(r.id).toBe(2);
   });
 
   it("calls artifact methods", async () => {
@@ -165,11 +171,26 @@ describe("Github Client", () => {
     debugInspect("the_label", { the: "obj" });
   });
 
-  it("finds a draft release", () => {
+  it("finds a draft release", async () => {
     setData({
       releases: [{
-
+        id: 1234,
+        draft: false,
+      }, {
+        id: 5432,
+        draft: true,
+        tag_name: "v9"
       }]
-    })
+    });
+
+    const client = githubClient.getClient(
+      { owner: "test-owner", repo: "test-repo" },
+      "token"
+    );
+
+    const release: any = await client.findRelease({ tag: "v9" });
+
+    expect(release.id).toBe(5432);
+    expect(release.draft).toBeTruthy();
   })
 });
