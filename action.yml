@@ -1,7 +1,9 @@
 name: "Anchore SBOM Action"
 description: "Creates an SBOM (Software Bill Of Materials) from your code and container images"
 author: "Anchore"
-
+branding:
+  color: blue
+  icon: check-circle
 inputs:
   path:
     required: false
