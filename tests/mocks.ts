@@ -56,8 +56,9 @@ export function getMocks() {
           delete prop[k];
         }
         Object.assign(prop, newProp);
-      } else {
-        (data as any)[d] = newProp;
+      // If this was a mutable object, we might want to do this:
+      // } else {
+      //   (data as any)[d] = newProp;
       }
     }
   };
