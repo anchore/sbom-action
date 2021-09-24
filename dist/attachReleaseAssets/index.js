@@ -16517,20 +16517,20 @@ class GithubClient {
     findRelease({ tag }) {
         return __awaiter(this, void 0, void 0, function* () {
             core.debug(`Getting release by tag: ${tag}`);
+            let release;
             try {
                 const response = yield this.client.rest.repos.getReleaseByTag(Object.assign(Object.assign({}, this.repo), { tag }));
-                let release = response.data;
+                release = response.data;
                 debugLog(`getReleaseByTag response:`, release);
-                if (!release) {
-                    core.debug(`No release found for ${tag}, looking for draft release...`);
-                    release = yield this.findDraftRelease({ tag });
-                }
-                return release;
             }
             catch (e) {
                 debugLog("Error while fetching release by tag name:", e);
-                return undefined;
             }
+            if (!release) {
+                core.debug(`No release found for ${tag}, looking for draft release...`);
+                release = yield this.findDraftRelease({ tag });
+            }
+            return release;
         });
     }
     /**
@@ -16550,7 +16550,7 @@ class GithubClient {
                 return release;
             }
             catch (e) {
-                debugLog("Error while fetching release by tag name:", e);
+                debugLog("Error while fetching draft release by tag name:", e);
                 return undefined;
             }
         });

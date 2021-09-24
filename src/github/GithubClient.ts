@@ -343,24 +343,25 @@ export class GithubClient {
    */
   async findRelease({ tag }: { tag: string }): Promise<Release | undefined> {
     core.debug(`Getting release by tag: ${tag}`);
+    let release: Release | undefined;
     try {
       const response = await this.client.rest.repos.getReleaseByTag({
         ...this.repo,
         tag,
       });
-      let release = response.data as Release | undefined;
+
+      release = response.data as Release | undefined;
       debugLog(`getReleaseByTag response:`, release);
-
-      if (!release) {
-        core.debug(`No release found for ${tag}, looking for draft release...`);
-        release = await this.findDraftRelease({ tag });
-      }
-
-      return release;
     } catch (e) {
       debugLog("Error while fetching release by tag name:", e);
-      return undefined;
     }
+
+    if (!release) {
+      core.debug(`No release found for ${tag}, looking for draft release...`);
+      release = await this.findDraftRelease({ tag });
+    }
+
+    return release;
   }
 
   /**
@@ -387,7 +388,7 @@ export class GithubClient {
 
       return release;
     } catch (e) {
-      debugLog("Error while fetching release by tag name:", e);
+      debugLog("Error while fetching draft release by tag name:", e);
       return undefined;
     }
   }
