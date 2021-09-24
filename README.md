@@ -6,7 +6,7 @@ using [Syft](https://github.com/anchore/syft).
 ## Basic Usage
 
 ```yaml
-- uses: anchore/sbom-action@main
+- uses: anchore/sbom-action@v0
 ```
 
 By default, this action will execute a Syft scan in the workspace directory
@@ -21,7 +21,7 @@ and upload the SBOM as a release asset.
 To scan a container image, use the `image` parameter:
 
 ```yaml
-- uses: anchore/sbom-action@main
+- uses: anchore/sbom-action@v0
   with:
     image: ghcr.io/example/image_name:tag
 ```
@@ -37,7 +37,7 @@ It is also possible to directly connect to the container registry with the
 Docker daemon:
 
 ```yaml
-- uses: anchore/sbom-action@main
+- uses: anchore/sbom-action@v0
   with:
     image: my-registry.com/my/image
     registry-username: mr_awesome
@@ -49,7 +49,7 @@ Docker daemon:
 Use the `path` parameter, relative to the repository root:
 
 ```yaml
-- uses: anchore/sbom-action@main
+- uses: anchore/sbom-action@v0
   with:
     path: ./build/
 ```
@@ -65,7 +65,7 @@ and specify a regular expression with the `sbom-artifact-match`
 parameter:
 
 ```yaml
-- uses: anchore/sbom-action/publish-sbom@main
+- uses: anchore/sbom-action/publish-sbom@v0
   sbom-artifact-match: ".*\\.spdx$"
 ```
 
@@ -78,9 +78,9 @@ example:
 ```yaml
 build-sbom:
   steps:
-    - uses: anchore/sbom-action@main
-    - uses: anchore/sbom-action@main
-    - uses: anchore/sbom-action@main
+    - uses: anchore/sbom-action@v0
+    - uses: anchore/sbom-action@v0
+    - uses: anchore/sbom-action@v0
       id: myid
 ```
 
@@ -96,7 +96,7 @@ You may need to name these artifacts differently, simply
 use the `artifact-name` parameter:
 
 ```yaml
-- uses: anchore/sbom-action@main
+- uses: anchore/sbom-action@v0
   with:
     artifact-name: sbom.spdx
 ```
