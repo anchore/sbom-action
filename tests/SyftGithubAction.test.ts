@@ -315,4 +315,18 @@ describe("Action", () => {
     expect(env.SYFT_REGISTRY_AUTH_USERNAME).toBe("mr_awesome");
     expect(env.SYFT_REGISTRY_AUTH_PASSWORD).toBe("super_secret");
   });
+
+  it("uses image name for default artifact name", () => {
+    setInputs({
+      image: "something-something/image-image"
+    });
+
+    expect(action.getArtifactName()).toBe("something-something-image-image.spdx.json");
+
+    setInputs({
+      image: "ghcr.io/something-something/image-image"
+    });
+
+    expect(action.getArtifactName()).toBe("something-something-image-image.spdx.json");
+  })
 });
