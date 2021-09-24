@@ -370,12 +370,10 @@ export class GithubClient {
    */
   async findDraftRelease({
     tag,
-    ref,
   }: {
     tag?: string;
-    ref?: string;
   }): Promise<Release | undefined> {
-    debugLog(`Getting draft release by tag: ${ref} and/or ref: ${ref}`);
+    debugLog(`Getting draft release by tag: ${tag}`);
     try {
       const response = await this.client.rest.repos.listReleases({
         ...this.repo,
@@ -383,7 +381,7 @@ export class GithubClient {
 
       const release = (response.data as Release[])
         .filter((r) => r.draft)
-        .find((r) => r.tag_name === tag || r.target_commitish === ref);
+        .find((r) => r.tag_name === tag);
 
       debugLog(`listReleases filtered response:`, release);
 

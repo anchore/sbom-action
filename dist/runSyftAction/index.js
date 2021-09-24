@@ -16538,14 +16538,14 @@ class GithubClient {
      * @param tag release tag_name to search by
      * @param ref release target_commitish to search by
      */
-    findDraftRelease({ tag, ref, }) {
+    findDraftRelease({ tag, }) {
         return __awaiter(this, void 0, void 0, function* () {
-            debugLog(`Getting draft release by tag: ${ref} and/or ref: ${ref}`);
+            debugLog(`Getting draft release by tag: ${tag}`);
             try {
                 const response = yield this.client.rest.repos.listReleases(Object.assign({}, this.repo));
                 const release = response.data
                     .filter((r) => r.draft)
-                    .find((r) => r.tag_name === tag || r.target_commitish === ref);
+                    .find((r) => r.tag_name === tag);
                 debugLog(`listReleases filtered response:`, release);
                 return release;
             }
