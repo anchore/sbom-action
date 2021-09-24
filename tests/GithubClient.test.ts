@@ -1,19 +1,19 @@
 import { getMocks } from "./mocks"
-const { data, mocks, setReturnStatus } = getMocks();
-const { release, workflowRun } = data;
+const { data, mocks, setData, restoreInitialData } = getMocks();
 for (const mock of Object.keys(mocks)) {
   jest.mock(mock, mocks[mock]);
 }
 
 import { Release } from "@octokit/webhooks-types";
 import * as githubClient from "../src/github/GithubClient";
+import { debugLog } from "../src/github/GithubClient";
 
 jest.setTimeout(30000);
 Date.now = jest.fn(() => 1482363367071);
 
 describe("Github Client", () => {
   beforeEach(() => {
-    setReturnStatus(200);
+    restoreInitialData();
   });
 
   it("calls release asset methods", async () => {
@@ -66,35 +66,81 @@ describe("Github Client", () => {
   });
 
   it("calls workflow run for branch methods", async () => {
+    setData({
+      workflowRuns: [{
+        id: 3,
+        head_branch: "main",
+        conclusion: "success"
+      }],
+    });
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
       "token"
     );
-    const run = await client.findLatestWorkflowRunForBranch({
+    const run: any = await client.findLatestWorkflowRunForBranch({
       branch: "main",
     });
-    expect(run).toBe(workflowRun);
+    expect(run.id).toBe(3);
   });
 
   it("calls findRelease methods", async () => {
+    setData({
+      releases: [{
+        id: 2,
+        tag_name: "main"
+      }],
+    })
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
       "token"
     );
-    const r = await client.findRelease({
+    const r: any = await client.findRelease({
       tag: "main",
     });
-    expect(r).toBe(release);
+    expect(r.id).toBe(2);
+  });
+
+  it("calls findDraftRelease methods", async () => {
+    setData({
+      releases: [{
+        id: 1,
+        tag_name: "main",
+        draft: false
+      },{
+        id: 2,
+        tag_name: "main",
+        draft: true
+      }],
+    })
+    const client = githubClient.getClient(
+      { owner: "test-owner", repo: "test-repo" },
+      "token"
+    );
+    const r: any = await client.findDraftRelease({
+      tag: "main",
+    });
+    expect(r.id).toBe(2);
   });
 
   it("calls artifact methods", async () => {
+    setData({
+      artifacts: [{
+        runId: 1,
+        id: 34534,
+      },{
+        runId: 2,
+        id: 34534,
+      }]
+    });
+
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
       "token"
     );
+
     let artifacts = await client.listWorkflowArtifacts();
 
-    const startLength = artifacts.length;
+    expect(artifacts.length).toBe(0);
 
     await client.uploadWorkflowArtifact({
       name: "test",
@@ -105,7 +151,7 @@ describe("Github Client", () => {
       runId: 1,
     });
 
-    expect(artifacts.length).toBe(startLength + 1);
+    expect(artifacts.length).toBe(1);
 
     let artifact = await client.downloadWorkflowArtifact({
       name: "test",
@@ -114,14 +160,18 @@ describe("Github Client", () => {
     expect(artifact).toBeDefined();
 
     artifact = await client.downloadWorkflowRunArtifact({
-      artifactId: startLength,
+      artifactId: 1,
     });
 
     expect(artifact).toBeDefined();
   });
 
   it("fails when return status is error", async () => {
-    setReturnStatus(500);
+    setData({
+      returnStatus: {
+        status: 500,
+      },
+    });
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
       "token"
@@ -154,5 +204,42 @@ describe("Github Client", () => {
     } catch(e) {
       expect(e).toBeDefined();
     }
+  });
+
+  it("debugLog works", () => {
+    setData({
+      debug: {
+        enabled: true,
+        log: [],
+      }
+    });
+
+    debugLog("the_label", { the: "obj" });
+
+    expect(data.debug.log.length).toBe(1);
+    expect(data.debug.log[0]).toBe("{\"the\":\"obj\"}");
+  });
+
+  it("finds a draft release", async () => {
+    setData({
+      releases: [{
+        id: 1234,
+        draft: false,
+      }, {
+        id: 5432,
+        draft: true,
+        tag_name: "v9"
+      }]
+    });
+
+    const client = githubClient.getClient(
+      { owner: "test-owner", repo: "test-repo" },
+      "token"
+    );
+
+    const release: any = await client.findRelease({ tag: "v9" });
+
+    expect(release.id).toBe(5432);
+    expect(release.draft).toBeTruthy();
   });
 });
