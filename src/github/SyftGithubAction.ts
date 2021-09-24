@@ -4,7 +4,6 @@ import * as github from "@actions/github";
 import * as cache from "@actions/tool-cache";
 import {
   PullRequestEvent,
-  PushEvent,
   Release,
   ReleaseEvent,
 } from "@octokit/webhooks-types";
@@ -337,20 +336,13 @@ export async function attachReleaseAssets(): Promise<void> {
     debugInspect("Got releaseEvent:", release);
   } else {
     // We may have a tag-based workflow that creates releases or even drafts
-    const releaseRefPrefix = core.getInput("release-ref") || "refs/tags/";
+    const releaseRefPrefix =
+      core.getInput("release-ref-prefix") || "refs/tags/";
     const isRefPush = eventName === "push" && ref.startsWith(releaseRefPrefix);
-    const push = payload as PushEvent;
     if (isRefPush) {
       const tag = ref.substring(releaseRefPrefix.length);
       release = await client.findRelease({ tag });
-      if (release) {
-        debugInspect("Found release for ref push:", release);
-      } else {
-        release = await client.findDraftRelease({ tag, ref: push.ref });
-        if (release) {
-          debugInspect("Found DRAFT release for ref push:", release);
-        }
-      }
+      debugInspect("Found release for ref push:", release);
     }
   }
 

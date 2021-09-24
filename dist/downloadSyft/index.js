@@ -16563,7 +16563,13 @@ class GithubClient {
             core.debug(`Getting release by tag: ${tag}`);
             try {
                 const response = yield this.client.rest.repos.getReleaseByTag(Object.assign(Object.assign({}, this.repo), { tag }));
-                return response.data;
+                let release = response.data;
+                debugInspect(`getReleaseByTag response:`, release);
+                if (!release) {
+                    core.debug(`No release found for ${tag}, looking for draft release...`);
+                    release = yield this.findDraftRelease({ tag });
+                }
+                return release;
             }
             catch (e) {
                 debugInspect("Error while fetching release by tag name:", e);
@@ -16581,9 +16587,11 @@ class GithubClient {
             debugInspect(`Getting draft release by tag: ${ref} and/or ref: ${ref}`);
             try {
                 const response = yield this.client.rest.repos.listReleases(Object.assign({}, this.repo));
-                return response.data
+                const release = response.data
                     .filter((r) => r.draft)
                     .find((r) => r.tag_name === tag || r.target_commitish === ref);
+                debugInspect(`listReleases filtered response:`, release);
+                return release;
             }
             catch (e) {
                 debugInspect("Error while fetching release by tag name:", e);
@@ -16957,21 +16965,12 @@ function attachReleaseAssets() {
         }
         else {
             // We may have a tag-based workflow that creates releases or even drafts
-            const releaseRefPrefix = core.getInput("release-ref") || "refs/tags/";
+            const releaseRefPrefix = core.getInput("release-ref-prefix") || "refs/tags/";
             const isRefPush = eventName === "push" && ref.startsWith(releaseRefPrefix);
-            const push = payload;
             if (isRefPush) {
                 const tag = ref.substring(releaseRefPrefix.length);
                 release = yield client.findRelease({ tag });
-                if (release) {
-                    (0, GithubClient_1.debugInspect)("Found release for ref push:", release);
-                }
-                else {
-                    release = yield client.findDraftRelease({ tag, ref: push.ref });
-                    if (release) {
-                        (0, GithubClient_1.debugInspect)("Found DRAFT release for ref push:", release);
-                    }
-                }
+                (0, GithubClient_1.debugInspect)("Found release for ref push:", release);
             }
         }
         if (release) {

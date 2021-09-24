@@ -348,7 +348,15 @@ export class GithubClient {
         ...this.repo,
         tag,
       });
-      return response.data as Release;
+      let release = response.data as Release | undefined;
+      debugInspect(`getReleaseByTag response:`, release);
+
+      if (!release) {
+        core.debug(`No release found for ${tag}, looking for draft release...`);
+        release = await this.findDraftRelease({ tag });
+      }
+
+      return release;
     } catch (e) {
       debugInspect("Error while fetching release by tag name:", e);
       return undefined;
@@ -372,9 +380,14 @@ export class GithubClient {
       const response = await this.client.rest.repos.listReleases({
         ...this.repo,
       });
-      return (response.data as Release[])
+
+      const release = (response.data as Release[])
         .filter((r) => r.draft)
         .find((r) => r.tag_name === tag || r.target_commitish === ref);
+
+      debugInspect(`listReleases filtered response:`, release);
+
+      return release;
     } catch (e) {
       debugInspect("Error while fetching release by tag name:", e);
       return undefined;
