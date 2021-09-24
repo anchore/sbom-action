@@ -12,7 +12,7 @@ import * as os from "os";
 import path from "path";
 import stream from "stream";
 import { SyftOptions } from "../Syft";
-import { dashWrap, debugInspect, getClient } from "./GithubClient";
+import { dashWrap, debugLog, getClient } from "./GithubClient";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = "v0.21.0";
@@ -133,7 +133,7 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   );
 
   if (exitCode > 0) {
-    debugInspect("Syft stdout:", stdout);
+    debugLog("Syft stdout:", stdout);
     throw new Error("An error occurred running Syft");
   } else {
     return stdout;
@@ -249,14 +249,14 @@ async function comparePullRequestTargetArtifact(): Promise<void> {
       branch: pr.base.ref,
     });
 
-    debugInspect("Got branchWorkflow:", branchWorkflow);
+    debugLog("Got branchWorkflow:", branchWorkflow);
 
     if (branchWorkflow) {
       const baseBranchArtifacts = await client.listWorkflowRunArtifacts({
         runId: branchWorkflow.id,
       });
 
-      debugInspect("Got baseBranchArtifacts:", baseBranchArtifacts);
+      debugLog("Got baseBranchArtifacts:", baseBranchArtifacts);
 
       for (const artifact of baseBranchArtifacts) {
         if (artifact.name === getArtifactName()) {
@@ -276,7 +276,7 @@ async function comparePullRequestTargetArtifact(): Promise<void> {
 export async function runSyftAction(): Promise<void> {
   core.info(dashWrap("Running SBOM Action"));
 
-  debugInspect(`Got github context:`, github.context);
+  debugLog(`Got github context:`, github.context);
 
   const start = Date.now();
 
@@ -322,7 +322,7 @@ export async function attachReleaseAssets(): Promise<void> {
     return;
   }
 
-  debugInspect("Got github context:", github.context);
+  debugLog("Got github context:", github.context);
 
   const { eventName, ref, payload, repo } = github.context;
   const client = getClient(repo, core.getInput("github-token"));
@@ -333,7 +333,7 @@ export async function attachReleaseAssets(): Promise<void> {
   if (eventName === "release") {
     // Obviously if this is run during a release
     release = (payload as ReleaseEvent).release;
-    debugInspect("Got releaseEvent:", release);
+    debugLog("Got releaseEvent:", release);
   } else {
     // We may have a tag-based workflow that creates releases or even drafts
     const releaseRefPrefix =
@@ -342,7 +342,7 @@ export async function attachReleaseAssets(): Promise<void> {
     if (isRefPush) {
       const tag = ref.substring(releaseRefPrefix.length);
       release = await client.findRelease({ tag });
-      debugInspect("Found release for ref push:", release);
+      debugLog("Found release for ref push:", release);
     }
   }
 
@@ -372,7 +372,7 @@ export async function attachReleaseAssets(): Promise<void> {
         branch: release.target_commitish,
       });
 
-      debugInspect("Got latest run for prior workflow", latestRun);
+      debugLog("Got latest run for prior workflow", latestRun);
 
       if (latestRun) {
         const runArtifacts = await client.listWorkflowRunArtifacts({

@@ -83,7 +83,7 @@ export function dashWrap(str: string): string {
  * Logs all objects passed in debug outputting strings directly and
  * calling JSON.stringify on other elements in a group with the given label
  */
-export function debugInspect(label: string, ...args: unknown[]): void {
+export function debugLog(label: string, ...args: unknown[]): void {
   if (core.isDebug()) {
     core.group(label, async () => {
       for (const arg of args) {
@@ -127,7 +127,7 @@ export class GithubClient {
     const downloadClient = new DownloadHttpClient();
     const response = await downloadClient.listArtifacts();
 
-    debugInspect("listWorkflowArtifacts response:", response);
+    debugLog("listWorkflowArtifacts response:", response);
 
     return response.value;
   }
@@ -147,7 +147,7 @@ export class GithubClient {
       client.downloadArtifact(name, tempPath)
     );
 
-    debugInspect(
+    debugLog(
       "downloadArtifact response:",
       response,
       "dir:",
@@ -172,7 +172,7 @@ export class GithubClient {
     const rootDirectory = path.dirname(file);
     const client = createArtifactClient();
 
-    debugInspect(
+    debugLog(
       "uploadArtifact:",
       name,
       file,
@@ -186,7 +186,7 @@ export class GithubClient {
       })
     );
 
-    debugInspect("uploadArtifact response:", info);
+    debugLog("uploadArtifact response:", info);
   }
 
   // --------------- COMPLETED WORKFLOW METHODS ------------------
@@ -207,7 +207,7 @@ export class GithubClient {
       page: 1,
     });
 
-    debugInspect("listWorkflowRunArtifacts response:", response);
+    debugLog("listWorkflowRunArtifacts response:", response);
 
     if (response.status >= 400) {
       throw new Error("Unable to retrieve listWorkflowRunArtifacts");
@@ -233,7 +233,7 @@ export class GithubClient {
       page: 1,
     });
 
-    debugInspect("findLatestWorkflowRunForBranch response:", response);
+    debugLog("findLatestWorkflowRunForBranch response:", response);
 
     if (response.status >= 400) {
       throw new Error("Unable to findLatestWorkflowRunForBranch");
@@ -257,15 +257,15 @@ export class GithubClient {
       archive_format: "zip",
     });
 
-    debugInspect("downloadWorkflowRunArtifact response:", response);
+    debugLog("downloadWorkflowRunArtifact response:", response);
 
     const artifactZip = await cache.downloadTool(response.url);
 
-    debugInspect("downloadTool response:", artifactZip);
+    debugLog("downloadTool response:", artifactZip);
 
     const artifactPath = await cache.extractZip(artifactZip);
 
-    debugInspect("extractZip response:", artifactPath);
+    debugLog("extractZip response:", artifactPath);
 
     for (const file of fs.readdirSync(artifactPath)) {
       const filePath = `${artifactPath}/${file}`;
@@ -318,7 +318,7 @@ export class GithubClient {
       throw new Error("Bad response from listReleaseAssets");
     }
 
-    debugInspect("listReleaseAssets response:", response);
+    debugLog("listReleaseAssets response:", response);
 
     return response.data.sort((a, b) => a.name.localeCompare(b.name));
   }
@@ -349,7 +349,7 @@ export class GithubClient {
         tag,
       });
       let release = response.data as Release | undefined;
-      debugInspect(`getReleaseByTag response:`, release);
+      debugLog(`getReleaseByTag response:`, release);
 
       if (!release) {
         core.debug(`No release found for ${tag}, looking for draft release...`);
@@ -358,7 +358,7 @@ export class GithubClient {
 
       return release;
     } catch (e) {
-      debugInspect("Error while fetching release by tag name:", e);
+      debugLog("Error while fetching release by tag name:", e);
       return undefined;
     }
   }
@@ -375,7 +375,7 @@ export class GithubClient {
     tag?: string;
     ref?: string;
   }): Promise<Release | undefined> {
-    debugInspect(`Getting draft release by tag: ${ref} and/or ref: ${ref}`);
+    debugLog(`Getting draft release by tag: ${ref} and/or ref: ${ref}`);
     try {
       const response = await this.client.rest.repos.listReleases({
         ...this.repo,
@@ -385,11 +385,11 @@ export class GithubClient {
         .filter((r) => r.draft)
         .find((r) => r.tag_name === tag || r.target_commitish === ref);
 
-      debugInspect(`listReleases filtered response:`, release);
+      debugLog(`listReleases filtered response:`, release);
 
       return release;
     } catch (e) {
-      debugInspect("Error while fetching release by tag name:", e);
+      debugLog("Error while fetching release by tag name:", e);
       return undefined;
     }
   }

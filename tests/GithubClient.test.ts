@@ -6,7 +6,7 @@ for (const mock of Object.keys(mocks)) {
 
 import { Release } from "@octokit/webhooks-types";
 import * as githubClient from "../src/github/GithubClient";
-import { debugInspect } from "../src/github/GithubClient";
+import { debugLog } from "../src/github/GithubClient";
 
 jest.setTimeout(30000);
 Date.now = jest.fn(() => 1482363367071);
@@ -206,7 +206,7 @@ describe("Github Client", () => {
     }
   });
 
-  it("debugInspect works", () => {
+  it("debugLog works", () => {
     setData({
       debug: {
         enabled: true,
@@ -214,7 +214,7 @@ describe("Github Client", () => {
       }
     });
 
-    debugInspect("the_label", { the: "obj" });
+    debugLog("the_label", { the: "obj" });
 
     expect(data.debug.log.length).toBe(1);
     expect(data.debug.log[0]).toBe("{\"the\":\"obj\"}");
