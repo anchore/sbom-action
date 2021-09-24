@@ -22,13 +22,35 @@ const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
 /**
  * Tries to get a unique artifact name or otherwise as appropriate as possible
  */
-function getArtifactName(): string {
+export function getArtifactName(): string {
   const fileName = core.getInput("artifact-name");
 
   // if there is an explicit filename just return it, this could cause issues
   // where earlier sboms are overwritten by later ones
   if (fileName) {
     return fileName;
+  }
+
+  const format = getSbomFormat();
+  let extension: string = format;
+  switch (format) {
+    case "spdx-json":
+      extension = "spdx.json";
+      break;
+    case "json":
+      extension = "syft.json";
+      break;
+  }
+
+  const imageName = core.getInput("image");
+  if (imageName) {
+    const parts = imageName.split("/");
+    // remove the hostname
+    if (parts.length > 2) {
+      parts.splice(0, 1);
+    }
+    const prefix = parts.join("-").replace(/[^-a-zA-Z0-9]/, "_");
+    return `${prefix}.${extension}`;
   }
 
   const {
@@ -43,16 +65,6 @@ function getArtifactName(): string {
   let stepName = action.replace(/__[-_a-z]+/, "");
   if (stepName) {
     stepName = `-${stepName}`;
-  }
-  const format = getSbomFormat();
-  let extension: string = format;
-  switch (format) {
-    case "spdx-json":
-      extension = "spdx.json";
-      break;
-    case "json":
-      extension = "syft.json";
-      break;
   }
   return `${repo}-${job}${stepName}.${extension}`;
 }

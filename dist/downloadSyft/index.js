@@ -16675,7 +16675,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.runAndFailBuildOnException = exports.attachReleaseAssets = exports.runSyftAction = exports.uploadSbomArtifact = exports.getSbomFormat = exports.getSyftCommand = exports.downloadSyft = exports.SYFT_VERSION = exports.SYFT_BINARY_NAME = void 0;
+exports.runAndFailBuildOnException = exports.attachReleaseAssets = exports.runSyftAction = exports.uploadSbomArtifact = exports.getSbomFormat = exports.getSyftCommand = exports.downloadSyft = exports.getArtifactName = exports.SYFT_VERSION = exports.SYFT_BINARY_NAME = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const exec = __importStar(__nccwpck_require__(1514));
 const github = __importStar(__nccwpck_require__(5438));
@@ -16698,15 +16698,6 @@ function getArtifactName() {
     if (fileName) {
         return fileName;
     }
-    const { repo: { repo }, job, action, } = github.context;
-    // when run without an id, we get various auto-generated names, like:
-    // __self __self_2 __anchore_sbom-action  __anchore_sbom-action_2 etc.
-    // so just keep the number at the end if there is one, otherwise
-    // this will not match an id unless for some reason it starts with __
-    let stepName = action.replace(/__[-_a-z]+/, "");
-    if (stepName) {
-        stepName = `-${stepName}`;
-    }
     const format = getSbomFormat();
     let extension = format;
     switch (format) {
@@ -16717,8 +16708,28 @@ function getArtifactName() {
             extension = "syft.json";
             break;
     }
+    const imageName = core.getInput("image");
+    if (imageName) {
+        const parts = imageName.split("/");
+        // remove the hostname
+        if (parts.length > 2) {
+            parts.splice(0, 1);
+        }
+        const prefix = parts.join("-").replace(/[^-a-zA-Z0-9]/, "_");
+        return `${prefix}.${extension}`;
+    }
+    const { repo: { repo }, job, action, } = github.context;
+    // when run without an id, we get various auto-generated names, like:
+    // __self __self_2 __anchore_sbom-action  __anchore_sbom-action_2 etc.
+    // so just keep the number at the end if there is one, otherwise
+    // this will not match an id unless for some reason it starts with __
+    let stepName = action.replace(/__[-_a-z]+/, "");
+    if (stepName) {
+        stepName = `-${stepName}`;
+    }
     return `${repo}-${job}${stepName}.${extension}`;
 }
+exports.getArtifactName = getArtifactName;
 /**
  * Gets a reference to the syft command and executes the syft action
  * @param input syft input parameters
