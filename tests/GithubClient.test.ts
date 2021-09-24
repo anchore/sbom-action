@@ -1,6 +1,5 @@
 import { getMocks } from "./mocks"
 const { data, mocks, setData, restoreInitialData } = getMocks();
-const { workflowRun } = data;
 for (const mock of Object.keys(mocks)) {
   jest.mock(mock, mocks[mock]);
 }
@@ -67,14 +66,21 @@ describe("Github Client", () => {
   });
 
   it("calls workflow run for branch methods", async () => {
+    setData({
+      workflowRuns: [{
+        id: 3,
+        head_branch: "main",
+        conclusion: "success"
+      }],
+    });
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
       "token"
     );
-    const run = await client.findLatestWorkflowRunForBranch({
+    const run: any = await client.findLatestWorkflowRunForBranch({
       branch: "main",
     });
-    expect(run).toBe(workflowRun);
+    expect(run.id).toBe(3);
   });
 
   it("calls findRelease methods", async () => {
@@ -94,14 +100,47 @@ describe("Github Client", () => {
     expect(r.id).toBe(2);
   });
 
-  it("calls artifact methods", async () => {
+  it("calls findDraftRelease methods", async () => {
+    setData({
+      releases: [{
+        id: 1,
+        tag_name: "main",
+        draft: false
+      },{
+        id: 2,
+        tag_name: "main",
+        draft: true
+      }],
+    })
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
       "token"
     );
+    const r: any = await client.findDraftRelease({
+      tag: "main",
+    });
+    expect(r.id).toBe(2);
+  });
+
+  it("calls artifact methods", async () => {
+    setData({
+      artifacts: [{
+        runId: 1,
+        id: 34534,
+      },{
+        runId: 2,
+        id: 34534,
+      }]
+    });
+
+    const client = githubClient.getClient(
+      { owner: "test-owner", repo: "test-repo" },
+      "token"
+    );
+
     let artifacts = await client.listWorkflowArtifacts();
 
-    const startLength = artifacts.length;
+    expect(artifacts.length).toBe(0);
 
     await client.uploadWorkflowArtifact({
       name: "test",
@@ -112,7 +151,7 @@ describe("Github Client", () => {
       runId: 1,
     });
 
-    expect(artifacts.length).toBe(startLength + 1);
+    expect(artifacts.length).toBe(1);
 
     let artifact = await client.downloadWorkflowArtifact({
       name: "test",
@@ -121,7 +160,7 @@ describe("Github Client", () => {
     expect(artifact).toBeDefined();
 
     artifact = await client.downloadWorkflowRunArtifact({
-      artifactId: startLength,
+      artifactId: 1,
     });
 
     expect(artifact).toBeDefined();
@@ -168,7 +207,17 @@ describe("Github Client", () => {
   });
 
   it("debugInspect works", () => {
+    setData({
+      debug: {
+        enabled: true,
+        log: [],
+      }
+    });
+
     debugInspect("the_label", { the: "obj" });
+
+    expect(data.debug.log.length).toBe(1);
+    expect(data.debug.log[0]).toBe("{\"the\":\"obj\"}");
   });
 
   it("finds a draft release", async () => {
@@ -192,5 +241,5 @@ describe("Github Client", () => {
 
     expect(release.id).toBe(5432);
     expect(release.draft).toBeTruthy();
-  })
+  });
 });

@@ -3,11 +3,11 @@
  */
 export function getMocks() {
   class Data {
-    artifacts: (Artifact & { id: number, file: string })[] = [];
+    artifacts: (Artifact & { runId?: number, id: number, file: string })[] = [];
 
     assets: ReleaseAsset[] = [];
 
-    workflowRun: WorkflowRun = {} as never;
+    workflowRuns: WorkflowRun[] = [];
 
     inputs: { [key: string]: string } = {};
 
@@ -31,6 +31,14 @@ export function getMocks() {
     };
 
     failed: { message?: string } = {};
+
+    debug: {
+      enabled: boolean,
+      log: string[],
+    } = {
+      enabled: false,
+      log: [],
+    }
   }
 
   const data = Object.freeze(new Data());
@@ -77,19 +85,24 @@ export function getMocks() {
           info() {
             // ignore
           },
-          debug() {
+          warning() {
             // ignore
+          },
+          debug(msg: any) {
+            if (data.debug.enabled) {
+              data.debug.log.push(msg);
+            }
           },
           addPath() {
             // ignore
           },
           isDebug() {
-            return false;
+            return data.debug.enabled;
           },
           exportVariable() {
             // ignore
           },
-          group(_name: string, callback: () => Promise<unknown>) {
+          async group(_name: string, callback: () => Promise<unknown>) {
             return callback();
           }
         };
@@ -100,7 +113,7 @@ export function getMocks() {
           DownloadHttpClient: class {
             async listArtifacts() {
               return {
-                value: data.artifacts,
+                value: data.artifacts.filter(a => !a.runId),
               };
             }
           },
@@ -113,7 +126,6 @@ export function getMocks() {
             return {
               uploadArtifact(name: string, file: string) {
                 data.artifacts.push({
-                  id: data.artifacts.length,
                   name: path.basename(name),
                   file,
                 } as never);
@@ -145,7 +157,7 @@ export function getMocks() {
       }),
 
       "@actions/exec": () => ({
-        async exec(cmd: string, args: string[], opts: ExecOptions) {
+        async exec(cmd: string, args: string[], opts: ExecOptions = {}) {
           data.execArgs.cmd = cmd;
           data.execArgs.args = args;
           data.execArgs.opts = opts;
@@ -169,11 +181,11 @@ export function getMocks() {
             return {
               rest: {
                 actions: {
-                  async listWorkflowRunArtifacts() {
+                  async listWorkflowRunArtifacts({ run_id }: any) {
                     return {
                       status: data.returnStatus.status,
                       data: {
-                        artifacts: data.artifacts,
+                        artifacts: data.artifacts.filter(a => a.runId === run_id),
                       },
                     };
                   },
@@ -182,11 +194,13 @@ export function getMocks() {
                       url: "http://artifact",
                     };
                   },
-                  async listWorkflowRunsForRepo() {
+                  async listWorkflowRunsForRepo({ branch, status }: any) {
                     return {
                       status: data.returnStatus.status,
                       data: {
-                        workflow_runs: [data.workflowRun],
+                        workflow_runs: data.workflowRuns.filter(r =>
+                          r.head_branch === branch && r.conclusion === status
+                        ),
                       },
                     };
                   },
@@ -214,7 +228,9 @@ export function getMocks() {
                     };
                   },
                   async listReleases() {
-                    return data.releases;
+                    return {
+                      data: data.releases,
+                    };
                   }
                 },
               },
