@@ -259,14 +259,18 @@ describe("Action", () => {
   });
 
   it("uses image name for default artifact name", () => {
-    setInputs({
-      image: "something-something/image-image"
+    setData({
+      inputs: {
+        image: "something-something/image-image"
+      }
     });
 
     expect(action.getArtifactName()).toBe("something-something-image-image.spdx.json");
 
-    setInputs({
-      image: "ghcr.io/something-something/image-image"
+    setData({
+      inputs: {
+        image: "ghcr.io/something-something/image-image"
+      }
     });
 
     expect(action.getArtifactName()).toBe("something-something-image-image.spdx.json");
