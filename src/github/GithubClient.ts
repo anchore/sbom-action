@@ -30,6 +30,8 @@ interface ReleaseProps {
  * Basic artifact interface returned via listWorkflowArtifacts
  */
 export interface Artifact {
+  // Workflow run artifact will have an ID
+  id?: number;
   name: string;
 }
 
@@ -79,17 +81,22 @@ export function dashWrap(str: string): string {
 
 /**
  * Logs all objects passed in debug outputting strings directly and
- * calling JSON.stringify on other elements
+ * calling JSON.stringify on other elements in a group with the given label
  */
-export function debugLog(...args: unknown[]): void {
+export function debugLog(label: string, ...args: unknown[]): void {
   if (core.isDebug()) {
-    for (const arg of args) {
-      if (typeof arg === "string") {
-        core.debug(arg);
-      } else {
-        core.debug(JSON.stringify(arg));
+    core.group(label, async () => {
+      for (const arg of args) {
+        if (typeof arg === "string") {
+          core.debug(arg);
+        } else if (arg instanceof Error) {
+          core.debug(arg.message);
+          core.debug(JSON.stringify(arg.stack));
+        } else {
+          core.debug(JSON.stringify(arg));
+        }
       }
-    }
+    });
   }
 }
 
@@ -128,8 +135,12 @@ export class GithubClient {
   /**
    * Downloads a workflow artifact for the current workflow run
    * @param name artifact name
+   * @param id specified if using a workflow run artifact
    */
-  async downloadWorkflowArtifact({ name }: { name: string }): Promise<string> {
+  async downloadWorkflowArtifact({ name, id }: Artifact): Promise<string> {
+    if (id) {
+      return this.downloadWorkflowRunArtifact({ artifactId: id });
+    }
     const client = createArtifactClient();
     const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
     const response = await suppressOutput(async () =>
@@ -332,14 +343,52 @@ export class GithubClient {
    */
   async findRelease({ tag }: { tag: string }): Promise<Release | undefined> {
     core.debug(`Getting release by tag: ${tag}`);
+    let release: Release | undefined;
     try {
       const response = await this.client.rest.repos.getReleaseByTag({
         ...this.repo,
         tag,
       });
-      return response.data as Release;
+
+      release = response.data as Release | undefined;
+      debugLog(`getReleaseByTag response:`, release);
     } catch (e) {
       debugLog("Error while fetching release by tag name:", e);
+    }
+
+    if (!release) {
+      core.debug(`No release found for ${tag}, looking for draft release...`);
+      release = await this.findDraftRelease({ tag });
+    }
+
+    return release;
+  }
+
+  /**
+   * Finds a draft release by ref
+   * @param tag release tag_name to search by
+   * @param ref release target_commitish to search by
+   */
+  async findDraftRelease({
+    tag,
+  }: {
+    tag?: string;
+  }): Promise<Release | undefined> {
+    debugLog(`Getting draft release by tag: ${tag}`);
+    try {
+      const response = await this.client.rest.repos.listReleases({
+        ...this.repo,
+      });
+
+      const release = (response.data as Release[])
+        .filter((r) => r.draft)
+        .find((r) => r.tag_name === tag);
+
+      debugLog(`listReleases filtered response:`, release);
+
+      return release;
+    } catch (e) {
+      debugLog("Error while fetching draft release by tag name:", e);
       return undefined;
     }
   }

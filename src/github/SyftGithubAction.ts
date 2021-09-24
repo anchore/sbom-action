@@ -145,7 +145,7 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   );
 
   if (exitCode > 0) {
-    core.debug(stdout);
+    debugLog("Syft stdout:", stdout);
     throw new Error("An error occurred running Syft");
   } else {
     return stdout;
@@ -341,15 +341,20 @@ export async function attachReleaseAssets(): Promise<void> {
 
   let release: Release | undefined = undefined;
 
-  // FIXME: what's the right way to detect a release?
+  // Try to detect a release
   if (eventName === "release") {
+    // Obviously if this is run during a release
     release = (payload as ReleaseEvent).release;
     debugLog("Got releaseEvent:", release);
   } else {
-    const isRefPush = eventName === "push" && /^refs\/tags\/.*/.test(ref);
+    // We may have a tag-based workflow that creates releases or even drafts
+    const releaseRefPrefix =
+      core.getInput("release-ref-prefix") || "refs/tags/";
+    const isRefPush = eventName === "push" && ref.startsWith(releaseRefPrefix);
     if (isRefPush) {
-      const tag = ref.replace(/^refs\/tags\//, "");
+      const tag = ref.substring(releaseRefPrefix.length);
       release = await client.findRelease({ tag });
+      debugLog("Found release for ref push:", release);
     }
   }
 
@@ -360,7 +365,7 @@ export async function attachReleaseAssets(): Promise<void> {
     const matcher = new RegExp(sbomArtifactPattern);
 
     const artifacts = await client.listWorkflowArtifacts();
-    const matched = artifacts.filter((a) => {
+    let matched = artifacts.filter((a) => {
       const matches = matcher.test(a.name);
       if (matches) {
         core.debug(`Found artifact: ${a.name}`);
@@ -370,6 +375,36 @@ export async function attachReleaseAssets(): Promise<void> {
       return matches;
     });
 
+    // We may have a release run based on a prior build from another workflow
+    if (eventName === "release" && !matched.length) {
+      core.info(
+        "No artifacts found in this workflow. Searching for release artifacts from prior workflow..."
+      );
+      const latestRun = await client.findLatestWorkflowRunForBranch({
+        branch: release.target_commitish,
+      });
+
+      debugLog("Got latest run for prior workflow", latestRun);
+
+      if (latestRun) {
+        const runArtifacts = await client.listWorkflowRunArtifacts({
+          runId: latestRun.id,
+        });
+
+        matched = runArtifacts.filter((a) => {
+          const matches = matcher.test(a.name);
+          if (matches) {
+            core.debug(`Found run artifact: ${a.name}`);
+          } else {
+            core.debug(
+              `Run artifact: ${a.name} not matching ${sbomArtifactPattern}`
+            );
+          }
+          return matches;
+        });
+      }
+    }
+
     if (!matched.length && sbomArtifactInput) {
       core.warning(`WARNING: no SBOMs found matching ${sbomArtifactInput}`);
       return;
@@ -377,9 +412,7 @@ export async function attachReleaseAssets(): Promise<void> {
 
     core.info(dashWrap(`Attaching SBOMs to release: '${release.tag_name}'`));
     for (const artifact of matched) {
-      const file = await client.downloadWorkflowArtifact({
-        name: artifact.name,
-      });
+      const file = await client.downloadWorkflowArtifact(artifact);
 
       core.info(file);
       const contents = fs.readFileSync(file);

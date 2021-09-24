@@ -16389,18 +16389,24 @@ function dashWrap(str) {
 exports.dashWrap = dashWrap;
 /**
  * Logs all objects passed in debug outputting strings directly and
- * calling JSON.stringify on other elements
+ * calling JSON.stringify on other elements in a group with the given label
  */
-function debugLog(...args) {
+function debugLog(label, ...args) {
     if (core.isDebug()) {
-        for (const arg of args) {
-            if (typeof arg === "string") {
-                core.debug(arg);
+        core.group(label, () => __awaiter(this, void 0, void 0, function* () {
+            for (const arg of args) {
+                if (typeof arg === "string") {
+                    core.debug(arg);
+                }
+                else if (arg instanceof Error) {
+                    core.debug(arg.message);
+                    core.debug(JSON.stringify(arg.stack));
+                }
+                else {
+                    core.debug(JSON.stringify(arg));
+                }
             }
-            else {
-                core.debug(JSON.stringify(arg));
-            }
-        }
+        }));
     }
 }
 exports.debugLog = debugLog;
@@ -16432,9 +16438,13 @@ class GithubClient {
     /**
      * Downloads a workflow artifact for the current workflow run
      * @param name artifact name
+     * @param id specified if using a workflow run artifact
      */
-    downloadWorkflowArtifact({ name }) {
+    downloadWorkflowArtifact({ name, id }) {
         return __awaiter(this, void 0, void 0, function* () {
+            if (id) {
+                return this.downloadWorkflowRunArtifact({ artifactId: id });
+            }
             const client = (0, artifact_1.create)();
             const tempPath = fs_1.default.mkdtempSync(path_1.default.join(os_1.default.tmpdir(), "sbom-action-"));
             const response = yield suppressOutput(() => __awaiter(this, void 0, void 0, function* () { return client.downloadArtifact(name, tempPath); }));
@@ -16551,12 +16561,40 @@ class GithubClient {
     findRelease({ tag }) {
         return __awaiter(this, void 0, void 0, function* () {
             core.debug(`Getting release by tag: ${tag}`);
+            let release;
             try {
                 const response = yield this.client.rest.repos.getReleaseByTag(Object.assign(Object.assign({}, this.repo), { tag }));
-                return response.data;
+                release = response.data;
+                debugLog(`getReleaseByTag response:`, release);
             }
             catch (e) {
                 debugLog("Error while fetching release by tag name:", e);
+            }
+            if (!release) {
+                core.debug(`No release found for ${tag}, looking for draft release...`);
+                release = yield this.findDraftRelease({ tag });
+            }
+            return release;
+        });
+    }
+    /**
+     * Finds a draft release by ref
+     * @param tag release tag_name to search by
+     * @param ref release target_commitish to search by
+     */
+    findDraftRelease({ tag, }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            debugLog(`Getting draft release by tag: ${tag}`);
+            try {
+                const response = yield this.client.rest.repos.listReleases(Object.assign({}, this.repo));
+                const release = response.data
+                    .filter((r) => r.draft)
+                    .find((r) => r.tag_name === tag);
+                debugLog(`listReleases filtered response:`, release);
+                return release;
+            }
+            catch (e) {
+                debugLog("Error while fetching draft release by tag name:", e);
                 return undefined;
             }
         });
@@ -16760,7 +16798,7 @@ function executeSyft({ input, format }) {
             });
         }));
         if (exitCode > 0) {
-            core.debug(stdout);
+            (0, GithubClient_1.debugLog)("Syft stdout:", stdout);
             throw new Error("An error occurred running Syft");
         }
         else {
@@ -16930,16 +16968,20 @@ function attachReleaseAssets() {
         const { eventName, ref, payload, repo } = github.context;
         const client = (0, GithubClient_1.getClient)(repo, core.getInput("github-token"));
         let release = undefined;
-        // FIXME: what's the right way to detect a release?
+        // Try to detect a release
         if (eventName === "release") {
+            // Obviously if this is run during a release
             release = payload.release;
             (0, GithubClient_1.debugLog)("Got releaseEvent:", release);
         }
         else {
-            const isRefPush = eventName === "push" && /^refs\/tags\/.*/.test(ref);
+            // We may have a tag-based workflow that creates releases or even drafts
+            const releaseRefPrefix = core.getInput("release-ref-prefix") || "refs/tags/";
+            const isRefPush = eventName === "push" && ref.startsWith(releaseRefPrefix);
             if (isRefPush) {
-                const tag = ref.replace(/^refs\/tags\//, "");
+                const tag = ref.substring(releaseRefPrefix.length);
                 release = yield client.findRelease({ tag });
+                (0, GithubClient_1.debugLog)("Found release for ref push:", release);
             }
         }
         if (release) {
@@ -16948,7 +16990,7 @@ function attachReleaseAssets() {
             const sbomArtifactPattern = sbomArtifactInput || `^${getArtifactName()}$`;
             const matcher = new RegExp(sbomArtifactPattern);
             const artifacts = yield client.listWorkflowArtifacts();
-            const matched = artifacts.filter((a) => {
+            let matched = artifacts.filter((a) => {
                 const matches = matcher.test(a.name);
                 if (matches) {
                     core.debug(`Found artifact: ${a.name}`);
@@ -16958,15 +17000,36 @@ function attachReleaseAssets() {
                 }
                 return matches;
             });
+            // We may have a release run based on a prior build from another workflow
+            if (eventName === "release" && !matched.length) {
+                core.info("No artifacts found in this workflow. Searching for release artifacts from prior workflow...");
+                const latestRun = yield client.findLatestWorkflowRunForBranch({
+                    branch: release.target_commitish,
+                });
+                (0, GithubClient_1.debugLog)("Got latest run for prior workflow", latestRun);
+                if (latestRun) {
+                    const runArtifacts = yield client.listWorkflowRunArtifacts({
+                        runId: latestRun.id,
+                    });
+                    matched = runArtifacts.filter((a) => {
+                        const matches = matcher.test(a.name);
+                        if (matches) {
+                            core.debug(`Found run artifact: ${a.name}`);
+                        }
+                        else {
+                            core.debug(`Run artifact: ${a.name} not matching ${sbomArtifactPattern}`);
+                        }
+                        return matches;
+                    });
+                }
+            }
             if (!matched.length && sbomArtifactInput) {
                 core.warning(`WARNING: no SBOMs found matching ${sbomArtifactInput}`);
                 return;
             }
             core.info((0, GithubClient_1.dashWrap)(`Attaching SBOMs to release: '${release.tag_name}'`));
             for (const artifact of matched) {
-                const file = yield client.downloadWorkflowArtifact({
-                    name: artifact.name,
-                });
+                const file = yield client.downloadWorkflowArtifact(artifact);
                 core.info(file);
                 const contents = fs.readFileSync(file);
                 const assetName = path_1.default.basename(file);
