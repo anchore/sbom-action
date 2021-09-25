@@ -66,7 +66,8 @@ parameter:
 
 ```yaml
 - uses: anchore/sbom-action/publish-sbom@v0
-  sbom-artifact-match: ".*\\.spdx$"
+  with:
+    sbom-artifact-match: ".*\\.spdx$"
 ```
 
 ### Naming the SBOM output
