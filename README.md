@@ -1,4 +1,4 @@
-# Anchore SBOM Action
+# GitHub Action for SBOM Generation
 
 [![GitHub release](https://img.shields.io/github/release/anchore/sbom-action.svg)](https://github.com/anchore/sbom-action/releases/latest)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/anchore/sbom-action/blob/main/LICENSE)
