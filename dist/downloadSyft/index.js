@@ -16675,7 +16675,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.runAndFailBuildOnException = exports.attachReleaseAssets = exports.runSyftAction = exports.uploadSbomArtifact = exports.getSbomFormat = exports.getSyftCommand = exports.downloadSyft = exports.getArtifactName = exports.SYFT_VERSION = exports.SYFT_BINARY_NAME = void 0;
+exports.runAndFailBuildOnException = exports.attachReleaseAssets = exports.runSyftAction = exports.uploadSbomArtifact = exports.getSbomFormat = exports.getSyftCommand = exports.downloadSyft = exports.mapToWSLPath = exports.getArtifactName = exports.SYFT_VERSION = exports.SYFT_BINARY_NAME = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const exec = __importStar(__nccwpck_require__(1514));
 const github = __importStar(__nccwpck_require__(5438));
@@ -16731,6 +16731,14 @@ function getArtifactName() {
 }
 exports.getArtifactName = getArtifactName;
 /**
+ * Maps the given parameter to a Windows Subsystem for Linux style path
+ * @param arg
+ */
+function mapToWSLPath(arg) {
+    return arg.replace(/^([A-Z]):(.*)$/, (v, drive, path) => `/mnt/${drive.toLowerCase()}${path.replace(/\\/g, "/")}`);
+}
+exports.mapToWSLPath = mapToWSLPath;
+/**
  * Execute directly for linux & macOS and use WSL for Windows
  * @param cmd command to execute
  * @param args command args
@@ -16739,8 +16747,7 @@ exports.getArtifactName = getArtifactName;
 function execute(cmd, args, options) {
     return __awaiter(this, void 0, void 0, function* () {
         if (process.platform === "win32") {
-            const replacePath = (arg) => arg.replace(/^([A-Z]):(.*)$/, (v, drive, path) => `/mnt/${drive.toLowerCase()}${path.replace(/\\/g, "/")}`);
-            return yield exec.exec("wsl", [replacePath(cmd), ...args.map(replacePath)], options);
+            return yield exec.exec("wsl", [mapToWSLPath(cmd), ...args.map(mapToWSLPath)], options);
         }
         else {
             return exec.exec(cmd, args, options);

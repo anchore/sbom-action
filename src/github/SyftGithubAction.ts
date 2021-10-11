@@ -70,6 +70,17 @@ export function getArtifactName(): string {
 }
 
 /**
+ * Maps the given parameter to a Windows Subsystem for Linux style path
+ * @param arg
+ */
+export function mapToWSLPath(arg: string) {
+  return arg.replace(
+    /^([A-Z]):(.*)$/,
+    (v, drive, path) => `/mnt/${drive.toLowerCase()}${path.replace(/\\/g, "/")}`
+  );
+}
+
+/**
  * Execute directly for linux & macOS and use WSL for Windows
  * @param cmd command to execute
  * @param args command args
@@ -81,15 +92,9 @@ async function execute(
   options?: exec.ExecOptions
 ) {
   if (process.platform === "win32") {
-    const replacePath = (arg: string) =>
-      arg.replace(
-        /^([A-Z]):(.*)$/,
-        (v, drive, path) =>
-          `/mnt/${drive.toLowerCase()}${path.replace(/\\/g, "/")}`
-      );
     return await exec.exec(
       "wsl",
-      [replacePath(cmd), ...args.map(replacePath)],
+      [mapToWSLPath(cmd), ...args.map(mapToWSLPath)],
       options
     );
   } else {
