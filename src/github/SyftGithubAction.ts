@@ -70,6 +70,34 @@ export function getArtifactName(): string {
 }
 
 /**
+ * Execute using bash for linux & macOS and wsl for Windows
+ * @param cmd command to execute
+ * @param args command args
+ * @param options command options
+ */
+async function execute(
+  cmd: string,
+  args: string[],
+  options?: exec.ExecOptions
+) {
+  if (process.platform === "win32") {
+    const replacePath = (arg: string) =>
+      arg.replace(
+        /^([A-Z]):(.*)$/,
+        (v, drive, path) =>
+          `/mnt/${drive.toLowerCase()}${path.replace(/\\/g, "/")}`
+      );
+    return await exec.exec(
+      "wsl",
+      [replacePath(cmd), ...args.map(replacePath)],
+      options
+    );
+  } else {
+    return exec.exec(cmd, args, options);
+  }
+}
+
+/**
  * Gets a reference to the syft command and executes the syft action
  * @param input syft input parameters
  * @param format syft output format
@@ -127,7 +155,7 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   });
 
   const exitCode = await core.group("Executing Syft...", async () =>
-    exec.exec(cmd, args, {
+    execute(cmd, args, {
       env,
       outStream,
       listeners: {
@@ -167,12 +195,11 @@ export async function downloadSyft(): Promise<string> {
   const installPath = await cache.downloadTool(url);
 
   // Make sure the tool's executable bit is set
-  await exec.exec(`chmod +x ${installPath}`);
+  const syftBinaryPath = `${installPath}_${name}`;
 
-  const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
-  await exec.exec(cmd);
+  await execute("sh", [installPath, "-d", "-b", syftBinaryPath, version]);
 
-  return `${installPath}_${name}/${name}`;
+  return `${syftBinaryPath}/${name}`;
 }
 
 /**

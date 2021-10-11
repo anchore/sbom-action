@@ -145,6 +145,18 @@ Output parameters:
 `cmd` can be referenced in a workflow like other output parameters:
 `${{ steps.<step-id>.outputs.cmd }}`
 
+## Windows
+
+Windows is currently supported via Windows Subsystem for Linux (WSL). It is
+required to set up a WSL distribution prior to invoking the `sbom-action`, for
+example, you can add the small Alpine image:
+
+```yaml
+- uses: Vampire/setup-wsl@v1
+  with:
+    distribution: Alpine
+```
+
 ## Diagnostics
 
 This action makes extensive use of GitHub Action debug logging,

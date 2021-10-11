@@ -16687,6 +16687,23 @@ function getArtifactName() {
 }
 exports.getArtifactName = getArtifactName;
 /**
+ * Execute using bash for linux & macOS and wsl for Windows
+ * @param cmd command to execute
+ * @param args command args
+ * @param options command options
+ */
+function execute(cmd, args, options) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (process.platform === "win32") {
+            const replacePath = (arg) => arg.replace(/^([A-Z]):(.*)$/, (v, drive, path) => `/mnt/${drive.toLowerCase()}${path.replace(/\\/g, "/")}`);
+            return yield exec.exec("wsl", [replacePath(cmd), ...args.map(replacePath)], options);
+        }
+        else {
+            return exec.exec(cmd, args, options);
+        }
+    });
+}
+/**
  * Gets a reference to the syft command and executes the syft action
  * @param input syft input parameters
  * @param format syft output format
@@ -16737,7 +16754,7 @@ function executeSyft({ input, format }) {
             },
         });
         const exitCode = yield core.group("Executing Syft...", () => __awaiter(this, void 0, void 0, function* () {
-            return exec.exec(cmd, args, {
+            return execute(cmd, args, {
                 env,
                 outStream,
                 listeners: {
@@ -16774,10 +16791,9 @@ function downloadSyft() {
         // Download the installer, and run
         const installPath = yield cache.downloadTool(url);
         // Make sure the tool's executable bit is set
-        yield exec.exec(`chmod +x ${installPath}`);
-        const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
-        yield exec.exec(cmd);
-        return `${installPath}_${name}/${name}`;
+        const syftBinaryPath = `${installPath}_${name}`;
+        yield execute("sh", [installPath, "-d", "-b", syftBinaryPath, version]);
+        return `${syftBinaryPath}/${name}`;
     });
 }
 exports.downloadSyft = downloadSyft;
