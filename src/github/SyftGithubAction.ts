@@ -70,7 +70,7 @@ export function getArtifactName(): string {
 }
 
 /**
- * Execute using bash for linux & macOS and wsl for Windows
+ * Execute directly for linux & macOS and use WSL for Windows
  * @param cmd command to execute
  * @param args command args
  * @param options command options
