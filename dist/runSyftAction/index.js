@@ -16631,7 +16631,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.runAndFailBuildOnException = exports.attachReleaseAssets = exports.runSyftAction = exports.uploadSbomArtifact = exports.getSbomFormat = exports.getSyftCommand = exports.downloadSyft = exports.getArtifactName = exports.SYFT_VERSION = exports.SYFT_BINARY_NAME = void 0;
+exports.runAndFailBuildOnException = exports.attachReleaseAssets = exports.runSyftAction = exports.uploadSbomArtifact = exports.getSbomFormat = exports.getSyftCommand = exports.downloadSyft = exports.mapToWSLPath = exports.getArtifactName = exports.SYFT_VERSION = exports.SYFT_BINARY_NAME = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const exec = __importStar(__nccwpck_require__(1514));
 const github = __importStar(__nccwpck_require__(5438));
@@ -16687,6 +16687,30 @@ function getArtifactName() {
 }
 exports.getArtifactName = getArtifactName;
 /**
+ * Maps the given parameter to a Windows Subsystem for Linux style path
+ * @param arg
+ */
+function mapToWSLPath(arg) {
+    return arg.replace(/^([A-Z]):(.*)$/, (v, drive, path) => `/mnt/${drive.toLowerCase()}${path.replace(/\\/g, "/")}`);
+}
+exports.mapToWSLPath = mapToWSLPath;
+/**
+ * Execute directly for linux & macOS and use WSL for Windows
+ * @param cmd command to execute
+ * @param args command args
+ * @param options command options
+ */
+function execute(cmd, args, options) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (process.platform === "win32") {
+            return yield exec.exec("wsl", [mapToWSLPath(cmd), ...args.map(mapToWSLPath)], options);
+        }
+        else {
+            return exec.exec(cmd, args, options);
+        }
+    });
+}
+/**
  * Gets a reference to the syft command and executes the syft action
  * @param input syft input parameters
  * @param format syft output format
@@ -16737,7 +16761,7 @@ function executeSyft({ input, format }) {
             },
         });
         const exitCode = yield core.group("Executing Syft...", () => __awaiter(this, void 0, void 0, function* () {
-            return exec.exec(cmd, args, {
+            return execute(cmd, args, {
                 env,
                 outStream,
                 listeners: {
@@ -16774,10 +16798,9 @@ function downloadSyft() {
         // Download the installer, and run
         const installPath = yield cache.downloadTool(url);
         // Make sure the tool's executable bit is set
-        yield exec.exec(`chmod +x ${installPath}`);
-        const cmd = `${installPath} -b ${installPath}_${name} ${version}`;
-        yield exec.exec(cmd);
-        return `${installPath}_${name}/${name}`;
+        const syftBinaryPath = `${installPath}_${name}`;
+        yield execute("sh", [installPath, "-d", "-b", syftBinaryPath, version]);
+        return `${syftBinaryPath}/${name}`;
     });
 }
 exports.downloadSyft = downloadSyft;

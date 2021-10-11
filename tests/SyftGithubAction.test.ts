@@ -14,7 +14,7 @@ import * as os from "os";
 import * as path from "path";
 import * as action from "../src/github/SyftGithubAction";
 import {
-  downloadSyft,
+  downloadSyft, mapToWSLPath,
   runAndFailBuildOnException
 } from "../src/github/SyftGithubAction";
 
@@ -274,5 +274,11 @@ describe("Action", () => {
     });
 
     expect(action.getArtifactName()).toBe("something-something-image-image.spdx.json");
-  })
+  });
+
+  it ("properly maps paths for WSL", () => {
+    expect(mapToWSLPath("basic arg")).toBe("basic arg");
+    expect(mapToWSLPath("D:\\Some\\Path")).toBe("/mnt/d/Some/Path");
+    expect(mapToWSLPath("C:\\Some\\Path")).toBe("/mnt/c/Some/Path");
+  });
 });

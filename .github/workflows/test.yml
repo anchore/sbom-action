@@ -26,8 +26,16 @@ jobs:
       - run: git diff --exit-code
 
   test-on-fixture-dirs:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
+      - uses: Vampire/setup-wsl@v1
+        if: ${{ matrix.os == 'windows-latest' }}
+        with:
+          distribution: Alpine
+
       - uses: actions/checkout@v2
         with:
           path: ./
