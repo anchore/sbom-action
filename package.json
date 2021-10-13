@@ -63,6 +63,6 @@
     "pretty-quick": "^3.1.1",
     "ts-jest": "^27.0.5",
     "type-fest": "^2.3.4",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.4"
   }
 }
