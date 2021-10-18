@@ -8,7 +8,7 @@ exports[`SPDX alpine 1`] = `
 
 ##### Package: libvncserver
 Creator: Organization: Anchore, Inc
-Creator: Tool: syft-0.25.0
+Creator: Tool: syft-0.26.0
 DataLicense: CC0-1.0
 DocumentName: localhost:5000/match-coverage/alpine:latest
 DocumentNamespace: https://anchore.com/syft/image/localhost:5000/match-coverage/alpine:latest
@@ -50,7 +50,7 @@ exports[`SPDX debian 1`] = `
 ##### Package: joda-time
 ##### Package: npm
 Creator: Organization: Anchore, Inc
-Creator: Tool: syft-0.25.0
+Creator: Tool: syft-0.26.0
 DataLicense: CC0-1.0
 DocumentName: localhost:5000/match-coverage/debian:latest
 DocumentNamespace: https://anchore.com/syft/image/localhost:5000/match-coverage/debian:latest
@@ -235,7 +235,7 @@ exports[`SPDX npm 1`] = `
 ##### Package: tar
 ##### Package: yallist
 Creator: Organization: Anchore, Inc
-Creator: Tool: syft-0.25.0
+Creator: Tool: syft-0.26.0
 DataLicense: CC0-1.0
 DocumentNamespace: https://anchore.com/syft/image/
 ExternalRef: PACKAGE_MANAGER purl pkg:npm/chownr@2.0.0
@@ -445,7 +445,7 @@ exports[`SPDX yarn 1`] = `
 ##### Package: react-is
 ##### Package: trim
 Creator: Organization: Anchore, Inc
-Creator: Tool: syft-0.25.0
+Creator: Tool: syft-0.26.0
 DataLicense: CC0-1.0
 DocumentNamespace: https://anchore.com/syft/image/
 ExternalRef: PACKAGE_MANAGER purl pkg:npm/loose-envify@1.4.0
