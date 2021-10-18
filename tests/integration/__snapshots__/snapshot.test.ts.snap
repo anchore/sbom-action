@@ -8,7 +8,7 @@ exports[`SPDX alpine 1`] = `
 
 ##### Package: libvncserver
 Creator: Organization: Anchore, Inc
-Creator: Tool: syft-0.25.0
+Creator: Tool: syft-0.26.0
 DataLicense: CC0-1.0
 DocumentName: localhost:5000/match-coverage/alpine:latest
 DocumentNamespace: https://anchore.com/syft/image/localhost:5000/match-coverage/alpine:latest
@@ -50,7 +50,7 @@ exports[`SPDX debian 1`] = `
 ##### Package: joda-time
 ##### Package: npm
 Creator: Organization: Anchore, Inc
-Creator: Tool: syft-0.25.0
+Creator: Tool: syft-0.26.0
 DataLicense: CC0-1.0
 DocumentName: localhost:5000/match-coverage/debian:latest
 DocumentNamespace: https://anchore.com/syft/image/localhost:5000/match-coverage/debian:latest
