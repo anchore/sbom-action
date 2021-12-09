@@ -32,7 +32,7 @@
   "author": "Keith Zantow <keith.zantow@anchore.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@actions/artifact": "^0.5.2",
+    "@actions/artifact": "^0.6.0",
     "@actions/core": "^1.6.0",
     "@actions/exec": "^1.1.0",
     "@actions/github": "^5.0.0",
@@ -47,7 +47,7 @@
     "@types/node": "^16.11.12",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
-    "@vercel/ncc": "^0.31.1",
+    "@vercel/ncc": "^0.33.0",
     "eol-converter-cli": "^1.0.8",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
