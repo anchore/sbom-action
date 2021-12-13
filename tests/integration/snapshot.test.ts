@@ -11,6 +11,7 @@ const testSource = async (source: string): Promise<string> => {
   let spdx = "";
   const artifacts: client.Artifact[] = [];
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   (github as unknown).context = {
     eventName: "release",
@@ -76,12 +77,11 @@ const testSource = async (source: string): Promise<string> => {
     spyGetClient.mockRestore();
   }
 
-  // FIXME these tests are already flaky because SPDX format is not sorted currently
+  // Remove non-static data:
   return spdx
     .replace(/[Cc]reated["]?[:][^\n]+/g, "")
-    .split("\n")
-    .sort()
-    .join("\n");
+    .replace(/Creator[:][^\n]+/g, "")
+    .replace(/DocumentNamespace[:][^\n]+/g, "");
 };
 
 describe("SPDX", () => {
