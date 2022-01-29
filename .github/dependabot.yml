@@ -3,7 +3,7 @@ updates:
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
-    open-pull-requests-limit: 20
+    open-pull-requests-limit: 25
     schedule:
       interval: "daily"
       
