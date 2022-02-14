@@ -1,5 +1,12 @@
 version: 2
 updates:
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    open-pull-requests-limit: 20
+    schedule:
+      interval: "daily"
+      
   # Enable version updates for npm
   - package-ecosystem: 'npm'
     # Look for `package.json` and `lock` files in the `root` directory
