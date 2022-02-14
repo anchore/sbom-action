@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Draft release notes
-        uses: release-drafter/release-drafter@v5
+        uses: release-drafter/release-drafter@2f7ebf8ab5ef7f9835ee4b0b1eebaa2a14ca1669 # v5
         env:
           GITHUB_TOKEN: ${{ github.token }}
