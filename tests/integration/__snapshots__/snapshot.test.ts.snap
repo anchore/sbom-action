@@ -6,7 +6,7 @@ DataLicense: CC0-1.0
 SPDXID: SPDXRef-DOCUMENT
 DocumentName: localhost-5000/match-coverage/alpine-latest
 
-LicenseListVersion: 3.15
+LicenseListVersion: 3.16
 
 
 
@@ -22,7 +22,7 @@ PackageLicenseConcluded: GPL-2.0-or-later
 PackageLicenseDeclared: GPL-2.0-or-later
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:alpine/libvncserver@0.9.9?arch=x86_64
+ExternalRef: PACKAGE_MANAGER purl pkg:alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver&distro=alpine-3.12.0
 
 "
 `;
@@ -33,7 +33,7 @@ DataLicense: CC0-1.0
 SPDXID: SPDXRef-DOCUMENT
 DocumentName: localhost-5000/match-coverage/debian-latest
 
-LicenseListVersion: 3.15
+LicenseListVersion: 3.16
 
 
 
@@ -49,7 +49,7 @@ PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:apt:apt:1.8.2:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:deb/debian/apt@1.8.2?arch=amd64
+ExternalRef: PACKAGE_MANAGER purl pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=apt-dev&distro=debian-8
 
 ##### Package: bundler
 
@@ -65,10 +65,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:jessica-lynn-suttles:bundler:2.1.4:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:jessica_lynn_suttles:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:stephanie-morillo:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:stephanie_morillo:bundler:2.1.4:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:david-rodríguez:bundler:2.1.4:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:david_rodríguez:bundler:2.1.4:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:andré-medeiros:bundler:2.1.4:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:andré_medeiros:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:hiroshi-shibata:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:hiroshi_shibata:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:colby-swandale:bundler:2.1.4:*:*:*:*:*:*:*
@@ -77,8 +73,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:samuel-giddins:bundler:2.1.4:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:samuel_giddins:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:chris-morris:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:chris_morris:bundler:2.1.4:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:andré-arko:bundler:2.1.4:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:andré_arko:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:carl-lerche:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:carl_lerche:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:terence-lee:bundler:2.1.4:*:*:*:*:*:*:*
@@ -197,7 +191,7 @@ DataLicense: CC0-1.0
 SPDXID: SPDXRef-DOCUMENT
 DocumentName: tests/fixtures/npm-project
 
-LicenseListVersion: 3.15
+LicenseListVersion: 3.16
 
 
 
@@ -429,7 +423,7 @@ DataLicense: CC0-1.0
 SPDXID: SPDXRef-DOCUMENT
 DocumentName: tests/fixtures/yarn-project
 
-LicenseListVersion: 3.15
+LicenseListVersion: 3.16
 
 
 
