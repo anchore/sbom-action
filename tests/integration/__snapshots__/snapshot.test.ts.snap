@@ -14,7 +14,7 @@ LicenseListVersion: 3.16
 ##### Package: libvncserver
 
 PackageName: libvncserver
-SPDXID: SPDXRef-Package-apk-libvncserver
+SPDXID: SPDXRef-Package-apk-libvncserver-f9aec4dcea3a4eea
 PackageVersion: 0.9.9
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -41,7 +41,7 @@ LicenseListVersion: 3.16
 ##### Package: apt
 
 PackageName: apt
-SPDXID: SPDXRef-Package-deb-apt
+SPDXID: SPDXRef-Package-deb-apt-6b703acb9cf91dc3
 PackageVersion: 1.8.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -54,7 +54,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=a
 ##### Package: bundler
 
 PackageName: bundler
-SPDXID: SPDXRef-Package-gem-bundler
+SPDXID: SPDXRef-Package-gem-bundler-449180e9014443ab
 PackageVersion: 2.1.4
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -95,7 +95,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:gem/bundler@2.1.4
 ##### Package: example-java-app-maven
 
 PackageName: example-java-app-maven
-SPDXID: SPDXRef-Package-java-archive-example-java-app-maven
+SPDXID: SPDXRef-Package-java-archive-example-java-app-maven-3a24bf86206dbd2d
 PackageVersion: 0.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -123,7 +123,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:maven/org.anchore/example-java-app-maven@0
 ##### Package: joda-time
 
 PackageName: joda-time
-SPDXID: SPDXRef-Package-java-archive-joda-time
+SPDXID: SPDXRef-Package-java-archive-joda-time-9da9087b71bda0ab
 PackageVersion: 2.9.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -141,7 +141,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:maven/joda-time/joda-time@2.9.2
 ##### Package: npm
 
 PackageName: npm
-SPDXID: SPDXRef-Package-npm-npm
+SPDXID: SPDXRef-Package-npm-npm-39d191042352e387
 PackageVersion: 6.14.6
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -155,7 +155,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/npm@6.14.6
 ##### Package: Pygments
 
 PackageName: Pygments
-SPDXID: SPDXRef-Package-python-Pygments
+SPDXID: SPDXRef-Package-python-Pygments-f44d30ef33dc4f5d
 PackageVersion: 2.6.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -199,7 +199,7 @@ LicenseListVersion: 3.16
 ##### Package: chownr
 
 PackageName: chownr
-SPDXID: SPDXRef-Package-npm-chownr
+SPDXID: SPDXRef-Package-npm-chownr-48869b43c75aed63
 PackageVersion: 2.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -213,7 +213,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/chownr@2.0.0
 ##### Package: fs-minipass
 
 PackageName: fs-minipass
-SPDXID: SPDXRef-Package-npm-fs-minipass
+SPDXID: SPDXRef-Package-npm-fs-minipass-17cd1a5edb234f2d
 PackageVersion: 2.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -233,7 +233,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/fs-minipass@2.1.0
 ##### Package: js-tokens
 
 PackageName: js-tokens
-SPDXID: SPDXRef-Package-npm-js-tokens
+SPDXID: SPDXRef-Package-npm-js-tokens-5dad813e0dfbc8f7
 PackageVersion: 4.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -253,7 +253,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/js-tokens@4.0.0
 ##### Package: loose-envify
 
 PackageName: loose-envify
-SPDXID: SPDXRef-Package-npm-loose-envify
+SPDXID: SPDXRef-Package-npm-loose-envify-7ef51f90cd8bdf6
 PackageVersion: 1.4.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -273,7 +273,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/loose-envify@1.4.0
 ##### Package: minipass
 
 PackageName: minipass
-SPDXID: SPDXRef-Package-npm-minipass
+SPDXID: SPDXRef-Package-npm-minipass-354394fa94289e0a
 PackageVersion: 3.1.3
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -287,7 +287,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/minipass@3.1.3
 ##### Package: minizlib
 
 PackageName: minizlib
-SPDXID: SPDXRef-Package-npm-minizlib
+SPDXID: SPDXRef-Package-npm-minizlib-387388d341c44ece
 PackageVersion: 2.1.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -301,7 +301,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/minizlib@2.1.2
 ##### Package: mkdirp
 
 PackageName: mkdirp
-SPDXID: SPDXRef-Package-npm-mkdirp
+SPDXID: SPDXRef-Package-npm-mkdirp-f6253f2bd050273a
 PackageVersion: 1.0.4
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -315,7 +315,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/mkdirp@1.0.4
 ##### Package: object-assign
 
 PackageName: object-assign
-SPDXID: SPDXRef-Package-npm-object-assign
+SPDXID: SPDXRef-Package-npm-object-assign-9416e4347434d841
 PackageVersion: 4.1.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -335,7 +335,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/object-assign@4.1.1
 ##### Package: prop-types
 
 PackageName: prop-types
-SPDXID: SPDXRef-Package-npm-prop-types
+SPDXID: SPDXRef-Package-npm-prop-types-5e6f3e339522d850
 PackageVersion: 15.7.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -355,7 +355,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/prop-types@15.7.2
 ##### Package: react
 
 PackageName: react
-SPDXID: SPDXRef-Package-npm-react
+SPDXID: SPDXRef-Package-npm-react-ff97158601717945
 PackageVersion: 16.14.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -369,7 +369,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/react@16.14.0
 ##### Package: react-is
 
 PackageName: react-is
-SPDXID: SPDXRef-Package-npm-react-is
+SPDXID: SPDXRef-Package-npm-react-is-e267e4e9aa1e2843
 PackageVersion: 16.13.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -389,7 +389,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/react-is@16.13.1
 ##### Package: tar
 
 PackageName: tar
-SPDXID: SPDXRef-Package-npm-tar
+SPDXID: SPDXRef-Package-npm-tar-f9e913d0a1b82f4f
 PackageVersion: 6.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -403,7 +403,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/tar@6.1.0
 ##### Package: yallist
 
 PackageName: yallist
-SPDXID: SPDXRef-Package-npm-yallist
+SPDXID: SPDXRef-Package-npm-yallist-c34bb4a58e556511
 PackageVersion: 4.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -431,7 +431,7 @@ LicenseListVersion: 3.16
 ##### Package: loose-envify
 
 PackageName: loose-envify
-SPDXID: SPDXRef-Package-npm-loose-envify
+SPDXID: SPDXRef-Package-npm-loose-envify-e71b7d27f14f70a1
 PackageVersion: 1.4.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -451,7 +451,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/loose-envify@1.4.0
 ##### Package: object-assign
 
 PackageName: object-assign
-SPDXID: SPDXRef-Package-npm-object-assign
+SPDXID: SPDXRef-Package-npm-object-assign-fc600f572c60552e
 PackageVersion: 4.1.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -471,7 +471,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/object-assign@4.1.1
 ##### Package: prop-types
 
 PackageName: prop-types
-SPDXID: SPDXRef-Package-npm-prop-types
+SPDXID: SPDXRef-Package-npm-prop-types-33427c7ccb4635c7
 PackageVersion: 15.7.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -491,7 +491,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/prop-types@15.7.2
 ##### Package: react
 
 PackageName: react
-SPDXID: SPDXRef-Package-npm-react
+SPDXID: SPDXRef-Package-npm-react-342c6e949b677a75
 PackageVersion: 16.14.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -505,7 +505,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/react@16.14.0
 ##### Package: react-is
 
 PackageName: react-is
-SPDXID: SPDXRef-Package-npm-react-is
+SPDXID: SPDXRef-Package-npm-react-is-a0ee5f2dc1b699a4
 PackageVersion: 16.13.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
@@ -525,7 +525,7 @@ ExternalRef: PACKAGE_MANAGER purl pkg:npm/react-is@16.13.1
 ##### Package: trim
 
 PackageName: trim
-SPDXID: SPDXRef-Package-npm-trim
+SPDXID: SPDXRef-Package-npm-trim-5fc59d4022dd28df
 PackageVersion: 0.0.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
