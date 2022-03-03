@@ -81,6 +81,7 @@ const testSource = async (source: string): Promise<string> => {
   return spdx
     .replace(/[Cc]reated["]?[:][^\n]+/g, "")
     .replace(/Creator[:][^\n]+/g, "")
+    .replace(/SPDXID[:][^\n]+/g, "")
     .replace(/DocumentNamespace[:][^\n]+/g, "");
 };
 
