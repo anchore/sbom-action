@@ -19020,7 +19020,7 @@ const path_1 = __importDefault(__nccwpck_require__(1017));
 const stream_1 = __importDefault(__nccwpck_require__(2781));
 const GithubClient_1 = __nccwpck_require__(8552);
 exports.SYFT_BINARY_NAME = "syft";
-exports.SYFT_VERSION = "v0.37.10";
+exports.SYFT_VERSION = "v0.40.0";
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
 /**
  * Tries to get a unique artifact name or otherwise as appropriate as possible

@@ -15,7 +15,7 @@ import { SyftOptions } from "../Syft";
 import { dashWrap, debugLog, getClient } from "./GithubClient";
 
 export const SYFT_BINARY_NAME = "syft";
-export const SYFT_VERSION = "v0.37.10";
+export const SYFT_VERSION = "v0.40.0";
 
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
 
