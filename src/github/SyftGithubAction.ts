@@ -219,7 +219,7 @@ export async function getSyftCommand(): Promise<string> {
 
   // Add tool to path for this and future actions to use
   core.addPath(syftPath);
-  return name;
+  return `${syftPath}/${name}`;
 }
 
 /**

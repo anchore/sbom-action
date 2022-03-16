@@ -19352,7 +19352,7 @@ function getSyftCommand() {
         core.debug(`Got Syft path: ${syftPath} binary at: ${syftPath}/${name}`);
         // Add tool to path for this and future actions to use
         core.addPath(syftPath);
-        return name;
+        return `${syftPath}/${name}`;
     });
 }
 exports.getSyftCommand = getSyftCommand;
