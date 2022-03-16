@@ -1,5 +1,4 @@
 import * as core from "@actions/core";
-import * as exec from "@actions/exec";
 import * as github from "@actions/github";
 import * as cache from "@actions/tool-cache";
 import {
@@ -8,16 +7,26 @@ import {
   ReleaseEvent,
 } from "@octokit/webhooks-types";
 import * as fs from "fs";
-import * as os from "os";
 import path from "path";
 import stream from "stream";
 import { SyftOptions } from "../Syft";
-import { dashWrap, debugLog, getClient } from "./GithubClient";
+import { VERSION } from "../SyftVersion";
+import { execute } from "./Executor";
+import {
+  dashWrap,
+  debugLog,
+  DependencySnapshot,
+  getClient,
+} from "./GithubClient";
+import { downloadSyftFromZip } from "./SyftDownloader";
 
 export const SYFT_BINARY_NAME = "syft";
-export const SYFT_VERSION = "v0.40.1";
+export const SYFT_VERSION = core.getInput("syft-version") || VERSION;
 
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
+
+const tempDir = fs.mkdtempSync("sbom-action-");
+const githubDependencySnapshotFile = `${tempDir}/github.sbom.json`;
 
 /**
  * Tries to get a unique artifact name or otherwise as appropriate as possible
@@ -70,44 +79,16 @@ export function getArtifactName(): string {
 }
 
 /**
- * Maps the given parameter to a Windows Subsystem for Linux style path
- * @param arg
- */
-export function mapToWSLPath(arg: string) {
-  return arg.replace(
-    /^([A-Z]):(.*)$/,
-    (v, drive, path) => `/mnt/${drive.toLowerCase()}${path.replace(/\\/g, "/")}`
-  );
-}
-
-/**
- * Execute directly for linux & macOS and use WSL for Windows
- * @param cmd command to execute
- * @param args command args
- * @param options command options
- */
-async function execute(
-  cmd: string,
-  args: string[],
-  options?: exec.ExecOptions
-) {
-  if (process.platform === "win32") {
-    return await exec.exec(
-      "wsl",
-      [mapToWSLPath(cmd), ...args.map(mapToWSLPath)],
-      options
-    );
-  } else {
-    return exec.exec(cmd, args, options);
-  }
-}
-
-/**
  * Gets a reference to the syft command and executes the syft action
  * @param input syft input parameters
  * @param format syft output format
+ * @param opts additional options
  */
-async function executeSyft({ input, format }: SyftOptions): Promise<string> {
+async function executeSyft({
+  input,
+  format,
+  ...opts
+}: SyftOptions): Promise<string> {
   let stdout = "";
 
   const cmd = await getSyftCommand();
@@ -146,6 +127,11 @@ async function executeSyft({ input, format }: SyftOptions): Promise<string> {
   }
 
   args = [...args, "-o", format];
+
+  if (opts.uploadToDependencySnapshotAPI) {
+    // generate github dependency format
+    args = [...args, "-o", `github=${githubDependencySnapshotFile}`];
+  }
 
   // Execute in a group so the syft output is collapsed in the GitHub log
   core.info(`[command]${cmd} ${args.join(" ")}`);
@@ -214,6 +200,12 @@ export async function getSyftCommand(): Promise<string> {
   const name = SYFT_BINARY_NAME;
   const version = SYFT_VERSION;
 
+  const sourceSyft = await downloadSyftFromZip(version);
+  if (sourceSyft) {
+    core.info(`Using sourceSyft: '${sourceSyft}'`);
+    return sourceSyft;
+  }
+
   let syftPath = cache.find(name, version);
   if (!syftPath) {
     // Not found; download and install it; returns a path to the binary
@@ -247,8 +239,7 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
 
   const fileName = getArtifactName();
 
-  const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
-  const filePath = `${tempPath}/${fileName}`;
+  const filePath = `${tempDir}/${fileName}`;
   fs.writeFileSync(filePath, contents);
 
   const outputFile = core.getInput("output-file");
@@ -317,6 +308,10 @@ async function comparePullRequestTargetArtifact(): Promise<void> {
   }
 }
 
+function uploadToSnapshotAPI() {
+  return getBooleanInput("dependency-snapshot", false);
+}
+
 export async function runSyftAction(): Promise<void> {
   core.info(dashWrap("Running SBOM Action"));
 
@@ -332,6 +327,7 @@ export async function runSyftAction(): Promise<void> {
       image: core.getInput("image"),
     },
     format: getSbomFormat(),
+    uploadToDependencySnapshotAPI: uploadToSnapshotAPI(),
   });
 
   core.info(`SBOM scan completed in: ${(Date.now() - start) / 1000}s`);
@@ -354,6 +350,44 @@ export async function runSyftAction(): Promise<void> {
   } else {
     throw new Error(`No Syft output: ${JSON.stringify(output)}`);
   }
+}
+
+/**
+ * Attaches the SBOM assets to a release if run in release mode
+ */
+export async function uploadDependencySnapshot(): Promise<void> {
+  if (!uploadToSnapshotAPI()) {
+    return;
+  }
+
+  if (!fs.existsSync(githubDependencySnapshotFile)) {
+    core.warning(
+      `No dependency snapshot found at '${githubDependencySnapshotFile}'`
+    );
+    return;
+  }
+  const { job, runId, repo, sha, ref } = github.context;
+  const client = getClient(repo, core.getInput("github-token"));
+
+  const snapshot = JSON.parse(
+    fs.readFileSync(githubDependencySnapshotFile).toString("utf8")
+  ) as DependencySnapshot;
+
+  // Need to add the job and repo details
+  snapshot.job = {
+    name: job,
+    id: `${runId}`,
+  };
+  snapshot.sha = sha;
+  snapshot.ref = ref;
+
+  core.info(
+    `Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`
+  );
+  debugLog("Snapshot:", snapshot);
+
+  const response = await client.postDependencySnapshot(snapshot);
+  debugLog(`Dependency snapshot upload response:`, response);
 }
 
 /**

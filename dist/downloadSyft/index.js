@@ -18634,6 +18634,18 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 4431:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.VERSION = void 0;
+exports.VERSION = "v0.41.4";
+
+
+/***/ }),
+
 /***/ 4661:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -18674,6 +18686,71 @@ const SyftGithubAction_1 = __nccwpck_require__(7328);
     const cmd = yield (0, SyftGithubAction_1.getSyftCommand)();
     core.setOutput("cmd", cmd);
 }));
+
+
+/***/ }),
+
+/***/ 644:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.mapToWSLPath = exports.execute = void 0;
+const exec = __importStar(__nccwpck_require__(1514));
+/**
+ * Execute directly for linux & macOS and use WSL for Windows
+ * @param cmd command to execute
+ * @param args command args
+ * @param options command options
+ */
+function execute(cmd, args, options) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (process.platform === "win32") {
+            return yield exec.exec("wsl", [mapToWSLPath(cmd), ...args.map(mapToWSLPath)], options);
+        }
+        else {
+            return exec.exec(cmd, args, options);
+        }
+    });
+}
+exports.execute = execute;
+/**
+ * Maps the given parameter to a Windows Subsystem for Linux style path
+ * @param arg
+ */
+function mapToWSLPath(arg) {
+    return arg.replace(/^([A-Z]):(.*)$/, (v, drive, path) => `/mnt/${drive.toLowerCase()}${path.replace(/\\/g, "/")}`);
+}
+exports.mapToWSLPath = mapToWSLPath;
 
 
 /***/ }),
@@ -18977,6 +19054,24 @@ class GithubClient {
             }
         });
     }
+    // --------------- DEPENDENCY SNAPSHOT METHODS ------------------
+    /**
+     * Posts a snapshot to the dependency submission api
+     * @param snapshot
+     */
+    postDependencySnapshot(snapshot) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { repo } = github.context;
+            const token = core.getInput("github-token");
+            return this.client.request(`POST /repos/${repo.owner}/${repo.repo}/dependency-graph/snapshots`, {
+                headers: {
+                    "content-type": "application/json",
+                    authorization: `token ${token}`,
+                },
+                data: JSON.stringify(snapshot),
+            });
+        });
+    }
 }
 exports.GithubClient = GithubClient;
 /**
@@ -19016,6 +19111,63 @@ exports.getClient = getClient;
 
 /***/ }),
 
+/***/ 9344:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.downloadSyftFromZip = void 0;
+const fs_1 = __importDefault(__nccwpck_require__(7147));
+const os_1 = __importDefault(__nccwpck_require__(2037));
+const path_1 = __importDefault(__nccwpck_require__(1017));
+const Executor_1 = __nccwpck_require__(644);
+const repo = /https:..github.com.([-\w]+).([-\w]+).archive.refs.heads.([-\w]+).zip/;
+function downloadSyftFromZip(url) {
+    return __awaiter(this, void 0, void 0, function* () {
+        // This needs to be an archive download instead of a `go install` because it
+        // may not be from the same repo, in which case `go install` fails
+        // `https://github.com/anchore/syft/archive/refs/heads/main.zip`
+        const groups = url.match(repo);
+        if (groups && groups.length > 2) {
+            const repo = groups[2];
+            const branch = groups[3];
+            const cwd = process.cwd();
+            try {
+                const tmpDir = fs_1.default.mkdtempSync(path_1.default.join(os_1.default.tmpdir(), "syft"));
+                process.chdir(tmpDir);
+                yield (0, Executor_1.execute)("curl", ["-L", "-o", `${branch}.zip`, url]);
+                yield (0, Executor_1.execute)("unzip", [`${branch}.zip`]);
+                const repoDir = path_1.default.join(tmpDir, `${repo}-${branch}`);
+                process.chdir(repoDir);
+                // go build -o syftbin
+                yield (0, Executor_1.execute)("go", ["build", "-o", "syftbin"]);
+                return `${repoDir}/syftbin`;
+            }
+            finally {
+                process.chdir(cwd);
+            }
+        }
+        return "";
+    });
+}
+exports.downloadSyftFromZip = downloadSyftFromZip;
+
+
+/***/ }),
+
 /***/ 7328:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -19049,23 +19201,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.runAndFailBuildOnException = exports.attachReleaseAssets = exports.runSyftAction = exports.uploadSbomArtifact = exports.getSbomFormat = exports.getSyftCommand = exports.downloadSyft = exports.mapToWSLPath = exports.getArtifactName = exports.SYFT_VERSION = exports.SYFT_BINARY_NAME = void 0;
+exports.runAndFailBuildOnException = exports.attachReleaseAssets = exports.uploadDependencySnapshot = exports.runSyftAction = exports.uploadSbomArtifact = exports.getSbomFormat = exports.getSyftCommand = exports.downloadSyft = exports.getArtifactName = exports.SYFT_VERSION = exports.SYFT_BINARY_NAME = void 0;
 const core = __importStar(__nccwpck_require__(2186));
-const exec = __importStar(__nccwpck_require__(1514));
 const github = __importStar(__nccwpck_require__(5438));
 const cache = __importStar(__nccwpck_require__(7784));
 const fs = __importStar(__nccwpck_require__(7147));
-const os = __importStar(__nccwpck_require__(2037));
 const path_1 = __importDefault(__nccwpck_require__(1017));
 const stream_1 = __importDefault(__nccwpck_require__(2781));
+const SyftVersion_1 = __nccwpck_require__(4431);
+const Executor_1 = __nccwpck_require__(644);
 const GithubClient_1 = __nccwpck_require__(8552);
+const SyftDownloader_1 = __nccwpck_require__(9344);
 exports.SYFT_BINARY_NAME = "syft";
-exports.SYFT_VERSION = "v0.40.1";
+exports.SYFT_VERSION = core.getInput("syft-version") || SyftVersion_1.VERSION;
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
+const tempDir = fs.mkdtempSync("sbom-action-");
+const githubDependencySnapshotFile = `${tempDir}/github.sbom.json`;
 /**
  * Tries to get a unique artifact name or otherwise as appropriate as possible
  */
@@ -19109,35 +19275,13 @@ function getArtifactName() {
 }
 exports.getArtifactName = getArtifactName;
 /**
- * Maps the given parameter to a Windows Subsystem for Linux style path
- * @param arg
- */
-function mapToWSLPath(arg) {
-    return arg.replace(/^([A-Z]):(.*)$/, (v, drive, path) => `/mnt/${drive.toLowerCase()}${path.replace(/\\/g, "/")}`);
-}
-exports.mapToWSLPath = mapToWSLPath;
-/**
- * Execute directly for linux & macOS and use WSL for Windows
- * @param cmd command to execute
- * @param args command args
- * @param options command options
- */
-function execute(cmd, args, options) {
-    return __awaiter(this, void 0, void 0, function* () {
-        if (process.platform === "win32") {
-            return yield exec.exec("wsl", [mapToWSLPath(cmd), ...args.map(mapToWSLPath)], options);
-        }
-        else {
-            return exec.exec(cmd, args, options);
-        }
-    });
-}
-/**
  * Gets a reference to the syft command and executes the syft action
  * @param input syft input parameters
  * @param format syft output format
+ * @param opts additional options
  */
-function executeSyft({ input, format }) {
+function executeSyft(_a) {
+    var { input, format } = _a, opts = __rest(_a, ["input", "format"]);
     return __awaiter(this, void 0, void 0, function* () {
         let stdout = "";
         const cmd = yield getSyftCommand();
@@ -19172,6 +19316,10 @@ function executeSyft({ input, format }) {
             throw new Error("Invalid input, no image or path specified");
         }
         args = [...args, "-o", format];
+        if (opts.uploadToDependencySnapshotAPI) {
+            // generate github dependency format
+            args = [...args, "-o", `github=${githubDependencySnapshotFile}`];
+        }
         // Execute in a group so the syft output is collapsed in the GitHub log
         core.info(`[command]${cmd} ${args.join(" ")}`);
         // This /dev/null writable stream is required so the entire contents
@@ -19183,7 +19331,7 @@ function executeSyft({ input, format }) {
             },
         });
         const exitCode = yield core.group("Executing Syft...", () => __awaiter(this, void 0, void 0, function* () {
-            return execute(cmd, args, {
+            return (0, Executor_1.execute)(cmd, args, {
                 env,
                 outStream,
                 listeners: {
@@ -19221,7 +19369,7 @@ function downloadSyft() {
         const installPath = yield cache.downloadTool(url);
         // Make sure the tool's executable bit is set
         const syftBinaryPath = `${installPath}_${name}`;
-        yield execute("sh", [installPath, "-d", "-b", syftBinaryPath, version]);
+        yield (0, Executor_1.execute)("sh", [installPath, "-d", "-b", syftBinaryPath, version]);
         return `${syftBinaryPath}/${name}`;
     });
 }
@@ -19233,6 +19381,11 @@ function getSyftCommand() {
     return __awaiter(this, void 0, void 0, function* () {
         const name = exports.SYFT_BINARY_NAME;
         const version = exports.SYFT_VERSION;
+        const sourceSyft = yield (0, SyftDownloader_1.downloadSyftFromZip)(version);
+        if (sourceSyft) {
+            core.info(`Using sourceSyft: '${sourceSyft}'`);
+            return sourceSyft;
+        }
         let syftPath = cache.find(name, version);
         if (!syftPath) {
             // Not found; download and install it; returns a path to the binary
@@ -19263,8 +19416,7 @@ function uploadSbomArtifact(contents) {
         const { repo } = github.context;
         const client = (0, GithubClient_1.getClient)(repo, core.getInput("github-token"));
         const fileName = getArtifactName();
-        const tempPath = fs.mkdtempSync(path_1.default.join(os.tmpdir(), "sbom-action-"));
-        const filePath = `${tempPath}/${fileName}`;
+        const filePath = `${tempDir}/${fileName}`;
         fs.writeFileSync(filePath, contents);
         const outputFile = core.getInput("output-file");
         if (outputFile) {
@@ -19323,6 +19475,9 @@ function comparePullRequestTargetArtifact() {
         }
     });
 }
+function uploadToSnapshotAPI() {
+    return getBooleanInput("dependency-snapshot", false);
+}
 function runSyftAction() {
     return __awaiter(this, void 0, void 0, function* () {
         core.info((0, GithubClient_1.dashWrap)("Running SBOM Action"));
@@ -19335,6 +19490,7 @@ function runSyftAction() {
                 image: core.getInput("image"),
             },
             format: getSbomFormat(),
+            uploadToDependencySnapshotAPI: uploadToSnapshotAPI(),
         });
         core.info(`SBOM scan completed in: ${(Date.now() - start) / 1000}s`);
         if (output) {
@@ -19356,6 +19512,35 @@ function runSyftAction() {
     });
 }
 exports.runSyftAction = runSyftAction;
+/**
+ * Attaches the SBOM assets to a release if run in release mode
+ */
+function uploadDependencySnapshot() {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (!uploadToSnapshotAPI()) {
+            return;
+        }
+        if (!fs.existsSync(githubDependencySnapshotFile)) {
+            core.warning(`No dependency snapshot found at '${githubDependencySnapshotFile}'`);
+            return;
+        }
+        const { job, runId, repo, sha, ref } = github.context;
+        const client = (0, GithubClient_1.getClient)(repo, core.getInput("github-token"));
+        const snapshot = JSON.parse(fs.readFileSync(githubDependencySnapshotFile).toString("utf8"));
+        // Need to add the job and repo details
+        snapshot.job = {
+            name: job,
+            id: `${runId}`,
+        };
+        snapshot.sha = sha;
+        snapshot.ref = ref;
+        core.info(`Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`);
+        (0, GithubClient_1.debugLog)("Snapshot:", snapshot);
+        const response = yield client.postDependencySnapshot(snapshot);
+        (0, GithubClient_1.debugLog)(`Dependency snapshot upload response:`, response);
+    });
+}
+exports.uploadDependencySnapshot = uploadDependencySnapshot;
 /**
  * Attaches the SBOM assets to a release if run in release mode
  */
