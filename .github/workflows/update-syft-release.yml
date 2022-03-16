@@ -1,0 +1,25 @@
+name: PR for latest Syft release
+on:
+  schedule:
+    # 7:04 UTC (2:04 am EST)
+    - cron: "4 7 * * *"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  upgrade-syft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          LATEST_VERSION=$(curl "https://api.github.com/repos/anchore/syft/releases/latest" 2>/dev/null | jq -r '.tag_name')
+          echo "export const VERSION = \"$LATEST_VERSION\";" > src/SyftVersion.ts
+      - uses: peter-evans/create-pull-request@v3
+        with:
+          signoff: true
+          delete-branch: true
+          branch: auto/latest
+          labels: dependencies
+          commit-message: "Update Syft to ${{ env.LATEST_VERSION }}"
+          title: "Update Syft to ${{ env.LATEST_VERSION }}"
