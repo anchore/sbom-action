@@ -1,6 +1,7 @@
 import {context, getMocks} from "../mocks";
 const { setData, restoreInitialData, mocks } = getMocks();
 let requestArgs: any;
+delete mocks["@actions/tool-cache"]
 delete mocks["@actions/exec"]
 const mockCreator = mocks["@actions/github"]
 mocks["@actions/github"] = () => {
