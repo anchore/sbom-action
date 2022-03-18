@@ -1,26 +1,32 @@
-import {context, getMocks} from "../mocks";
+import { context, getMocks } from "../mocks";
 const { setData, restoreInitialData, mocks } = getMocks();
+
+// actually run syft so we know if this output format is properly working
+delete mocks["@actions/tool-cache"];
+delete mocks["@actions/exec"];
+
+// set up a mock for octokit.request
 let requestArgs: any;
-delete mocks["@actions/tool-cache"]
-delete mocks["@actions/exec"]
-const mockCreator = mocks["@actions/github"]
+const mockCreator = mocks["@actions/github"];
 mocks["@actions/github"] = () => {
-  const actionBase = mockCreator() as any;
+  const actionsBase = mockCreator() as any;
   return {
-    ...actionBase,
+    ...actionsBase,
     getOctokit() {
-      const kit = actionBase.getOctokit();
+      const kit = actionsBase.getOctokit();
       kit.request = (...args: any[]) => {
-        requestArgs = args
+        requestArgs = args;
         return args;
       }
-      return kit
+      return kit;
     }
   }
 }
 for (const mock of Object.keys(mocks)) {
   jest.mock(mock, mocks[mock]);
 }
+
+// setting up mocks must happen before this import
 import * as action from "../../src/github/SyftGithubAction";
 
 jest.setTimeout(30000);
@@ -32,7 +38,6 @@ describe("GitHub Snapshot", () => {
   });
 
   it("runs with default inputs on push", async () => {
-    jest.mock("")
     setData({
       inputs: {
         path: ".",
@@ -52,11 +57,20 @@ describe("GitHub Snapshot", () => {
     await action.runSyftAction();
     await action.uploadDependencySnapshot();
 
-    expect(requestArgs).toBeDefined()
+    // validate the request was made
+    expect(requestArgs).toBeDefined();
+    expect(requestArgs).toHaveLength(2);
+    expect(requestArgs[0]).toBe("POST /repos/test-org/test-repo/dependency-graph/snapshots");
 
+    // check the resulting snapshot file
     const data = requestArgs[1].data;
     const submission = JSON.parse(data);
+
+    expect(submission.scanned).toBeDefined();
+
+    // redact the timestamp
     submission.scanned = "";
+
     expect(JSON.stringify(submission)).toMatchSnapshot();
   });
 });

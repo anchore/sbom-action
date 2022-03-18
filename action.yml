@@ -38,7 +38,7 @@ inputs:
 
   syft-version:
     required: false
-    description: "Syft version string to use"
+    description: "The version of Syft to use"
 
   dependency-snapshot:
     required: false

@@ -386,8 +386,7 @@ export async function uploadDependencySnapshot(): Promise<void> {
   );
   debugLog("Snapshot:", snapshot);
 
-  const response = await client.postDependencySnapshot(snapshot);
-  debugLog(`Dependency snapshot upload response:`, response);
+  await client.postDependencySnapshot(snapshot);
 }
 
 /**

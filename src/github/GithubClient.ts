@@ -43,7 +43,8 @@ export interface WorkflowRun {
 }
 
 /**
- * We need to set these parameters during snapshot submission
+ * This is only a partial definition of the snapshot format, just including the
+ * values we need to set from the workflow run
  */
 export interface DependencySnapshot {
   job: {
@@ -415,16 +416,30 @@ export class GithubClient {
     const { repo } = github.context;
     const token = core.getInput("github-token");
 
-    return this.client.request(
-      `POST /repos/${repo.owner}/${repo.repo}/dependency-graph/snapshots`,
-      {
-        headers: {
-          "content-type": "application/json",
-          authorization: `token ${token}`,
-        },
-        data: JSON.stringify(snapshot),
+    try {
+      const response = await this.client.request(
+        `POST /repos/${repo.owner}/${repo.repo}/dependency-graph/snapshots`,
+        {
+          headers: {
+            "content-type": "application/json",
+            authorization: `token ${token}`,
+          },
+          data: JSON.stringify(snapshot),
+        }
+      );
+
+      if (response.status >= 400) {
+        core.warning(
+          `Dependency snapshot upload failed: ${JSON.stringify(response)}`
+        );
+      } else {
+        debugLog(`Dependency snapshot upload successful:`, response);
       }
-    );
+    } catch (e) {
+      core.warning(
+        `Error uploading depdendency snapshot: ${JSON.stringify(e)}`
+      );
+    }
   }
 }
 

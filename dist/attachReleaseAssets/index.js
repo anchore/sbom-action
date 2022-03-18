@@ -19019,13 +19019,24 @@ class GithubClient {
         return __awaiter(this, void 0, void 0, function* () {
             const { repo } = github.context;
             const token = core.getInput("github-token");
-            return this.client.request(`POST /repos/${repo.owner}/${repo.repo}/dependency-graph/snapshots`, {
-                headers: {
-                    "content-type": "application/json",
-                    authorization: `token ${token}`,
-                },
-                data: JSON.stringify(snapshot),
-            });
+            try {
+                const response = yield this.client.request(`POST /repos/${repo.owner}/${repo.repo}/dependency-graph/snapshots`, {
+                    headers: {
+                        "content-type": "application/json",
+                        authorization: `token ${token}`,
+                    },
+                    data: JSON.stringify(snapshot),
+                });
+                if (response.status >= 400) {
+                    core.warning(`Dependency snapshot upload failed: ${JSON.stringify(response)}`);
+                }
+                else {
+                    debugLog(`Dependency snapshot upload successful:`, response);
+                }
+            }
+            catch (e) {
+                core.warning(`Error uploading depdendency snapshot: ${JSON.stringify(e)}`);
+            }
         });
     }
 }
@@ -19492,8 +19503,7 @@ function uploadDependencySnapshot() {
         snapshot.ref = ref;
         core.info(`Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`);
         (0, GithubClient_1.debugLog)("Snapshot:", snapshot);
-        const response = yield client.postDependencySnapshot(snapshot);
-        (0, GithubClient_1.debugLog)(`Dependency snapshot upload response:`, response);
+        yield client.postDependencySnapshot(snapshot);
     });
 }
 exports.uploadDependencySnapshot = uploadDependencySnapshot;
