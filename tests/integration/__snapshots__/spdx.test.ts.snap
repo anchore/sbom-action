@@ -428,6 +428,26 @@ LicenseListVersion: 3.16
 
 
 
+##### Package: js-tokens
+
+PackageName: js-tokens
+
+PackageVersion: 4.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/js-tokens@4.0.0
+
 ##### Package: loose-envify
 
 PackageName: loose-envify

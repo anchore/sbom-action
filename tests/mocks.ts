@@ -180,6 +180,9 @@ export function getMocks() {
           },
           getOctokit() {
             return {
+              request(request: any): any {
+                return request;
+              },
               rest: {
                 actions: {
                   async listWorkflowRunArtifacts({ run_id }: any) {
@@ -245,6 +248,7 @@ export function getMocks() {
 
 const contextBase = {
   ref: "v0.0.0",
+  sha: "a89b7d99c7097",
   payload: {},
   repo: {
     owner: "test-org",

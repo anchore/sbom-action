@@ -43,6 +43,19 @@ export interface WorkflowRun {
 }
 
 /**
+ * This is only a partial definition of the snapshot format, just including the
+ * values we need to set from the workflow run
+ */
+export interface DependencySnapshot {
+  job: {
+    name: string;
+    id: string;
+  };
+  sha: string;
+  ref: string;
+}
+
+/**
  * Suppress info output by redirecting to debug
  * @param fn function to call for duration of output suppression
  */
@@ -390,6 +403,42 @@ export class GithubClient {
     } catch (e) {
       debugLog("Error while fetching draft release by tag name:", e);
       return undefined;
+    }
+  }
+
+  // --------------- DEPENDENCY SNAPSHOT METHODS ------------------
+
+  /**
+   * Posts a snapshot to the dependency submission api
+   * @param snapshot
+   */
+  async postDependencySnapshot(snapshot: DependencySnapshot) {
+    const { repo } = github.context;
+    const token = core.getInput("github-token");
+
+    try {
+      const response = await this.client.request(
+        `POST /repos/${repo.owner}/${repo.repo}/dependency-graph/snapshots`,
+        {
+          headers: {
+            "content-type": "application/json",
+            authorization: `token ${token}`,
+          },
+          data: JSON.stringify(snapshot),
+        }
+      );
+
+      if (response.status >= 400) {
+        core.warning(
+          `Dependency snapshot upload failed: ${JSON.stringify(response)}`
+        );
+      } else {
+        debugLog(`Dependency snapshot upload successful:`, response);
+      }
+    } catch (e) {
+      core.warning(
+        `Error uploading depdendency snapshot: ${JSON.stringify(e)}`
+      );
     }
   }
 }

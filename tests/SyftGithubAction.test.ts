@@ -14,9 +14,10 @@ import * as os from "os";
 import * as path from "path";
 import * as action from "../src/github/SyftGithubAction";
 import {
-  downloadSyft, mapToWSLPath,
+  downloadSyft,
   runAndFailBuildOnException
 } from "../src/github/SyftGithubAction";
+import {mapToWSLPath} from "../src/github/Executor";
 
 jest.setTimeout(30000);
 Date.now = jest.fn(() => 1482363367071);
@@ -233,7 +234,7 @@ describe("Action", () => {
 
     const { cmd, args, env } = data.execArgs;
 
-    expect(cmd).toBe("syft");
+    expect(cmd.endsWith("syft")).toBeTruthy();
     expect(args).toContain("somewhere/org/img");
     expect(env.SYFT_REGISTRY_AUTH_USERNAME).toBeFalsy();
     expect(env.SYFT_REGISTRY_AUTH_PASSWORD).toBeFalsy();
@@ -252,7 +253,7 @@ describe("Action", () => {
 
     const { cmd, args, env } = data.execArgs;
 
-    expect(cmd).toBe("syft");
+    expect(cmd.endsWith("syft")).toBeTruthy();
     expect(args).toContain("registry:somewhere/org/img");
     expect(env.SYFT_REGISTRY_AUTH_USERNAME).toBe("mr_awesome");
     expect(env.SYFT_REGISTRY_AUTH_PASSWORD).toBe("super_secret");
