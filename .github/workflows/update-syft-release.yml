@@ -11,7 +11,7 @@ jobs:
   upgrade-syft:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: |
           LATEST_VERSION=$(curl "https://api.github.com/repos/anchore/syft/releases/latest" 2>/dev/null | jq -r '.tag_name')
           echo "export const VERSION = \"$LATEST_VERSION\";" > src/SyftVersion.ts
