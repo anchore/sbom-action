@@ -1,3 +1,2088 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GitHub Snapshot runs with default inputs on push 1`] = `"{\\"version\\":0,\\"job\\":{\\"name\\":\\"default-import-job\\",\\"id\\":\\"1\\"},\\"detector\\":{\\"name\\":\\"syft\\",\\"url\\":\\"https://github.com/anchore/syft\\",\\"version\\":\\"0.41.4\\"},\\"manifests\\":{\\"package-lock.json\\":{\\"name\\":\\"package-lock.json\\",\\"file\\":{\\"source_location\\":\\"package-lock.json\\"},\\"resolved\\":{\\"\\":{\\"purl\\":\\"pkg:npm/@vercel%2Fncc@0.33.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/abab@2.0.5\\":{\\"purl\\":\\"pkg:npm/abab@2.0.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/acorn-globals@6.0.0\\":{\\"purl\\":\\"pkg:npm/acorn-globals@6.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/acorn-jsx@5.3.2\\":{\\"purl\\":\\"pkg:npm/acorn-jsx@5.3.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/acorn-walk@7.2.0\\":{\\"purl\\":\\"pkg:npm/acorn-walk@7.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/acorn@7.4.1\\":{\\"purl\\":\\"pkg:npm/acorn@7.4.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/agent-base@6.0.2\\":{\\"purl\\":\\"pkg:npm/agent-base@6.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/aggregate-error@3.1.0\\":{\\"purl\\":\\"pkg:npm/aggregate-error@3.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/ajv@6.12.6\\":{\\"purl\\":\\"pkg:npm/ajv@6.12.6\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/ansi-colors@4.1.1\\":{\\"purl\\":\\"pkg:npm/ansi-colors@4.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/ansi-escapes@4.3.2\\":{\\"purl\\":\\"pkg:npm/ansi-escapes@4.3.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/ansi-regex@5.0.1\\":{\\"purl\\":\\"pkg:npm/ansi-regex@5.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/ansi-styles@3.2.1\\":{\\"purl\\":\\"pkg:npm/ansi-styles@3.2.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/anymatch@3.1.2\\":{\\"purl\\":\\"pkg:npm/anymatch@3.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/argparse@2.0.1\\":{\\"purl\\":\\"pkg:npm/argparse@2.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/array-differ@3.0.0\\":{\\"purl\\":\\"pkg:npm/array-differ@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/array-union@2.1.0\\":{\\"purl\\":\\"pkg:npm/array-union@2.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/arrify@2.0.1\\":{\\"purl\\":\\"pkg:npm/arrify@2.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/astral-regex@2.0.0\\":{\\"purl\\":\\"pkg:npm/astral-regex@2.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/asynckit@0.4.0\\":{\\"purl\\":\\"pkg:npm/asynckit@0.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/babel-jest@27.4.5\\":{\\"purl\\":\\"pkg:npm/babel-jest@27.4.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/babel-plugin-istanbul@6.1.1\\":{\\"purl\\":\\"pkg:npm/babel-plugin-istanbul@6.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/babel-plugin-jest-hoist@27.4.0\\":{\\"purl\\":\\"pkg:npm/babel-plugin-jest-hoist@27.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/babel-preset-current-node-syntax@1.0.1\\":{\\"purl\\":\\"pkg:npm/babel-preset-current-node-syntax@1.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/babel-preset-jest@27.4.0\\":{\\"purl\\":\\"pkg:npm/babel-preset-jest@27.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/balanced-match@1.0.0\\":{\\"purl\\":\\"pkg:npm/balanced-match@1.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/before-after-hook@2.2.2\\":{\\"purl\\":\\"pkg:npm/before-after-hook@2.2.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/brace-expansion@1.1.11\\":{\\"purl\\":\\"pkg:npm/brace-expansion@1.1.11\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/braces@3.0.2\\":{\\"purl\\":\\"pkg:npm/braces@3.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/browser-process-hrtime@1.0.0\\":{\\"purl\\":\\"pkg:npm/browser-process-hrtime@1.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/browserslist@4.19.1\\":{\\"purl\\":\\"pkg:npm/browserslist@4.19.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/bs-logger@0.2.6\\":{\\"purl\\":\\"pkg:npm/bs-logger@0.2.6\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/bser@2.1.1\\":{\\"purl\\":\\"pkg:npm/bser@2.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/buffer-from@1.1.2\\":{\\"purl\\":\\"pkg:npm/buffer-from@1.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/call-bind@1.0.2\\":{\\"purl\\":\\"pkg:npm/call-bind@1.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/callsites@3.1.0\\":{\\"purl\\":\\"pkg:npm/callsites@3.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/camelcase@5.3.1\\":{\\"purl\\":\\"pkg:npm/camelcase@5.3.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/caniuse-lite@1.0.30001286\\":{\\"purl\\":\\"pkg:npm/caniuse-lite@1.0.30001286\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/chalk@2.4.2\\":{\\"purl\\":\\"pkg:npm/chalk@2.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/char-regex@1.0.2\\":{\\"purl\\":\\"pkg:npm/char-regex@1.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/ci-info@3.2.0\\":{\\"purl\\":\\"pkg:npm/ci-info@3.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/cjs-module-lexer@1.2.2\\":{\\"purl\\":\\"pkg:npm/cjs-module-lexer@1.2.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/clean-stack@2.2.0\\":{\\"purl\\":\\"pkg:npm/clean-stack@2.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/cliui@7.0.4\\":{\\"purl\\":\\"pkg:npm/cliui@7.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/co@4.6.0\\":{\\"purl\\":\\"pkg:npm/co@4.6.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/collect-v8-coverage@1.0.1\\":{\\"purl\\":\\"pkg:npm/collect-v8-coverage@1.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/color-convert@1.9.3\\":{\\"purl\\":\\"pkg:npm/color-convert@1.9.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/color-name@1.1.3\\":{\\"purl\\":\\"pkg:npm/color-name@1.1.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/combined-stream@1.0.8\\":{\\"purl\\":\\"pkg:npm/combined-stream@1.0.8\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/concat-map@0.0.1\\":{\\"purl\\":\\"pkg:npm/concat-map@0.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/convert-source-map@1.8.0\\":{\\"purl\\":\\"pkg:npm/convert-source-map@1.8.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/cross-spawn@7.0.3\\":{\\"purl\\":\\"pkg:npm/cross-spawn@7.0.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/cssom@0.4.4\\":{\\"purl\\":\\"pkg:npm/cssom@0.4.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/cssstyle@2.3.0\\":{\\"purl\\":\\"pkg:npm/cssstyle@2.3.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/data-urls@2.0.0\\":{\\"purl\\":\\"pkg:npm/data-urls@2.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/debug@4.1.1\\":{\\"purl\\":\\"pkg:npm/debug@4.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/decimal.js@10.3.1\\":{\\"purl\\":\\"pkg:npm/decimal.js@10.3.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/dedent@0.7.0\\":{\\"purl\\":\\"pkg:npm/dedent@0.7.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/deep-is@0.1.3\\":{\\"purl\\":\\"pkg:npm/deep-is@0.1.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/deepmerge@4.2.2\\":{\\"purl\\":\\"pkg:npm/deepmerge@4.2.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/define-properties@1.1.3\\":{\\"purl\\":\\"pkg:npm/define-properties@1.1.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/delayed-stream@1.0.0\\":{\\"purl\\":\\"pkg:npm/delayed-stream@1.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/deprecation@2.3.1\\":{\\"purl\\":\\"pkg:npm/deprecation@2.3.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/detect-newline@3.1.0\\":{\\"purl\\":\\"pkg:npm/detect-newline@3.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/dir-glob@3.0.1\\":{\\"purl\\":\\"pkg:npm/dir-glob@3.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/doctrine@3.0.0\\":{\\"purl\\":\\"pkg:npm/doctrine@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/domexception@2.0.1\\":{\\"purl\\":\\"pkg:npm/domexception@2.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/electron-to-chromium@1.4.17\\":{\\"purl\\":\\"pkg:npm/electron-to-chromium@1.4.17\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/emittery@0.8.1\\":{\\"purl\\":\\"pkg:npm/emittery@0.8.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/emoji-regex@8.0.0\\":{\\"purl\\":\\"pkg:npm/emoji-regex@8.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/end-of-stream@1.4.4\\":{\\"purl\\":\\"pkg:npm/end-of-stream@1.4.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/enquirer@2.3.6\\":{\\"purl\\":\\"pkg:npm/enquirer@2.3.6\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/eol-converter-cli@1.0.8\\":{\\"purl\\":\\"pkg:npm/eol-converter-cli@1.0.8\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/eol@0.9.1\\":{\\"purl\\":\\"pkg:npm/eol@0.9.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/error-ex@1.3.2\\":{\\"purl\\":\\"pkg:npm/error-ex@1.3.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/es-abstract@1.18.6\\":{\\"purl\\":\\"pkg:npm/es-abstract@1.18.6\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/es-to-primitive@1.2.1\\":{\\"purl\\":\\"pkg:npm/es-to-primitive@1.2.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/escalade@3.1.1\\":{\\"purl\\":\\"pkg:npm/escalade@3.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/escape-string-regexp@1.0.5\\":{\\"purl\\":\\"pkg:npm/escape-string-regexp@1.0.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/escodegen@2.0.0\\":{\\"purl\\":\\"pkg:npm/escodegen@2.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/eslint-config-prettier@8.3.0\\":{\\"purl\\":\\"pkg:npm/eslint-config-prettier@8.3.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/eslint-plugin-es@3.0.1\\":{\\"purl\\":\\"pkg:npm/eslint-plugin-es@3.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/eslint-plugin-jest@25.3.0\\":{\\"purl\\":\\"pkg:npm/eslint-plugin-jest@25.3.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/eslint-plugin-node@11.1.0\\":{\\"purl\\":\\"pkg:npm/eslint-plugin-node@11.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/eslint-plugin-prettier@4.0.0\\":{\\"purl\\":\\"pkg:npm/eslint-plugin-prettier@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/eslint-scope@5.1.1\\":{\\"purl\\":\\"pkg:npm/eslint-scope@5.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/eslint-utils@2.1.0\\":{\\"purl\\":\\"pkg:npm/eslint-utils@2.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/eslint-visitor-keys@2.1.0\\":{\\"purl\\":\\"pkg:npm/eslint-visitor-keys@2.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/eslint@7.32.0\\":{\\"purl\\":\\"pkg:npm/eslint@7.32.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/espree@7.3.1\\":{\\"purl\\":\\"pkg:npm/espree@7.3.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/esprima@4.0.1\\":{\\"purl\\":\\"pkg:npm/esprima@4.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/esquery@1.4.0\\":{\\"purl\\":\\"pkg:npm/esquery@1.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/esrecurse@4.3.0\\":{\\"purl\\":\\"pkg:npm/esrecurse@4.3.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/estraverse@4.3.0\\":{\\"purl\\":\\"pkg:npm/estraverse@4.3.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/esutils@2.0.3\\":{\\"purl\\":\\"pkg:npm/esutils@2.0.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/execa@5.1.1\\":{\\"purl\\":\\"pkg:npm/execa@5.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/exit@0.1.2\\":{\\"purl\\":\\"pkg:npm/exit@0.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/expect@27.4.2\\":{\\"purl\\":\\"pkg:npm/expect@27.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/fast-deep-equal@3.1.3\\":{\\"purl\\":\\"pkg:npm/fast-deep-equal@3.1.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/fast-diff@1.2.0\\":{\\"purl\\":\\"pkg:npm/fast-diff@1.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/fast-glob@3.2.4\\":{\\"purl\\":\\"pkg:npm/fast-glob@3.2.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/fast-json-stable-stringify@2.0.0\\":{\\"purl\\":\\"pkg:npm/fast-json-stable-stringify@2.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/fast-levenshtein@2.0.6\\":{\\"purl\\":\\"pkg:npm/fast-levenshtein@2.0.6\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/fastq@1.9.0\\":{\\"purl\\":\\"pkg:npm/fastq@1.9.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/fb-watchman@2.0.1\\":{\\"purl\\":\\"pkg:npm/fb-watchman@2.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/file-entry-cache@6.0.1\\":{\\"purl\\":\\"pkg:npm/file-entry-cache@6.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/fill-range@7.0.1\\":{\\"purl\\":\\"pkg:npm/fill-range@7.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/find-up@4.1.0\\":{\\"purl\\":\\"pkg:npm/find-up@4.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/flat-cache@3.0.4\\":{\\"purl\\":\\"pkg:npm/flat-cache@3.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/flatted@3.2.2\\":{\\"purl\\":\\"pkg:npm/flatted@3.2.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/form-data@3.0.1\\":{\\"purl\\":\\"pkg:npm/form-data@3.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/fs.realpath@1.0.0\\":{\\"purl\\":\\"pkg:npm/fs.realpath@1.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/fsevents@2.3.2\\":{\\"purl\\":\\"pkg:npm/fsevents@2.3.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/function-bind@1.1.1\\":{\\"purl\\":\\"pkg:npm/function-bind@1.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/functional-red-black-tree@1.0.1\\":{\\"purl\\":\\"pkg:npm/functional-red-black-tree@1.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/gensync@1.0.0-beta.2\\":{\\"purl\\":\\"pkg:npm/gensync@1.0.0-beta.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/get-caller-file@2.0.5\\":{\\"purl\\":\\"pkg:npm/get-caller-file@2.0.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/get-intrinsic@1.1.1\\":{\\"purl\\":\\"pkg:npm/get-intrinsic@1.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/get-package-type@0.1.0\\":{\\"purl\\":\\"pkg:npm/get-package-type@0.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/get-stream@6.0.1\\":{\\"purl\\":\\"pkg:npm/get-stream@6.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/get-symbol-description@1.0.0\\":{\\"purl\\":\\"pkg:npm/get-symbol-description@1.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/glob-parent@5.1.2\\":{\\"purl\\":\\"pkg:npm/glob-parent@5.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/glob@7.1.6\\":{\\"purl\\":\\"pkg:npm/glob@7.1.6\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/globals@11.12.0\\":{\\"purl\\":\\"pkg:npm/globals@11.12.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/globby@11.0.4\\":{\\"purl\\":\\"pkg:npm/globby@11.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/graceful-fs@4.2.8\\":{\\"purl\\":\\"pkg:npm/graceful-fs@4.2.8\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/has-bigints@1.0.1\\":{\\"purl\\":\\"pkg:npm/has-bigints@1.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/has-flag@3.0.0\\":{\\"purl\\":\\"pkg:npm/has-flag@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/has-symbols@1.0.2\\":{\\"purl\\":\\"pkg:npm/has-symbols@1.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/has-tostringtag@1.0.0\\":{\\"purl\\":\\"pkg:npm/has-tostringtag@1.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/has@1.0.3\\":{\\"purl\\":\\"pkg:npm/has@1.0.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/hosted-git-info@2.8.9\\":{\\"purl\\":\\"pkg:npm/hosted-git-info@2.8.9\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/html-encoding-sniffer@2.0.1\\":{\\"purl\\":\\"pkg:npm/html-encoding-sniffer@2.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/html-escaper@2.0.2\\":{\\"purl\\":\\"pkg:npm/html-escaper@2.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/http-proxy-agent@4.0.1\\":{\\"purl\\":\\"pkg:npm/http-proxy-agent@4.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/https-proxy-agent@5.0.0\\":{\\"purl\\":\\"pkg:npm/https-proxy-agent@5.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/human-signals@2.1.0\\":{\\"purl\\":\\"pkg:npm/human-signals@2.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/husky@7.0.4\\":{\\"purl\\":\\"pkg:npm/husky@7.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/iconv-lite@0.4.24\\":{\\"purl\\":\\"pkg:npm/iconv-lite@0.4.24\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/ignore@4.0.6\\":{\\"purl\\":\\"pkg:npm/ignore@4.0.6\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/import-fresh@3.3.0\\":{\\"purl\\":\\"pkg:npm/import-fresh@3.3.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/import-local@3.0.3\\":{\\"purl\\":\\"pkg:npm/import-local@3.0.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/imurmurhash@0.1.4\\":{\\"purl\\":\\"pkg:npm/imurmurhash@0.1.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/indent-string@4.0.0\\":{\\"purl\\":\\"pkg:npm/indent-string@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/inflight@1.0.6\\":{\\"purl\\":\\"pkg:npm/inflight@1.0.6\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/inherits@2.0.4\\":{\\"purl\\":\\"pkg:npm/inherits@2.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/internal-slot@1.0.3\\":{\\"purl\\":\\"pkg:npm/internal-slot@1.0.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-arrayish@0.2.1\\":{\\"purl\\":\\"pkg:npm/is-arrayish@0.2.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-bigint@1.0.4\\":{\\"purl\\":\\"pkg:npm/is-bigint@1.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-boolean-object@1.1.2\\":{\\"purl\\":\\"pkg:npm/is-boolean-object@1.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-callable@1.2.4\\":{\\"purl\\":\\"pkg:npm/is-callable@1.2.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-core-module@2.6.0\\":{\\"purl\\":\\"pkg:npm/is-core-module@2.6.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-date-object@1.0.5\\":{\\"purl\\":\\"pkg:npm/is-date-object@1.0.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-extglob@2.1.1\\":{\\"purl\\":\\"pkg:npm/is-extglob@2.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-fullwidth-code-point@3.0.0\\":{\\"purl\\":\\"pkg:npm/is-fullwidth-code-point@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-generator-fn@2.1.0\\":{\\"purl\\":\\"pkg:npm/is-generator-fn@2.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-glob@4.0.1\\":{\\"purl\\":\\"pkg:npm/is-glob@4.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-negative-zero@2.0.1\\":{\\"purl\\":\\"pkg:npm/is-negative-zero@2.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-number-object@1.0.6\\":{\\"purl\\":\\"pkg:npm/is-number-object@1.0.6\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-number@7.0.0\\":{\\"purl\\":\\"pkg:npm/is-number@7.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-plain-object@5.0.0\\":{\\"purl\\":\\"pkg:npm/is-plain-object@5.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-potential-custom-element-name@1.0.1\\":{\\"purl\\":\\"pkg:npm/is-potential-custom-element-name@1.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-regex@1.1.4\\":{\\"purl\\":\\"pkg:npm/is-regex@1.1.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-stream@2.0.0\\":{\\"purl\\":\\"pkg:npm/is-stream@2.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-string@1.0.7\\":{\\"purl\\":\\"pkg:npm/is-string@1.0.7\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-symbol@1.0.4\\":{\\"purl\\":\\"pkg:npm/is-symbol@1.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/is-typedarray@1.0.0\\":{\\"purl\\":\\"pkg:npm/is-typedarray@1.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/isexe@2.0.0\\":{\\"purl\\":\\"pkg:npm/isexe@2.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/istanbul-lib-coverage@3.2.0\\":{\\"purl\\":\\"pkg:npm/istanbul-lib-coverage@3.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/istanbul-lib-instrument@4.0.3\\":{\\"purl\\":\\"pkg:npm/istanbul-lib-instrument@4.0.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/istanbul-lib-report@3.0.0\\":{\\"purl\\":\\"pkg:npm/istanbul-lib-report@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/istanbul-lib-source-maps@4.0.1\\":{\\"purl\\":\\"pkg:npm/istanbul-lib-source-maps@4.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/istanbul-reports@3.1.1\\":{\\"purl\\":\\"pkg:npm/istanbul-reports@3.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-changed-files@27.4.2\\":{\\"purl\\":\\"pkg:npm/jest-changed-files@27.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-circus@27.4.5\\":{\\"purl\\":\\"pkg:npm/jest-circus@27.4.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-config@27.4.5\\":{\\"purl\\":\\"pkg:npm/jest-config@27.4.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-diff@27.4.2\\":{\\"purl\\":\\"pkg:npm/jest-diff@27.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-docblock@27.4.0\\":{\\"purl\\":\\"pkg:npm/jest-docblock@27.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-each@27.4.2\\":{\\"purl\\":\\"pkg:npm/jest-each@27.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-environment-jsdom@27.4.4\\":{\\"purl\\":\\"pkg:npm/jest-environment-jsdom@27.4.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-environment-node@27.4.4\\":{\\"purl\\":\\"pkg:npm/jest-environment-node@27.4.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-get-type@27.4.0\\":{\\"purl\\":\\"pkg:npm/jest-get-type@27.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-haste-map@27.4.5\\":{\\"purl\\":\\"pkg:npm/jest-haste-map@27.4.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-jasmine2@27.4.5\\":{\\"purl\\":\\"pkg:npm/jest-jasmine2@27.4.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-leak-detector@27.4.2\\":{\\"purl\\":\\"pkg:npm/jest-leak-detector@27.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-matcher-utils@27.4.2\\":{\\"purl\\":\\"pkg:npm/jest-matcher-utils@27.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-message-util@27.4.2\\":{\\"purl\\":\\"pkg:npm/jest-message-util@27.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-mock@27.4.2\\":{\\"purl\\":\\"pkg:npm/jest-mock@27.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-pnp-resolver@1.2.2\\":{\\"purl\\":\\"pkg:npm/jest-pnp-resolver@1.2.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-regex-util@27.4.0\\":{\\"purl\\":\\"pkg:npm/jest-regex-util@27.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-resolve-dependencies@27.4.5\\":{\\"purl\\":\\"pkg:npm/jest-resolve-dependencies@27.4.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-resolve@27.4.5\\":{\\"purl\\":\\"pkg:npm/jest-resolve@27.4.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-runner@27.4.5\\":{\\"purl\\":\\"pkg:npm/jest-runner@27.4.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-runtime@27.4.5\\":{\\"purl\\":\\"pkg:npm/jest-runtime@27.4.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-serializer@27.4.0\\":{\\"purl\\":\\"pkg:npm/jest-serializer@27.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-snapshot@27.4.5\\":{\\"purl\\":\\"pkg:npm/jest-snapshot@27.4.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-util@27.4.2\\":{\\"purl\\":\\"pkg:npm/jest-util@27.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-validate@27.4.2\\":{\\"purl\\":\\"pkg:npm/jest-validate@27.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-watcher@27.4.2\\":{\\"purl\\":\\"pkg:npm/jest-watcher@27.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest-worker@27.4.5\\":{\\"purl\\":\\"pkg:npm/jest-worker@27.4.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jest@27.4.5\\":{\\"purl\\":\\"pkg:npm/jest@27.4.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/js-tokens@4.0.0\\":{\\"purl\\":\\"pkg:npm/js-tokens@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/js-yaml@4.1.0\\":{\\"purl\\":\\"pkg:npm/js-yaml@4.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jsdom@16.7.0\\":{\\"purl\\":\\"pkg:npm/jsdom@16.7.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/jsesc@2.5.2\\":{\\"purl\\":\\"pkg:npm/jsesc@2.5.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/json-parse-better-errors@1.0.2\\":{\\"purl\\":\\"pkg:npm/json-parse-better-errors@1.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/json-schema-traverse@0.4.1\\":{\\"purl\\":\\"pkg:npm/json-schema-traverse@0.4.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/json-stable-stringify-without-jsonify@1.0.1\\":{\\"purl\\":\\"pkg:npm/json-stable-stringify-without-jsonify@1.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/json5@2.2.0\\":{\\"purl\\":\\"pkg:npm/json5@2.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/kleur@3.0.3\\":{\\"purl\\":\\"pkg:npm/kleur@3.0.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/leven@3.1.0\\":{\\"purl\\":\\"pkg:npm/leven@3.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/levn@0.3.0\\":{\\"purl\\":\\"pkg:npm/levn@0.3.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/load-json-file@4.0.0\\":{\\"purl\\":\\"pkg:npm/load-json-file@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/locate-path@5.0.0\\":{\\"purl\\":\\"pkg:npm/locate-path@5.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/lodash.clonedeep@4.5.0\\":{\\"purl\\":\\"pkg:npm/lodash.clonedeep@4.5.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/lodash.memoize@4.1.2\\":{\\"purl\\":\\"pkg:npm/lodash.memoize@4.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/lodash.merge@4.6.2\\":{\\"purl\\":\\"pkg:npm/lodash.merge@4.6.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/lodash.truncate@4.4.2\\":{\\"purl\\":\\"pkg:npm/lodash.truncate@4.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/lodash@4.17.21\\":{\\"purl\\":\\"pkg:npm/lodash@4.17.21\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/lru-cache@6.0.0\\":{\\"purl\\":\\"pkg:npm/lru-cache@6.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/make-dir@3.1.0\\":{\\"purl\\":\\"pkg:npm/make-dir@3.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/make-error@1.3.6\\":{\\"purl\\":\\"pkg:npm/make-error@1.3.6\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/makeerror@1.0.12\\":{\\"purl\\":\\"pkg:npm/makeerror@1.0.12\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/memorystream@0.3.1\\":{\\"purl\\":\\"pkg:npm/memorystream@0.3.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/merge-stream@2.0.0\\":{\\"purl\\":\\"pkg:npm/merge-stream@2.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/merge2@1.4.1\\":{\\"purl\\":\\"pkg:npm/merge2@1.4.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/micromatch@4.0.4\\":{\\"purl\\":\\"pkg:npm/micromatch@4.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/mime-db@1.51.0\\":{\\"purl\\":\\"pkg:npm/mime-db@1.51.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/mime-types@2.1.34\\":{\\"purl\\":\\"pkg:npm/mime-types@2.1.34\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/mimic-fn@2.1.0\\":{\\"purl\\":\\"pkg:npm/mimic-fn@2.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/minimatch@3.0.4\\":{\\"purl\\":\\"pkg:npm/minimatch@3.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/minimist@1.2.5\\":{\\"purl\\":\\"pkg:npm/minimist@1.2.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/mri@1.2.0\\":{\\"purl\\":\\"pkg:npm/mri@1.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/ms@2.1.2\\":{\\"purl\\":\\"pkg:npm/ms@2.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/multimatch@4.0.0\\":{\\"purl\\":\\"pkg:npm/multimatch@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/natural-compare@1.4.0\\":{\\"purl\\":\\"pkg:npm/natural-compare@1.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/nice-try@1.0.5\\":{\\"purl\\":\\"pkg:npm/nice-try@1.0.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/node-fetch@2.6.7\\":{\\"purl\\":\\"pkg:npm/node-fetch@2.6.7\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/node-int64@0.4.0\\":{\\"purl\\":\\"pkg:npm/node-int64@0.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/node-releases@2.0.1\\":{\\"purl\\":\\"pkg:npm/node-releases@2.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/normalize-package-data@2.5.0\\":{\\"purl\\":\\"pkg:npm/normalize-package-data@2.5.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/normalize-path@3.0.0\\":{\\"purl\\":\\"pkg:npm/normalize-path@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/npm-run-all@4.1.5\\":{\\"purl\\":\\"pkg:npm/npm-run-all@4.1.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/npm-run-path@4.0.1\\":{\\"purl\\":\\"pkg:npm/npm-run-path@4.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/nwsapi@2.2.0\\":{\\"purl\\":\\"pkg:npm/nwsapi@2.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/object-inspect@1.11.0\\":{\\"purl\\":\\"pkg:npm/object-inspect@1.11.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/object-keys@1.1.1\\":{\\"purl\\":\\"pkg:npm/object-keys@1.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/object.assign@4.1.2\\":{\\"purl\\":\\"pkg:npm/object.assign@4.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/once@1.4.0\\":{\\"purl\\":\\"pkg:npm/once@1.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/onetime@5.1.2\\":{\\"purl\\":\\"pkg:npm/onetime@5.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/optionator@0.8.3\\":{\\"purl\\":\\"pkg:npm/optionator@0.8.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/p-limit@2.3.0\\":{\\"purl\\":\\"pkg:npm/p-limit@2.3.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/p-locate@4.1.0\\":{\\"purl\\":\\"pkg:npm/p-locate@4.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/p-try@2.2.0\\":{\\"purl\\":\\"pkg:npm/p-try@2.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/parent-module@1.0.1\\":{\\"purl\\":\\"pkg:npm/parent-module@1.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/parse-json@4.0.0\\":{\\"purl\\":\\"pkg:npm/parse-json@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/parse5@6.0.1\\":{\\"purl\\":\\"pkg:npm/parse5@6.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/path-exists@4.0.0\\":{\\"purl\\":\\"pkg:npm/path-exists@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/path-is-absolute@1.0.1\\":{\\"purl\\":\\"pkg:npm/path-is-absolute@1.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/path-key@3.1.1\\":{\\"purl\\":\\"pkg:npm/path-key@3.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/path-parse@1.0.7\\":{\\"purl\\":\\"pkg:npm/path-parse@1.0.7\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/path-type@3.0.0\\":{\\"purl\\":\\"pkg:npm/path-type@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/picocolors@1.0.0\\":{\\"purl\\":\\"pkg:npm/picocolors@1.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/picomatch@2.2.2\\":{\\"purl\\":\\"pkg:npm/picomatch@2.2.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/pidtree@0.3.1\\":{\\"purl\\":\\"pkg:npm/pidtree@0.3.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/pify@3.0.0\\":{\\"purl\\":\\"pkg:npm/pify@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/pirates@4.0.4\\":{\\"purl\\":\\"pkg:npm/pirates@4.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/pkg-dir@4.2.0\\":{\\"purl\\":\\"pkg:npm/pkg-dir@4.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/prelude-ls@1.1.2\\":{\\"purl\\":\\"pkg:npm/prelude-ls@1.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/prettier-linter-helpers@1.0.0\\":{\\"purl\\":\\"pkg:npm/prettier-linter-helpers@1.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/prettier-plugin-organize-imports@2.3.4\\":{\\"purl\\":\\"pkg:npm/prettier-plugin-organize-imports@2.3.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/prettier@2.5.1\\":{\\"purl\\":\\"pkg:npm/prettier@2.5.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/pretty-format@27.4.2\\":{\\"purl\\":\\"pkg:npm/pretty-format@27.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/pretty-quick@3.1.3\\":{\\"purl\\":\\"pkg:npm/pretty-quick@3.1.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/progress@2.0.3\\":{\\"purl\\":\\"pkg:npm/progress@2.0.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/prompts@2.4.2\\":{\\"purl\\":\\"pkg:npm/prompts@2.4.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/psl@1.8.0\\":{\\"purl\\":\\"pkg:npm/psl@1.8.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/pump@3.0.0\\":{\\"purl\\":\\"pkg:npm/pump@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/punycode@2.1.1\\":{\\"purl\\":\\"pkg:npm/punycode@2.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/react-is@17.0.2\\":{\\"purl\\":\\"pkg:npm/react-is@17.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/read-pkg@3.0.0\\":{\\"purl\\":\\"pkg:npm/read-pkg@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/regexpp@3.1.0\\":{\\"purl\\":\\"pkg:npm/regexpp@3.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/require-directory@2.1.1\\":{\\"purl\\":\\"pkg:npm/require-directory@2.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/require-from-string@2.0.2\\":{\\"purl\\":\\"pkg:npm/require-from-string@2.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/resolve-cwd@3.0.0\\":{\\"purl\\":\\"pkg:npm/resolve-cwd@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/resolve-from@4.0.0\\":{\\"purl\\":\\"pkg:npm/resolve-from@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/resolve.exports@1.1.0\\":{\\"purl\\":\\"pkg:npm/resolve.exports@1.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/resolve@1.20.0\\":{\\"purl\\":\\"pkg:npm/resolve@1.20.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/reusify@1.0.4\\":{\\"purl\\":\\"pkg:npm/reusify@1.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/rimraf@3.0.2\\":{\\"purl\\":\\"pkg:npm/rimraf@3.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/run-parallel@1.1.10\\":{\\"purl\\":\\"pkg:npm/run-parallel@1.1.10\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/safe-buffer@5.1.2\\":{\\"purl\\":\\"pkg:npm/safe-buffer@5.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/safer-buffer@2.1.2\\":{\\"purl\\":\\"pkg:npm/safer-buffer@2.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/saxes@5.0.1\\":{\\"purl\\":\\"pkg:npm/saxes@5.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/semver@6.3.0\\":{\\"purl\\":\\"pkg:npm/semver@6.3.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/shebang-command@2.0.0\\":{\\"purl\\":\\"pkg:npm/shebang-command@2.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/shebang-regex@3.0.0\\":{\\"purl\\":\\"pkg:npm/shebang-regex@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/shell-quote@1.7.2\\":{\\"purl\\":\\"pkg:npm/shell-quote@1.7.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/side-channel@1.0.4\\":{\\"purl\\":\\"pkg:npm/side-channel@1.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/signal-exit@3.0.3\\":{\\"purl\\":\\"pkg:npm/signal-exit@3.0.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/sisteransi@1.0.5\\":{\\"purl\\":\\"pkg:npm/sisteransi@1.0.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/slash@3.0.0\\":{\\"purl\\":\\"pkg:npm/slash@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/slice-ansi@4.0.0\\":{\\"purl\\":\\"pkg:npm/slice-ansi@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/source-map-support@0.5.21\\":{\\"purl\\":\\"pkg:npm/source-map-support@0.5.21\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/source-map@0.6.1\\":{\\"purl\\":\\"pkg:npm/source-map@0.6.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/spdx-correct@3.1.1\\":{\\"purl\\":\\"pkg:npm/spdx-correct@3.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/spdx-exceptions@2.3.0\\":{\\"purl\\":\\"pkg:npm/spdx-exceptions@2.3.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/spdx-expression-parse@3.0.1\\":{\\"purl\\":\\"pkg:npm/spdx-expression-parse@3.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/spdx-license-ids@3.0.10\\":{\\"purl\\":\\"pkg:npm/spdx-license-ids@3.0.10\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/sprintf-js@1.0.3\\":{\\"purl\\":\\"pkg:npm/sprintf-js@1.0.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/stack-utils@2.0.5\\":{\\"purl\\":\\"pkg:npm/stack-utils@2.0.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/string-length@4.0.2\\":{\\"purl\\":\\"pkg:npm/string-length@4.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/string-width@4.2.0\\":{\\"purl\\":\\"pkg:npm/string-width@4.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/string.prototype.padend@3.1.2\\":{\\"purl\\":\\"pkg:npm/string.prototype.padend@3.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/string.prototype.trimend@1.0.4\\":{\\"purl\\":\\"pkg:npm/string.prototype.trimend@1.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/string.prototype.trimstart@1.0.4\\":{\\"purl\\":\\"pkg:npm/string.prototype.trimstart@1.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/strip-ansi@6.0.0\\":{\\"purl\\":\\"pkg:npm/strip-ansi@6.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/strip-bom@3.0.0\\":{\\"purl\\":\\"pkg:npm/strip-bom@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/strip-final-newline@2.0.0\\":{\\"purl\\":\\"pkg:npm/strip-final-newline@2.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/strip-json-comments@3.1.1\\":{\\"purl\\":\\"pkg:npm/strip-json-comments@3.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/supports-color@5.5.0\\":{\\"purl\\":\\"pkg:npm/supports-color@5.5.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/supports-hyperlinks@2.2.0\\":{\\"purl\\":\\"pkg:npm/supports-hyperlinks@2.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/symbol-tree@3.2.4\\":{\\"purl\\":\\"pkg:npm/symbol-tree@3.2.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/table@6.7.1\\":{\\"purl\\":\\"pkg:npm/table@6.7.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/terminal-link@2.1.1\\":{\\"purl\\":\\"pkg:npm/terminal-link@2.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/test-exclude@6.0.0\\":{\\"purl\\":\\"pkg:npm/test-exclude@6.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/text-table@0.2.0\\":{\\"purl\\":\\"pkg:npm/text-table@0.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/throat@6.0.1\\":{\\"purl\\":\\"pkg:npm/throat@6.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/tmp-promise@3.0.3\\":{\\"purl\\":\\"pkg:npm/tmp-promise@3.0.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/tmp@0.2.1\\":{\\"purl\\":\\"pkg:npm/tmp@0.2.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/tmpl@1.0.5\\":{\\"purl\\":\\"pkg:npm/tmpl@1.0.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/to-fast-properties@2.0.0\\":{\\"purl\\":\\"pkg:npm/to-fast-properties@2.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/to-regex-range@5.0.1\\":{\\"purl\\":\\"pkg:npm/to-regex-range@5.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/tough-cookie@4.0.0\\":{\\"purl\\":\\"pkg:npm/tough-cookie@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/tr46@2.1.0\\":{\\"purl\\":\\"pkg:npm/tr46@2.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/ts-jest@27.1.3\\":{\\"purl\\":\\"pkg:npm/ts-jest@27.1.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/tslib@1.10.0\\":{\\"purl\\":\\"pkg:npm/tslib@1.10.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/tsutils@3.21.0\\":{\\"purl\\":\\"pkg:npm/tsutils@3.21.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/tunnel@0.0.6\\":{\\"purl\\":\\"pkg:npm/tunnel@0.0.6\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/type-check@0.3.2\\":{\\"purl\\":\\"pkg:npm/type-check@0.3.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/type-detect@4.0.8\\":{\\"purl\\":\\"pkg:npm/type-detect@4.0.8\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/type-fest@2.12.0\\":{\\"purl\\":\\"pkg:npm/type-fest@2.12.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/typedarray-to-buffer@3.1.5\\":{\\"purl\\":\\"pkg:npm/typedarray-to-buffer@3.1.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/typescript@4.5.5\\":{\\"purl\\":\\"pkg:npm/typescript@4.5.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/unbox-primitive@1.0.1\\":{\\"purl\\":\\"pkg:npm/unbox-primitive@1.0.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/universal-user-agent@6.0.0\\":{\\"purl\\":\\"pkg:npm/universal-user-agent@6.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/universalify@0.1.2\\":{\\"purl\\":\\"pkg:npm/universalify@0.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/uri-js@4.4.1\\":{\\"purl\\":\\"pkg:npm/uri-js@4.4.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/uuid@3.4.0\\":{\\"purl\\":\\"pkg:npm/uuid@3.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/v8-compile-cache@2.3.0\\":{\\"purl\\":\\"pkg:npm/v8-compile-cache@2.3.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/v8-to-istanbul@8.1.0\\":{\\"purl\\":\\"pkg:npm/v8-to-istanbul@8.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/validate-npm-package-license@3.0.4\\":{\\"purl\\":\\"pkg:npm/validate-npm-package-license@3.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/w3c-hr-time@1.0.2\\":{\\"purl\\":\\"pkg:npm/w3c-hr-time@1.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/w3c-xmlserializer@2.0.0\\":{\\"purl\\":\\"pkg:npm/w3c-xmlserializer@2.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/walker@1.0.8\\":{\\"purl\\":\\"pkg:npm/walker@1.0.8\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/webidl-conversions@6.1.0\\":{\\"purl\\":\\"pkg:npm/webidl-conversions@6.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/whatwg-encoding@1.0.5\\":{\\"purl\\":\\"pkg:npm/whatwg-encoding@1.0.5\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/whatwg-mimetype@2.3.0\\":{\\"purl\\":\\"pkg:npm/whatwg-mimetype@2.3.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/whatwg-url@8.7.0\\":{\\"purl\\":\\"pkg:npm/whatwg-url@8.7.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/which-boxed-primitive@1.0.2\\":{\\"purl\\":\\"pkg:npm/which-boxed-primitive@1.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/which@2.0.2\\":{\\"purl\\":\\"pkg:npm/which@2.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/word-wrap@1.2.3\\":{\\"purl\\":\\"pkg:npm/word-wrap@1.2.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/wrap-ansi@7.0.0\\":{\\"purl\\":\\"pkg:npm/wrap-ansi@7.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/wrappy@1.0.2\\":{\\"purl\\":\\"pkg:npm/wrappy@1.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/write-file-atomic@3.0.3\\":{\\"purl\\":\\"pkg:npm/write-file-atomic@3.0.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/ws@7.5.6\\":{\\"purl\\":\\"pkg:npm/ws@7.5.6\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/xml-name-validator@3.0.0\\":{\\"purl\\":\\"pkg:npm/xml-name-validator@3.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/xmlchars@2.2.0\\":{\\"purl\\":\\"pkg:npm/xmlchars@2.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/y18n@5.0.8\\":{\\"purl\\":\\"pkg:npm/y18n@5.0.8\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/yallist@4.0.0\\":{\\"purl\\":\\"pkg:npm/yallist@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/yargs-parser@20.2.9\\":{\\"purl\\":\\"pkg:npm/yargs-parser@20.2.9\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/yargs@16.2.0\\":{\\"purl\\":\\"pkg:npm/yargs@16.2.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"}}},\\"tests/fixtures/image-alpine-match-coverage/lib/apk/db/installed\\":{\\"name\\":\\"tests/fixtures/image-alpine-match-coverage/lib/apk/db/installed\\",\\"file\\":{\\"source_location\\":\\"tests/fixtures/image-alpine-match-coverage/lib/apk/db/installed\\"},\\"resolved\\":{\\"pkg:alpine/libvncserver@0.9.9\\":{\\"purl\\":\\"pkg:alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"}}},\\"tests/fixtures/image-centos-match-coverage/var/lib/rpm/Packages\\":{\\"name\\":\\"tests/fixtures/image-centos-match-coverage/var/lib/rpm/Packages\\",\\"file\\":{\\"source_location\\":\\"tests/fixtures/image-centos-match-coverage/var/lib/rpm/Packages\\"},\\"resolved\\":{\\"pkg:rpm/dive@0.9.2-1\\":{\\"purl\\":\\"pkg:rpm/dive@0.9.2-1?arch=x86_64&upstream=dive-0.9.2-1.src.rpm\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"}}},\\"tests/fixtures/image-debian-match-coverage/java/example-java-app-maven-0.1.0.jar\\":{\\"name\\":\\"tests/fixtures/image-debian-match-coverage/java/example-java-app-maven-0.1.0.jar\\",\\"file\\":{\\"source_location\\":\\"tests/fixtures/image-debian-match-coverage/java/example-java-app-maven-0.1.0.jar\\"},\\"resolved\\":{\\"pkg:maven/joda-time/joda-time@2.9.2\\":{\\"purl\\":\\"pkg:maven/joda-time/joda-time@2.9.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:maven/org.anchore/example-java-app-maven@0.1.0\\":{\\"purl\\":\\"pkg:maven/org.anchore/example-java-app-maven@0.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"}}},\\"tests/fixtures/image-debian-match-coverage/python/dist-info/METADATA\\":{\\"name\\":\\"tests/fixtures/image-debian-match-coverage/python/dist-info/METADATA\\",\\"file\\":{\\"source_location\\":\\"tests/fixtures/image-debian-match-coverage/python/dist-info/METADATA\\"},\\"resolved\\":{\\"pkg:pypi/pygments@2.6.1\\":{\\"purl\\":\\"pkg:pypi/Pygments@2.6.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"}}},\\"tests/fixtures/image-debian-match-coverage/ruby/Gemfile.lock\\":{\\"name\\":\\"tests/fixtures/image-debian-match-coverage/ruby/Gemfile.lock\\",\\"file\\":{\\"source_location\\":\\"tests/fixtures/image-debian-match-coverage/ruby/Gemfile.lock\\"},\\"resolved\\":{\\"pkg:gem/rails@4.1.1\\":{\\"purl\\":\\"pkg:gem/rails@4.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"}}},\\"tests/fixtures/image-debian-match-coverage/var/lib/dpkg/status\\":{\\"name\\":\\"tests/fixtures/image-debian-match-coverage/var/lib/dpkg/status\\",\\"file\\":{\\"source_location\\":\\"tests/fixtures/image-debian-match-coverage/var/lib/dpkg/status\\"},\\"resolved\\":{\\"pkg:deb/apt@1.8.2\\":{\\"purl\\":\\"pkg:deb/apt@1.8.2?arch=amd64&upstream=apt-dev\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"}}},\\"tests/fixtures/npm-project/package-lock.json\\":{\\"name\\":\\"tests/fixtures/npm-project/package-lock.json\\",\\"file\\":{\\"source_location\\":\\"tests/fixtures/npm-project/package-lock.json\\"},\\"resolved\\":{\\"pkg:npm/chownr@2.0.0\\":{\\"purl\\":\\"pkg:npm/chownr@2.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/fs-minipass@2.1.0\\":{\\"purl\\":\\"pkg:npm/fs-minipass@2.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/js-tokens@4.0.0\\":{\\"purl\\":\\"pkg:npm/js-tokens@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/loose-envify@1.4.0\\":{\\"purl\\":\\"pkg:npm/loose-envify@1.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/minipass@3.1.3\\":{\\"purl\\":\\"pkg:npm/minipass@3.1.3\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/minizlib@2.1.2\\":{\\"purl\\":\\"pkg:npm/minizlib@2.1.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/mkdirp@1.0.4\\":{\\"purl\\":\\"pkg:npm/mkdirp@1.0.4\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/object-assign@4.1.1\\":{\\"purl\\":\\"pkg:npm/object-assign@4.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/prop-types@15.7.2\\":{\\"purl\\":\\"pkg:npm/prop-types@15.7.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/react-is@16.13.1\\":{\\"purl\\":\\"pkg:npm/react-is@16.13.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/react@16.14.0\\":{\\"purl\\":\\"pkg:npm/react@16.14.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/tar@6.1.0\\":{\\"purl\\":\\"pkg:npm/tar@6.1.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/yallist@4.0.0\\":{\\"purl\\":\\"pkg:npm/yallist@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"}}},\\"tests/fixtures/yarn-project/yarn.lock\\":{\\"name\\":\\"tests/fixtures/yarn-project/yarn.lock\\",\\"file\\":{\\"source_location\\":\\"tests/fixtures/yarn-project/yarn.lock\\"},\\"resolved\\":{\\"pkg:npm/js-tokens@4.0.0\\":{\\"purl\\":\\"pkg:npm/js-tokens@4.0.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/loose-envify@1.4.0\\":{\\"purl\\":\\"pkg:npm/loose-envify@1.4.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/object-assign@4.1.1\\":{\\"purl\\":\\"pkg:npm/object-assign@4.1.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/prop-types@15.7.2\\":{\\"purl\\":\\"pkg:npm/prop-types@15.7.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/react-is@16.13.1\\":{\\"purl\\":\\"pkg:npm/react-is@16.13.1\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/react@16.14.0\\":{\\"purl\\":\\"pkg:npm/react@16.14.0\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"},\\"pkg:npm/trim@0.0.2\\":{\\"purl\\":\\"pkg:npm/trim@0.0.2\\",\\"relationship\\":\\"direct\\",\\"scope\\":\\"runtime\\"}}}},\\"scanned\\":\\"\\",\\"sha\\":\\"f293f09uaw90gwa09f9wea\\",\\"ref\\":\\"v0.0.0\\"}"`;
+exports[`GitHub Snapshot runs with default inputs on push 1`] = `
+Object {
+  "detector": Object {
+    "name": "syft",
+    "url": "https://github.com/anchore/syft",
+    "version": "",
+  },
+  "job": Object {
+    "id": "1",
+    "name": "default-import-job",
+  },
+  "manifests": Object {
+    "package-lock.json": Object {
+      "file": Object {
+        "source_location": "package-lock.json",
+      },
+      "name": "package-lock.json",
+      "resolved": Object {
+        "": Object {
+          "purl": "pkg:npm/@vercel%2Fncc@0.33.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/abab@2.0.5": Object {
+          "purl": "pkg:npm/abab@2.0.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/acorn-globals@6.0.0": Object {
+          "purl": "pkg:npm/acorn-globals@6.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/acorn-jsx@5.3.2": Object {
+          "purl": "pkg:npm/acorn-jsx@5.3.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/acorn-walk@7.2.0": Object {
+          "purl": "pkg:npm/acorn-walk@7.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/acorn@7.4.1": Object {
+          "purl": "pkg:npm/acorn@7.4.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/agent-base@6.0.2": Object {
+          "purl": "pkg:npm/agent-base@6.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/aggregate-error@3.1.0": Object {
+          "purl": "pkg:npm/aggregate-error@3.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/ajv@6.12.6": Object {
+          "purl": "pkg:npm/ajv@6.12.6",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/ansi-colors@4.1.1": Object {
+          "purl": "pkg:npm/ansi-colors@4.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/ansi-escapes@4.3.2": Object {
+          "purl": "pkg:npm/ansi-escapes@4.3.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/ansi-regex@5.0.1": Object {
+          "purl": "pkg:npm/ansi-regex@5.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/ansi-styles@3.2.1": Object {
+          "purl": "pkg:npm/ansi-styles@3.2.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/anymatch@3.1.2": Object {
+          "purl": "pkg:npm/anymatch@3.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/argparse@2.0.1": Object {
+          "purl": "pkg:npm/argparse@2.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/array-differ@3.0.0": Object {
+          "purl": "pkg:npm/array-differ@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/array-union@2.1.0": Object {
+          "purl": "pkg:npm/array-union@2.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/arrify@2.0.1": Object {
+          "purl": "pkg:npm/arrify@2.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/astral-regex@2.0.0": Object {
+          "purl": "pkg:npm/astral-regex@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/asynckit@0.4.0": Object {
+          "purl": "pkg:npm/asynckit@0.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/babel-jest@27.4.5": Object {
+          "purl": "pkg:npm/babel-jest@27.4.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/babel-plugin-istanbul@6.1.1": Object {
+          "purl": "pkg:npm/babel-plugin-istanbul@6.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/babel-plugin-jest-hoist@27.4.0": Object {
+          "purl": "pkg:npm/babel-plugin-jest-hoist@27.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/babel-preset-current-node-syntax@1.0.1": Object {
+          "purl": "pkg:npm/babel-preset-current-node-syntax@1.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/babel-preset-jest@27.4.0": Object {
+          "purl": "pkg:npm/babel-preset-jest@27.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/balanced-match@1.0.0": Object {
+          "purl": "pkg:npm/balanced-match@1.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/before-after-hook@2.2.2": Object {
+          "purl": "pkg:npm/before-after-hook@2.2.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/brace-expansion@1.1.11": Object {
+          "purl": "pkg:npm/brace-expansion@1.1.11",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/braces@3.0.2": Object {
+          "purl": "pkg:npm/braces@3.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/browser-process-hrtime@1.0.0": Object {
+          "purl": "pkg:npm/browser-process-hrtime@1.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/browserslist@4.19.1": Object {
+          "purl": "pkg:npm/browserslist@4.19.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/bs-logger@0.2.6": Object {
+          "purl": "pkg:npm/bs-logger@0.2.6",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/bser@2.1.1": Object {
+          "purl": "pkg:npm/bser@2.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/buffer-from@1.1.2": Object {
+          "purl": "pkg:npm/buffer-from@1.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/call-bind@1.0.2": Object {
+          "purl": "pkg:npm/call-bind@1.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/callsites@3.1.0": Object {
+          "purl": "pkg:npm/callsites@3.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/camelcase@5.3.1": Object {
+          "purl": "pkg:npm/camelcase@5.3.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/caniuse-lite@1.0.30001286": Object {
+          "purl": "pkg:npm/caniuse-lite@1.0.30001286",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/chalk@2.4.2": Object {
+          "purl": "pkg:npm/chalk@2.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/char-regex@1.0.2": Object {
+          "purl": "pkg:npm/char-regex@1.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/ci-info@3.2.0": Object {
+          "purl": "pkg:npm/ci-info@3.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/cjs-module-lexer@1.2.2": Object {
+          "purl": "pkg:npm/cjs-module-lexer@1.2.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/clean-stack@2.2.0": Object {
+          "purl": "pkg:npm/clean-stack@2.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/cliui@7.0.4": Object {
+          "purl": "pkg:npm/cliui@7.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/co@4.6.0": Object {
+          "purl": "pkg:npm/co@4.6.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/collect-v8-coverage@1.0.1": Object {
+          "purl": "pkg:npm/collect-v8-coverage@1.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/color-convert@1.9.3": Object {
+          "purl": "pkg:npm/color-convert@1.9.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/color-name@1.1.3": Object {
+          "purl": "pkg:npm/color-name@1.1.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/combined-stream@1.0.8": Object {
+          "purl": "pkg:npm/combined-stream@1.0.8",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/concat-map@0.0.1": Object {
+          "purl": "pkg:npm/concat-map@0.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/convert-source-map@1.8.0": Object {
+          "purl": "pkg:npm/convert-source-map@1.8.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/cross-spawn@7.0.3": Object {
+          "purl": "pkg:npm/cross-spawn@7.0.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/cssom@0.4.4": Object {
+          "purl": "pkg:npm/cssom@0.4.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/cssstyle@2.3.0": Object {
+          "purl": "pkg:npm/cssstyle@2.3.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/data-urls@2.0.0": Object {
+          "purl": "pkg:npm/data-urls@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/debug@4.1.1": Object {
+          "purl": "pkg:npm/debug@4.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/decimal.js@10.3.1": Object {
+          "purl": "pkg:npm/decimal.js@10.3.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/dedent@0.7.0": Object {
+          "purl": "pkg:npm/dedent@0.7.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/deep-is@0.1.3": Object {
+          "purl": "pkg:npm/deep-is@0.1.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/deepmerge@4.2.2": Object {
+          "purl": "pkg:npm/deepmerge@4.2.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/define-properties@1.1.3": Object {
+          "purl": "pkg:npm/define-properties@1.1.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/delayed-stream@1.0.0": Object {
+          "purl": "pkg:npm/delayed-stream@1.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/deprecation@2.3.1": Object {
+          "purl": "pkg:npm/deprecation@2.3.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/detect-newline@3.1.0": Object {
+          "purl": "pkg:npm/detect-newline@3.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/dir-glob@3.0.1": Object {
+          "purl": "pkg:npm/dir-glob@3.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/doctrine@3.0.0": Object {
+          "purl": "pkg:npm/doctrine@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/domexception@2.0.1": Object {
+          "purl": "pkg:npm/domexception@2.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/electron-to-chromium@1.4.17": Object {
+          "purl": "pkg:npm/electron-to-chromium@1.4.17",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/emittery@0.8.1": Object {
+          "purl": "pkg:npm/emittery@0.8.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/emoji-regex@8.0.0": Object {
+          "purl": "pkg:npm/emoji-regex@8.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/end-of-stream@1.4.4": Object {
+          "purl": "pkg:npm/end-of-stream@1.4.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/enquirer@2.3.6": Object {
+          "purl": "pkg:npm/enquirer@2.3.6",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/eol-converter-cli@1.0.8": Object {
+          "purl": "pkg:npm/eol-converter-cli@1.0.8",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/eol@0.9.1": Object {
+          "purl": "pkg:npm/eol@0.9.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/error-ex@1.3.2": Object {
+          "purl": "pkg:npm/error-ex@1.3.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/es-abstract@1.18.6": Object {
+          "purl": "pkg:npm/es-abstract@1.18.6",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/es-to-primitive@1.2.1": Object {
+          "purl": "pkg:npm/es-to-primitive@1.2.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/escalade@3.1.1": Object {
+          "purl": "pkg:npm/escalade@3.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/escape-string-regexp@1.0.5": Object {
+          "purl": "pkg:npm/escape-string-regexp@1.0.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/escodegen@2.0.0": Object {
+          "purl": "pkg:npm/escodegen@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/eslint-config-prettier@8.3.0": Object {
+          "purl": "pkg:npm/eslint-config-prettier@8.3.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/eslint-plugin-es@3.0.1": Object {
+          "purl": "pkg:npm/eslint-plugin-es@3.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/eslint-plugin-jest@25.3.0": Object {
+          "purl": "pkg:npm/eslint-plugin-jest@25.3.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/eslint-plugin-node@11.1.0": Object {
+          "purl": "pkg:npm/eslint-plugin-node@11.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/eslint-plugin-prettier@4.0.0": Object {
+          "purl": "pkg:npm/eslint-plugin-prettier@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/eslint-scope@5.1.1": Object {
+          "purl": "pkg:npm/eslint-scope@5.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/eslint-utils@2.1.0": Object {
+          "purl": "pkg:npm/eslint-utils@2.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/eslint-visitor-keys@2.1.0": Object {
+          "purl": "pkg:npm/eslint-visitor-keys@2.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/eslint@7.32.0": Object {
+          "purl": "pkg:npm/eslint@7.32.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/espree@7.3.1": Object {
+          "purl": "pkg:npm/espree@7.3.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/esprima@4.0.1": Object {
+          "purl": "pkg:npm/esprima@4.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/esquery@1.4.0": Object {
+          "purl": "pkg:npm/esquery@1.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/esrecurse@4.3.0": Object {
+          "purl": "pkg:npm/esrecurse@4.3.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/estraverse@4.3.0": Object {
+          "purl": "pkg:npm/estraverse@4.3.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/esutils@2.0.3": Object {
+          "purl": "pkg:npm/esutils@2.0.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/execa@5.1.1": Object {
+          "purl": "pkg:npm/execa@5.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/exit@0.1.2": Object {
+          "purl": "pkg:npm/exit@0.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/expect@27.4.2": Object {
+          "purl": "pkg:npm/expect@27.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fast-deep-equal@3.1.3": Object {
+          "purl": "pkg:npm/fast-deep-equal@3.1.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fast-diff@1.2.0": Object {
+          "purl": "pkg:npm/fast-diff@1.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fast-glob@3.2.4": Object {
+          "purl": "pkg:npm/fast-glob@3.2.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fast-json-stable-stringify@2.0.0": Object {
+          "purl": "pkg:npm/fast-json-stable-stringify@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fast-levenshtein@2.0.6": Object {
+          "purl": "pkg:npm/fast-levenshtein@2.0.6",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fastq@1.9.0": Object {
+          "purl": "pkg:npm/fastq@1.9.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fb-watchman@2.0.1": Object {
+          "purl": "pkg:npm/fb-watchman@2.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/file-entry-cache@6.0.1": Object {
+          "purl": "pkg:npm/file-entry-cache@6.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fill-range@7.0.1": Object {
+          "purl": "pkg:npm/fill-range@7.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/find-up@4.1.0": Object {
+          "purl": "pkg:npm/find-up@4.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/flat-cache@3.0.4": Object {
+          "purl": "pkg:npm/flat-cache@3.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/flatted@3.2.2": Object {
+          "purl": "pkg:npm/flatted@3.2.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/form-data@3.0.1": Object {
+          "purl": "pkg:npm/form-data@3.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fs.realpath@1.0.0": Object {
+          "purl": "pkg:npm/fs.realpath@1.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fsevents@2.3.2": Object {
+          "purl": "pkg:npm/fsevents@2.3.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/function-bind@1.1.1": Object {
+          "purl": "pkg:npm/function-bind@1.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/functional-red-black-tree@1.0.1": Object {
+          "purl": "pkg:npm/functional-red-black-tree@1.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/gensync@1.0.0-beta.2": Object {
+          "purl": "pkg:npm/gensync@1.0.0-beta.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/get-caller-file@2.0.5": Object {
+          "purl": "pkg:npm/get-caller-file@2.0.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/get-intrinsic@1.1.1": Object {
+          "purl": "pkg:npm/get-intrinsic@1.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/get-package-type@0.1.0": Object {
+          "purl": "pkg:npm/get-package-type@0.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/get-stream@6.0.1": Object {
+          "purl": "pkg:npm/get-stream@6.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/get-symbol-description@1.0.0": Object {
+          "purl": "pkg:npm/get-symbol-description@1.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/glob-parent@5.1.2": Object {
+          "purl": "pkg:npm/glob-parent@5.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/glob@7.1.6": Object {
+          "purl": "pkg:npm/glob@7.1.6",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/globals@11.12.0": Object {
+          "purl": "pkg:npm/globals@11.12.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/globby@11.0.4": Object {
+          "purl": "pkg:npm/globby@11.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/graceful-fs@4.2.8": Object {
+          "purl": "pkg:npm/graceful-fs@4.2.8",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/has-bigints@1.0.1": Object {
+          "purl": "pkg:npm/has-bigints@1.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/has-flag@3.0.0": Object {
+          "purl": "pkg:npm/has-flag@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/has-symbols@1.0.2": Object {
+          "purl": "pkg:npm/has-symbols@1.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/has-tostringtag@1.0.0": Object {
+          "purl": "pkg:npm/has-tostringtag@1.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/has@1.0.3": Object {
+          "purl": "pkg:npm/has@1.0.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/hosted-git-info@2.8.9": Object {
+          "purl": "pkg:npm/hosted-git-info@2.8.9",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/html-encoding-sniffer@2.0.1": Object {
+          "purl": "pkg:npm/html-encoding-sniffer@2.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/html-escaper@2.0.2": Object {
+          "purl": "pkg:npm/html-escaper@2.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/http-proxy-agent@4.0.1": Object {
+          "purl": "pkg:npm/http-proxy-agent@4.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/https-proxy-agent@5.0.0": Object {
+          "purl": "pkg:npm/https-proxy-agent@5.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/human-signals@2.1.0": Object {
+          "purl": "pkg:npm/human-signals@2.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/husky@7.0.4": Object {
+          "purl": "pkg:npm/husky@7.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/iconv-lite@0.4.24": Object {
+          "purl": "pkg:npm/iconv-lite@0.4.24",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/ignore@4.0.6": Object {
+          "purl": "pkg:npm/ignore@4.0.6",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/import-fresh@3.3.0": Object {
+          "purl": "pkg:npm/import-fresh@3.3.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/import-local@3.0.3": Object {
+          "purl": "pkg:npm/import-local@3.0.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/imurmurhash@0.1.4": Object {
+          "purl": "pkg:npm/imurmurhash@0.1.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/indent-string@4.0.0": Object {
+          "purl": "pkg:npm/indent-string@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/inflight@1.0.6": Object {
+          "purl": "pkg:npm/inflight@1.0.6",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/inherits@2.0.4": Object {
+          "purl": "pkg:npm/inherits@2.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/internal-slot@1.0.3": Object {
+          "purl": "pkg:npm/internal-slot@1.0.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-arrayish@0.2.1": Object {
+          "purl": "pkg:npm/is-arrayish@0.2.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-bigint@1.0.4": Object {
+          "purl": "pkg:npm/is-bigint@1.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-boolean-object@1.1.2": Object {
+          "purl": "pkg:npm/is-boolean-object@1.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-callable@1.2.4": Object {
+          "purl": "pkg:npm/is-callable@1.2.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-core-module@2.6.0": Object {
+          "purl": "pkg:npm/is-core-module@2.6.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-date-object@1.0.5": Object {
+          "purl": "pkg:npm/is-date-object@1.0.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-extglob@2.1.1": Object {
+          "purl": "pkg:npm/is-extglob@2.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-fullwidth-code-point@3.0.0": Object {
+          "purl": "pkg:npm/is-fullwidth-code-point@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-generator-fn@2.1.0": Object {
+          "purl": "pkg:npm/is-generator-fn@2.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-glob@4.0.1": Object {
+          "purl": "pkg:npm/is-glob@4.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-negative-zero@2.0.1": Object {
+          "purl": "pkg:npm/is-negative-zero@2.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-number-object@1.0.6": Object {
+          "purl": "pkg:npm/is-number-object@1.0.6",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-number@7.0.0": Object {
+          "purl": "pkg:npm/is-number@7.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-plain-object@5.0.0": Object {
+          "purl": "pkg:npm/is-plain-object@5.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-potential-custom-element-name@1.0.1": Object {
+          "purl": "pkg:npm/is-potential-custom-element-name@1.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-regex@1.1.4": Object {
+          "purl": "pkg:npm/is-regex@1.1.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-stream@2.0.0": Object {
+          "purl": "pkg:npm/is-stream@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-string@1.0.7": Object {
+          "purl": "pkg:npm/is-string@1.0.7",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-symbol@1.0.4": Object {
+          "purl": "pkg:npm/is-symbol@1.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/is-typedarray@1.0.0": Object {
+          "purl": "pkg:npm/is-typedarray@1.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/isexe@2.0.0": Object {
+          "purl": "pkg:npm/isexe@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/istanbul-lib-coverage@3.2.0": Object {
+          "purl": "pkg:npm/istanbul-lib-coverage@3.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/istanbul-lib-instrument@4.0.3": Object {
+          "purl": "pkg:npm/istanbul-lib-instrument@4.0.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/istanbul-lib-report@3.0.0": Object {
+          "purl": "pkg:npm/istanbul-lib-report@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/istanbul-lib-source-maps@4.0.1": Object {
+          "purl": "pkg:npm/istanbul-lib-source-maps@4.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/istanbul-reports@3.1.1": Object {
+          "purl": "pkg:npm/istanbul-reports@3.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-changed-files@27.4.2": Object {
+          "purl": "pkg:npm/jest-changed-files@27.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-circus@27.4.5": Object {
+          "purl": "pkg:npm/jest-circus@27.4.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-config@27.4.5": Object {
+          "purl": "pkg:npm/jest-config@27.4.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-diff@27.4.2": Object {
+          "purl": "pkg:npm/jest-diff@27.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-docblock@27.4.0": Object {
+          "purl": "pkg:npm/jest-docblock@27.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-each@27.4.2": Object {
+          "purl": "pkg:npm/jest-each@27.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-environment-jsdom@27.4.4": Object {
+          "purl": "pkg:npm/jest-environment-jsdom@27.4.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-environment-node@27.4.4": Object {
+          "purl": "pkg:npm/jest-environment-node@27.4.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-get-type@27.4.0": Object {
+          "purl": "pkg:npm/jest-get-type@27.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-haste-map@27.4.5": Object {
+          "purl": "pkg:npm/jest-haste-map@27.4.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-jasmine2@27.4.5": Object {
+          "purl": "pkg:npm/jest-jasmine2@27.4.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-leak-detector@27.4.2": Object {
+          "purl": "pkg:npm/jest-leak-detector@27.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-matcher-utils@27.4.2": Object {
+          "purl": "pkg:npm/jest-matcher-utils@27.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-message-util@27.4.2": Object {
+          "purl": "pkg:npm/jest-message-util@27.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-mock@27.4.2": Object {
+          "purl": "pkg:npm/jest-mock@27.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-pnp-resolver@1.2.2": Object {
+          "purl": "pkg:npm/jest-pnp-resolver@1.2.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-regex-util@27.4.0": Object {
+          "purl": "pkg:npm/jest-regex-util@27.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-resolve-dependencies@27.4.5": Object {
+          "purl": "pkg:npm/jest-resolve-dependencies@27.4.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-resolve@27.4.5": Object {
+          "purl": "pkg:npm/jest-resolve@27.4.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-runner@27.4.5": Object {
+          "purl": "pkg:npm/jest-runner@27.4.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-runtime@27.4.5": Object {
+          "purl": "pkg:npm/jest-runtime@27.4.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-serializer@27.4.0": Object {
+          "purl": "pkg:npm/jest-serializer@27.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-snapshot@27.4.5": Object {
+          "purl": "pkg:npm/jest-snapshot@27.4.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-util@27.4.2": Object {
+          "purl": "pkg:npm/jest-util@27.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-validate@27.4.2": Object {
+          "purl": "pkg:npm/jest-validate@27.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-watcher@27.4.2": Object {
+          "purl": "pkg:npm/jest-watcher@27.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest-worker@27.4.5": Object {
+          "purl": "pkg:npm/jest-worker@27.4.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jest@27.4.5": Object {
+          "purl": "pkg:npm/jest@27.4.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/js-tokens@4.0.0": Object {
+          "purl": "pkg:npm/js-tokens@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/js-yaml@4.1.0": Object {
+          "purl": "pkg:npm/js-yaml@4.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jsdom@16.7.0": Object {
+          "purl": "pkg:npm/jsdom@16.7.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/jsesc@2.5.2": Object {
+          "purl": "pkg:npm/jsesc@2.5.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/json-parse-better-errors@1.0.2": Object {
+          "purl": "pkg:npm/json-parse-better-errors@1.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/json-schema-traverse@0.4.1": Object {
+          "purl": "pkg:npm/json-schema-traverse@0.4.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/json-stable-stringify-without-jsonify@1.0.1": Object {
+          "purl": "pkg:npm/json-stable-stringify-without-jsonify@1.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/json5@2.2.0": Object {
+          "purl": "pkg:npm/json5@2.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/kleur@3.0.3": Object {
+          "purl": "pkg:npm/kleur@3.0.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/leven@3.1.0": Object {
+          "purl": "pkg:npm/leven@3.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/levn@0.3.0": Object {
+          "purl": "pkg:npm/levn@0.3.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/load-json-file@4.0.0": Object {
+          "purl": "pkg:npm/load-json-file@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/locate-path@5.0.0": Object {
+          "purl": "pkg:npm/locate-path@5.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/lodash.clonedeep@4.5.0": Object {
+          "purl": "pkg:npm/lodash.clonedeep@4.5.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/lodash.memoize@4.1.2": Object {
+          "purl": "pkg:npm/lodash.memoize@4.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/lodash.merge@4.6.2": Object {
+          "purl": "pkg:npm/lodash.merge@4.6.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/lodash.truncate@4.4.2": Object {
+          "purl": "pkg:npm/lodash.truncate@4.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/lodash@4.17.21": Object {
+          "purl": "pkg:npm/lodash@4.17.21",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/lru-cache@6.0.0": Object {
+          "purl": "pkg:npm/lru-cache@6.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/make-dir@3.1.0": Object {
+          "purl": "pkg:npm/make-dir@3.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/make-error@1.3.6": Object {
+          "purl": "pkg:npm/make-error@1.3.6",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/makeerror@1.0.12": Object {
+          "purl": "pkg:npm/makeerror@1.0.12",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/memorystream@0.3.1": Object {
+          "purl": "pkg:npm/memorystream@0.3.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/merge-stream@2.0.0": Object {
+          "purl": "pkg:npm/merge-stream@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/merge2@1.4.1": Object {
+          "purl": "pkg:npm/merge2@1.4.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/micromatch@4.0.4": Object {
+          "purl": "pkg:npm/micromatch@4.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/mime-db@1.51.0": Object {
+          "purl": "pkg:npm/mime-db@1.51.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/mime-types@2.1.34": Object {
+          "purl": "pkg:npm/mime-types@2.1.34",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/mimic-fn@2.1.0": Object {
+          "purl": "pkg:npm/mimic-fn@2.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/minimatch@3.0.4": Object {
+          "purl": "pkg:npm/minimatch@3.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/minimist@1.2.5": Object {
+          "purl": "pkg:npm/minimist@1.2.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/mri@1.2.0": Object {
+          "purl": "pkg:npm/mri@1.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/ms@2.1.2": Object {
+          "purl": "pkg:npm/ms@2.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/multimatch@4.0.0": Object {
+          "purl": "pkg:npm/multimatch@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/natural-compare@1.4.0": Object {
+          "purl": "pkg:npm/natural-compare@1.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/nice-try@1.0.5": Object {
+          "purl": "pkg:npm/nice-try@1.0.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/node-fetch@2.6.7": Object {
+          "purl": "pkg:npm/node-fetch@2.6.7",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/node-int64@0.4.0": Object {
+          "purl": "pkg:npm/node-int64@0.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/node-releases@2.0.1": Object {
+          "purl": "pkg:npm/node-releases@2.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/normalize-package-data@2.5.0": Object {
+          "purl": "pkg:npm/normalize-package-data@2.5.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/normalize-path@3.0.0": Object {
+          "purl": "pkg:npm/normalize-path@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/npm-run-all@4.1.5": Object {
+          "purl": "pkg:npm/npm-run-all@4.1.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/npm-run-path@4.0.1": Object {
+          "purl": "pkg:npm/npm-run-path@4.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/nwsapi@2.2.0": Object {
+          "purl": "pkg:npm/nwsapi@2.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/object-inspect@1.11.0": Object {
+          "purl": "pkg:npm/object-inspect@1.11.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/object-keys@1.1.1": Object {
+          "purl": "pkg:npm/object-keys@1.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/object.assign@4.1.2": Object {
+          "purl": "pkg:npm/object.assign@4.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/once@1.4.0": Object {
+          "purl": "pkg:npm/once@1.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/onetime@5.1.2": Object {
+          "purl": "pkg:npm/onetime@5.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/optionator@0.8.3": Object {
+          "purl": "pkg:npm/optionator@0.8.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/p-limit@2.3.0": Object {
+          "purl": "pkg:npm/p-limit@2.3.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/p-locate@4.1.0": Object {
+          "purl": "pkg:npm/p-locate@4.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/p-try@2.2.0": Object {
+          "purl": "pkg:npm/p-try@2.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/parent-module@1.0.1": Object {
+          "purl": "pkg:npm/parent-module@1.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/parse-json@4.0.0": Object {
+          "purl": "pkg:npm/parse-json@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/parse5@6.0.1": Object {
+          "purl": "pkg:npm/parse5@6.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/path-exists@4.0.0": Object {
+          "purl": "pkg:npm/path-exists@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/path-is-absolute@1.0.1": Object {
+          "purl": "pkg:npm/path-is-absolute@1.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/path-key@3.1.1": Object {
+          "purl": "pkg:npm/path-key@3.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/path-parse@1.0.7": Object {
+          "purl": "pkg:npm/path-parse@1.0.7",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/path-type@3.0.0": Object {
+          "purl": "pkg:npm/path-type@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/picocolors@1.0.0": Object {
+          "purl": "pkg:npm/picocolors@1.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/picomatch@2.2.2": Object {
+          "purl": "pkg:npm/picomatch@2.2.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/pidtree@0.3.1": Object {
+          "purl": "pkg:npm/pidtree@0.3.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/pify@3.0.0": Object {
+          "purl": "pkg:npm/pify@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/pirates@4.0.4": Object {
+          "purl": "pkg:npm/pirates@4.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/pkg-dir@4.2.0": Object {
+          "purl": "pkg:npm/pkg-dir@4.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/prelude-ls@1.1.2": Object {
+          "purl": "pkg:npm/prelude-ls@1.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/prettier-linter-helpers@1.0.0": Object {
+          "purl": "pkg:npm/prettier-linter-helpers@1.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/prettier-plugin-organize-imports@2.3.4": Object {
+          "purl": "pkg:npm/prettier-plugin-organize-imports@2.3.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/prettier@2.5.1": Object {
+          "purl": "pkg:npm/prettier@2.5.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/pretty-format@27.4.2": Object {
+          "purl": "pkg:npm/pretty-format@27.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/pretty-quick@3.1.3": Object {
+          "purl": "pkg:npm/pretty-quick@3.1.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/progress@2.0.3": Object {
+          "purl": "pkg:npm/progress@2.0.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/prompts@2.4.2": Object {
+          "purl": "pkg:npm/prompts@2.4.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/psl@1.8.0": Object {
+          "purl": "pkg:npm/psl@1.8.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/pump@3.0.0": Object {
+          "purl": "pkg:npm/pump@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/punycode@2.1.1": Object {
+          "purl": "pkg:npm/punycode@2.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/react-is@17.0.2": Object {
+          "purl": "pkg:npm/react-is@17.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/read-pkg@3.0.0": Object {
+          "purl": "pkg:npm/read-pkg@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/regexpp@3.1.0": Object {
+          "purl": "pkg:npm/regexpp@3.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/require-directory@2.1.1": Object {
+          "purl": "pkg:npm/require-directory@2.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/require-from-string@2.0.2": Object {
+          "purl": "pkg:npm/require-from-string@2.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/resolve-cwd@3.0.0": Object {
+          "purl": "pkg:npm/resolve-cwd@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/resolve-from@4.0.0": Object {
+          "purl": "pkg:npm/resolve-from@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/resolve.exports@1.1.0": Object {
+          "purl": "pkg:npm/resolve.exports@1.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/resolve@1.20.0": Object {
+          "purl": "pkg:npm/resolve@1.20.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/reusify@1.0.4": Object {
+          "purl": "pkg:npm/reusify@1.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/rimraf@3.0.2": Object {
+          "purl": "pkg:npm/rimraf@3.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/run-parallel@1.1.10": Object {
+          "purl": "pkg:npm/run-parallel@1.1.10",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/safe-buffer@5.1.2": Object {
+          "purl": "pkg:npm/safe-buffer@5.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/safer-buffer@2.1.2": Object {
+          "purl": "pkg:npm/safer-buffer@2.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/saxes@5.0.1": Object {
+          "purl": "pkg:npm/saxes@5.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/semver@6.3.0": Object {
+          "purl": "pkg:npm/semver@6.3.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/shebang-command@2.0.0": Object {
+          "purl": "pkg:npm/shebang-command@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/shebang-regex@3.0.0": Object {
+          "purl": "pkg:npm/shebang-regex@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/shell-quote@1.7.2": Object {
+          "purl": "pkg:npm/shell-quote@1.7.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/side-channel@1.0.4": Object {
+          "purl": "pkg:npm/side-channel@1.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/signal-exit@3.0.3": Object {
+          "purl": "pkg:npm/signal-exit@3.0.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/sisteransi@1.0.5": Object {
+          "purl": "pkg:npm/sisteransi@1.0.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/slash@3.0.0": Object {
+          "purl": "pkg:npm/slash@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/slice-ansi@4.0.0": Object {
+          "purl": "pkg:npm/slice-ansi@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/source-map-support@0.5.21": Object {
+          "purl": "pkg:npm/source-map-support@0.5.21",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/source-map@0.6.1": Object {
+          "purl": "pkg:npm/source-map@0.6.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/spdx-correct@3.1.1": Object {
+          "purl": "pkg:npm/spdx-correct@3.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/spdx-exceptions@2.3.0": Object {
+          "purl": "pkg:npm/spdx-exceptions@2.3.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/spdx-expression-parse@3.0.1": Object {
+          "purl": "pkg:npm/spdx-expression-parse@3.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/spdx-license-ids@3.0.10": Object {
+          "purl": "pkg:npm/spdx-license-ids@3.0.10",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/sprintf-js@1.0.3": Object {
+          "purl": "pkg:npm/sprintf-js@1.0.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/stack-utils@2.0.5": Object {
+          "purl": "pkg:npm/stack-utils@2.0.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/string-length@4.0.2": Object {
+          "purl": "pkg:npm/string-length@4.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/string-width@4.2.0": Object {
+          "purl": "pkg:npm/string-width@4.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/string.prototype.padend@3.1.2": Object {
+          "purl": "pkg:npm/string.prototype.padend@3.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/string.prototype.trimend@1.0.4": Object {
+          "purl": "pkg:npm/string.prototype.trimend@1.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/string.prototype.trimstart@1.0.4": Object {
+          "purl": "pkg:npm/string.prototype.trimstart@1.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/strip-ansi@6.0.0": Object {
+          "purl": "pkg:npm/strip-ansi@6.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/strip-bom@3.0.0": Object {
+          "purl": "pkg:npm/strip-bom@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/strip-final-newline@2.0.0": Object {
+          "purl": "pkg:npm/strip-final-newline@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/strip-json-comments@3.1.1": Object {
+          "purl": "pkg:npm/strip-json-comments@3.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/supports-color@5.5.0": Object {
+          "purl": "pkg:npm/supports-color@5.5.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/supports-hyperlinks@2.2.0": Object {
+          "purl": "pkg:npm/supports-hyperlinks@2.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/symbol-tree@3.2.4": Object {
+          "purl": "pkg:npm/symbol-tree@3.2.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/table@6.7.1": Object {
+          "purl": "pkg:npm/table@6.7.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/terminal-link@2.1.1": Object {
+          "purl": "pkg:npm/terminal-link@2.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/test-exclude@6.0.0": Object {
+          "purl": "pkg:npm/test-exclude@6.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/text-table@0.2.0": Object {
+          "purl": "pkg:npm/text-table@0.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/throat@6.0.1": Object {
+          "purl": "pkg:npm/throat@6.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/tmp-promise@3.0.3": Object {
+          "purl": "pkg:npm/tmp-promise@3.0.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/tmp@0.2.1": Object {
+          "purl": "pkg:npm/tmp@0.2.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/tmpl@1.0.5": Object {
+          "purl": "pkg:npm/tmpl@1.0.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/to-fast-properties@2.0.0": Object {
+          "purl": "pkg:npm/to-fast-properties@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/to-regex-range@5.0.1": Object {
+          "purl": "pkg:npm/to-regex-range@5.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/tough-cookie@4.0.0": Object {
+          "purl": "pkg:npm/tough-cookie@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/tr46@2.1.0": Object {
+          "purl": "pkg:npm/tr46@2.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/ts-jest@27.1.3": Object {
+          "purl": "pkg:npm/ts-jest@27.1.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/tslib@1.10.0": Object {
+          "purl": "pkg:npm/tslib@1.10.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/tsutils@3.21.0": Object {
+          "purl": "pkg:npm/tsutils@3.21.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/tunnel@0.0.6": Object {
+          "purl": "pkg:npm/tunnel@0.0.6",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/type-check@0.3.2": Object {
+          "purl": "pkg:npm/type-check@0.3.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/type-detect@4.0.8": Object {
+          "purl": "pkg:npm/type-detect@4.0.8",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/type-fest@2.12.0": Object {
+          "purl": "pkg:npm/type-fest@2.12.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/typedarray-to-buffer@3.1.5": Object {
+          "purl": "pkg:npm/typedarray-to-buffer@3.1.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/typescript@4.5.5": Object {
+          "purl": "pkg:npm/typescript@4.5.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/unbox-primitive@1.0.1": Object {
+          "purl": "pkg:npm/unbox-primitive@1.0.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/universal-user-agent@6.0.0": Object {
+          "purl": "pkg:npm/universal-user-agent@6.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/universalify@0.1.2": Object {
+          "purl": "pkg:npm/universalify@0.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/uri-js@4.4.1": Object {
+          "purl": "pkg:npm/uri-js@4.4.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/uuid@3.4.0": Object {
+          "purl": "pkg:npm/uuid@3.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/v8-compile-cache@2.3.0": Object {
+          "purl": "pkg:npm/v8-compile-cache@2.3.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/v8-to-istanbul@8.1.0": Object {
+          "purl": "pkg:npm/v8-to-istanbul@8.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/validate-npm-package-license@3.0.4": Object {
+          "purl": "pkg:npm/validate-npm-package-license@3.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/w3c-hr-time@1.0.2": Object {
+          "purl": "pkg:npm/w3c-hr-time@1.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/w3c-xmlserializer@2.0.0": Object {
+          "purl": "pkg:npm/w3c-xmlserializer@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/walker@1.0.8": Object {
+          "purl": "pkg:npm/walker@1.0.8",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/webidl-conversions@6.1.0": Object {
+          "purl": "pkg:npm/webidl-conversions@6.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/whatwg-encoding@1.0.5": Object {
+          "purl": "pkg:npm/whatwg-encoding@1.0.5",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/whatwg-mimetype@2.3.0": Object {
+          "purl": "pkg:npm/whatwg-mimetype@2.3.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/whatwg-url@8.7.0": Object {
+          "purl": "pkg:npm/whatwg-url@8.7.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/which-boxed-primitive@1.0.2": Object {
+          "purl": "pkg:npm/which-boxed-primitive@1.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/which@2.0.2": Object {
+          "purl": "pkg:npm/which@2.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/word-wrap@1.2.3": Object {
+          "purl": "pkg:npm/word-wrap@1.2.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/wrap-ansi@7.0.0": Object {
+          "purl": "pkg:npm/wrap-ansi@7.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/wrappy@1.0.2": Object {
+          "purl": "pkg:npm/wrappy@1.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/write-file-atomic@3.0.3": Object {
+          "purl": "pkg:npm/write-file-atomic@3.0.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/ws@7.5.6": Object {
+          "purl": "pkg:npm/ws@7.5.6",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/xml-name-validator@3.0.0": Object {
+          "purl": "pkg:npm/xml-name-validator@3.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/xmlchars@2.2.0": Object {
+          "purl": "pkg:npm/xmlchars@2.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/y18n@5.0.8": Object {
+          "purl": "pkg:npm/y18n@5.0.8",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/yallist@4.0.0": Object {
+          "purl": "pkg:npm/yallist@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/yargs-parser@20.2.9": Object {
+          "purl": "pkg:npm/yargs-parser@20.2.9",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/yargs@16.2.0": Object {
+          "purl": "pkg:npm/yargs@16.2.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+      },
+    },
+    "tests/fixtures/image-alpine-match-coverage/lib/apk/db/installed": Object {
+      "file": Object {
+        "source_location": "tests/fixtures/image-alpine-match-coverage/lib/apk/db/installed",
+      },
+      "name": "tests/fixtures/image-alpine-match-coverage/lib/apk/db/installed",
+      "resolved": Object {
+        "pkg:alpine/libvncserver@0.9.9": Object {
+          "purl": "pkg:alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+      },
+    },
+    "tests/fixtures/image-centos-match-coverage/var/lib/rpm/Packages": Object {
+      "file": Object {
+        "source_location": "tests/fixtures/image-centos-match-coverage/var/lib/rpm/Packages",
+      },
+      "name": "tests/fixtures/image-centos-match-coverage/var/lib/rpm/Packages",
+      "resolved": Object {
+        "pkg:rpm/dive@0.9.2-1": Object {
+          "purl": "pkg:rpm/dive@0.9.2-1?arch=x86_64&upstream=dive-0.9.2-1.src.rpm",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+      },
+    },
+    "tests/fixtures/image-debian-match-coverage/java/example-java-app-maven-0.1.0.jar": Object {
+      "file": Object {
+        "source_location": "tests/fixtures/image-debian-match-coverage/java/example-java-app-maven-0.1.0.jar",
+      },
+      "name": "tests/fixtures/image-debian-match-coverage/java/example-java-app-maven-0.1.0.jar",
+      "resolved": Object {
+        "pkg:maven/joda-time/joda-time@2.9.2": Object {
+          "purl": "pkg:maven/joda-time/joda-time@2.9.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:maven/org.anchore/example-java-app-maven@0.1.0": Object {
+          "purl": "pkg:maven/org.anchore/example-java-app-maven@0.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+      },
+    },
+    "tests/fixtures/image-debian-match-coverage/python/dist-info/METADATA": Object {
+      "file": Object {
+        "source_location": "tests/fixtures/image-debian-match-coverage/python/dist-info/METADATA",
+      },
+      "name": "tests/fixtures/image-debian-match-coverage/python/dist-info/METADATA",
+      "resolved": Object {
+        "pkg:pypi/pygments@2.6.1": Object {
+          "purl": "pkg:pypi/Pygments@2.6.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+      },
+    },
+    "tests/fixtures/image-debian-match-coverage/ruby/Gemfile.lock": Object {
+      "file": Object {
+        "source_location": "tests/fixtures/image-debian-match-coverage/ruby/Gemfile.lock",
+      },
+      "name": "tests/fixtures/image-debian-match-coverage/ruby/Gemfile.lock",
+      "resolved": Object {
+        "pkg:gem/rails@4.1.1": Object {
+          "purl": "pkg:gem/rails@4.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+      },
+    },
+    "tests/fixtures/image-debian-match-coverage/var/lib/dpkg/status": Object {
+      "file": Object {
+        "source_location": "tests/fixtures/image-debian-match-coverage/var/lib/dpkg/status",
+      },
+      "name": "tests/fixtures/image-debian-match-coverage/var/lib/dpkg/status",
+      "resolved": Object {
+        "pkg:deb/apt@1.8.2": Object {
+          "purl": "pkg:deb/apt@1.8.2?arch=amd64&upstream=apt-dev",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+      },
+    },
+    "tests/fixtures/npm-project/package-lock.json": Object {
+      "file": Object {
+        "source_location": "tests/fixtures/npm-project/package-lock.json",
+      },
+      "name": "tests/fixtures/npm-project/package-lock.json",
+      "resolved": Object {
+        "pkg:npm/chownr@2.0.0": Object {
+          "purl": "pkg:npm/chownr@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fs-minipass@2.1.0": Object {
+          "purl": "pkg:npm/fs-minipass@2.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/js-tokens@4.0.0": Object {
+          "purl": "pkg:npm/js-tokens@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/loose-envify@1.4.0": Object {
+          "purl": "pkg:npm/loose-envify@1.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/minipass@3.1.3": Object {
+          "purl": "pkg:npm/minipass@3.1.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/minizlib@2.1.2": Object {
+          "purl": "pkg:npm/minizlib@2.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/mkdirp@1.0.4": Object {
+          "purl": "pkg:npm/mkdirp@1.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/object-assign@4.1.1": Object {
+          "purl": "pkg:npm/object-assign@4.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/prop-types@15.7.2": Object {
+          "purl": "pkg:npm/prop-types@15.7.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/react-is@16.13.1": Object {
+          "purl": "pkg:npm/react-is@16.13.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/react@16.14.0": Object {
+          "purl": "pkg:npm/react@16.14.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/tar@6.1.0": Object {
+          "purl": "pkg:npm/tar@6.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/yallist@4.0.0": Object {
+          "purl": "pkg:npm/yallist@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+      },
+    },
+    "tests/fixtures/yarn-project/yarn.lock": Object {
+      "file": Object {
+        "source_location": "tests/fixtures/yarn-project/yarn.lock",
+      },
+      "name": "tests/fixtures/yarn-project/yarn.lock",
+      "resolved": Object {
+        "pkg:npm/js-tokens@4.0.0": Object {
+          "purl": "pkg:npm/js-tokens@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/loose-envify@1.4.0": Object {
+          "purl": "pkg:npm/loose-envify@1.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/object-assign@4.1.1": Object {
+          "purl": "pkg:npm/object-assign@4.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/prop-types@15.7.2": Object {
+          "purl": "pkg:npm/prop-types@15.7.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/react-is@16.13.1": Object {
+          "purl": "pkg:npm/react-is@16.13.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/react@16.14.0": Object {
+          "purl": "pkg:npm/react@16.14.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/trim@0.0.2": Object {
+          "purl": "pkg:npm/trim@0.0.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+      },
+    },
+  },
+  "ref": "v0.0.0",
+  "scanned": "",
+  "sha": "f293f09uaw90gwa09f9wea",
+  "version": 0,
+}
+`;

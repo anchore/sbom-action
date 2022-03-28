@@ -53,6 +53,9 @@ export interface DependencySnapshot {
   };
   sha: string;
   ref: string;
+  detector: {
+    version: string;
+  };
 }
 
 /**
