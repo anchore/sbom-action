@@ -68,9 +68,10 @@ describe("GitHub Snapshot", () => {
 
     expect(submission.scanned).toBeDefined();
 
-    // redact the timestamp
+    // redact changing data
     submission.scanned = "";
+    submission.detector.version = "";
 
-    expect(JSON.stringify(submission)).toMatchSnapshot();
+    expect(submission).toMatchSnapshot();
   });
 });
