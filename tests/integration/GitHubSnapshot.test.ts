@@ -37,7 +37,7 @@ describe("GitHub Snapshot", () => {
     restoreInitialData();
   });
 
-  it("runs with default inputs on push", async () => {
+  it("runs with default inputs", async () => {
     setData({
       inputs: {
         path: ".",

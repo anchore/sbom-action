@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GitHub Snapshot runs with default inputs on push 1`] = `
+exports[`GitHub Snapshot runs with default inputs 1`] = `
 Object {
   "detector": Object {
     "name": "syft",
