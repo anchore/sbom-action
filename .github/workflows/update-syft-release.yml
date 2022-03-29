@@ -16,6 +16,7 @@ jobs:
           LATEST_VERSION=$(curl "https://api.github.com/repos/anchore/syft/releases/latest" 2>/dev/null | jq -r '.tag_name')
           echo "export const VERSION = \"$LATEST_VERSION\";" > src/SyftVersion.ts
           # since husky hooks are not installed, manually run this:
+          npm install
           npm run precommit
           # export the version for use with create-pull-request:
           echo "::set-output name=LATEST_VERSION::$LATEST_VERSION"
