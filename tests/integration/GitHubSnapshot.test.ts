@@ -1,3 +1,4 @@
+import path from "path";
 import { context, getMocks } from "../mocks";
 const { setData, restoreInitialData, mocks } = getMocks();
 
@@ -38,9 +39,10 @@ describe("GitHub Snapshot", () => {
   });
 
   it("runs with default inputs", async () => {
+    const dir = path.join(__dirname, "../fixtures/npm-project");
     setData({
       inputs: {
-        path: ".",
+        path: dir,
         "dependency-snapshot": "true",
         "upload-artifact": "false",
       },
