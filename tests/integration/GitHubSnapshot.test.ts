@@ -39,10 +39,9 @@ describe("GitHub Snapshot", () => {
   });
 
   it("runs with default inputs", async () => {
-    const dir = path.join(__dirname, "../fixtures/npm-project");
     setData({
       inputs: {
-        path: dir,
+        path: "tests/fixtures/npm-project",
         "dependency-snapshot": "true",
         "upload-artifact": "false",
       },

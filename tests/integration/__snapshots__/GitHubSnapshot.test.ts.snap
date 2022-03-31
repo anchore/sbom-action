@@ -12,11 +12,11 @@ Object {
     "name": "default-import-job",
   },
   "manifests": Object {
-    "/Users/kzantow/projects/sbom-action/tests/fixtures/npm-project/package-lock.json": Object {
+    "tests/fixtures/npm-project/package-lock.json": Object {
       "file": Object {
-        "source_location": "/Users/kzantow/projects/sbom-action/tests/fixtures/npm-project/package-lock.json",
+        "source_location": "tests/fixtures/npm-project/package-lock.json",
       },
-      "name": "/Users/kzantow/projects/sbom-action/tests/fixtures/npm-project/package-lock.json",
+      "name": "tests/fixtures/npm-project/package-lock.json",
       "resolved": Object {
         "pkg:npm/chownr@2.0.0": Object {
           "purl": "pkg:npm/chownr@2.0.0",
