@@ -134,7 +134,9 @@ A sub-action to [upload multiple SBOMs](publish-sbom/action.yml) to GitHub relea
 
 A sub-action to [download Syft](download-syft/action.yml).
 
-No input parameters.
+| Parameter             | Description                       | Default             |
+| --------------------- | --------------------------------- | ------------------- |
+| `syft-version`        | The version of Syft to download   |                     |
 
 Output parameters:
 

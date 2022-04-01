@@ -2,6 +2,11 @@ name: "Anchore SBOM Action / Download Syft"
 description: "Downloads Syft to the Action tool cache and provides a reference"
 author: "Anchore"
 
+inputs:
+  syft-version:
+    required: false
+    description: "The version of Syft to download"
+
 outputs:
   cmd:
     description: "A reference to the Syft command"
