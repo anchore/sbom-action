@@ -19256,8 +19256,17 @@ function getArtifactName() {
     const format = getSbomFormat();
     let extension = format;
     switch (format) {
+        case "spdx":
+            extension = "spdx";
+            break;
         case "spdx-json":
             extension = "spdx.json";
+            break;
+        case "cyclonedx":
+            extension = "cyclonedx.xml";
+            break;
+        case "cyclonedx-json":
+            extension = "cyclonedx.json";
             break;
         case "json":
             extension = "syft.json";
