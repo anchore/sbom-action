@@ -19257,12 +19257,14 @@ function getArtifactName() {
     let extension = format;
     switch (format) {
         case "spdx":
+        case "spdx-tag-value":
             extension = "spdx";
             break;
         case "spdx-json":
             extension = "spdx.json";
             break;
         case "cyclonedx":
+        case "cyclonedx-xml":
             extension = "cyclonedx.xml";
             break;
         case "cyclonedx-json":
