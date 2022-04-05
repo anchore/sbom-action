@@ -126,7 +126,7 @@ async function executeSyft({
     throw new Error("Invalid input, no image or path specified");
   }
 
-  args = [...args, "-o", format];
+  args = [...args, "-o", format, "-o", "table"];
 
   if (opts.uploadToDependencySnapshotAPI) {
     // generate github dependency format
