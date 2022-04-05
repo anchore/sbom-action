@@ -18799,8 +18799,7 @@ function dashWrap(str) {
 }
 exports.dashWrap = dashWrap;
 /**
- * Logs all objects passed in debug outputting strings directly and
- * calling JSON.stringify on other elements in a group with the given label
+ * Attempts to intelligently log all objects passed in when debug is enabled
  */
 function debugLog(label, ...args) {
     if (core.isDebug()) {
@@ -18811,10 +18810,10 @@ function debugLog(label, ...args) {
                 }
                 else if (arg instanceof Error) {
                     core.debug(arg.message);
-                    core.debug(JSON.stringify(arg.stack));
+                    console.log(arg.stack);
                 }
                 else {
-                    core.debug(JSON.stringify(arg));
+                    console.log(arg);
                 }
             }
         }));
@@ -19028,14 +19027,16 @@ class GithubClient {
                     data: JSON.stringify(snapshot),
                 });
                 if (response.status >= 400) {
-                    core.warning(`Dependency snapshot upload failed: ${JSON.stringify(response)}`);
+                    core.warning(`Dependency snapshot upload failed:`);
+                    console.log(response);
                 }
                 else {
                     debugLog(`Dependency snapshot upload successful:`, response);
                 }
             }
             catch (e) {
-                core.warning(`Error uploading depdendency snapshot: ${JSON.stringify(e)}`);
+                core.warning(`Error uploading depdendency snapshot:`);
+                console.log(e);
             }
         });
     }
@@ -19474,7 +19475,7 @@ function runSyftAction() {
             }
         }
         else {
-            throw new Error(`No Syft output: ${JSON.stringify(output)}`);
+            throw new Error(`No Syft output`);
         }
     });
 }
@@ -19619,7 +19620,13 @@ function runAndFailBuildOnException(fn) {
                 core.setFailed(e.message);
             }
             else if (e instanceof Object) {
-                core.setFailed(JSON.stringify(e));
+                try {
+                    core.setFailed(JSON.stringify(e));
+                }
+                catch (e) {
+                    core.setFailed("Action failed");
+                    console.error(e);
+                }
             }
             else {
                 core.setFailed(`An unknown error occurred: ${e}`);

@@ -348,7 +348,7 @@ export async function runSyftAction(): Promise<void> {
       core.exportVariable(PRIOR_ARTIFACT_ENV_VAR, getArtifactName());
     }
   } else {
-    throw new Error(`No Syft output: ${JSON.stringify(output)}`);
+    throw new Error(`No Syft output`);
   }
 }
 
@@ -517,7 +517,12 @@ export async function runAndFailBuildOnException<T>(
     if (e instanceof Error) {
       core.setFailed(e.message);
     } else if (e instanceof Object) {
-      core.setFailed(JSON.stringify(e));
+      try {
+        core.setFailed(JSON.stringify(e));
+      } catch (e) {
+        core.setFailed("Action failed");
+        console.error(e);
+      }
     } else {
       core.setFailed(`An unknown error occurred: ${e}`);
     }

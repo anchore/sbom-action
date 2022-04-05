@@ -96,8 +96,7 @@ export function dashWrap(str: string): string {
 }
 
 /**
- * Logs all objects passed in debug outputting strings directly and
- * calling JSON.stringify on other elements in a group with the given label
+ * Attempts to intelligently log all objects passed in when debug is enabled
  */
 export function debugLog(label: string, ...args: unknown[]): void {
   if (core.isDebug()) {
@@ -107,9 +106,9 @@ export function debugLog(label: string, ...args: unknown[]): void {
           core.debug(arg);
         } else if (arg instanceof Error) {
           core.debug(arg.message);
-          core.debug(JSON.stringify(arg.stack));
+          console.log(arg.stack);
         } else {
-          core.debug(JSON.stringify(arg));
+          console.log(arg);
         }
       }
     });
@@ -432,16 +431,14 @@ export class GithubClient {
       );
 
       if (response.status >= 400) {
-        core.warning(
-          `Dependency snapshot upload failed: ${JSON.stringify(response)}`
-        );
+        core.warning(`Dependency snapshot upload failed:`);
+        console.log(response);
       } else {
         debugLog(`Dependency snapshot upload successful:`, response);
       }
     } catch (e) {
-      core.warning(
-        `Error uploading depdendency snapshot: ${JSON.stringify(e)}`
-      );
+      core.warning(`Error uploading depdendency snapshot:`);
+      console.log(e);
     }
   }
 }
