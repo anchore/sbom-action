@@ -214,10 +214,10 @@ describe("Github Client", () => {
       }
     });
 
-    debugLog("the_label", { the: "obj" });
+    debugLog("the_label", "string");
 
     expect(data.debug.log.length).toBe(1);
-    expect(data.debug.log[0]).toBe("{\"the\":\"obj\"}");
+    expect(data.debug.log[0]).toBe("string");
   });
 
   it("finds a draft release", async () => {
