@@ -19188,6 +19188,7 @@ const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
 const cache = __importStar(__nccwpck_require__(7784));
 const fs = __importStar(__nccwpck_require__(7147));
+const os_1 = __importDefault(__nccwpck_require__(2037));
 const path_1 = __importDefault(__nccwpck_require__(1017));
 const stream_1 = __importDefault(__nccwpck_require__(2781));
 const SyftVersion_1 = __nccwpck_require__(4431);
@@ -19197,7 +19198,7 @@ const SyftDownloader_1 = __nccwpck_require__(9344);
 exports.SYFT_BINARY_NAME = "syft";
 exports.SYFT_VERSION = core.getInput("syft-version") || SyftVersion_1.VERSION;
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
-const tempDir = fs.mkdtempSync("sbom-action-");
+const tempDir = fs.mkdtempSync(path_1.default.join(os_1.default.tmpdir(), "sbom-action-"));
 const githubDependencySnapshotFile = `${tempDir}/github.sbom.json`;
 /**
  * Tries to get a unique artifact name or otherwise as appropriate as possible

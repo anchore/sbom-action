@@ -1,0 +1,4300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CycloneDX JSON alpine 1`] = `
+"{
+  \\"bomFormat\\": \\"CycloneDX\\",
+  \\"specVersion\\": \\"1.4\\",
+  ,
+  \\"version\\": 1,
+  \\"metadata\\": {
+    ,
+    \\"tools\\": [
+      {
+        \\"vendor\\": \\"anchore\\",
+        \\"name\\": \\"syft\\",
+        
+      }
+    ],
+    \\"component\\": {
+      \\"bom-ref\\": \\"91c1033176c17eb9\\",
+      \\"type\\": \\"container\\",
+      \\"name\\": \\"localhost:5000/match-coverage/alpine:latest\\",
+      
+    }
+  },
+  \\"components\\": [
+    {
+      \\"type\\": \\"library\\",
+      \\"publisher\\": \\"A. Wilcox \\\\u003cawilfox@adelielinux.org\\\\u003e\\",
+      \\"name\\": \\"libvncserver\\",
+      ,
+      \\"description\\": \\"Library to make writing a vnc server easy\\",
+      \\"licenses\\": [
+        {
+          \\"license\\": {
+            \\"id\\": \\"GPL-2.0-or-later\\"
+          }
+        }
+      ],
+      \\"cpe\\": \\"cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:alpine/libvncserver@0.9.9?arch=x86_64\\\\u0026upstream=libvncserver\\\\u0026distro=alpine-3.12.0\\",
+      \\"externalReferences\\": [
+        {
+          \\"url\\": \\"http://libvncserver.sourceforge.net/\\",
+          \\"type\\": \\"distribution\\"
+        }
+      ],
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"apkdb-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:metadataType\\",
+          \\"value\\": \\"ApkMetadata\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"apk\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:layerID\\",
+          \\"value\\": \\"sha256:da8a0694dd03d0f1d2351f7a813334c6d81c8c82635a5de08483909d5de37be2\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"/lib/apk/db/installed\\"
+        },
+        {
+          \\"name\\": \\"syft:metadata:gitCommitOfApkPort\\",
+          \\"value\\": \\"bf1ec813f662f128fc6b70f37ef1c0474bb24488\\"
+        },
+        {
+          \\"name\\": \\"syft:metadata:installedSize\\",
+          \\"value\\": \\"389120\\"
+        },
+        {
+          \\"name\\": \\"syft:metadata:originPackage\\",
+          \\"value\\": \\"libvncserver\\"
+        },
+        {
+          \\"name\\": \\"syft:metadata:pullChecksum\\",
+          \\"value\\": \\"Q1z0MwWQKfva+S+q7XmOBYFfQgW/k=\\"
+        },
+        {
+          \\"name\\": \\"syft:metadata:pullDependencies\\",
+          \\"value\\": \\"so:libc.musl-x86_64.so.1 so:libgcrypt.so.20 so:libgnutls.so.30 so:libjpeg.so.8 so:libpng16.so.16 so:libz.so.1\\"
+        },
+        {
+          \\"name\\": \\"syft:metadata:size\\",
+          \\"value\\": \\"166239\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"operating-system\\",
+      \\"name\\": \\"alpine\\",
+      ,
+      \\"description\\": \\"Alpine Linux v3.12\\",
+      \\"swid\\": {
+        \\"tagId\\": \\"alpine\\",
+        \\"name\\": \\"alpine\\",
+        
+      },
+      \\"externalReferences\\": [
+        {
+          \\"url\\": \\"https://bugs.alpinelinux.org/\\",
+          \\"type\\": \\"issue-tracker\\"
+        },
+        {
+          \\"url\\": \\"https://alpinelinux.org/\\",
+          \\"type\\": \\"website\\"
+        }
+      ],
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:distro:id\\",
+          \\"value\\": \\"alpine\\"
+        },
+        {
+          \\"name\\": \\"syft:distro:prettyName\\",
+          \\"value\\": \\"Alpine Linux v3.12\\"
+        },
+        {
+          \\"name\\": \\"syft:distro:versionID\\",
+          \\"value\\": \\"3.12.0\\"
+        }
+      ]
+    }
+  ]
+}
+"
+`;
+
+exports[`CycloneDX JSON debian 1`] = `
+"{
+  \\"bomFormat\\": \\"CycloneDX\\",
+  \\"specVersion\\": \\"1.4\\",
+  ,
+  \\"version\\": 1,
+  \\"metadata\\": {
+    ,
+    \\"tools\\": [
+      {
+        \\"vendor\\": \\"anchore\\",
+        \\"name\\": \\"syft\\",
+        
+      }
+    ],
+    \\"component\\": {
+      \\"bom-ref\\": \\"be931e0ab38ebe67\\",
+      \\"type\\": \\"container\\",
+      \\"name\\": \\"localhost:5000/match-coverage/debian:latest\\",
+      
+    }
+  },
+  \\"components\\": [
+    {
+      \\"type\\": \\"library\\",
+      \\"author\\": \\"Georg Brandl \\\\u003cgeorg@python.org\\\\u003e\\",
+      \\"name\\": \\"Pygments\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:pypi/Pygments@2.6.1\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"python-package-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"python\\"
+        },
+        {
+          \\"name\\": \\"syft:package:metadataType\\",
+          \\"value\\": \\"PythonPackageMetadata\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"python\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:python-Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:python_Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:python_Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:georg_brandl:python-Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:georg_brandl:python_Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:python-Pygments:Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:python_Pygments:Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:python:python-Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:python:python_Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:georg:python-Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:georg:python_Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:layerID\\",
+          \\"value\\": \\"sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"/python/dist-info/METADATA\\"
+        },
+        {
+          \\"name\\": \\"syft:location:1:layerID\\",
+          \\"value\\": \\"sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58\\"
+        },
+        {
+          \\"name\\": \\"syft:location:1:path\\",
+          \\"value\\": \\"/python/dist-info/top_level.txt\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"publisher\\": \\"APT Development Team \\\\u003cdeity@lists.debian.org\\\\u003e\\",
+      \\"name\\": \\"apt\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:apt:apt:1.8.2:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:deb/debian/apt@1.8.2?arch=amd64\\\\u0026upstream=apt-dev\\\\u0026distro=debian-8\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"dpkgdb-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:metadataType\\",
+          \\"value\\": \\"DpkgMetadata\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"deb\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:layerID\\",
+          \\"value\\": \\"sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"/var/lib/dpkg/status\\"
+        },
+        {
+          \\"name\\": \\"syft:metadata:installedSize\\",
+          \\"value\\": \\"4064\\"
+        },
+        {
+          \\"name\\": \\"syft:metadata:source\\",
+          \\"value\\": \\"apt-dev\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"author\\": \\"André Arko,Samuel Giddins,Colby Swandale,Hiroshi Shibata,David Rodríguez,Grey Baker,Stephanie Morillo,Chris Morris,James Wen,Tim Moore,André Medeiros,Jessica Lynn Suttles,Terence Lee,Carl Lerche,Yehuda Katz\\",
+      \\"name\\": \\"bundler\\",
+      ,
+      \\"licenses\\": [
+        {
+          \\"license\\": {
+            \\"id\\": \\"MIT\\"
+          }
+        }
+      ],
+      \\"cpe\\": \\"cpe:2.3:a:jessica-lynn-suttles:bundler:2.1.4:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:gem/bundler@2.1.4\\",
+      \\"externalReferences\\": [
+        {
+          \\"url\\": \\"https://bundler.io\\",
+          \\"type\\": \\"website\\"
+        }
+      ],
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"ruby-gemspec-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"ruby\\"
+        },
+        {
+          \\"name\\": \\"syft:package:metadataType\\",
+          \\"value\\": \\"GemMetadata\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"gem\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:jessica_lynn_suttles:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:stephanie-morillo:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:stephanie_morillo:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:hiroshi-shibata:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:hiroshi_shibata:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:colby-swandale:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:colby_swandale:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:samuel-giddins:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:samuel_giddins:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:chris-morris:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:chris_morris:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:carl-lerche:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:carl_lerche:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:terence-lee:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:terence_lee:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:yehuda-katz:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:yehuda_katz:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:grey-baker:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:grey_baker:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:james-wen:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:james_wen:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:ruby-lang:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:ruby_lang:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:tim-moore:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:tim_moore:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:bundler:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:bundler:2.1.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:layerID\\",
+          \\"value\\": \\"sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"/ruby/specifications/bundler.gemspec\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"group\\": \\"org.anchore\\",
+      \\"name\\": \\"example-java-app-maven\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:example-java-app-maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:maven/org.anchore/example-java-app-maven@0.1.0\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"java-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"java\\"
+        },
+        {
+          \\"name\\": \\"syft:package:metadataType\\",
+          \\"value\\": \\"JavaMetadata\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"java-archive\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example-java-app-maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example_java_app_maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example-java-app:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example-java-app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example_java_app:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example-java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example-java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example_java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:anchore:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:layerID\\",
+          \\"value\\": \\"sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"/java/example-java-app-maven-0.1.0.jar\\"
+        },
+        {
+          \\"name\\": \\"syft:metadata:-:artifactID\\",
+          \\"value\\": \\"example-java-app-maven\\"
+        },
+        {
+          \\"name\\": \\"syft:metadata:-:groupID\\",
+          \\"value\\": \\"org.anchore\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"group\\": \\"joda-time\\",
+      \\"name\\": \\"joda-time\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:joda-time:joda-time:2.9.2:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:maven/joda-time/joda-time@2.9.2\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"java-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"java\\"
+        },
+        {
+          \\"name\\": \\"syft:package:metadataType\\",
+          \\"value\\": \\"JavaMetadata\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"java-archive\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:joda-time:joda_time:2.9.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:joda_time:joda-time:2.9.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:joda:joda-time:2.9.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:layerID\\",
+          \\"value\\": \\"sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"/java/example-java-app-maven-0.1.0.jar\\"
+        },
+        {
+          \\"name\\": \\"syft:metadata:-:artifactID\\",
+          \\"value\\": \\"joda-time\\"
+        },
+        {
+          \\"name\\": \\"syft:metadata:-:groupID\\",
+          \\"value\\": \\"joda-time\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"author\\": \\"Isaac Z. Schlueter \\\\u003ci@izs.me\\\\u003e (http://blog.izs.me)\\",
+      \\"name\\": \\"npm\\",
+      ,
+      \\"licenses\\": [
+        {
+          \\"license\\": {
+            \\"id\\": \\"Artistic-2.0\\"
+          }
+        }
+      ],
+      \\"cpe\\": \\"cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/npm@6.14.6\\",
+      \\"externalReferences\\": [
+        {
+          \\"url\\": \\"https://github.com/npm/cli\\",
+          \\"type\\": \\"distribution\\"
+        },
+        {
+          \\"url\\": \\"https://docs.npmjs.com/\\",
+          \\"type\\": \\"website\\"
+        }
+      ],
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-package-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:metadataType\\",
+          \\"value\\": \\"NpmPackageJsonMetadata\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:npm:6.14.6:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:layerID\\",
+          \\"value\\": \\"sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"/javascript/pkg-json/package.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"operating-system\\",
+      \\"name\\": \\"debian\\",
+      ,
+      \\"description\\": \\"Debian GNU/Linux 8 (jessie)\\",
+      \\"swid\\": {
+        \\"tagId\\": \\"debian\\",
+        \\"name\\": \\"debian\\",
+        
+      },
+      \\"externalReferences\\": [
+        {
+          \\"url\\": \\"https://bugs.debian.org/\\",
+          \\"type\\": \\"issue-tracker\\"
+        },
+        {
+          \\"url\\": \\"http://www.debian.org/\\",
+          \\"type\\": \\"website\\"
+        },
+        {
+          \\"url\\": \\"http://www.debian.org/support\\",
+          \\"comment\\": \\"support\\",
+          \\"type\\": \\"other\\"
+        }
+      ],
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:distro:id\\",
+          \\"value\\": \\"debian\\"
+        },
+        {
+          \\"name\\": \\"syft:distro:prettyName\\",
+          \\"value\\": \\"Debian GNU/Linux 8 (jessie)\\"
+        },
+        {
+          \\"name\\": \\"syft:distro:versionID\\",
+          \\"value\\": \\"8\\"
+        }
+      ]
+    }
+  ]
+}
+"
+`;
+
+exports[`CycloneDX JSON npm 1`] = `
+"{
+  \\"bomFormat\\": \\"CycloneDX\\",
+  \\"specVersion\\": \\"1.4\\",
+  ,
+  \\"version\\": 1,
+  \\"metadata\\": {
+    ,
+    \\"tools\\": [
+      {
+        \\"vendor\\": \\"anchore\\",
+        \\"name\\": \\"syft\\",
+        
+      }
+    ],
+    \\"component\\": {
+      \\"bom-ref\\": \\"f0f895d6b3c4aeaf\\",
+      \\"type\\": \\"file\\",
+      \\"name\\": \\"tests/fixtures/npm-project\\"
+    }
+  },
+  \\"components\\": [
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"chownr\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/chownr@2.0.0\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:chownr:2.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"fs-minipass\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:fs-minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/fs-minipass@2.1.0\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:fs-minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:fs_minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:fs:fs-minipass:2.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:fs-minipass:2.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:fs_minipass:2.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"js-tokens\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/js-tokens@4.0.0\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"loose-envify\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/loose-envify@1.4.0\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"minipass\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/minipass@3.1.3\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:minipass:3.1.3:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"minizlib\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/minizlib@2.1.2\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:minizlib:2.1.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"mkdirp\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/mkdirp@1.0.4\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:mkdirp:1.0.4:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"object-assign\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/object-assign@4.1.1\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"prop-types\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/prop-types@15.7.2\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"react\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/react@16.14.0\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"react-is\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/react-is@16.13.1\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"tar\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/tar@6.1.0\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:tar:6.1.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"yallist\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/yallist@4.0.0\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:yallist:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"package-lock.json\\"
+        }
+      ]
+    }
+  ]
+}
+"
+`;
+
+exports[`CycloneDX JSON yarn 1`] = `
+"{
+  \\"bomFormat\\": \\"CycloneDX\\",
+  \\"specVersion\\": \\"1.4\\",
+  ,
+  \\"version\\": 1,
+  \\"metadata\\": {
+    ,
+    \\"tools\\": [
+      {
+        \\"vendor\\": \\"anchore\\",
+        \\"name\\": \\"syft\\",
+        
+      }
+    ],
+    \\"component\\": {
+      \\"bom-ref\\": \\"b2a81ddbf7dfbefa\\",
+      \\"type\\": \\"file\\",
+      \\"name\\": \\"tests/fixtures/yarn-project\\"
+    }
+  },
+  \\"components\\": [
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"js-tokens\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/js-tokens@4.0.0\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"yarn.lock\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"loose-envify\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/loose-envify@1.4.0\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"yarn.lock\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"object-assign\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/object-assign@4.1.1\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"yarn.lock\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"prop-types\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/prop-types@15.7.2\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"yarn.lock\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"react\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/react@16.14.0\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"yarn.lock\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"react-is\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/react-is@16.13.1\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"yarn.lock\\"
+        }
+      ]
+    },
+    {
+      \\"type\\": \\"library\\",
+      \\"name\\": \\"trim\\",
+      ,
+      \\"cpe\\": \\"cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:*:*:*\\",
+      \\"purl\\": \\"pkg:npm/trim@0.0.2\\",
+      \\"properties\\": [
+        {
+          \\"name\\": \\"syft:package:foundBy\\",
+          \\"value\\": \\"javascript-lock-cataloger\\"
+        },
+        {
+          \\"name\\": \\"syft:package:language\\",
+          \\"value\\": \\"javascript\\"
+        },
+        {
+          \\"name\\": \\"syft:package:type\\",
+          \\"value\\": \\"npm\\"
+        },
+        {
+          \\"name\\": \\"syft:cpe23\\",
+          \\"value\\": \\"cpe:2.3:a:*:trim:0.0.2:*:*:*:*:*:*:*\\"
+        },
+        {
+          \\"name\\": \\"syft:location:0:path\\",
+          \\"value\\": \\"yarn.lock\\"
+        }
+      ]
+    }
+  ]
+}
+"
+`;
+
+exports[`CycloneDX XML alpine 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
+<bom xmlns=\\"http://cyclonedx.org/schema/bom/1.4\\" \\" version=\\"1\\">
+  <metadata>
+    
+    <tools>
+      <tool>
+        <vendor>anchore</vendor>
+        <name>syft</name>
+        
+      </tool>
+    </tools>
+    <component bom-ref=\\"91c1033176c17eb9\\" type=\\"container\\">
+      <name>localhost:5000/match-coverage/alpine:latest</name>
+      
+    </component>
+  </metadata>
+  <components>
+    <component type=\\"library\\">
+      <publisher>A. Wilcox &lt;awilfox@adelielinux.org&gt;</publisher>
+      <name>libvncserver</name>
+      
+      <description>Library to make writing a vnc server easy</description>
+      <licenses>
+        <license>
+          <id>GPL-2.0-or-later</id>
+        </license>
+      </licenses>
+      <cpe>cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:alpine/libvncserver@0.9.9?arch=x86_64&amp;upstream=libvncserver&amp;distro=alpine-3.12.0</purl>
+      <externalReferences>
+        <reference type=\\"distribution\\">
+          <url>http://libvncserver.sourceforge.net/</url>
+        </reference>
+      </externalReferences>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">apkdb-cataloger</property>
+        <property name=\\"syft:package:metadataType\\">ApkMetadata</property>
+        <property name=\\"syft:package:type\\">apk</property>
+        <property name=\\"syft:location:0:layerID\\">sha256:da8a0694dd03d0f1d2351f7a813334c6d81c8c82635a5de08483909d5de37be2</property>
+        <property name=\\"syft:location:0:path\\">/lib/apk/db/installed</property>
+        <property name=\\"syft:metadata:gitCommitOfApkPort\\">bf1ec813f662f128fc6b70f37ef1c0474bb24488</property>
+        <property name=\\"syft:metadata:installedSize\\">389120</property>
+        <property name=\\"syft:metadata:originPackage\\">libvncserver</property>
+        <property name=\\"syft:metadata:pullChecksum\\">Q1z0MwWQKfva+S+q7XmOBYFfQgW/k=</property>
+        <property name=\\"syft:metadata:pullDependencies\\">so:libc.musl-x86_64.so.1 so:libgcrypt.so.20 so:libgnutls.so.30 so:libjpeg.so.8 so:libpng16.so.16 so:libz.so.1</property>
+        <property name=\\"syft:metadata:size\\">166239</property>
+      </properties>
+    </component>
+    <component type=\\"operating-system\\">
+      <name>alpine</name>
+      
+      <description>Alpine Linux v3.12</description>
+      <swid tagId=\\"alpine\\" name=\\"alpine\\" version=\\"3.12.0\\"></swid>
+      <externalReferences>
+        <reference type=\\"issue-tracker\\">
+          <url>https://bugs.alpinelinux.org/</url>
+        </reference>
+        <reference type=\\"website\\">
+          <url>https://alpinelinux.org/</url>
+        </reference>
+      </externalReferences>
+      <properties>
+        <property name=\\"syft:distro:id\\">alpine</property>
+        <property name=\\"syft:distro:prettyName\\">Alpine Linux v3.12</property>
+        <property name=\\"syft:distro:versionID\\">3.12.0</property>
+      </properties>
+    </component>
+  </components>
+</bom>"
+`;
+
+exports[`CycloneDX XML debian 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
+<bom xmlns=\\"http://cyclonedx.org/schema/bom/1.4\\" \\" version=\\"1\\">
+  <metadata>
+    
+    <tools>
+      <tool>
+        <vendor>anchore</vendor>
+        <name>syft</name>
+        
+      </tool>
+    </tools>
+    <component bom-ref=\\"be931e0ab38ebe67\\" type=\\"container\\">
+      <name>localhost:5000/match-coverage/debian:latest</name>
+      
+    </component>
+  </metadata>
+  <components>
+    <component type=\\"library\\">
+      <author>Georg Brandl &lt;georg@python.org&gt;</author>
+      <name>Pygments</name>
+      
+      <cpe>cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:pypi/Pygments@2.6.1</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">python-package-cataloger</property>
+        <property name=\\"syft:package:language\\">python</property>
+        <property name=\\"syft:package:metadataType\\">PythonPackageMetadata</property>
+        <property name=\\"syft:package:type\\">python</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:python-Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:python_Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:python_Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:georg_brandl:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:georg_brandl:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:python-Pygments:Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:python_Pygments:Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:python:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:python:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:georg:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:georg:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:layerID\\">sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58</property>
+        <property name=\\"syft:location:0:path\\">/python/dist-info/METADATA</property>
+        <property name=\\"syft:location:1:layerID\\">sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58</property>
+        <property name=\\"syft:location:1:path\\">/python/dist-info/top_level.txt</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <publisher>APT Development Team &lt;deity@lists.debian.org&gt;</publisher>
+      <name>apt</name>
+      
+      <cpe>cpe:2.3:a:apt:apt:1.8.2:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:deb/debian/apt@1.8.2?arch=amd64&amp;upstream=apt-dev&amp;distro=debian-8</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">dpkgdb-cataloger</property>
+        <property name=\\"syft:package:metadataType\\">DpkgMetadata</property>
+        <property name=\\"syft:package:type\\">deb</property>
+        <property name=\\"syft:location:0:layerID\\">sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58</property>
+        <property name=\\"syft:location:0:path\\">/var/lib/dpkg/status</property>
+        <property name=\\"syft:metadata:installedSize\\">4064</property>
+        <property name=\\"syft:metadata:source\\">apt-dev</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <author>André Arko,Samuel Giddins,Colby Swandale,Hiroshi Shibata,David Rodríguez,Grey Baker,Stephanie Morillo,Chris Morris,James Wen,Tim Moore,André Medeiros,Jessica Lynn Suttles,Terence Lee,Carl Lerche,Yehuda Katz</author>
+      <name>bundler</name>
+      
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <cpe>cpe:2.3:a:jessica-lynn-suttles:bundler:2.1.4:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:gem/bundler@2.1.4</purl>
+      <externalReferences>
+        <reference type=\\"website\\">
+          <url>https://bundler.io</url>
+        </reference>
+      </externalReferences>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">ruby-gemspec-cataloger</property>
+        <property name=\\"syft:package:language\\">ruby</property>
+        <property name=\\"syft:package:metadataType\\">GemMetadata</property>
+        <property name=\\"syft:package:type\\">gem</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:jessica_lynn_suttles:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:stephanie-morillo:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:stephanie_morillo:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:hiroshi-shibata:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:hiroshi_shibata:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:colby-swandale:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:colby_swandale:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:samuel-giddins:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:samuel_giddins:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:chris-morris:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:chris_morris:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:carl-lerche:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:carl_lerche:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:terence-lee:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:terence_lee:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:yehuda-katz:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:yehuda_katz:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:grey-baker:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:grey_baker:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:james-wen:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:james_wen:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:ruby-lang:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:ruby_lang:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:tim-moore:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:tim_moore:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:bundler:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:bundler:2.1.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:layerID\\">sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58</property>
+        <property name=\\"syft:location:0:path\\">/ruby/specifications/bundler.gemspec</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <group>org.anchore</group>
+      <name>example-java-app-maven</name>
+      
+      <cpe>cpe:2.3:a:example-java-app-maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:maven/org.anchore/example-java-app-maven@0.1.0</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">java-cataloger</property>
+        <property name=\\"syft:package:language\\">java</property>
+        <property name=\\"syft:package:metadataType\\">JavaMetadata</property>
+        <property name=\\"syft:package:type\\">java-archive</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example-java-app-maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example_java_app_maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example-java-app:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example-java-app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example_java_app:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example-java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example-java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example_java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:anchore:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:layerID\\">sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58</property>
+        <property name=\\"syft:location:0:path\\">/java/example-java-app-maven-0.1.0.jar</property>
+        <property name=\\"syft:metadata:-:artifactID\\">example-java-app-maven</property>
+        <property name=\\"syft:metadata:-:groupID\\">org.anchore</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <group>joda-time</group>
+      <name>joda-time</name>
+      
+      <cpe>cpe:2.3:a:joda-time:joda-time:2.9.2:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:maven/joda-time/joda-time@2.9.2</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">java-cataloger</property>
+        <property name=\\"syft:package:language\\">java</property>
+        <property name=\\"syft:package:metadataType\\">JavaMetadata</property>
+        <property name=\\"syft:package:type\\">java-archive</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:joda-time:joda_time:2.9.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:joda_time:joda-time:2.9.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:joda:joda-time:2.9.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:layerID\\">sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58</property>
+        <property name=\\"syft:location:0:path\\">/java/example-java-app-maven-0.1.0.jar</property>
+        <property name=\\"syft:metadata:-:artifactID\\">joda-time</property>
+        <property name=\\"syft:metadata:-:groupID\\">joda-time</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <author>Isaac Z. Schlueter &lt;i@izs.me&gt; (http://blog.izs.me)</author>
+      <name>npm</name>
+      
+      <licenses>
+        <license>
+          <id>Artistic-2.0</id>
+        </license>
+      </licenses>
+      <cpe>cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/npm@6.14.6</purl>
+      <externalReferences>
+        <reference type=\\"distribution\\">
+          <url>https://github.com/npm/cli</url>
+        </reference>
+        <reference type=\\"website\\">
+          <url>https://docs.npmjs.com/</url>
+        </reference>
+      </externalReferences>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-package-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:metadataType\\">NpmPackageJsonMetadata</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:npm:6.14.6:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:layerID\\">sha256:8f64219ca9b2742dce99e6c06bda79b028b78abb10028432f77fe0d5e4807f58</property>
+        <property name=\\"syft:location:0:path\\">/javascript/pkg-json/package.json</property>
+      </properties>
+    </component>
+    <component type=\\"operating-system\\">
+      <name>debian</name>
+      
+      <description>Debian GNU/Linux 8 (jessie)</description>
+      <swid tagId=\\"debian\\" name=\\"debian\\" version=\\"8\\"></swid>
+      <externalReferences>
+        <reference type=\\"issue-tracker\\">
+          <url>https://bugs.debian.org/</url>
+        </reference>
+        <reference type=\\"website\\">
+          <url>http://www.debian.org/</url>
+        </reference>
+        <reference type=\\"other\\">
+          <url>http://www.debian.org/support</url>
+          <comment>support</comment>
+        </reference>
+      </externalReferences>
+      <properties>
+        <property name=\\"syft:distro:id\\">debian</property>
+        <property name=\\"syft:distro:prettyName\\">Debian GNU/Linux 8 (jessie)</property>
+        <property name=\\"syft:distro:versionID\\">8</property>
+      </properties>
+    </component>
+  </components>
+</bom>"
+`;
+
+exports[`CycloneDX XML npm 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
+<bom xmlns=\\"http://cyclonedx.org/schema/bom/1.4\\" \\" version=\\"1\\">
+  <metadata>
+    
+    <tools>
+      <tool>
+        <vendor>anchore</vendor>
+        <name>syft</name>
+        
+      </tool>
+    </tools>
+    <component bom-ref=\\"f0f895d6b3c4aeaf\\" type=\\"file\\">
+      <name>tests/fixtures/npm-project</name>
+    </component>
+  </metadata>
+  <components>
+    <component type=\\"library\\">
+      <name>chownr</name>
+      
+      <cpe>cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/chownr@2.0.0</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:chownr:2.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>fs-minipass</name>
+      
+      <cpe>cpe:2.3:a:fs-minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/fs-minipass@2.1.0</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:fs-minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:fs_minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:fs:fs-minipass:2.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:fs-minipass:2.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:fs_minipass:2.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>js-tokens</name>
+      
+      <cpe>cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/js-tokens@4.0.0</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>loose-envify</name>
+      
+      <cpe>cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/loose-envify@1.4.0</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>minipass</name>
+      
+      <cpe>cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/minipass@3.1.3</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:minipass:3.1.3:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>minizlib</name>
+      
+      <cpe>cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/minizlib@2.1.2</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:minizlib:2.1.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>mkdirp</name>
+      
+      <cpe>cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/mkdirp@1.0.4</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:mkdirp:1.0.4:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>object-assign</name>
+      
+      <cpe>cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/object-assign@4.1.1</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>prop-types</name>
+      
+      <cpe>cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/prop-types@15.7.2</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>react</name>
+      
+      <cpe>cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/react@16.14.0</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>react-is</name>
+      
+      <cpe>cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/react-is@16.13.1</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>tar</name>
+      
+      <cpe>cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/tar@6.1.0</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:tar:6.1.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>yallist</name>
+      
+      <cpe>cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/yallist@4.0.0</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:yallist:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">package-lock.json</property>
+      </properties>
+    </component>
+  </components>
+</bom>"
+`;
+
+exports[`CycloneDX XML yarn 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
+<bom xmlns=\\"http://cyclonedx.org/schema/bom/1.4\\" \\" version=\\"1\\">
+  <metadata>
+    
+    <tools>
+      <tool>
+        <vendor>anchore</vendor>
+        <name>syft</name>
+        
+      </tool>
+    </tools>
+    <component bom-ref=\\"b2a81ddbf7dfbefa\\" type=\\"file\\">
+      <name>tests/fixtures/yarn-project</name>
+    </component>
+  </metadata>
+  <components>
+    <component type=\\"library\\">
+      <name>js-tokens</name>
+      
+      <cpe>cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/js-tokens@4.0.0</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">yarn.lock</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>loose-envify</name>
+      
+      <cpe>cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/loose-envify@1.4.0</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">yarn.lock</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>object-assign</name>
+      
+      <cpe>cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/object-assign@4.1.1</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">yarn.lock</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>prop-types</name>
+      
+      <cpe>cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/prop-types@15.7.2</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">yarn.lock</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>react</name>
+      
+      <cpe>cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/react@16.14.0</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">yarn.lock</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>react-is</name>
+      
+      <cpe>cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/react-is@16.13.1</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">yarn.lock</property>
+      </properties>
+    </component>
+    <component type=\\"library\\">
+      <name>trim</name>
+      
+      <cpe>cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:npm/trim@0.0.2</purl>
+      <properties>
+        <property name=\\"syft:package:foundBy\\">javascript-lock-cataloger</property>
+        <property name=\\"syft:package:language\\">javascript</property>
+        <property name=\\"syft:package:type\\">npm</property>
+        <property name=\\"syft:cpe23\\">cpe:2.3:a:*:trim:0.0.2:*:*:*:*:*:*:*</property>
+        <property name=\\"syft:location:0:path\\">yarn.lock</property>
+      </properties>
+    </component>
+  </components>
+</bom>"
+`;
+
+exports[`SPDX JSON alpine 1`] = `
+"{
+ \\"SPDXID\\": \\"SPDXRef-DOCUMENT\\",
+ \\"name\\": \\"localhost-5000/match-coverage/alpine-latest\\",
+ \\"spdxVersion\\": \\"SPDX-2.2\\",
+ \\"creationInfo\\": {
+  ,
+  \\"creators\\": [
+   \\"Organization: Anchore, Inc\\",
+   \\"Tool: syft-0.42.2\\"
+  ],
+  \\"licenseListVersion\\": \\"3.16\\"
+ },
+ \\"dataLicense\\": \\"CC0-1.0\\",
+ ,
+ \\"packages\\": [
+  {
+   \\"SPDXID\\": \\"SPDXRef-24e63819bceab737\\",
+   \\"name\\": \\"libvncserver\\",
+   \\"licenseConcluded\\": \\"GPL-2.0-or-later\\",
+   \\"description\\": \\"Library to make writing a vnc server easy\\",
+   \\"downloadLocation\\": \\"http://libvncserver.sourceforge.net/\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver&distro=alpine-3.12.0\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"GPL-2.0-or-later\\",
+   \\"originator\\": \\"Person: A. Wilcox <awilfox@adelielinux.org>\\",
+   \\"sourceInfo\\": \\"acquired package info from APK DB: /lib/apk/db/installed\\",
+   \\"versionInfo\\": \\"0.9.9\\"
+  }
+ ]
+}
+"
+`;
+
+exports[`SPDX JSON debian 1`] = `
+"{
+ \\"SPDXID\\": \\"SPDXRef-DOCUMENT\\",
+ \\"name\\": \\"localhost-5000/match-coverage/debian-latest\\",
+ \\"spdxVersion\\": \\"SPDX-2.2\\",
+ \\"creationInfo\\": {
+  ,
+  \\"creators\\": [
+   \\"Organization: Anchore, Inc\\",
+   \\"Tool: syft-0.42.2\\"
+  ],
+  \\"licenseListVersion\\": \\"3.16\\"
+ },
+ \\"dataLicense\\": \\"CC0-1.0\\",
+ ,
+ \\"packages\\": [
+  {
+   \\"SPDXID\\": \\"SPDXRef-f44d30ef33dc4f5d\\",
+   \\"name\\": \\"Pygments\\",
+   \\"licenseConcluded\\": \\"NOASSERTION\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:python-Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:python_Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:python_Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:georg_brandl:python-Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:georg_brandl:python_Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:python-Pygments:Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:python_Pygments:Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:python:python-Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:python:python_Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:georg:python-Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:georg:python_Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:pypi/Pygments@2.6.1\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NOASSERTION\\",
+   \\"originator\\": \\"Person: Georg Brandl (georg@python.org)\\",
+   \\"sourceInfo\\": \\"acquired package info from installed python package manifest file: /python/dist-info/METADATA, /python/dist-info/top_level.txt\\",
+   \\"versionInfo\\": \\"2.6.1\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-6b703acb9cf91dc3\\",
+   \\"name\\": \\"apt\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:apt:apt:1.8.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=apt-dev&distro=debian-8\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"originator\\": \\"Person: APT Development Team <deity@lists.debian.org>\\",
+   \\"sourceInfo\\": \\"acquired package info from DPKG DB: /var/lib/dpkg/status\\",
+   \\"versionInfo\\": \\"1.8.2\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-449180e9014443ab\\",
+   \\"name\\": \\"bundler\\",
+   \\"licenseConcluded\\": \\"MIT\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:jessica-lynn-suttles:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:jessica_lynn_suttles:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:stephanie-morillo:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:stephanie_morillo:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:hiroshi-shibata:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:hiroshi_shibata:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:colby-swandale:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:colby_swandale:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:samuel-giddins:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:samuel_giddins:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:chris-morris:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:chris_morris:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:carl-lerche:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:carl_lerche:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:terence-lee:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:terence_lee:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:yehuda-katz:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:yehuda_katz:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:grey-baker:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:grey_baker:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:james-wen:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:james_wen:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:ruby-lang:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:ruby_lang:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:tim-moore:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:tim_moore:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:bundler:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:bundler:2.1.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:gem/bundler@2.1.4\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"homepage\\": \\"https://bundler.io\\",
+   \\"licenseDeclared\\": \\"MIT\\",
+   \\"originator\\": \\"Person: André Arko\\",
+   \\"sourceInfo\\": \\"acquired package info from installed gem metadata file: /ruby/specifications/bundler.gemspec\\",
+   \\"versionInfo\\": \\"2.1.4\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-3a24bf86206dbd2d\\",
+   \\"name\\": \\"example-java-app-maven\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example-java-app-maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example-java-app-maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example_java_app_maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example-java-app:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example-java-app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example_java_app:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example-java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example-java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example_java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:anchore:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:maven/org.anchore/example-java-app-maven@0.1.0\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar\\",
+   \\"versionInfo\\": \\"0.1.0\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-9da9087b71bda0ab\\",
+   \\"name\\": \\"joda-time\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:joda-time:joda-time:2.9.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:joda-time:joda_time:2.9.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:joda_time:joda-time:2.9.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:joda:joda-time:2.9.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:maven/joda-time/joda-time@2.9.2\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar\\",
+   \\"versionInfo\\": \\"2.9.2\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-39d191042352e387\\",
+   \\"name\\": \\"npm\\",
+   \\"licenseConcluded\\": \\"Artistic-2.0\\",
+   \\"downloadLocation\\": \\"https://github.com/npm/cli\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:npm:6.14.6:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/npm@6.14.6\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"homepage\\": \\"https://docs.npmjs.com/\\",
+   \\"licenseDeclared\\": \\"Artistic-2.0\\",
+   \\"originator\\": \\"Person: Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: /javascript/pkg-json/package.json\\",
+   \\"versionInfo\\": \\"6.14.6\\"
+  }
+ ]
+}
+"
+`;
+
+exports[`SPDX JSON npm 1`] = `
+"{
+ \\"SPDXID\\": \\"SPDXRef-DOCUMENT\\",
+ \\"name\\": \\"tests/fixtures/npm-project\\",
+ \\"spdxVersion\\": \\"SPDX-2.2\\",
+ \\"creationInfo\\": {
+  ,
+  \\"creators\\": [
+   \\"Organization: Anchore, Inc\\",
+   \\"Tool: syft-0.42.2\\"
+  ],
+  \\"licenseListVersion\\": \\"3.16\\"
+ },
+ \\"dataLicense\\": \\"CC0-1.0\\",
+ ,
+ \\"packages\\": [
+  {
+   \\"SPDXID\\": \\"SPDXRef-48869b43c75aed63\\",
+   \\"name\\": \\"chownr\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:chownr:2.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/chownr@2.0.0\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"2.0.0\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-17cd1a5edb234f2d\\",
+   \\"name\\": \\"fs-minipass\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:fs-minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:fs-minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:fs_minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:fs:fs-minipass:2.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:fs-minipass:2.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:fs_minipass:2.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/fs-minipass@2.1.0\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"2.1.0\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-5dad813e0dfbc8f7\\",
+   \\"name\\": \\"js-tokens\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/js-tokens@4.0.0\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"4.0.0\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-7ef51f90cd8bdf6\\",
+   \\"name\\": \\"loose-envify\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/loose-envify@1.4.0\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"1.4.0\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-354394fa94289e0a\\",
+   \\"name\\": \\"minipass\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:minipass:3.1.3:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/minipass@3.1.3\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"3.1.3\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-387388d341c44ece\\",
+   \\"name\\": \\"minizlib\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:minizlib:2.1.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/minizlib@2.1.2\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"2.1.2\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-f6253f2bd050273a\\",
+   \\"name\\": \\"mkdirp\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:mkdirp:1.0.4:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/mkdirp@1.0.4\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"1.0.4\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-9416e4347434d841\\",
+   \\"name\\": \\"object-assign\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/object-assign@4.1.1\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"4.1.1\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-5e6f3e339522d850\\",
+   \\"name\\": \\"prop-types\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/prop-types@15.7.2\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"15.7.2\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-ff97158601717945\\",
+   \\"name\\": \\"react\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/react@16.14.0\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"16.14.0\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-e267e4e9aa1e2843\\",
+   \\"name\\": \\"react-is\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/react-is@16.13.1\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"16.13.1\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-f9e913d0a1b82f4f\\",
+   \\"name\\": \\"tar\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:tar:6.1.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/tar@6.1.0\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"6.1.0\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-c34bb4a58e556511\\",
+   \\"name\\": \\"yallist\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:yallist:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/yallist@4.0.0\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: package-lock.json\\",
+   \\"versionInfo\\": \\"4.0.0\\"
+  }
+ ]
+}
+"
+`;
+
+exports[`SPDX JSON yarn 1`] = `
+"{
+ \\"SPDXID\\": \\"SPDXRef-DOCUMENT\\",
+ \\"name\\": \\"tests/fixtures/yarn-project\\",
+ \\"spdxVersion\\": \\"SPDX-2.2\\",
+ \\"creationInfo\\": {
+  ,
+  \\"creators\\": [
+   \\"Organization: Anchore, Inc\\",
+   \\"Tool: syft-0.42.2\\"
+  ],
+  \\"licenseListVersion\\": \\"3.16\\"
+ },
+ \\"dataLicense\\": \\"CC0-1.0\\",
+ ,
+ \\"packages\\": [
+  {
+   \\"SPDXID\\": \\"SPDXRef-2b6a544ff38bbbda\\",
+   \\"name\\": \\"js-tokens\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/js-tokens@4.0.0\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: yarn.lock\\",
+   \\"versionInfo\\": \\"4.0.0\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-e71b7d27f14f70a1\\",
+   \\"name\\": \\"loose-envify\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/loose-envify@1.4.0\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: yarn.lock\\",
+   \\"versionInfo\\": \\"1.4.0\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-fc600f572c60552e\\",
+   \\"name\\": \\"object-assign\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/object-assign@4.1.1\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: yarn.lock\\",
+   \\"versionInfo\\": \\"4.1.1\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-33427c7ccb4635c7\\",
+   \\"name\\": \\"prop-types\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/prop-types@15.7.2\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: yarn.lock\\",
+   \\"versionInfo\\": \\"15.7.2\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-342c6e949b677a75\\",
+   \\"name\\": \\"react\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/react@16.14.0\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: yarn.lock\\",
+   \\"versionInfo\\": \\"16.14.0\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-a0ee5f2dc1b699a4\\",
+   \\"name\\": \\"react-is\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/react-is@16.13.1\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: yarn.lock\\",
+   \\"versionInfo\\": \\"16.13.1\\"
+  },
+  {
+   \\"SPDXID\\": \\"SPDXRef-5fc59d4022dd28df\\",
+   \\"name\\": \\"trim\\",
+   \\"licenseConcluded\\": \\"NONE\\",
+   \\"downloadLocation\\": \\"NOASSERTION\\",
+   \\"externalRefs\\": [
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"SECURITY\\",
+     \\"referenceLocator\\": \\"cpe:2.3:a:*:trim:0.0.2:*:*:*:*:*:*:*\\",
+     \\"referenceType\\": \\"cpe23Type\\"
+    },
+    {
+     \\"referenceCategory\\": \\"PACKAGE_MANAGER\\",
+     \\"referenceLocator\\": \\"pkg:npm/trim@0.0.2\\",
+     \\"referenceType\\": \\"purl\\"
+    }
+   ],
+   \\"filesAnalyzed\\": false,
+   \\"licenseDeclared\\": \\"NONE\\",
+   \\"sourceInfo\\": \\"acquired package info from installed node module manifest file: yarn.lock\\",
+   \\"versionInfo\\": \\"0.0.2\\"
+  }
+ ]
+}
+"
+`;
+
+exports[`SPDX Tag Value alpine 1`] = `
+"SPDXVersion: SPDX-2.2
+DataLicense: CC0-1.0
+
+DocumentName: localhost-5000/match-coverage/alpine-latest
+
+LicenseListVersion: 3.16
+
+
+
+
+##### Package: libvncserver
+
+PackageName: libvncserver
+
+PackageVersion: 0.9.9
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: GPL-2.0-or-later
+PackageLicenseDeclared: GPL-2.0-or-later
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver&distro=alpine-3.12.0
+
+"
+`;
+
+exports[`SPDX Tag Value debian 1`] = `
+"SPDXVersion: SPDX-2.2
+DataLicense: CC0-1.0
+
+DocumentName: localhost-5000/match-coverage/debian-latest
+
+LicenseListVersion: 3.16
+
+
+
+
+##### Package: apt
+
+PackageName: apt
+
+PackageVersion: 1.8.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:apt:apt:1.8.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=apt-dev&distro=debian-8
+
+##### Package: bundler
+
+PackageName: bundler
+
+PackageVersion: 2.1.4
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: MIT
+PackageLicenseDeclared: MIT
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:jessica-lynn-suttles:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:jessica_lynn_suttles:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:stephanie-morillo:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:stephanie_morillo:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:hiroshi-shibata:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:hiroshi_shibata:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:colby-swandale:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:colby_swandale:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:samuel-giddins:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:samuel_giddins:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:chris-morris:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:chris_morris:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:carl-lerche:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:carl_lerche:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:terence-lee:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:terence_lee:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:yehuda-katz:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:yehuda_katz:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:grey-baker:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:grey_baker:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:james-wen:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:james_wen:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby-lang:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby_lang:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:tim-moore:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:tim_moore:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:bundler:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:bundler:2.1.4:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:gem/bundler@2.1.4
+
+##### Package: example-java-app-maven
+
+PackageName: example-java-app-maven
+
+PackageVersion: 0.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example-java-app-maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example-java-app-maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example-java-app:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example-java-app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example-java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example-java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:anchore:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:maven/org.anchore/example-java-app-maven@0.1.0
+
+##### Package: joda-time
+
+PackageName: joda-time
+
+PackageVersion: 2.9.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda-time:joda-time:2.9.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda-time:joda_time:2.9.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda-time:2.9.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda:joda-time:2.9.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:maven/joda-time/joda-time@2.9.2
+
+##### Package: npm
+
+PackageName: npm
+
+PackageVersion: 6.14.6
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: Artistic-2.0
+PackageLicenseDeclared: Artistic-2.0
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:npm:6.14.6:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/npm@6.14.6
+
+##### Package: Pygments
+
+PackageName: Pygments
+
+PackageVersion: 2.6.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python-Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python_Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python_Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:python-Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:python_Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python-Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python_Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:python-Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:python_Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:python-Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:python_Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:pypi/Pygments@2.6.1
+
+"
+`;
+
+exports[`SPDX Tag Value npm 1`] = `
+"SPDXVersion: SPDX-2.2
+DataLicense: CC0-1.0
+
+DocumentName: tests/fixtures/npm-project
+
+LicenseListVersion: 3.16
+
+
+
+
+##### Package: chownr
+
+PackageName: chownr
+
+PackageVersion: 2.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:chownr:2.0.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/chownr@2.0.0
+
+##### Package: fs-minipass
+
+PackageName: fs-minipass
+
+PackageVersion: 2.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs-minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs-minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs:fs-minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:fs-minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:fs_minipass:2.1.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/fs-minipass@2.1.0
+
+##### Package: js-tokens
+
+PackageName: js-tokens
+
+PackageVersion: 4.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/js-tokens@4.0.0
+
+##### Package: loose-envify
+
+PackageName: loose-envify
+
+PackageVersion: 1.4.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/loose-envify@1.4.0
+
+##### Package: minipass
+
+PackageName: minipass
+
+PackageVersion: 3.1.3
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:minipass:3.1.3:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/minipass@3.1.3
+
+##### Package: minizlib
+
+PackageName: minizlib
+
+PackageVersion: 2.1.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:minizlib:2.1.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/minizlib@2.1.2
+
+##### Package: mkdirp
+
+PackageName: mkdirp
+
+PackageVersion: 1.0.4
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:mkdirp:1.0.4:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/mkdirp@1.0.4
+
+##### Package: object-assign
+
+PackageName: object-assign
+
+PackageVersion: 4.1.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/object-assign@4.1.1
+
+##### Package: prop-types
+
+PackageName: prop-types
+
+PackageVersion: 15.7.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/prop-types@15.7.2
+
+##### Package: react
+
+PackageName: react
+
+PackageVersion: 16.14.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/react@16.14.0
+
+##### Package: react-is
+
+PackageName: react-is
+
+PackageVersion: 16.13.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/react-is@16.13.1
+
+##### Package: tar
+
+PackageName: tar
+
+PackageVersion: 6.1.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:tar:6.1.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/tar@6.1.0
+
+##### Package: yallist
+
+PackageName: yallist
+
+PackageVersion: 4.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:yallist:4.0.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/yallist@4.0.0
+
+"
+`;
+
+exports[`SPDX Tag Value yarn 1`] = `
+"SPDXVersion: SPDX-2.2
+DataLicense: CC0-1.0
+
+DocumentName: tests/fixtures/yarn-project
+
+LicenseListVersion: 3.16
+
+
+
+
+##### Package: js-tokens
+
+PackageName: js-tokens
+
+PackageVersion: 4.0.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/js-tokens@4.0.0
+
+##### Package: loose-envify
+
+PackageName: loose-envify
+
+PackageVersion: 1.4.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/loose-envify@1.4.0
+
+##### Package: object-assign
+
+PackageName: object-assign
+
+PackageVersion: 4.1.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/object-assign@4.1.1
+
+##### Package: prop-types
+
+PackageName: prop-types
+
+PackageVersion: 15.7.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/prop-types@15.7.2
+
+##### Package: react
+
+PackageName: react
+
+PackageVersion: 16.14.0
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/react@16.14.0
+
+##### Package: react-is
+
+PackageName: react-is
+
+PackageVersion: 16.13.1
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/react-is@16.13.1
+
+##### Package: trim
+
+PackageName: trim
+
+PackageVersion: 0.0.2
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
+PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:trim:0.0.2:*:*:*:*:*:*:*
+ExternalRef: PACKAGE_MANAGER purl pkg:npm/trim@0.0.2
+
+"
+`;
