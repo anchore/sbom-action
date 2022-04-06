@@ -54,13 +54,15 @@ describe("Action", () => {
   });
 
   it("runs with release uploads inputs", async () => {
+    const outputFile = `${fs.mkdtempSync(
+      path.join(os.tmpdir(), "sbom-action-")
+    )}/sbom.spdx`;
+
     setData({
       inputs: {
         image: "org/img",
         "upload-artifact": "true",
-        "output-file": `${fs.mkdtempSync(
-        path.join(os.tmpdir(), "sbom-action-")
-      )}/sbom.spdx`,
+        "output-file": outputFile,
         "upload-release-assets": "true",
       },
       context: context.release({
@@ -79,6 +81,8 @@ describe("Action", () => {
 
     expect(artifacts.length).toBe(1);
     expect(assets.length).toBe(1);
+
+    expect(fs.existsSync(outputFile)).toBeTruthy();
   });
 
   it("runs without uploading anything", async () => {
