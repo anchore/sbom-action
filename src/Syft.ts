@@ -25,6 +25,15 @@ export interface SyftImageInput {
  */
 export interface SyftOptions {
   input: SyftDirectoryInput | SyftRegistryInput | SyftImageInput;
-  format: "spdx" | "spdx-json" | "cyclonedx" | "table" | "text" | "json";
+  format:
+    | "spdx"
+    | "spdx-tag-value"
+    | "spdx-json"
+    | "cyclonedx"
+    | "cyclonedx-xml"
+    | "cyclonedx-json"
+    | "table"
+    | "text"
+    | "json";
   uploadToDependencySnapshotAPI: boolean;
 }

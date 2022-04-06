@@ -7,6 +7,7 @@ import {
   ReleaseEvent,
 } from "@octokit/webhooks-types";
 import * as fs from "fs";
+import os from "os";
 import path from "path";
 import stream from "stream";
 import { SyftOptions } from "../Syft";
@@ -25,7 +26,7 @@ export const SYFT_VERSION = core.getInput("syft-version") || VERSION;
 
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
 
-const tempDir = fs.mkdtempSync("sbom-action-");
+const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
 const githubDependencySnapshotFile = `${tempDir}/github.sbom.json`;
 
 /**
@@ -43,8 +44,19 @@ export function getArtifactName(): string {
   const format = getSbomFormat();
   let extension: string = format;
   switch (format) {
+    case "spdx":
+    case "spdx-tag-value":
+      extension = "spdx";
+      break;
     case "spdx-json":
       extension = "spdx.json";
+      break;
+    case "cyclonedx":
+    case "cyclonedx-xml":
+      extension = "cyclonedx.xml";
+      break;
+    case "cyclonedx-json":
+      extension = "cyclonedx.json";
       break;
     case "json":
       extension = "syft.json";

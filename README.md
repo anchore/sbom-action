@@ -120,7 +120,7 @@ and uploading them as workflow artifacts and release assets.
 | `registry-username` | The registry username to use when authenticating to an external registry                                                                     |
 | `registry-password` | The registry password to use when authenticating to an external registry                                                                     |
 | `artifact-name`     | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output)                                      | `sbom-<job>-<step-id>.spdx` |
-| `format`            | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`                                                                          | `spdx-json`                 |
+| `format`            | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`, `cyclonedx-json`                                                        | `spdx-json`                 |
 
 ### anchore/sbom-action/publish-sbom
 
@@ -134,9 +134,9 @@ A sub-action to [upload multiple SBOMs](publish-sbom/action.yml) to GitHub relea
 
 A sub-action to [download Syft](download-syft/action.yml).
 
-| Parameter             | Description                       | Default             |
-| --------------------- | --------------------------------- | ------------------- |
-| `syft-version`        | The version of Syft to download   |                     |
+| Parameter      | Description                     | Default |
+| -------------- | ------------------------------- | ------- |
+| `syft-version` | The version of Syft to download |         |
 
 Output parameters:
 

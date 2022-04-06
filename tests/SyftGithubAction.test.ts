@@ -277,6 +277,44 @@ describe("Action", () => {
     expect(action.getArtifactName()).toBe("something-something-image-image.spdx.json");
   });
 
+  it("format informs artifact name", () => {
+    setData({
+      inputs: {
+        image: "img",
+        format: "spdx",
+      }
+    });
+
+    expect(action.getArtifactName()).toBe("img.spdx");
+
+    setData({
+      inputs: {
+        image: "img",
+        format: "spdx-json",
+      }
+    });
+
+    expect(action.getArtifactName()).toBe("img.spdx.json");
+
+    setData({
+      inputs: {
+        image: "img",
+        format: "cyclonedx",
+      }
+    });
+
+    expect(action.getArtifactName()).toBe("img.cyclonedx.xml");
+
+    setData({
+      inputs: {
+        image: "img",
+        format: "cyclonedx-json",
+      }
+    });
+
+    expect(action.getArtifactName()).toBe("img.cyclonedx.json");
+  });
+
   it ("properly maps paths for WSL", () => {
     expect(mapToWSLPath("basic arg")).toBe("basic arg");
     expect(mapToWSLPath("D:\\Some\\Path")).toBe("/mnt/d/Some/Path");
