@@ -24,6 +24,8 @@ PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*
 ExternalRef: PACKAGE_MANAGER purl pkg:alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver&distro=alpine-3.12.0
 
+NAME          VERSION  TYPE 
+libvncserver  0.9.9    apk   
 "
 `;
 
@@ -182,6 +184,13 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: PACKAGE_MANAGER purl pkg:pypi/Pygments@2.6.1
 
+NAME                    VERSION  TYPE         
+Pygments                2.6.1    python        
+apt                     1.8.2    deb           
+bundler                 2.1.4    gem           
+example-java-app-maven  0.1.0    java-archive  
+joda-time               2.9.2    java-archive  
+npm                     6.14.6   npm           
 "
 `;
 
@@ -571,6 +580,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:trim:0.0.2:*:*:*:*:*:*:*
 ExternalRef: PACKAGE_MANAGER purl pkg:npm/trim@0.0.2
 
 NAME           VERSION  TYPE 
+js-tokens      4.0.0    npm   
 loose-envify   1.4.0    npm   
 object-assign  4.1.1    npm   
 prop-types     15.7.2   npm   
