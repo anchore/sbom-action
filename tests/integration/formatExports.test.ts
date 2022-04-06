@@ -90,7 +90,7 @@ const testSource = async (source: string, format = "spdx"): Promise<string> => {
       return sbom
         .replace(/"created": "[^"]+"/g, "")
         .replace(/"SPDXID": "[^"]+"/g, "")
-        .replace(/"Tool": "[^"]+"/g, "")
+        .replace(/"Tool:[^"]+"/g, "")
         .replace(/"documentNamespace": "[^"]+"/g, "");
     case "cyclonedx":
     case "cyclonedx-xml":

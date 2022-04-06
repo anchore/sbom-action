@@ -2303,7 +2303,7 @@ exports[`SPDX JSON alpine 1`] = `
   ,
   \\"creators\\": [
    \\"Organization: Anchore, Inc\\",
-   \\"Tool: syft-0.42.2\\"
+   
   ],
   \\"licenseListVersion\\": \\"3.16\\"
  },
@@ -2348,7 +2348,7 @@ exports[`SPDX JSON debian 1`] = `
   ,
   \\"creators\\": [
    \\"Organization: Anchore, Inc\\",
-   \\"Tool: syft-0.42.2\\"
+   
   ],
   \\"licenseListVersion\\": \\"3.16\\"
  },
@@ -2837,7 +2837,7 @@ exports[`SPDX JSON npm 1`] = `
   ,
   \\"creators\\": [
    \\"Organization: Anchore, Inc\\",
-   \\"Tool: syft-0.42.2\\"
+   
   ],
   \\"licenseListVersion\\": \\"3.16\\"
  },
@@ -3389,7 +3389,7 @@ exports[`SPDX JSON yarn 1`] = `
   ,
   \\"creators\\": [
    \\"Organization: Anchore, Inc\\",
-   \\"Tool: syft-0.42.2\\"
+   
   ],
   \\"licenseListVersion\\": \\"3.16\\"
  },
