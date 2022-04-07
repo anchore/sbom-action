@@ -33,13 +33,13 @@
   "author": "Keith Zantow <keith.zantow@anchore.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@actions/artifact": "^0.6.0",
+    "@actions/artifact": "^1.0.0",
     "@actions/core": "^1.6.0",
     "@actions/exec": "^1.1.1",
-    "@actions/github": "^5.0.0",
+    "@actions/github": "^5.0.1",
     "@actions/http-client": "^1.0.11",
     "@actions/tool-cache": "^1.7.2",
-    "@octokit/core": "^3.5.1",
+    "@octokit/core": "^3.6.0",
     "@octokit/webhooks": "^9.23.0"
   },
   "devDependencies": {
