@@ -24,6 +24,7 @@ exports[`CycloneDX JSON alpine 1`] = `
   },
   \\"components\\": [
     {
+      ,
       \\"type\\": \\"library\\",
       \\"publisher\\": \\"A. Wilcox \\\\u003cawilfox@adelielinux.org\\\\u003e\\",
       \\"name\\": \\"libvncserver\\",
@@ -155,6 +156,7 @@ exports[`CycloneDX JSON debian 1`] = `
   },
   \\"components\\": [
     {
+      ,
       \\"type\\": \\"library\\",
       \\"author\\": \\"Georg Brandl \\\\u003cgeorg@python.org\\\\u003e\\",
       \\"name\\": \\"Pygments\\",
@@ -265,6 +267,7 @@ exports[`CycloneDX JSON debian 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"publisher\\": \\"APT Development Team \\\\u003cdeity@lists.debian.org\\\\u003e\\",
       \\"name\\": \\"apt\\",
@@ -303,6 +306,7 @@ exports[`CycloneDX JSON debian 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"author\\": \\"André Arko,Samuel Giddins,Colby Swandale,Hiroshi Shibata,David Rodríguez,Grey Baker,Stephanie Morillo,Chris Morris,James Wen,Tim Moore,André Medeiros,Jessica Lynn Suttles,Terence Lee,Carl Lerche,Yehuda Katz\\",
       \\"name\\": \\"bundler\\",
@@ -462,6 +466,7 @@ exports[`CycloneDX JSON debian 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"group\\": \\"org.anchore\\",
       \\"name\\": \\"example-java-app-maven\\",
@@ -560,10 +565,15 @@ exports[`CycloneDX JSON debian 1`] = `
         {
           \\"name\\": \\"syft:metadata:-:groupID\\",
           
+        },
+        {
+          \\"name\\": \\"syft:metadata:virtualPath\\",
+          
         }
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"group\\": \\"joda-time\\",
       \\"name\\": \\"joda-time\\",
@@ -622,10 +632,15 @@ exports[`CycloneDX JSON debian 1`] = `
         {
           \\"name\\": \\"syft:metadata:-:groupID\\",
           
+        },
+        {
+          \\"name\\": \\"syft:metadata:virtualPath\\",
+          
         }
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"author\\": \\"Isaac Z. Schlueter \\\\u003ci@izs.me\\\\u003e (http://blog.izs.me)\\",
       \\"name\\": \\"npm\\",
@@ -748,6 +763,7 @@ exports[`CycloneDX JSON npm 1`] = `
   },
   \\"components\\": [
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"chownr\\",
       ,
@@ -777,6 +793,7 @@ exports[`CycloneDX JSON npm 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"fs-minipass\\",
       ,
@@ -830,6 +847,7 @@ exports[`CycloneDX JSON npm 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"js-tokens\\",
       ,
@@ -883,6 +901,7 @@ exports[`CycloneDX JSON npm 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"loose-envify\\",
       ,
@@ -936,6 +955,7 @@ exports[`CycloneDX JSON npm 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"minipass\\",
       ,
@@ -965,6 +985,7 @@ exports[`CycloneDX JSON npm 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"minizlib\\",
       ,
@@ -994,6 +1015,7 @@ exports[`CycloneDX JSON npm 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"mkdirp\\",
       ,
@@ -1023,6 +1045,7 @@ exports[`CycloneDX JSON npm 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"object-assign\\",
       ,
@@ -1076,6 +1099,7 @@ exports[`CycloneDX JSON npm 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"prop-types\\",
       ,
@@ -1129,6 +1153,7 @@ exports[`CycloneDX JSON npm 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"react\\",
       ,
@@ -1158,6 +1183,7 @@ exports[`CycloneDX JSON npm 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"react-is\\",
       ,
@@ -1211,6 +1237,7 @@ exports[`CycloneDX JSON npm 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"tar\\",
       ,
@@ -1240,6 +1267,7 @@ exports[`CycloneDX JSON npm 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"yallist\\",
       ,
@@ -1296,6 +1324,7 @@ exports[`CycloneDX JSON yarn 1`] = `
   },
   \\"components\\": [
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"js-tokens\\",
       ,
@@ -1349,6 +1378,7 @@ exports[`CycloneDX JSON yarn 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"loose-envify\\",
       ,
@@ -1402,6 +1432,7 @@ exports[`CycloneDX JSON yarn 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"object-assign\\",
       ,
@@ -1455,6 +1486,7 @@ exports[`CycloneDX JSON yarn 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"prop-types\\",
       ,
@@ -1508,6 +1540,7 @@ exports[`CycloneDX JSON yarn 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"react\\",
       ,
@@ -1537,6 +1570,7 @@ exports[`CycloneDX JSON yarn 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"react-is\\",
       ,
@@ -1590,6 +1624,7 @@ exports[`CycloneDX JSON yarn 1`] = `
       ]
     },
     {
+      ,
       \\"type\\": \\"library\\",
       \\"name\\": \\"trim\\",
       ,
@@ -1641,7 +1676,7 @@ exports[`CycloneDX XML alpine 1`] = `
     </component>
   </metadata>
   <components>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <publisher>A. Wilcox &lt;awilfox@adelielinux.org&gt;</publisher>
       <name>libvncserver</name>
       
@@ -1713,7 +1748,7 @@ exports[`CycloneDX XML debian 1`] = `
     </component>
   </metadata>
   <components>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <author>Georg Brandl &lt;georg@python.org&gt;</author>
       <name>Pygments</name>
       
@@ -1747,7 +1782,7 @@ exports[`CycloneDX XML debian 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <publisher>APT Development Team &lt;deity@lists.debian.org&gt;</publisher>
       <name>apt</name>
       
@@ -1763,7 +1798,7 @@ exports[`CycloneDX XML debian 1`] = `
         <property name=\\"syft:metadata:source\\">apt-dev</property>
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <author>André Arko,Samuel Giddins,Colby Swandale,Hiroshi Shibata,David Rodríguez,Grey Baker,Stephanie Morillo,Chris Morris,James Wen,Tim Moore,André Medeiros,Jessica Lynn Suttles,Terence Lee,Carl Lerche,Yehuda Katz</author>
       <name>bundler</name>
       
@@ -1816,7 +1851,7 @@ exports[`CycloneDX XML debian 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <group>org.anchore</group>
       <name>example-java-app-maven</name>
       
@@ -1846,9 +1881,10 @@ exports[`CycloneDX XML debian 1`] = `
         
         <property name=\\"syft:metadata:-:artifactID\\">example-java-app-maven</property>
         <property name=\\"syft:metadata:-:groupID\\">org.anchore</property>
+        <property name=\\"syft:metadata:virtualPath\\">/java/example-java-app-maven-0.1.0.jar</property>
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <group>joda-time</group>
       <name>joda-time</name>
       
@@ -1868,9 +1904,10 @@ exports[`CycloneDX XML debian 1`] = `
         
         <property name=\\"syft:metadata:-:artifactID\\">joda-time</property>
         <property name=\\"syft:metadata:-:groupID\\">joda-time</property>
+        <property name=\\"syft:metadata:virtualPath\\">/java/example-java-app-maven-0.1.0.jar:joda-time</property>
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <author>Isaac Z. Schlueter &lt;i@izs.me&gt; (http://blog.izs.me)</author>
       <name>npm</name>
       
@@ -1943,7 +1980,7 @@ exports[`CycloneDX XML npm 1`] = `
     </component>
   </metadata>
   <components>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>chownr</name>
       
       <cpe>cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*</cpe>
@@ -1956,7 +1993,7 @@ exports[`CycloneDX XML npm 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>fs-minipass</name>
       
       <cpe>cpe:2.3:a:fs-minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*</cpe>
@@ -1975,7 +2012,7 @@ exports[`CycloneDX XML npm 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>js-tokens</name>
       
       <cpe>cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*</cpe>
@@ -1994,7 +2031,7 @@ exports[`CycloneDX XML npm 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>loose-envify</name>
       
       <cpe>cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*</cpe>
@@ -2013,7 +2050,7 @@ exports[`CycloneDX XML npm 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>minipass</name>
       
       <cpe>cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*</cpe>
@@ -2026,7 +2063,7 @@ exports[`CycloneDX XML npm 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>minizlib</name>
       
       <cpe>cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*</cpe>
@@ -2039,7 +2076,7 @@ exports[`CycloneDX XML npm 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>mkdirp</name>
       
       <cpe>cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*</cpe>
@@ -2052,7 +2089,7 @@ exports[`CycloneDX XML npm 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>object-assign</name>
       
       <cpe>cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*</cpe>
@@ -2071,7 +2108,7 @@ exports[`CycloneDX XML npm 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>prop-types</name>
       
       <cpe>cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*</cpe>
@@ -2090,7 +2127,7 @@ exports[`CycloneDX XML npm 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>react</name>
       
       <cpe>cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*</cpe>
@@ -2103,7 +2140,7 @@ exports[`CycloneDX XML npm 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>react-is</name>
       
       <cpe>cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*</cpe>
@@ -2122,7 +2159,7 @@ exports[`CycloneDX XML npm 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>tar</name>
       
       <cpe>cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*</cpe>
@@ -2135,7 +2172,7 @@ exports[`CycloneDX XML npm 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>yallist</name>
       
       <cpe>cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*</cpe>
@@ -2169,7 +2206,7 @@ exports[`CycloneDX XML yarn 1`] = `
     </component>
   </metadata>
   <components>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>js-tokens</name>
       
       <cpe>cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*</cpe>
@@ -2188,7 +2225,7 @@ exports[`CycloneDX XML yarn 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>loose-envify</name>
       
       <cpe>cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*</cpe>
@@ -2207,7 +2244,7 @@ exports[`CycloneDX XML yarn 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>object-assign</name>
       
       <cpe>cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*</cpe>
@@ -2226,7 +2263,7 @@ exports[`CycloneDX XML yarn 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>prop-types</name>
       
       <cpe>cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*</cpe>
@@ -2245,7 +2282,7 @@ exports[`CycloneDX XML yarn 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>react</name>
       
       <cpe>cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*</cpe>
@@ -2258,7 +2295,7 @@ exports[`CycloneDX XML yarn 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>react-is</name>
       
       <cpe>cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*</cpe>
@@ -2277,7 +2314,7 @@ exports[`CycloneDX XML yarn 1`] = `
         
       </properties>
     </component>
-    <component type=\\"library\\">
+    <component  type=\\"library\\">
       <name>trim</name>
       
       <cpe>cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:*:*:*</cpe>
