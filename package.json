@@ -48,7 +48,7 @@
     "@types/node": "^17.0.23",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",
-    "@vercel/ncc": "^0.33.3",
+    "@vercel/ncc": "^0.33.4",
     "eol-converter-cli": "^1.0.8",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
