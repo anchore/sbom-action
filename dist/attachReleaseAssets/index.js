@@ -19360,12 +19360,12 @@ function uploadDependencySnapshot() {
             core.warning(`No dependency snapshot found at '${githubDependencySnapshotFile}'`);
             return;
         }
-        const { job, runId, repo, sha, ref } = github.context;
+        const { workflow, job, runId, repo, sha, ref } = github.context;
         const client = (0, GithubClient_1.getClient)(repo, core.getInput("github-token"));
         const snapshot = JSON.parse(fs.readFileSync(githubDependencySnapshotFile).toString("utf8"));
         // Need to add the job and repo details
         snapshot.job = {
-            name: job,
+            correlator: core.getInput("dependency-snapshot-correlator") || `${workflow}_${job}`,
             id: `${runId}`,
         };
         snapshot.sha = sha;

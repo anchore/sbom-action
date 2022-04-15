@@ -48,7 +48,7 @@ export interface WorkflowRun {
  */
 export interface DependencySnapshot {
   job: {
-    name: string;
+    correlator: string;
     id: string;
   };
   sha: string;
