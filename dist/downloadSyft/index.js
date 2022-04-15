@@ -18890,10 +18890,10 @@ const download_http_client_1 = __nccwpck_require__(8538);
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
 const cache = __importStar(__nccwpck_require__(7784));
-const fast_safe_stringify_1 = __importDefault(__nccwpck_require__(7676));
 const fs_1 = __importDefault(__nccwpck_require__(7147));
 const os_1 = __importDefault(__nccwpck_require__(2037));
 const path_1 = __importDefault(__nccwpck_require__(1017));
+const Util_1 = __nccwpck_require__(2590);
 /**
  * Suppress info output by redirecting to debug
  * @param fn function to call for duration of output suppression
@@ -18947,10 +18947,10 @@ function debugLog(label, ...args) {
                 }
                 else if (arg instanceof Error) {
                     core.debug(arg.message);
-                    core.debug((0, fast_safe_stringify_1.default)(arg.stack, undefined, 2));
+                    core.debug((0, Util_1.stringify)(arg.stack));
                 }
                 else {
-                    core.debug((0, fast_safe_stringify_1.default)(arg, undefined, 2));
+                    core.debug((0, Util_1.stringify)(arg));
                 }
             }
         }));
@@ -19164,14 +19164,14 @@ class GithubClient {
                     data: JSON.stringify(snapshot),
                 });
                 if (response.status >= 400) {
-                    core.warning(`Dependency snapshot upload failed: ${(0, fast_safe_stringify_1.default)(response, undefined, 2)}`);
+                    core.warning(`Dependency snapshot upload failed: ${(0, Util_1.stringify)(response)}`);
                 }
                 else {
                     debugLog(`Dependency snapshot upload successful:`, response);
                 }
             }
             catch (e) {
-                core.warning(`Error uploading depdendency snapshot: ${(0, fast_safe_stringify_1.default)(e, undefined, 2)}`);
+                core.warning(`Error uploading depdendency snapshot: ${(0, Util_1.stringify)(e)}`);
             }
         });
     }
@@ -19324,7 +19324,6 @@ exports.runAndFailBuildOnException = exports.attachReleaseAssets = exports.uploa
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
 const cache = __importStar(__nccwpck_require__(7784));
-const fast_safe_stringify_1 = __importDefault(__nccwpck_require__(7676));
 const fs = __importStar(__nccwpck_require__(7147));
 const os_1 = __importDefault(__nccwpck_require__(2037));
 const path_1 = __importDefault(__nccwpck_require__(1017));
@@ -19333,6 +19332,7 @@ const SyftVersion_1 = __nccwpck_require__(4431);
 const Executor_1 = __nccwpck_require__(644);
 const GithubClient_1 = __nccwpck_require__(8552);
 const SyftDownloader_1 = __nccwpck_require__(9344);
+const Util_1 = __nccwpck_require__(2590);
 exports.SYFT_BINARY_NAME = "syft";
 exports.SYFT_VERSION = core.getInput("syft-version") || SyftVersion_1.VERSION;
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
@@ -19652,7 +19652,7 @@ function uploadDependencySnapshot() {
         snapshot.sha = sha;
         snapshot.ref = ref;
         core.info(`Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`);
-        (0, GithubClient_1.debugLog)("Snapshot:", JSON.stringify(snapshot));
+        (0, GithubClient_1.debugLog)("Snapshot:", snapshot);
         yield client.postDependencySnapshot(snapshot);
     });
 }
@@ -19769,20 +19769,34 @@ function runAndFailBuildOnException(fn) {
                 core.setFailed(e.message);
             }
             else if (e instanceof Object) {
-                try {
-                    core.setFailed(JSON.stringify(e));
-                }
-                catch (e) {
-                    core.setFailed(`Action failed: ${(0, fast_safe_stringify_1.default)(e, undefined, 2)}`);
-                }
+                core.setFailed(`Action failed: ${(0, Util_1.stringify)(e)}`);
             }
             else {
-                core.setFailed(`An unknown error occurred: ${e}`);
+                core.setFailed(`An unknown error occurred: ${(0, Util_1.stringify)(e)}`);
             }
         }
     });
 }
 exports.runAndFailBuildOnException = runAndFailBuildOnException;
+
+
+/***/ }),
+
+/***/ 2590:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.stringify = void 0;
+const fast_safe_stringify_1 = __importDefault(__nccwpck_require__(7676));
+function stringify(o) {
+    return (0, fast_safe_stringify_1.default)(o, undefined, 2);
+}
+exports.stringify = stringify;
 
 
 /***/ }),

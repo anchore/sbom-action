@@ -6,7 +6,6 @@ import {
   Release,
   ReleaseEvent,
 } from "@octokit/webhooks-types";
-import stringify from "fast-safe-stringify";
 import * as fs from "fs";
 import os from "os";
 import path from "path";
@@ -21,6 +20,7 @@ import {
   getClient,
 } from "./GithubClient";
 import { downloadSyftFromZip } from "./SyftDownloader";
+import { stringify } from "./Util";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = core.getInput("syft-version") || VERSION;
@@ -398,7 +398,7 @@ export async function uploadDependencySnapshot(): Promise<void> {
   core.info(
     `Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`
   );
-  debugLog("Snapshot:", JSON.stringify(snapshot));
+  debugLog("Snapshot:", snapshot);
 
   await client.postDependencySnapshot(snapshot);
 }
@@ -531,13 +531,9 @@ export async function runAndFailBuildOnException<T>(
     if (e instanceof Error) {
       core.setFailed(e.message);
     } else if (e instanceof Object) {
-      try {
-        core.setFailed(JSON.stringify(e));
-      } catch (e) {
-        core.setFailed(`Action failed: ${stringify(e, undefined, 2)}`);
-      }
+      core.setFailed(`Action failed: ${stringify(e)}`);
     } else {
-      core.setFailed(`An unknown error occurred: ${e}`);
+      core.setFailed(`An unknown error occurred: ${stringify(e)}`);
     }
   }
 }

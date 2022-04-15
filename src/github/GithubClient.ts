@@ -5,10 +5,10 @@ import * as github from "@actions/github";
 import { GitHub } from "@actions/github/lib/utils";
 import * as cache from "@actions/tool-cache";
 import { Release } from "@octokit/webhooks-types";
-import stringify from "fast-safe-stringify";
 import fs from "fs";
 import os from "os";
 import path from "path";
+import { stringify } from "./Util";
 
 export type GithubRepo = { owner: string; repo: string };
 
@@ -107,9 +107,9 @@ export function debugLog(label: string, ...args: unknown[]): void {
           core.debug(arg);
         } else if (arg instanceof Error) {
           core.debug(arg.message);
-          core.debug(stringify(arg.stack, undefined, 2));
+          core.debug(stringify(arg.stack));
         } else {
-          core.debug(stringify(arg, undefined, 2));
+          core.debug(stringify(arg));
         }
       }
     });
@@ -433,19 +433,13 @@ export class GithubClient {
 
       if (response.status >= 400) {
         core.warning(
-          `Dependency snapshot upload failed: ${stringify(
-            response,
-            undefined,
-            2
-          )}`
+          `Dependency snapshot upload failed: ${stringify(response)}`
         );
       } else {
         debugLog(`Dependency snapshot upload successful:`, response);
       }
     } catch (e: any) {
-      core.warning(
-        `Error uploading depdendency snapshot: ${stringify(e, undefined, 2)}`
-      );
+      core.warning(`Error uploading depdendency snapshot: ${stringify(e)}`);
     }
   }
 }
