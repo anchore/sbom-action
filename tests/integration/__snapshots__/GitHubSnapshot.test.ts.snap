@@ -8,8 +8,8 @@ Object {
     "version": "",
   },
   "job": Object {
+    "correlator": "my-workflow_default-import-job",
     "id": "1",
-    "name": "default-import-job",
   },
   "manifests": Object {
     "tests/fixtures/npm-project/package-lock.json": Object {
