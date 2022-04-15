@@ -8,6 +8,7 @@ import { Release } from "@octokit/webhooks-types";
 import fs from "fs";
 import os from "os";
 import path from "path";
+import { stringify } from "./Util";
 
 export type GithubRepo = { owner: string; repo: string };
 
@@ -48,7 +49,7 @@ export interface WorkflowRun {
  */
 export interface DependencySnapshot {
   job: {
-    name: string;
+    correlator: string;
     id: string;
   };
   sha: string;
@@ -106,9 +107,9 @@ export function debugLog(label: string, ...args: unknown[]): void {
           core.debug(arg);
         } else if (arg instanceof Error) {
           core.debug(arg.message);
-          console.log(arg.stack);
+          core.debug(stringify(arg.stack));
         } else {
-          console.log(arg);
+          core.debug(stringify(arg));
         }
       }
     });
@@ -431,14 +432,17 @@ export class GithubClient {
       );
 
       if (response.status >= 400) {
-        core.warning(`Dependency snapshot upload failed:`);
-        console.log(response);
+        core.warning(
+          `Dependency snapshot upload failed: ${stringify(response)}`
+        );
       } else {
         debugLog(`Dependency snapshot upload successful:`, response);
       }
-    } catch (e) {
-      core.warning(`Error uploading depdendency snapshot:`);
-      console.log(e);
+    } catch (e: any) {
+      if ("response" in e) {
+        e = e.response;
+      }
+      core.warning(`Error uploading depdendency snapshot: ${stringify(e)}`);
     }
   }
 }

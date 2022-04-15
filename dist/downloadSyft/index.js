@@ -8294,6 +8294,242 @@ exports.Deprecation = Deprecation;
 
 /***/ }),
 
+/***/ 7676:
+/***/ ((module) => {
+
+module.exports = stringify
+stringify.default = stringify
+stringify.stable = deterministicStringify
+stringify.stableStringify = deterministicStringify
+
+var LIMIT_REPLACE_NODE = '[...]'
+var CIRCULAR_REPLACE_NODE = '[Circular]'
+
+var arr = []
+var replacerStack = []
+
+function defaultOptions () {
+  return {
+    depthLimit: Number.MAX_SAFE_INTEGER,
+    edgesLimit: Number.MAX_SAFE_INTEGER
+  }
+}
+
+// Regular stringify
+function stringify (obj, replacer, spacer, options) {
+  if (typeof options === 'undefined') {
+    options = defaultOptions()
+  }
+
+  decirc(obj, '', 0, [], undefined, 0, options)
+  var res
+  try {
+    if (replacerStack.length === 0) {
+      res = JSON.stringify(obj, replacer, spacer)
+    } else {
+      res = JSON.stringify(obj, replaceGetterValues(replacer), spacer)
+    }
+  } catch (_) {
+    return JSON.stringify('[unable to serialize, circular reference is too complex to analyze]')
+  } finally {
+    while (arr.length !== 0) {
+      var part = arr.pop()
+      if (part.length === 4) {
+        Object.defineProperty(part[0], part[1], part[3])
+      } else {
+        part[0][part[1]] = part[2]
+      }
+    }
+  }
+  return res
+}
+
+function setReplace (replace, val, k, parent) {
+  var propertyDescriptor = Object.getOwnPropertyDescriptor(parent, k)
+  if (propertyDescriptor.get !== undefined) {
+    if (propertyDescriptor.configurable) {
+      Object.defineProperty(parent, k, { value: replace })
+      arr.push([parent, k, val, propertyDescriptor])
+    } else {
+      replacerStack.push([val, k, replace])
+    }
+  } else {
+    parent[k] = replace
+    arr.push([parent, k, val])
+  }
+}
+
+function decirc (val, k, edgeIndex, stack, parent, depth, options) {
+  depth += 1
+  var i
+  if (typeof val === 'object' && val !== null) {
+    for (i = 0; i < stack.length; i++) {
+      if (stack[i] === val) {
+        setReplace(CIRCULAR_REPLACE_NODE, val, k, parent)
+        return
+      }
+    }
+
+    if (
+      typeof options.depthLimit !== 'undefined' &&
+      depth > options.depthLimit
+    ) {
+      setReplace(LIMIT_REPLACE_NODE, val, k, parent)
+      return
+    }
+
+    if (
+      typeof options.edgesLimit !== 'undefined' &&
+      edgeIndex + 1 > options.edgesLimit
+    ) {
+      setReplace(LIMIT_REPLACE_NODE, val, k, parent)
+      return
+    }
+
+    stack.push(val)
+    // Optimize for Arrays. Big arrays could kill the performance otherwise!
+    if (Array.isArray(val)) {
+      for (i = 0; i < val.length; i++) {
+        decirc(val[i], i, i, stack, val, depth, options)
+      }
+    } else {
+      var keys = Object.keys(val)
+      for (i = 0; i < keys.length; i++) {
+        var key = keys[i]
+        decirc(val[key], key, i, stack, val, depth, options)
+      }
+    }
+    stack.pop()
+  }
+}
+
+// Stable-stringify
+function compareFunction (a, b) {
+  if (a < b) {
+    return -1
+  }
+  if (a > b) {
+    return 1
+  }
+  return 0
+}
+
+function deterministicStringify (obj, replacer, spacer, options) {
+  if (typeof options === 'undefined') {
+    options = defaultOptions()
+  }
+
+  var tmp = deterministicDecirc(obj, '', 0, [], undefined, 0, options) || obj
+  var res
+  try {
+    if (replacerStack.length === 0) {
+      res = JSON.stringify(tmp, replacer, spacer)
+    } else {
+      res = JSON.stringify(tmp, replaceGetterValues(replacer), spacer)
+    }
+  } catch (_) {
+    return JSON.stringify('[unable to serialize, circular reference is too complex to analyze]')
+  } finally {
+    // Ensure that we restore the object as it was.
+    while (arr.length !== 0) {
+      var part = arr.pop()
+      if (part.length === 4) {
+        Object.defineProperty(part[0], part[1], part[3])
+      } else {
+        part[0][part[1]] = part[2]
+      }
+    }
+  }
+  return res
+}
+
+function deterministicDecirc (val, k, edgeIndex, stack, parent, depth, options) {
+  depth += 1
+  var i
+  if (typeof val === 'object' && val !== null) {
+    for (i = 0; i < stack.length; i++) {
+      if (stack[i] === val) {
+        setReplace(CIRCULAR_REPLACE_NODE, val, k, parent)
+        return
+      }
+    }
+    try {
+      if (typeof val.toJSON === 'function') {
+        return
+      }
+    } catch (_) {
+      return
+    }
+
+    if (
+      typeof options.depthLimit !== 'undefined' &&
+      depth > options.depthLimit
+    ) {
+      setReplace(LIMIT_REPLACE_NODE, val, k, parent)
+      return
+    }
+
+    if (
+      typeof options.edgesLimit !== 'undefined' &&
+      edgeIndex + 1 > options.edgesLimit
+    ) {
+      setReplace(LIMIT_REPLACE_NODE, val, k, parent)
+      return
+    }
+
+    stack.push(val)
+    // Optimize for Arrays. Big arrays could kill the performance otherwise!
+    if (Array.isArray(val)) {
+      for (i = 0; i < val.length; i++) {
+        deterministicDecirc(val[i], i, i, stack, val, depth, options)
+      }
+    } else {
+      // Create a temporary object in the required way
+      var tmp = {}
+      var keys = Object.keys(val).sort(compareFunction)
+      for (i = 0; i < keys.length; i++) {
+        var key = keys[i]
+        deterministicDecirc(val[key], key, i, stack, val, depth, options)
+        tmp[key] = val[key]
+      }
+      if (typeof parent !== 'undefined') {
+        arr.push([parent, k, val])
+        parent[k] = tmp
+      } else {
+        return tmp
+      }
+    }
+    stack.pop()
+  }
+}
+
+// wraps replacer function to handle values we couldn't replace
+// and mark them as replaced value
+function replaceGetterValues (replacer) {
+  replacer =
+    typeof replacer !== 'undefined'
+      ? replacer
+      : function (k, v) {
+        return v
+      }
+  return function (key, val) {
+    if (replacerStack.length > 0) {
+      for (var i = 0; i < replacerStack.length; i++) {
+        var part = replacerStack[i]
+        if (part[1] === key && part[0] === val) {
+          val = part[2]
+          replacerStack.splice(i, 1)
+          break
+        }
+      }
+    }
+    return replacer.call(this, key, val)
+  }
+}
+
+
+/***/ }),
+
 /***/ 6863:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -18497,7 +18733,7 @@ function wrappy (fn, cb) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.VERSION = void 0;
-exports.VERSION = "v0.43.2";
+exports.VERSION = "v0.44.1";
 
 
 /***/ }),
@@ -18657,6 +18893,7 @@ const cache = __importStar(__nccwpck_require__(7784));
 const fs_1 = __importDefault(__nccwpck_require__(7147));
 const os_1 = __importDefault(__nccwpck_require__(2037));
 const path_1 = __importDefault(__nccwpck_require__(1017));
+const Util_1 = __nccwpck_require__(2590);
 /**
  * Suppress info output by redirecting to debug
  * @param fn function to call for duration of output suppression
@@ -18710,10 +18947,10 @@ function debugLog(label, ...args) {
                 }
                 else if (arg instanceof Error) {
                     core.debug(arg.message);
-                    console.log(arg.stack);
+                    core.debug((0, Util_1.stringify)(arg.stack));
                 }
                 else {
-                    console.log(arg);
+                    core.debug((0, Util_1.stringify)(arg));
                 }
             }
         }));
@@ -18927,16 +19164,17 @@ class GithubClient {
                     data: JSON.stringify(snapshot),
                 });
                 if (response.status >= 400) {
-                    core.warning(`Dependency snapshot upload failed:`);
-                    console.log(response);
+                    core.warning(`Dependency snapshot upload failed: ${(0, Util_1.stringify)(response)}`);
                 }
                 else {
                     debugLog(`Dependency snapshot upload successful:`, response);
                 }
             }
             catch (e) {
-                core.warning(`Error uploading depdendency snapshot:`);
-                console.log(e);
+                if ("response" in e) {
+                    e = e.response;
+                }
+                core.warning(`Error uploading depdendency snapshot: ${(0, Util_1.stringify)(e)}`);
             }
         });
     }
@@ -18984,6 +19222,7 @@ exports.getClient = getClient;
 
 "use strict";
 
+/* istanbul ignore file */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -19096,6 +19335,7 @@ const SyftVersion_1 = __nccwpck_require__(4431);
 const Executor_1 = __nccwpck_require__(644);
 const GithubClient_1 = __nccwpck_require__(8552);
 const SyftDownloader_1 = __nccwpck_require__(9344);
+const Util_1 = __nccwpck_require__(2590);
 exports.SYFT_BINARY_NAME = "syft";
 exports.SYFT_VERSION = core.getInput("syft-version") || SyftVersion_1.VERSION;
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
@@ -19404,12 +19644,12 @@ function uploadDependencySnapshot() {
             core.warning(`No dependency snapshot found at '${githubDependencySnapshotFile}'`);
             return;
         }
-        const { job, runId, repo, sha, ref } = github.context;
+        const { workflow, job, runId, repo, sha, ref } = github.context;
         const client = (0, GithubClient_1.getClient)(repo, core.getInput("github-token"));
         const snapshot = JSON.parse(fs.readFileSync(githubDependencySnapshotFile).toString("utf8"));
         // Need to add the job and repo details
         snapshot.job = {
-            name: job,
+            correlator: core.getInput("dependency-snapshot-correlator") || `${workflow}_${job}`,
             id: `${runId}`,
         };
         snapshot.sha = sha;
@@ -19532,21 +19772,34 @@ function runAndFailBuildOnException(fn) {
                 core.setFailed(e.message);
             }
             else if (e instanceof Object) {
-                try {
-                    core.setFailed(JSON.stringify(e));
-                }
-                catch (e) {
-                    core.setFailed("Action failed");
-                    console.error(e);
-                }
+                core.setFailed(`Action failed: ${(0, Util_1.stringify)(e)}`);
             }
             else {
-                core.setFailed(`An unknown error occurred: ${e}`);
+                core.setFailed(`An unknown error occurred: ${(0, Util_1.stringify)(e)}`);
             }
         }
     });
 }
 exports.runAndFailBuildOnException = runAndFailBuildOnException;
+
+
+/***/ }),
+
+/***/ 2590:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.stringify = void 0;
+const fast_safe_stringify_1 = __importDefault(__nccwpck_require__(7676));
+function stringify(o) {
+    return (0, fast_safe_stringify_1.default)(o, undefined, 2);
+}
+exports.stringify = stringify;
 
 
 /***/ }),

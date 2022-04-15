@@ -20,6 +20,7 @@ import {
   getClient,
 } from "./GithubClient";
 import { downloadSyftFromZip } from "./SyftDownloader";
+import { stringify } from "./Util";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = core.getInput("syft-version") || VERSION;
@@ -378,7 +379,7 @@ export async function uploadDependencySnapshot(): Promise<void> {
     );
     return;
   }
-  const { job, runId, repo, sha, ref } = github.context;
+  const { workflow, job, runId, repo, sha, ref } = github.context;
   const client = getClient(repo, core.getInput("github-token"));
 
   const snapshot = JSON.parse(
@@ -387,7 +388,8 @@ export async function uploadDependencySnapshot(): Promise<void> {
 
   // Need to add the job and repo details
   snapshot.job = {
-    name: job,
+    correlator:
+      core.getInput("dependency-snapshot-correlator") || `${workflow}_${job}`,
     id: `${runId}`,
   };
   snapshot.sha = sha;
@@ -529,14 +531,9 @@ export async function runAndFailBuildOnException<T>(
     if (e instanceof Error) {
       core.setFailed(e.message);
     } else if (e instanceof Object) {
-      try {
-        core.setFailed(JSON.stringify(e));
-      } catch (e) {
-        core.setFailed("Action failed");
-        console.error(e);
-      }
+      core.setFailed(`Action failed: ${stringify(e)}`);
     } else {
-      core.setFailed(`An unknown error occurred: ${e}`);
+      core.setFailed(`An unknown error occurred: ${stringify(e)}`);
     }
   }
 }

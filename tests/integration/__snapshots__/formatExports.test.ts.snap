@@ -473,6 +473,18 @@ exports[`CycloneDX JSON debian 1`] = `
       ,
       \\"cpe\\": \\"cpe:2.3:a:example-java-app-maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*\\",
       \\"purl\\": \\"pkg:maven/org.anchore/example-java-app-maven@0.1.0\\",
+      \\"externalReferences\\": [
+        {
+          \\"url\\": \\"\\",
+          \\"hashes\\": [
+            {
+              \\"alg\\": \\"sha1\\",
+              \\"content\\": \\"100b566a7dcdb187bf9f14ecd96427cadd535bfe\\"
+            }
+          ],
+          \\"type\\": \\"build-meta\\"
+        }
+      ],
       \\"properties\\": [
         {
           \\"name\\": \\"syft:package:foundBy\\",
@@ -1857,6 +1869,14 @@ exports[`CycloneDX XML debian 1`] = `
       
       <cpe>cpe:2.3:a:example-java-app-maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</cpe>
       <purl>pkg:maven/org.anchore/example-java-app-maven@0.1.0</purl>
+      <externalReferences>
+        <reference type=\\"build-meta\\">
+          <url></url>
+          <hashes>
+            <hash alg=\\"sha1\\">100b566a7dcdb187bf9f14ecd96427cadd535bfe</hash>
+          </hashes>
+        </reference>
+      </externalReferences>
       <properties>
         <property name=\\"syft:package:foundBy\\">java-cataloger</property>
         <property name=\\"syft:package:language\\">java</property>
@@ -2691,6 +2711,12 @@ exports[`SPDX JSON debian 1`] = `
    ,
    \\"name\\": \\"example-java-app-maven\\",
    \\"licenseConcluded\\": \\"NONE\\",
+   \\"checksums\\": [
+    {
+     \\"algorithm\\": \\"SHA1\\",
+     \\"checksumValue\\": \\"100b566a7dcdb187bf9f14ecd96427cadd535bfe\\"
+    }
+   ],
    \\"downloadLocation\\": \\"NOASSERTION\\",
    \\"externalRefs\\": [
     {
@@ -2779,7 +2805,7 @@ exports[`SPDX JSON debian 1`] = `
      \\"referenceType\\": \\"purl\\"
     }
    ],
-   \\"filesAnalyzed\\": false,
+   \\"filesAnalyzed\\": true,
    \\"licenseDeclared\\": \\"NONE\\",
    \\"sourceInfo\\": \\"acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar\\",
    \\"versionInfo\\": \\"0.1.0\\"
@@ -3875,7 +3901,7 @@ PackageName: example-java-app-maven
 
 PackageVersion: 0.1.0
 PackageDownloadLocation: NOASSERTION
-FilesAnalyzed: false
+FilesAnalyzed: true
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION

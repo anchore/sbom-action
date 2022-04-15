@@ -1,4 +1,3 @@
-import path from "path";
 import { context, getMocks } from "../mocks";
 const { setData, restoreInitialData, mocks } = getMocks();
 
@@ -50,6 +49,7 @@ describe("GitHub Snapshot", () => {
           ref: "main",
         }),
         sha: "f293f09uaw90gwa09f9wea",
+        workflow: "my-workflow",
         job: "default-import-job",
         action: "__anchore_sbom-action",
       },
