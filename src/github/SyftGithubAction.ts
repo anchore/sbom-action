@@ -397,7 +397,7 @@ export async function uploadDependencySnapshot(): Promise<void> {
   core.info(
     `Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`
   );
-  debugLog("Snapshot:", snapshot);
+  debugLog("Snapshot:", JSON.stringify(snapshot));
 
   await client.postDependencySnapshot(snapshot);
 }

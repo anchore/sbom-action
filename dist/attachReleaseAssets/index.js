@@ -18891,7 +18891,10 @@ class GithubClient {
                 }
             }
             catch (e) {
-                core.warning(`Error uploading depdendency snapshot:`);
+                core.warning("Error uploading depdendency snapshot:");
+                if ("response" in e) {
+                    e = JSON.stringify(e.response);
+                }
                 console.log(e);
             }
         });
@@ -19372,7 +19375,7 @@ function uploadDependencySnapshot() {
         snapshot.sha = sha;
         snapshot.ref = ref;
         core.info(`Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`);
-        (0, GithubClient_1.debugLog)("Snapshot:", snapshot);
+        (0, GithubClient_1.debugLog)("Snapshot:", JSON.stringify(snapshot));
         yield client.postDependencySnapshot(snapshot);
     });
 }

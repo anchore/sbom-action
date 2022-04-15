@@ -436,8 +436,11 @@ export class GithubClient {
       } else {
         debugLog(`Dependency snapshot upload successful:`, response);
       }
-    } catch (e) {
-      core.warning(`Error uploading depdendency snapshot:`);
+    } catch (e: any) {
+      core.warning("Error uploading depdendency snapshot:");
+      if ("response" in e) {
+        e = JSON.stringify(e.response);
+      }
       console.log(e);
     }
   }
