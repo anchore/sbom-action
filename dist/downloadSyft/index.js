@@ -19171,6 +19171,9 @@ class GithubClient {
                 }
             }
             catch (e) {
+                if ("response" in e) {
+                    e = e.response;
+                }
                 core.warning(`Error uploading depdendency snapshot: ${(0, Util_1.stringify)(e)}`);
             }
         });

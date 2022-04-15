@@ -439,6 +439,9 @@ export class GithubClient {
         debugLog(`Dependency snapshot upload successful:`, response);
       }
     } catch (e: any) {
+      if ("response" in e) {
+        e = e.response;
+      }
       core.warning(`Error uploading depdendency snapshot: ${stringify(e)}`);
     }
   }
