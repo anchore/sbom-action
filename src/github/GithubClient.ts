@@ -5,6 +5,7 @@ import * as github from "@actions/github";
 import { GitHub } from "@actions/github/lib/utils";
 import * as cache from "@actions/tool-cache";
 import { Release } from "@octokit/webhooks-types";
+import stringify from "fast-safe-stringify";
 import fs from "fs";
 import os from "os";
 import path from "path";
@@ -106,9 +107,9 @@ export function debugLog(label: string, ...args: unknown[]): void {
           core.debug(arg);
         } else if (arg instanceof Error) {
           core.debug(arg.message);
-          console.log(arg.stack);
+          core.debug(stringify(arg.stack, undefined, 2));
         } else {
-          console.log(arg);
+          core.debug(stringify(arg, undefined, 2));
         }
       }
     });
@@ -431,17 +432,20 @@ export class GithubClient {
       );
 
       if (response.status >= 400) {
-        core.warning(`Dependency snapshot upload failed:`);
-        console.log(response);
+        core.warning(
+          `Dependency snapshot upload failed: ${stringify(
+            response,
+            undefined,
+            2
+          )}`
+        );
       } else {
         debugLog(`Dependency snapshot upload successful:`, response);
       }
     } catch (e: any) {
-      core.warning("Error uploading depdendency snapshot:");
-      if ("response" in e) {
-        e = JSON.stringify(e.response);
-      }
-      console.log(e);
+      core.warning(
+        `Error uploading depdendency snapshot: ${stringify(e, undefined, 2)}`
+      );
     }
   }
 }

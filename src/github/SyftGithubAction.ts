@@ -6,6 +6,7 @@ import {
   Release,
   ReleaseEvent,
 } from "@octokit/webhooks-types";
+import stringify from "fast-safe-stringify";
 import * as fs from "fs";
 import os from "os";
 import path from "path";
@@ -533,8 +534,7 @@ export async function runAndFailBuildOnException<T>(
       try {
         core.setFailed(JSON.stringify(e));
       } catch (e) {
-        core.setFailed("Action failed");
-        console.error(e);
+        core.setFailed(`Action failed: ${stringify(e, undefined, 2)}`);
       }
     } else {
       core.setFailed(`An unknown error occurred: ${e}`);
