@@ -49,6 +49,16 @@ inputs:
     description: "Upload to GitHub dependency snapshot API"
     default: "false"
 
+  upload-artifact:
+    required: false
+    description: "Upload artifact to workflow"
+    default: "true"
+
+  upload-release-assets:
+    required: false
+    description: "Upload release assets"
+    default: "true"
+
 runs:
   using: "node12"
   main: "dist/runSyftAction/index.js"
