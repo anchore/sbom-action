@@ -779,13 +779,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "chownr",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "ISC"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/chownr@2.0.0",
       "properties": [
@@ -816,13 +809,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "fs-minipass",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "ISC"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:fs-minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/fs-minipass@2.1.0",
       "properties": [
@@ -877,13 +863,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "js-tokens",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/js-tokens@4.0.0",
       "properties": [
@@ -938,13 +917,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "loose-envify",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/loose-envify@1.4.0",
       "properties": [
@@ -999,13 +971,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "minipass",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "ISC"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*",
       "purl": "pkg:npm/minipass@3.1.3",
       "properties": [
@@ -1036,13 +1001,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "minizlib",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*",
       "purl": "pkg:npm/minizlib@2.1.2",
       "properties": [
@@ -1073,13 +1031,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "mkdirp",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*",
       "purl": "pkg:npm/mkdirp@1.0.4",
       "properties": [
@@ -1110,13 +1061,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "object-assign",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*",
       "purl": "pkg:npm/object-assign@4.1.1",
       "properties": [
@@ -1171,13 +1115,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "prop-types",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*",
       "purl": "pkg:npm/prop-types@15.7.2",
       "properties": [
@@ -1232,13 +1169,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "react",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/react@16.14.0",
       "properties": [
@@ -1269,13 +1199,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "react-is",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*",
       "purl": "pkg:npm/react-is@16.13.1",
       "properties": [
@@ -1330,13 +1253,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "tar",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "ISC"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/tar@6.1.0",
       "properties": [
@@ -1367,13 +1283,6 @@ exports[`CycloneDX JSON npm 1`] = `
       "type": "library",
       "name": "yallist",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "ISC"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/yallist@4.0.0",
       "properties": [
@@ -1431,13 +1340,6 @@ exports[`CycloneDX JSON yarn 1`] = `
       "type": "library",
       "name": "js-tokens",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/js-tokens@4.0.0",
       "properties": [
@@ -1492,13 +1394,6 @@ exports[`CycloneDX JSON yarn 1`] = `
       "type": "library",
       "name": "loose-envify",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/loose-envify@1.4.0",
       "properties": [
@@ -1553,13 +1448,6 @@ exports[`CycloneDX JSON yarn 1`] = `
       "type": "library",
       "name": "object-assign",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*",
       "purl": "pkg:npm/object-assign@4.1.1",
       "properties": [
@@ -1614,13 +1502,6 @@ exports[`CycloneDX JSON yarn 1`] = `
       "type": "library",
       "name": "prop-types",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*",
       "purl": "pkg:npm/prop-types@15.7.2",
       "properties": [
@@ -1675,13 +1556,6 @@ exports[`CycloneDX JSON yarn 1`] = `
       "type": "library",
       "name": "react",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/react@16.14.0",
       "properties": [
@@ -1712,13 +1586,6 @@ exports[`CycloneDX JSON yarn 1`] = `
       "type": "library",
       "name": "react-is",
       ,
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
       "cpe": "cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*",
       "purl": "pkg:npm/react-is@16.13.1",
       "properties": [
@@ -2136,11 +2003,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>chownr</name>
       
-      <licenses>
-        <license>
-          <id>ISC</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/chownr@2.0.0</purl>
       <properties>
@@ -2154,11 +2016,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>fs-minipass</name>
       
-      <licenses>
-        <license>
-          <id>ISC</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:fs-minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/fs-minipass@2.1.0</purl>
       <properties>
@@ -2178,11 +2035,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>js-tokens</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/js-tokens@4.0.0</purl>
       <properties>
@@ -2202,11 +2054,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>loose-envify</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/loose-envify@1.4.0</purl>
       <properties>
@@ -2226,11 +2073,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>minipass</name>
       
-      <licenses>
-        <license>
-          <id>ISC</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/minipass@3.1.3</purl>
       <properties>
@@ -2244,11 +2086,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>minizlib</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/minizlib@2.1.2</purl>
       <properties>
@@ -2262,11 +2099,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>mkdirp</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/mkdirp@1.0.4</purl>
       <properties>
@@ -2280,11 +2112,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>object-assign</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/object-assign@4.1.1</purl>
       <properties>
@@ -2304,11 +2131,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>prop-types</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/prop-types@15.7.2</purl>
       <properties>
@@ -2328,11 +2150,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>react</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/react@16.14.0</purl>
       <properties>
@@ -2346,11 +2163,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>react-is</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/react-is@16.13.1</purl>
       <properties>
@@ -2370,11 +2182,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>tar</name>
       
-      <licenses>
-        <license>
-          <id>ISC</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/tar@6.1.0</purl>
       <properties>
@@ -2388,11 +2195,6 @@ exports[`CycloneDX XML npm 1`] = `
     <component  type="library">
       <name>yallist</name>
       
-      <licenses>
-        <license>
-          <id>ISC</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/yallist@4.0.0</purl>
       <properties>
@@ -2427,11 +2229,6 @@ exports[`CycloneDX XML yarn 1`] = `
     <component  type="library">
       <name>js-tokens</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/js-tokens@4.0.0</purl>
       <properties>
@@ -2451,11 +2248,6 @@ exports[`CycloneDX XML yarn 1`] = `
     <component  type="library">
       <name>loose-envify</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/loose-envify@1.4.0</purl>
       <properties>
@@ -2475,11 +2267,6 @@ exports[`CycloneDX XML yarn 1`] = `
     <component  type="library">
       <name>object-assign</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/object-assign@4.1.1</purl>
       <properties>
@@ -2499,11 +2286,6 @@ exports[`CycloneDX XML yarn 1`] = `
     <component  type="library">
       <name>prop-types</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/prop-types@15.7.2</purl>
       <properties>
@@ -2523,11 +2305,6 @@ exports[`CycloneDX XML yarn 1`] = `
     <component  type="library">
       <name>react</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/react@16.14.0</purl>
       <properties>
@@ -2541,11 +2318,6 @@ exports[`CycloneDX XML yarn 1`] = `
     <component  type="library">
       <name>react-is</name>
       
-      <licenses>
-        <license>
-          <id>MIT</id>
-        </license>
-      </licenses>
       <cpe>cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/react-is@16.13.1</purl>
       <properties>
@@ -2590,7 +2362,7 @@ exports[`SPDX JSON alpine 1`] = `
    "Organization: Anchore, Inc",
    
   ],
-  
+  "licenseListVersion": "3.17"
  },
  "dataLicense": "CC0-1.0",
  ,
@@ -2635,7 +2407,7 @@ exports[`SPDX JSON debian 1`] = `
    "Organization: Anchore, Inc",
    
   ],
-  
+  "licenseListVersion": "3.17"
  },
  "dataLicense": "CC0-1.0",
  ,
@@ -3130,7 +2902,7 @@ exports[`SPDX JSON npm 1`] = `
    "Organization: Anchore, Inc",
    
   ],
-  
+  "licenseListVersion": "3.17"
  },
  "dataLicense": "CC0-1.0",
  ,
@@ -3138,7 +2910,7 @@ exports[`SPDX JSON npm 1`] = `
   {
    ,
    "name": "chownr",
-   "licenseConcluded": "ISC",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3158,14 +2930,14 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "ISC",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "2.0.0"
   },
   {
    ,
    "name": "fs-minipass",
-   "licenseConcluded": "ISC",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3215,14 +2987,14 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "ISC",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "2.1.0"
   },
   {
    ,
    "name": "js-tokens",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3272,14 +3044,14 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "4.0.0"
   },
   {
    ,
    "name": "loose-envify",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3329,14 +3101,14 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "1.4.0"
   },
   {
    ,
    "name": "minipass",
-   "licenseConcluded": "ISC",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3356,14 +3128,14 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "ISC",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "3.1.3"
   },
   {
    ,
    "name": "minizlib",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3383,14 +3155,14 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "2.1.2"
   },
   {
    ,
    "name": "mkdirp",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3410,14 +3182,14 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "1.0.4"
   },
   {
    ,
    "name": "object-assign",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3467,14 +3239,14 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "4.1.1"
   },
   {
    ,
    "name": "prop-types",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3524,14 +3296,14 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "15.7.2"
   },
   {
    ,
    "name": "react",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3551,14 +3323,14 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "16.14.0"
   },
   {
    ,
    "name": "react-is",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3608,14 +3380,14 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "16.13.1"
   },
   {
    ,
    "name": "tar",
-   "licenseConcluded": "ISC",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3635,14 +3407,14 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "ISC",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "6.1.0"
   },
   {
    ,
    "name": "yallist",
-   "licenseConcluded": "ISC",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3662,7 +3434,7 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "ISC",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "4.0.0"
   }
@@ -3682,7 +3454,7 @@ exports[`SPDX JSON yarn 1`] = `
    "Organization: Anchore, Inc",
    
   ],
-  
+  "licenseListVersion": "3.17"
  },
  "dataLicense": "CC0-1.0",
  ,
@@ -3690,7 +3462,7 @@ exports[`SPDX JSON yarn 1`] = `
   {
    ,
    "name": "js-tokens",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3740,14 +3512,14 @@ exports[`SPDX JSON yarn 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
    "versionInfo": "4.0.0"
   },
   {
    ,
    "name": "loose-envify",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3797,14 +3569,14 @@ exports[`SPDX JSON yarn 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
    "versionInfo": "1.4.0"
   },
   {
    ,
    "name": "object-assign",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3854,14 +3626,14 @@ exports[`SPDX JSON yarn 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
    "versionInfo": "4.1.1"
   },
   {
    ,
    "name": "prop-types",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3911,14 +3683,14 @@ exports[`SPDX JSON yarn 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
    "versionInfo": "15.7.2"
   },
   {
    ,
    "name": "react",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3938,14 +3710,14 @@ exports[`SPDX JSON yarn 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
    "versionInfo": "16.14.0"
   },
   {
    ,
    "name": "react-is",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NONE",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
     {
@@ -3995,7 +3767,7 @@ exports[`SPDX JSON yarn 1`] = `
     }
    ],
    "filesAnalyzed": false,
-   "licenseDeclared": "MIT",
+   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
    "versionInfo": "16.13.1"
   },
@@ -4037,7 +3809,7 @@ DataLicense: CC0-1.0
 
 DocumentName: localhost-5000/match-coverage/alpine-latest
 
-
+LicenseListVersion: 3.17
 
 
 
@@ -4064,7 +3836,7 @@ DataLicense: CC0-1.0
 
 DocumentName: localhost-5000/match-coverage/debian-latest
 
-
+LicenseListVersion: 3.17
 
 
 
@@ -4222,7 +3994,7 @@ DataLicense: CC0-1.0
 
 DocumentName: tests/fixtures/npm-project
 
-
+LicenseListVersion: 3.17
 
 
 
@@ -4234,8 +4006,8 @@ PackageName: chownr
 PackageVersion: 2.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: ISC
-PackageLicenseDeclared: ISC
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:chownr:2.0.0:*:*:*:*:*:*:*
@@ -4248,8 +4020,8 @@ PackageName: fs-minipass
 PackageVersion: 2.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: ISC
-PackageLicenseDeclared: ISC
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs-minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs-minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*
@@ -4268,8 +4040,8 @@ PackageName: js-tokens
 PackageVersion: 4.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
@@ -4288,8 +4060,8 @@ PackageName: loose-envify
 PackageVersion: 1.4.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*
@@ -4308,8 +4080,8 @@ PackageName: minipass
 PackageVersion: 3.1.3
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: ISC
-PackageLicenseDeclared: ISC
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:minipass:3.1.3:*:*:*:*:*:*:*
@@ -4322,8 +4094,8 @@ PackageName: minizlib
 PackageVersion: 2.1.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:minizlib:2.1.2:*:*:*:*:*:*:*
@@ -4336,8 +4108,8 @@ PackageName: mkdirp
 PackageVersion: 1.0.4
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:mkdirp:1.0.4:*:*:*:*:*:*:*
@@ -4350,8 +4122,8 @@ PackageName: object-assign
 PackageVersion: 4.1.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*
@@ -4370,8 +4142,8 @@ PackageName: prop-types
 PackageVersion: 15.7.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*
@@ -4390,8 +4162,8 @@ PackageName: react
 PackageVersion: 16.14.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*
@@ -4404,8 +4176,8 @@ PackageName: react-is
 PackageVersion: 16.13.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*
@@ -4424,8 +4196,8 @@ PackageName: tar
 PackageVersion: 6.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: ISC
-PackageLicenseDeclared: ISC
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:tar:6.1.0:*:*:*:*:*:*:*
@@ -4438,8 +4210,8 @@ PackageName: yallist
 PackageVersion: 4.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: ISC
-PackageLicenseDeclared: ISC
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:yallist:4.0.0:*:*:*:*:*:*:*
@@ -4454,7 +4226,7 @@ DataLicense: CC0-1.0
 
 DocumentName: tests/fixtures/yarn-project
 
-
+LicenseListVersion: 3.17
 
 
 
@@ -4466,8 +4238,8 @@ PackageName: js-tokens
 PackageVersion: 4.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
@@ -4486,8 +4258,8 @@ PackageName: loose-envify
 PackageVersion: 1.4.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*
@@ -4506,8 +4278,8 @@ PackageName: object-assign
 PackageVersion: 4.1.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*
@@ -4526,8 +4298,8 @@ PackageName: prop-types
 PackageVersion: 15.7.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*
@@ -4546,8 +4318,8 @@ PackageName: react
 PackageVersion: 16.14.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*
@@ -4560,8 +4332,8 @@ PackageName: react-is
 PackageVersion: 16.13.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageLicenseConcluded: MIT
-PackageLicenseDeclared: MIT
+PackageLicenseConcluded: NONE
+PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*
