@@ -20,7 +20,7 @@
     "prepare": "husky install",
     "prettier": "prettier -w src",
     "precommit": "pretty-quick --staged && npm run package && git add dist/",
-    "update-all": "ncu -u && npm i && npm audit fix"
+    "update-deps": "ncu -u && npm i && npm audit fix"
   },
   "repository": {
     "type": "git",
