@@ -2362,7 +2362,7 @@ exports[`SPDX JSON alpine 1`] = `
    "Organization: Anchore, Inc",
    
   ],
-  "licenseListVersion": "3.17"
+  
  },
  "dataLicense": "CC0-1.0",
  ,
@@ -2407,7 +2407,7 @@ exports[`SPDX JSON debian 1`] = `
    "Organization: Anchore, Inc",
    
   ],
-  "licenseListVersion": "3.17"
+  
  },
  "dataLicense": "CC0-1.0",
  ,
@@ -2902,7 +2902,7 @@ exports[`SPDX JSON npm 1`] = `
    "Organization: Anchore, Inc",
    
   ],
-  "licenseListVersion": "3.17"
+  
  },
  "dataLicense": "CC0-1.0",
  ,
@@ -3454,7 +3454,7 @@ exports[`SPDX JSON yarn 1`] = `
    "Organization: Anchore, Inc",
    
   ],
-  "licenseListVersion": "3.17"
+  
  },
  "dataLicense": "CC0-1.0",
  ,
@@ -3809,7 +3809,7 @@ DataLicense: CC0-1.0
 
 DocumentName: localhost-5000/match-coverage/alpine-latest
 
-LicenseListVersion: 3.17
+
 
 
 
@@ -3836,7 +3836,7 @@ DataLicense: CC0-1.0
 
 DocumentName: localhost-5000/match-coverage/debian-latest
 
-LicenseListVersion: 3.17
+
 
 
 
@@ -3994,7 +3994,7 @@ DataLicense: CC0-1.0
 
 DocumentName: tests/fixtures/npm-project
 
-LicenseListVersion: 3.17
+
 
 
 
@@ -4226,7 +4226,7 @@ DataLicense: CC0-1.0
 
 DocumentName: tests/fixtures/yarn-project
 
-LicenseListVersion: 3.17
+
 
 
 

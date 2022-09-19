@@ -85,12 +85,14 @@ const testSource = async (source: string, format = "spdx"): Promise<string> => {
         .replace(/[Cc]reated["]?[:][^\n]+/g, "")
         .replace(/Creator[:][^\n]+/g, "")
         .replace(/SPDXID[:][^\n]+/g, "")
+        .replace(/LicenseListVersion[:][^\n]+/g, "")
         .replace(/DocumentNamespace[:][^\n]+/g, "");
     case "spdx-json":
       return sbom
         .replace(/"created": "[^"]+"/g, "")
         .replace(/"SPDXID": "[^"]+"/g, "")
         .replace(/"Tool:[^"]+"/g, "")
+        .replace(/"licenseListVersion": "[^"]+"/g, "")
         .replace(/"documentNamespace": "[^"]+"/g, "");
     case "cyclonedx":
     case "cyclonedx-xml":
