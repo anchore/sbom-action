@@ -23347,7 +23347,7 @@ function wrappy (fn, cb) {
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.VERSION = void 0;
-exports.VERSION = "v0.56.0";
+exports.VERSION = "v0.57.0";
 
 
 /***/ }),
