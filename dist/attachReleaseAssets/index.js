@@ -24014,6 +24014,9 @@ function executeSyft(_a) {
         else if ("path" in input && input.path) {
             args = [...args, `dir:${input.path}`];
         }
+        else if ("file" in input && input.file) {
+            args = [...args, `file:${input.file}`];
+        }
         else {
             throw new Error("Invalid input, no image or path specified");
         }

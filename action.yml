@@ -7,8 +7,12 @@ branding:
 inputs:
   path:
     required: false
-    description: "A path on the filesystem to scan"
+    description: "A path to a directory on the filesystem to scan"
     default: "."
+
+  file:
+    required: false
+    description: "A file on the filesystem to scan"
 
   image:
     required: false
