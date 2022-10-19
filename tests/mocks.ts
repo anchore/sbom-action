@@ -3,19 +3,19 @@
  */
 export function getMocks() {
   class Data {
-    artifacts: (Artifact & { runId?: number, id: number, file: string })[] = [];
+    artifacts: Partial<(Artifact & { runId: number, id: number, file: string })>[] = [];
 
-    assets: ReleaseAsset[] = [];
+    assets: Partial<ReleaseAsset>[] = [];
 
-    workflowRuns: WorkflowRun[] = [];
+    workflowRuns: Partial<WorkflowRun>[] = [];
 
     inputs: { [key: string]: string } = {};
 
     outputs: { [key: string]: string } = {};
 
-    releases: Release[] = [];
+    releases: Partial<Release>[] = [];
 
-    latestRun: WorkflowRun = {} as never;
+    latestRun: Partial<WorkflowRun> = {} as never;
 
     context: Omit<Context, "payload"> & { payload?: PartialDeep<PullRequestEvent | PushEvent | ReleaseEvent> } = context.push({}) as never;
 
