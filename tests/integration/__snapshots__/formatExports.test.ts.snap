@@ -2391,6 +2391,13 @@ exports[`SPDX JSON alpine 1`] = `
    "sourceInfo": "acquired package info from APK DB: /lib/apk/db/installed",
    "versionInfo": "0.9.9"
   }
+ ],
+ "relationships": [
+  {
+   "spdxElementId": "SPDXRef-4f6bb678fb75b0ea1215fd4cbfa9b54f17477d13875f0271908e81a783a7e529",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-7d3da89b9b33246e"
+  }
  ]
 }
 "
@@ -2885,6 +2892,38 @@ exports[`SPDX JSON debian 1`] = `
    "originator": "Person: Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
    "sourceInfo": "acquired package info from installed node module manifest file: /javascript/pkg-json/package.json",
    "versionInfo": "6.14.6"
+  }
+ ],
+ "relationships": [
+  {
+   "spdxElementId": "SPDXRef-a4d42de2c4fb0035942ded61867758e1d19baaabd120a4994895a9ee1248a811",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-1bba699d622cf535"
+  },
+  {
+   "spdxElementId": "SPDXRef-a4d42de2c4fb0035942ded61867758e1d19baaabd120a4994895a9ee1248a811",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-6ea0709921a8f863"
+  },
+  {
+   "spdxElementId": "SPDXRef-a4d42de2c4fb0035942ded61867758e1d19baaabd120a4994895a9ee1248a811",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-9c8827d502077ba3"
+  },
+  {
+   "spdxElementId": "SPDXRef-a4d42de2c4fb0035942ded61867758e1d19baaabd120a4994895a9ee1248a811",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-bcb007e1caf76d0d"
+  },
+  {
+   "spdxElementId": "SPDXRef-a4d42de2c4fb0035942ded61867758e1d19baaabd120a4994895a9ee1248a811",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-ec6f9d0eea8fb11b"
+  },
+  {
+   "spdxElementId": "SPDXRef-a4d42de2c4fb0035942ded61867758e1d19baaabd120a4994895a9ee1248a811",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-fe1f89a74ecb263c"
   }
  ]
 }
@@ -3438,6 +3477,73 @@ exports[`SPDX JSON npm 1`] = `
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
    "versionInfo": "4.0.0"
   }
+ ],
+ "relationships": [
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-18450a5c8f7b49d6"
+  },
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-21f04963a77f414"
+  },
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-284e64d0435d284c"
+  },
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-312478f6025d4cf7"
+  },
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-600cba1a0308d0ca"
+  },
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-6e4af3e8b9c209f3"
+  },
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-7ff739d665cb9954"
+  },
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-956c0de7a48c513f"
+  },
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-9c8da6ea6fc31727"
+  },
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-9fb691a4ec76db7c"
+  },
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-aa1f57dbc7db5072"
+  },
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-d9bdc3713542f21e"
+  },
+  {
+   "spdxElementId": "SPDXRef-bacedfaaad37f13581dd7f812953a7290828bb503619d8714bf73ad0caa61f57",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-ed223f600cccfcb5"
+  }
  ]
 }
 "
@@ -3797,6 +3903,43 @@ exports[`SPDX JSON yarn 1`] = `
    "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
    "versionInfo": "0.0.2"
+  }
+ ],
+ "relationships": [
+  {
+   "spdxElementId": "SPDXRef-fa3340eb23e8c054680bcc1185187aaf4990679bfafae6094ef40bf11e3cdead",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-220eef8ef64d005b"
+  },
+  {
+   "spdxElementId": "SPDXRef-fa3340eb23e8c054680bcc1185187aaf4990679bfafae6094ef40bf11e3cdead",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-221fab7ef23bdbf6"
+  },
+  {
+   "spdxElementId": "SPDXRef-fa3340eb23e8c054680bcc1185187aaf4990679bfafae6094ef40bf11e3cdead",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-4f60482875ad34d3"
+  },
+  {
+   "spdxElementId": "SPDXRef-fa3340eb23e8c054680bcc1185187aaf4990679bfafae6094ef40bf11e3cdead",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-62e4cd1bafa2e20f"
+  },
+  {
+   "spdxElementId": "SPDXRef-fa3340eb23e8c054680bcc1185187aaf4990679bfafae6094ef40bf11e3cdead",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-8d46825047ee6acc"
+  },
+  {
+   "spdxElementId": "SPDXRef-fa3340eb23e8c054680bcc1185187aaf4990679bfafae6094ef40bf11e3cdead",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-ca55d64b088bf731"
+  },
+  {
+   "spdxElementId": "SPDXRef-fa3340eb23e8c054680bcc1185187aaf4990679bfafae6094ef40bf11e3cdead",
+   "relationshipType": "CONTAINS",
+   "relatedSpdxElement": "SPDXRef-d4c91f3a10dcc24e"
   }
  ]
 }
