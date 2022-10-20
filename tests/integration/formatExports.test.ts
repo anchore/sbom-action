@@ -89,11 +89,8 @@ const testSource = async (source: string, format = "spdx"): Promise<string> => {
         .replace(/DocumentNamespace[:][^\n]+/g, "");
     case "spdx-json":
       return sbom
-        .replace(/"created": "[^"]+"/g, "")
-        .replace(/"SPDXID": "[^"]+"/g, "")
-        .replace(/"Tool:[^"]+"/g, "")
-        .replace(/"licenseListVersion": "[^"]+"/g, "")
-        .replace(/"documentNamespace": "[^"]+"/g, "");
+        .replace(/"(created|SPDXID|licenseListVersion|documentNamespace|spdxElementId|relatedSpdxElement)": "[^"]+",?/g, "")
+        .replace(/"Tool:[^"]+"/g, "");
     case "cyclonedx":
     case "cyclonedx-xml":
       return sbom
@@ -104,11 +101,7 @@ const testSource = async (source: string, format = "spdx"): Promise<string> => {
         .replace(/<version>[^<]+<\/version>/g, "");
     case "cyclonedx-json":
       return sbom
-        .replace(/"bom-ref": "[^"]+"/g, "")
-        .replace(/"serialNumber": "[^"]+"/g, "")
-        .replace(/"timestamp": "[^"]+"/g, "")
-        .replace(/"value": "[^"]+"/g, "")
-        .replace(/"version": "[^"]+"/g, "");
+        .replace(/"(bom-ref|serialNumber|timestamp|value|version)": "[^"]+",?/g, "");
   }
 
   return sbom;
