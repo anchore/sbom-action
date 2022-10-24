@@ -46,7 +46,7 @@
     "npm-check-updates": "^16.3.14"
   },
   "devDependencies": {
-    "@octokit/webhooks-types": "^6.5.0",
+    "@octokit/webhooks-types": "^6.6.0",
     "@types/jest": "^29.2.0",
     "@types/node": "^18.11.3",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
