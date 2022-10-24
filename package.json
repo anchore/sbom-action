@@ -43,7 +43,7 @@
     "@octokit/core": "^4.1.0",
     "@octokit/webhooks": "^10.3.0",
     "fast-safe-stringify": "^2.1.1",
-    "npm-check-updates": "^16.3.14"
+    "npm-check-updates": "^16.3.15"
   },
   "devDependencies": {
     "@octokit/webhooks-types": "^6.5.0",
