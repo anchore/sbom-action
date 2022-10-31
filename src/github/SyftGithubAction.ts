@@ -339,6 +339,7 @@ export async function runSyftAction(): Promise<void> {
   const output = await executeSyft({
     input: {
       path: core.getInput("path"),
+      file: core.getInput("file"),
       image: core.getInput("image"),
     },
     format: getSbomFormat(),

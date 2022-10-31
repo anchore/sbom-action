@@ -24256,6 +24256,7 @@ function runSyftAction() {
         const output = yield executeSyft({
             input: {
                 path: core.getInput("path"),
+                file: core.getInput("file"),
                 image: core.getInput("image"),
             },
             format: getSbomFormat(),
