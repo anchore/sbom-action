@@ -53,6 +53,54 @@ describe("Action", () => {
     expect(assets.length).toBe(0);
   });
 
+  it("runs with image input", async () => {
+    setData({
+      inputs: {
+        image: "some-image:latest",
+      },
+    });
+
+    await action.runSyftAction();
+
+    const { args } = data.execArgs;
+
+    expect(args).toBeDefined()
+    expect(args.length > 2).toBeTruthy();
+    expect(args[2]).toBe("some-image:latest")
+  });
+
+  it("runs with path input", async () => {
+    setData({
+      inputs: {
+        path: "some-path",
+      },
+    });
+
+    await action.runSyftAction();
+
+    const { args } = data.execArgs;
+
+    expect(args).toBeDefined()
+    expect(args.length > 2).toBeTruthy();
+    expect(args[2]).toBe("dir:some-path")
+  });
+
+  it("runs with file input", async () => {
+    setData({
+      inputs: {
+        file: "some-file.jar",
+      },
+    });
+
+    await action.runSyftAction();
+
+    const { args } = data.execArgs;
+
+    expect(args).toBeDefined()
+    expect(args.length > 2).toBeTruthy();
+    expect(args[2]).toBe("file:some-file.jar")
+  });
+
   it("runs with release uploads inputs", async () => {
     const outputFile = `${fs.mkdtempSync(
       path.join(os.tmpdir(), "sbom-action-")
