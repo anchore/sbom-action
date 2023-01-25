@@ -26,7 +26,7 @@ exports[`CycloneDX JSON alpine 1`] = `
     {
       
       "type": "library",
-      "publisher": "A. Wilcox \\u003cawilfox@adelielinux.org\\u003e",
+      "publisher": "A. Wilcox <awilfox@adelielinux.org>",
       "name": "libvncserver",
       
       "description": "Library to make writing a vnc server easy",
@@ -38,7 +38,7 @@ exports[`CycloneDX JSON alpine 1`] = `
         }
       ],
       "cpe": "cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*",
-      "purl": "pkg:alpine/libvncserver@0.9.9?arch=x86_64\\u0026upstream=libvncserver\\u0026distro=alpine-3.12.0",
+      "purl": "pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver&distro=alpine-3.12.0",
       "externalReferences": [
         {
           "url": "http://libvncserver.sourceforge.net/",
@@ -79,11 +79,39 @@ exports[`CycloneDX JSON alpine 1`] = `
           
         },
         {
+          "name": "syft:metadata:provides:0",
+          
+        },
+        {
+          "name": "syft:metadata:provides:1",
+          
+        },
+        {
           "name": "syft:metadata:pullChecksum",
           
         },
         {
-          "name": "syft:metadata:pullDependencies",
+          "name": "syft:metadata:pullDependencies:0",
+          
+        },
+        {
+          "name": "syft:metadata:pullDependencies:1",
+          
+        },
+        {
+          "name": "syft:metadata:pullDependencies:2",
+          
+        },
+        {
+          "name": "syft:metadata:pullDependencies:3",
+          
+        },
+        {
+          "name": "syft:metadata:pullDependencies:4",
+          
+        },
+        {
+          "name": "syft:metadata:pullDependencies:5",
           
         },
         {
@@ -158,7 +186,7 @@ exports[`CycloneDX JSON debian 1`] = `
     {
       
       "type": "library",
-      "author": "Georg Brandl \\u003cgeorg@python.org\\u003e",
+      "author": "Georg Brandl <georg@python.org>",
       "name": "Pygments",
       
       "cpe": "cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*",
@@ -269,11 +297,11 @@ exports[`CycloneDX JSON debian 1`] = `
     {
       
       "type": "library",
-      "publisher": "APT Development Team \\u003cdeity@lists.debian.org\\u003e",
+      "publisher": "APT Development Team <deity@lists.debian.org>",
       "name": "apt",
       
       "cpe": "cpe:2.3:a:apt:apt:1.8.2:*:*:*:*:*:*:*",
-      "purl": "pkg:deb/debian/apt@1.8.2?arch=amd64\\u0026upstream=apt-dev\\u0026distro=debian-8",
+      "purl": "pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=apt-dev&distro=debian-8",
       "properties": [
         {
           "name": "syft:package:foundBy",
@@ -654,7 +682,7 @@ exports[`CycloneDX JSON debian 1`] = `
     {
       
       "type": "library",
-      "author": "Isaac Z. Schlueter \\u003ci@izs.me\\u003e (http://blog.izs.me)",
+      "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
       "name": "npm",
       
       "licenses": [
@@ -791,6 +819,10 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
+          "name": "syft:package:metadataType",
+          
+        },
+        {
           "name": "syft:package:type",
           
         },
@@ -818,6 +850,10 @@ exports[`CycloneDX JSON npm 1`] = `
         },
         {
           "name": "syft:package:language",
+          
+        },
+        {
+          "name": "syft:package:metadataType",
           
         },
         {
@@ -875,6 +911,10 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
+          "name": "syft:package:metadataType",
+          
+        },
+        {
           "name": "syft:package:type",
           
         },
@@ -926,6 +966,10 @@ exports[`CycloneDX JSON npm 1`] = `
         },
         {
           "name": "syft:package:language",
+          
+        },
+        {
+          "name": "syft:package:metadataType",
           
         },
         {
@@ -983,6 +1027,10 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
+          "name": "syft:package:metadataType",
+          
+        },
+        {
           "name": "syft:package:type",
           
         },
@@ -1010,6 +1058,10 @@ exports[`CycloneDX JSON npm 1`] = `
         },
         {
           "name": "syft:package:language",
+          
+        },
+        {
+          "name": "syft:package:metadataType",
           
         },
         {
@@ -1043,6 +1095,10 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
+          "name": "syft:package:metadataType",
+          
+        },
+        {
           "name": "syft:package:type",
           
         },
@@ -1070,6 +1126,10 @@ exports[`CycloneDX JSON npm 1`] = `
         },
         {
           "name": "syft:package:language",
+          
+        },
+        {
+          "name": "syft:package:metadataType",
           
         },
         {
@@ -1127,6 +1187,10 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
+          "name": "syft:package:metadataType",
+          
+        },
+        {
           "name": "syft:package:type",
           
         },
@@ -1181,6 +1245,10 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
+          "name": "syft:package:metadataType",
+          
+        },
+        {
           "name": "syft:package:type",
           
         },
@@ -1208,6 +1276,10 @@ exports[`CycloneDX JSON npm 1`] = `
         },
         {
           "name": "syft:package:language",
+          
+        },
+        {
+          "name": "syft:package:metadataType",
           
         },
         {
@@ -1265,6 +1337,10 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
+          "name": "syft:package:metadataType",
+          
+        },
+        {
           "name": "syft:package:type",
           
         },
@@ -1292,6 +1368,10 @@ exports[`CycloneDX JSON npm 1`] = `
         },
         {
           "name": "syft:package:language",
+          
+        },
+        {
+          "name": "syft:package:metadataType",
           
         },
         {
@@ -1699,7 +1779,7 @@ exports[`CycloneDX XML alpine 1`] = `
         </license>
       </licenses>
       <cpe>cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*</cpe>
-      <purl>pkg:alpine/libvncserver@0.9.9?arch=x86_64&amp;upstream=libvncserver&amp;distro=alpine-3.12.0</purl>
+      <purl>pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&amp;upstream=libvncserver&amp;distro=alpine-3.12.0</purl>
       <externalReferences>
         <reference type="distribution">
           <url>http://libvncserver.sourceforge.net/</url>
@@ -1714,8 +1794,15 @@ exports[`CycloneDX XML alpine 1`] = `
         <property name="syft:metadata:gitCommitOfApkPort">bf1ec813f662f128fc6b70f37ef1c0474bb24488</property>
         <property name="syft:metadata:installedSize">389120</property>
         <property name="syft:metadata:originPackage">libvncserver</property>
+        <property name="syft:metadata:provides:0">so:libvncclient.so.1=1.0.0</property>
+        <property name="syft:metadata:provides:1">so:libvncserver.so.1=1.0.0</property>
         <property name="syft:metadata:pullChecksum">Q1z0MwWQKfva+S+q7XmOBYFfQgW/k=</property>
-        <property name="syft:metadata:pullDependencies">so:libc.musl-x86_64.so.1 so:libgcrypt.so.20 so:libgnutls.so.30 so:libjpeg.so.8 so:libpng16.so.16 so:libz.so.1</property>
+        <property name="syft:metadata:pullDependencies:0">so:libc.musl-x86_64.so.1</property>
+        <property name="syft:metadata:pullDependencies:1">so:libgcrypt.so.20</property>
+        <property name="syft:metadata:pullDependencies:2">so:libgnutls.so.30</property>
+        <property name="syft:metadata:pullDependencies:3">so:libjpeg.so.8</property>
+        <property name="syft:metadata:pullDependencies:4">so:libpng16.so.16</property>
+        <property name="syft:metadata:pullDependencies:5">so:libz.so.1</property>
         <property name="syft:metadata:size">166239</property>
       </properties>
     </component>
@@ -2008,6 +2095,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:*:chownr:2.0.0:*:*:*:*:*:*:*</property>
         
@@ -2021,6 +2109,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:fs-minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:fs_minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*</property>
@@ -2040,6 +2129,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*</property>
@@ -2059,6 +2149,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*</property>
@@ -2078,6 +2169,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:*:minipass:3.1.3:*:*:*:*:*:*:*</property>
         
@@ -2091,6 +2183,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:*:minizlib:2.1.2:*:*:*:*:*:*:*</property>
         
@@ -2104,6 +2197,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:*:mkdirp:1.0.4:*:*:*:*:*:*:*</property>
         
@@ -2117,6 +2211,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:*:*:*:*:*</property>
@@ -2136,6 +2231,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*:*:*</property>
@@ -2155,6 +2251,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*</property>
         
@@ -2168,6 +2265,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:*</property>
@@ -2187,6 +2285,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:*:tar:6.1.0:*:*:*:*:*:*:*</property>
         
@@ -2200,6 +2299,7 @@ exports[`CycloneDX XML npm 1`] = `
       <properties>
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
+        <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:cpe23">cpe:2.3:a:*:yallist:4.0.0:*:*:*:*:*:*:*</property>
         
@@ -2353,9 +2453,11 @@ exports[`CycloneDX XML yarn 1`] = `
 
 exports[`SPDX JSON alpine 1`] = `
 "{
+ "spdxVersion": "SPDX-2.3",
+ "dataLicense": "CC0-1.0",
  
- "name": "localhost-5000/match-coverage/alpine-latest",
- "spdxVersion": "SPDX-2.2",
+ "name": "localhost:5000/match-coverage/alpine:latest",
+ 
  "creationInfo": {
   
   "creators": [
@@ -2363,40 +2465,41 @@ exports[`SPDX JSON alpine 1`] = `
    
   ],
   
+  "comment": ""
  },
- "dataLicense": "CC0-1.0",
- 
  "packages": [
   {
-   
    "name": "libvncserver",
-   "licenseConcluded": "GPL-2.0-or-later",
-   "description": "Library to make writing a vnc server easy",
+   
+   "versionInfo": "0.9.9",
+   "originator": "Person: A. Wilcox \\u003cawilfox@adelielinux.org\\u003e",
    "downloadLocation": "http://libvncserver.sourceforge.net/",
+   "sourceInfo": "acquired package info from APK DB: /lib/apk/db/installed",
+   "licenseConcluded": "GPL-2.0-or-later",
+   "licenseDeclared": "GPL-2.0-or-later",
+   "copyrightText": "NOASSERTION",
+   "description": "Library to make writing a vnc server easy",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
-     "referenceLocator": "pkg:alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver&distro=alpine-3.12.0",
-     "referenceType": "purl"
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
+     "referenceLocator": "pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver&distro=alpine-3.12.0",
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "GPL-2.0-or-later",
-   "originator": "Person: A. Wilcox <awilfox@adelielinux.org>",
-   "sourceInfo": "acquired package info from APK DB: /lib/apk/db/installed",
-   "versionInfo": "0.9.9"
+   ]
   }
  ],
  "relationships": [
   {
    
-   "relationshipType": "CONTAINS",
    
+   "relationshipType": "DESCRIBES"
   }
  ]
 }
@@ -2405,9 +2508,11 @@ exports[`SPDX JSON alpine 1`] = `
 
 exports[`SPDX JSON debian 1`] = `
 "{
+ "spdxVersion": "SPDX-2.3",
+ "dataLicense": "CC0-1.0",
  
- "name": "localhost-5000/match-coverage/debian-latest",
- "spdxVersion": "SPDX-2.2",
+ "name": "localhost:5000/match-coverage/debian:latest",
+ 
  "creationInfo": {
   
   "creators": [
@@ -2415,515 +2520,567 @@ exports[`SPDX JSON debian 1`] = `
    
   ],
   
+  "comment": ""
  },
- "dataLicense": "CC0-1.0",
- 
  "packages": [
   {
-   
    "name": "Pygments",
-   "licenseConcluded": "NOASSERTION",
-   "downloadLocation": "NOASSERTION",
-   "externalRefs": [
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:python-Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:python_Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:python_Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:georg_brandl:python-Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:georg_brandl:python_Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:python-Pygments:Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:python_Pygments:Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:python:python-Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:python:python_Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:georg:python-Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:georg:python_Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "PACKAGE_MANAGER",
-     "referenceLocator": "pkg:pypi/Pygments@2.6.1",
-     "referenceType": "purl"
-    }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NOASSERTION",
+   
+   "versionInfo": "2.6.1",
    "originator": "Person: Georg Brandl (georg@python.org)",
+   "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed python package manifest file: /python/dist-info/METADATA, /python/dist-info/top_level.txt",
-   "versionInfo": "2.6.1"
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
+   "copyrightText": "NOASSERTION",
+   "externalRefs": [
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python-Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python_Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python_Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandl:python-Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandl:python_Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python-Pygments:Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python_Pygments:Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python:python-Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python:python_Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg:python-Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg:python_Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
+     "referenceLocator": "pkg:pypi/Pygments@2.6.1",
+     "comment": ""
+    }
+   ]
   },
   {
-   
    "name": "apt",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "1.8.2",
+   "originator": "Person: APT Development Team \\u003cdeity@lists.debian.org\\u003e",
    "downloadLocation": "NOASSERTION",
-   "externalRefs": [
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:apt:apt:1.8.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "PACKAGE_MANAGER",
-     "referenceLocator": "pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=apt-dev&distro=debian-8",
-     "referenceType": "purl"
-    }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "originator": "Person: APT Development Team <deity@lists.debian.org>",
    "sourceInfo": "acquired package info from DPKG DB: /var/lib/dpkg/status",
-   "versionInfo": "1.8.2"
-  },
-  {
-   
-   "name": "bundler",
-   "licenseConcluded": "MIT",
-   "downloadLocation": "NOASSERTION",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:jessica-lynn-suttles:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:apt:apt:1.8.2:*:*:*:*:*:*:*",
+     "comment": ""
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:jessica_lynn_suttles:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:stephanie-morillo:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:stephanie_morillo:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:hiroshi-shibata:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:hiroshi_shibata:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:colby-swandale:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:colby_swandale:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:samuel-giddins:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:samuel_giddins:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:chris-morris:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:chris_morris:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:carl-lerche:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:carl_lerche:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:terence-lee:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:terence_lee:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:yehuda-katz:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:yehuda_katz:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:grey-baker:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:grey_baker:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:james-wen:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:james_wen:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:ruby-lang:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:ruby_lang:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:tim-moore:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:tim_moore:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:bundler:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:*:bundler:2.1.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "PACKAGE_MANAGER",
-     "referenceLocator": "pkg:gem/bundler@2.1.4",
-     "referenceType": "purl"
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
+     "referenceLocator": "pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=apt-dev&distro=debian-8",
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "homepage": "https://bundler.io",
-   "licenseDeclared": "MIT",
-   "originator": "Person: André Arko",
-   "sourceInfo": "acquired package info from installed gem metadata file: /ruby/specifications/bundler.gemspec",
-   "versionInfo": "2.1.4"
+   ]
   },
   {
+   "name": "bundler",
    
+   "versionInfo": "2.1.4",
+   "originator": "Person: André Arko",
+   "downloadLocation": "NOASSERTION",
+   "homepage": "https://bundler.io",
+   "sourceInfo": "acquired package info from installed gem metadata file: /ruby/specifications/bundler.gemspec",
+   "licenseConcluded": "MIT",
+   "licenseDeclared": "MIT",
+   "copyrightText": "NOASSERTION",
+   "externalRefs": [
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:jessica-lynn-suttles:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:jessica_lynn_suttles:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:stephanie-morillo:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:stephanie_morillo:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:hiroshi-shibata:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:hiroshi_shibata:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:colby-swandale:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:colby_swandale:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:samuel-giddins:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:samuel_giddins:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:chris-morris:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:chris_morris:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:carl-lerche:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:carl_lerche:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:terence-lee:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:terence_lee:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:yehuda-katz:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:yehuda_katz:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:grey-baker:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:grey_baker:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:james-wen:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:james_wen:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:ruby-lang:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:ruby_lang:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:tim-moore:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:tim_moore:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:bundler:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:*:bundler:2.1.4:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
+     "referenceLocator": "pkg:gem/bundler@2.1.4",
+     "comment": ""
+    }
+   ]
+  },
+  {
    "name": "example-java-app-maven",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "0.1.0",
+   "downloadLocation": "NOASSERTION",
    "checksums": [
     {
      "algorithm": "SHA1",
      "checksumValue": "100b566a7dcdb187bf9f14ecd96427cadd535bfe"
     }
    ],
-   "downloadLocation": "NOASSERTION",
-   "externalRefs": [
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example-java-app-maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example-java-app-maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example_java_app_maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example-java-app:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example-java-app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example_java_app:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example-java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example-java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example_java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:anchore:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
-    },
-    {
-     "referenceCategory": "PACKAGE_MANAGER",
-     "referenceLocator": "pkg:maven/org.anchore/example-java-app-maven@0.1.0",
-     "referenceType": "purl"
-    }
-   ],
-   "filesAnalyzed": true,
-   "licenseDeclared": "NONE",
    "sourceInfo": "acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar",
-   "versionInfo": "0.1.0"
-  },
-  {
-   
-   "name": "joda-time",
    "licenseConcluded": "NONE",
-   "downloadLocation": "NOASSERTION",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:joda-time:joda-time:2.9.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example-java-app-maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:joda-time:joda_time:2.9.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example-java-app-maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:joda_time:joda-time:2.9.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example_java_app_maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example_java_app_maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:joda:joda-time:2.9.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example-java-app:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example-java-app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
-     "referenceLocator": "pkg:maven/joda-time/joda-time@2.9.2",
-     "referenceType": "purl"
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example_java_app:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example_java_app:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example-java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example-java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example_java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:anchore:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
+     "referenceLocator": "pkg:maven/org.anchore/example-java-app-maven@0.1.0",
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar",
-   "versionInfo": "2.9.2"
+   ]
   },
   {
+   "name": "joda-time",
    
-   "name": "npm",
-   "licenseConcluded": "Artistic-2.0",
-   "downloadLocation": "https://github.com/npm/cli",
+   "versionInfo": "2.9.2",
+   "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:joda-time:joda-time:2.9.2:*:*:*:*:*:*:*",
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
-     "referenceLocator": "cpe:2.3:a:*:npm:6.14.6:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:joda-time:joda_time:2.9.2:*:*:*:*:*:*:*",
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
-     "referenceLocator": "pkg:npm/npm@6.14.6",
-     "referenceType": "purl"
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:joda_time:joda-time:2.9.2:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:joda:joda-time:2.9.2:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
+     "referenceLocator": "pkg:maven/joda-time/joda-time@2.9.2",
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
+   ]
+  },
+  {
+   "name": "npm",
+   
+   "versionInfo": "6.14.6",
+   "originator": "Person: Isaac Z. Schlueter \\u003ci@izs.me\\u003e (http://blog.izs.me)",
+   "downloadLocation": "https://github.com/npm/cli",
    "homepage": "https://docs.npmjs.com/",
-   "licenseDeclared": "Artistic-2.0",
-   "originator": "Person: Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
    "sourceInfo": "acquired package info from installed node module manifest file: /javascript/pkg-json/package.json",
-   "versionInfo": "6.14.6"
+   "licenseConcluded": "Artistic-2.0",
+   "licenseDeclared": "Artistic-2.0",
+   "copyrightText": "NOASSERTION",
+   "externalRefs": [
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:*:npm:6.14.6:*:*:*:*:*:*:*",
+     "comment": ""
+    },
+    {
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
+     "referenceLocator": "pkg:npm/npm@6.14.6",
+     "comment": ""
+    }
+   ]
   }
  ],
  "relationships": [
   {
    
-   "relationshipType": "CONTAINS",
    
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
+   "relationshipType": "DESCRIBES"
   }
  ]
 }
@@ -2932,9 +3089,11 @@ exports[`SPDX JSON debian 1`] = `
 
 exports[`SPDX JSON npm 1`] = `
 "{
+ "spdxVersion": "SPDX-2.3",
+ "dataLicense": "CC0-1.0",
  
  "name": "tests/fixtures/npm-project",
- "spdxVersion": "SPDX-2.2",
+ 
  "creationInfo": {
   
   "creators": [
@@ -2942,607 +3101,621 @@ exports[`SPDX JSON npm 1`] = `
    
   ],
   
+  "comment": ""
  },
- "dataLicense": "CC0-1.0",
- 
  "packages": [
   {
-   
    "name": "chownr",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "2.0.0",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:chownr:2.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/chownr@2.0.0",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "2.0.0"
+   ]
   },
   {
-   
    "name": "fs-minipass",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "2.1.0",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:fs-minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:fs-minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:fs_minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:fs:fs-minipass:2.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:fs-minipass:2.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:fs_minipass:2.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/fs-minipass@2.1.0",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "2.1.0"
+   ]
   },
   {
-   
    "name": "js-tokens",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "4.0.0",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/js-tokens@4.0.0",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "4.0.0"
+   ]
   },
   {
-   
    "name": "loose-envify",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "1.4.0",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/loose-envify@1.4.0",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "1.4.0"
+   ]
   },
   {
-   
    "name": "minipass",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "3.1.3",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:minipass:3.1.3:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/minipass@3.1.3",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "3.1.3"
+   ]
   },
   {
-   
    "name": "minizlib",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "2.1.2",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:minizlib:2.1.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/minizlib@2.1.2",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "2.1.2"
+   ]
   },
   {
-   
    "name": "mkdirp",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "1.0.4",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:mkdirp:1.0.4:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/mkdirp@1.0.4",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "1.0.4"
+   ]
   },
   {
-   
    "name": "object-assign",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "4.1.1",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/object-assign@4.1.1",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "4.1.1"
+   ]
   },
   {
-   
    "name": "prop-types",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "15.7.2",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/prop-types@15.7.2",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "15.7.2"
+   ]
   },
   {
-   
    "name": "react",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "16.14.0",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/react@16.14.0",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "16.14.0"
+   ]
   },
   {
-   
    "name": "react-is",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "16.13.1",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/react-is@16.13.1",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "16.13.1"
+   ]
   },
   {
-   
    "name": "tar",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "6.1.0",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:tar:6.1.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/tar@6.1.0",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "6.1.0"
+   ]
   },
   {
-   
    "name": "yallist",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "4.0.0",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:yallist:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/yallist@4.0.0",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "versionInfo": "4.0.0"
+   ]
   }
  ],
  "relationships": [
   {
    
-   "relationshipType": "CONTAINS",
    
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
+   "relationshipType": "DESCRIBES"
   }
  ]
 }
@@ -3551,9 +3724,11 @@ exports[`SPDX JSON npm 1`] = `
 
 exports[`SPDX JSON yarn 1`] = `
 "{
+ "spdxVersion": "SPDX-2.3",
+ "dataLicense": "CC0-1.0",
  
  "name": "tests/fixtures/yarn-project",
- "spdxVersion": "SPDX-2.2",
+ 
  "creationInfo": {
   
   "creators": [
@@ -3561,385 +3736,405 @@ exports[`SPDX JSON yarn 1`] = `
    
   ],
   
+  "comment": ""
  },
- "dataLicense": "CC0-1.0",
- 
  "packages": [
   {
-   
    "name": "js-tokens",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "4.0.0",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/js-tokens@4.0.0",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "versionInfo": "4.0.0"
+   ]
   },
   {
-   
    "name": "loose-envify",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "1.4.0",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/loose-envify@1.4.0",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "versionInfo": "1.4.0"
+   ]
   },
   {
-   
    "name": "object-assign",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "4.1.1",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/object-assign@4.1.1",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "versionInfo": "4.1.1"
+   ]
   },
   {
-   
    "name": "prop-types",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "15.7.2",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/prop-types@15.7.2",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "versionInfo": "15.7.2"
+   ]
   },
   {
-   
    "name": "react",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "16.14.0",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/react@16.14.0",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "versionInfo": "16.14.0"
+   ]
   },
   {
-   
    "name": "react-is",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "16.13.1",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/react-is@16.13.1",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "versionInfo": "16.13.1"
+   ]
   },
   {
-   
    "name": "trim",
-   "licenseConcluded": "NONE",
+   
+   "versionInfo": "0.0.2",
    "downloadLocation": "NOASSERTION",
+   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
+   "licenseConcluded": "NONE",
+   "licenseDeclared": "NONE",
+   "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
      "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:*:trim:0.0.2:*:*:*:*:*:*:*",
-     "referenceType": "cpe23Type"
+     "comment": ""
     },
     {
-     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
      "referenceLocator": "pkg:npm/trim@0.0.2",
-     "referenceType": "purl"
+     "comment": ""
     }
-   ],
-   "filesAnalyzed": false,
-   "licenseDeclared": "NONE",
-   "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "versionInfo": "0.0.2"
+   ]
   }
  ],
  "relationships": [
   {
    
-   "relationshipType": "CONTAINS",
    
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
-  },
-  {
-   
-   "relationshipType": "CONTAINS",
-   
+   "relationshipType": "DESCRIBES"
   }
  ]
 }
@@ -3947,10 +4142,10 @@ exports[`SPDX JSON yarn 1`] = `
 `;
 
 exports[`SPDX Tag Value alpine 1`] = `
-"SPDXVersion: SPDX-2.2
+"SPDXVersion: SPDX-2.3
 DataLicense: CC0-1.0
 
-DocumentName: localhost-5000/match-coverage/alpine-latest
+DocumentName: localhost:5000/match-coverage/alpine:latest
 
 
 
@@ -3962,22 +4157,29 @@ DocumentName: localhost-5000/match-coverage/alpine-latest
 PackageName: libvncserver
 
 PackageVersion: 0.9.9
-PackageDownloadLocation: NOASSERTION
+PackageOriginator: Person: A. Wilcox <awilfox@adelielinux.org>
+PackageDownloadLocation: http://libvncserver.sourceforge.net/
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from APK DB: /lib/apk/db/installed
 PackageLicenseConcluded: GPL-2.0-or-later
 PackageLicenseDeclared: GPL-2.0-or-later
 PackageCopyrightText: NOASSERTION
+PackageDescription: Library to make writing a vnc server easy
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver&distro=alpine-3.12.0
+ExternalRef: PACKAGE-MANAGER purl pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver&distro=alpine-3.12.0
+
+##### Relationships
+
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DOCUMENT
 
 "
 `;
 
 exports[`SPDX Tag Value debian 1`] = `
-"SPDXVersion: SPDX-2.2
+"SPDXVersion: SPDX-2.3
 DataLicense: CC0-1.0
 
-DocumentName: localhost-5000/match-coverage/debian-latest
+DocumentName: localhost:5000/match-coverage/debian:latest
 
 
 
@@ -3989,21 +4191,26 @@ DocumentName: localhost-5000/match-coverage/debian-latest
 PackageName: apt
 
 PackageVersion: 1.8.2
+PackageOriginator: Person: APT Development Team <deity@lists.debian.org>
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from DPKG DB: /var/lib/dpkg/status
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:apt:apt:1.8.2:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=apt-dev&distro=debian-8
+ExternalRef: PACKAGE-MANAGER purl pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=apt-dev&distro=debian-8
 
 ##### Package: bundler
 
 PackageName: bundler
 
 PackageVersion: 2.1.4
+PackageOriginator: Person: André Arko
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageHomePage: https://bundler.io
+PackageSourceInfo: acquired package info from installed gem metadata file: /ruby/specifications/bundler.gemspec
 PackageLicenseConcluded: MIT
 PackageLicenseDeclared: MIT
 PackageCopyrightText: NOASSERTION
@@ -4036,7 +4243,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:tim_moore:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:bundler:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:bundler:2.1.4:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:gem/bundler@2.1.4
+ExternalRef: PACKAGE-MANAGER purl pkg:gem/bundler@2.1.4
 
 ##### Package: example-java-app-maven
 
@@ -4044,7 +4251,9 @@ PackageName: example-java-app-maven
 
 PackageVersion: 0.1.0
 PackageDownloadLocation: NOASSERTION
-FilesAnalyzed: true
+FilesAnalyzed: false
+PackageChecksum: SHA1: 100b566a7dcdb187bf9f14ecd96427cadd535bfe
+PackageSourceInfo: acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4064,7 +4273,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:anchore:example-java-app-maven:0.1.0:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:example:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:example:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:maven/org.anchore/example-java-app-maven@0.1.0
+ExternalRef: PACKAGE-MANAGER purl pkg:maven/org.anchore/example-java-app-maven@0.1.0
 
 ##### Package: joda-time
 
@@ -4073,6 +4282,7 @@ PackageName: joda-time
 PackageVersion: 2.9.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4082,29 +4292,34 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda-time:2.9.2:*:*:*:*:*:*:
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda_time:joda_time:2.9.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda:joda-time:2.9.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda:joda_time:2.9.2:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:maven/joda-time/joda-time@2.9.2
+ExternalRef: PACKAGE-MANAGER purl pkg:maven/joda-time/joda-time@2.9.2
 
 ##### Package: npm
 
 PackageName: npm
 
 PackageVersion: 6.14.6
-PackageDownloadLocation: NOASSERTION
+PackageOriginator: Person: Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)
+PackageDownloadLocation: https://github.com/npm/cli
 FilesAnalyzed: false
+PackageHomePage: https://docs.npmjs.com/
+PackageSourceInfo: acquired package info from installed node module manifest file: /javascript/pkg-json/package.json
 PackageLicenseConcluded: Artistic-2.0
 PackageLicenseDeclared: Artistic-2.0
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:npm:6.14.6:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/npm@6.14.6
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/npm@6.14.6
 
 ##### Package: Pygments
 
 PackageName: Pygments
 
 PackageVersion: 2.6.1
+PackageOriginator: Person: Georg Brandl (georg@python.org)
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed python package manifest file: /python/dist-info/METADATA, /python/dist-info/top_level.txt
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
@@ -4126,13 +4341,17 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:pypi/Pygments@2.6.1
+ExternalRef: PACKAGE-MANAGER purl pkg:pypi/Pygments@2.6.1
+
+##### Relationships
+
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DOCUMENT
 
 "
 `;
 
 exports[`SPDX Tag Value npm 1`] = `
-"SPDXVersion: SPDX-2.2
+"SPDXVersion: SPDX-2.3
 DataLicense: CC0-1.0
 
 DocumentName: tests/fixtures/npm-project
@@ -4149,12 +4368,13 @@ PackageName: chownr
 PackageVersion: 2.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:chownr:2.0.0:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/chownr@2.0.0
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/chownr@2.0.0
 
 ##### Package: fs-minipass
 
@@ -4163,6 +4383,7 @@ PackageName: fs-minipass
 PackageVersion: 2.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4174,7 +4395,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs:fs-minipass:2.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:fs-minipass:2.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:fs_minipass:2.1.0:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/fs-minipass@2.1.0
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/fs-minipass@2.1.0
 
 ##### Package: js-tokens
 
@@ -4183,6 +4404,7 @@ PackageName: js-tokens
 PackageVersion: 4.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4194,7 +4416,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/js-tokens@4.0.0
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/js-tokens@4.0.0
 
 ##### Package: loose-envify
 
@@ -4203,6 +4425,7 @@ PackageName: loose-envify
 PackageVersion: 1.4.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4214,7 +4437,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/loose-envify@1.4.0
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/loose-envify@1.4.0
 
 ##### Package: minipass
 
@@ -4223,12 +4446,13 @@ PackageName: minipass
 PackageVersion: 3.1.3
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:minipass:3.1.3:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/minipass@3.1.3
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/minipass@3.1.3
 
 ##### Package: minizlib
 
@@ -4237,12 +4461,13 @@ PackageName: minizlib
 PackageVersion: 2.1.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:minizlib:2.1.2:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/minizlib@2.1.2
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/minizlib@2.1.2
 
 ##### Package: mkdirp
 
@@ -4251,12 +4476,13 @@ PackageName: mkdirp
 PackageVersion: 1.0.4
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:mkdirp:1.0.4:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/mkdirp@1.0.4
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/mkdirp@1.0.4
 
 ##### Package: object-assign
 
@@ -4265,6 +4491,7 @@ PackageName: object-assign
 PackageVersion: 4.1.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4276,7 +4503,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/object-assign@4.1.1
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/object-assign@4.1.1
 
 ##### Package: prop-types
 
@@ -4285,6 +4512,7 @@ PackageName: prop-types
 PackageVersion: 15.7.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4296,7 +4524,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/prop-types@15.7.2
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/prop-types@15.7.2
 
 ##### Package: react
 
@@ -4305,12 +4533,13 @@ PackageName: react
 PackageVersion: 16.14.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/react@16.14.0
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/react@16.14.0
 
 ##### Package: react-is
 
@@ -4319,6 +4548,7 @@ PackageName: react-is
 PackageVersion: 16.13.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4330,7 +4560,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/react-is@16.13.1
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/react-is@16.13.1
 
 ##### Package: tar
 
@@ -4339,12 +4569,13 @@ PackageName: tar
 PackageVersion: 6.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:tar:6.1.0:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/tar@6.1.0
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/tar@6.1.0
 
 ##### Package: yallist
 
@@ -4353,18 +4584,23 @@ PackageName: yallist
 PackageVersion: 4.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:yallist:4.0.0:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/yallist@4.0.0
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/yallist@4.0.0
+
+##### Relationships
+
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DOCUMENT
 
 "
 `;
 
 exports[`SPDX Tag Value yarn 1`] = `
-"SPDXVersion: SPDX-2.2
+"SPDXVersion: SPDX-2.3
 DataLicense: CC0-1.0
 
 DocumentName: tests/fixtures/yarn-project
@@ -4381,6 +4617,7 @@ PackageName: js-tokens
 PackageVersion: 4.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4392,7 +4629,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/js-tokens@4.0.0
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/js-tokens@4.0.0
 
 ##### Package: loose-envify
 
@@ -4401,6 +4638,7 @@ PackageName: loose-envify
 PackageVersion: 1.4.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4412,7 +4650,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/loose-envify@1.4.0
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/loose-envify@1.4.0
 
 ##### Package: object-assign
 
@@ -4421,6 +4659,7 @@ PackageName: object-assign
 PackageVersion: 4.1.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4432,7 +4671,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/object-assign@4.1.1
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/object-assign@4.1.1
 
 ##### Package: prop-types
 
@@ -4441,6 +4680,7 @@ PackageName: prop-types
 PackageVersion: 15.7.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4452,7 +4692,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/prop-types@15.7.2
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/prop-types@15.7.2
 
 ##### Package: react
 
@@ -4461,12 +4701,13 @@ PackageName: react
 PackageVersion: 16.14.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/react@16.14.0
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/react@16.14.0
 
 ##### Package: react-is
 
@@ -4475,6 +4716,7 @@ PackageName: react-is
 PackageVersion: 16.13.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
@@ -4486,7 +4728,7 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/react-is@16.13.1
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/react-is@16.13.1
 
 ##### Package: trim
 
@@ -4495,12 +4737,17 @@ PackageName: trim
 PackageVersion: 0.0.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
+PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
 PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:trim:0.0.2:*:*:*:*:*:*:*
-ExternalRef: PACKAGE_MANAGER purl pkg:npm/trim@0.0.2
+ExternalRef: PACKAGE-MANAGER purl pkg:npm/trim@0.0.2
+
+##### Relationships
+
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DOCUMENT
 
 "
 `;
