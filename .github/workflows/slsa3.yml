@@ -19,9 +19,11 @@ on:
         description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
         required: false
 
+    inputs:
       path:
         required: false
         description: "A path to a directory on the filesystem to scan"
+        default: "."
 
       file:
         required: false
