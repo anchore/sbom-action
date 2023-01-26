@@ -26,6 +26,9 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    # NOTE: the repository is already cloned by the caller, so there's no need to
+    # checkout ourselves.
+
     # This would call the main Action, e.g., ./../__TOOL_CHECKOUT_DIR__/<path/to/action>
     # if path is left empty, the Action's action.yml is located at the root of the repository.
     - name: Run main sbom-action Action
