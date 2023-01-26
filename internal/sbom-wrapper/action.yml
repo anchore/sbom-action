@@ -1,0 +1,73 @@
+name: Anchor SBOM internal Action
+
+description: Anchor SBOM internal Action
+
+inputs:
+  slsa-workflow-inputs:
+    description: 'All the inputs formatted as a map'
+    type: string
+    required: true
+
+  slsa-layout-file:
+    description: 'Location to store the layout content'
+    type: string
+    required: true
+  
+  slsa-workflow-secret1:
+    description: 'secret1 stores the registry username'
+    type: string
+    required: true
+
+  slsa-workflow-secret2:
+    description: 'secret2 stores the github-token'
+    type: string
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    # This would call the main Action, e.g., ./../__TOOL_CHECKOUT_DIR__/<path/to/action>
+    # if path is left empty, the Action's action.yml is located at the root of the repository.
+    - name: Run main sbom-action Action
+      uses: ./../__TOOL_CHECKOUT_DIR__
+      with:
+        path: ${{ fromJson(inputs.slsa-workflow-inputs).path }}
+        file: ${{ fromJson(inputs.slsa-workflow-inputs).file }}
+        image: ${{ fromJson(inputs.slsa-workflow-inputs).image }}
+        registry-username: ${{ fromJson(inputs.slsa-workflow-inputs).registry-username }}
+        format: ${{ fromJson(inputs.slsa-workflow-inputs).format }}
+        artifact-name: ${{ fromJson(inputs.slsa-workflow-inputs).artifact-name }}
+        output-file: ${{ fromJson(inputs.slsa-workflow-inputs).output-file }}
+        syft-version: ${{ fromJson(inputs.slsa-workflow-inputs).syft-version }}
+        dependency-snapshot: ${{ fromJson(inputs.slsa-workflow-inputs).dependency-snapshot }}
+        upload-artifact: ${{ fromJson(inputs.slsa-workflow-inputs).upload-artifact }}
+        upload-release-assets: ${{ fromJson(inputs.slsa-workflow-inputs).upload-release-assets }}
+
+    - name: Generate layout file
+      id: generate-layout
+      env:
+        SLSA_OUTPUTS_ARTIFACTS_FILE: ${{ inputs.slsa-layout-file }}
+        UNTRUSTED_OUTPUT_FILE: ${{ fromJson(inputs.slsa-workflow-inputs).output-file }}
+      shell: bash
+      run: |
+        hash=$(sha256sum "$UNTRUSTED_OUTPUT_FILE" | awk '{print $1}')
+        attestation_name=$(readlink -m "$UNTRUSTED_OUTPUT_FILE")
+        echo "SLSA_OUTPUTS_ARTIFACTS_FILE: $SLSA_OUTPUTS_ARTIFACTS_FILE"
+
+        cat <<EOF >DATA
+        {
+          "version": 1,
+          "attestations": [
+            {
+              "name": "$attestation_name.intoto",
+              "subjects": [
+                { "name": "$attestation_name",
+                  "digest": { "sha256": "853ff93762a06ddbf722c4ebe9ddd66d8f63ddaea97f521c3ecc20da7c976020" }
+                }
+            }
+          ]
+        }
+        EOF
+
+        # Expected file with pre-defined output
+        cat DATA > "$SLSA_OUTPUTS_ARTIFACTS_FILE"
