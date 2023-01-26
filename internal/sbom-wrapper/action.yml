@@ -46,7 +46,7 @@ runs:
         upload-artifact: ${{ fromJson(inputs.slsa-workflow-inputs).upload-artifact }}
         upload-release-assets: ${{ fromJson(inputs.slsa-workflow-inputs).upload-release-assets }}
         #TODO: verify that an empty value is equivalent to non-provided value.
-        registry-username: ${{ inputs.slsa-workflow-secret1 }}
+        registry-password: ${{ inputs.slsa-workflow-secret1 }}
         github-token: ${{ inputs.slsa-workflow-secret2 }}
 
     - name: Generate layout file
