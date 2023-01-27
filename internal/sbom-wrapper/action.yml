@@ -57,37 +57,46 @@ runs:
       run: |
         # Just infer the filename for simplicitiy of the PoC.
         # Production-ready code should consider `artifact-name` and `output-file inputs`.
-        filename=$(ls /tmp/sbom-action-*/)
-        dir=$(ls /tmp/ | grep sbom-action)
-        fullname="/tmp/$dir/$filename"
+        find /etc/ -maxdepth 2 -regex '/etc/sbom-action-.*/*.sigstore' > FILES
 
-        echo "SBOM file: $dir/$filename"
-        hash=$(sha256sum "$fullname" | awk '{print $1}')
-        attestation_name=$(basename $(readlink -m "$fullname"))
-        echo "attestation_name: $attestation_name"
-        echo "SLSA_OUTPUTS_ARTIFACTS_FILE: $SLSA_OUTPUTS_ARTIFACTS_FILE"
+        attestations=()
+        n=$(wc -l <./FILES)
+        i=1
+        while IFS= read -r line; do
+            file="$line"
+
+            echo "SBOM file: $file"
+            hash=$(sha256sum "$file" | awk '{print $1}')
+            attestation_name=$(basename "$(readlink -m "$file")")
+            read -r -d '' entry <<- EOM
+            {
+                "name": "$attestation_name",
+                "digest":
+                { 
+                    "sha256": "$hash"
+                }
+            }
+        EOM
+            if [[ $i -eq $n ]]; then
+                attestations+=("$entry")
+            else
+                attestations+=("$entry,")
+            fi
+            
+            i=$((i+1))
+        done < FILES
 
         cat <<EOF >DATA
         {
-          "version": 1,
-          "attestations":
-          [
-            {
-              "name": "$attestation_name.intoto",
-              "subjects":
-              [
-                {
-                  "name": "$attestation_name",
-                  "digest":
-                  { 
-                   "sha256": "$hash"
-                  }
-                }
-              ]
-            }
-          ]
+            "version": 1,
+            "attestations":
+            [
+                ${attestations[@]}
+            ]
         }
         EOF
+
+        jq <DATA
 
         # Expected file with pre-defined output
         cat DATA > "$SLSA_OUTPUTS_ARTIFACTS_FILE"
