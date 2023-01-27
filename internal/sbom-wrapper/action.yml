@@ -55,6 +55,7 @@ runs:
         UNTRUSTED_OUTPUT_FILE: ${{ fromJson(inputs.slsa-workflow-inputs).output-file }}
       shell: bash
       run: |
+        tree
         filename=$(ls *.spdx.json)
         echo "SBOM file: $filename"
         hash=$(sha256sum "$filename" | awk '{print $1}')
