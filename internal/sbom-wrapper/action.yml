@@ -16,12 +16,13 @@ inputs:
   slsa-workflow-secret1:
     description: 'secret1 stores the registry username'
     type: string
-    required: true
+    required: false
 
   slsa-workflow-secret2:
     description: 'secret2 stores the github-token'
     type: string
-    required: true
+    required: false
+    default: ${{ github.token }}
 
 runs:
   using: 'composite'
@@ -47,7 +48,7 @@ runs:
         upload-release-assets: ${{ fromJson(inputs.slsa-workflow-inputs).upload-release-assets }}
         #TODO: verify that an empty value is equivalent to non-provided value.
         registry-password: ${{ inputs.slsa-workflow-secret1 }}
-        github-token: ${{ inputs.slsa-workflow-secret2 || github.token }}
+        github-token: ${{ inputs.slsa-workflow-secret2 }}
 
     - name: Generate layout file
       id: generate-layout
