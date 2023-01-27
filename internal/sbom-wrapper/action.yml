@@ -56,8 +56,9 @@ runs:
       shell: bash
       run: |
         filename=$(ls /tmp/sbom-action-*/)
-        echo "SBOM file: $filename"
-        hash=$(sha256sum "$filename" | awk '{print $1}')
+        dir=$(ls /tmp/ | sbom-action)
+        echo "SBOM file: $dir/$filename"
+        hash=$(sha256sum "$dir/$filename" | awk '{print $1}')
         attestation_name=$(basename $(readlink -m "$filename"))
         echo "attestation_name: $attestation_name"
         echo "SLSA_OUTPUTS_ARTIFACTS_FILE: $SLSA_OUTPUTS_ARTIFACTS_FILE"

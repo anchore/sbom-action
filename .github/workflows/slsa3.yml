@@ -81,7 +81,7 @@ on:
         type: string
 
       private-repository:
-        description: "TODO"
+        description: "Allow pubication of your repository name on the public Rekor log"
         required: false
         type: boolean
         default: false
@@ -106,7 +106,7 @@ jobs:
         uses: laurentsimon/slsa-delegator/actions/setup-token@main
         with:
           slsa-workflow-recipient: "delegator_generic_slsa3.yml"
-          slsa-private-repository: true
+          slsa-private-repository: ${{ inputs.private-repository == 'true' }}
           slsa-runner-label: "ubuntu-latest"
           slsa-build-action-path: "./internal/sbom-wrapper"
           # TODO(https://github.com/slsa-framework/slsa-github-generator/issues/1575): mask sensitive fields.
