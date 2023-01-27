@@ -57,8 +57,11 @@ runs:
         UNTRUSTED_OUTPUT_FILE: ${{ fromJson(inputs.slsa-workflow-inputs).output-file }}
       shell: bash
       run: |
-        hash=$(sha256sum "$UNTRUSTED_OUTPUT_FILE" | awk '{print $1}')
-        attestation_name=$(readlink -m "$UNTRUSTED_OUTPUT_FILE")
+        filename=$(ls *.spdx.json)
+        echo "SBOM file: $filename"
+        hash=$(sha256sum "$filename" | awk '{print $1}')
+        attestation_name=$(basename $(readlink -m "$filename"))
+        echo "attestation_name: $attestation_name"
         echo "SLSA_OUTPUTS_ARTIFACTS_FILE: $SLSA_OUTPUTS_ARTIFACTS_FILE"
 
         cat <<EOF >DATA
