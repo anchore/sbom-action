@@ -68,10 +68,10 @@ runs:
 
             echo "SBOM file: $file"
             hash=$(sha256sum "$file" | awk '{print $1}')
-            attestation_name=$(basename "$(readlink -m "$file")")
+            subject_name=$(basename "$(readlink -m "$file")")
             read -r -d '' entry <<- EOM
             {
-                "name": "$attestation_name",
+                "name": "$subject_name",
                 "digest":
                 { 
                     "sha256": "$hash"
@@ -92,11 +92,16 @@ runs:
             "version": 1,
             "attestations":
             [
-                ${attestations[@]}
+                {
+                    "name": "attestation.intoto",
+                    "subjects": 
+                    [
+                        ${attestations[@]}
+                    ]
+                }
             ]
         }
         EOF
-
         jq <DATA
 
         # Expected file with pre-defined output
