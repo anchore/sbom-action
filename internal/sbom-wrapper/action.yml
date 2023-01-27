@@ -70,13 +70,20 @@ runs:
         cat <<EOF >DATA
         {
           "version": 1,
-          "attestations": [
+          "attestations":
+          [
             {
               "name": "$attestation_name.intoto",
-              "subjects": [
-                { "name": "$attestation_name",
-                  "digest": { "sha256": "853ff93762a06ddbf722c4ebe9ddd66d8f63ddaea97f521c3ecc20da7c976020" }
+              "subjects":
+              [
+                {
+                  "name": "$attestation_name",
+                  "digest":
+                  { 
+                   "sha256": "853ff93762a06ddbf722c4ebe9ddd66d8f63ddaea97f521c3ecc20da7c976020"
+                  }
                 }
+              ]
             }
           ]
         }
