@@ -60,9 +60,10 @@ runs:
         filename=$(ls /tmp/sbom-action-*/)
         dir=$(ls /tmp/ | grep sbom-action)
         fullname="/tmp/$dir/$filename"
+
         echo "SBOM file: $dir/$filename"
-        hash=$(sha256sum "$dir/$filename" | awk '{print $1}')
-        attestation_name=$(basename $(readlink -m "$filename"))
+        hash=$(sha256sum "$fullname" | awk '{print $1}')
+        attestation_name=$(basename $(readlink -m "$fullname"))
         echo "attestation_name: $attestation_name"
         echo "SLSA_OUTPUTS_ARTIFACTS_FILE: $SLSA_OUTPUTS_ARTIFACTS_FILE"
 
