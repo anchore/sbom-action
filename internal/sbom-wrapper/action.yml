@@ -29,7 +29,7 @@ runs:
     # NOTE: the repository is already cloned by the caller, so there's no need to
     # checkout ourselves.
 
-    # This would call the main Action, e.g., ./../__TOOL_CHECKOUT_DIR__/<path/to/action>
+    # This calls the main Action, e.g., ./../__TOOL_CHECKOUT_DIR__/<path/to/action>
     # if path is left empty, the Action's action.yml is located at the root of the repository.
     - name: Run main sbom-action Action
       uses: ./../__TOOL_CHECKOUT_DIR__
@@ -80,7 +80,7 @@ runs:
                   "name": "$attestation_name",
                   "digest":
                   { 
-                   "sha256": "853ff93762a06ddbf722c4ebe9ddd66d8f63ddaea97f521c3ecc20da7c976020"
+                   "sha256": "$hash"
                   }
                 }
               ]
