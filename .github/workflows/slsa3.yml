@@ -132,15 +132,27 @@ jobs:
       contents: write # For asset uploads. Optional
     runs-on: ubuntu-latest
     steps:
-      - name: Verify and publish
+      - name: Download attestations
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ needs.slsa-run.outputs.attestations-download-name }}
+
+      - name: Verify attestations
         env:
           SLSA_ATTESTATION_DOWNLOAD_NAME: ${{ needs.slsa-run.outputs.attestations-download-name }}
         run: |
           echo "download from $SLSA_ATTESTATION_DOWNLOAD_NAME"
           echo "artifacts $ACTION_ARTIFACTS"
 
-          # Download artifacts and provenance
-          # Verify thru slsa-verifier
+          # TODO: Verify thru slsa-verifier
 
-          # Upload the attestation.
+      - name: Upload SBOM provenance
+        uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v0.1.15
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            *.sigstore
+
+
+        
 
