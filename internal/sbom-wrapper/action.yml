@@ -59,6 +59,7 @@ runs:
         # Production-ready code should consider `artifact-name` and `output-file inputs`.
         filename=$(ls /tmp/sbom-action-*/)
         dir=$(ls /tmp/ | grep sbom-action)
+        fullname="/tmp/$dir/$filename"
         echo "SBOM file: $dir/$filename"
         hash=$(sha256sum "$dir/$filename" | awk '{print $1}')
         attestation_name=$(basename $(readlink -m "$filename"))
