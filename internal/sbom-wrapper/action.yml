@@ -54,5 +54,5 @@ runs:
         SLSA_OUTPUTS_ARTIFACTS_FILE: ${{ inputs.slsa-layout-file }}
         UNTRUSTED_OUTPUT_FILE: ${{ fromJson(inputs.slsa-workflow-inputs).output-file }}
       shell: bash
-      working-directory: ../__TOOL_ACTION_DIR__
+      working-directory: ./../__TOOL_ACTION_DIR__
       run: ./generate-layout.sh
