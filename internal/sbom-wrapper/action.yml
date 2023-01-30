@@ -33,7 +33,6 @@ runs:
       if: ${{ startsWith(github.ref, 'refs/tags/') && fromJson(inputs.slsa-workflow-inputs).file != '' }}
       env:
         GH_TOKEN: ${{ github.token }}
-        REPO: ${{ github.repository }}
         UNTRUSTED_TAG: ${{ github.ref }}
         UNTRUSTED_ASSET: ${{ fromJson(inputs.slsa-workflow-inputs).file }}
       run: ./../__TOOL_ACTION_DIR__/download-file.sh
