@@ -35,6 +35,7 @@ runs:
         GH_TOKEN: ${{ github.token }}
         UNTRUSTED_TAG: ${{ github.ref }}
         UNTRUSTED_ASSET: ${{ fromJson(inputs.slsa-workflow-inputs).file }}
+      shell: bash
       run: ./../__TOOL_ACTION_DIR__/download-file.sh
         
 
