@@ -55,10 +55,15 @@ runs:
         UNTRUSTED_OUTPUT_FILE: ${{ fromJson(inputs.slsa-workflow-inputs).output-file }}
       shell: bash
       run: |
+        echo "Action:"
         pwd
         tee
-        echo '--'
+        echo
+        echo "Previous pwd:"
         cd ../
         tee
-        cd ../
+        echo
+        echo "Run:"
+        cd -
+        pwd
         ./generate-layout.sh
