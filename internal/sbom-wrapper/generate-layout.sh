@@ -45,5 +45,8 @@ cat <<EOF >DATA
     ]
 }
 EOF
-cat DATA
+
 jq <DATA
+
+# Expected file with pre-defined output
+cat DATA > "$SLSA_OUTPUTS_ARTIFACTS_FILE"
