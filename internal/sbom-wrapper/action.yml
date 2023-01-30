@@ -54,55 +54,5 @@ runs:
         SLSA_OUTPUTS_ARTIFACTS_FILE: ${{ inputs.slsa-layout-file }}
         UNTRUSTED_OUTPUT_FILE: ${{ fromJson(inputs.slsa-workflow-inputs).output-file }}
       shell: bash
-      run: |
-        # Just infer the filename for simplicitiy of the PoC.
-        # Production-ready code should consider `artifact-name` and `output-file inputs`.
-        # NOTE: requires sudo to read protected /etc entries
-        sudo find /etc/ -maxdepth 2 -regex '/etc/sbom-action-.*/*.json' | tee ./FILES
-
-        attestations=()
-        n=$(wc -l <./FILES)
-        i=1
-        while IFS= read -r line; do
-            file="$line"
-
-            echo "SBOM file: $file"
-            hash=$(sha256sum "$file" | awk '{print $1}')
-            subject_name=$(basename "$(readlink -m "$file")")
-            read -r -d '' entry <<- EOM
-            {
-                "name": "$subject_name",
-                "digest":
-                { 
-                    "sha256": "$hash"
-                }
-            }
-        EOM
-            if [[ $i -eq $n ]]; then
-                attestations+=("$entry")
-            else
-                attestations+=("$entry,")
-            fi
-            
-            i=$((i+1))
-        done < FILES
-
-        cat <<EOF >DATA
-        {
-            "version": 1,
-            "attestations":
-            [
-                {
-                    "name": "attestation.intoto",
-                    "subjects": 
-                    [
-                        ${attestations[@]}
-                    ]
-                }
-            ]
-        }
-        EOF
-        jq <DATA
-
-        # Expected file with pre-defined output
-        cat DATA > "$SLSA_OUTPUTS_ARTIFACTS_FILE"
+      working-directory: ./../__TOOL_CHECKOUT_DIR__/internal/sbom-wrapper
+      run: ./generate-layout.sh
