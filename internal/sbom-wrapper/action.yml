@@ -57,11 +57,11 @@ runs:
       run: |
         echo "Action:"
         pwd
-        tee
+        tree
         echo
         echo "Previous pwd:"
         cd ../
-        tee
+        tree
         echo
         echo "Run:"
         cd -
