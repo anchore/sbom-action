@@ -29,6 +29,16 @@ runs:
     # NOTE: the repository is already cloned by the caller, so there's no need to
     # checkout ourselves.
 
+    - name: Download artifact
+      if: ${{ startsWith(github.ref, 'refs/tags/') && fromJson(inputs.slsa-workflow-inputs).file != '' }}
+      env:
+        GH_TOKEN: ${{ github.token }}
+        REPO: ${{ github.repository }}
+        UNTRUSTED_TAG: ${{ github.ref }}
+        UNTRUSTED_ASSET: ${{ fromJson(inputs.slsa-workflow-inputs).file }}
+      run: ./../__TOOL_ACTION_DIR__/download-file.sh
+        
+
     # This calls the main Action, e.g., ./../__TOOL_CHECKOUT_DIR__/<path/to/action>
     # if path is left empty, the Action's action.yml is located at the root of the repository.
     - name: Run main sbom-action Action
@@ -40,7 +50,7 @@ runs:
         registry-username: ${{ fromJson(inputs.slsa-workflow-inputs).registry-username }}
         format: ${{ fromJson(inputs.slsa-workflow-inputs).format }}
         artifact-name: ${{ fromJson(inputs.slsa-workflow-inputs).artifact-name }}
-        output-file: ${{ fromJson(inputs.slsa-workflow-inputs).output-file }}
+        #output-file: ${{ fromJson(inputs.slsa-workflow-inputs).output-file }}
         syft-version: ${{ fromJson(inputs.slsa-workflow-inputs).syft-version }}
         dependency-snapshot: ${{ fromJson(inputs.slsa-workflow-inputs).dependency-snapshot }}
         upload-artifact: ${{ fromJson(inputs.slsa-workflow-inputs).upload-artifact }}
@@ -52,7 +62,7 @@ runs:
       id: generate-layout
       env:
         SLSA_OUTPUTS_ARTIFACTS_FILE: ${{ inputs.slsa-layout-file }}
-        UNTRUSTED_OUTPUT_FILE: ${{ fromJson(inputs.slsa-workflow-inputs).output-file }}
+        #UNTRUSTED_OUTPUT_FILE: ${{ fromJson(inputs.slsa-workflow-inputs).output-file }}
       shell: bash
       # The `slsa-build-action-path` is available at `./../__TOOL_ACTION_DIR__`.
       run: ./../__TOOL_ACTION_DIR__/generate-layout.sh

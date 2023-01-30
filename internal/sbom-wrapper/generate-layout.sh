@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 #find sboms/ -maxdepth 2 -regex 'sboms/sbom-action-.*/*.json' > FILES
 sudo find /tmp/ -maxdepth 2 -regex '/tmp/sbom-action-.*/*.json' | tee ./FILES

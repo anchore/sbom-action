@@ -26,9 +26,11 @@ on:
         default: "."
         type: string
 
+      # TODO: support for workflow_dispatch event
+      # by providing a `tag-name` input.
       file:
         required: false
-        description: "A file on the filesystem to scan"
+        description: "A file in a release asset to scan"
         type: string
 
       image:
@@ -52,10 +54,10 @@ on:
         required: false
         type: string
 
-      output-file:
-        required: false
-        description: "A file location to output the SBOM"
-        type: string
+      # output-file:
+      #   required: false
+      #   description: "A file location to output the SBOM"
+      #   type: string
 
       syft-version:
         required: false
