@@ -58,7 +58,7 @@ runs:
         # Just infer the filename for simplicitiy of the PoC.
         # Production-ready code should consider `artifact-name` and `output-file inputs`.
         # NOTE: requires sudo to read protected /etc entries
-        sudo find /etc/ -maxdepth 2 -regex '/etc/sbom-action-.*/*.sigstore' | tee ./FILES
+        sudo find /etc/ -maxdepth 2 -regex '/etc/sbom-action-.*/*.sbom' | tee ./FILES
 
         attestations=()
         n=$(wc -l <./FILES)
