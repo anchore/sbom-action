@@ -80,8 +80,8 @@ on:
         default: "true"
         type: string
 
-      private-repository:
-        description: "Allow pubication of your repository name on the public Rekor log"
+      slsa-rekor-log-public:
+        description: "Allow publication of your repository name on the public Rekor log"
         required: false
         type: boolean
         default: false
@@ -106,7 +106,7 @@ jobs:
         uses: slsa-framework/slsa-github-generator/actions/delegator/setup-token@main
         with:
           slsa-workflow-recipient: "delegator_generic_slsa3.yml"
-          slsa-private-repository: ${{ inputs.private-repository == 'true' }}
+          slsa-rekor-log-public: ${{ inputs.slsa-rekor-log-public == 'true' }}
           slsa-runner-label: "ubuntu-latest"
           slsa-build-action-path: "./internal/sbom-wrapper"
           # TODO(https://github.com/slsa-framework/slsa-github-generator/issues/1575): mask sensitive fields.
