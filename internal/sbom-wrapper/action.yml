@@ -54,8 +54,4 @@ runs:
         SLSA_OUTPUTS_ARTIFACTS_FILE: ${{ inputs.slsa-layout-file }}
         UNTRUSTED_OUTPUT_FILE: ${{ fromJson(inputs.slsa-workflow-inputs).output-file }}
       shell: bash
-      working-directory: ./../__TOOL_CHECKOUT_DIR__/internal/sbom-wrapper
-      run: |
-        pwd
-        tree
-        ./generate-layout.sh
+      run: ./generate-layout.sh
