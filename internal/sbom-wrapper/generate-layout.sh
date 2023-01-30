@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #find sboms/ -maxdepth 2 -regex 'sboms/sbom-action-.*/*.json' > FILES
-sudo find /etc/ -maxdepth 2 -regex '/etc/sbom-action-.*/*.json' | tee ./FILES
+sudo find /tmp/ -maxdepth 2 -regex '/tmp/sbom-action-.*/*.json' | tee ./FILES
 
 attestations=()
 n=$(wc -l <./FILES)
