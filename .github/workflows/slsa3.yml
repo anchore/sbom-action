@@ -118,8 +118,7 @@ jobs:
     needs: [slsa-setup]
     permissions:
       id-token: write # For signing.
-      contents: write # For asset uploads.
-      actions: read   # For the entrypoint.
+      contents: write # For asset uploads. 
       packages: write
     uses: slsa-framework/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@main
     with:
