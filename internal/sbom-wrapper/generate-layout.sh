@@ -2,7 +2,9 @@
 set -euo pipefail
 
 #find sboms/ -maxdepth 2 -regex 'sboms/sbom-action-.*/*.json' > FILES
-sudo find /tmp/ -maxdepth 2 -regex '/tmp/sbom-action-.*/*.json' | tee ./FILES
+# NOTE: the name / extension varies dependecin on user input.
+# Here's I'm assuming it's .sbom.
+sudo find /tmp/ -maxdepth 2 -regex '/tmp/sbom-action-.*/*.sbom' | tee ./FILES
 
 attestations=()
 n=$(wc -l <./FILES)
