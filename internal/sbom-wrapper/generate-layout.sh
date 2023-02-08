@@ -28,13 +28,14 @@ while IFS= read -r line; do
     i=$((i+1))
 done < FILES
 
+# NOTE: the name of the attestation should be configurable.
 cat <<EOF >DATA
 {
     "version": 1,
     "attestations":
     [
         {
-            "name": "attestation.intoto",
+            "name": "attestation.sbom.intoto",
             "subjects":
             [
                 ${attestations[@]}
