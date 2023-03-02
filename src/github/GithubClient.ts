@@ -189,7 +189,7 @@ export class GithubClient {
   }: {
     name: string;
     file: string;
-    retention: number;
+    retention?: number;
   }): Promise<void> {
     const rootDirectory = path.dirname(file);
     const client = createArtifactClient();

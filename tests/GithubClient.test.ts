@@ -144,8 +144,7 @@ describe("Github Client", () => {
 
     await client.uploadWorkflowArtifact({
       name: "test",
-      file: "file",
-      retention: 1,
+      file: "file"
     });
 
     artifacts = await client.listWorkflowRunArtifacts({
