@@ -23604,17 +23604,20 @@ class GithubClient {
      * Uploads a workflow artifact for the current workflow run
      * @param name name of the artifact
      * @param file file to upload
+     * @param retentionDays retention days of a artifact
      */
-    uploadWorkflowArtifact({ name, file, }) {
+    uploadWorkflowArtifact({ name, file, retention, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const rootDirectory = path_1.default.dirname(file);
             const client = (0, artifact_1.create)();
-            debugLog("uploadArtifact:", name, file, rootDirectory, core.isDebug() && fs_1.default.readdirSync(rootDirectory));
-            const info = yield suppressOutput(() => __awaiter(this, void 0, void 0, function* () {
-                return client.uploadArtifact(name, [file], rootDirectory, {
-                    continueOnError: false,
-                });
-            }));
+            debugLog("uploadArtifact:", name, file, retention, rootDirectory, core.isDebug() && fs_1.default.readdirSync(rootDirectory));
+            const options = {
+                continueOnError: false,
+            };
+            if (retention) {
+                options.retentionDays = retention;
+            }
+            const info = yield suppressOutput(() => __awaiter(this, void 0, void 0, function* () { return client.uploadArtifact(name, [file], rootDirectory, options); }));
             debugLog("uploadArtifact response:", info);
         });
     }
@@ -24146,6 +24149,7 @@ function uploadSbomArtifact(contents) {
         const fileName = getArtifactName();
         const filePath = `${tempDir}/${fileName}`;
         fs.writeFileSync(filePath, contents);
+        const retentionDays = parseInt(core.getInput("upload-artifact-retention-days"));
         const outputFile = core.getInput("output-file");
         if (outputFile) {
             fs.copyFileSync(filePath, outputFile);
@@ -24155,6 +24159,7 @@ function uploadSbomArtifact(contents) {
         yield client.uploadWorkflowArtifact({
             file: filePath,
             name: fileName,
+            retention: retentionDays,
         });
     });
 }
