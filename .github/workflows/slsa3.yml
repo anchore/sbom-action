@@ -1,4 +1,4 @@
-name: Anchor SLSA3 SBOM builder
+name: Anchore SLSA3 SBOM builder
 
 permissions:
   contents: read
