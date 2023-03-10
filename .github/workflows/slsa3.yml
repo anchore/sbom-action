@@ -111,8 +111,8 @@ jobs:
           slsa-rekor-log-public: ${{ inputs.slsa-rekor-log-public == 'true' }}
           slsa-runner-label: "ubuntu-latest"
           slsa-build-action-path: "./internal/sbom-wrapper"
-          # TODO(https://github.com/slsa-framework/slsa-github-generator/issues/1575): mask sensitive fields.
           slsa-workflow-inputs: ${{ toJson(inputs) }}
+          slsa-workflow-masked-inputs: registry-username
 
   slsa-run:
     needs: [slsa-setup]
