@@ -38,7 +38,7 @@ exports[`CycloneDX JSON alpine 1`] = `
         }
       ],
       "cpe": "cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*",
-      "purl": "pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver&distro=alpine-3.12.0",
+      "purl": "pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&distro=alpine-3.12.0",
       "externalReferences": [
         {
           "url": "http://libvncserver.sourceforge.net/",
@@ -189,7 +189,14 @@ exports[`CycloneDX JSON debian 1`] = `
       "author": "Georg Brandl <georg@python.org>",
       "name": "Pygments",
       
-      "cpe": "cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*",
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD License"
+          }
+        }
+      ],
+      "cpe": "cpe:2.3:a:georg_brandl_project:python-Pygments:2.6.1:*:*:*:*:*:*:*",
       "purl": "pkg:pypi/Pygments@2.6.1",
       "properties": [
         {
@@ -206,6 +213,54 @@ exports[`CycloneDX JSON debian 1`] = `
         },
         {
           "name": "syft:package:type",
+          
+        },
+        {
+          "name": "syft:cpe23",
+          
+        },
+        {
+          "name": "syft:cpe23",
+          
+        },
+        {
+          "name": "syft:cpe23",
+          
+        },
+        {
+          "name": "syft:cpe23",
+          
+        },
+        {
+          "name": "syft:cpe23",
+          
+        },
+        {
+          "name": "syft:cpe23",
+          
+        },
+        {
+          "name": "syft:cpe23",
+          
+        },
+        {
+          "name": "syft:cpe23",
+          
+        },
+        {
+          "name": "syft:cpe23",
+          
+        },
+        {
+          "name": "syft:cpe23",
+          
+        },
+        {
+          "name": "syft:cpe23",
+          
+        },
+        {
+          "name": "syft:cpe23",
           
         },
         {
@@ -369,10 +424,6 @@ exports[`CycloneDX JSON debian 1`] = `
         },
         {
           "name": "syft:package:type",
-          
-        },
-        {
-          "name": "syft:cpe23",
           
         },
         {
@@ -692,7 +743,7 @@ exports[`CycloneDX JSON debian 1`] = `
           }
         }
       ],
-      "cpe": "cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*",
+      "cpe": "cpe:2.3:a:isaac-z--schlueter-\\\\<i:npm:6.14.6:*:*:*:*:*:*:*",
       "purl": "pkg:npm/npm@6.14.6",
       "externalReferences": [
         {
@@ -719,6 +770,10 @@ exports[`CycloneDX JSON debian 1`] = `
         },
         {
           "name": "syft:package:type",
+          
+        },
+        {
+          "name": "syft:cpe23",
           
         },
         {
@@ -827,10 +882,6 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
-          "name": "syft:cpe23",
-          
-        },
-        {
           "name": "syft:location:0:path",
           
         }
@@ -858,14 +909,6 @@ exports[`CycloneDX JSON npm 1`] = `
         },
         {
           "name": "syft:package:type",
-          
-        },
-        {
-          "name": "syft:cpe23",
-          
-        },
-        {
-          "name": "syft:cpe23",
           
         },
         {
@@ -939,14 +982,6 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
-          "name": "syft:cpe23",
-          
-        },
-        {
-          "name": "syft:cpe23",
-          
-        },
-        {
           "name": "syft:location:0:path",
           
         }
@@ -974,14 +1009,6 @@ exports[`CycloneDX JSON npm 1`] = `
         },
         {
           "name": "syft:package:type",
-          
-        },
-        {
-          "name": "syft:cpe23",
-          
-        },
-        {
-          "name": "syft:cpe23",
           
         },
         {
@@ -1035,10 +1062,6 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
-          "name": "syft:cpe23",
-          
-        },
-        {
           "name": "syft:location:0:path",
           
         }
@@ -1066,10 +1089,6 @@ exports[`CycloneDX JSON npm 1`] = `
         },
         {
           "name": "syft:package:type",
-          
-        },
-        {
-          "name": "syft:cpe23",
           
         },
         {
@@ -1103,10 +1122,6 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
-          "name": "syft:cpe23",
-          
-        },
-        {
           "name": "syft:location:0:path",
           
         }
@@ -1134,14 +1149,6 @@ exports[`CycloneDX JSON npm 1`] = `
         },
         {
           "name": "syft:package:type",
-          
-        },
-        {
-          "name": "syft:cpe23",
-          
-        },
-        {
-          "name": "syft:cpe23",
           
         },
         {
@@ -1215,14 +1222,6 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
-          "name": "syft:cpe23",
-          
-        },
-        {
-          "name": "syft:cpe23",
-          
-        },
-        {
           "name": "syft:location:0:path",
           
         }
@@ -1250,10 +1249,6 @@ exports[`CycloneDX JSON npm 1`] = `
         },
         {
           "name": "syft:package:type",
-          
-        },
-        {
-          "name": "syft:cpe23",
           
         },
         {
@@ -1307,14 +1302,6 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
-          "name": "syft:cpe23",
-          
-        },
-        {
-          "name": "syft:cpe23",
-          
-        },
-        {
           "name": "syft:location:0:path",
           
         }
@@ -1345,10 +1332,6 @@ exports[`CycloneDX JSON npm 1`] = `
           
         },
         {
-          "name": "syft:cpe23",
-          
-        },
-        {
           "name": "syft:location:0:path",
           
         }
@@ -1376,10 +1359,6 @@ exports[`CycloneDX JSON npm 1`] = `
         },
         {
           "name": "syft:package:type",
-          
-        },
-        {
-          "name": "syft:cpe23",
           
         },
         {
@@ -1456,14 +1435,6 @@ exports[`CycloneDX JSON yarn 1`] = `
           
         },
         {
-          "name": "syft:cpe23",
-          
-        },
-        {
-          "name": "syft:cpe23",
-          
-        },
-        {
           "name": "syft:location:0:path",
           
         }
@@ -1487,14 +1458,6 @@ exports[`CycloneDX JSON yarn 1`] = `
         },
         {
           "name": "syft:package:type",
-          
-        },
-        {
-          "name": "syft:cpe23",
-          
-        },
-        {
-          "name": "syft:cpe23",
           
         },
         {
@@ -1564,14 +1527,6 @@ exports[`CycloneDX JSON yarn 1`] = `
           
         },
         {
-          "name": "syft:cpe23",
-          
-        },
-        {
-          "name": "syft:cpe23",
-          
-        },
-        {
           "name": "syft:location:0:path",
           
         }
@@ -1595,14 +1550,6 @@ exports[`CycloneDX JSON yarn 1`] = `
         },
         {
           "name": "syft:package:type",
-          
-        },
-        {
-          "name": "syft:cpe23",
-          
-        },
-        {
-          "name": "syft:cpe23",
           
         },
         {
@@ -1652,10 +1599,6 @@ exports[`CycloneDX JSON yarn 1`] = `
           
         },
         {
-          "name": "syft:cpe23",
-          
-        },
-        {
           "name": "syft:location:0:path",
           
         }
@@ -1679,14 +1622,6 @@ exports[`CycloneDX JSON yarn 1`] = `
         },
         {
           "name": "syft:package:type",
-          
-        },
-        {
-          "name": "syft:cpe23",
-          
-        },
-        {
-          "name": "syft:cpe23",
           
         },
         {
@@ -1736,10 +1671,6 @@ exports[`CycloneDX JSON yarn 1`] = `
           
         },
         {
-          "name": "syft:cpe23",
-          
-        },
-        {
           "name": "syft:location:0:path",
           
         }
@@ -1779,7 +1710,7 @@ exports[`CycloneDX XML alpine 1`] = `
         </license>
       </licenses>
       <cpe>cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*</cpe>
-      <purl>pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&amp;upstream=libvncserver&amp;distro=alpine-3.12.0</purl>
+      <purl>pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&amp;distro=alpine-3.12.0</purl>
       <externalReferences>
         <reference type="distribution">
           <url>http://libvncserver.sourceforge.net/</url>
@@ -1851,27 +1782,44 @@ exports[`CycloneDX XML debian 1`] = `
       <author>Georg Brandl &lt;georg@python.org&gt;</author>
       <name>Pygments</name>
       
-      <cpe>cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*</cpe>
+      <licenses>
+        <license>
+          <name>BSD License</name>
+        </license>
+      </licenses>
+      <cpe>cpe:2.3:a:georg_brandl_project:python-Pygments:2.6.1:*:*:*:*:*:*:*</cpe>
       <purl>pkg:pypi/Pygments@2.6.1</purl>
       <properties>
         <property name="syft:package:foundBy">python-package-cataloger</property>
         <property name="syft:package:language">python</property>
         <property name="syft:package:metadataType">PythonPackageMetadata</property>
         <property name="syft:package:type">python</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandl_project:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandlproject:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandlproject:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:python-Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:python_Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:python_Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandl_project:Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_project:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_project:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:georg_brandl:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:georg_brandl:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandlproject:Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georgproject:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georgproject:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:python-Pygments:Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:python_Pygments:Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_project:Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:python:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:python:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:georg:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:georg:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georgproject:Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*</property>
@@ -1945,7 +1893,6 @@ exports[`CycloneDX XML debian 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:tim_moore:bundler:2.1.4:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:bundler:bundler:2.1.4:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:bundler:2.1.4:*:*:*:*:*:*:*</property>
         
         
       </properties>
@@ -2023,7 +1970,7 @@ exports[`CycloneDX XML debian 1`] = `
           <id>Artistic-2.0</id>
         </license>
       </licenses>
-      <cpe>cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*</cpe>
+      <cpe>cpe:2.3:a:isaac-z--schlueter-\\&lt;i:npm:6.14.6:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/npm@6.14.6</purl>
       <externalReferences>
         <reference type="distribution">
@@ -2038,7 +1985,8 @@ exports[`CycloneDX XML debian 1`] = `
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:metadataType">NpmPackageJsonMetadata</property>
         <property name="syft:package:type">npm</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:npm:6.14.6:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:isaac_z__schlueter_\\&lt;i:npm:6.14.6:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*</property>
         
         
       </properties>
@@ -2097,7 +2045,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:chownr:2.0.0:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2116,8 +2063,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:fs:fs-minipass:2.1.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:fs-minipass:2.1.0:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:fs_minipass:2.1.0:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2136,8 +2081,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2156,8 +2099,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2171,7 +2112,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:minipass:3.1.3:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2185,7 +2125,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:minizlib:2.1.2:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2199,7 +2138,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:mkdirp:1.0.4:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2218,8 +2156,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2238,8 +2174,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2253,7 +2187,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2272,8 +2205,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2287,7 +2218,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:tar:6.1.0:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2301,7 +2231,6 @@ exports[`CycloneDX XML npm 1`] = `
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:metadataType">NpmPackageLockJsonMetadata</property>
         <property name="syft:package:type">npm</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:yallist:4.0.0:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2340,8 +2269,6 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2359,8 +2286,6 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2378,8 +2303,6 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2397,8 +2320,6 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2411,7 +2332,6 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:type">npm</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2429,8 +2349,6 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2443,7 +2361,6 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:type">npm</property>
-        <property name="syft:cpe23">cpe:2.3:a:*:trim:0.0.2:*:*:*:*:*:*:*</property>
         
       </properties>
     </component>
@@ -2487,7 +2404,7 @@ exports[`SPDX JSON alpine 1`] = `
     {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
-     "referenceLocator": "pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver&distro=alpine-3.12.0"
+     "referenceLocator": "pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&distro=alpine-3.12.0"
     }
    ]
   }
@@ -2526,10 +2443,30 @@ exports[`SPDX JSON debian 1`] = `
    "originator": "Person: Georg Brandl (georg@python.org)",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed python package manifest file: /python/dist-info/METADATA, /python/dist-info/top_level.txt",
-   "licenseConcluded": "NOASSERTION",
-   "licenseDeclared": "NOASSERTION",
+   "licenseConcluded": "LicenseRef-BSD-License",
+   "licenseDeclared": "LicenseRef-BSD-License",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandl_project:python-Pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandl_project:python_Pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandlproject:python-Pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandlproject:python_Pygments:2.6.1:*:*:*:*:*:*:*"
+    },
     {
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
@@ -2553,12 +2490,42 @@ exports[`SPDX JSON debian 1`] = `
     {
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandl_project:Pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_project:python-Pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_project:python_Pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:georg_brandl:python-Pygments:2.6.1:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:georg_brandl:python_Pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandlproject:Pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georgproject:python-Pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georgproject:python_Pygments:2.6.1:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "SECURITY",
@@ -2579,6 +2546,11 @@ exports[`SPDX JSON debian 1`] = `
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:python_Pygments:Pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_project:Pygments:2.6.1:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "SECURITY",
@@ -2604,6 +2576,11 @@ exports[`SPDX JSON debian 1`] = `
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georgproject:Pygments:2.6.1:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "SECURITY",
@@ -2803,11 +2780,6 @@ exports[`SPDX JSON debian 1`] = `
      "referenceLocator": "cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:*:*:*"
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:bundler:2.1.4:*:*:*:*:*:*:*"
-    },
-    {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:gem/bundler@2.1.4"
@@ -2979,12 +2951,17 @@ exports[`SPDX JSON debian 1`] = `
     {
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*"
+     "referenceLocator": "cpe:2.3:a:isaac-z--schlueter-\\\\<i:npm:6.14.6:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:npm:6.14.6:*:*:*:*:*:*:*"
+     "referenceLocator": "cpe:2.3:a:isaac_z__schlueter_\\\\<i:npm:6.14.6:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "PACKAGE-MANAGER",
@@ -2992,6 +2969,13 @@ exports[`SPDX JSON debian 1`] = `
      "referenceLocator": "pkg:npm/npm@6.14.6"
     }
    ]
+  }
+ ],
+ "hasExtractedLicensingInfos": [
+  {
+   "licenseId": "LicenseRef-BSD-License",
+   "extractedText": "NONE",
+   "name": "BSD License"
   }
  ],
  "relationships": [
@@ -3035,11 +3019,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:chownr:2.0.0:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "PACKAGE-MANAGER",
@@ -3089,16 +3068,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceLocator": "cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:*:*:*"
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:fs-minipass:2.1.0:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:fs_minipass:2.1.0:*:*:*:*:*:*:*"
-    },
-    {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:npm/fs-minipass@2.1.0"
@@ -3144,16 +3113,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "PACKAGE-MANAGER",
@@ -3203,16 +3162,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceLocator": "cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*"
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*"
-    },
-    {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:npm/loose-envify@1.4.0"
@@ -3233,11 +3182,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:minipass:3.1.3:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "PACKAGE-MANAGER",
@@ -3262,11 +3206,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceLocator": "cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*"
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:minizlib:2.1.2:*:*:*:*:*:*:*"
-    },
-    {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:npm/minizlib@2.1.2"
@@ -3287,11 +3226,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:mkdirp:1.0.4:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "PACKAGE-MANAGER",
@@ -3341,16 +3275,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceLocator": "cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*"
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*"
-    },
-    {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:npm/object-assign@4.1.1"
@@ -3398,16 +3322,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceLocator": "cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*"
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*"
-    },
-    {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:npm/prop-types@15.7.2"
@@ -3428,11 +3342,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "PACKAGE-MANAGER",
@@ -3482,16 +3391,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceLocator": "cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*"
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*"
-    },
-    {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:npm/react-is@16.13.1"
@@ -3514,11 +3413,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceLocator": "cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*"
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:tar:6.1.0:*:*:*:*:*:*:*"
-    },
-    {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:npm/tar@6.1.0"
@@ -3539,11 +3433,6 @@ exports[`SPDX JSON npm 1`] = `
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:yallist:4.0.0:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "PACKAGE-MANAGER",
@@ -3621,16 +3510,6 @@ exports[`SPDX JSON yarn 1`] = `
      "referenceLocator": "cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*"
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*"
-    },
-    {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:npm/js-tokens@4.0.0"
@@ -3676,16 +3555,6 @@ exports[`SPDX JSON yarn 1`] = `
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "PACKAGE-MANAGER",
@@ -3735,16 +3604,6 @@ exports[`SPDX JSON yarn 1`] = `
      "referenceLocator": "cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*"
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*"
-    },
-    {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:npm/object-assign@4.1.1"
@@ -3792,16 +3651,6 @@ exports[`SPDX JSON yarn 1`] = `
      "referenceLocator": "cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*"
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*"
-    },
-    {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:npm/prop-types@15.7.2"
@@ -3822,11 +3671,6 @@ exports[`SPDX JSON yarn 1`] = `
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "PACKAGE-MANAGER",
@@ -3876,16 +3720,6 @@ exports[`SPDX JSON yarn 1`] = `
      "referenceLocator": "cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*"
     },
     {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*"
-    },
-    {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:npm/react-is@16.13.1"
@@ -3906,11 +3740,6 @@ exports[`SPDX JSON yarn 1`] = `
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:*:trim:0.0.2:*:*:*:*:*:*:*"
     },
     {
      "referenceCategory": "PACKAGE-MANAGER",
@@ -3956,7 +3785,7 @@ PackageLicenseDeclared: GPL-2.0-or-later
 PackageCopyrightText: NOASSERTION
 PackageDescription: Library to make writing a vnc server easy
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:libvncserver:libvncserver:0.9.9:*:*:*:*:*:*:*
-ExternalRef: PACKAGE-MANAGER purl pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&upstream=libvncserver&distro=alpine-3.12.0
+ExternalRef: PACKAGE-MANAGER purl pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&distro=alpine-3.12.0
 
 ##### Relationships
 
@@ -4032,7 +3861,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:tim-moore:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:tim_moore:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:bundler:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:ruby:bundler:2.1.4:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:bundler:2.1.4:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:gem/bundler@2.1.4
 
 ##### Package: example-java-app-maven
@@ -4097,8 +3925,9 @@ PackageSourceInfo: acquired package info from installed node module manifest fil
 PackageLicenseConcluded: Artistic-2.0
 PackageLicenseDeclared: Artistic-2.0
 PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:isaac-z--schlueter-\\<i:npm:6.14.6:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:isaac_z__schlueter_\\<i:npm:6.14.6:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:npm:6.14.6:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/npm@6.14.6
 
 ##### Package: Pygments
@@ -4110,28 +3939,46 @@ PackageOriginator: Person: Georg Brandl (georg@python.org)
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed python package manifest file: /python/dist-info/METADATA, /python/dist-info/top_level.txt
-PackageLicenseConcluded: NOASSERTION
-PackageLicenseDeclared: NOASSERTION
+PackageLicenseConcluded: LicenseRef-BSD-License
+PackageLicenseDeclared: LicenseRef-BSD-License
 PackageCopyrightText: NOASSERTION
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl_project:python-Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl_project:python_Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandlproject:python-Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandlproject:python_Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:python-Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:python_Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:python_Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl_project:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_project:python-Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_project:python_Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:python-Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:python_Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandlproject:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georgproject:python-Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georgproject:python_Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:python-Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:python_Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_project:Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:python-Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:python_Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:python-Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:python_Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georgproject:Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:pypi/Pygments@2.6.1
+
+##### Other Licenses
+
+LicenseID: LicenseRef-BSD-License
+ExtractedText: NONE
+LicenseName: BSD License
 
 ##### Relationships
 
@@ -4163,7 +4010,6 @@ PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:chownr:2.0.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/chownr@2.0.0
 
 ##### Package: fs-minipass
@@ -4183,8 +4029,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs-minipass:2.1.0:*:*:*:*:
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs_minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs:fs-minipass:2.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs:fs_minipass:2.1.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:fs-minipass:2.1.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:fs_minipass:2.1.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/fs-minipass@2.1.0
 
 ##### Package: js-tokens
@@ -4204,8 +4048,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/js-tokens@4.0.0
 
 ##### Package: loose-envify
@@ -4225,8 +4067,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/loose-envify@1.4.0
 
 ##### Package: minipass
@@ -4241,7 +4081,6 @@ PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:minipass:3.1.3:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/minipass@3.1.3
 
 ##### Package: minizlib
@@ -4256,7 +4095,6 @@ PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:minizlib:2.1.2:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/minizlib@2.1.2
 
 ##### Package: mkdirp
@@ -4271,7 +4109,6 @@ PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:mkdirp:1.0.4:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/mkdirp@1.0.4
 
 ##### Package: object-assign
@@ -4291,8 +4128,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/object-assign@4.1.1
 
 ##### Package: prop-types
@@ -4312,8 +4147,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/prop-types@15.7.2
 
 ##### Package: react
@@ -4328,7 +4161,6 @@ PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/react@16.14.0
 
 ##### Package: react-is
@@ -4348,8 +4180,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/react-is@16.13.1
 
 ##### Package: tar
@@ -4364,7 +4194,6 @@ PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:tar:6.1.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/tar@6.1.0
 
 ##### Package: yallist
@@ -4379,7 +4208,6 @@ PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:yallist:4.0.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/yallist@4.0.0
 
 ##### Relationships
@@ -4417,8 +4245,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js-tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js:js_tokens:4.0.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js-tokens:4.0.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:js_tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/js-tokens@4.0.0
 
 ##### Package: loose-envify
@@ -4438,8 +4264,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose-envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose:loose_envify:1.4.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:loose-envify:1.4.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:loose_envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/loose-envify@1.4.0
 
 ##### Package: object-assign
@@ -4459,8 +4283,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object-assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object:object_assign:4.1.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:object-assign:4.1.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:object_assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/object-assign@4.1.1
 
 ##### Package: prop-types
@@ -4480,8 +4302,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop-types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop:prop_types:15.7.2:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:prop-types:15.7.2:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:prop_types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/prop-types@15.7.2
 
 ##### Package: react
@@ -4496,7 +4316,6 @@ PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react:16.14.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/react@16.14.0
 
 ##### Package: react-is
@@ -4516,8 +4335,6 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react-is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react_is:16.13.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react-is:16.13.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:react_is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/react-is@16.13.1
 
 ##### Package: trim
@@ -4532,7 +4349,6 @@ PackageLicenseConcluded: NONE
 PackageLicenseDeclared: NONE
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:*:trim:0.0.2:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/trim@0.0.2
 
 ##### Relationships
