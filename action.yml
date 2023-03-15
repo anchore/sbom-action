@@ -58,7 +58,7 @@ inputs:
     description: "Upload artifact to workflow"
     default: "true"
 
-  upload-artifact-retention-days:
+  upload-artifact-retention:
     required: false
     description: >
       Retention policy for uploaded artifact to workflow.
