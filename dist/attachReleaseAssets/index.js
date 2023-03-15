@@ -23943,7 +23943,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.runAndFailBuildOnException = exports.attachReleaseAssets = exports.uploadDependencySnapshot = exports.runSyftAction = exports.uploadSbomArtifact = exports.getSbomFormat = exports.getSyftCommand = exports.downloadSyft = exports.getArtifactName = exports.SYFT_VERSION = exports.SYFT_BINARY_NAME = void 0;
+exports.runAndFailBuildOnException = exports.attachReleaseAssets = exports.uploadDependencySnapshot = exports.runSyftAction = exports.uploadSbomArtifact = exports.getSha = exports.getSbomFormat = exports.getSyftCommand = exports.downloadSyft = exports.getArtifactName = exports.SYFT_VERSION = exports.SYFT_BINARY_NAME = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
 const cache = __importStar(__nccwpck_require__(7784));
@@ -24151,6 +24151,30 @@ function getSbomFormat() {
 }
 exports.getSbomFormat = getSbomFormat;
 /**
+ * Returns the SHA of the current commit, which will either be the head
+ * of the pull request branch or the value of github.context.sha, depending
+ * on the event type.
+ */
+function getSha() {
+    const pull_request_events = [
+        "pull_request",
+        "pull_request_comment",
+        "pull_request_review",
+        "pull_request_review_comment",
+        // Note that pull_request_target is omitted here.
+        // That event runs in the context of the base commit of the PR,
+        // so the snapshot should not be associated with the head commit.
+    ];
+    if (pull_request_events.includes(github.context.eventName)) {
+        const pr = github.context.payload.pull_request;
+        return pr.head.sha;
+    }
+    else {
+        return github.context.sha;
+    }
+}
+exports.getSha = getSha;
+/**
  * Uploads a SBOM as a workflow artifact
  * @param contents SBOM file contents
  */
@@ -24268,7 +24292,8 @@ function uploadDependencySnapshot() {
             core.warning(`No dependency snapshot found at '${githubDependencySnapshotFile}'`);
             return;
         }
-        const { workflow, job, runId, repo, sha, ref } = github.context;
+        const { workflow, job, runId, repo, ref } = github.context;
+        const sha = getSha();
         const client = (0, GithubClient_1.getClient)(repo, core.getInput("github-token"));
         const snapshot = JSON.parse(fs.readFileSync(githubDependencySnapshotFile).toString("utf8"));
         // Need to add the job and repo details
