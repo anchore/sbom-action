@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'anchore/sbom-action'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
       - run: |
           LATEST_VERSION=$(curl "https://api.github.com/repos/anchore/syft/releases/latest" 2>/dev/null | jq -r '.tag_name')
           echo "export const VERSION = \"$LATEST_VERSION\";" > src/SyftVersion.ts
@@ -21,12 +21,12 @@ jobs:
           # export the version for use with create-pull-request:
           echo "::set-output name=LATEST_VERSION::$LATEST_VERSION"
         id: latest-version
-      - uses: tibdex/github-app-token@v1
+      - uses: tibdex/github-app-token@f717b5ecd4534d3c4df4ce9b5c1c2214f0f7cd06
         id: generate-token
         with:
           app_id: ${{ secrets.TOKEN_APP_ID }}
           private_key: ${{ secrets.TOKEN_APP_PRIVATE_KEY }}
-      - uses: peter-evans/create-pull-request@v4
+      - uses: peter-evans/create-pull-request@671dc9c9e0c2d73f07fa45a3eb0220e1622f0c5f
         with:
           signoff: true
           delete-branch: true
