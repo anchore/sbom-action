@@ -125,11 +125,11 @@ export function getMocks() {
         return {
           create() {
             return {
-              uploadArtifact(name: string, file: string, rootDirectory:string, options?: any) {
+              uploadArtifact(name: string, file: string, rootDirectory: string, options?: any) {
                 data.artifacts.push({
                   name: path.basename(name),
                   file,
-                  rootDirectory: path.dirname(file),
+                  rootDirectory,
                   options,
                 } as never);
               },
