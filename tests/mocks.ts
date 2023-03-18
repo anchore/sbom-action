@@ -9,7 +9,7 @@ export function getMocks() {
 
     workflowRuns: Partial<WorkflowRun>[] = [];
 
-    inputs: { [key: string]: string } = {};
+    inputs: { [key: string]: string | number } = {};
 
     outputs: { [key: string]: string } = {};
 
