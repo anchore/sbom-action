@@ -133,6 +133,23 @@ describe("Action", () => {
     expect(fs.existsSync(outputFile)).toBeTruthy();
   });
 
+  it("runs with retention input", async () => {
+    setData({
+      inputs: {
+        "upload-artifact-retention": 3,
+      },
+    });
+
+    await action.runSyftAction();
+
+    const { args } = data.execArgs;
+
+    expect(args).toBeDefined()
+    expect(args.length > 2).toBeTruthy();
+    expect(args[2]).toEqual(3)
+  });
+
+
   it("runs without uploading anything", async () => {
     setData({
       inputs: {
