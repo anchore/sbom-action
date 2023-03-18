@@ -23652,7 +23652,7 @@ class GithubClient {
      * Uploads a workflow artifact for the current workflow run
      * @param name name of the artifact
      * @param file file to upload
-     * @param retentionDays retention days of a artifact
+     * @param retention retention days of a artifact
      */
     uploadWorkflowArtifact({ name, file, retention, }) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -24197,7 +24197,7 @@ function uploadSbomArtifact(contents) {
         const fileName = getArtifactName();
         const filePath = `${tempDir}/${fileName}`;
         fs.writeFileSync(filePath, contents);
-        const retentionDays = parseInt(core.getInput("upload-artifact-retention-days"));
+        const retentionDays = parseInt(core.getInput("upload-artifact-retention"));
         const outputFile = core.getInput("output-file");
         if (outputFile) {
             fs.copyFileSync(filePath, outputFile);

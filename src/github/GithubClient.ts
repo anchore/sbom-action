@@ -180,7 +180,7 @@ export class GithubClient {
    * Uploads a workflow artifact for the current workflow run
    * @param name name of the artifact
    * @param file file to upload
-   * @param retentionDays retention days of a artifact
+   * @param retention retention days of a artifact
    */
   async uploadWorkflowArtifact({
     name,

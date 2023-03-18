@@ -123,7 +123,7 @@ jobs:
         id: one-day
         with:
           image: alpine:latest
-          upload-artifact-retention-days: 1
+          upload-artifact-retention: 1
           artifact-name: one-day.sbom.spdx
           output-file: one-day-sbom.spdx
           format: spdx

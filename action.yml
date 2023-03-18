@@ -58,7 +58,7 @@ inputs:
     description: "Upload artifact to workflow"
     default: "true"
 
-  upload-artifact-retention-days:
+  upload-artifact-retention:
     required: false
     description: >
       Retention policy for uploaded artifact to workflow.
@@ -66,6 +66,7 @@ inputs:
       Minimum 1 day.
       Maximum 90 days unless changed from the repository settings page.
       An input of 0 assumes default retention value.
+    default: 0
 
   upload-release-assets:
     required: false

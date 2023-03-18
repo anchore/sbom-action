@@ -257,9 +257,7 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
   const filePath = `${tempDir}/${fileName}`;
   fs.writeFileSync(filePath, contents);
 
-  const retentionDays = parseInt(
-    core.getInput("upload-artifact-retention-days")
-  );
+  const retentionDays = parseInt(core.getInput("upload-artifact-retention"));
 
   const outputFile = core.getInput("output-file");
   if (outputFile) {

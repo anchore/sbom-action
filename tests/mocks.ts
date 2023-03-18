@@ -9,7 +9,7 @@ export function getMocks() {
 
     workflowRuns: Partial<WorkflowRun>[] = [];
 
-    inputs: { [key: string]: string } = {};
+    inputs: { [key: string]: string | number } = {};
 
     outputs: { [key: string]: string } = {};
 
@@ -125,10 +125,12 @@ export function getMocks() {
         return {
           create() {
             return {
-              uploadArtifact(name: string, file: string) {
+              uploadArtifact(name: string, file: string, rootDirectory: string, options?: any) {
                 data.artifacts.push({
                   name: path.basename(name),
                   file,
+                  rootDirectory,
+                  options,
                 } as never);
               },
               downloadArtifact(name: string, tempPath: string) {
