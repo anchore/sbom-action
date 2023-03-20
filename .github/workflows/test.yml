@@ -31,7 +31,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: Vampire/setup-wsl@v1
+      - uses: Vampire/setup-wsl@v2
         if: ${{ matrix.os == 'windows-latest' }}
         with:
           distribution: Alpine
@@ -117,3 +117,13 @@ jobs:
       - uses: ./publish-sbom # anchore/sbom-action/publish-sbom
         with:
           sbom-artifact-match: "^dont-match-anything$"
+
+      - uses: ./ # anchore/sbom-action with artifact retention
+        name: "One day artifact retention test"
+        id: one-day
+        with:
+          image: alpine:latest
+          upload-artifact-retention: 1
+          artifact-name: one-day.sbom.spdx
+          output-file: one-day-sbom.spdx
+          format: spdx

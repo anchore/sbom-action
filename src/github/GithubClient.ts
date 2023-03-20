@@ -1,4 +1,7 @@
-import { create as createArtifactClient } from "@actions/artifact";
+import {
+  create as createArtifactClient,
+  UploadOptions,
+} from "@actions/artifact";
 import { DownloadHttpClient } from "@actions/artifact/lib/internal/download-http-client";
 import * as core from "@actions/core";
 import * as github from "@actions/github";
@@ -177,13 +180,16 @@ export class GithubClient {
    * Uploads a workflow artifact for the current workflow run
    * @param name name of the artifact
    * @param file file to upload
+   * @param retention retention days of a artifact
    */
   async uploadWorkflowArtifact({
     name,
     file,
+    retention,
   }: {
     name: string;
     file: string;
+    retention?: number;
   }): Promise<void> {
     const rootDirectory = path.dirname(file);
     const client = createArtifactClient();
@@ -192,14 +198,20 @@ export class GithubClient {
       "uploadArtifact:",
       name,
       file,
+      retention,
       rootDirectory,
       core.isDebug() && fs.readdirSync(rootDirectory)
     );
 
+    const options: UploadOptions = {
+      continueOnError: false,
+    };
+    if (retention) {
+      options.retentionDays = retention;
+    }
+
     const info = await suppressOutput(async () =>
-      client.uploadArtifact(name, [file], rootDirectory, {
-        continueOnError: false,
-      })
+      client.uploadArtifact(name, [file], rootDirectory, options)
     );
 
     debugLog("uploadArtifact response:", info);

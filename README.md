@@ -123,17 +123,22 @@ use the `artifact-name` parameter:
 The main [SBOM action](action.yml), responsible for generating SBOMs
 and uploading them as workflow artifacts and release assets.
 
-| Parameter             | Description                                                                                                                                             | Default                          |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| `path`                | A path on the filesystem to scan. This is mutually exclusive to `file` and `image`.                                                                     | \<current directory>             |
-| `file`                | A file on the filesystem to scan. This is mutually exclusive to `path` and `image`.                                                                     |                                  |
-| `image`               | A container image to scan. This is mutually exclusive to `path` and `file`. See [Scan a container image](#scan-a-container-image) for more information. |                                  |
-| `registry-username`   | The registry username to use when authenticating to an external registry                                                                                |                                  |
-| `registry-password`   | The registry password to use when authenticating to an external registry                                                                                |                                  |
-| `artifact-name`       | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output)                                                 | `sbom-<job>-<step-id>.spdx.json` |
-| `output-file`         | The location to output a resulting SBOM                                                                                                                 |                                  |
-| `format`              | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`, `cyclonedx-json`                                                                   | `spdx-json`                      |
-| `dependency-snapshot` | Whether to upload the SBOM to the GitHub Dependency submission API                                                                                      | `false`                          |
+| Parameter                   | Description                                                                                                                                             | Default                          |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| `path`                      | A path on the filesystem to scan. This is mutually exclusive to `file` and `image`.                                                                     | \<current directory>             |
+| `file`                      | A file on the filesystem to scan. This is mutually exclusive to `path` and `image`.                                                                     |                                  |
+| `image`                     | A container image to scan. This is mutually exclusive to `path` and `file`. See [Scan a container image](#scan-a-container-image) for more information. |                                  |
+| `registry-username`         | The registry username to use when authenticating to an external registry                                                                                |                                  |
+| `registry-password`         | The registry password to use when authenticating to an external registry                                                                                |                                  |
+| `artifact-name`             | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output)                                                 | `sbom-<job>-<step-id>.spdx.json` |
+| `output-file`               | The location to output a resulting SBOM                                                                                                                 |                                  |
+| `format`                    | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`, `cyclonedx-json`                                                                   | `spdx-json`                      |
+| `dependency-snapshot`       | Whether to upload the SBOM to the GitHub Dependency submission API                                                                                      | `false`                          |
+| `upload-artifact`           | Upload artifact to workflow                                                                                                                             | `true`                           |
+| `upload-artifact-retention` | Retention policy in days for uploaded artifact to workflow.                                                                                             |                                  |
+| `upload-release-assets`     | Upload release assets                                                                                                                                   | `true`                           |
+| `syft-version`              | The version of Syft to use                                                                                                                              |                                  |
+| `github-token`              | Authorized secret GitHub Personal Access Token.                                                                                                         | `github.token`                   |
 
 ### anchore/sbom-action/publish-sbom
 
@@ -167,7 +172,7 @@ required to set up a WSL distribution prior to invoking the `sbom-action`, for
 example, you can add the small Alpine image:
 
 ```yaml
-- uses: Vampire/setup-wsl@v1
+- uses: Vampire/setup-wsl@v2
   with:
     distribution: Alpine
 ```
