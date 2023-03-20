@@ -123,7 +123,7 @@ describe("Action", () => {
 
     await action.runSyftAction();
 
-    expect(fs.existsSync(inputs["output-file"].toString())).toBeTruthy();
+    expect(fs.existsSync(inputs["output-file"] as string)).toBeTruthy();
 
     await action.attachReleaseAssets();
 
@@ -133,23 +133,7 @@ describe("Action", () => {
     expect(fs.existsSync(outputFile)).toBeTruthy();
   });
 
-  it("runs with retention input as number", async () => {
-    setData({
-      inputs: {
-        image: "org/img",
-        "upload-artifact": "true",
-        "upload-artifact-retention": 3,
-      },
-    });
-
-    await action.runSyftAction();
-
-    const { args } = data.execArgs;
-
-    expect(inputs["upload-artifact-retention"]).toEqual(3)
-  });
-
-  it("runs with retention input as string", async () => {
+  it("runs with retention input", async () => {
     setData({
       inputs: {
         image: "org/img",
@@ -160,9 +144,13 @@ describe("Action", () => {
 
     await action.runSyftAction();
 
-    const { args } = data.execArgs;
+    const { artifacts } = data;
 
-    expect(inputs["upload-artifact-retention"]).toBe("3")
+    expect(artifacts).toHaveLength(1);
+
+    const opts = (artifacts[0] as any).options
+
+    expect(opts.retentionDays).toEqual(3)
   });
 
   it("runs without uploading anything", async () => {
