@@ -108,7 +108,7 @@ jobs:
         uses: slsa-framework/slsa-github-generator/actions/delegator/setup-token@main
         with:
           slsa-workflow-recipient: "delegator_generic_slsa3.yml"
-          slsa-rekor-log-public: ${{ inputs.slsa-rekor-log-public == 'true' }}
+          slsa-rekor-log-public: ${{ inputs.slsa-rekor-log-public }}
           slsa-runner-label: "ubuntu-latest"
           slsa-build-action-path: "./internal/sbom-wrapper"
           slsa-workflow-inputs: ${{ toJson(inputs) }}
