@@ -105,8 +105,8 @@ jobs:
     steps:
       - name: Generate the token
         id: generate
-        uses: slsa-framework/slsa-github-generator/actions/delegator/setup-token@v1.5.0
-        #uses: slsa-framework/slsa-github-generator/actions/delegator/setup-token@main
+        #uses: slsa-framework/slsa-github-generator/actions/delegator/setup-token@v1.5.0
+        uses: slsa-framework/slsa-github-generator/actions/delegator/setup-token@main
         with:
           slsa-workflow-recipient: "delegator_generic_slsa3.yml"
           slsa-rekor-log-public: ${{ inputs.slsa-rekor-log-public == 'true' }}
@@ -114,7 +114,7 @@ jobs:
           slsa-build-action-path: "./internal/sbom-wrapper"
           slsa-workflow-inputs: ${{ toJson(inputs) }}
           # TODO: re-enable when new version is cut
-          #slsa-workflow-masked-inputs: registry-username
+          slsa-workflow-masked-inputs: registry-username
 
   slsa-run:
     needs: [slsa-setup]
@@ -122,8 +122,8 @@ jobs:
       id-token: write # For signing.
       contents: write # For asset uploads. 
       packages: write
-    #uses: slsa-framework/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@main
-    uses: slsa-framework/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@v1.5.0
+    uses: slsa-framework/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@main
+    #uses: slsa-framework/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@v1.5.0
     with:
       slsa-token: ${{ needs.slsa-setup.outputs.slsa-token }}
     secrets:
