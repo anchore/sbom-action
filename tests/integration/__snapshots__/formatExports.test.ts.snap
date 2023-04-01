@@ -743,7 +743,7 @@ exports[`CycloneDX JSON debian 1`] = `
           }
         }
       ],
-      "cpe": "cpe:2.3:a:isaac-z--schlueter-\\\\<i:npm:6.14.6:*:*:*:*:*:*:*",
+      "cpe": "cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*",
       "purl": "pkg:npm/npm@6.14.6",
       "externalReferences": [
         {
@@ -770,14 +770,6 @@ exports[`CycloneDX JSON debian 1`] = `
         },
         {
           "name": "syft:package:type",
-          
-        },
-        {
-          "name": "syft:cpe23",
-          
-        },
-        {
-          "name": "syft:cpe23",
           
         },
         {
@@ -1970,7 +1962,7 @@ exports[`CycloneDX XML debian 1`] = `
           <id>Artistic-2.0</id>
         </license>
       </licenses>
-      <cpe>cpe:2.3:a:isaac-z--schlueter-\\&lt;i:npm:6.14.6:*:*:*:*:*:*:*</cpe>
+      <cpe>cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*</cpe>
       <purl>pkg:npm/npm@6.14.6</purl>
       <externalReferences>
         <reference type="distribution">
@@ -1985,8 +1977,6 @@ exports[`CycloneDX XML debian 1`] = `
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:metadataType">NpmPackageJsonMetadata</property>
         <property name="syft:package:type">npm</property>
-        <property name="syft:cpe23">cpe:2.3:a:isaac_z__schlueter_\\&lt;i:npm:6.14.6:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*</property>
         
         
       </properties>
@@ -2948,16 +2938,6 @@ exports[`SPDX JSON debian 1`] = `
    "licenseDeclared": "Artistic-2.0",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:isaac-z--schlueter-\\\\<i:npm:6.14.6:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:isaac_z__schlueter_\\\\<i:npm:6.14.6:*:*:*:*:*:*:*"
-    },
     {
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
@@ -3925,8 +3905,6 @@ PackageSourceInfo: acquired package info from installed node module manifest fil
 PackageLicenseConcluded: Artistic-2.0
 PackageLicenseDeclared: Artistic-2.0
 PackageCopyrightText: NOASSERTION
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:isaac-z--schlueter-\\<i:npm:6.14.6:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:isaac_z__schlueter_\\<i:npm:6.14.6:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/npm@6.14.6
 
