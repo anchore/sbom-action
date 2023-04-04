@@ -67,20 +67,26 @@ on:
       dependency-snapshot:
         required: false
         description: "Upload to GitHub dependency snapshot API"
-        default: "false"
-        type: string
+        default: false
+        type: boolean
+        #default: "false"
+        #type: string
 
       upload-artifact:
         required: false
         description: "Upload artifact to workflow"
-        default: "true"
-        type: string
+        default: true
+        type: boolean
+        #default: "true"
+        #type: string
 
       upload-release-assets:
         required: false
         description: "Upload release assets"
-        default: "true"
-        type: string
+        default: true
+        type: boolean
+#         default: "true"
+#         type: string
 
       slsa-rekor-log-public:
         description: "Allow publication of your repository name on the public Rekor log"
