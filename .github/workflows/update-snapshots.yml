@@ -18,6 +18,11 @@ jobs:
         with:
           app_id: ${{ secrets.TOKEN_APP_ID }}
           private_key: ${{ secrets.TOKEN_APP_PRIVATE_KEY }}
+      - name: Add seen reaction
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: eyes
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -40,3 +45,8 @@ jobs:
           git config --global user.email 'anchore-actions@users.noreply.github.com'
           git commit -s -am "chore(test): update snapshots"
           git push
+      - name: Add success reaction
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: +1
