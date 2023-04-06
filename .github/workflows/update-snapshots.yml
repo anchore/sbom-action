@@ -6,6 +6,11 @@ jobs:
   update-snapshots:
     runs-on: ubuntu-latest
     if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/update-snapshots') }}
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
     steps:
       - name: Generate token
         uses: tibdex/github-app-token@v1
@@ -17,6 +22,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           token: ${{ steps.generate-token.outputs.token }}
+      - name: Build images
+        run: |
+          for distro in alpine centos debian; do
+            docker build -t localhost:5000/match-coverage/$distro ./tests/fixtures/image-$distro-match-coverage
+            docker push localhost:5000/match-coverage/${distro}:latest
+          done
       - name: Update snapshots
         run: |
           # install husky hooks and dependencies:
