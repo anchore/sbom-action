@@ -24237,10 +24237,6 @@ function uploadSbomArtifact(contents) {
         const filePath = `${tempDir}/${fileName}`;
         fs.writeFileSync(filePath, contents);
         const retentionDays = parseInt(core.getInput("upload-artifact-retention"));
-        const outputFile = core.getInput("output-file");
-        if (outputFile) {
-            fs.copyFileSync(filePath, outputFile);
-        }
         core.info((0, GithubClient_1.dashWrap)("Uploading workflow artifacts"));
         core.info(filePath);
         yield client.uploadWorkflowArtifact({
@@ -24321,6 +24317,10 @@ function runSyftAction() {
             const priorArtifact = process.env[PRIOR_ARTIFACT_ENV_VAR];
             if (priorArtifact) {
                 core.debug(`Prior artifact: ${priorArtifact}`);
+            }
+            const outputFile = core.getInput("output-file");
+            if (outputFile) {
+                fs.writeFileSync(outputFile, output);
             }
             if (doUpload) {
                 yield uploadSbomArtifact(output);

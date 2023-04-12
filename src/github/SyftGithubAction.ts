@@ -14,9 +14,9 @@ import { SyftOptions } from "../Syft";
 import { VERSION } from "../SyftVersion";
 import { execute } from "./Executor";
 import {
+  DependencySnapshot,
   dashWrap,
   debugLog,
-  DependencySnapshot,
   getClient,
 } from "./GithubClient";
 import { downloadSyftFromZip } from "./SyftDownloader";
@@ -282,11 +282,6 @@ export async function uploadSbomArtifact(contents: string): Promise<void> {
 
   const retentionDays = parseInt(core.getInput("upload-artifact-retention"));
 
-  const outputFile = core.getInput("output-file");
-  if (outputFile) {
-    fs.copyFileSync(filePath, outputFile);
-  }
-
   core.info(dashWrap("Uploading workflow artifacts"));
   core.info(filePath);
 
@@ -382,6 +377,11 @@ export async function runSyftAction(): Promise<void> {
     const priorArtifact = process.env[PRIOR_ARTIFACT_ENV_VAR];
     if (priorArtifact) {
       core.debug(`Prior artifact: ${priorArtifact}`);
+    }
+
+    const outputFile = core.getInput("output-file");
+    if (outputFile) {
+      fs.writeFileSync(outputFile, output);
     }
 
     if (doUpload) {
