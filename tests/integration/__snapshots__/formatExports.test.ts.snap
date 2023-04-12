@@ -736,6 +736,7 @@ exports[`CycloneDX JSON debian 1`] = `
       "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
       "name": "npm",
       
+      "description": "a package manager for JavaScript",
       "licenses": [
         {
           "license": {
@@ -1957,6 +1958,7 @@ exports[`CycloneDX XML debian 1`] = `
       <author>Isaac Z. Schlueter &lt;i@izs.me&gt; (http://blog.izs.me)</author>
       <name>npm</name>
       
+      <description>a package manager for JavaScript</description>
       <licenses>
         <license>
           <id>Artistic-2.0</id>
@@ -2394,7 +2396,7 @@ exports[`SPDX JSON alpine 1`] = `
     {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
-     "referenceLocator": "pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&distro=alpine-3.12.0"
+     "referenceLocator": "pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64\\u0026distro=alpine-3.12.0"
     }
    ]
   }
@@ -2613,7 +2615,7 @@ exports[`SPDX JSON debian 1`] = `
     {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
-     "referenceLocator": "pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=apt-dev&distro=debian-8"
+     "referenceLocator": "pkg:deb/debian/apt@1.8.2?arch=amd64\\u0026upstream=apt-dev\\u0026distro=debian-8"
     }
    ]
   },
@@ -2937,6 +2939,7 @@ exports[`SPDX JSON debian 1`] = `
    "licenseConcluded": "Artistic-2.0",
    "licenseDeclared": "Artistic-2.0",
    "copyrightText": "NOASSERTION",
+   "description": "a package manager for JavaScript",
    "externalRefs": [
     {
      "referenceCategory": "SECURITY",
@@ -3905,6 +3908,7 @@ PackageSourceInfo: acquired package info from installed node module manifest fil
 PackageLicenseConcluded: Artistic-2.0
 PackageLicenseDeclared: Artistic-2.0
 PackageCopyrightText: NOASSERTION
+PackageDescription: a package manager for JavaScript
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:npm:npm:6.14.6:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/npm@6.14.6
 
