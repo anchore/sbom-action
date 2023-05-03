@@ -385,6 +385,17 @@ describe("Action", () => {
     });
 
     expect(action.getArtifactName()).toBe("img.cyclonedx.json");
+
+  });
+
+  it("correctly encode tags", () => {
+    setData({
+      inputs: {
+        image: "ghcr.io/something-something/image-image:0.1.2-dev"
+      }
+    });
+
+    expect(action.getArtifactName()).toBe("something-something-image-image_0_1_2-dev.spdx.json");
   });
 
   it ("properly maps paths for WSL", () => {
