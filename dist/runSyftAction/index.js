@@ -24002,7 +24002,7 @@ function getArtifactName() {
         if (parts.length > 2) {
             parts.splice(0, 1);
         }
-        const prefix = parts.join("-").replace(/[^-a-zA-Z0-9]/, "_");
+        const prefix = parts.join("-").replace(/[^-a-zA-Z0-9]/g, "_");
         return `${prefix}.${extension}`;
     }
     const { repo: { repo }, job, action, } = github.context;
