@@ -2,33 +2,34 @@
 
 exports[`CycloneDX JSON alpine 1`] = `
 "{
+  "$schema": "http://cyclonedx.org/schema/bom-1.4.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.4",
-  
+  "serialNumber": "redacted",
   "version": 1,
   "metadata": {
-    
+    "timestamp": "redacted",
     "tools": [
       {
         "vendor": "anchore",
         "name": "syft",
-        
+        "version": "redacted"
       }
     ],
     "component": {
-      
+      "bom-ref": "redacted",
       "type": "container",
       "name": "localhost:5000/match-coverage/alpine:latest",
-      
+      "version": "redacted"
     }
   },
   "components": [
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "publisher": "A. Wilcox <awilfox@adelielinux.org>",
       "name": "libvncserver",
-      
+      "version": "redacted",
       "description": "Library to make writing a vnc server easy",
       "licenses": [
         {
@@ -48,87 +49,87 @@ exports[`CycloneDX JSON alpine 1`] = `
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:layerID",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:gitCommitOfApkPort",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:installedSize",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:originPackage",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:provides:0",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:provides:1",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:pullChecksum",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:pullDependencies:0",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:pullDependencies:1",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:pullDependencies:2",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:pullDependencies:3",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:pullDependencies:4",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:pullDependencies:5",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:size",
-          
+          "value": "redacted"
         }
       ]
     },
     {
       "type": "operating-system",
       "name": "alpine",
-      
+      "version": "redacted",
       "description": "Alpine Linux v3.12",
       "swid": {
         "tagId": "alpine",
         "name": "alpine",
-        
+        "version": "redacted"
       },
       "externalReferences": [
         {
@@ -143,15 +144,15 @@ exports[`CycloneDX JSON alpine 1`] = `
       "properties": [
         {
           "name": "syft:distro:id",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:distro:prettyName",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:distro:versionID",
-          
+          "value": "redacted"
         }
       ]
     }
@@ -162,33 +163,34 @@ exports[`CycloneDX JSON alpine 1`] = `
 
 exports[`CycloneDX JSON debian 1`] = `
 "{
+  "$schema": "http://cyclonedx.org/schema/bom-1.4.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.4",
-  
+  "serialNumber": "redacted",
   "version": 1,
   "metadata": {
-    
+    "timestamp": "redacted",
     "tools": [
       {
         "vendor": "anchore",
         "name": "syft",
-        
+        "version": "redacted"
       }
     ],
     "component": {
-      
+      "bom-ref": "redacted",
       "type": "container",
       "name": "localhost:5000/match-coverage/debian:latest",
-      
+      "version": "redacted"
     }
   },
   "components": [
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "author": "Georg Brandl <georg@python.org>",
       "name": "Pygments",
-      
+      "version": "redacted",
       "licenses": [
         {
           "license": {
@@ -201,199 +203,199 @@ exports[`CycloneDX JSON debian 1`] = `
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:layerID",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:1:layerID",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:1:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "publisher": "APT Development Team <deity@lists.debian.org>",
       "name": "apt",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:apt:apt:1.8.2:*:*:*:*:*:*:*",
       "purl": "pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=apt-dev&distro=debian-8",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:layerID",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:installedSize",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:source",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "author": "André Arko,Samuel Giddins,Colby Swandale,Hiroshi Shibata,David Rodríguez,Grey Baker,Stephanie Morillo,Chris Morris,James Wen,Tim Moore,André Medeiros,Jessica Lynn Suttles,Terence Lee,Carl Lerche,Yehuda Katz",
       "name": "bundler",
-      
+      "version": "redacted",
       "licenses": [
         {
           "license": {
@@ -412,144 +414,144 @@ exports[`CycloneDX JSON debian 1`] = `
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:layerID",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "group": "org.anchore",
       "name": "example-java-app-maven",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:example-java-app-maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*",
       "purl": "pkg:maven/org.anchore/example-java-app-maven@0.1.0",
       "externalReferences": [
@@ -567,175 +569,175 @@ exports[`CycloneDX JSON debian 1`] = `
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:layerID",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:-:artifactID",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:-:groupID",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:virtualPath",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "group": "joda-time",
       "name": "joda-time",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:joda-time:joda-time:2.9.2:*:*:*:*:*:*:*",
       "purl": "pkg:maven/joda-time/joda-time@2.9.2",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:layerID",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:-:artifactID",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:-:groupID",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:metadata:virtualPath",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
       "name": "npm",
-      
+      "version": "redacted",
       "description": "a package manager for JavaScript",
       "licenses": [
         {
@@ -759,39 +761,39 @@ exports[`CycloneDX JSON debian 1`] = `
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:layerID",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
       "type": "operating-system",
       "name": "debian",
-      
+      "version": "redacted",
       "description": "Debian GNU/Linux 8 (jessie)",
       "swid": {
         "tagId": "debian",
         "name": "debian",
-        
+        "version": "redacted"
       },
       "externalReferences": [
         {
@@ -811,15 +813,15 @@ exports[`CycloneDX JSON debian 1`] = `
       "properties": [
         {
           "name": "syft:distro:id",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:distro:prettyName",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:distro:versionID",
-          
+          "value": "redacted"
         }
       ]
     }
@@ -830,533 +832,534 @@ exports[`CycloneDX JSON debian 1`] = `
 
 exports[`CycloneDX JSON npm 1`] = `
 "{
+  "$schema": "http://cyclonedx.org/schema/bom-1.4.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.4",
-  
+  "serialNumber": "redacted",
   "version": 1,
   "metadata": {
-    
+    "timestamp": "redacted",
     "tools": [
       {
         "vendor": "anchore",
         "name": "syft",
-        
+        "version": "redacted"
       }
     ],
     "component": {
-      
+      "bom-ref": "redacted",
       "type": "file",
       "name": "tests/fixtures/npm-project"
     }
   },
   "components": [
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "chownr",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/chownr@2.0.0",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "fs-minipass",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:fs-minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/fs-minipass@2.1.0",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "js-tokens",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/js-tokens@4.0.0",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "loose-envify",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/loose-envify@1.4.0",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "minipass",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*",
       "purl": "pkg:npm/minipass@3.1.3",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "minizlib",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*",
       "purl": "pkg:npm/minizlib@2.1.2",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "mkdirp",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*",
       "purl": "pkg:npm/mkdirp@1.0.4",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "object-assign",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*",
       "purl": "pkg:npm/object-assign@4.1.1",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "prop-types",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*",
       "purl": "pkg:npm/prop-types@15.7.2",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "react",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/react@16.14.0",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "react-is",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*",
       "purl": "pkg:npm/react-is@16.13.1",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "tar",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/tar@6.1.0",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "yallist",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/yallist@4.0.0",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:metadataType",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     }
@@ -1367,305 +1370,306 @@ exports[`CycloneDX JSON npm 1`] = `
 
 exports[`CycloneDX JSON yarn 1`] = `
 "{
+  "$schema": "http://cyclonedx.org/schema/bom-1.4.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.4",
-  
+  "serialNumber": "redacted",
   "version": 1,
   "metadata": {
-    
+    "timestamp": "redacted",
     "tools": [
       {
         "vendor": "anchore",
         "name": "syft",
-        
+        "version": "redacted"
       }
     ],
     "component": {
-      
+      "bom-ref": "redacted",
       "type": "file",
       "name": "tests/fixtures/yarn-project"
     }
   },
   "components": [
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "js-tokens",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/js-tokens@4.0.0",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "loose-envify",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/loose-envify@1.4.0",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "object-assign",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*",
       "purl": "pkg:npm/object-assign@4.1.1",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "prop-types",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*",
       "purl": "pkg:npm/prop-types@15.7.2",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "react",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*",
       "purl": "pkg:npm/react@16.14.0",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "react-is",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*",
       "purl": "pkg:npm/react-is@16.13.1",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:cpe23",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     },
     {
-      
+      "bom-ref": "redacted",
       "type": "library",
       "name": "trim",
-      
+      "version": "redacted",
       "cpe": "cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:*:*:*",
       "purl": "pkg:npm/trim@0.0.2",
       "properties": [
         {
           "name": "syft:package:foundBy",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:language",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:package:type",
-          
+          "value": "redacted"
         },
         {
           "name": "syft:location:0:path",
-          
+          "value": "redacted"
         }
       ]
     }
@@ -2364,21 +2368,21 @@ exports[`SPDX JSON alpine 1`] = `
 "{
  "spdxVersion": "SPDX-2.3",
  "dataLicense": "CC0-1.0",
- 
+ "SPDXID": "redacted",
  "name": "localhost:5000/match-coverage/alpine:latest",
- 
+ "documentNamespace": "redacted",
  "creationInfo": {
-  
+  "licenseListVersion": "redacted",
   "creators": [
    "Organization: Anchore, Inc",
    
   ],
-  
+  "created": "redacted"
  },
  "packages": [
   {
    "name": "libvncserver",
-   
+   "SPDXID": "redacted",
    "versionInfo": "0.9.9",
    "originator": "Person: A. Wilcox \\u003cawilfox@adelielinux.org\\u003e",
    "downloadLocation": "http://libvncserver.sourceforge.net/",
@@ -2401,10 +2405,31 @@ exports[`SPDX JSON alpine 1`] = `
    ]
   }
  ],
+ "files": [
+  {
+   "fileName": "/lib/apk/db/installed",
+   "SPDXID": "redacted",
+   "checksums": [
+    {
+     "algorithm": "SHA1",
+     "checksumValue": "0000000000000000000000000000000000000000"
+    }
+   ],
+   "licenseConcluded": "NOASSERTION",
+   "copyrightText": "",
+   "comment": "layerID: sha256:redacted"
+  }
+ ],
  "relationships": [
   {
-   
-   
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
    "relationshipType": "DESCRIBES"
   }
  ]
@@ -2416,21 +2441,21 @@ exports[`SPDX JSON debian 1`] = `
 "{
  "spdxVersion": "SPDX-2.3",
  "dataLicense": "CC0-1.0",
- 
+ "SPDXID": "redacted",
  "name": "localhost:5000/match-coverage/debian:latest",
- 
+ "documentNamespace": "redacted",
  "creationInfo": {
-  
+  "licenseListVersion": "redacted",
   "creators": [
    "Organization: Anchore, Inc",
    
   ],
-  
+  "created": "redacted"
  },
  "packages": [
   {
    "name": "Pygments",
-   
+   "SPDXID": "redacted",
    "versionInfo": "2.6.1",
    "originator": "Person: Georg Brandl (georg@python.org)",
    "downloadLocation": "NOASSERTION",
@@ -2598,7 +2623,7 @@ exports[`SPDX JSON debian 1`] = `
   },
   {
    "name": "apt",
-   
+   "SPDXID": "redacted",
    "versionInfo": "1.8.2",
    "originator": "Person: APT Development Team \\u003cdeity@lists.debian.org\\u003e",
    "downloadLocation": "NOASSERTION",
@@ -2621,7 +2646,7 @@ exports[`SPDX JSON debian 1`] = `
   },
   {
    "name": "bundler",
-   
+   "SPDXID": "redacted",
    "versionInfo": "2.1.4",
    "originator": "Person: André Arko",
    "downloadLocation": "NOASSERTION",
@@ -2780,7 +2805,7 @@ exports[`SPDX JSON debian 1`] = `
   },
   {
    "name": "example-java-app-maven",
-   
+   "SPDXID": "redacted",
    "versionInfo": "0.1.0",
    "downloadLocation": "NOASSERTION",
    "checksums": [
@@ -2883,7 +2908,7 @@ exports[`SPDX JSON debian 1`] = `
   },
   {
    "name": "joda-time",
-   
+   "SPDXID": "redacted",
    "versionInfo": "2.9.2",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar",
@@ -2930,7 +2955,7 @@ exports[`SPDX JSON debian 1`] = `
   },
   {
    "name": "npm",
-   
+   "SPDXID": "redacted",
    "versionInfo": "6.14.6",
    "originator": "Person: Isaac Z. Schlueter \\u003ci@izs.me\\u003e (http://blog.izs.me)",
    "downloadLocation": "https://github.com/npm/cli",
@@ -2954,6 +2979,73 @@ exports[`SPDX JSON debian 1`] = `
    ]
   }
  ],
+ "files": [
+  {
+   "fileName": "/java/example-java-app-maven-0.1.0.jar",
+   "SPDXID": "redacted",
+   "checksums": [
+    {
+     "algorithm": "SHA1",
+     "checksumValue": "0000000000000000000000000000000000000000"
+    }
+   ],
+   "licenseConcluded": "NOASSERTION",
+   "copyrightText": "",
+   "comment": "layerID: sha256:redacted"
+  },
+  {
+   "fileName": "/javascript/pkg-json/package.json",
+   "SPDXID": "redacted",
+   "checksums": [
+    {
+     "algorithm": "SHA1",
+     "checksumValue": "0000000000000000000000000000000000000000"
+    }
+   ],
+   "licenseConcluded": "NOASSERTION",
+   "copyrightText": "",
+   "comment": "layerID: sha256:redacted"
+  },
+  {
+   "fileName": "/python/dist-info/METADATA",
+   "SPDXID": "redacted",
+   "checksums": [
+    {
+     "algorithm": "SHA1",
+     "checksumValue": "0000000000000000000000000000000000000000"
+    }
+   ],
+   "licenseConcluded": "NOASSERTION",
+   "copyrightText": "",
+   "comment": "layerID: sha256:redacted"
+  },
+  {
+   "fileName": "/ruby/specifications/bundler.gemspec",
+   "SPDXID": "redacted",
+   "checksums": [
+    {
+     "algorithm": "SHA1",
+     "checksumValue": "0000000000000000000000000000000000000000"
+    }
+   ],
+   "licenseConcluded": "NOASSERTION",
+   "copyrightText": "",
+   "comment": "layerID: sha256:redacted"
+  },
+  {
+   "fileName": "/var/lib/dpkg/status",
+   "SPDXID": "redacted",
+   "checksums": [
+    {
+     "algorithm": "SHA1",
+     "checksumValue": "0000000000000000000000000000000000000000"
+    }
+   ],
+   "licenseConcluded": "NOASSERTION",
+   "copyrightText": "",
+   "comment": "layerID: sha256:redacted"
+  }
+ ],
  "hasExtractedLicensingInfos": [
   {
    "licenseId": "LicenseRef-BSD-License",
@@ -2963,8 +3055,44 @@ exports[`SPDX JSON debian 1`] = `
  ],
  "relationships": [
   {
-   
-   
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
    "relationshipType": "DESCRIBES"
   }
  ]
@@ -2976,21 +3104,21 @@ exports[`SPDX JSON npm 1`] = `
 "{
  "spdxVersion": "SPDX-2.3",
  "dataLicense": "CC0-1.0",
- 
+ "SPDXID": "redacted",
  "name": "tests/fixtures/npm-project",
- 
+ "documentNamespace": "redacted",
  "creationInfo": {
-  
+  "licenseListVersion": "redacted",
   "creators": [
    "Organization: Anchore, Inc",
    
   ],
-  
+  "created": "redacted"
  },
  "packages": [
   {
    "name": "chownr",
-   
+   "SPDXID": "redacted",
    "versionInfo": "2.0.0",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3012,7 +3140,7 @@ exports[`SPDX JSON npm 1`] = `
   },
   {
    "name": "fs-minipass",
-   
+   "SPDXID": "redacted",
    "versionInfo": "2.1.0",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3059,7 +3187,7 @@ exports[`SPDX JSON npm 1`] = `
   },
   {
    "name": "js-tokens",
-   
+   "SPDXID": "redacted",
    "versionInfo": "4.0.0",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3106,7 +3234,7 @@ exports[`SPDX JSON npm 1`] = `
   },
   {
    "name": "loose-envify",
-   
+   "SPDXID": "redacted",
    "versionInfo": "1.4.0",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3153,7 +3281,7 @@ exports[`SPDX JSON npm 1`] = `
   },
   {
    "name": "minipass",
-   
+   "SPDXID": "redacted",
    "versionInfo": "3.1.3",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3175,7 +3303,7 @@ exports[`SPDX JSON npm 1`] = `
   },
   {
    "name": "minizlib",
-   
+   "SPDXID": "redacted",
    "versionInfo": "2.1.2",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3197,7 +3325,7 @@ exports[`SPDX JSON npm 1`] = `
   },
   {
    "name": "mkdirp",
-   
+   "SPDXID": "redacted",
    "versionInfo": "1.0.4",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3219,7 +3347,7 @@ exports[`SPDX JSON npm 1`] = `
   },
   {
    "name": "object-assign",
-   
+   "SPDXID": "redacted",
    "versionInfo": "4.1.1",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3266,7 +3394,7 @@ exports[`SPDX JSON npm 1`] = `
   },
   {
    "name": "prop-types",
-   
+   "SPDXID": "redacted",
    "versionInfo": "15.7.2",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3313,7 +3441,7 @@ exports[`SPDX JSON npm 1`] = `
   },
   {
    "name": "react",
-   
+   "SPDXID": "redacted",
    "versionInfo": "16.14.0",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3335,7 +3463,7 @@ exports[`SPDX JSON npm 1`] = `
   },
   {
    "name": "react-is",
-   
+   "SPDXID": "redacted",
    "versionInfo": "16.13.1",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3382,7 +3510,7 @@ exports[`SPDX JSON npm 1`] = `
   },
   {
    "name": "tar",
-   
+   "SPDXID": "redacted",
    "versionInfo": "6.1.0",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3404,7 +3532,7 @@ exports[`SPDX JSON npm 1`] = `
   },
   {
    "name": "yallist",
-   
+   "SPDXID": "redacted",
    "versionInfo": "4.0.0",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
@@ -3425,10 +3553,102 @@ exports[`SPDX JSON npm 1`] = `
    ]
   }
  ],
+ "files": [
+  {
+   "fileName": "package-lock.json",
+   "SPDXID": "redacted",
+   "checksums": [
+    {
+     "algorithm": "SHA1",
+     "checksumValue": "0000000000000000000000000000000000000000"
+    }
+   ],
+   "licenseConcluded": "NOASSERTION",
+   "copyrightText": ""
+  }
+ ],
  "relationships": [
   {
-   
-   
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
    "relationshipType": "DESCRIBES"
   }
  ]
@@ -3440,21 +3660,21 @@ exports[`SPDX JSON yarn 1`] = `
 "{
  "spdxVersion": "SPDX-2.3",
  "dataLicense": "CC0-1.0",
- 
+ "SPDXID": "redacted",
  "name": "tests/fixtures/yarn-project",
- 
+ "documentNamespace": "redacted",
  "creationInfo": {
-  
+  "licenseListVersion": "redacted",
   "creators": [
    "Organization: Anchore, Inc",
    
   ],
-  
+  "created": "redacted"
  },
  "packages": [
   {
    "name": "js-tokens",
-   
+   "SPDXID": "redacted",
    "versionInfo": "4.0.0",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
@@ -3501,7 +3721,7 @@ exports[`SPDX JSON yarn 1`] = `
   },
   {
    "name": "loose-envify",
-   
+   "SPDXID": "redacted",
    "versionInfo": "1.4.0",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
@@ -3548,7 +3768,7 @@ exports[`SPDX JSON yarn 1`] = `
   },
   {
    "name": "object-assign",
-   
+   "SPDXID": "redacted",
    "versionInfo": "4.1.1",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
@@ -3595,7 +3815,7 @@ exports[`SPDX JSON yarn 1`] = `
   },
   {
    "name": "prop-types",
-   
+   "SPDXID": "redacted",
    "versionInfo": "15.7.2",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
@@ -3642,7 +3862,7 @@ exports[`SPDX JSON yarn 1`] = `
   },
   {
    "name": "react",
-   
+   "SPDXID": "redacted",
    "versionInfo": "16.14.0",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
@@ -3664,7 +3884,7 @@ exports[`SPDX JSON yarn 1`] = `
   },
   {
    "name": "react-is",
-   
+   "SPDXID": "redacted",
    "versionInfo": "16.13.1",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
@@ -3711,7 +3931,7 @@ exports[`SPDX JSON yarn 1`] = `
   },
   {
    "name": "trim",
-   
+   "SPDXID": "redacted",
    "versionInfo": "0.0.2",
    "downloadLocation": "NOASSERTION",
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
@@ -3732,10 +3952,66 @@ exports[`SPDX JSON yarn 1`] = `
    ]
   }
  ],
+ "files": [
+  {
+   "fileName": "yarn.lock",
+   "SPDXID": "redacted",
+   "checksums": [
+    {
+     "algorithm": "SHA1",
+     "checksumValue": "0000000000000000000000000000000000000000"
+    }
+   ],
+   "licenseConcluded": "NOASSERTION",
+   "copyrightText": ""
+  }
+ ],
  "relationships": [
   {
-   
-   
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
    "relationshipType": "DESCRIBES"
   }
  ]
@@ -3753,6 +4029,14 @@ DocumentName: localhost:5000/match-coverage/alpine:latest
 
 
 
+
+##### Unpackaged files
+
+FileName: /lib/apk/db/installed
+
+FileChecksum: SHA1: 0000000000000000000000000000000000000000
+LicenseConcluded: NOASSERTION
+FileComment: layerID: sha256:redacted
 
 ##### Package: libvncserver
 
@@ -3772,6 +4056,8 @@ ExternalRef: PACKAGE-MANAGER purl pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&
 
 ##### Relationships
 
+Relationship: SPDXRef-Package-apk-libvncserver-hash:redacted OTHER SPDXRef-File-lib-apk-db-installed-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DOCUMENT
 
 "
@@ -3787,6 +4073,38 @@ DocumentName: localhost:5000/match-coverage/debian:latest
 
 
 
+
+##### Unpackaged files
+
+FileName: /java/example-java-app-maven-0.1.0.jar
+
+FileChecksum: SHA1: 0000000000000000000000000000000000000000
+LicenseConcluded: NOASSERTION
+FileComment: layerID: sha256:redacted
+
+FileName: /javascript/pkg-json/package.json
+
+FileChecksum: SHA1: 0000000000000000000000000000000000000000
+LicenseConcluded: NOASSERTION
+FileComment: layerID: sha256:redacted
+
+FileName: /python/dist-info/METADATA
+
+FileChecksum: SHA1: 0000000000000000000000000000000000000000
+LicenseConcluded: NOASSERTION
+FileComment: layerID: sha256:redacted
+
+FileName: /ruby/specifications/bundler.gemspec
+
+FileChecksum: SHA1: 0000000000000000000000000000000000000000
+LicenseConcluded: NOASSERTION
+FileComment: layerID: sha256:redacted
+
+FileName: /var/lib/dpkg/status
+
+FileChecksum: SHA1: 0000000000000000000000000000000000000000
+LicenseConcluded: NOASSERTION
+FileComment: layerID: sha256:redacted
 
 ##### Package: apt
 
@@ -3964,6 +4282,18 @@ LicenseName: BSD License
 
 ##### Relationships
 
+Relationship: SPDXRef-Package-deb-apt-hash:redacted OTHER SPDXRef-File-var-lib-dpkg-status-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-java-archive-example-java-app-maven-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-python-Pygments-hash:redacted OTHER SPDXRef-File-python-dist-info-METADATA-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-gem-bundler-hash:redacted OTHER SPDXRef-File-ruby-specifications-bundler.gemspec-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-java-archive-joda-time-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-npm-hash:redacted OTHER SPDXRef-File-javascript-pkg-json-package.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DOCUMENT
 
 "
@@ -3979,6 +4309,13 @@ DocumentName: tests/fixtures/npm-project
 
 
 
+
+##### Unpackaged files
+
+FileName: package-lock.json
+
+FileChecksum: SHA1: 0000000000000000000000000000000000000000
+LicenseConcluded: NOASSERTION
 
 ##### Package: chownr
 
@@ -4194,6 +4531,32 @@ ExternalRef: PACKAGE-MANAGER purl pkg:npm/yallist@4.0.0
 
 ##### Relationships
 
+Relationship: SPDXRef-Package-npm-minizlib-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-js-tokens-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-object-assign-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-react-is-3c94286c8012f7b OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-chownr-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-loose-envify-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-prop-types-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-yallist-6eeb486da7c5a9d OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-react-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-mkdirp-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-tar-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-fs-minipass-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-minipass-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DOCUMENT
 
 "
@@ -4209,6 +4572,13 @@ DocumentName: tests/fixtures/yarn-project
 
 
 
+
+##### Unpackaged files
+
+FileName: yarn.lock
+
+FileChecksum: SHA1: 0000000000000000000000000000000000000000
+LicenseConcluded: NOASSERTION
 
 ##### Package: js-tokens
 
@@ -4335,6 +4705,20 @@ ExternalRef: PACKAGE-MANAGER purl pkg:npm/trim@0.0.2
 
 ##### Relationships
 
+Relationship: SPDXRef-Package-npm-react-is-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-loose-envify-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-js-tokens-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-object-assign-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-trim-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-react-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-prop-types-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DOCUMENT
 
 "

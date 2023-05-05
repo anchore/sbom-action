@@ -82,26 +82,30 @@ const testSource = async (source: string, format = "spdx"): Promise<string> => {
     case "spdx":
     case "spdx-tag-value":
       return sbom
-        .replace(/[Cc]reated["]?[:][^\n]+/g, "")
-        .replace(/Creator[:][^\n]+/g, "")
-        .replace(/SPDXID[:][^\n]+/g, "")
-        .replace(/LicenseListVersion[:][^\n]+/g, "")
-        .replace(/DocumentNamespace[:][^\n]+/g, "");
+        .replace(/[Cc]reated"?:[^\n]+/g, "")
+        .replace(/Creator:[^\n]+/g, "")
+        .replace(/SPDXID:[^\n]+/g, "")
+        .replace(/LicenseListVersion:[^\n]+/g, "")
+        .replace(/sha256:[a-zA-Z0-9]+/g, "sha256:redacted")
+        .replace(/-[a-zA-Z0-9]{16}/g, "-hash:redacted")
+        .replace(/DocumentNamespace:[^\n]+/g, "");
     case "spdx-json":
       return sbom
-        .replace(/"(created|SPDXID|licenseListVersion|documentNamespace|spdxElementId|relatedSpdxElement)": "[^"]+",?/g, "")
+        .replace(/"(created|SPDXID|licenseListVersion|documentNamespace|spdxElementId|relatedSpdxElement)":\s*"[^"]+"/g, `"$1": "redacted"`)
+        .replace(/sha256:[a-zA-Z0-9]+/g, "sha256:redacted")
+        .replace(/-[a-zA-Z0-9]{16}/g, "-hash:redacted")
         .replace(/"Tool:[^"]+"/g, "");
     case "cyclonedx":
     case "cyclonedx-xml":
       return sbom
-        .replace(/serialNumber=["]?[^"]+/g, "")
+        .replace(/serialNumber="?[^"]+/g, "")
         .replace(/bom-ref="[^"]+"/g, "")
         .replace(/<timestamp>[^<]+<\/timestamp>/g, "")
         .replace(/<property name="syft:location[^<]+<\/property>/g, "")
         .replace(/<version>[^<]+<\/version>/g, "");
     case "cyclonedx-json":
       return sbom
-        .replace(/"(bom-ref|serialNumber|timestamp|value|version)": "[^"]+",?/g, "");
+        .replace(/"(bom-ref|serialNumber|timestamp|value|version)": "[^"]+"/g, `"$1": "redacted"`);
   }
 
   return sbom;
