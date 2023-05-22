@@ -111,7 +111,9 @@ jobs:
     steps:
       - name: Generate the token
         id: generate
-        uses: slsa-framework/slsa-github-generator/actions/delegator/setup-token@main
+        # Temporary fix because @main has a slsa version mismatch
+        uses: slsa-framework/slsa-github-generator/actions/delegator/setup-token@feat/slsa-version
+        #uses: slsa-framework/slsa-github-generator/actions/delegator/setup-token@main
         with:
           slsa-workflow-recipient: "delegator_generic_slsa3.yml"
           slsa-rekor-log-public: ${{ inputs.slsa-rekor-log-public }}
