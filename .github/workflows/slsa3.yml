@@ -112,7 +112,7 @@ jobs:
       - name: Generate the token
         id: generate
         # Temporary fix because @main has a slsa version mismatch
-        uses: slsa-framework/slsa-github-generator/actions/delegator/setup-token@feat/slsa-version
+        uses: laurentsimon/slsa-github-generator/actions/delegator/setup-token@feat/slsa-version
         #uses: slsa-framework/slsa-github-generator/actions/delegator/setup-token@main
         with:
           slsa-workflow-recipient: "delegator_generic_slsa3.yml"
