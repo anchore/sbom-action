@@ -127,7 +127,8 @@ jobs:
       contents: write # For asset uploads. 
       packages: write
       actions: read
-    uses: slsa-framework/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@main
+    #uses: slsa-framework/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@main
+    uses: laurentsimon/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@fix/v1-gen
     with:
       slsa-token: ${{ needs.slsa-setup.outputs.slsa-token }}
     secrets:
