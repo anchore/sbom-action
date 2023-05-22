@@ -126,8 +126,7 @@ jobs:
       id-token: write # For signing.
       contents: write # For asset uploads. 
       packages: write
-    #uses: slsa-framework/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@main
-    uses: laurentsimon/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@feat/byob-diffinputs
+    uses: slsa-framework/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@main
     #uses: slsa-framework/slsa-github-generator/.github/workflows/delegator_generic_slsa3.yml@v1.5.0
     with:
       slsa-token: ${{ needs.slsa-setup.outputs.slsa-token }}
