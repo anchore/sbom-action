@@ -22,6 +22,21 @@ inputs:
     description: 'secret2 stores the github-token'
     type: string
     required: false
+  
+  # Unused secret inputs.
+  slsa-workflow-secret3: {}
+  slsa-workflow-secret4: {}
+  slsa-workflow-secret5: {}
+  slsa-workflow-secret6: {}
+  slsa-workflow-secret7: {}
+  slsa-workflow-secret8: {}
+  slsa-workflow-secret9: {}
+  slsa-workflow-secret10: {}
+  slsa-workflow-secret11: {}
+  slsa-workflow-secret12: {}
+  slsa-workflow-secret13: {}
+  slsa-workflow-secret14: {}
+  slsa-workflow-secret15: {}
 
 runs:
   using: 'composite'
