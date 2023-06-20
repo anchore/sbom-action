@@ -2386,8 +2386,9 @@ exports[`SPDX JSON alpine 1`] = `
    "versionInfo": "0.9.9",
    "originator": "Person: A. Wilcox \\u003cawilfox@adelielinux.org\\u003e",
    "downloadLocation": "http://libvncserver.sourceforge.net/",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from APK DB: /lib/apk/db/installed",
-   "licenseConcluded": "GPL-2.0-or-later",
+   "licenseConcluded": "NOASSERTION",
    "licenseDeclared": "GPL-2.0-or-later",
    "copyrightText": "NOASSERTION",
    "description": "Library to make writing a vnc server easy",
@@ -2459,8 +2460,9 @@ exports[`SPDX JSON debian 1`] = `
    "versionInfo": "2.6.1",
    "originator": "Person: Georg Brandl (georg@python.org)",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed python package manifest file: /python/dist-info/METADATA, /python/dist-info/top_level.txt",
-   "licenseConcluded": "LicenseRef-BSD-License",
+   "licenseConcluded": "NOASSERTION",
    "licenseDeclared": "LicenseRef-BSD-License",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
@@ -2627,9 +2629,10 @@ exports[`SPDX JSON debian 1`] = `
    "versionInfo": "1.8.2",
    "originator": "Person: APT Development Team \\u003cdeity@lists.debian.org\\u003e",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from DPKG DB: /var/lib/dpkg/status",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -2650,9 +2653,10 @@ exports[`SPDX JSON debian 1`] = `
    "versionInfo": "2.1.4",
    "originator": "Person: André Arko",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "homepage": "https://bundler.io",
    "sourceInfo": "acquired package info from installed gem metadata file: /ruby/specifications/bundler.gemspec",
-   "licenseConcluded": "MIT",
+   "licenseConcluded": "NOASSERTION",
    "licenseDeclared": "MIT",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
@@ -2808,6 +2812,7 @@ exports[`SPDX JSON debian 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "0.1.0",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "checksums": [
     {
      "algorithm": "SHA1",
@@ -2815,8 +2820,8 @@ exports[`SPDX JSON debian 1`] = `
     }
    ],
    "sourceInfo": "acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -2911,9 +2916,10 @@ exports[`SPDX JSON debian 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "2.9.2",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -2959,9 +2965,10 @@ exports[`SPDX JSON debian 1`] = `
    "versionInfo": "6.14.6",
    "originator": "Person: Isaac Z. Schlueter \\u003ci@izs.me\\u003e (http://blog.izs.me)",
    "downloadLocation": "https://github.com/npm/cli",
+   "filesAnalyzed": false,
    "homepage": "https://docs.npmjs.com/",
    "sourceInfo": "acquired package info from installed node module manifest file: /javascript/pkg-json/package.json",
-   "licenseConcluded": "Artistic-2.0",
+   "licenseConcluded": "NOASSERTION",
    "licenseDeclared": "Artistic-2.0",
    "copyrightText": "NOASSERTION",
    "description": "a package manager for JavaScript",
@@ -3049,8 +3056,7 @@ exports[`SPDX JSON debian 1`] = `
  "hasExtractedLicensingInfos": [
   {
    "licenseId": "LicenseRef-BSD-License",
-   "extractedText": "NONE",
-   "name": "BSD License"
+   "extractedText": "BSD License"
   }
  ],
  "relationships": [
@@ -3121,9 +3127,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "2.0.0",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3143,9 +3150,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "2.1.0",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3190,9 +3198,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "4.0.0",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3237,9 +3246,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "1.4.0",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3284,9 +3294,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "3.1.3",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3306,9 +3317,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "2.1.2",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3328,9 +3340,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "1.0.4",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3350,9 +3363,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "4.1.1",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3397,9 +3411,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "15.7.2",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3444,9 +3459,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "16.14.0",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3466,9 +3482,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "16.13.1",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3513,9 +3530,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "6.1.0",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3535,9 +3553,10 @@ exports[`SPDX JSON npm 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "4.0.0",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: package-lock.json",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3677,9 +3696,10 @@ exports[`SPDX JSON yarn 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "4.0.0",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3724,9 +3744,10 @@ exports[`SPDX JSON yarn 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "1.4.0",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3771,9 +3792,10 @@ exports[`SPDX JSON yarn 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "4.1.1",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3818,9 +3840,10 @@ exports[`SPDX JSON yarn 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "15.7.2",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3865,9 +3888,10 @@ exports[`SPDX JSON yarn 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "16.14.0",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3887,9 +3911,10 @@ exports[`SPDX JSON yarn 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "16.13.1",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -3934,9 +3959,10 @@ exports[`SPDX JSON yarn 1`] = `
    "SPDXID": "redacted",
    "versionInfo": "0.0.2",
    "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
    "sourceInfo": "acquired package info from installed node module manifest file: yarn.lock",
-   "licenseConcluded": "NONE",
-   "licenseDeclared": "NONE",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "copyrightText": "NOASSERTION",
    "externalRefs": [
     {
@@ -4047,7 +4073,7 @@ PackageOriginator: Person: A. Wilcox <awilfox@adelielinux.org>
 PackageDownloadLocation: http://libvncserver.sourceforge.net/
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from APK DB: /lib/apk/db/installed
-PackageLicenseConcluded: GPL-2.0-or-later
+PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: GPL-2.0-or-later
 PackageCopyrightText: NOASSERTION
 PackageDescription: Library to make writing a vnc server easy
@@ -4115,8 +4141,8 @@ PackageOriginator: Person: APT Development Team <deity@lists.debian.org>
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from DPKG DB: /var/lib/dpkg/status
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:apt:apt:1.8.2:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=apt-dev&distro=debian-8
@@ -4131,7 +4157,7 @@ PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageHomePage: https://bundler.io
 PackageSourceInfo: acquired package info from installed gem metadata file: /ruby/specifications/bundler.gemspec
-PackageLicenseConcluded: MIT
+PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: MIT
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:jessica-lynn-suttles:bundler:2.1.4:*:*:*:*:*:*:*
@@ -4173,8 +4199,8 @@ PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageChecksum: SHA1: 100b566a7dcdb187bf9f14ecd96427cadd535bfe
 PackageSourceInfo: acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:example-java-app-maven:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:example-java-app-maven:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
@@ -4202,8 +4228,8 @@ PackageVersion: 2.9.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda-time:joda-time:2.9.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:joda-time:joda_time:2.9.2:*:*:*:*:*:*:*
@@ -4223,7 +4249,7 @@ PackageDownloadLocation: https://github.com/npm/cli
 FilesAnalyzed: false
 PackageHomePage: https://docs.npmjs.com/
 PackageSourceInfo: acquired package info from installed node module manifest file: /javascript/pkg-json/package.json
-PackageLicenseConcluded: Artistic-2.0
+PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: Artistic-2.0
 PackageCopyrightText: NOASSERTION
 PackageDescription: a package manager for JavaScript
@@ -4239,7 +4265,7 @@ PackageOriginator: Person: Georg Brandl (georg@python.org)
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed python package manifest file: /python/dist-info/METADATA, /python/dist-info/top_level.txt
-PackageLicenseConcluded: LicenseRef-BSD-License
+PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-BSD-License
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl_project:python-Pygments:2.6.1:*:*:*:*:*:*:*
@@ -4277,8 +4303,7 @@ ExternalRef: PACKAGE-MANAGER purl pkg:pypi/Pygments@2.6.1
 ##### Other Licenses
 
 LicenseID: LicenseRef-BSD-License
-ExtractedText: NONE
-LicenseName: BSD License
+ExtractedText: BSD License
 
 ##### Relationships
 
@@ -4286,13 +4311,13 @@ Relationship: SPDXRef-Package-deb-apt-hash:redacted OTHER SPDXRef-File-var-lib-d
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-java-archive-example-java-app-maven-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-python-Pygments-hash:redacted OTHER SPDXRef-File-python-dist-info-METADATA-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-gem-bundler-hash:redacted OTHER SPDXRef-File-ruby-specifications-bundler.gemspec-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-java-archive-joda-time-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-python-Pygments-hash:redacted OTHER SPDXRef-File-python-dist-info-METADATA-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-npm-hash:redacted OTHER SPDXRef-File-javascript-pkg-json-package.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-gem-bundler-hash:redacted OTHER SPDXRef-File-ruby-specifications-bundler.gemspec-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DOCUMENT
 
@@ -4325,8 +4350,8 @@ PackageVersion: 2.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:chownr:chownr:2.0.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/chownr@2.0.0
@@ -4339,8 +4364,8 @@ PackageVersion: 2.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs-minipass:fs-minipass:2.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:fs-minipass:fs_minipass:2.1.0:*:*:*:*:*:*:*
@@ -4358,8 +4383,8 @@ PackageVersion: 4.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
@@ -4377,8 +4402,8 @@ PackageVersion: 1.4.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*
@@ -4396,8 +4421,8 @@ PackageVersion: 3.1.3
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:minipass:minipass:3.1.3:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/minipass@3.1.3
@@ -4410,8 +4435,8 @@ PackageVersion: 2.1.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:minizlib:minizlib:2.1.2:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/minizlib@2.1.2
@@ -4424,8 +4449,8 @@ PackageVersion: 1.0.4
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:mkdirp:mkdirp:1.0.4:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/mkdirp@1.0.4
@@ -4438,8 +4463,8 @@ PackageVersion: 4.1.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*
@@ -4457,8 +4482,8 @@ PackageVersion: 15.7.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*
@@ -4476,8 +4501,8 @@ PackageVersion: 16.14.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/react@16.14.0
@@ -4490,8 +4515,8 @@ PackageVersion: 16.13.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*
@@ -4509,8 +4534,8 @@ PackageVersion: 6.1.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:tar:tar:6.1.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/tar@6.1.0
@@ -4523,29 +4548,29 @@ PackageVersion: 4.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: package-lock.json
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:yallist:yallist:4.0.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/yallist@4.0.0
 
 ##### Relationships
 
+Relationship: SPDXRef-Package-npm-react-is-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-yallist-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-minizlib-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-js-tokens-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-object-assign-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-react-is-3c94286c8012f7b OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-chownr-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-loose-envify-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-prop-types-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-yallist-6eeb486da7c5a9d OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-react-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
@@ -4588,8 +4613,8 @@ PackageVersion: 4.0.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js-tokens:4.0.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*
@@ -4607,8 +4632,8 @@ PackageVersion: 1.4.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose-envify:loose-envify:1.4.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*
@@ -4626,8 +4651,8 @@ PackageVersion: 4.1.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object-assign:object-assign:4.1.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*
@@ -4645,8 +4670,8 @@ PackageVersion: 15.7.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop-types:prop-types:15.7.2:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*
@@ -4664,8 +4689,8 @@ PackageVersion: 16.14.0
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react:react:16.14.0:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/react@16.14.0
@@ -4678,8 +4703,8 @@ PackageVersion: 16.13.1
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react-is:react-is:16.13.1:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*
@@ -4697,8 +4722,8 @@ PackageVersion: 0.0.2
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from installed node module manifest file: yarn.lock
-PackageLicenseConcluded: NONE
-PackageLicenseDeclared: NONE
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:trim:trim:0.0.2:*:*:*:*:*:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/trim@0.0.2
