@@ -2446,7 +2446,7 @@ exports[`SPDX JSON alpine 1`] = `
    "checksums": [
     {
      "algorithm": "SHA256",
-     "checksumValue": "0100b8d4d27ed7b6fa9af9afad4c33b284cb77164c854993b67e34c9c9512aa3"
+     "checksumValue": "f4cee83322c48cef68084cf10c2b43f6154ac5fd8fa6e5228041f3e1811e3324"
     }
    ],
    "externalRefs": [
@@ -3059,7 +3059,7 @@ exports[`SPDX JSON debian 1`] = `
    "checksums": [
     {
      "algorithm": "SHA256",
-     "checksumValue": "eae52eb67fee991f40457e057149a8e84680dec1b8df5b5eb2b9abab42198eff"
+     "checksumValue": "4b9ed47cf072feaae51edf7192fda77f62b5fe79eee51e47909a4b7215bb4988"
     }
    ],
    "externalRefs": [
@@ -4329,7 +4329,7 @@ PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
 PrimaryPackagePurpose: CONTAINER
 FilesAnalyzed: false
-PackageChecksum: SHA256: 0100b8d4d27ed7b6fa9af9afad4c33b284cb77164c854993b67e34c9c9512aa3
+PackageChecksum: SHA256: f4cee83322c48cef68084cf10c2b43f6154ac5fd8fa6e5228041f3e1811e3324
 ExternalRef: PACKAGE-MANAGER purl pkg:oci/localhost:5000/match-coverage/alpine@sha256:redacted?arch=arm64&tag=latest
 
 ##### Package: libvncserver
@@ -4410,7 +4410,7 @@ PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
 PrimaryPackagePurpose: CONTAINER
 FilesAnalyzed: false
-PackageChecksum: SHA256: eae52eb67fee991f40457e057149a8e84680dec1b8df5b5eb2b9abab42198eff
+PackageChecksum: SHA256: 4b9ed47cf072feaae51edf7192fda77f62b5fe79eee51e47909a4b7215bb4988
 ExternalRef: PACKAGE-MANAGER purl pkg:oci/localhost:5000/match-coverage/debian@sha256:redacted?arch=arm64&tag=latest
 
 ##### Package: apt
