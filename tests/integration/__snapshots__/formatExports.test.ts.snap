@@ -2446,14 +2446,14 @@ exports[`SPDX JSON alpine 1`] = `
    "checksums": [
     {
      "algorithm": "SHA256",
-     "checksumValue": "f4cee83322c48cef68084cf10c2b43f6154ac5fd8fa6e5228041f3e1811e3324"
+     "checksumValue": "2c26b557b8025180281a15762e4d4cd27f58311785de1840bdad5d5dff072848"
     }
    ],
    "externalRefs": [
     {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
-     "referenceLocator": "pkg:oci/localhost:5000/match-coverage/alpine@sha256:redacted?arch=arm64\\u0026tag=latest"
+     "referenceLocator": "pkg:oci/localhost:5000/match-coverage/alpine@sha256:redacted?arch=amd64\\u0026tag=latest"
     }
    ],
    "primaryPackagePurpose": "CONTAINER"
@@ -3059,14 +3059,14 @@ exports[`SPDX JSON debian 1`] = `
    "checksums": [
     {
      "algorithm": "SHA256",
-     "checksumValue": "4b9ed47cf072feaae51edf7192fda77f62b5fe79eee51e47909a4b7215bb4988"
+     "checksumValue": "e1f1bc2f99ae84b98a89d357742d758ce0913cd1945ff450c8236ba9de767bd4"
     }
    ],
    "externalRefs": [
     {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
-     "referenceLocator": "pkg:oci/localhost:5000/match-coverage/debian@sha256:redacted?arch=arm64\\u0026tag=latest"
+     "referenceLocator": "pkg:oci/localhost:5000/match-coverage/debian@sha256:redacted?arch=amd64\\u0026tag=latest"
     }
    ],
    "primaryPackagePurpose": "CONTAINER"
@@ -4329,8 +4329,8 @@ PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
 PrimaryPackagePurpose: CONTAINER
 FilesAnalyzed: false
-PackageChecksum: SHA256: f4cee83322c48cef68084cf10c2b43f6154ac5fd8fa6e5228041f3e1811e3324
-ExternalRef: PACKAGE-MANAGER purl pkg:oci/localhost:5000/match-coverage/alpine@sha256:redacted?arch=arm64&tag=latest
+PackageChecksum: SHA256: 2c26b557b8025180281a15762e4d4cd27f58311785de1840bdad5d5dff072848
+ExternalRef: PACKAGE-MANAGER purl pkg:oci/localhost:5000/match-coverage/alpine@sha256:redacted?arch=amd64&tag=latest
 
 ##### Package: libvncserver
 
@@ -4410,8 +4410,8 @@ PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
 PrimaryPackagePurpose: CONTAINER
 FilesAnalyzed: false
-PackageChecksum: SHA256: 4b9ed47cf072feaae51edf7192fda77f62b5fe79eee51e47909a4b7215bb4988
-ExternalRef: PACKAGE-MANAGER purl pkg:oci/localhost:5000/match-coverage/debian@sha256:redacted?arch=arm64&tag=latest
+PackageChecksum: SHA256: e1f1bc2f99ae84b98a89d357742d758ce0913cd1945ff450c8236ba9de767bd4
+ExternalRef: PACKAGE-MANAGER purl pkg:oci/localhost:5000/match-coverage/debian@sha256:redacted?arch=amd64&tag=latest
 
 ##### Package: apt
 
