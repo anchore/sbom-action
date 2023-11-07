@@ -30,6 +30,8 @@ const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
 const githubDependencySnapshotFile = `${tempDir}/github.sbom.json`;
 
+const exeSuffix = process.platform == "win32" ? ".exe" : "";
+
 /**
  * Tries to get a unique artifact name or otherwise as appropriate as possible
  */
@@ -205,18 +207,14 @@ export async function downloadSyft(): Promise<string> {
 
   await execute("sh", [installPath, "-d", "-b", syftBinaryPath, version]);
 
-  const installedPath = path.join(`${syftBinaryPath}`, `${name}`);
-  if (process.platform === "win32") {
-    return `${installedPath}.exe`;
-  }
-  return installedPath;
+  return path.join(syftBinaryPath, name) + exeSuffix;
 }
 
 /**
  * Gets the Syft command to run via exec
  */
 export async function getSyftCommand(): Promise<string> {
-  const name = SYFT_BINARY_NAME + (process.platform == "win32" ? ".exe" : "");
+  const name = SYFT_BINARY_NAME + exeSuffix;
   const version = SYFT_VERSION;
 
   const sourceSyft = await downloadSyftFromZip(version);

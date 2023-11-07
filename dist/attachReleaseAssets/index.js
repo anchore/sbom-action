@@ -23959,6 +23959,7 @@ exports.SYFT_VERSION = core.getInput("syft-version") || SyftVersion_1.VERSION;
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
 const tempDir = fs.mkdtempSync(path_1.default.join(os_1.default.tmpdir(), "sbom-action-"));
 const githubDependencySnapshotFile = `${tempDir}/github.sbom.json`;
+const exeSuffix = process.platform == "win32" ? ".exe" : "";
 /**
  * Tries to get a unique artifact name or otherwise as appropriate as possible
  */
@@ -24111,11 +24112,7 @@ function downloadSyft() {
         // Make sure the tool's executable bit is set
         const syftBinaryPath = `${installPath}_${name}`;
         yield (0, Executor_1.execute)("sh", [installPath, "-d", "-b", syftBinaryPath, version]);
-        const installedPath = path_1.default.join(`${syftBinaryPath}`, `${name}`);
-        if (process.platform === "win32") {
-            return `${installedPath}.exe`;
-        }
-        return installedPath;
+        return path_1.default.join(syftBinaryPath, name) + exeSuffix;
     });
 }
 exports.downloadSyft = downloadSyft;
@@ -24124,7 +24121,7 @@ exports.downloadSyft = downloadSyft;
  */
 function getSyftCommand() {
     return __awaiter(this, void 0, void 0, function* () {
-        const name = exports.SYFT_BINARY_NAME + (process.platform == "win32" ? ".exe" : "");
+        const name = exports.SYFT_BINARY_NAME + exeSuffix;
         const version = exports.SYFT_VERSION;
         const sourceSyft = yield (0, SyftDownloader_1.downloadSyftFromZip)(version);
         if (sourceSyft) {
