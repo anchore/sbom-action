@@ -205,7 +205,11 @@ export async function downloadSyft(): Promise<string> {
 
   await execute("sh", [installPath, "-d", "-b", syftBinaryPath, version]);
 
-  return path.join(`${syftBinaryPath}`, `${name}`);
+  const installedPath = path.join(`${syftBinaryPath}`, `${name}`);
+  if (process.platform === "win32") {
+    return `${installedPath}.exe`;
+  }
+  return installedPath;
 }
 
 /**

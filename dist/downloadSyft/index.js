@@ -24159,7 +24159,11 @@ function downloadSyft() {
         // Make sure the tool's executable bit is set
         const syftBinaryPath = `${installPath}_${name}`;
         yield (0, Executor_1.execute)("sh", [installPath, "-d", "-b", syftBinaryPath, version]);
-        return path_1.default.join(`${syftBinaryPath}`, `${name}`);
+        const installedPath = path_1.default.join(`${syftBinaryPath}`, `${name}`);
+        if (process.platform === "win32") {
+            return `${installedPath}.exe`;
+        }
+        return installedPath;
     });
 }
 exports.downloadSyft = downloadSyft;
