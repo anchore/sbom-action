@@ -167,15 +167,9 @@ Output parameters:
 
 ## Windows
 
-Windows is currently supported via Windows Subsystem for Linux (WSL). It is
-required to set up a WSL distribution prior to invoking the `sbom-action`, for
-example, you can add the small Alpine image:
-
-```yaml
-- uses: Vampire/setup-wsl@v2
-  with:
-    distribution: Alpine
-```
+This action is tested on Windows, and should work natively on Windows hosts
+without WSL. (Note that it previously required WSL, but should now be run
+natively on Windows.)
 
 ## Diagnostics
 

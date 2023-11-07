@@ -11,15 +11,7 @@ export async function execute(
   args: string[],
   options?: exec.ExecOptions
 ) {
-  if (process.platform === "win32") {
-    return await exec.exec(
-      "wsl",
-      [mapToWSLPath(cmd), ...args.map(mapToWSLPath)],
-      options
-    );
-  } else {
-    return exec.exec(cmd, args, options);
-  }
+  return exec.exec(cmd, args, options);
 }
 
 /**
