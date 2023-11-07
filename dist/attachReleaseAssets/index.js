@@ -24062,6 +24062,9 @@ function executeSyft(_a) {
             // generate github dependency format
             args = [...args, "-o", `github=${githubDependencySnapshotFile}`];
         }
+        if (opts.config_file) {
+            args = [...args, "-c", opts.config_file];
+        }
         // Execute in a group so the syft output is collapsed in the GitHub log
         core.info(`[command]${cmd} ${args.join(" ")}`);
         // This /dev/null writable stream is required so the entire contents
@@ -24256,6 +24259,7 @@ function runSyftAction() {
             },
             format: getSbomFormat(),
             uploadToDependencySnapshotAPI: uploadToSnapshotAPI(),
+            config_file: core.getInput("config"),
         });
         core.info(`SBOM scan completed in: ${(Date.now() - start) / 1000}s`);
         if (output) {

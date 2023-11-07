@@ -47,4 +47,5 @@ export interface SyftOptions {
     | "text"
     | "json";
   uploadToDependencySnapshotAPI: boolean;
+  config_file: string;
 }

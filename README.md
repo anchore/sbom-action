@@ -139,6 +139,7 @@ and uploading them as workflow artifacts and release assets.
 | `upload-release-assets`     | Upload release assets                                                                                                                                   | `true`                           |
 | `syft-version`              | The version of Syft to use                                                                                                                              |                                  |
 | `github-token`              | Authorized secret GitHub Personal Access Token.                                                                                                         | `github.token`                   |
+| `config `                   | Syft configuration file to use.                                                                                                                         |                                  |
 
 ### anchore/sbom-action/publish-sbom
 

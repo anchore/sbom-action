@@ -150,6 +150,10 @@ async function executeSyft({
     args = [...args, "-o", `github=${githubDependencySnapshotFile}`];
   }
 
+  if (opts.config_file) {
+    args = [...args, "-c", opts.config_file];
+  }
+
   // Execute in a group so the syft output is collapsed in the GitHub log
   core.info(`[command]${cmd} ${args.join(" ")}`);
 
@@ -367,6 +371,7 @@ export async function runSyftAction(): Promise<void> {
     },
     format: getSbomFormat(),
     uploadToDependencySnapshotAPI: uploadToSnapshotAPI(),
+    config_file: core.getInput("config"),
   });
 
   core.info(`SBOM scan completed in: ${(Date.now() - start) / 1000}s`);
