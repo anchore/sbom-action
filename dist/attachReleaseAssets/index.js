@@ -23438,12 +23438,7 @@ const exec = __importStar(__nccwpck_require__(1514));
  */
 function execute(cmd, args, options) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (process.platform === "win32") {
-            return yield exec.exec("wsl", [mapToWSLPath(cmd), ...args.map(mapToWSLPath)], options);
-        }
-        else {
-            return exec.exec(cmd, args, options);
-        }
+        return exec.exec(cmd, args, options);
     });
 }
 exports.execute = execute;
