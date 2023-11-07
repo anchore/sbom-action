@@ -24124,7 +24124,7 @@ exports.downloadSyft = downloadSyft;
  */
 function getSyftCommand() {
     return __awaiter(this, void 0, void 0, function* () {
-        const name = exports.SYFT_BINARY_NAME;
+        const name = exports.SYFT_BINARY_NAME + (process.platform == "win32" ? ".exe" : "");
         const version = exports.SYFT_VERSION;
         const sourceSyft = yield (0, SyftDownloader_1.downloadSyftFromZip)(version);
         if (sourceSyft) {

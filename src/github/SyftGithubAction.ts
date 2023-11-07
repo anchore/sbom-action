@@ -216,7 +216,7 @@ export async function downloadSyft(): Promise<string> {
  * Gets the Syft command to run via exec
  */
 export async function getSyftCommand(): Promise<string> {
-  const name = SYFT_BINARY_NAME;
+  const name = SYFT_BINARY_NAME + (process.platform == "win32" ? ".exe" : "");
   const version = SYFT_VERSION;
 
   const sourceSyft = await downloadSyftFromZip(version);
