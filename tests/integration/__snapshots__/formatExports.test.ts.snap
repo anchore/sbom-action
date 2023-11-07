@@ -2446,7 +2446,7 @@ exports[`SPDX JSON alpine 1`] = `
    "checksums": [
     {
      "algorithm": "SHA256",
-     "checksumValue": "2c26b557b8025180281a15762e4d4cd27f58311785de1840bdad5d5dff072848"
+     "checksumValue" : "redacted"
     }
    ],
    "externalRefs": [
@@ -3059,7 +3059,7 @@ exports[`SPDX JSON debian 1`] = `
    "checksums": [
     {
      "algorithm": "SHA256",
-     "checksumValue": "e1f1bc2f99ae84b98a89d357742d758ce0913cd1945ff450c8236ba9de767bd4"
+     "checksumValue" : "redacted"
     }
    ],
    "externalRefs": [

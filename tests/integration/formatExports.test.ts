@@ -94,6 +94,7 @@ const testSource = async (source: string, format = "spdx"): Promise<string> => {
         .replace(/"(created|SPDXID|licenseListVersion|documentNamespace|spdxElementId|relatedSpdxElement)":\s*"[^"]+"/g, `"$1": "redacted"`)
         .replace(/sha256:[a-zA-Z0-9]+/g, "sha256:redacted")
         .replace(/-[a-zA-Z0-9]{16}/g, "-hash:redacted")
+        .replace(/"checksumValue": "[0-9a-f]{64}"/, `"checksumValue" : "redacted"`)
         .replace(/"Tool:[^"]+"/g, "");
     case "cyclonedx":
     case "cyclonedx-xml":
