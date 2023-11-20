@@ -40,7 +40,7 @@ jobs:
           comment-id: ${{ github.event.comment.id }}
           reactions: eyes
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           token: ${{ steps.generate-token.outputs.token }}
           repository: ${{ fromJSON(steps.get-pr.outputs.result).head.repo.full_name }}
