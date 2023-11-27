@@ -73,6 +73,10 @@ inputs:
     description: "Upload release assets"
     default: "true"
 
+  config:
+    required: false
+    description: "Configuration file to use"
+
 runs:
   using: "node16"
   main: "dist/runSyftAction/index.js"

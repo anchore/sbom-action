@@ -403,4 +403,19 @@ describe("Action", () => {
     expect(mapToWSLPath("D:\\Some\\Path")).toBe("/mnt/d/Some/Path");
     expect(mapToWSLPath("C:\\Some\\Path")).toBe("/mnt/c/Some/Path");
   });
+
+  it("calls with config", async () => {
+    setData({
+      inputs: {
+        image: "some-image:latest",
+        config: "syft-config.yaml",
+      }
+    });
+
+    await action.runSyftAction();
+    const { cmd, args, env } = data.execArgs;
+
+    expect(args).toContain("-c");
+    expect(args).toContain("syft-config.yaml");
+  });
 });
