@@ -3,6 +3,7 @@ import * as github from "@actions/github";
 import * as fs from "fs";
 import * as client from "../../src/github/GithubClient";
 import { runSyftAction } from "../../src/github/SyftGithubAction";
+import path from "path";
 
 jest.setTimeout(30000);
 Date.now = jest.fn(() => 1482363367071);
@@ -65,6 +66,8 @@ const testSource = async (source: string, format = "spdx"): Promise<string> => {
         // SPDX-json is not consistently sorted,
         // so we sort text SPDX output for snapshots
         return format;
+      case "config":
+        return path.join("tests","integration", "syft_config.yaml");
     }
     return "";
   });
