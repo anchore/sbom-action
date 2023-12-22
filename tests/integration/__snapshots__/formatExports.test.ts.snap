@@ -9,13 +9,16 @@ exports[`CycloneDX JSON alpine 1`] = `
   "version": 1,
   "metadata": {
     "timestamp": "redacted",
-    "tools": [
-      {
-        "vendor": "anchore",
-        "name": "syft",
-        "version": "redacted"
-      }
-    ],
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "redacted"
+        }
+      ]
+    },
     "component": {
       "bom-ref": "redacted",
       "type": "container",
@@ -170,13 +173,16 @@ exports[`CycloneDX JSON debian 1`] = `
   "version": 1,
   "metadata": {
     "timestamp": "redacted",
-    "tools": [
-      {
-        "vendor": "anchore",
-        "name": "syft",
-        "version": "redacted"
-      }
-    ],
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "redacted"
+        }
+      ]
+    },
     "component": {
       "bom-ref": "redacted",
       "type": "container",
@@ -854,13 +860,16 @@ exports[`CycloneDX JSON npm 1`] = `
   "version": 1,
   "metadata": {
     "timestamp": "redacted",
-    "tools": [
-      {
-        "vendor": "anchore",
-        "name": "syft",
-        "version": "redacted"
-      }
-    ],
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "redacted"
+        }
+      ]
+    },
     "component": {
       "bom-ref": "redacted",
       "type": "file",
@@ -1392,13 +1401,16 @@ exports[`CycloneDX JSON yarn 1`] = `
   "version": 1,
   "metadata": {
     "timestamp": "redacted",
-    "tools": [
-      {
-        "vendor": "anchore",
-        "name": "syft",
-        "version": "redacted"
-      }
-    ],
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "redacted"
+        }
+      ]
+    },
     "component": {
       "bom-ref": "redacted",
       "type": "file",
@@ -1699,11 +1711,13 @@ exports[`CycloneDX XML alpine 1`] = `
   <metadata>
     
     <tools>
-      <tool>
-        <vendor>anchore</vendor>
-        <name>syft</name>
-        
-      </tool>
+      <components>
+        <component type="application">
+          <author>anchore</author>
+          <name>syft</name>
+          
+        </component>
+      </components>
     </tools>
     <component  type="container">
       <name>localhost:5000/match-coverage/alpine</name>
@@ -1779,11 +1793,13 @@ exports[`CycloneDX XML debian 1`] = `
   <metadata>
     
     <tools>
-      <tool>
-        <vendor>anchore</vendor>
-        <name>syft</name>
-        
-      </tool>
+      <components>
+        <component type="application">
+          <author>anchore</author>
+          <name>syft</name>
+          
+        </component>
+      </components>
     </tools>
     <component  type="container">
       <name>localhost:5000/match-coverage/debian</name>
@@ -2048,11 +2064,13 @@ exports[`CycloneDX XML npm 1`] = `
   <metadata>
     
     <tools>
-      <tool>
-        <vendor>anchore</vendor>
-        <name>syft</name>
-        
-      </tool>
+      <components>
+        <component type="application">
+          <author>anchore</author>
+          <name>syft</name>
+          
+        </component>
+      </components>
     </tools>
     <component  type="file">
       <name>tests/fixtures/npm-project</name>
@@ -2269,11 +2287,13 @@ exports[`CycloneDX XML yarn 1`] = `
   <metadata>
     
     <tools>
-      <tool>
-        <vendor>anchore</vendor>
-        <name>syft</name>
-        
-      </tool>
+      <components>
+        <component type="application">
+          <author>anchore</author>
+          <name>syft</name>
+          
+        </component>
+      </components>
     </tools>
     <component  type="file">
       <name>tests/fixtures/yarn-project</name>
