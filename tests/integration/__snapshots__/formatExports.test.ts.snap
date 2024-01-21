@@ -2504,12 +2504,6 @@ exports[`SPDX JSON alpine 1`] = `
   {
    "spdxElementId": "redacted",
    "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
    "relationshipType": "CONTAINS"
   },
   {
@@ -3215,42 +3209,6 @@ exports[`SPDX JSON debian 1`] = `
   {
    "spdxElementId": "redacted",
    "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
    "relationshipType": "CONTAINS"
   },
   {
@@ -3871,84 +3829,6 @@ exports[`SPDX JSON npm 1`] = `
   {
    "spdxElementId": "redacted",
    "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
    "relationshipType": "CONTAINS"
   },
   {
@@ -4399,48 +4279,6 @@ exports[`SPDX JSON yarn 1`] = `
   {
    "spdxElementId": "redacted",
    "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
-   "relationshipType": "OTHER",
-   "comment": "evident-by: indicates the package's existence is evident by the given file"
-  },
-  {
-   "spdxElementId": "redacted",
-   "relatedSpdxElement": "redacted",
    "relationshipType": "CONTAINS"
   },
   {
@@ -4533,8 +4371,6 @@ ExternalRef: PACKAGE-MANAGER purl pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&
 
 ##### Relationships
 
-Relationship: SPDXRef-Package-apk-libvncserver-hash:redacted OTHER SPDXRef-File-lib-apk-db-installed-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-apk-libvncserver-hash:redacted OTHER SPDXRef-File-lib-apk-db-installed-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-DocumentRoot-Image-localhost-5000-match-coverage-alpine CONTAINS SPDXRef-Package-apk-libvncserver-hash:redacted
@@ -4783,25 +4619,13 @@ ExtractedText: BSD License
 
 Relationship: SPDXRef-Package-java-archive-example-java-app-maven-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-java-archive-example-java-app-maven-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-java-archive-joda-time-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-java-archive-joda-time-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-deb-apt-hash:redacted OTHER SPDXRef-File-var-lib-dpkg-status-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-deb-apt-hash:redacted OTHER SPDXRef-File-var-lib-dpkg-status-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-python-Pygments-hash:redacted OTHER SPDXRef-File-python-dist-info-METADATA-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-python-Pygments-hash:redacted OTHER SPDXRef-File-python-dist-info-METADATA-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-gem-bundler-hash:redacted OTHER SPDXRef-File-ruby-specifications-bundler.gemspec-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-gem-bundler-hash:redacted OTHER SPDXRef-File-ruby-specifications-bundler.gemspec-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-npm-hash:redacted OTHER SPDXRef-File-javascript-pkg-json-package.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-npm-hash:redacted OTHER SPDXRef-File-javascript-pkg-json-package.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
@@ -5071,53 +4895,27 @@ ExternalRef: PACKAGE-MANAGER purl pkg:npm/yallist@4.0.0
 
 Relationship: SPDXRef-Package-npm-js-tokens-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-js-tokens-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-minizlib-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-minizlib-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-react-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-react-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-tar-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-tar-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-react-is-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-react-is-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-fs-minipass-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-fs-minipass-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-mkdirp-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-mkdirp-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-prop-types-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-prop-types-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-loose-envify-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-loose-envify-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-object-assign-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-object-assign-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-chownr-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-chownr-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-minipass-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-minipass-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-yallist-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-yallist-hash:redacted OTHER SPDXRef-File-package-lock.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
@@ -5299,29 +5097,15 @@ ExternalRef: PACKAGE-MANAGER purl pkg:npm/trim@0.0.2
 
 Relationship: SPDXRef-Package-npm-loose-envify-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-loose-envify-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-react-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-react-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-prop-types-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-prop-types-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-js-tokens-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-js-tokens-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-trim-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-trim-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-object-assign-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-object-assign-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-react-is-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-react-is-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
