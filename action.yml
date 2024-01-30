@@ -78,5 +78,5 @@ inputs:
     description: "Configuration file to use"
 
 runs:
-  using: "node16"
+  using: "node20"
   main: "dist/runSyftAction/index.js"

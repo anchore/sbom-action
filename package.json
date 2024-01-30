@@ -68,5 +68,8 @@
     "ts-jest": "^29.1.0",
     "type-fest": "^3.9.0",
     "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=v20.11.0"
   }
 }
