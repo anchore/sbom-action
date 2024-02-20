@@ -125,6 +125,7 @@ exports[`CycloneDX JSON alpine 1`] = `
       ]
     },
     {
+      "bom-ref": "redacted",
       "type": "operating-system",
       "name": "alpine",
       "version": "redacted",
@@ -807,6 +808,7 @@ exports[`CycloneDX JSON debian 1`] = `
       ]
     },
     {
+      "bom-ref": "redacted",
       "type": "operating-system",
       "name": "debian",
       "version": "redacted",
@@ -1439,6 +1441,10 @@ exports[`CycloneDX JSON yarn 1`] = `
           "value": "redacted"
         },
         {
+          "name": "syft:package:metadataType",
+          "value": "redacted"
+        },
+        {
           "name": "syft:cpe23",
           "value": "redacted"
         },
@@ -1482,6 +1488,10 @@ exports[`CycloneDX JSON yarn 1`] = `
         },
         {
           "name": "syft:package:type",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:package:metadataType",
           "value": "redacted"
         },
         {
@@ -1531,6 +1541,10 @@ exports[`CycloneDX JSON yarn 1`] = `
           "value": "redacted"
         },
         {
+          "name": "syft:package:metadataType",
+          "value": "redacted"
+        },
+        {
           "name": "syft:cpe23",
           "value": "redacted"
         },
@@ -1574,6 +1588,10 @@ exports[`CycloneDX JSON yarn 1`] = `
         },
         {
           "name": "syft:package:type",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:package:metadataType",
           "value": "redacted"
         },
         {
@@ -1623,6 +1641,10 @@ exports[`CycloneDX JSON yarn 1`] = `
           "value": "redacted"
         },
         {
+          "name": "syft:package:metadataType",
+          "value": "redacted"
+        },
+        {
           "name": "syft:location:0:path",
           "value": "redacted"
         }
@@ -1646,6 +1668,10 @@ exports[`CycloneDX JSON yarn 1`] = `
         },
         {
           "name": "syft:package:type",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:package:metadataType",
           "value": "redacted"
         },
         {
@@ -1692,6 +1718,10 @@ exports[`CycloneDX JSON yarn 1`] = `
         },
         {
           "name": "syft:package:type",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:package:metadataType",
           "value": "redacted"
         },
         {
@@ -1763,7 +1793,7 @@ exports[`CycloneDX XML alpine 1`] = `
         <property name="syft:metadata:size">166239</property>
       </properties>
     </component>
-    <component type="operating-system">
+    <component  type="operating-system">
       <name>alpine</name>
       
       <description>Alpine Linux v3.12</description>
@@ -2030,7 +2060,7 @@ exports[`CycloneDX XML debian 1`] = `
         
       </properties>
     </component>
-    <component type="operating-system">
+    <component  type="operating-system">
       <name>debian</name>
       
       <description>Debian GNU/Linux 8 (jessie)</description>
@@ -2309,6 +2339,7 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:type">npm</property>
+        <property name="syft:package:metadataType">javascript-yarn-lock-entry</property>
         <property name="syft:cpe23">cpe:2.3:a:js-tokens:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:js_tokens:js-tokens:4.0.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:js_tokens:js_tokens:4.0.0:*:*:*:*:*:*:*</property>
@@ -2326,6 +2357,7 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:type">npm</property>
+        <property name="syft:package:metadataType">javascript-yarn-lock-entry</property>
         <property name="syft:cpe23">cpe:2.3:a:loose-envify:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:loose_envify:loose-envify:1.4.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:loose_envify:loose_envify:1.4.0:*:*:*:*:*:*:*</property>
@@ -2343,6 +2375,7 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:type">npm</property>
+        <property name="syft:package:metadataType">javascript-yarn-lock-entry</property>
         <property name="syft:cpe23">cpe:2.3:a:object-assign:object_assign:4.1.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:object_assign:object-assign:4.1.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:object_assign:object_assign:4.1.1:*:*:*:*:*:*:*</property>
@@ -2360,6 +2393,7 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:type">npm</property>
+        <property name="syft:package:metadataType">javascript-yarn-lock-entry</property>
         <property name="syft:cpe23">cpe:2.3:a:prop-types:prop_types:15.7.2:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:prop_types:prop-types:15.7.2:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:prop_types:prop_types:15.7.2:*:*:*:*:*:*:*</property>
@@ -2377,6 +2411,7 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:type">npm</property>
+        <property name="syft:package:metadataType">javascript-yarn-lock-entry</property>
         
       </properties>
     </component>
@@ -2389,6 +2424,7 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:type">npm</property>
+        <property name="syft:package:metadataType">javascript-yarn-lock-entry</property>
         <property name="syft:cpe23">cpe:2.3:a:react-is:react_is:16.13.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:react_is:react-is:16.13.1:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:react_is:react_is:16.13.1:*:*:*:*:*:*:*</property>
@@ -2406,6 +2442,7 @@ exports[`CycloneDX XML yarn 1`] = `
         <property name="syft:package:foundBy">javascript-lock-cataloger</property>
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:type">npm</property>
+        <property name="syft:package:metadataType">javascript-yarn-lock-entry</property>
         
       </properties>
     </component>
@@ -4617,11 +4654,11 @@ ExtractedText: BSD License
 
 ##### Relationships
 
-Relationship: SPDXRef-Package-java-archive-example-java-app-maven-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
+Relationship: SPDXRef-Package-deb-apt-hash:redacted OTHER SPDXRef-File-var-lib-dpkg-status-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-java-archive-joda-time-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-deb-apt-hash:redacted OTHER SPDXRef-File-var-lib-dpkg-status-hash:redacted
+Relationship: SPDXRef-Package-java-archive-example-java-app-maven-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-python-Pygments-hash:redacted OTHER SPDXRef-File-python-dist-info-METADATA-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
@@ -5097,17 +5134,17 @@ ExternalRef: PACKAGE-MANAGER purl pkg:npm/trim@0.0.2
 
 Relationship: SPDXRef-Package-npm-loose-envify-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-react-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
+Relationship: SPDXRef-Package-npm-trim-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-react-is-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-prop-types-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-js-tokens-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-trim-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
-RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-object-assign-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-npm-react-is-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
+Relationship: SPDXRef-Package-npm-js-tokens-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-npm-react-hash:redacted OTHER SPDXRef-File-yarn.lock-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-DocumentRoot-Directory-tests-fixtures-yarn-project CONTAINS SPDXRef-Package-npm-js-tokens-hash:redacted
 Relationship: SPDXRef-DocumentRoot-Directory-tests-fixtures-yarn-project CONTAINS SPDXRef-Package-npm-loose-envify-hash:redacted
