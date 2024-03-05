@@ -65,8 +65,8 @@ describe("Action", () => {
     const { args } = data.execArgs;
 
     expect(args).toBeDefined()
-    expect(args.length > 2).toBeTruthy();
-    expect(args[2]).toBe("some-image:latest")
+    expect(args.length > 1).toBeTruthy();
+    expect(args[1]).toBe("some-image:latest")
   });
 
   it("runs with path input", async () => {
@@ -81,8 +81,8 @@ describe("Action", () => {
     const { args } = data.execArgs;
 
     expect(args).toBeDefined()
-    expect(args.length > 2).toBeTruthy();
-    expect(args[2]).toBe("dir:some-path")
+    expect(args.length > 1).toBeTruthy();
+    expect(args[1]).toBe("dir:some-path")
   });
 
   it("runs with file input", async () => {
@@ -97,8 +97,8 @@ describe("Action", () => {
     const { args } = data.execArgs;
 
     expect(args).toBeDefined()
-    expect(args.length > 2).toBeTruthy();
-    expect(args[2]).toBe("file:some-file.jar")
+    expect(args.length > 1).toBeTruthy();
+    expect(args[1]).toBe("file:some-file.jar")
   });
 
   it("runs with release uploads inputs", async () => {
