@@ -24087,7 +24087,10 @@ function executeSyft(_a) {
             }
         }
         // https://github.com/anchore/syft#configuration
-        let args = ["packages", "-vv"];
+        let args = ["scan"];
+        if (core.isDebug()) {
+            args = [...args, "-vv"];
+        }
         if ("image" in input && input.image) {
             if (registryUser) {
                 args = [...args, `registry:${input.image}`];
