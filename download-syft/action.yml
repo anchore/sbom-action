@@ -12,5 +12,5 @@ outputs:
     description: "A reference to the Syft command"
 
 runs:
-  using: "node16"
+  using: "node20"
   main: "../dist/downloadSyft/index.js"
