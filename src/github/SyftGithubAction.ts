@@ -109,6 +109,7 @@ async function executeSyft({
   const cmd = await getSyftCommand();
 
   const env: { [key: string]: string } = {
+    ...process.env,
     SYFT_CHECK_FOR_APP_UPDATE: "false",
   };
 

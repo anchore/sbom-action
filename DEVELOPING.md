@@ -8,6 +8,10 @@ If you would like to get more extensive debug logging, it is
 possible to enable this as [described here](https://github.com/actions/toolkit/blob/master/docs/action-debugging.md)
 by setting a secret in your repository of `ACTIONS_STEP_DEBUG` to `true`.
 
+## Update `dist/`
+
+Updates to `dist/` and handled via a commit hook. Install the hook by running `npm install`.
+
 ## Tests
 
 To run tests locally, you will need a local docker instance and registry along with a few
