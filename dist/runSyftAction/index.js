@@ -24024,9 +24024,7 @@ function executeSyft(_a) {
     return __awaiter(this, void 0, void 0, function* () {
         let stdout = "";
         const cmd = yield getSyftCommand();
-        const env = {
-            SYFT_CHECK_FOR_APP_UPDATE: "false",
-        };
+        const env = Object.assign(Object.assign({}, process.env), { SYFT_CHECK_FOR_APP_UPDATE: "false" });
         const registryUser = core.getInput("registry-username");
         const registryPass = core.getInput("registry-password");
         if (registryUser) {

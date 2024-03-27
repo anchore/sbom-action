@@ -108,16 +108,18 @@ async function executeSyft({
 
   const cmd = await getSyftCommand();
 
-
-  process.env.SYFT_CHECK_FOR_APP_UPDATE = "false"
+  const env: { [key: string]: string } = {
+    ...process.env,
+    SYFT_CHECK_FOR_APP_UPDATE: "false",
+  };
 
   const registryUser = core.getInput("registry-username");
   const registryPass = core.getInput("registry-password");
 
   if (registryUser) {
-    process.env.SYFT_REGISTRY_AUTH_USERNAME = registryUser;
+    env.SYFT_REGISTRY_AUTH_USERNAME = registryUser;
     if (registryPass) {
-      process.env.SYFT_REGISTRY_AUTH_PASSWORD = registryPass;
+      env.SYFT_REGISTRY_AUTH_PASSWORD = registryPass;
     } else {
       core.warning(
         "WARNING: registry-username specified without registry-password"
@@ -171,6 +173,7 @@ async function executeSyft({
 
   const exitCode = await core.group("Executing Syft...", async () =>
     execute(cmd, args, {
+      env,
       outStream,
       listeners: {
         stdout(buffer) {
