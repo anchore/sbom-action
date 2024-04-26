@@ -2471,8 +2471,8 @@ exports[`SPDX JSON alpine 1`] = `
    "name": "libvncserver",
    "SPDXID": "redacted",
    "versionInfo": "0.9.9",
-   "supplier": "Person: A. Wilcox \\u003cawilfox@adelielinux.org\\u003e",
-   "originator": "Person: A. Wilcox \\u003cawilfox@adelielinux.org\\u003e",
+   "supplier": "Person: A. Wilcox <awilfox@adelielinux.org>",
+   "originator": "Person: A. Wilcox <awilfox@adelielinux.org>",
    "downloadLocation": "http://libvncserver.sourceforge.net/",
    "filesAnalyzed": false,
    "sourceInfo": "acquired package info from APK DB: /lib/apk/db/installed",
@@ -2489,7 +2489,7 @@ exports[`SPDX JSON alpine 1`] = `
     {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
-     "referenceLocator": "pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64\\u0026distro=alpine-3.12.0"
+     "referenceLocator": "pkg:apk/alpine/libvncserver@0.9.9?arch=x86_64&distro=alpine-3.12.0"
     }
    ]
   },
@@ -2510,7 +2510,7 @@ exports[`SPDX JSON alpine 1`] = `
     {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
-     "referenceLocator": "pkg:oci/localhost:5000/match-coverage/alpine@sha256:redacted?arch=amd64\\u0026tag=latest"
+     "referenceLocator": "pkg:oci/localhost:5000/match-coverage/alpine@sha256:redacted?arch=amd64&tag=latest"
     }
    ],
    "primaryPackagePurpose": "CONTAINER"
@@ -2743,8 +2743,8 @@ exports[`SPDX JSON debian 1`] = `
    "name": "apt",
    "SPDXID": "redacted",
    "versionInfo": "1.8.2",
-   "supplier": "Person: APT Development Team \\u003cdeity@lists.debian.org\\u003e",
-   "originator": "Person: APT Development Team \\u003cdeity@lists.debian.org\\u003e",
+   "supplier": "Person: APT Development Team <deity@lists.debian.org>",
+   "originator": "Person: APT Development Team <deity@lists.debian.org>",
    "downloadLocation": "NOASSERTION",
    "filesAnalyzed": false,
    "sourceInfo": "acquired package info from DPKG DB: /var/lib/dpkg/status",
@@ -2760,7 +2760,7 @@ exports[`SPDX JSON debian 1`] = `
     {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
-     "referenceLocator": "pkg:deb/debian/apt@1.8.2?arch=amd64\\u0026upstream=apt-dev\\u0026distro=debian-8"
+     "referenceLocator": "pkg:deb/debian/apt@1.8.2?arch=amd64&upstream=apt-dev&distro=debian-8"
     }
    ]
   },
@@ -3083,8 +3083,8 @@ exports[`SPDX JSON debian 1`] = `
    "name": "npm",
    "SPDXID": "redacted",
    "versionInfo": "6.14.6",
-   "supplier": "Person: Isaac Z. Schlueter \\u003ci@izs.me\\u003e (http://blog.izs.me)",
-   "originator": "Person: Isaac Z. Schlueter \\u003ci@izs.me\\u003e (http://blog.izs.me)",
+   "supplier": "Person: Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
+   "originator": "Person: Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
    "downloadLocation": "https://github.com/npm/cli",
    "filesAnalyzed": false,
    "homepage": "https://docs.npmjs.com/",
@@ -3123,7 +3123,7 @@ exports[`SPDX JSON debian 1`] = `
     {
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
-     "referenceLocator": "pkg:oci/localhost:5000/match-coverage/debian@sha256:redacted?arch=amd64\\u0026tag=latest"
+     "referenceLocator": "pkg:oci/localhost:5000/match-coverage/debian@sha256:redacted?arch=amd64&tag=latest"
     }
    ],
    "primaryPackagePurpose": "CONTAINER"
