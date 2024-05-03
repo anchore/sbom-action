@@ -34,7 +34,7 @@
   "author": "Keith Zantow <keith.zantow@anchore.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@actions/artifact": "^1.1.1",
+    "@actions/artifact": "^2.1.7",
     "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
     "@actions/github": "^5.1.1",

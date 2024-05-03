@@ -31,7 +31,7 @@ const testSource = async (source: string, format = "spdx"): Promise<string> => {
     .spyOn(client, "getClient")
     .mockImplementation(() => {
       return {
-        listWorkflowArtifacts() {
+        listCurrentWorkflowArtifacts() {
           return Promise.resolve(artifacts);
         },
         uploadWorkflowArtifact({ file }) {

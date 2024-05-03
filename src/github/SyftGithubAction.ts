@@ -484,7 +484,7 @@ export async function attachReleaseAssets(): Promise<void> {
     const sbomArtifactPattern = sbomArtifactInput || `^${getArtifactName()}$`;
     const matcher = new RegExp(sbomArtifactPattern);
 
-    const artifacts = await client.listWorkflowArtifacts();
+    const artifacts = await client.listCurrentWorkflowArtifacts();
     let matched = artifacts.filter((a) => {
       const matches = matcher.test(a.name);
       if (matches) {

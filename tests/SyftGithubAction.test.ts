@@ -197,7 +197,7 @@ describe("Action", () => {
       artifacts: [{
         runId: 6,
         name: "sbom.spdx.json",
-        file: "the_sbom",
+        files: ["the_sbom"],
       }],
     });
 
