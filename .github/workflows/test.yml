@@ -87,7 +87,7 @@ jobs:
       - uses: ./ # anchore/sbom-action
         id: dirscan
         with:
-          artifact-name: sbom.spdx
+          artifact-name: dirscan-sbom.spdx
           output-file: dirscan-sbom.spdx
           format: spdx
       - run: |
@@ -98,7 +98,7 @@ jobs:
         id: imagescan
         with:
           image: alpine:latest
-          artifact-name: sbom.spdx
+          artifact-name: imagescan-sbom.spdx
           output-file: my.sbom
       - run: |
           echo IMAGE SCAN SBOM:
@@ -106,7 +106,7 @@ jobs:
 
       - uses: ./publish-sbom # anchore/sbom-action/publish-sbom
         with:
-          sbom-artifact-match: sbom.spdx
+          sbom-artifact-match: imagescan-sbom.spdx
 
       - uses: ./publish-sbom # anchore/sbom-action/publish-sbom
         with:
