@@ -54,7 +54,7 @@ jobs:
       - uses: ./
         with:
           path: ./tests/fixtures/yarn-project
-          artifact-name: SBOM.txt
+          artifact-name: ${{ matrix.os }}-SBOM.txt
 
   test:
     runs-on: ubuntu-latest
