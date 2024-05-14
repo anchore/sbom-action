@@ -33,24 +33,28 @@ jobs:
       - uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
         with:
           path: ./
+          artifact-name: ${{ matrix.os }}-1.spdx
 
       - uses: ./
         with:
           path: ./tests/fixtures/npm-project
+          artifact-name: ${{ matrix.os }}-2.spdx
 
       - uses: ./
         with:
           path: ./tests/fixtures/yarn-project
+          artifact-name: ${{ matrix.os }}-3.spdx
 
       - uses: ./
         id: yarn-scan
         with:
           path: ./tests/fixtures/yarn-project
+          artifact-name: ${{ matrix.os }}-4.spdx
 
       - uses: ./
         with:
           path: ./tests/fixtures/yarn-project
-          artifact-name: SBOM.txt
+          artifact-name: ${{ matrix.os }}-SBOM.txt
 
   test:
     runs-on: ubuntu-latest
@@ -87,7 +91,7 @@ jobs:
       - uses: ./ # anchore/sbom-action
         id: dirscan
         with:
-          artifact-name: sbom.spdx
+          artifact-name: dirscan-sbom.spdx
           output-file: dirscan-sbom.spdx
           format: spdx
       - run: |
@@ -98,7 +102,7 @@ jobs:
         id: imagescan
         with:
           image: alpine:latest
-          artifact-name: sbom.spdx
+          artifact-name: imagescan-sbom.spdx
           output-file: my.sbom
       - run: |
           echo IMAGE SCAN SBOM:
@@ -106,7 +110,7 @@ jobs:
 
       - uses: ./publish-sbom # anchore/sbom-action/publish-sbom
         with:
-          sbom-artifact-match: sbom.spdx
+          sbom-artifact-match: imagescan-sbom.spdx
 
       - uses: ./publish-sbom # anchore/sbom-action/publish-sbom
         with:

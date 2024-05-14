@@ -1,9 +1,18 @@
+import {
+  DownloadArtifactOptions,
+  DownloadArtifactResponse,
+  FindOptions,
+  ListArtifactsResponse,
+  UploadArtifactOptions,
+  UploadArtifactResponse
+} from "@actions/artifact";
+
 /**
  * Get all the mocks and mock data
  */
 export function getMocks() {
   class Data {
-    artifacts: Partial<(Artifact & { runId: number, id: number, file: string })>[] = [];
+    artifacts: Partial<(Artifact & { runId: number, id: number, files: string[] })>[] = [];
 
     assets: Partial<ReleaseAsset>[] = [];
 
@@ -109,38 +118,51 @@ export function getMocks() {
         };
       },
 
-      "@actions/artifact/lib/internal/download-http-client": () => {
-        return {
-          DownloadHttpClient: class {
-            async listArtifacts() {
-              return {
-                value: data.artifacts.filter(a => !a.runId),
-              };
-            }
-          },
-        };
-      },
-
       "@actions/artifact": () => {
         return {
-          create() {
+          /*
+          export interface ArtifactClient {
+            uploadArtifact(name: string, files: string[], rootDirectory: string, options?: UploadArtifactOptions): Promise<UploadArtifactResponse>;
+            listArtifacts(options?: ListArtifactsOptions & FindOptions): Promise<ListArtifactsResponse>;
+            getArtifact(artifactName: string, options?: FindOptions): Promise<GetArtifactResponse>;
+            downloadArtifact(artifactId: number, options?: DownloadArtifactOptions & FindOptions): Promise<DownloadArtifactResponse>;
+            deleteArtifact(artifactName: string, options?: FindOptions): Promise<DeleteArtifactResponse>;
+          }
+          */
+          uploadArtifact(name: string, files: string[], rootDirectory: string, options?: UploadArtifactOptions): UploadArtifactResponse {
+            const id = data.artifacts.length;
+            data.artifacts.push({
+              id,
+              name: path.basename(name),
+              files,
+              rootDirectory,
+              options,
+            } as never);
             return {
-              uploadArtifact(name: string, file: string, rootDirectory: string, options?: any) {
-                data.artifacts.push({
-                  name: path.basename(name),
-                  file,
-                  rootDirectory,
-                  options,
-                } as never);
-              },
-              downloadArtifact(name: string, tempPath: string) {
-                fs.writeFileSync(`${tempPath}/${name}`, "file");
-                return {
-                  downloadPath: tempPath,
-                  artifactName: name,
-                };
-              },
+              id,
             };
+          },
+          downloadArtifact(artifactId: number, options?: DownloadArtifactOptions & FindOptions): DownloadArtifactResponse {
+            const tempPath = options?.path || "/tmp";
+            const artifact = data.artifacts.find(a => a.id == artifactId);
+            if (artifact) {
+              const name = "my-artifact-name";
+              fs.writeFileSync(`${tempPath}/${name}`, "file");
+              return {
+                downloadPath: `${tempPath}/${name}`,
+              };
+            }
+            throw new Error(`no artifact for id: ${artifactId}`);
+          },
+          listArtifacts() {
+            return {
+              artifacts: data.artifacts.filter(a => !a.runId),
+            };
+          },
+          getArtifact(artifactName: string, options?: FindOptions) {
+            return {
+              artifact: data.artifacts.find(a => a.name == artifactName)
+            }
           },
         };
       },

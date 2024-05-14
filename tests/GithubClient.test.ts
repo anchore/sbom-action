@@ -138,7 +138,7 @@ describe("Github Client", () => {
       "token"
     );
 
-    let artifacts = await client.listWorkflowArtifacts();
+    let artifacts = await client.listCurrentWorkflowArtifacts();
 
     expect(artifacts.length).toBe(0);
 

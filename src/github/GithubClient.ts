@@ -1,8 +1,4 @@
-import {
-  create as createArtifactClient,
-  UploadOptions,
-} from "@actions/artifact";
-import { DownloadHttpClient } from "@actions/artifact/lib/internal/download-http-client";
+import artifactClient, { UploadArtifactOptions } from "@actions/artifact";
 import * as core from "@actions/core";
 import * as github from "@actions/github";
 import { GitHub } from "@actions/github/lib/utils";
@@ -137,34 +133,41 @@ export class GithubClient {
   /**
    * Lists the workflow artifacts for the current workflow
    */
-  async listWorkflowArtifacts(): Promise<Artifact[]> {
+  async listCurrentWorkflowArtifacts(): Promise<Artifact[]> {
     // The REST listWorkflowRunArtifacts endpoint does not seem to work during
-    // the workflow run, presumably the are available afterwards much like the
-    // Github UI only shows artifacts after completion of a run, so we have
+    // the workflow run, presumably they are available afterward, much like the
+    // GitHub UI only shows artifacts after completion of a run, so we have
     // to do a little bit of hackery here. We _could_ download all artifacts
     // using a supported API, but internally it's using this anyway
-    const downloadClient = new DownloadHttpClient();
-    const response = await downloadClient.listArtifacts();
+    const response = await artifactClient.listArtifacts();
 
-    debugLog("listWorkflowArtifacts response:", response);
+    debugLog("listCurrentWorkflowArtifacts response:", response);
 
-    return response.value;
+    return response.artifacts;
   }
 
   /**
    * Downloads a workflow artifact for the current workflow run
    * @param name artifact name
    * @param id specified if using a workflow run artifact
+   * @return full path to the artifact
    */
   async downloadWorkflowArtifact({ name, id }: Artifact): Promise<string> {
     if (id) {
       return this.downloadWorkflowRunArtifact({ artifactId: id });
     }
-    const client = createArtifactClient();
     const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
-    const response = await suppressOutput(async () =>
-      client.downloadArtifact(name, tempPath)
-    );
+    const response = await suppressOutput(async () => {
+      const response = await artifactClient.getArtifact(name);
+      return await artifactClient.downloadArtifact(response.artifact.id, {
+        path: tempPath,
+      });
+    });
+
+    if (!response.downloadPath) {
+      debugLog("downloadArtifact response empty", response);
+      return "";
+    }
 
     debugLog(
       "downloadArtifact response:",
@@ -173,7 +176,7 @@ export class GithubClient {
       core.isDebug() && fs.readdirSync(response.downloadPath)
     );
 
-    return `${response.downloadPath}/${response.artifactName}`;
+    return `${response.downloadPath}`;
   }
 
   /**
@@ -192,7 +195,6 @@ export class GithubClient {
     retention?: number;
   }): Promise<void> {
     const rootDirectory = path.dirname(file);
-    const client = createArtifactClient();
 
     debugLog(
       "uploadArtifact:",
@@ -203,15 +205,13 @@ export class GithubClient {
       core.isDebug() && fs.readdirSync(rootDirectory)
     );
 
-    const options: UploadOptions = {
-      continueOnError: false,
-    };
+    const options: UploadArtifactOptions = {};
     if (retention) {
       options.retentionDays = retention;
     }
 
     const info = await suppressOutput(async () =>
-      client.uploadArtifact(name, [file], rootDirectory, options)
+      artifactClient.uploadArtifact(name, [file], rootDirectory, options)
     );
 
     debugLog("uploadArtifact response:", info);
@@ -246,7 +246,7 @@ export class GithubClient {
 
   /**
    * Lists the workflow run artifacts for a completed workflow
-   * @param runId the workflow run number
+   * @param branch the branch name
    */
   async findLatestWorkflowRunForBranch({
     branch,
