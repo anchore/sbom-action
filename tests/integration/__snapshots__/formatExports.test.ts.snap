@@ -2471,8 +2471,8 @@ exports[`SPDX JSON alpine 1`] = `
    "name": "libvncserver",
    "SPDXID": "redacted",
    "versionInfo": "0.9.9",
-   "supplier": "Person: A. Wilcox <awilfox@adelielinux.org>",
-   "originator": "Person: A. Wilcox <awilfox@adelielinux.org>",
+   "supplier": "Person: A. Wilcox (awilfox@adelielinux.org)",
+   "originator": "Person: A. Wilcox (awilfox@adelielinux.org)",
    "downloadLocation": "http://libvncserver.sourceforge.net/",
    "filesAnalyzed": false,
    "sourceInfo": "acquired package info from APK DB: /lib/apk/db/installed",
@@ -2506,6 +2506,8 @@ exports[`SPDX JSON alpine 1`] = `
      "checksumValue": "shas256:redacted"
     }
    ],
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "PACKAGE-MANAGER",
@@ -2527,6 +2529,9 @@ exports[`SPDX JSON alpine 1`] = `
     }
    ],
    "licenseConcluded": "NOASSERTION",
+   "licenseInfoInFiles": [
+    "NOASSERTION"
+   ],
    "copyrightText": "",
    "comment": "layerID: sha256:redacted"
   }
@@ -2743,8 +2748,7 @@ exports[`SPDX JSON debian 1`] = `
    "name": "apt",
    "SPDXID": "redacted",
    "versionInfo": "1.8.2",
-   "supplier": "Person: APT Development Team <deity@lists.debian.org>",
-   "originator": "Person: APT Development Team <deity@lists.debian.org>",
+   "supplier": "NOASSERTION",
    "downloadLocation": "NOASSERTION",
    "filesAnalyzed": false,
    "sourceInfo": "acquired package info from DPKG DB: /var/lib/dpkg/status",
@@ -3083,8 +3087,8 @@ exports[`SPDX JSON debian 1`] = `
    "name": "npm",
    "SPDXID": "redacted",
    "versionInfo": "6.14.6",
-   "supplier": "Person: Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
-   "originator": "Person: Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
+   "supplier": "Person: Isaac Z. Schlueter (i@izs.me)",
+   "originator": "Person: Isaac Z. Schlueter (i@izs.me)",
    "downloadLocation": "https://github.com/npm/cli",
    "filesAnalyzed": false,
    "homepage": "https://docs.npmjs.com/",
@@ -3119,6 +3123,8 @@ exports[`SPDX JSON debian 1`] = `
      "checksumValue": "shas256:redacted"
     }
    ],
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "externalRefs": [
     {
      "referenceCategory": "PACKAGE-MANAGER",
@@ -3140,6 +3146,9 @@ exports[`SPDX JSON debian 1`] = `
     }
    ],
    "licenseConcluded": "NOASSERTION",
+   "licenseInfoInFiles": [
+    "NOASSERTION"
+   ],
    "copyrightText": "",
    "comment": "layerID: sha256:redacted"
   },
@@ -3153,6 +3162,9 @@ exports[`SPDX JSON debian 1`] = `
     }
    ],
    "licenseConcluded": "NOASSERTION",
+   "licenseInfoInFiles": [
+    "NOASSERTION"
+   ],
    "copyrightText": "",
    "comment": "layerID: sha256:redacted"
   },
@@ -3166,6 +3178,9 @@ exports[`SPDX JSON debian 1`] = `
     }
    ],
    "licenseConcluded": "NOASSERTION",
+   "licenseInfoInFiles": [
+    "NOASSERTION"
+   ],
    "copyrightText": "",
    "comment": "layerID: sha256:redacted"
   },
@@ -3179,6 +3194,9 @@ exports[`SPDX JSON debian 1`] = `
     }
    ],
    "licenseConcluded": "NOASSERTION",
+   "licenseInfoInFiles": [
+    "NOASSERTION"
+   ],
    "copyrightText": "",
    "comment": "layerID: sha256:redacted"
   },
@@ -3192,6 +3210,9 @@ exports[`SPDX JSON debian 1`] = `
     }
    ],
    "licenseConcluded": "NOASSERTION",
+   "licenseInfoInFiles": [
+    "NOASSERTION"
+   ],
    "copyrightText": "",
    "comment": "layerID: sha256:redacted"
   }
@@ -3767,6 +3788,8 @@ exports[`SPDX JSON npm 1`] = `
    "supplier": "NOASSERTION",
    "downloadLocation": "NOASSERTION",
    "filesAnalyzed": false,
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "primaryPackagePurpose": "FILE"
   }
  ],
@@ -3781,6 +3804,9 @@ exports[`SPDX JSON npm 1`] = `
     }
    ],
    "licenseConcluded": "NOASSERTION",
+   "licenseInfoInFiles": [
+    "NOASSERTION"
+   ],
    "copyrightText": ""
   }
  ],
@@ -4253,6 +4279,8 @@ exports[`SPDX JSON yarn 1`] = `
    "supplier": "NOASSERTION",
    "downloadLocation": "NOASSERTION",
    "filesAnalyzed": false,
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "NOASSERTION",
    "primaryPackagePurpose": "FILE"
   }
  ],
@@ -4267,6 +4295,9 @@ exports[`SPDX JSON yarn 1`] = `
     }
    ],
    "licenseConcluded": "NOASSERTION",
+   "licenseInfoInFiles": [
+    "NOASSERTION"
+   ],
    "copyrightText": ""
   }
  ],
@@ -4375,6 +4406,7 @@ FileName: /lib/apk/db/installed
 
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
+LicenseInfoInFile: NOASSERTION
 FileComment: layerID: sha256:redacted
 
 ##### Package: localhost:5000/match-coverage/alpine
@@ -4387,6 +4419,8 @@ PackageDownloadLocation: NOASSERTION
 PrimaryPackagePurpose: CONTAINER
 FilesAnalyzed: false
 PackageChecksum: SHA256: shas256:redacted
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 ExternalRef: PACKAGE-MANAGER purl pkg:oci/localhost:5000/match-coverage/alpine@sha256:redacted?arch=amd64&tag=latest
 
 ##### Package: libvncserver
@@ -4394,8 +4428,8 @@ ExternalRef: PACKAGE-MANAGER purl pkg:oci/localhost:5000/match-coverage/alpine@s
 PackageName: libvncserver
 
 PackageVersion: 0.9.9
-PackageSupplier: Person: A. Wilcox <awilfox@adelielinux.org>
-PackageOriginator: Person: A. Wilcox <awilfox@adelielinux.org>
+PackageSupplier: Person: A. Wilcox (awilfox@adelielinux.org)
+PackageOriginator: Person: A. Wilcox (awilfox@adelielinux.org)
 PackageDownloadLocation: http://libvncserver.sourceforge.net/
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from APK DB: /lib/apk/db/installed
@@ -4432,30 +4466,35 @@ FileName: /java/example-java-app-maven-0.1.0.jar
 
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
+LicenseInfoInFile: NOASSERTION
 FileComment: layerID: sha256:redacted
 
 FileName: /javascript/pkg-json/package.json
 
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
+LicenseInfoInFile: NOASSERTION
 FileComment: layerID: sha256:redacted
 
 FileName: /python/dist-info/METADATA
 
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
+LicenseInfoInFile: NOASSERTION
 FileComment: layerID: sha256:redacted
 
 FileName: /ruby/specifications/bundler.gemspec
 
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
+LicenseInfoInFile: NOASSERTION
 FileComment: layerID: sha256:redacted
 
 FileName: /var/lib/dpkg/status
 
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
+LicenseInfoInFile: NOASSERTION
 FileComment: layerID: sha256:redacted
 
 ##### Package: localhost:5000/match-coverage/debian
@@ -4468,6 +4507,8 @@ PackageDownloadLocation: NOASSERTION
 PrimaryPackagePurpose: CONTAINER
 FilesAnalyzed: false
 PackageChecksum: SHA256: shas256:redacted
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 ExternalRef: PACKAGE-MANAGER purl pkg:oci/localhost:5000/match-coverage/debian@sha256:redacted?arch=amd64&tag=latest
 
 ##### Package: apt
@@ -4475,8 +4516,7 @@ ExternalRef: PACKAGE-MANAGER purl pkg:oci/localhost:5000/match-coverage/debian@s
 PackageName: apt
 
 PackageVersion: 1.8.2
-PackageSupplier: Person: APT Development Team <deity@lists.debian.org>
-PackageOriginator: Person: APT Development Team <deity@lists.debian.org>
+PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
 PackageSourceInfo: acquired package info from DPKG DB: /var/lib/dpkg/status
@@ -4586,8 +4626,8 @@ ExternalRef: PACKAGE-MANAGER purl pkg:maven/joda-time/joda-time@2.9.2
 PackageName: npm
 
 PackageVersion: 6.14.6
-PackageSupplier: Person: Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)
-PackageOriginator: Person: Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)
+PackageSupplier: Person: Isaac Z. Schlueter (i@izs.me)
+PackageOriginator: Person: Isaac Z. Schlueter (i@izs.me)
 PackageDownloadLocation: https://github.com/npm/cli
 FilesAnalyzed: false
 PackageHomePage: https://docs.npmjs.com/
@@ -4693,6 +4733,7 @@ FileName: /package-lock.json
 
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
+LicenseInfoInFile: NOASSERTION
 
 ##### Package: tests/fixtures/npm-project
 
@@ -4702,6 +4743,8 @@ PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
 PrimaryPackagePurpose: FILE
 FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 
 ##### Package: chownr
 
@@ -4990,6 +5033,7 @@ FileName: /yarn.lock
 
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
+LicenseInfoInFile: NOASSERTION
 
 ##### Package: tests/fixtures/yarn-project
 
@@ -4999,6 +5043,8 @@ PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
 PrimaryPackagePurpose: FILE
 FilesAnalyzed: false
+PackageLicenseConcluded: NOASSERTION
+PackageLicenseDeclared: NOASSERTION
 
 ##### Package: js-tokens
 
