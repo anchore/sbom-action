@@ -116,6 +116,27 @@ use the `artifact-name` parameter:
     artifact-name: sbom.spdx
 ```
 
+> [!IMPORTANT]  
+> If using this action within a **matrix build**, you must specify a unique `artifact-name`
+> based on matrix parameters or the artifact upload will fail due to duplicate names. See
+> an [example here](.github/workflows/test.yml#L36).
+
+## Permissions
+
+This action needs the following permissions, depending on how it is being used:
+
+```
+contents: write # for sbom-action artifact uploads
+```
+
+If attaching release assets, the `actions: read` permission is also required.
+This may be implicit for public repositories, but is likely to be necessary for
+private repositories.
+
+```
+actions: read # to find workflow artifacts when attaching release assets
+```
+
 ## Configuration
 
 ### anchore/sbom-action
