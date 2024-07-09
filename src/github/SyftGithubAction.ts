@@ -207,7 +207,7 @@ async function downloadSyftWindowsWorkaround(version: string): Promise<string> {
   core.info(`Downloading syft from ${url}`);
   const zipPath = await cache.downloadTool(url);
   const toolDir = await cache.extractZip(zipPath);
-  return path.join(toolDir, `${SYFT_BINARY_NAME}.${exeSuffix}`);
+  return path.join(toolDir, `${SYFT_BINARY_NAME}${exeSuffix}`);
 }
 
 /**
