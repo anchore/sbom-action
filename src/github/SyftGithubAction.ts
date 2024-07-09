@@ -197,12 +197,27 @@ async function executeSyft({
   }
 }
 
+function isWindows(): boolean {
+  return process.platform == "win32";
+}
+
+async function downloadSyftWindowsWorkaround(version: string): Promise<string> {
+  const url = `https://github.com/anchore/syft/releases/download/v${version}/syft_${version}_windows_amd64.zip`;
+  core.info(`Downloading syft from ${url}`);
+  const zipPath = await cache.downloadTool(url);
+  const toolDir = await cache.extractZip(zipPath);
+  return path.join(toolDir, `${SYFT_BINARY_NAME}.${exeSuffix}`);
+}
+
 /**
  * Downloads the appropriate Syft binary for the platform
  */
 export async function downloadSyft(): Promise<string> {
   const name = SYFT_BINARY_NAME;
   const version = SYFT_VERSION;
+  if (isWindows()) {
+    return downloadSyftWindowsWorkaround(version);
+  }
 
   const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
 
@@ -211,7 +226,6 @@ export async function downloadSyft(): Promise<string> {
   // Download the installer, and run
   const installPath = await cache.downloadTool(url);
 
-  // Make sure the tool's executable bit is set
   const syftBinaryPath = `${installPath}_${name}`;
 
   await execute("sh", [installPath, "-d", "-b", syftBinaryPath, version]);
