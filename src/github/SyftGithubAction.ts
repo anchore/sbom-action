@@ -202,7 +202,8 @@ function isWindows(): boolean {
 }
 
 async function downloadSyftWindowsWorkaround(version: string): Promise<string> {
-  const url = `https://github.com/anchore/syft/releases/download/v${version}/syft_${version}_windows_amd64.zip`;
+  const versionNoV = version.replace(/^v/, "");
+  const url = `https://github.com/anchore/syft/releases/download/${version}/syft_${versionNoV}_windows_amd64.zip`;
   core.info(`Downloading syft from ${url}`);
   const zipPath = await cache.downloadTool(url);
   const toolDir = await cache.extractZip(zipPath);
