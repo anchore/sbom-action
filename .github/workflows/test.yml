@@ -12,6 +12,15 @@ on: # rebuild any PRs and main branch changes
 
       # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      run-tmate:
+        description: "Start a tmate session"
+        required: false
+        default: ""
+      tmate-duration:
+        description: "Tmate session duration"
+        required: false
+        default: 5
 
 jobs:
   build: # make sure build/ci work properly and there is no faked build ncc built scripts
@@ -34,6 +43,13 @@ jobs:
         with:
           path: ./
           artifact-name: ${{ matrix.os }}-1.spdx
+
+      - name: Setup tmate session
+        if: ${{ github.event.inputs.run-tmate == 'true' }}
+        uses: mxschmitt/action-tmate@v3
+        timeout-minutes: ${{ fromJSON(github.event.inputs.tmate-duration) }}
+        with:
+          limit-access-to-actor: true
 
       - uses: ./
         with:
