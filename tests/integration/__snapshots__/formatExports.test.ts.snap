@@ -2,9 +2,9 @@
 
 exports[`CycloneDX JSON alpine 1`] = `
 "{
-  "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
-  "specVersion": "1.5",
+  "specVersion": "1.6",
   "serialNumber": "redacted",
   "version": 1,
   "metadata": {
@@ -167,9 +167,9 @@ exports[`CycloneDX JSON alpine 1`] = `
 
 exports[`CycloneDX JSON debian 1`] = `
 "{
-  "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
-  "specVersion": "1.5",
+  "specVersion": "1.6",
   "serialNumber": "redacted",
   "version": 1,
   "metadata": {
@@ -855,9 +855,9 @@ exports[`CycloneDX JSON debian 1`] = `
 
 exports[`CycloneDX JSON npm 1`] = `
 "{
-  "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
-  "specVersion": "1.5",
+  "specVersion": "1.6",
   "serialNumber": "redacted",
   "version": 1,
   "metadata": {
@@ -1396,9 +1396,9 @@ exports[`CycloneDX JSON npm 1`] = `
 
 exports[`CycloneDX JSON yarn 1`] = `
 "{
-  "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
-  "specVersion": "1.5",
+  "specVersion": "1.6",
   "serialNumber": "redacted",
   "version": 1,
   "metadata": {
@@ -1737,7 +1737,7 @@ exports[`CycloneDX JSON yarn 1`] = `
 
 exports[`CycloneDX XML alpine 1`] = `
 "<?xml version="1.0" encoding="UTF-8"?>
-<bom xmlns="http://cyclonedx.org/schema/bom/1.5" " version="1">
+<bom xmlns="http://cyclonedx.org/schema/bom/1.6" " version="1">
   <metadata>
     
     <tools>
@@ -1819,7 +1819,7 @@ exports[`CycloneDX XML alpine 1`] = `
 
 exports[`CycloneDX XML debian 1`] = `
 "<?xml version="1.0" encoding="UTF-8"?>
-<bom xmlns="http://cyclonedx.org/schema/bom/1.5" " version="1">
+<bom xmlns="http://cyclonedx.org/schema/bom/1.6" " version="1">
   <metadata>
     
     <tools>
@@ -2090,7 +2090,7 @@ exports[`CycloneDX XML debian 1`] = `
 
 exports[`CycloneDX XML npm 1`] = `
 "<?xml version="1.0" encoding="UTF-8"?>
-<bom xmlns="http://cyclonedx.org/schema/bom/1.5" " version="1">
+<bom xmlns="http://cyclonedx.org/schema/bom/1.6" " version="1">
   <metadata>
     
     <tools>
@@ -2313,7 +2313,7 @@ exports[`CycloneDX XML npm 1`] = `
 
 exports[`CycloneDX XML yarn 1`] = `
 "<?xml version="1.0" encoding="UTF-8"?>
-<bom xmlns="http://cyclonedx.org/schema/bom/1.5" " version="1">
+<bom xmlns="http://cyclonedx.org/schema/bom/1.6" " version="1">
   <metadata>
     
     <tools>
