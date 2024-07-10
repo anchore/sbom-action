@@ -14,7 +14,7 @@
     "package:download-action": "ncc build src/attachReleaseAssets.ts -o dist/attachReleaseAssets",
     "package:release-action": "ncc build src/downloadSyft.ts -o dist/downloadSyft",
     "post-package:fix-line-endings": "eolConverter 'dist/**/*.js'",
-    "test": "jest --collect-coverage",
+    "test": "jest --collect-coverage --runInBand",
     "test:update-snapshots": "jest --updateSnapshot",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
     "prepare": "husky install",
