@@ -1,0 +1,84 @@
+---
+name: Bug report
+description: Create a bug report
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Search to see if an issue already exists for the bug you encountered.
+      options:
+        - label: I have searched the existing issues
+          required: true
+  - type: checkboxes
+    attributes:
+      label: Are you using the latest sbom-action version available?
+      description: |
+        Ensure that you're using the latest sbom-action version.
+        https://github.com/anchore/sbom-action/releases/latest
+      options:
+        - label: I am using the latest sbom-action version.
+          required: true
+        - label: |
+            I can reproduce the issue running sbom-action using complete version identifier (example: vX.Y.Z), and not just with a partial one (example: vX)
+          required: true
+        - label: |
+            I am using the anchore/sbom-action action.
+          required: true
+  - type: checkboxes
+    attributes:
+      label: Are you resonably sure that it's a sbom-action issue, and not an issue related to a tool that sbom-action runs?
+      description: |
+        If you encounter a specific issue, ensure that the issue is about
+        sbom-action, and not about a tool that sbom-action runs. For example,
+        if the action reports an unexpected or a surprising error, you may check
+        if there are similar issues reported in that components's issue tracker.
+      options:
+        - label: I think that this is a sbom-action issue.
+          required: true
+  - type: textarea
+    attributes:
+      label: Current Behavior
+      description: A concise description of what you're experiencing.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: A concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: sbom-action version
+      description: |
+        sbom-action version where you observed this issue
+      placeholder: |
+          vX.Y.Z
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: |
+        Copy and paste any relevant log output.
+        This will be automatically formatted into code, so no need for backticks.
+        Enable debug logging, either on GitHub Actions, or when running locally.
+        Not attaching debug logging will delay the issue triaging process.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Anything else?
+      description: |
+        Links? References? Anything that will give us more context about the issue you are encountering!
+    validations:
+      required: false
