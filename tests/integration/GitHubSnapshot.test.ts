@@ -75,4 +75,44 @@ describe("GitHub Snapshot", () => {
 
     expect(submission).toMatchSnapshot();
   });
+
+  it("runs with artifact-name input", async () => {
+    setData({
+      inputs: {
+        path: "tests/fixtures/npm-project",
+        "dependency-snapshot": "true",
+        "upload-artifact": "false",
+        "artifact-name": "my-matrix-build-1",
+      },
+      context: {
+        ...context.push({
+          ref: "main",
+        }),
+        sha: "f293f09uaw90gwa09f9wea",
+        workflow: "my-workflow",
+        job: "default-import-job",
+        action: "__anchore_sbom-action",
+      },
+    });
+
+    await action.runSyftAction();
+    await action.uploadDependencySnapshot();
+
+    // validate the request was made
+    expect(requestArgs).toBeDefined();
+    expect(requestArgs).toHaveLength(2);
+    expect(requestArgs[0]).toBe("POST /repos/test-org/test-repo/dependency-graph/snapshots");
+
+    // check the resulting snapshot file
+    const data = requestArgs[1].data;
+    const submission = JSON.parse(data);
+
+    expect(submission.scanned).toBeDefined();
+
+    // redact changing data
+    submission.scanned = "";
+    submission.detector.version = "";
+
+    expect(submission).toMatchSnapshot();
+  });
 });
