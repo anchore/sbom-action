@@ -1,11 +1,10 @@
 # GitHub Action for SBOM Generation
 
+**A GitHub Action for creating a software bill of materials (SBOM) using [Syft](https://github.com/anchore/syft).**
+
 [![GitHub release](https://img.shields.io/github/release/anchore/sbom-action.svg)](https://github.com/anchore/sbom-action/releases/latest)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/anchore/sbom-action/blob/main/LICENSE)
-[![Slack Invite](https://img.shields.io/badge/Slack-Join-blue?logo=slack)](https://anchore.com/slack)
-
-A GitHub Action for creating a software bill of materials (SBOM)
-using [Syft](https://github.com/anchore/syft).
+[![Join our Discourse](https://img.shields.io/badge/Discourse-Join-blue?logo=discourse)](https://anchore.com/discourse)
 
 ## Basic Usage
 
