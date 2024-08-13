@@ -113,6 +113,9 @@ describe("GitHub Snapshot", () => {
     submission.scanned = "";
     submission.detector.version = "";
 
+    expect(submission.job).toBeDefined()
+    expect(submission.job.correlator).toContain("my-matrix-build-1")
+
     expect(submission).toMatchSnapshot();
   });
 });
