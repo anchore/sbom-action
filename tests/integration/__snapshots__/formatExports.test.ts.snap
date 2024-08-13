@@ -195,172 +195,6 @@ exports[`CycloneDX JSON debian 1`] = `
     {
       "bom-ref": "redacted",
       "type": "library",
-      "author": "Georg Brandl <georg@python.org>",
-      "name": "Pygments",
-      "version": "redacted",
-      "licenses": [
-        {
-          "license": {
-            "name": "BSD License"
-          }
-        }
-      ],
-      "cpe": "cpe:2.3:a:georg_brandl_project:python-Pygments:2.6.1:*:*:*:*:*:*:*",
-      "purl": "pkg:pypi/Pygments@2.6.1",
-      "properties": [
-        {
-          "name": "syft:package:foundBy",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:package:language",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:package:type",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:package:metadataType",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:cpe23",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:location:0:layerID",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:location:0:path",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:location:1:layerID",
-          "value": "redacted"
-        },
-        {
-          "name": "syft:location:1:path",
-          "value": "redacted"
-        }
-      ]
-    },
-    {
-      "bom-ref": "redacted",
-      "type": "library",
       "publisher": "APT Development Team <deity@lists.debian.org>",
       "name": "apt",
       "version": "redacted",
@@ -658,6 +492,14 @@ exports[`CycloneDX JSON debian 1`] = `
           "value": "redacted"
         },
         {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
           "name": "syft:location:0:layerID",
           "value": "redacted"
         },
@@ -803,6 +645,172 @@ exports[`CycloneDX JSON debian 1`] = `
         },
         {
           "name": "syft:location:0:path",
+          "value": "redacted"
+        }
+      ]
+    },
+    {
+      "bom-ref": "redacted",
+      "type": "library",
+      "author": "Georg Brandl <georg@python.org>",
+      "name": "pygments",
+      "version": "redacted",
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD License"
+          }
+        }
+      ],
+      "cpe": "cpe:2.3:a:georg_brandl_project:python-pygments:2.6.1:*:*:*:*:*:*:*",
+      "purl": "pkg:pypi/pygments@2.6.1",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:location:0:layerID",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:location:1:layerID",
+          "value": "redacted"
+        },
+        {
+          "name": "syft:location:1:path",
           "value": "redacted"
         }
       ]
@@ -1838,57 +1846,6 @@ exports[`CycloneDX XML debian 1`] = `
   </metadata>
   <components>
     <component  type="library">
-      <author>Georg Brandl &lt;georg@python.org&gt;</author>
-      <name>Pygments</name>
-      
-      <licenses>
-        <license>
-          <name>BSD License</name>
-        </license>
-      </licenses>
-      <cpe>cpe:2.3:a:georg_brandl_project:python-Pygments:2.6.1:*:*:*:*:*:*:*</cpe>
-      <purl>pkg:pypi/Pygments@2.6.1</purl>
-      <properties>
-        <property name="syft:package:foundBy">python-installed-package-cataloger</property>
-        <property name="syft:package:language">python</property>
-        <property name="syft:package:type">python</property>
-        <property name="syft:package:metadataType">python-package</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg_brandl_project:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg_brandlproject:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg_brandlproject:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:python-Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:python_Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:python_Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg_brandl_project:Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg_project:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg_project:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg_brandl:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg_brandl:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg_brandlproject:Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georgproject:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georgproject:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:python-Pygments:Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:python_Pygments:Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg_project:Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:python:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:python:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg:python-Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg:python_Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georgproject:Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        <property name="syft:cpe23">cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*</property>
-        
-        
-        
-        
-      </properties>
-    </component>
-    <component  type="library">
       <publisher>APT Development Team &lt;deity@lists.debian.org&gt;</publisher>
       <name>apt</name>
       
@@ -1991,6 +1948,8 @@ exports[`CycloneDX XML debian 1`] = `
         <property name="syft:cpe23">cpe:2.3:a:example-java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:example_java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:org.anchore:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:org.anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:anchore:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*</property>
         <property name="syft:cpe23">cpe:2.3:a:example:example-java-app-maven:0.1.0:*:*:*:*:*:*:*</property>
@@ -2056,6 +2015,57 @@ exports[`CycloneDX XML debian 1`] = `
         <property name="syft:package:language">javascript</property>
         <property name="syft:package:type">npm</property>
         <property name="syft:package:metadataType">javascript-npm-package</property>
+        
+        
+      </properties>
+    </component>
+    <component  type="library">
+      <author>Georg Brandl &lt;georg@python.org&gt;</author>
+      <name>pygments</name>
+      
+      <licenses>
+        <license>
+          <name>BSD License</name>
+        </license>
+      </licenses>
+      <cpe>cpe:2.3:a:georg_brandl_project:python-pygments:2.6.1:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:pypi/pygments@2.6.1</purl>
+      <properties>
+        <property name="syft:package:foundBy">python-installed-package-cataloger</property>
+        <property name="syft:package:language">python</property>
+        <property name="syft:package:type">python</property>
+        <property name="syft:package:metadataType">python-package</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandl_project:python_pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandlproject:python-pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandlproject:python_pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:python-pygments:python-pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:python-pygments:python_pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:python_pygments:python-pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:python_pygments:python_pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandl_project:pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_project:python-pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_project:python_pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandl:python-pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandl:python_pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandlproject:pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georgproject:python-pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georgproject:python_pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:pygments:python-pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:pygments:python_pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:python-pygments:pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:python_pygments:pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_project:pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:python:python-pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:python:python_pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg:python-pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg:python_pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg_brandl:pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georgproject:pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:pygments:pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:python:pygments:2.6.1:*:*:*:*:*:*:*</property>
+        <property name="syft:cpe23">cpe:2.3:a:georg:pygments:2.6.1:*:*:*:*:*:*:*</property>
+        
+        
         
         
       </properties>
@@ -2575,176 +2585,6 @@ exports[`SPDX JSON debian 1`] = `
  },
  "packages": [
   {
-   "name": "Pygments",
-   "SPDXID": "redacted",
-   "versionInfo": "2.6.1",
-   "supplier": "Person: Georg Brandl (georg@python.org)",
-   "originator": "Person: Georg Brandl (georg@python.org)",
-   "downloadLocation": "NOASSERTION",
-   "filesAnalyzed": false,
-   "sourceInfo": "acquired package info from installed python package manifest file: /python/dist-info/METADATA, /python/dist-info/top_level.txt",
-   "licenseConcluded": "NOASSERTION",
-   "licenseDeclared": "LicenseRef-BSD-License",
-   "copyrightText": "NOASSERTION",
-   "externalRefs": [
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg_brandl_project:python-Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg_brandl_project:python_Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg_brandlproject:python-Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg_brandlproject:python_Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:python-Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:python_Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:python_Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg_brandl_project:Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg_project:python-Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg_project:python_Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg_brandl:python-Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg_brandl:python_Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg_brandlproject:Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georgproject:python-Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georgproject:python_Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:python-Pygments:Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:python_Pygments:Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg_project:Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:python:python-Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:python:python_Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg:python-Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg:python_Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georgproject:Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "SECURITY",
-     "referenceType": "cpe23Type",
-     "referenceLocator": "cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*"
-    },
-    {
-     "referenceCategory": "PACKAGE-MANAGER",
-     "referenceType": "purl",
-     "referenceLocator": "pkg:pypi/Pygments@2.6.1"
-    }
-   ]
-  },
-  {
    "name": "apt",
    "SPDXID": "redacted",
    "versionInfo": "1.8.2",
@@ -3010,6 +2850,16 @@ exports[`SPDX JSON debian 1`] = `
     {
      "referenceCategory": "SECURITY",
      "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:org.anchore:example-java-app-maven:0.1.0:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:org.anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
      "referenceLocator": "cpe:2.3:a:anchore:example-java-app-maven:0.1.0:*:*:*:*:*:*:*"
     },
     {
@@ -3107,6 +2957,176 @@ exports[`SPDX JSON debian 1`] = `
      "referenceCategory": "PACKAGE-MANAGER",
      "referenceType": "purl",
      "referenceLocator": "pkg:npm/npm@6.14.6"
+    }
+   ]
+  },
+  {
+   "name": "pygments",
+   "SPDXID": "redacted",
+   "versionInfo": "2.6.1",
+   "supplier": "Person: Georg Brandl (georg@python.org)",
+   "originator": "Person: Georg Brandl (georg@python.org)",
+   "downloadLocation": "NOASSERTION",
+   "filesAnalyzed": false,
+   "sourceInfo": "acquired package info from installed python package manifest file: /python/dist-info/METADATA, /python/dist-info/top_level.txt",
+   "licenseConcluded": "NOASSERTION",
+   "licenseDeclared": "LicenseRef-BSD-License",
+   "copyrightText": "NOASSERTION",
+   "externalRefs": [
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandl_project:python-pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandl_project:python_pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandlproject:python-pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandlproject:python_pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python-pygments:python-pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python-pygments:python_pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python_pygments:python-pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python_pygments:python_pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandl_project:pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_project:python-pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_project:python_pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandl:python-pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandl:python_pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandlproject:pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georgproject:python-pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georgproject:python_pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:pygments:python-pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:pygments:python_pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python-pygments:pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python_pygments:pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_project:pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python:python-pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python:python_pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg:python-pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg:python_pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg_brandl:pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georgproject:pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:pygments:pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:python:pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "SECURITY",
+     "referenceType": "cpe23Type",
+     "referenceLocator": "cpe:2.3:a:georg:pygments:2.6.1:*:*:*:*:*:*:*"
+    },
+    {
+     "referenceCategory": "PACKAGE-MANAGER",
+     "referenceType": "purl",
+     "referenceLocator": "pkg:pypi/pygments@2.6.1"
     }
    ]
   },
@@ -4595,6 +4615,8 @@ ExternalRef: SECURITY cpe23Type cpe:2.3:a:example-java:example-java-app-maven:0.
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:example-java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:example_java:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:org.anchore:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:org.anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:anchore:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:anchore:example_java_app_maven:0.1.0:*:*:*:*:*:*:*
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:example:example-java-app-maven:0.1.0:*:*:*:*:*:*:*
@@ -4639,9 +4661,9 @@ PackageDescription: a package manager for JavaScript
 ExternalRef: SECURITY cpe23Type cpe:2.3:a:node_packaged_modules_project:node_packaged_modules:6.14.6:*:*:*:*:node.js:*:*
 ExternalRef: PACKAGE-MANAGER purl pkg:npm/npm@6.14.6
 
-##### Package: Pygments
+##### Package: pygments
 
-PackageName: Pygments
+PackageName: pygments
 
 PackageVersion: 2.6.1
 PackageSupplier: Person: Georg Brandl (georg@python.org)
@@ -4652,37 +4674,37 @@ PackageSourceInfo: acquired package info from installed python package manifest 
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: LicenseRef-BSD-License
 PackageCopyrightText: NOASSERTION
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl_project:python-Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl_project:python_Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandlproject:python-Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandlproject:python_Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:python-Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:python-Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:python_Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:python_Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl_project:Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_project:python-Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_project:python_Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:python-Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:python_Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandlproject:Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georgproject:python-Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georgproject:python_Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:python-Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:python_Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:python-Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:python_Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_project:Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:python-Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:python_Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:python-Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:python_Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georgproject:Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:Pygments:Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:Pygments:2.6.1:*:*:*:*:*:*:*
-ExternalRef: PACKAGE-MANAGER purl pkg:pypi/Pygments@2.6.1
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl_project:python-pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl_project:python_pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandlproject:python-pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandlproject:python_pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python-pygments:python-pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python-pygments:python_pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python_pygments:python-pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python_pygments:python_pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl_project:pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_project:python-pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_project:python_pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:python-pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:python_pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandlproject:pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georgproject:python-pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georgproject:python_pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:pygments:python-pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:pygments:python_pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python-pygments:pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python_pygments:pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_project:pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:python-pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:python_pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:python-pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:python_pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg_brandl:pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georgproject:pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:pygments:pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:python:pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: SECURITY cpe23Type cpe:2.3:a:georg:pygments:2.6.1:*:*:*:*:*:*:*
+ExternalRef: PACKAGE-MANAGER purl pkg:pypi/pygments@2.6.1
 
 ##### Other Licenses
 
@@ -4698,20 +4720,20 @@ Relationship: SPDXRef-Package-deb-apt-hash:redacted OTHER SPDXRef-File-var-lib-d
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-java-archive-joda-time-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-java-archive-example-java-app-maven-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
+Relationship: SPDXRef-Package-python-pygments-hash:redacted OTHER SPDXRef-File-python-dist-info-METADATA-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-Package-python-Pygments-hash:redacted OTHER SPDXRef-File-python-dist-info-METADATA-hash:redacted
+Relationship: SPDXRef-Package-java-archive-example-java-app-maven-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-gem-bundler-hash:redacted OTHER SPDXRef-File-ruby-specifications-bundler.gemspec-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-npm-npm-hash:redacted OTHER SPDXRef-File-javascript-pkg-json-package.json-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-DocumentRoot-Image-localhost-5000-match-coverage-debian CONTAINS SPDXRef-Package-python-Pygments-hash:redacted
 Relationship: SPDXRef-DocumentRoot-Image-localhost-5000-match-coverage-debian CONTAINS SPDXRef-Package-deb-apt-hash:redacted
 Relationship: SPDXRef-DocumentRoot-Image-localhost-5000-match-coverage-debian CONTAINS SPDXRef-Package-gem-bundler-hash:redacted
 Relationship: SPDXRef-DocumentRoot-Image-localhost-5000-match-coverage-debian CONTAINS SPDXRef-Package-java-archive-example-java-app-maven-hash:redacted
 Relationship: SPDXRef-DocumentRoot-Image-localhost-5000-match-coverage-debian CONTAINS SPDXRef-Package-java-archive-joda-time-hash:redacted
 Relationship: SPDXRef-DocumentRoot-Image-localhost-5000-match-coverage-debian CONTAINS SPDXRef-Package-npm-npm-hash:redacted
+Relationship: SPDXRef-DocumentRoot-Image-localhost-5000-match-coverage-debian CONTAINS SPDXRef-Package-python-pygments-hash:redacted
 Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DocumentRoot-Image-localhost-5000-match-coverage-debian
 "
 `;
