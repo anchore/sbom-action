@@ -17,6 +17,17 @@ and upload a workflow artifact SBOM in SPDX format. It will also detect
 if being run during a [GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
 and upload the SBOM as a release asset.
 
+> [!IMPORTANT]
+> To upload the SBOM to releases, you will need to give the action permission to read the artifact from the action, and write it to the release:
+> ```yaml
+> jobs:
+>  build:
+>    permissions:
+>      actions: read
+>      contents: write
+>    steps:
+> ```
+
 ## Example Usage
 
 ### Scan a container image
