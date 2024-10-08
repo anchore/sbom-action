@@ -92,14 +92,16 @@ const testSource = async (source: string, format = "spdx"): Promise<string> => {
         .replace(/sha256:[a-zA-Z0-9]+/g, "sha256:redacted")
         .replace(/[a-zA-Z0-9]{64}/g, "shas256:redacted")
         .replace(/-[a-zA-Z0-9]{16}/g, "-hash:redacted")
-        .replace(/DocumentNamespace:[^\n]+/g, "");
+        .replace(/DocumentNamespace:[^\n]+/g, "")
+        .replace(/SHA1: [a-fA-F0-9]{40}/g, "SHA1: redacted");
     case "spdx-json":
       return sbom
         .replace(/"(created|SPDXID|licenseListVersion|documentNamespace|spdxElementId|relatedSpdxElement)":\s*"[^"]+"/g, `"$1": "redacted"`)
         .replace(/sha256:[a-zA-Z0-9]+/g, "sha256:redacted")
         .replace(/-[a-zA-Z0-9]{16}/g, "-hash:redacted")
         .replace(/[a-zA-Z0-9]{64}/g, "shas256:redacted")
-        .replace(/"Tool:[^"]+"/g, "");
+        .replace(/"Tool:[^"]+"/g, "")
+        .replace(/"checksumValue": "[a-fA-F0-9]{40}"/g, '"checksumValue": "redacted"');
     case "cyclonedx":
     case "cyclonedx-xml":
       return sbom
