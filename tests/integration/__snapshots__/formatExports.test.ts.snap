@@ -2532,10 +2532,17 @@ exports[`SPDX JSON alpine 1`] = `
   {
    "fileName": "/lib/apk/db/installed",
    "SPDXID": "redacted",
+   "fileTypes": [
+    "TEXT"
+   ],
    "checksums": [
     {
      "algorithm": "SHA1",
-     "checksumValue": "0000000000000000000000000000000000000000"
+     "checksumValue": "redacted"
+    },
+    {
+     "algorithm": "SHA256",
+     "checksumValue": "shas256:redacted"
     }
    ],
    "licenseConcluded": "NOASSERTION",
@@ -2779,7 +2786,7 @@ exports[`SPDX JSON debian 1`] = `
    "checksums": [
     {
      "algorithm": "SHA1",
-     "checksumValue": "100b566a7dcdb187bf9f14ecd96427cadd535bfe"
+     "checksumValue": "redacted"
     }
    ],
    "sourceInfo": "acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar",
@@ -3159,10 +3166,17 @@ exports[`SPDX JSON debian 1`] = `
   {
    "fileName": "/java/example-java-app-maven-0.1.0.jar",
    "SPDXID": "redacted",
+   "fileTypes": [
+    "APPLICATION"
+   ],
    "checksums": [
     {
      "algorithm": "SHA1",
-     "checksumValue": "0000000000000000000000000000000000000000"
+     "checksumValue": "redacted"
+    },
+    {
+     "algorithm": "SHA256",
+     "checksumValue": "shas256:redacted"
     }
    ],
    "licenseConcluded": "NOASSERTION",
@@ -3175,10 +3189,17 @@ exports[`SPDX JSON debian 1`] = `
   {
    "fileName": "/javascript/pkg-json/package.json",
    "SPDXID": "redacted",
+   "fileTypes": [
+    "APPLICATION"
+   ],
    "checksums": [
     {
      "algorithm": "SHA1",
-     "checksumValue": "0000000000000000000000000000000000000000"
+     "checksumValue": "redacted"
+    },
+    {
+     "algorithm": "SHA256",
+     "checksumValue": "shas256:redacted"
     }
    ],
    "licenseConcluded": "NOASSERTION",
@@ -3191,10 +3212,40 @@ exports[`SPDX JSON debian 1`] = `
   {
    "fileName": "/python/dist-info/METADATA",
    "SPDXID": "redacted",
+   "fileTypes": [
+    "TEXT"
+   ],
    "checksums": [
     {
      "algorithm": "SHA1",
-     "checksumValue": "0000000000000000000000000000000000000000"
+     "checksumValue": "redacted"
+    },
+    {
+     "algorithm": "SHA256",
+     "checksumValue": "shas256:redacted"
+    }
+   ],
+   "licenseConcluded": "NOASSERTION",
+   "licenseInfoInFiles": [
+    "NOASSERTION"
+   ],
+   "copyrightText": "",
+   "comment": "layerID: sha256:redacted"
+  },
+  {
+   "fileName": "/python/dist-info/top_level.txt",
+   "SPDXID": "redacted",
+   "fileTypes": [
+    "TEXT"
+   ],
+   "checksums": [
+    {
+     "algorithm": "SHA1",
+     "checksumValue": "redacted"
+    },
+    {
+     "algorithm": "SHA256",
+     "checksumValue": "shas256:redacted"
     }
    ],
    "licenseConcluded": "NOASSERTION",
@@ -3207,10 +3258,17 @@ exports[`SPDX JSON debian 1`] = `
   {
    "fileName": "/ruby/specifications/bundler.gemspec",
    "SPDXID": "redacted",
+   "fileTypes": [
+    "TEXT"
+   ],
    "checksums": [
     {
      "algorithm": "SHA1",
-     "checksumValue": "0000000000000000000000000000000000000000"
+     "checksumValue": "redacted"
+    },
+    {
+     "algorithm": "SHA256",
+     "checksumValue": "shas256:redacted"
     }
    ],
    "licenseConcluded": "NOASSERTION",
@@ -3223,10 +3281,17 @@ exports[`SPDX JSON debian 1`] = `
   {
    "fileName": "/var/lib/dpkg/status",
    "SPDXID": "redacted",
+   "fileTypes": [
+    "TEXT"
+   ],
    "checksums": [
     {
      "algorithm": "SHA1",
-     "checksumValue": "0000000000000000000000000000000000000000"
+     "checksumValue": "redacted"
+    },
+    {
+     "algorithm": "SHA256",
+     "checksumValue": "shas256:redacted"
     }
    ],
    "licenseConcluded": "NOASSERTION",
@@ -3248,6 +3313,12 @@ exports[`SPDX JSON debian 1`] = `
   }
  ],
  "relationships": [
+  {
+   "spdxElementId": "redacted",
+   "relatedSpdxElement": "redacted",
+   "relationshipType": "OTHER",
+   "comment": "evident-by: indicates the package's existence is evident by the given file"
+  },
   {
    "spdxElementId": "redacted",
    "relatedSpdxElement": "redacted",
@@ -3817,10 +3888,17 @@ exports[`SPDX JSON npm 1`] = `
   {
    "fileName": "/package-lock.json",
    "SPDXID": "redacted",
+   "fileTypes": [
+    "APPLICATION"
+   ],
    "checksums": [
     {
      "algorithm": "SHA1",
-     "checksumValue": "0000000000000000000000000000000000000000"
+     "checksumValue": "redacted"
+    },
+    {
+     "algorithm": "SHA256",
+     "checksumValue": "shas256:redacted"
     }
    ],
    "licenseConcluded": "NOASSERTION",
@@ -4308,10 +4386,17 @@ exports[`SPDX JSON yarn 1`] = `
   {
    "fileName": "/yarn.lock",
    "SPDXID": "redacted",
+   "fileTypes": [
+    "TEXT"
+   ],
    "checksums": [
     {
      "algorithm": "SHA1",
-     "checksumValue": "0000000000000000000000000000000000000000"
+     "checksumValue": "redacted"
+    },
+    {
+     "algorithm": "SHA256",
+     "checksumValue": "shas256:redacted"
     }
    ],
    "licenseConcluded": "NOASSERTION",
@@ -4424,7 +4509,9 @@ DocumentName: localhost:5000/match-coverage/alpine
 
 FileName: /lib/apk/db/installed
 
-FileChecksum: SHA1: 0000000000000000000000000000000000000000
+FileType: TEXT
+FileChecksum: SHA1: redacted
+FileChecksum: SHA256: shas256:redacted
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileComment: layerID: sha256:redacted
@@ -4484,35 +4571,54 @@ DocumentName: localhost:5000/match-coverage/debian
 
 FileName: /java/example-java-app-maven-0.1.0.jar
 
-FileChecksum: SHA1: 0000000000000000000000000000000000000000
+FileType: APPLICATION
+FileChecksum: SHA1: redacted
+FileChecksum: SHA256: shas256:redacted
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileComment: layerID: sha256:redacted
 
 FileName: /javascript/pkg-json/package.json
 
-FileChecksum: SHA1: 0000000000000000000000000000000000000000
+FileType: APPLICATION
+FileChecksum: SHA1: redacted
+FileChecksum: SHA256: shas256:redacted
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileComment: layerID: sha256:redacted
 
 FileName: /python/dist-info/METADATA
 
-FileChecksum: SHA1: 0000000000000000000000000000000000000000
+FileType: TEXT
+FileChecksum: SHA1: redacted
+FileChecksum: SHA256: shas256:redacted
+LicenseConcluded: NOASSERTION
+LicenseInfoInFile: NOASSERTION
+FileComment: layerID: sha256:redacted
+
+FileName: /python/dist-info/top_level.txt
+
+FileType: TEXT
+FileChecksum: SHA1: redacted
+FileChecksum: SHA256: shas256:redacted
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileComment: layerID: sha256:redacted
 
 FileName: /ruby/specifications/bundler.gemspec
 
-FileChecksum: SHA1: 0000000000000000000000000000000000000000
+FileType: TEXT
+FileChecksum: SHA1: redacted
+FileChecksum: SHA256: shas256:redacted
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileComment: layerID: sha256:redacted
 
 FileName: /var/lib/dpkg/status
 
-FileChecksum: SHA1: 0000000000000000000000000000000000000000
+FileType: TEXT
+FileChecksum: SHA1: redacted
+FileChecksum: SHA256: shas256:redacted
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileComment: layerID: sha256:redacted
@@ -4598,7 +4704,7 @@ PackageVersion: 0.1.0
 PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageChecksum: SHA1: 100b566a7dcdb187bf9f14ecd96427cadd535bfe
+PackageChecksum: SHA1: redacted
 PackageSourceInfo: acquired package info from installed java archive: /java/example-java-app-maven-0.1.0.jar
 PackageLicenseConcluded: Apache-2.0
 PackageLicenseDeclared: NOASSERTION
@@ -4722,6 +4828,8 @@ Relationship: SPDXRef-Package-java-archive-joda-time-hash:redacted OTHER SPDXRef
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-python-pygments-hash:redacted OTHER SPDXRef-File-python-dist-info-METADATA-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
+Relationship: SPDXRef-Package-python-pygments-hash:redacted OTHER SPDXRef-File-python-dist-info-top-level.txt-hash:redacted
+RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-java-archive-example-java-app-maven-hash:redacted OTHER SPDXRef-File-java-example-java-app-maven-0.1.0.jar-hash:redacted
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
 Relationship: SPDXRef-Package-gem-bundler-hash:redacted OTHER SPDXRef-File-ruby-specifications-bundler.gemspec-hash:redacted
@@ -4753,7 +4861,9 @@ DocumentName: tests/fixtures/npm-project
 
 FileName: /package-lock.json
 
-FileChecksum: SHA1: 0000000000000000000000000000000000000000
+FileType: APPLICATION
+FileChecksum: SHA1: redacted
+FileChecksum: SHA256: shas256:redacted
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 
@@ -5053,7 +5163,9 @@ DocumentName: tests/fixtures/yarn-project
 
 FileName: /yarn.lock
 
-FileChecksum: SHA1: 0000000000000000000000000000000000000000
+FileType: TEXT
+FileChecksum: SHA1: redacted
+FileChecksum: SHA256: shas256:redacted
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 
