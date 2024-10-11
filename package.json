@@ -34,8 +34,8 @@
   "author": "Keith Zantow <keith.zantow@anchore.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@actions/artifact": "^2.1.7",
-    "@actions/core": "^1.10.0",
+    "@actions/artifact": "^2.1.11",
+    "@actions/core": "^1.11.1",
     "@actions/exec": "^1.1.1",
     "@actions/github": "^5.1.1",
     "@actions/http-client": "^2.1.0",
@@ -43,7 +43,7 @@
     "@octokit/core": "^4.2.0",
     "@octokit/webhooks": "^11.0.0",
     "fast-safe-stringify": "^2.1.1",
-    "npm-check-updates": "^16.10.9"
+    "npm-check-updates": "^17.1.3"
   },
   "devDependencies": {
     "@octokit/webhooks-types": "^6.11.0",
