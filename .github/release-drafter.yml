@@ -18,6 +18,9 @@ version-resolver:
     labels: [patch]
   default: patch
 
+exclude-labels:
+  - "changelog-ignore"
+
 template: |
   ## Changes in v$RESOLVED_VERSION
 
