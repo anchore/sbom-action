@@ -36,7 +36,7 @@ const exeSuffix = process.platform == "win32" ? ".exe" : "";
  * Tries to get a unique artifact name or otherwise as appropriate as possible
  */
 export function getArtifactName(): string {
-  const fileName = core.getInput("artifact-name");
+  const fileName = getArtifactNameInput();
 
   // if there is an explicit filename just return it, this could cause issues
   // where earlier sboms are overwritten by later ones
@@ -91,6 +91,13 @@ export function getArtifactName(): string {
     stepName = `-${stepName}`;
   }
   return `${repo}-${job}${stepName}.${extension}`;
+}
+
+/**
+ * Returns the artifact-name input value
+ */
+function getArtifactNameInput() {
+  return core.getInput("artifact-name");
 }
 
 /**
@@ -443,10 +450,19 @@ export async function uploadDependencySnapshot(): Promise<void> {
     fs.readFileSync(githubDependencySnapshotFile).toString("utf8")
   ) as DependencySnapshot;
 
+  let correlator = `${workflow}_${job}`;
+  // if running in a matrix build, it is not possible to determine a unique value,
+  // so a user must explicitly specify the artifact-name input, there isn't any
+  // other indicator of being run within a matrix build, so we must use that
+  // here in order to properly correlate dependency snapshots
+  const artifactInput = getArtifactNameInput();
+  if (artifactInput) {
+    correlator += `_${artifactInput}`;
+  }
+
   // Need to add the job and repo details
   snapshot.job = {
-    correlator:
-      core.getInput("dependency-snapshot-correlator") || `${workflow}_${job}`,
+    correlator: core.getInput("dependency-snapshot-correlator") || correlator,
     id: `${runId}`,
   };
   snapshot.sha = sha;

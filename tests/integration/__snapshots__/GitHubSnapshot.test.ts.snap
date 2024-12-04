@@ -1,5 +1,98 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`GitHub Snapshot runs with artifact-name input 1`] = `
+{
+  "detector": {
+    "name": "syft",
+    "url": "https://github.com/anchore/syft",
+    "version": "",
+  },
+  "job": {
+    "correlator": "my-workflow_default-import-job_my-matrix-build-1",
+    "id": "1",
+  },
+  "manifests": {
+    "tests/fixtures/npm-project/package-lock.json": {
+      "file": {
+        "source_location": "tests/fixtures/npm-project/package-lock.json",
+      },
+      "name": "tests/fixtures/npm-project/package-lock.json",
+      "resolved": {
+        "pkg:npm/chownr@2.0.0": {
+          "package_url": "pkg:npm/chownr@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fs-minipass@2.1.0": {
+          "package_url": "pkg:npm/fs-minipass@2.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/js-tokens@4.0.0": {
+          "package_url": "pkg:npm/js-tokens@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/loose-envify@1.4.0": {
+          "package_url": "pkg:npm/loose-envify@1.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/minipass@3.1.3": {
+          "package_url": "pkg:npm/minipass@3.1.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/minizlib@2.1.2": {
+          "package_url": "pkg:npm/minizlib@2.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/mkdirp@1.0.4": {
+          "package_url": "pkg:npm/mkdirp@1.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/object-assign@4.1.1": {
+          "package_url": "pkg:npm/object-assign@4.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/prop-types@15.7.2": {
+          "package_url": "pkg:npm/prop-types@15.7.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/react-is@16.13.1": {
+          "package_url": "pkg:npm/react-is@16.13.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/react@16.14.0": {
+          "package_url": "pkg:npm/react@16.14.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/tar@6.1.0": {
+          "package_url": "pkg:npm/tar@6.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/yallist@4.0.0": {
+          "package_url": "pkg:npm/yallist@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+      },
+    },
+  },
+  "ref": "v0.0.0",
+  "scanned": "",
+  "sha": "f293f09uaw90gwa09f9wea",
+  "version": 0,
+}
+`;
+
 exports[`GitHub Snapshot runs with default inputs 1`] = `
 {
   "detector": {
@@ -9,6 +102,99 @@ exports[`GitHub Snapshot runs with default inputs 1`] = `
   },
   "job": {
     "correlator": "my-workflow_default-import-job",
+    "id": "1",
+  },
+  "manifests": {
+    "tests/fixtures/npm-project/package-lock.json": {
+      "file": {
+        "source_location": "tests/fixtures/npm-project/package-lock.json",
+      },
+      "name": "tests/fixtures/npm-project/package-lock.json",
+      "resolved": {
+        "pkg:npm/chownr@2.0.0": {
+          "package_url": "pkg:npm/chownr@2.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/fs-minipass@2.1.0": {
+          "package_url": "pkg:npm/fs-minipass@2.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/js-tokens@4.0.0": {
+          "package_url": "pkg:npm/js-tokens@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/loose-envify@1.4.0": {
+          "package_url": "pkg:npm/loose-envify@1.4.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/minipass@3.1.3": {
+          "package_url": "pkg:npm/minipass@3.1.3",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/minizlib@2.1.2": {
+          "package_url": "pkg:npm/minizlib@2.1.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/mkdirp@1.0.4": {
+          "package_url": "pkg:npm/mkdirp@1.0.4",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/object-assign@4.1.1": {
+          "package_url": "pkg:npm/object-assign@4.1.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/prop-types@15.7.2": {
+          "package_url": "pkg:npm/prop-types@15.7.2",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/react-is@16.13.1": {
+          "package_url": "pkg:npm/react-is@16.13.1",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/react@16.14.0": {
+          "package_url": "pkg:npm/react@16.14.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/tar@6.1.0": {
+          "package_url": "pkg:npm/tar@6.1.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+        "pkg:npm/yallist@4.0.0": {
+          "package_url": "pkg:npm/yallist@4.0.0",
+          "relationship": "direct",
+          "scope": "runtime",
+        },
+      },
+    },
+  },
+  "ref": "v0.0.0",
+  "scanned": "",
+  "sha": "f293f09uaw90gwa09f9wea",
+  "version": 0,
+}
+`;
+
+exports[`GitHub Snapshot runs with dependency-snapshot-correlator defined 1`] = `
+{
+  "detector": {
+    "name": "syft",
+    "url": "https://github.com/anchore/syft",
+    "version": "",
+  },
+  "job": {
+    "correlator": "some-correlator",
     "id": "1",
   },
   "manifests": {
