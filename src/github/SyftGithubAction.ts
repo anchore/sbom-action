@@ -20,7 +20,7 @@ import {
   getClient,
 } from "./GithubClient";
 import { downloadSyftFromZip } from "./SyftDownloader";
-import { stringify } from "./Util";
+import { stringify, stripEmojis } from "./Util";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = core.getInput("syft-version") || VERSION;
@@ -467,6 +467,8 @@ export async function uploadDependencySnapshot(): Promise<void> {
   };
   snapshot.sha = sha;
   snapshot.ref = ref;
+
+  correlator = stripEmojis(correlator);
 
   core.info(
     `Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`
