@@ -27,6 +27,9 @@ export async function downloadSyftFromZip(url: string): Promise<string> {
       // go build -o syftbin
       await execute("go", ["build", "-o", "syftbin"]);
       return `${repoDir}/syftbin`;
+    } catch {
+      // Catch the error but do nothing with it so the remaining
+      // download code will run instead of the action crashing
     } finally {
       process.chdir(cwd);
     }
