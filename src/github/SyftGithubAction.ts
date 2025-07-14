@@ -20,7 +20,7 @@ import {
   getClient,
 } from "./GithubClient";
 import { downloadSyftFromZip } from "./SyftDownloader";
-import { stringify } from "./Util";
+import { stringify, stripEmojis } from "./Util";
 
 export const SYFT_BINARY_NAME = "syft";
 export const SYFT_VERSION = core.getInput("syft-version") || VERSION;
@@ -462,7 +462,9 @@ export async function uploadDependencySnapshot(): Promise<void> {
 
   // Need to add the job and repo details
   snapshot.job = {
-    correlator: core.getInput("dependency-snapshot-correlator") || correlator,
+    correlator: stripEmojis(
+      core.getInput("dependency-snapshot-correlator") || correlator
+    ),
     id: `${runId}`,
   };
   snapshot.sha = sha;
