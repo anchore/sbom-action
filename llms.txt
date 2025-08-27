@@ -1,0 +1,55 @@
+# SBOM Action
+
+GitHub Action for creating software bill of materials (SBOM) using Syft.
+
+## Project Overview
+
+This is Anchore's official GitHub Action that generates Software Bill of Materials (SBOMs) using the Syft scanner. The action can scan container images, directories, and files to produce SBOMs in various formats including SPDX and CycloneDX.
+
+## Key Features
+
+- Generate SBOMs from container images, directories, or files
+- Support for multiple SBOM formats (SPDX, CycloneDX)
+- Automatic upload to GitHub releases as assets
+- Integration with GitHub's dependency submission API
+- Support for private container registries with authentication
+
+## Architecture
+
+The action is built with TypeScript and consists of several main components:
+
+- `src/runSyftAction.ts` - Main entry point for SBOM generation
+- `src/Syft.ts` - Syft tool wrapper and configuration
+- `src/github/` - GitHub API integration for uploads and releases
+- `src/downloadSyft.ts` - Handles downloading the Syft binary
+- `src/attachReleaseAssets.ts` - Manages release asset uploads
+
+## Usage
+
+Basic usage:
+```yaml
+- uses: anchore/sbom-action@v0
+```
+
+Scan container image:
+```yaml
+- uses: anchore/sbom-action@v0
+  with:
+    image: ghcr.io/example/image_name:tag
+```
+
+## Development
+
+- Built with TypeScript and Node.js (v20.11.0+)
+- Uses GitHub Actions SDK (@actions/core, @actions/github)
+- Testing with Jest
+- Linting with ESLint and formatting with Prettier
+- Automated builds with ncc for distribution
+
+## Repository Structure
+
+- `/src/` - TypeScript source code
+- `/dist/` - Compiled JavaScript for distribution
+- `/tests/` - Test files and fixtures
+- `/download-syft/`, `/publish-sbom/` - Sub-actions
+- `action.yml` - Main action configuration
