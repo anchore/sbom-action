@@ -13,11 +13,16 @@ on: # rebuild any PRs and main branch changes
       # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build: # make sure build/ci work properly and there is no faked build ncc built scripts
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
       - run: npm ci
       - run: npm run package
       - run: git status --porcelain
@@ -34,6 +39,7 @@ jobs:
         with:
           path: ./
           artifact-name: ${{ matrix.os }}-1.spdx
+          persist-credentials: false
 
       - uses: ./
         with:
@@ -65,6 +71,8 @@ jobs:
           - 5000:5000
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
       - name: Build images
         run: |
           for distro in alpine centos debian; do
@@ -80,13 +88,16 @@ jobs:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           path: ./
+          persist-credentials: false
 
       - uses: ./download-syft # anchore/sbom-action/download-syft
         id: syft
 
-      - run: |
-          echo "${{ steps.syft.outputs.cmd }}"
-          "${{ steps.syft.outputs.cmd }}" dir:.
+      - env:
+          SYFT_CMD: ${{ steps.syft.outputs.cmd }}
+        run: |
+          echo "$SYFT_CMD"
+          "$SYFT_CMD" dir:.
 
       - uses: ./ # anchore/sbom-action
         id: dirscan
