@@ -4,9 +4,3 @@ rules:
       policies:
         # anchore/workflows is an internal repository; using @main is acceptable
         anchore/*: any
-  template-injection:
-    ignore:
-      # These are intentional test cases that use outputs from the action being tested
-      - test.yml:96
-      - test.yml:97
-      - test.yml:98

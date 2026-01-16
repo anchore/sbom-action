@@ -93,9 +93,11 @@ jobs:
       - uses: ./download-syft # anchore/sbom-action/download-syft
         id: syft
 
-      - run: |
-          echo "${{ steps.syft.outputs.cmd }}"
-          "${{ steps.syft.outputs.cmd }}" dir:.
+      - env:
+          SYFT_CMD: ${{ steps.syft.outputs.cmd }}
+        run: |
+          echo "$SYFT_CMD"
+          "$SYFT_CMD" dir:.
 
       - uses: ./ # anchore/sbom-action
         id: dirscan
