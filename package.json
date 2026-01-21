@@ -17,7 +17,7 @@
     "test": "jest --collect-coverage --runInBand",
     "test:update-snapshots": "jest --updateSnapshot",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
-    "prepare": "husky install",
+    "prepare": "husky",
     "prettier": "prettier -w src",
     "precommit": "pretty-quick --staged && npm run package && git add dist/",
     "update-deps": "ncu -u && npm i && npm audit fix"
