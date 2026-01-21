@@ -38,7 +38,7 @@
     "@actions/core": "^1.11.1",
     "@actions/exec": "^1.1.1",
     "@actions/github": "^6.0.1",
-    "@actions/http-client": "^2.1.0",
+    "@actions/http-client": "^3.0.1",
     "@actions/tool-cache": "^2.0.1",
     "@octokit/core": "^7.0.6",
     "@octokit/webhooks": "^14.2.0",
