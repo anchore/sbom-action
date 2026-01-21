@@ -13,9 +13,9 @@ change-template: "- $TITLE (#$NUMBER) [@$AUTHOR]"
 
 version-resolver:
   major:
-    labels: [major]
+    labels: []
   minor:
-    labels: [minor]
+    labels: [major, minor]
   patch:
     labels: [patch]
   default: patch
@@ -24,7 +24,12 @@ exclude-labels:
   - "changelog-ignore"
   - "github_actions"
 
+autolabeler:
+  - label: "changelog-ignore"
+    title:
+      - '/chore[(]\s*deps-dev\s*[)]\s*[:].*/i'
+
 template: |
-  ## Changes in v$RESOLVED_VERSION
+  ## v$RESOLVED_VERSION
 
   $CHANGES
