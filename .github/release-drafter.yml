@@ -6,6 +6,8 @@ categories:
     labels: [feature, enhancement]
   - title: "🐛 Bug Fixes"
     labels: [fix, bugfix, bug]
+  - title: "⬆️ Dependencies"
+    labels: [dependencies]
 
 change-template: "- $TITLE (#$NUMBER) [[$AUTHOR](https://github.com/$AUTHOR)]"
 
@@ -20,6 +22,7 @@ version-resolver:
 
 exclude-labels:
   - "changelog-ignore"
+  - "github_actions"
 
 template: |
   ## Changes in v$RESOLVED_VERSION
