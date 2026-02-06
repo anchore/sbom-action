@@ -48,8 +48,8 @@
   "devDependencies": {
     "@octokit/webhooks-types": "^7.6.1",
     "@types/jest": "^30.0.0",
-    "@types/node": "^25.0.10",
-    "@typescript-eslint/eslint-plugin": "^8.53.1",
+    "@types/node": "^25.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.53.1",
     "@vercel/ncc": "^0.38.4",
     "eol-converter-cli": "^1.1.0",
@@ -66,7 +66,7 @@
     "prettier-plugin-organize-imports": "^4.3.0",
     "pretty-quick": "^4.2.2",
     "ts-jest": "^29.4.6",
-    "type-fest": "^5.4.1",
+    "type-fest": "^5.4.2",
     "typescript": "^5.9.3"
   },
   "engines": {
