@@ -61,22 +61,20 @@ export interface DependencySnapshot {
 /**
  * Suppress info output by redirecting to debug
  * @param fn function to call for duration of output suppression
+ *
+ * Uses require() to get a mutable reference to @actions/core, since
+ * esbuild treats `import * as` namespace objects as immutable per ESM spec.
  */
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const mutableCore = require("@actions/core") as typeof core;
+
 async function suppressOutput<T>(fn: () => Promise<T>): Promise<T> {
-  const info = core.info;
+  const info = mutableCore.info;
   try {
-    try {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      core.info = core.debug;
-    } catch (e) {}
+    mutableCore.info = mutableCore.debug as typeof mutableCore.info;
     return await fn();
   } finally {
-    try {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      core.info = info;
-    } catch (e) {}
+    mutableCore.info = info;
   }
 }
 
@@ -173,7 +171,7 @@ export class GithubClient {
       "downloadArtifact response:",
       response,
       "dir:",
-      core.isDebug() && fs.readdirSync(response.downloadPath)
+      core.isDebug() && fs.readdirSync(response.downloadPath),
     );
 
     return `${response.downloadPath}`;
@@ -202,7 +200,7 @@ export class GithubClient {
       file,
       retention,
       rootDirectory,
-      core.isDebug() && fs.readdirSync(rootDirectory)
+      core.isDebug() && fs.readdirSync(rootDirectory),
     );
 
     const options: UploadArtifactOptions = {};
@@ -211,7 +209,7 @@ export class GithubClient {
     }
 
     const info = await suppressOutput(async () =>
-      artifactClient.uploadArtifact(name, [file], rootDirectory, options)
+      artifactClient.uploadArtifact(name, [file], rootDirectory, options),
     );
 
     debugLog("uploadArtifact response:", info);
@@ -440,12 +438,12 @@ export class GithubClient {
             authorization: `token ${token}`,
           },
           data: JSON.stringify(snapshot),
-        }
+        },
       );
 
       if (response.status >= 400) {
         core.warning(
-          `Dependency snapshot upload failed: ${stringify(response)}`
+          `Dependency snapshot upload failed: ${stringify(response)}`,
         );
       } else {
         debugLog(`Dependency snapshot upload successful:`, response);
@@ -475,7 +473,7 @@ export function getClient(repo: GithubRepo, githubToken: string): GithubClient {
       // @ts-ignore
       onRateLimit: (retryAfter, options) => {
         core.warning(
-          `Request quota exhausted for request ${options.method} ${options.url}`
+          `Request quota exhausted for request ${options.method} ${options.url}`,
         );
         if (options.request.retryCount === 0) {
           // only retries once
@@ -488,7 +486,7 @@ export function getClient(repo: GithubRepo, githubToken: string): GithubClient {
       onAbuseLimit: (retryAfter, options) => {
         // does not retry, only logs a warning
         core.warning(
-          `Abuse detected for request ${options.method} ${options.url}`
+          `Abuse detected for request ${options.method} ${options.url}`,
         );
       },
     },
