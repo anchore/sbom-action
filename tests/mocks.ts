@@ -310,7 +310,8 @@ export const context = {
 import { PartialDeep } from "type-fest";
 import { Artifact } from "../src/github/GithubClient";
 import { ExecOptions } from "@actions/exec";
-import { Context } from "@actions/github/lib/context";
+import { context as _ghContext } from "@actions/github";
+type Context = typeof _ghContext;
 import {
   PullRequestEvent, PushEvent,
   Release,
