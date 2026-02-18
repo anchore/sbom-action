@@ -26,7 +26,7 @@ jobs:
           LATEST_VERSION=$(gh release view --json name -q '.name' -R anchore/syft)
           echo "export const VERSION = \"$LATEST_VERSION\";" > src/SyftVersion.ts
           # install husky hooks and dependencies:
-          npm install
+          npm ci
           # export the version for use with create-pull-request:
           echo "LATEST_VERSION=$LATEST_VERSION" >> $GITHUB_OUTPUT
       - uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
