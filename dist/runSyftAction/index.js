@@ -79592,7 +79592,7 @@ var import_path4 = __toESM(require("path"));
 var import_stream2 = __toESM(require("stream"));
 
 // src/SyftVersion.ts
-var VERSION7 = "v1.42.0";
+var VERSION7 = "v1.42.1";
 
 // src/github/Executor.ts
 var exec = __toESM(require_exec());
