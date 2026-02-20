@@ -3,6 +3,11 @@ description: "Downloads Syft to the Action tool cache and provides a reference"
 author: "Anchore"
 
 inputs:
+  run:
+    required: true
+    description: "The action to run"
+    default: "download-syft"
+
   syft-version:
     required: false
     description: "The version of Syft to download"
@@ -13,4 +18,4 @@ outputs:
 
 runs:
   using: "node20"
-  main: "../dist/downloadSyft/index.js"
+  main: "../dist/index.js"
