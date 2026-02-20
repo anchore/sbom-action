@@ -62328,7 +62328,7 @@ import path9 from "path";
 import stream5 from "stream";
 
 // src/SyftVersion.ts
-var VERSION7 = "v1.42.0";
+var VERSION7 = "v1.42.1";
 
 // src/github/Executor.ts
 async function execute(cmd, args, options) {
