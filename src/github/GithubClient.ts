@@ -58,23 +58,17 @@ export interface DependencySnapshot {
   };
 }
 
-/**
- * Suppress info output by redirecting to debug
- * @param fn function to call for duration of output suppression
- *
- * Uses require() to get a mutable reference to @actions/core, since
- * esbuild treats `import * as` namespace objects as immutable per ESM spec.
- */
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const mutableCore = require("@actions/core") as typeof core;
-
 async function suppressOutput<T>(fn: () => Promise<T>): Promise<T> {
-  const info = mutableCore.info;
+  if (core.isDebug()) {
+    return await fn();
+  }
+
+  const origWrite = process.stdout.write;
   try {
-    mutableCore.info = mutableCore.debug as typeof mutableCore.info;
+    process.stdout.write = () => true;
     return await fn();
   } finally {
-    mutableCore.info = info;
+    process.stdout.write = origWrite;
   }
 }
 
@@ -449,10 +443,11 @@ export class GithubClient {
         debugLog(`Dependency snapshot upload successful:`, response);
       }
     } catch (e: any) {
+      let v = e;
       if ("response" in e) {
-        e = e.response;
+        v = e.response;
       }
-      core.warning(`Error uploading depdendency snapshot: ${stringify(e)}`);
+      core.warning(`Error uploading depdendency snapshot: ${stringify(v)}`);
     }
   }
 }

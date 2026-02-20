@@ -2,6 +2,11 @@ name: "Anchore SBOM Action / Attach SBOM to Release"
 description: "Creates an SBOM (Software Bill Of Materials) from your code and container images"
 author: "Anchore"
 inputs:
+  run:
+    required: true
+    description: "The action to run"
+    default: "publish-sbom"
+
   sbom-artifact-match:
     required: false
     description: "A regex to find SBOM artifacts to attach to a release"
@@ -14,4 +19,4 @@ inputs:
 
 runs:
   using: "node20"
-  main: "../dist/attachReleaseAssets/index.js"
+  main: "../dist/index.cjs"
