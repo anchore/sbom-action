@@ -1,5 +1,8 @@
+import test, { describe, it, beforeEach, mock } from "node:test";
+import assert from "node:assert";
 import { context, getMocks } from "../mocks";
-const { setData, restoreInitialData, mocks } = getMocks();
+
+const { setData, restoreInitialData, mocks } = getMocks(test);
 
 // actually run syft so we know if this output format is properly working
 delete mocks["@actions/tool-cache"];
@@ -17,27 +20,29 @@ mocks["@actions/github"] = () => {
       kit.request = (...args: any[]) => {
         requestArgs = args;
         return args;
-      }
+      };
       return kit;
-    }
-  }
+    },
+  };
+};
+
+for (const [name, factory] of Object.entries(mocks)) {
+  const exports = factory() as object;
+  mock.module(name, { namedExports: exports, defaultExport: exports });
 }
-for (const mock of Object.keys(mocks)) {
-  jest.mock(mock, mocks[mock]);
-}
+
+
+mock.method(Date, "now", () => 1482363367071);
 
 // setting up mocks must happen before this import
-import * as action from "../../src/github/SyftGithubAction";
+const action = await import("../../src/github/SyftGithubAction");
 
-jest.setTimeout(30000);
-Date.now = jest.fn(() => 1482363367071);
-
-describe("GitHub Snapshot", () => {
+describe("GitHub Snapshot", { timeout: 30000 }, () => {
   beforeEach(() => {
     restoreInitialData();
   });
 
-  it("runs with default inputs", async () => {
+  it("runs with default inputs", async (t) => {
     setData({
       inputs: {
         path: "tests/fixtures/npm-project",
@@ -59,25 +64,31 @@ describe("GitHub Snapshot", () => {
     await action.uploadDependencySnapshot();
 
     // validate the request was made
-    expect(requestArgs).toBeDefined();
-    expect(requestArgs).toHaveLength(2);
-    expect(requestArgs[0]).toBe("POST /repos/test-org/test-repo/dependency-graph/snapshots");
+    assert.notStrictEqual(requestArgs, undefined);
+    assert.strictEqual(requestArgs.length, 2);
+    assert.strictEqual(
+      requestArgs[0],
+      "POST /repos/test-org/test-repo/dependency-graph/snapshots"
+    );
 
     // check the resulting snapshot file
     const data = requestArgs[1].data;
     const submission = JSON.parse(data);
 
-    expect(submission.job.correlator).toEqual("my-workflow_default-import-job")
-    expect(submission.scanned).toBeDefined();
+    assert.deepStrictEqual(
+      submission.job.correlator,
+      "my-workflow_default-import-job"
+    );
+    assert.notStrictEqual(submission.scanned, undefined);
 
     // redact changing data
     submission.scanned = "";
     submission.detector.version = "";
 
-    expect(submission).toMatchSnapshot();
+    t.assert.snapshot(submission);
   });
 
-  it("runs with artifact-name input", async () => {
+  it("runs with artifact-name input", async (t) => {
     setData({
       inputs: {
         path: "tests/fixtures/npm-project",
@@ -100,27 +111,33 @@ describe("GitHub Snapshot", () => {
     await action.uploadDependencySnapshot();
 
     // validate the request was made
-    expect(requestArgs).toBeDefined();
-    expect(requestArgs).toHaveLength(2);
-    expect(requestArgs[0]).toBe("POST /repos/test-org/test-repo/dependency-graph/snapshots");
+    assert.notStrictEqual(requestArgs, undefined);
+    assert.strictEqual(requestArgs.length, 2);
+    assert.strictEqual(
+      requestArgs[0],
+      "POST /repos/test-org/test-repo/dependency-graph/snapshots"
+    );
 
     // check the resulting snapshot file
     const data = requestArgs[1].data;
     const submission = JSON.parse(data);
 
-    expect(submission.scanned).toBeDefined();
+    assert.notStrictEqual(submission.scanned, undefined);
 
     // redact changing data
     submission.scanned = "";
     submission.detector.version = "";
 
-    expect(submission.job).toBeDefined()
-    expect(submission.job.correlator).toEqual("my-workflow_default-import-job_my-matrix-build-1")
+    assert.notStrictEqual(submission.job, undefined);
+    assert.deepStrictEqual(
+      submission.job.correlator,
+      "my-workflow_default-import-job_my-matrix-build-1"
+    );
 
-    expect(submission).toMatchSnapshot();
+    t.assert.snapshot(submission);
   });
 
-  it("runs with dependency-snapshot-correlator defined", async () => {
+  it("runs with dependency-snapshot-correlator defined", async (t) => {
     setData({
       inputs: {
         path: "tests/fixtures/npm-project",
@@ -143,23 +160,26 @@ describe("GitHub Snapshot", () => {
     await action.uploadDependencySnapshot();
 
     // validate the request was made
-    expect(requestArgs).toBeDefined();
-    expect(requestArgs).toHaveLength(2);
-    expect(requestArgs[0]).toBe("POST /repos/test-org/test-repo/dependency-graph/snapshots");
+    assert.notStrictEqual(requestArgs, undefined);
+    assert.strictEqual(requestArgs.length, 2);
+    assert.strictEqual(
+      requestArgs[0],
+      "POST /repos/test-org/test-repo/dependency-graph/snapshots"
+    );
 
     // check the resulting snapshot file
     const data = requestArgs[1].data;
     const submission = JSON.parse(data);
 
-    expect(submission.scanned).toBeDefined();
+    assert.notStrictEqual(submission.scanned, undefined);
 
     // redact changing data
     submission.scanned = "";
     submission.detector.version = "";
 
-    expect(submission.job).toBeDefined()
-    expect(submission.job.correlator).toEqual("some-correlator")
+    assert.notStrictEqual(submission.job, undefined);
+    assert.deepStrictEqual(submission.job.correlator, "some-correlator");
 
-    expect(submission).toMatchSnapshot();
+    t.assert.snapshot(submission);
   });
 });

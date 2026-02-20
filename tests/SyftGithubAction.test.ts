@@ -1,35 +1,33 @@
-import {context, getMocks} from "./mocks";
-const { data, setData, restoreInitialData, mocks } = getMocks();
-const {
-  artifacts,
-  assets,
-  inputs,
-} = data;
-for (const mock of Object.keys(mocks)) {
-  jest.mock(mock, mocks[mock]);
+import test, { describe, it, beforeEach, mock } from "node:test";
+import assert from "node:assert";
+import { context, getMocks } from "./mocks";
+
+const { data, setData, restoreInitialData, mocks } = getMocks(test);
+const { artifacts, assets, inputs } = data;
+
+for (const [name, factory] of Object.entries(mocks)) {
+  const exports = factory() as object;
+  mock.module(name, { namedExports: exports, defaultExport: exports });
 }
+
+mock.method(Date, "now", () => 1482363367071);
 
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import * as action from "../src/github/SyftGithubAction";
-import {
-  downloadSyft,
-  runAndFailBuildOnException
-} from "../src/github/SyftGithubAction";
-import {mapToWSLPath} from "../src/github/Executor";
 
-jest.setTimeout(30000);
-Date.now = jest.fn(() => 1482363367071);
+const action = await import("../src/github/SyftGithubAction");
+const { downloadSyft, runAndFailBuildOnException } = action;
+const { mapToWSLPath } = await import("../src/github/Executor");
 
-describe("Action", () => {
+describe("Action", { timeout: 30000 }, () => {
   beforeEach(() => {
     restoreInitialData();
   });
 
   it("downloads syft", async () => {
     const path = await downloadSyft();
-    expect(path).toBe("download-tool_syft/syft")
+    assert.strictEqual(path, "download-tool_syft/syft");
   });
 
   it("runs with default inputs on push", async () => {
@@ -49,8 +47,8 @@ describe("Action", () => {
     await action.runSyftAction();
     await action.attachReleaseAssets();
 
-    expect(artifacts.length).toBe(1);
-    expect(assets.length).toBe(0);
+    assert.strictEqual(artifacts.length, 1);
+    assert.strictEqual(assets.length, 0);
   });
 
   it("runs with image input", async () => {
@@ -64,9 +62,9 @@ describe("Action", () => {
 
     const { args } = data.execArgs;
 
-    expect(args).toBeDefined()
-    expect(args.length > 1).toBeTruthy();
-    expect(args[1]).toBe("some-image:latest")
+    assert.notStrictEqual(args, undefined);
+    assert.ok(args.length > 1);
+    assert.strictEqual(args[1], "some-image:latest");
   });
 
   it("runs with path input", async () => {
@@ -80,9 +78,9 @@ describe("Action", () => {
 
     const { args } = data.execArgs;
 
-    expect(args).toBeDefined()
-    expect(args.length > 1).toBeTruthy();
-    expect(args[1]).toBe("dir:some-path")
+    assert.notStrictEqual(args, undefined);
+    assert.ok(args.length > 1);
+    assert.strictEqual(args[1], "dir:some-path");
   });
 
   it("runs with file input", async () => {
@@ -96,9 +94,9 @@ describe("Action", () => {
 
     const { args } = data.execArgs;
 
-    expect(args).toBeDefined()
-    expect(args.length > 1).toBeTruthy();
-    expect(args[1]).toBe("file:some-file.jar")
+    assert.notStrictEqual(args, undefined);
+    assert.ok(args.length > 1);
+    assert.strictEqual(args[1], "file:some-file.jar");
   });
 
   it("runs with release uploads inputs", async () => {
@@ -123,14 +121,14 @@ describe("Action", () => {
 
     await action.runSyftAction();
 
-    expect(fs.existsSync(inputs["output-file"] as string)).toBeTruthy();
+    assert.ok(fs.existsSync(inputs["output-file"] as string));
 
     await action.attachReleaseAssets();
 
-    expect(artifacts.length).toBe(1);
-    expect(assets.length).toBe(1);
+    assert.strictEqual(artifacts.length, 1);
+    assert.strictEqual(assets.length, 1);
 
-    expect(fs.existsSync(outputFile)).toBeTruthy();
+    assert.ok(fs.existsSync(outputFile));
   });
 
   it("runs with retention input", async () => {
@@ -146,11 +144,11 @@ describe("Action", () => {
 
     const { artifacts } = data;
 
-    expect(artifacts).toHaveLength(1);
+    assert.strictEqual(artifacts.length, 1);
 
-    const opts = (artifacts[0] as any).options
+    const opts = (artifacts[0] as any).options;
 
-    expect(opts.retentionDays).toEqual(3)
+    assert.deepStrictEqual(opts.retentionDays, 3);
   });
 
   it("runs without uploading anything", async () => {
@@ -171,16 +169,16 @@ describe("Action", () => {
     await action.runSyftAction();
     await action.attachReleaseAssets();
 
-    expect(artifacts.length).toBe(0);
-    expect(assets.length).toBe(0);
+    assert.strictEqual(artifacts.length, 0);
+    assert.strictEqual(assets.length, 0);
   });
 
   it("runs pull-request compare", async () => {
     setData({
-      inputs:{
+      inputs: {
         image: "org/img",
         "compare-pulls": "true",
-        "artifact-name": "sbom.spdx.json"
+        "artifact-name": "sbom.spdx.json",
       },
       context: context.pull_request({
         pull_request: {
@@ -189,99 +187,117 @@ describe("Action", () => {
           },
         },
       }),
-      workflowRuns: [{
-        id: 6,
-        head_branch: "main",
-        conclusion: "success",
-      }],
-      artifacts: [{
-        runId: 6,
-        name: "sbom.spdx.json",
-        files: ["the_sbom"],
-      }],
+      workflowRuns: [
+        {
+          id: 6,
+          head_branch: "main",
+          conclusion: "success",
+        },
+      ],
+      artifacts: [
+        {
+          runId: 6,
+          name: "sbom.spdx.json",
+          files: ["the_sbom"],
+        },
+      ],
     });
 
     await action.runSyftAction();
 
-    expect(artifacts.length).toBe(2);
+    assert.strictEqual(artifacts.length, 2);
   });
 
   it("runs in tag workflow", async () => {
     setData({
-      inputs:{
-        "sbom-artifact-match": ".*.spdx.json$"
+      inputs: {
+        "sbom-artifact-match": ".*.spdx.json$",
       },
       context: {
         ...context.push({}),
         ref: "refs/tags/v34.8451",
       },
-      releases: [{
-        tag_name: "v34.8451"
-      }],
-      artifacts: [{
-        name: "awesome.spdx.json"
-      }],
+      releases: [
+        {
+          tag_name: "v34.8451",
+        },
+      ],
+      artifacts: [
+        {
+          name: "awesome.spdx.json",
+        },
+      ],
     });
 
     await action.attachReleaseAssets();
 
-    expect(assets.length).toBe(1);
+    assert.strictEqual(assets.length, 1);
   });
 
   it("runs in tag workflow with draft release", async () => {
     setData({
-      inputs:{
-        "sbom-artifact-match": ".*.spdx.json$"
+      inputs: {
+        "sbom-artifact-match": ".*.spdx.json$",
       },
       context: {
         ...context.push({}),
         ref: "refs/tags/v34.8451",
       },
-      releases: [{
-        draft: true,
-        tag_name: "v34.8451"
-      }],
-      artifacts: [{
-        name: "awesome.spdx.json"
-      }],
+      releases: [
+        {
+          draft: true,
+          tag_name: "v34.8451",
+        },
+      ],
+      artifacts: [
+        {
+          name: "awesome.spdx.json",
+        },
+      ],
     });
 
     await action.attachReleaseAssets();
 
-    expect(assets.length).toBe(1);
+    assert.strictEqual(assets.length, 1);
   });
 
   it("runs in release with prior workflow artifacts", async () => {
     setData({
-      inputs:{
-        "sbom-artifact-match": ".*.spdx.json$"
+      inputs: {
+        "sbom-artifact-match": ".*.spdx.json$",
       },
       context: {
         ...context.release({
           release: {
-            target_commitish: "main"
-          }
+            target_commitish: "main",
+          },
         }),
         ref: "refs/tags/v34.8451",
       },
-      releases: [{
-        draft: true,
-        tag_name: "v34.8451"
-      }],
-      artifacts: [{
-        runId: 9,
-        name: "awesome.spdx.json"
-      }],
-      workflowRuns: [{
-        id: 9,
-        head_branch: "main",
-        conclusion: "success"
-      }]
+      releases: [
+        {
+          draft: true,
+          tag_name: "v34.8451",
+        },
+      ],
+      artifacts: [
+        {
+          runId: 9,
+          name: "awesome.spdx.json",
+        },
+      ],
+      workflowRuns: [
+        {
+          id: 9,
+          head_branch: "main",
+          conclusion: "success",
+        },
+      ],
     });
 
     await action.attachReleaseAssets();
 
-    expect(assets.length).toBe(1);
+    assert.strictEqual(assets.length, 1);
   });
 
   it("fails build with runAndFailBuildOnException", async () => {
@@ -289,32 +305,32 @@ describe("Action", () => {
       await runAndFailBuildOnException(async () => {
         throw new Error();
       });
-      expect(data.failed.message).toBeDefined();
+      assert.notStrictEqual(data.failed.message, undefined);
     } catch (e) {
-      expect("should not throw exception").toBeUndefined();
+      assert.strictEqual("should not throw exception", e);
     }
   });
 
   it("does not include docker scheme by default", async () => {
     setData({
-      inputs:{
+      inputs: {
         image: "somewhere/org/img",
-      }
+      },
     });
 
     await action.runSyftAction();
 
     const { cmd, args, env } = data.execArgs;
 
-    expect(cmd.endsWith("syft")).toBeTruthy();
-    expect(args).toContain("somewhere/org/img");
-    expect(env.SYFT_REGISTRY_AUTH_USERNAME).toBeFalsy();
-    expect(env.SYFT_REGISTRY_AUTH_PASSWORD).toBeFalsy();
+    assert.ok(cmd.endsWith("syft"));
+    assert.ok(args.includes("somewhere/org/img"));
+    assert.ok(!env.SYFT_REGISTRY_AUTH_USERNAME);
+    assert.ok(!env.SYFT_REGISTRY_AUTH_PASSWORD);
   });
 
   it("uses registry scheme with username and password", async () => {
     setData({
-      inputs:{
+      inputs: {
         image: "somewhere/org/img",
         "registry-username": "mr_awesome",
         "registry-password": "super_secret",
@@ -325,28 +341,34 @@ describe("Action", () => {
 
     const { cmd, args, env } = data.execArgs;
 
-    expect(cmd.endsWith("syft")).toBeTruthy();
-    expect(args).toContain("registry:somewhere/org/img");
-    expect(env.SYFT_REGISTRY_AUTH_USERNAME).toBe("mr_awesome");
-    expect(env.SYFT_REGISTRY_AUTH_PASSWORD).toBe("super_secret");
+    assert.ok(cmd.endsWith("syft"));
+    assert.ok(args.includes("registry:somewhere/org/img"));
+    assert.strictEqual(env.SYFT_REGISTRY_AUTH_USERNAME, "mr_awesome");
+    assert.strictEqual(env.SYFT_REGISTRY_AUTH_PASSWORD, "super_secret");
   });
 
   it("uses image name for default artifact name", () => {
     setData({
       inputs: {
-        image: "something-something/image-image"
-      }
+        image: "something-something/image-image",
+      },
     });
 
-    expect(action.getArtifactName()).toBe("something-something-image-image.spdx.json");
+    assert.strictEqual(
+      action.getArtifactName(),
+      "something-something-image-image.spdx.json"
+    );
 
     setData({
       inputs: {
-        image: "ghcr.io/something-something/image-image"
-      }
+        image: "ghcr.io/something-something/image-image",
+      },
     });
 
-    expect(action.getArtifactName()).toBe("something-something-image-image.spdx.json");
+    assert.strictEqual(
+      action.getArtifactName(),
+      "something-something-image-image.spdx.json"
+    );
   });
 
   it("format informs artifact name", () => {
@@ -354,54 +376,56 @@ describe("Action", () => {
       inputs: {
         image: "img",
         format: "spdx",
-      }
+      },
     });
 
-    expect(action.getArtifactName()).toBe("img.spdx");
+    assert.strictEqual(action.getArtifactName(), "img.spdx");
 
     setData({
       inputs: {
         image: "img",
         format: "spdx-json",
-      }
+      },
     });
 
-    expect(action.getArtifactName()).toBe("img.spdx.json");
+    assert.strictEqual(action.getArtifactName(), "img.spdx.json");
 
     setData({
       inputs: {
         image: "img",
         format: "cyclonedx",
-      }
+      },
     });
 
-    expect(action.getArtifactName()).toBe("img.cyclonedx.xml");
+    assert.strictEqual(action.getArtifactName(), "img.cyclonedx.xml");
 
     setData({
       inputs: {
         image: "img",
         format: "cyclonedx-json",
-      }
+      },
     });
 
-    expect(action.getArtifactName()).toBe("img.cyclonedx.json");
-
+    assert.strictEqual(action.getArtifactName(), "img.cyclonedx.json");
   });
 
   it("correctly encode tags", () => {
     setData({
       inputs: {
-        image: "ghcr.io/something-something/image-image:0.1.2-dev"
-      }
+        image: "ghcr.io/something-something/image-image:0.1.2-dev",
+      },
     });
 
-    expect(action.getArtifactName()).toBe("something-something-image-image_0_1_2-dev.spdx.json");
+    assert.strictEqual(
+      action.getArtifactName(),
+      "something-something-image-image_0_1_2-dev.spdx.json"
+    );
   });
 
-  it ("properly maps paths for WSL", () => {
-    expect(mapToWSLPath("basic arg")).toBe("basic arg");
-    expect(mapToWSLPath("D:\\Some\\Path")).toBe("/mnt/d/Some/Path");
-    expect(mapToWSLPath("C:\\Some\\Path")).toBe("/mnt/c/Some/Path");
+  it("properly maps paths for WSL", () => {
+    assert.strictEqual(mapToWSLPath("basic arg"), "basic arg");
+    assert.strictEqual(mapToWSLPath("D:\\Some\\Path"), "/mnt/d/Some/Path");
+    assert.strictEqual(mapToWSLPath("C:\\Some\\Path"), "/mnt/c/Some/Path");
   });
 
   it("calls with config", async () => {
@@ -409,13 +433,13 @@ describe("Action", () => {
       inputs: {
         image: "some-image:latest",
         config: "syft-config.yaml",
-      }
+      },
     });
 
     await action.runSyftAction();
-    const { cmd, args, env } = data.execArgs;
+    const { args } = data.execArgs;
 
-    expect(args).toContain("-c");
-    expect(args).toContain("syft-config.yaml");
+    assert.ok(args.includes("-c"));
+    assert.ok(args.includes("syft-config.yaml"));
   });
 });

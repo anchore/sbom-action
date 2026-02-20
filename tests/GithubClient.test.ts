@@ -1,17 +1,22 @@
-import { getMocks } from "./mocks"
-const { data, mocks, setData, restoreInitialData } = getMocks();
-for (const mock of Object.keys(mocks)) {
-  jest.mock(mock, mocks[mock]);
+import test, { describe, it, beforeEach, mock } from "node:test";
+import assert from "node:assert";
+import { getMocks } from "./mocks";
+
+const { data, mocks, setData, restoreInitialData } = getMocks(test);
+
+for (const [name, factory] of Object.entries(mocks)) {
+  const exports = factory() as object;
+  mock.module(name, { namedExports: exports, defaultExport: exports });
 }
 
-import { Release } from "@octokit/webhooks-types";
-import * as githubClient from "../src/github/GithubClient";
-import { debugLog } from "../src/github/GithubClient";
+mock.method(Date, "now", () => 1482363367071);
 
-jest.setTimeout(30000);
-Date.now = jest.fn(() => 1482363367071);
+import type { Release } from "@octokit/webhooks-types";
 
-describe("Github Client", () => {
+const githubClient = await import("../src/github/GithubClient");
+const { debugLog } = githubClient;
+
+describe("Github Client", { timeout: 30000 }, () => {
   beforeEach(() => {
     restoreInitialData();
   });
@@ -44,7 +49,7 @@ describe("Github Client", () => {
       } as Release,
     });
 
-    expect(assets.length).toBe(startLength + 1);
+    assert.strictEqual(assets.length, startLength + 1);
 
     await client.deleteReleaseAsset({
       release: {
@@ -62,16 +67,18 @@ describe("Github Client", () => {
       } as Release,
     });
 
-    expect(assets.length).toBe(startLength);
+    assert.strictEqual(assets.length, startLength);
   });
 
   it("calls workflow run for branch methods", async () => {
     setData({
-      workflowRuns: [{
-        id: 3,
-        head_branch: "main",
-        conclusion: "success"
-      }],
+      workflowRuns: [
+        {
+          id: 3,
+          head_branch: "main",
+          conclusion: "success",
+        },
+      ],
     });
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
@@ -80,16 +87,18 @@ describe("Github Client", () => {
     const run: any = await client.findLatestWorkflowRunForBranch({
       branch: "main",
     });
-    expect(run.id).toBe(3);
+    assert.strictEqual(run.id, 3);
   });
 
   it("calls findRelease methods", async () => {
     setData({
-      releases: [{
-        id: 2,
-        tag_name: "main"
-      }],
-    })
+      releases: [
+        {
+          id: 2,
+          tag_name: "main",
+        },
+      ],
+    });
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
       "token"
@@ -97,21 +106,24 @@ describe("Github Client", () => {
     const r: any = await client.findRelease({
       tag: "main",
     });
-    expect(r.id).toBe(2);
+    assert.strictEqual(r.id, 2);
   });
 
   it("calls findDraftRelease methods", async () => {
     setData({
-      releases: [{
-        id: 1,
-        tag_name: "main",
-        draft: false
-      },{
-        id: 2,
-        tag_name: "main",
-        draft: true
-      }],
-    })
+      releases: [
+        {
+          id: 1,
+          tag_name: "main",
+          draft: false,
+        },
+        {
+          id: 2,
+          tag_name: "main",
+          draft: true,
+        },
+      ],
+    });
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
       "token"
@@ -119,18 +131,21 @@ describe("Github Client", () => {
     const r: any = await client.findDraftRelease({
       tag: "main",
     });
-    expect(r.id).toBe(2);
+    assert.strictEqual(r.id, 2);
   });
 
   it("calls artifact methods", async () => {
     setData({
-      artifacts: [{
-        runId: 1,
-        id: 34534,
-      },{
-        runId: 2,
-        id: 34534,
-      }]
+      artifacts: [
+        {
+          runId: 1,
+          id: 34534,
+        },
+        {
+          runId: 2,
+          id: 34534,
+        },
+      ],
     });
 
     const client = githubClient.getClient(
@@ -140,7 +155,7 @@ describe("Github Client", () => {
 
     let artifacts = await client.listCurrentWorkflowArtifacts();
 
-    expect(artifacts.length).toBe(0);
+    assert.strictEqual(artifacts.length, 0);
 
     await client.uploadWorkflowArtifact({
       name: "test",
@@ -151,19 +166,19 @@ describe("Github Client", () => {
       runId: 1,
     });
 
-    expect(artifacts.length).toBe(1);
+    assert.strictEqual(artifacts.length, 1);
 
     let artifact = await client.downloadWorkflowArtifact({
       name: "test",
     });
 
-    expect(artifact).toBeDefined();
+    assert.notStrictEqual(artifact, undefined);
 
     artifact = await client.downloadWorkflowRunArtifact({
       artifactId: 1,
     });
 
-    expect(artifact).toBeDefined();
+    assert.notStrictEqual(artifact, undefined);
   });
 
   it("fails when return status is error", async () => {
@@ -178,31 +193,31 @@ describe("Github Client", () => {
     );
     try {
       await client.listWorkflowRunArtifacts({
-        runId: 1
+        runId: 1,
       });
-      expect("exception thrown").toBeUndefined();
-    } catch(e) {
-      expect(e).toBeDefined();
+      assert.strictEqual("exception thrown", undefined);
+    } catch (e) {
+      assert.notStrictEqual(e, undefined);
     }
 
     try {
       await client.findLatestWorkflowRunForBranch({
-        branch: "main"
+        branch: "main",
       });
-      expect("exception thrown").toBeUndefined();
-    } catch(e) {
-      expect(e).toBeDefined();
+      assert.strictEqual("exception thrown", undefined);
+    } catch (e) {
+      assert.notStrictEqual(e, undefined);
     }
 
     try {
       await client.listReleaseAssets({
         release: {
-          id: 2134
-        } as any
+          id: 2134,
+        } as any,
       });
-      expect("exception thrown").toBeUndefined();
-    } catch(e) {
-      expect(e).toBeDefined();
+      assert.strictEqual("exception thrown", undefined);
+    } catch (e) {
+      assert.notStrictEqual(e, undefined);
     }
   });
 
@@ -211,25 +226,28 @@ describe("Github Client", () => {
       debug: {
         enabled: true,
         log: [],
-      }
+      },
     });
 
     debugLog("the_label", "string");
 
-    expect(data.debug.log.length).toBe(1);
-    expect(data.debug.log[0]).toBe("string");
+    assert.strictEqual(data.debug.log.length, 1);
+    assert.strictEqual(data.debug.log[0], "string");
   });
 
   it("finds a draft release", async () => {
     setData({
-      releases: [{
-        id: 1234,
-        draft: false,
-      }, {
-        id: 5432,
-        draft: true,
-        tag_name: "v9"
-      }]
+      releases: [
+        {
+          id: 1234,
+          draft: false,
+        },
+        {
+          id: 5432,
+          draft: true,
+          tag_name: "v9",
+        },
+      ],
     });
 
     const client = githubClient.getClient(
@@ -239,7 +257,7 @@ describe("Github Client", () => {
 
     const release: any = await client.findRelease({ tag: "v9" });
 
-    expect(release.id).toBe(5432);
-    expect(release.draft).toBeTruthy();
+    assert.strictEqual(release.id, 5432);
+    assert.ok(release.draft);
   });
 });
