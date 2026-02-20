@@ -11,7 +11,7 @@
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
     "package": "run-s package:build post-package:*",
-    "package:build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js",
+    "package:build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=cjs --outfile=dist/index.cjs",
     "post-package:fix-line-endings": "eolConverter 'dist/**/*.js'",
     "test": "node --import tsx --test --experimental-test-module-mocks tests/*.test.ts tests/integration/*.test.ts",
     "test:update-snapshots": "node --import tsx --test --test-update-snapshots --experimental-test-module-mocks tests/*.test.ts tests/integration/*.test.ts",
