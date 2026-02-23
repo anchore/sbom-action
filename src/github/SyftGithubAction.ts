@@ -129,7 +129,7 @@ async function executeSyft({
       env.SYFT_REGISTRY_AUTH_PASSWORD = registryPass;
     } else {
       core.warning(
-        "WARNING: registry-username specified without registry-password"
+        "WARNING: registry-username specified without registry-password",
       );
     }
   }
@@ -193,7 +193,7 @@ async function executeSyft({
           core.debug(message);
         },
       },
-    })
+    }),
   );
 
   if (exitCode > 0) {
@@ -369,7 +369,7 @@ async function comparePullRequestTargetArtifact(): Promise<void> {
           });
 
           core.info(
-            `Downloaded SBOM from ref '${pr.base.ref}' to ${baseArtifact}`
+            `Downloaded SBOM from ref '${pr.base.ref}' to ${baseArtifact}`,
           );
         }
       }
@@ -438,7 +438,7 @@ export async function uploadDependencySnapshot(): Promise<void> {
 
   if (!fs.existsSync(githubDependencySnapshotFile)) {
     core.warning(
-      `No dependency snapshot found at '${githubDependencySnapshotFile}'`
+      `No dependency snapshot found at '${githubDependencySnapshotFile}'`,
     );
     return;
   }
@@ -447,7 +447,7 @@ export async function uploadDependencySnapshot(): Promise<void> {
   const client = getClient(repo, core.getInput("github-token"));
 
   const snapshot = JSON.parse(
-    fs.readFileSync(githubDependencySnapshotFile).toString("utf8")
+    fs.readFileSync(githubDependencySnapshotFile).toString("utf8"),
   ) as DependencySnapshot;
 
   let correlator = `${workflow}_${job}`;
@@ -463,7 +463,7 @@ export async function uploadDependencySnapshot(): Promise<void> {
   // Need to add the job and repo details
   snapshot.job = {
     correlator: stripEmojis(
-      core.getInput("dependency-snapshot-correlator") || correlator
+      core.getInput("dependency-snapshot-correlator") || correlator,
     ),
     id: `${runId}`,
   };
@@ -471,7 +471,7 @@ export async function uploadDependencySnapshot(): Promise<void> {
   snapshot.ref = ref;
 
   core.info(
-    `Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`
+    `Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`,
   );
   debugLog("Snapshot:", snapshot);
 
@@ -532,7 +532,7 @@ export async function attachReleaseAssets(): Promise<void> {
     // We may have a release run based on a prior build from another workflow
     if (eventName === "release" && !matched.length) {
       core.info(
-        "No artifacts found in this workflow. Searching for release artifacts from prior workflow..."
+        "No artifacts found in this workflow. Searching for release artifacts from prior workflow...",
       );
       const latestRun = await client.findLatestWorkflowRunForBranch({
         branch: release.target_commitish,
@@ -551,7 +551,7 @@ export async function attachReleaseAssets(): Promise<void> {
             core.debug(`Found run artifact: ${a.name}`);
           } else {
             core.debug(
-              `Run artifact: ${a.name} not matching ${sbomArtifactPattern}`
+              `Run artifact: ${a.name} not matching ${sbomArtifactPattern}`,
             );
           }
           return matches;
@@ -598,7 +598,7 @@ export async function attachReleaseAssets(): Promise<void> {
  * Executes the provided callback and wraps any exceptions in a build failure
  */
 export async function runAndFailBuildOnException<T>(
-  fn: () => Promise<T>
+  fn: () => Promise<T>,
 ): Promise<T | void> {
   try {
     return await fn();

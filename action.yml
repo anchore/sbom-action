@@ -79,4 +79,4 @@ inputs:
 
 runs:
   using: "node20"
-  main: "dist/runSyftAction/index.js"
+  main: "dist/index.cjs"

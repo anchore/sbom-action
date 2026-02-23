@@ -8,6 +8,7 @@ import fs from "fs";
 import os from "os";
 import path from "path";
 import { stringify } from "./Util";
+import { group } from "@actions/core";
 
 export type GithubRepo = { owner: string; repo: string };
 
@@ -56,26 +57,6 @@ export interface DependencySnapshot {
   detector: {
     version: string;
   };
-}
-
-/**
- * Suppress info output by redirecting to debug
- * @param fn function to call for duration of output suppression
- *
- * Uses require() to get a mutable reference to @actions/core, since
- * esbuild treats `import * as` namespace objects as immutable per ESM spec.
- */
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const mutableCore = require("@actions/core") as typeof core;
-
-async function suppressOutput<T>(fn: () => Promise<T>): Promise<T> {
-  const info = mutableCore.info;
-  try {
-    mutableCore.info = mutableCore.debug as typeof mutableCore.info;
-    return await fn();
-  } finally {
-    mutableCore.info = info;
-  }
 }
 
 /**
@@ -155,7 +136,7 @@ export class GithubClient {
       return this.downloadWorkflowRunArtifact({ artifactId: id });
     }
     const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
-    const response = await suppressOutput(async () => {
+    const response = await group("Artifact Upload", async () => {
       const response = await artifactClient.getArtifact(name);
       return await artifactClient.downloadArtifact(response.artifact.id, {
         path: tempPath,
@@ -208,7 +189,7 @@ export class GithubClient {
       options.retentionDays = retention;
     }
 
-    const info = await suppressOutput(async () =>
+    const info = await group("Artifact Upload", async () =>
       artifactClient.uploadArtifact(name, [file], rootDirectory, options),
     );
 
@@ -449,10 +430,11 @@ export class GithubClient {
         debugLog(`Dependency snapshot upload successful:`, response);
       }
     } catch (e: any) {
+      let v = e;
       if ("response" in e) {
-        e = e.response;
+        v = e.response;
       }
-      core.warning(`Error uploading depdendency snapshot: ${stringify(e)}`);
+      core.warning(`Error uploading depdendency snapshot: ${stringify(v)}`);
     }
   }
 }

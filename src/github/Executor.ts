@@ -9,7 +9,7 @@ import * as exec from "@actions/exec";
 export async function execute(
   cmd: string,
   args: string[],
-  options?: exec.ExecOptions
+  options?: exec.ExecOptions,
 ) {
   return exec.exec(cmd, args, options);
 }
@@ -21,6 +21,7 @@ export async function execute(
 export function mapToWSLPath(arg: string) {
   return arg.replace(
     /^([A-Z]):(.*)$/,
-    (v, drive, path) => `/mnt/${drive.toLowerCase()}${path.replace(/\\/g, "/")}`
+    (v, drive, path) =>
+      `/mnt/${drive.toLowerCase()}${path.replace(/\\/g, "/")}`,
   );
 }
