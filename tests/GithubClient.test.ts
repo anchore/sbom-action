@@ -49,7 +49,7 @@ describe("Github Client", { timeout: 30000 }, () => {
       } as Release,
     });
 
-    assert.strictEqual(assets.length, startLength + 1);
+    assert.equal(assets.length, startLength + 1);
 
     await client.deleteReleaseAsset({
       release: {
@@ -67,7 +67,7 @@ describe("Github Client", { timeout: 30000 }, () => {
       } as Release,
     });
 
-    assert.strictEqual(assets.length, startLength);
+    assert.equal(assets.length, startLength);
   });
 
   it("calls workflow run for branch methods", async () => {
@@ -87,7 +87,7 @@ describe("Github Client", { timeout: 30000 }, () => {
     const run: any = await client.findLatestWorkflowRunForBranch({
       branch: "main",
     });
-    assert.strictEqual(run.id, 3);
+    assert.equal(run.id, 3);
   });
 
   it("calls findRelease methods", async () => {
@@ -106,7 +106,7 @@ describe("Github Client", { timeout: 30000 }, () => {
     const r: any = await client.findRelease({
       tag: "main",
     });
-    assert.strictEqual(r.id, 2);
+    assert.equal(r.id, 2);
   });
 
   it("calls findDraftRelease methods", async () => {
@@ -131,7 +131,7 @@ describe("Github Client", { timeout: 30000 }, () => {
     const r: any = await client.findDraftRelease({
       tag: "main",
     });
-    assert.strictEqual(r.id, 2);
+    assert.equal(r.id, 2);
   });
 
   it("calls artifact methods", async () => {
@@ -155,7 +155,7 @@ describe("Github Client", { timeout: 30000 }, () => {
 
     let artifacts = await client.listCurrentWorkflowArtifacts();
 
-    assert.strictEqual(artifacts.length, 0);
+    assert.equal(artifacts.length, 0);
 
     await client.uploadWorkflowArtifact({
       name: "test",
@@ -166,7 +166,7 @@ describe("Github Client", { timeout: 30000 }, () => {
       runId: 1,
     });
 
-    assert.strictEqual(artifacts.length, 1);
+    assert.equal(artifacts.length, 1);
 
     let artifact = await client.downloadWorkflowArtifact({
       name: "test",
@@ -231,8 +231,8 @@ describe("Github Client", { timeout: 30000 }, () => {
 
     debugLog("the_label", "string");
 
-    assert.strictEqual(data.debug.log.length, 1);
-    assert.strictEqual(data.debug.log[0], "string");
+    assert.equal(data.debug.log.length, 1);
+    assert.equal(data.debug.log[0], "string");
   });
 
   it("finds a draft release", async () => {
@@ -257,7 +257,7 @@ describe("Github Client", { timeout: 30000 }, () => {
 
     const release: any = await client.findRelease({ tag: "v9" });
 
-    assert.strictEqual(release.id, 5432);
+    assert.equal(release.id, 5432);
     assert.ok(release.draft);
   });
 });

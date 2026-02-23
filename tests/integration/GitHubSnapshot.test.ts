@@ -65,8 +65,8 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
 
     // validate the request was made
     assert.ok(requestArgs);
-    assert.strictEqual(requestArgs.length, 2);
-    assert.strictEqual(
+    assert.equal(requestArgs.length, 2);
+    assert.equal(
       requestArgs[0],
       "POST /repos/test-org/test-repo/dependency-graph/snapshots"
     );
@@ -75,7 +75,7 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
     const data = requestArgs[1].data;
     const submission = JSON.parse(data);
 
-    assert.deepStrictEqual(
+    assert.deepEqual(
       submission.job.correlator,
       "my-workflow_default-import-job"
     );
@@ -112,8 +112,8 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
 
     // validate the request was made
     assert.ok(requestArgs);
-    assert.strictEqual(requestArgs.length, 2);
-    assert.strictEqual(
+    assert.equal(requestArgs.length, 2);
+    assert.equal(
       requestArgs[0],
       "POST /repos/test-org/test-repo/dependency-graph/snapshots"
     );
@@ -129,7 +129,7 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
     submission.detector.version = "";
 
     assert.ok(submission.job);
-    assert.deepStrictEqual(
+    assert.deepEqual(
       submission.job.correlator,
       "my-workflow_default-import-job_my-matrix-build-1"
     );
@@ -161,8 +161,8 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
 
     // validate the request was made
     assert.ok(requestArgs);
-    assert.strictEqual(requestArgs.length, 2);
-    assert.strictEqual(
+    assert.equal(requestArgs.length, 2);
+    assert.equal(
       requestArgs[0],
       "POST /repos/test-org/test-repo/dependency-graph/snapshots"
     );
@@ -178,7 +178,7 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
     submission.detector.version = "";
 
     assert.ok(submission.job);
-    assert.deepStrictEqual(submission.job.correlator, "some-correlator");
+    assert.deepEqual(submission.job.correlator, "some-correlator");
 
     t.assert.snapshot(submission);
   });
