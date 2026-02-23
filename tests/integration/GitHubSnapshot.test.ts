@@ -64,7 +64,7 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
     await action.uploadDependencySnapshot();
 
     // validate the request was made
-    assert.notStrictEqual(requestArgs, undefined);
+    assert.ok(requestArgs);
     assert.strictEqual(requestArgs.length, 2);
     assert.strictEqual(
       requestArgs[0],
@@ -79,7 +79,7 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
       submission.job.correlator,
       "my-workflow_default-import-job"
     );
-    assert.notStrictEqual(submission.scanned, undefined);
+    assert.ok(submission.scanned);
 
     // redact changing data
     submission.scanned = "";
@@ -111,7 +111,7 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
     await action.uploadDependencySnapshot();
 
     // validate the request was made
-    assert.notStrictEqual(requestArgs, undefined);
+    assert.ok(requestArgs);
     assert.strictEqual(requestArgs.length, 2);
     assert.strictEqual(
       requestArgs[0],
@@ -122,13 +122,13 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
     const data = requestArgs[1].data;
     const submission = JSON.parse(data);
 
-    assert.notStrictEqual(submission.scanned, undefined);
+    assert.ok(submission.scanned);
 
     // redact changing data
     submission.scanned = "";
     submission.detector.version = "";
 
-    assert.notStrictEqual(submission.job, undefined);
+    assert.ok(submission.job);
     assert.deepStrictEqual(
       submission.job.correlator,
       "my-workflow_default-import-job_my-matrix-build-1"
@@ -160,7 +160,7 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
     await action.uploadDependencySnapshot();
 
     // validate the request was made
-    assert.notStrictEqual(requestArgs, undefined);
+    assert.ok(requestArgs);
     assert.strictEqual(requestArgs.length, 2);
     assert.strictEqual(
       requestArgs[0],
@@ -171,13 +171,13 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
     const data = requestArgs[1].data;
     const submission = JSON.parse(data);
 
-    assert.notStrictEqual(submission.scanned, undefined);
+    assert.ok(submission.scanned);
 
     // redact changing data
     submission.scanned = "";
     submission.detector.version = "";
 
-    assert.notStrictEqual(submission.job, undefined);
+    assert.ok(submission.job);
     assert.deepStrictEqual(submission.job.correlator, "some-correlator");
 
     t.assert.snapshot(submission);

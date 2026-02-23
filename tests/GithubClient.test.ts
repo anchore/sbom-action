@@ -172,13 +172,13 @@ describe("Github Client", { timeout: 30000 }, () => {
       name: "test",
     });
 
-    assert.notStrictEqual(artifact, undefined);
+    assert.ok(artifact);
 
     artifact = await client.downloadWorkflowRunArtifact({
       artifactId: 1,
     });
 
-    assert.notStrictEqual(artifact, undefined);
+    assert.ok(artifact);
   });
 
   it("fails when return status is error", async () => {
@@ -195,18 +195,18 @@ describe("Github Client", { timeout: 30000 }, () => {
       await client.listWorkflowRunArtifacts({
         runId: 1,
       });
-      assert.strictEqual("exception thrown", undefined);
+      assert.fail("exception should be thrown");
     } catch (e) {
-      assert.notStrictEqual(e, undefined);
+      assert.ok(e);
     }
 
     try {
       await client.findLatestWorkflowRunForBranch({
         branch: "main",
       });
-      assert.strictEqual("exception thrown", undefined);
+      assert.fail("exception should be thrown");
     } catch (e) {
-      assert.notStrictEqual(e, undefined);
+      assert.ok(e);
     }
 
     try {
@@ -215,9 +215,9 @@ describe("Github Client", { timeout: 30000 }, () => {
           id: 2134,
         } as any,
       });
-      assert.strictEqual("exception thrown", undefined);
+      assert.fail("exception should be thrown");
     } catch (e) {
-      assert.notStrictEqual(e, undefined);
+      assert.ok(e);
     }
   });
 

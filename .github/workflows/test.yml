@@ -43,18 +43,18 @@ jobs:
       - uses: ./
         with:
           path: ./tests/fixtures/npm-project
-          artifact-name: ${{ matrix.os }}-2.spdx
+          artifact-name: ${{ matrix.os }}-1.spdx
 
       - uses: ./
         with:
           path: ./tests/fixtures/yarn-project
-          artifact-name: ${{ matrix.os }}-3.spdx
+          artifact-name: ${{ matrix.os }}-2.spdx
 
       - uses: ./
         id: yarn-scan
         with:
           path: ./tests/fixtures/yarn-project
-          artifact-name: ${{ matrix.os }}-4.spdx
+          artifact-name: ${{ matrix.os }}-3.spdx
 
       - uses: ./
         with:

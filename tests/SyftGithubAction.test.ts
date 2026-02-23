@@ -62,7 +62,7 @@ describe("Action", { timeout: 30000 }, () => {
 
     const { args } = data.execArgs;
 
-    assert.notStrictEqual(args, undefined);
+    assert.ok(args);
     assert.ok(args.length > 1);
     assert.strictEqual(args[1], "some-image:latest");
   });
@@ -78,7 +78,7 @@ describe("Action", { timeout: 30000 }, () => {
 
     const { args } = data.execArgs;
 
-    assert.notStrictEqual(args, undefined);
+    assert.ok(args);
     assert.ok(args.length > 1);
     assert.strictEqual(args[1], "dir:some-path");
   });
@@ -94,7 +94,7 @@ describe("Action", { timeout: 30000 }, () => {
 
     const { args } = data.execArgs;
 
-    assert.notStrictEqual(args, undefined);
+    assert.ok(args);
     assert.ok(args.length > 1);
     assert.strictEqual(args[1], "file:some-file.jar");
   });
@@ -303,9 +303,9 @@ describe("Action", { timeout: 30000 }, () => {
   it("fails build with runAndFailBuildOnException", async () => {
     try {
       await runAndFailBuildOnException(async () => {
-        throw new Error();
+        throw new Error("an error!");
       });
-      assert.notStrictEqual(data.failed.message, undefined);
+      assert.ok(data.failed.message);
     } catch (e) {
       assert.strictEqual("should not throw exception", e);
     }
