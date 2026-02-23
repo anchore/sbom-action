@@ -6,6 +6,8 @@ inputs:
     required: true
     description: "The action to run"
     default: "publish-sbom"
+    type: "choice"
+    options: ["publish-sbom"]
 
   sbom-artifact-match:
     required: false
