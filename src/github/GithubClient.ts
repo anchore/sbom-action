@@ -8,6 +8,7 @@ import fs from "fs";
 import os from "os";
 import path from "path";
 import { stringify } from "./Util";
+import { group } from "@actions/core";
 
 export type GithubRepo = { owner: string; repo: string };
 
@@ -56,20 +57,6 @@ export interface DependencySnapshot {
   detector: {
     version: string;
   };
-}
-
-async function suppressOutput<T>(fn: () => Promise<T>): Promise<T> {
-  if (core.isDebug()) {
-    return await fn();
-  }
-
-  const origWrite = process.stdout.write;
-  try {
-    process.stdout.write = () => true;
-    return await fn();
-  } finally {
-    process.stdout.write = origWrite;
-  }
 }
 
 /**
@@ -149,7 +136,7 @@ export class GithubClient {
       return this.downloadWorkflowRunArtifact({ artifactId: id });
     }
     const tempPath = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
-    const response = await suppressOutput(async () => {
+    const response = await group("Artifact Upload", async () => {
       const response = await artifactClient.getArtifact(name);
       return await artifactClient.downloadArtifact(response.artifact.id, {
         path: tempPath,
@@ -202,7 +189,7 @@ export class GithubClient {
       options.retentionDays = retention;
     }
 
-    const info = await suppressOutput(async () =>
+    const info = await group("Artifact Upload", async () =>
       artifactClient.uploadArtifact(name, [file], rootDirectory, options),
     );
 

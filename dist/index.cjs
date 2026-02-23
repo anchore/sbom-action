@@ -94879,18 +94879,6 @@ function stripEmojis(text) {
 }
 
 // src/github/GithubClient.ts
-async function suppressOutput(fn) {
-  if (isDebug()) {
-    return await fn();
-  }
-  const origWrite = process.stdout.write;
-  try {
-    process.stdout.write = () => true;
-    return await fn();
-  } finally {
-    process.stdout.write = origWrite;
-  }
-}
 function dashWrap(str) {
   let out = ` ${str} `;
   const width = 80;
@@ -94945,7 +94933,7 @@ var GithubClient = class {
       return this.downloadWorkflowRunArtifact({ artifactId: id });
     }
     const tempPath = import_fs3.default.mkdtempSync(import_path2.default.join(import_os5.default.tmpdir(), "sbom-action-"));
-    const response = await suppressOutput(async () => {
+    const response = await group("Artifact Upload", async () => {
       const response2 = await artifact_default.getArtifact(name);
       return await artifact_default.downloadArtifact(response2.artifact.id, {
         path: tempPath
@@ -94987,7 +94975,8 @@ var GithubClient = class {
     if (retention) {
       options.retentionDays = retention;
     }
-    const info2 = await suppressOutput(
+    const info2 = await group(
+      "Artifact Upload",
       async () => artifact_default.uploadArtifact(name, [file], rootDirectory, options)
     );
     debugLog("uploadArtifact response:", info2);
