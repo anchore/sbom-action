@@ -95249,7 +95249,7 @@ var GithubClient = class {
    * Lists the workflow run artifacts for a completed workflow
    * @param branch the branch name
    */
-  async findLatestWorkflowRunForBranch({
+  async findLatestWorkflowRunsForBranch({
     branch
   }) {
     const response = await this.client.rest.actions.listWorkflowRunsForRepo({
@@ -95259,11 +95259,11 @@ var GithubClient = class {
       per_page: 100,
       page: 1
     });
-    debugLog("findLatestWorkflowRunForBranch response:", response);
+    debugLog("findLatestWorkflowRunsForBranch response:", response);
     if (response.status >= 400) {
-      throw new Error("Unable to findLatestWorkflowRunForBranch");
+      throw new Error("Unable to findLatestWorkflowRunsForBranch");
     }
-    return response.data.workflow_runs[0];
+    return response.data.workflow_runs;
   }
   /**
    * Downloads the artifact and returns a reference to the file
@@ -95693,23 +95693,28 @@ async function comparePullRequestTargetArtifact() {
   if (doCompare && eventName === "pull_request") {
     const client2 = getClient2(repo2, getInput("github-token"));
     const pr = payload.pull_request;
-    const branchWorkflow = await client2.findLatestWorkflowRunForBranch({
+    const branchWorkflows = await client2.findLatestWorkflowRunsForBranch({
       branch: pr.base.ref
     });
-    debugLog("Got branchWorkflow:", branchWorkflow);
-    if (branchWorkflow) {
-      const baseBranchArtifacts = await client2.listWorkflowRunArtifacts({
-        runId: branchWorkflow.id
-      });
-      debugLog("Got baseBranchArtifacts:", baseBranchArtifacts);
-      for (const artifact of baseBranchArtifacts) {
-        if (artifact.name === getArtifactName()) {
-          const baseArtifact = await client2.downloadWorkflowRunArtifact({
-            artifactId: artifact.id
-          });
-          info(
-            `Downloaded SBOM from ref '${pr.base.ref}' to ${baseArtifact}`
-          );
+    if (!branchWorkflows) {
+      return;
+    }
+    for (const branchWorkflow of branchWorkflows) {
+      debugLog("Got branchWorkflow:", branchWorkflow);
+      if (branchWorkflow) {
+        const baseBranchArtifacts = await client2.listWorkflowRunArtifacts({
+          runId: branchWorkflow.id
+        });
+        debugLog("Got baseBranchArtifacts:", baseBranchArtifacts);
+        for (const artifact of baseBranchArtifacts) {
+          if (artifact.name === getArtifactName()) {
+            const baseArtifact = await client2.downloadWorkflowRunArtifact({
+              artifactId: artifact.id
+            });
+            info(
+              `Downloaded SBOM from ref '${pr.base.ref}' to ${baseArtifact}`
+            );
+          }
         }
       }
     }
@@ -95813,7 +95818,7 @@ async function attachReleaseAssets() {
     const sbomArtifactPattern = sbomArtifactInput || `^${getArtifactName()}$`;
     const matcher = new RegExp(sbomArtifactPattern);
     const artifacts = await client2.listCurrentWorkflowArtifacts();
-    let matched = artifacts.filter((a) => {
+    const matched = artifacts.filter((a) => {
       const matches = matcher.test(a.name);
       if (matches) {
         debug(`Found artifact: ${a.name}`);
@@ -95826,25 +95831,32 @@ async function attachReleaseAssets() {
       info(
         "No artifacts found in this workflow. Searching for release artifacts from prior workflow..."
       );
-      const latestRun = await client2.findLatestWorkflowRunForBranch({
+      const latestRuns = await client2.findLatestWorkflowRunsForBranch({
         branch: release.target_commitish
       });
-      debugLog("Got latest run for prior workflow", latestRun);
-      if (latestRun) {
-        const runArtifacts = await client2.listWorkflowRunArtifacts({
-          runId: latestRun.id
-        });
-        matched = runArtifacts.filter((a) => {
-          const matches = matcher.test(a.name);
-          if (matches) {
-            debug(`Found run artifact: ${a.name}`);
-          } else {
-            debug(
-              `Run artifact: ${a.name} not matching ${sbomArtifactPattern}`
-            );
-          }
-          return matches;
-        });
+      if (!latestRuns) {
+        return;
+      }
+      for (const latestRun of latestRuns) {
+        debugLog("Got latest run for prior workflow", latestRun);
+        if (latestRun) {
+          const runArtifacts = await client2.listWorkflowRunArtifacts({
+            runId: latestRun.id
+          });
+          matched.push(
+            ...runArtifacts.filter((a) => {
+              const matches = matcher.test(a.name);
+              if (matches) {
+                debug(`Found run artifact: ${a.name}`);
+              } else {
+                debug(
+                  `Run artifact: ${a.name} not matching ${sbomArtifactPattern}`
+                );
+              }
+              return matches;
+            })
+          );
+        }
       }
     }
     if (!matched.length && sbomArtifactInput) {
