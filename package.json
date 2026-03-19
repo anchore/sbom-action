@@ -33,7 +33,7 @@
   "author": "Keith Zantow <keith.zantow@anchore.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@actions/artifact": "^6.2.0",
+    "@actions/artifact": "^6.2.1",
     "@actions/core": "^3.0.0",
     "@actions/exec": "^3.0.0",
     "@actions/github": "^9.0.0",
@@ -43,9 +43,9 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@octokit/webhooks-types": "^7.6.1",
-    "@types/node": "^25.3.5",
+    "@types/node": "^25.5.0",
     "eol-converter-cli": "^1.1.0",
-    "esbuild": "^0.27.3",
+    "esbuild": "^0.27.4",
     "eslint": "^10.0.3",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
@@ -54,11 +54,11 @@
     "prettier-plugin-organize-imports": "^4.3.0",
     "pretty-quick": "^4.2.2",
     "tsx": "^4.21.0",
-    "type-fest": "^5.4.4",
+    "type-fest": "^5.5.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.57.0"
+    "typescript-eslint": "^8.57.1"
   },
   "engines": {
-    "node": ">=v20.11.0"
+    "node": ">=v24"
   }
 }

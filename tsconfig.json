@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2022" /* Target ES2022 to match Node 20 runtime */,
-    "module": "preserve" /* Use 'preserve' to enable 'bundler' moduleResolution while letting the bundler handle module format */,
+    "target": "es2024", // Target es2024 to match Node 24 runtime
+    "module": "preserve", // Use 'preserve' to enable 'bundler' moduleResolution while letting the bundler handle module format
     "moduleResolution": "bundler",
-    "strict": true /* Enable all strict type-checking options. */,
-    "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
-    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
+    "strict": true, // Enable all strict type-checking options.
+    "noImplicitAny": true, // Raise error on expressions and declarations with an implied 'any' type.
+    "esModuleInterop": true, // Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'.
     "allowSyntheticDefaultImports": true,
     "types": ["node"]
   },
