@@ -74,7 +74,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
-          node-version: "22" # required > 22 for node:test
+          node-version-file: package.json
       - name: Build images
         run: |
           for distro in alpine centos debian; do
