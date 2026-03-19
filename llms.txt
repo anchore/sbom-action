@@ -40,7 +40,7 @@ Scan container image:
 
 ## Development
 
-- Built with TypeScript and Node.js (v20.11.0+)
+- Built with TypeScript and Node.js (v24)
 - Uses GitHub Actions SDK (@actions/core, @actions/github)
 - Testing with Jest
 - Linting with ESLint and formatting with Prettier
