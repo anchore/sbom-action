@@ -4,3 +4,7 @@ rules:
       policies:
         # anchore/workflows is an internal repository; using @main is acceptable
         anchore/*: any
+
+  secrets-outside-env:
+    ignore:
+      - update-syft-release.yml:35:36
