@@ -7,4 +7,5 @@ rules:
 
   secrets-outside-env:
     ignore:
-      - update-syft-release.yml:35:36
+      - update-syft-release.yml:35
+      - update-syft-release.yml:36
