@@ -7,5 +7,6 @@ rules:
 
   secrets-outside-env:
     ignore:
+      # token generator for creating PRs
       - update-syft-release.yml:35
       - update-syft-release.yml:36
