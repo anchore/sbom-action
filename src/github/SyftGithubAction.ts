@@ -122,6 +122,7 @@ async function executeSyft({
 
   const registryUser = core.getInput("registry-username");
   const registryPass = core.getInput("registry-password");
+  const dependencySnapshotOutputFile = core.getInput("dependency-snapshot-output-file");
 
   if (registryUser) {
     env.SYFT_REGISTRY_AUTH_USERNAME = registryUser;
@@ -160,6 +161,10 @@ async function executeSyft({
   if (opts.uploadToDependencySnapshotAPI) {
     // generate github dependency format
     args = [...args, "-o", `github=${githubDependencySnapshotFile}`];
+  }
+
+  if (dependencySnapshotOutputFile) {
+    args = [...args, "-o", `github=${dependencySnapshotOutputFile}`];
   }
 
   if (opts.configFile) {
