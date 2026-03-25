@@ -2,7 +2,7 @@ import test, { describe, it, beforeEach, mock } from "node:test";
 import assert from "node:assert";
 import { context, getMocks } from "../mocks";
 
-const { setData, restoreInitialData, mocks } = getMocks(test);
+const { setData, restoreInitialData, mocks, data } = getMocks(test);
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
@@ -223,6 +223,90 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
     // validate no request was made
     assert.equal(requestArgs, null);
   });
+
+  it("runs with input file", async (t) => {
+    const outputFile = `${fs.mkdtempSync(
+          path.join(os.tmpdir(), "sbom-action-")
+        )}/sbom-output.github.sbom.json`;
+
+    setData({
+      inputs: {
+        path: "tests/fixtures/npm-project",
+        "dependency-snapshot-output-file": outputFile,
+        "dependency-snapshot-input-file": outputFile,
+        "run": "upload-github-snapshot"
+      },
+      context: {  
+        ...context.push({
+          ref: "main",
+        }),
+        sha: "f293f09uaw90gwa09f9wea",
+        workflow: "my-workflow",
+        job: "default-import-job",
+        action: "__anchore_sbom-action",
+      },
+    });
+
+    await action.runSyftAction();
+
+    assert.ok(fs.existsSync(outputFile));
+    
+    await action.uploadDependencySnapshot();
+
+    // validate the request was made
+    assert.ok(requestArgs);
+    assert.equal(requestArgs.length, 2);
+    assert.equal(
+      requestArgs[0],
+      "POST /repos/test-org/test-repo/dependency-graph/snapshots"
+    );
+
+    // check the resulting snapshot file
+    const data = requestArgs[1].data;
+    const submission = JSON.parse(data);
+
+    assert.ok(submission.scanned);
+
+    // redact changing data
+    submission.scanned = "";
+    submission.detector.version = "";
+
+    assert.ok(submission.job);
+
+    t.assert.snapshot(submission);
+  });
+
+  it("fails with invalid input file", async () => {
+    const inputFile = `${fs.mkdtempSync(
+          path.join(os.tmpdir(), "sbom-action-")
+        )}/sbom-output.github.sbom.json`;
+
+    setData({
+      inputs: {
+        path: "tests/fixtures/npm-project",
+        "dependency-snapshot-input-file": inputFile,
+        "run": "upload-github-snapshot"
+      },
+      context: {  
+        ...context.push({
+          ref: "main",
+        }),
+        sha: "f293f09uaw90gwa09f9wea",
+        workflow: "my-workflow",
+        job: "default-import-job",
+        action: "__anchore_sbom-action",
+      },
+    });
+
+    assert.ok(!fs.existsSync(inputFile));
+    
+    await action.uploadDependencySnapshot();
+
+    // validate request was not made, and failed
+    assert.equal(requestArgs, null);
+    assert.equal(data.failed.message, `No dependency snapshot found at '${inputFile}'`)
+  });
+
 
   it("runs with dependency-snapshot-correlator defined", async (t) => {
     setData({
