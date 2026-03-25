@@ -24,6 +24,9 @@ runAndFailBuildOnException(async () => {
     case "publish-sbom":
       await attachReleaseAssets();
       break;
+    case "upload-github-snapshot":
+      await uploadDependencySnapshot();
+      break;
     default:
       throw new Error(`Unknown run mode: '${run}'`);
   }

@@ -1,0 +1,19 @@
+name: "Anchore SBOM Action / Upload Github dependency snapshot"
+description: "Uploads dependency snapshot to Github"
+author: "Anchore"
+
+inputs:
+  run:
+    required: true
+    description: "The action to run"
+    default: "upload-github-snapshot"
+    type: "choice"
+    options: ["upload-github-snapshot"]
+
+  dependency-snapshot-input-file:
+    required: true
+    description: "The file location to Github dependency snapshot file"
+
+runs:
+  using: "node24"
+  main: "../dist/index.cjs"

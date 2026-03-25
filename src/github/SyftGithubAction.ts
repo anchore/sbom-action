@@ -382,8 +382,12 @@ async function comparePullRequestTargetArtifact(): Promise<void> {
   }
 }
 
+function dependencySnapshotRun() {
+  return core.getInput("run") === "upload-github-snapshot";
+}
+
 function uploadToSnapshotAPI() {
-  return getBooleanInput("dependency-snapshot", false);
+  return dependencySnapshotRun() ? true : getBooleanInput("dependency-snapshot", false);
 }
 
 export async function runSyftAction(): Promise<void> {
@@ -441,18 +445,22 @@ export async function uploadDependencySnapshot(): Promise<void> {
     return;
   }
 
-  if (!fs.existsSync(githubDependencySnapshotFile)) {
-    core.warning(
-      `No dependency snapshot found at '${githubDependencySnapshotFile}'`,
-    );
-    return;
+  const dependencySnapshotFile = core.getInput("dependency-snapshot-input-file") || githubDependencySnapshotFile;
+
+  if (!fs.existsSync(dependencySnapshotFile)) {
+    const message = `No dependency snapshot found at '${dependencySnapshotFile}'`;
+
+    if (dependencySnapshotRun())
+      return core.setFailed(message);
+
+    return core.warning(message);
   }
   const { workflow, job, runId, repo, ref } = github.context;
   const sha = getSha();
   const client = getClient(repo, core.getInput("github-token"));
 
   const snapshot = JSON.parse(
-    fs.readFileSync(githubDependencySnapshotFile).toString("utf8"),
+    fs.readFileSync(dependencySnapshotFile).toString("utf8"),
   ) as DependencySnapshot;
 
   let correlator = `${workflow}_${job}`;
@@ -476,7 +484,7 @@ export async function uploadDependencySnapshot(): Promise<void> {
   snapshot.ref = ref;
 
   core.info(
-    `Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`,
+    `Uploading GitHub dependency snapshot from ${dependencySnapshotFile}`,
   );
   debugLog("Snapshot:", snapshot);
 

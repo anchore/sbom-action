@@ -96723,8 +96723,11 @@ async function comparePullRequestTargetArtifact() {
     }
   }
 }
+function dependencySnapshotRun() {
+  return getInput("run") === "upload-github-snapshot";
+}
 function uploadToSnapshotAPI() {
-  return getBooleanInput("dependency-snapshot", false);
+  return dependencySnapshotRun() ? true : getBooleanInput("dependency-snapshot", false);
 }
 async function runSyftAction() {
   info(dashWrap("Running SBOM Action"));
@@ -96764,17 +96767,18 @@ async function uploadDependencySnapshot() {
   if (!uploadToSnapshotAPI()) {
     return;
   }
-  if (!fs11.existsSync(githubDependencySnapshotFile)) {
-    warning(
-      `No dependency snapshot found at '${githubDependencySnapshotFile}'`
-    );
-    return;
+  const dependencySnapshotFile = getInput("dependency-snapshot-input-file") || githubDependencySnapshotFile;
+  if (!fs11.existsSync(dependencySnapshotFile)) {
+    const message = `No dependency snapshot found at '${dependencySnapshotFile}'`;
+    if (dependencySnapshotRun())
+      return setFailed(message);
+    return warning(message);
   }
   const { workflow, job, runId, repo: repo2, ref } = context2;
   const sha = getSha();
   const client2 = getClient2(repo2, getInput("github-token"));
   const snapshot2 = JSON.parse(
-    fs11.readFileSync(githubDependencySnapshotFile).toString("utf8")
+    fs11.readFileSync(dependencySnapshotFile).toString("utf8")
   );
   let correlator = `${workflow}_${job}`;
   const artifactInput = getArtifactNameInput();
@@ -96790,7 +96794,7 @@ async function uploadDependencySnapshot() {
   snapshot2.sha = sha;
   snapshot2.ref = ref;
   info(
-    `Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`
+    `Uploading GitHub dependency snapshot from ${dependencySnapshotFile}`
   );
   debugLog("Snapshot:", snapshot2);
   await client2.postDependencySnapshot(snapshot2);
@@ -96914,6 +96918,9 @@ runAndFailBuildOnException(async () => {
     }
     case "publish-sbom":
       await attachReleaseAssets();
+      break;
+    case "upload-github-snapshot":
+      await uploadDependencySnapshot();
       break;
     default:
       throw new Error(`Unknown run mode: '${run}'`);
