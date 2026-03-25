@@ -78,14 +78,70 @@ Use the `file` parameter, relative to the repository root:
     file: ./build/file
 ```
 
-### Generate Github Dependency Snapshot without uploading
+### Generate Github dependency snapshot without uploading
 
 Use the `dependency-snapshot-output-file` parameter, relative to the repository root:
 
 ```yaml
 - uses: anchore/sbom-action@v0
   with:
+    file: ./build/file
     dependency-snapshot-output-file: ./dependency-snapshot.github.sbom.json
+```
+
+### Upload Github dependency snapshot
+Use the `dependency-snapshot-input-file` parameter, relative to the repository root:
+
+> [!IMPORTANT]
+> To upload the dependency snapshot to Github requires permission `contents: write`
+
+```yaml
+ jobs:
+ run-sbom:
+    permissions:
+     contents: write 
+    steps:
+    - uses: anchore/sbom-action/upload-github-snapshot@v0
+      with:
+        file: ./build/file
+        dependency-snapshot-input-file: ./dependency-snapshot.github.sbom.json
+```
+
+### Upload Github Dependency Snapshot when event triggered on default branch
+
+> [!IMPORTANT]
+> Uploading dependency snapshot to Github requires permission `contents: write` to the Github token.
+
+```yaml
+ jobs:
+ run-sbom:
+    permissions:
+     actions: read
+     contents: read 
+    steps:
+    - uses: anchore/sbom-action@v0
+      with:
+        file: ./build/file
+        dependency-snapshot-output-file: ./dependency-snapshot.github.sbom.json
+    - name: Upload dependency snapshot
+      uses: actions/upload-artifact@v7
+      with:
+        archive: false # upload individual file to artifacts
+        path: ./dependency-snapshot.github.sbom.json
+  dependency-snapshot:
+    ...
+    if: github.ref_name == github.event.repository.default_branch
+    permissions:
+     actions: read
+     contents: write
+    steps:
+    - name: Download dependency snapshot
+      uses: actions/download-artifact@v8
+      with:
+        name: dependency-snapshot.github.sbom.json
+    - uses: anchore/sbom-action/upload-github-snapshot@v0
+      with:
+        dependency-snapshot-input-file: ./dependency-snapshot.github.sbom.json
 ```
 
 ### Publishing SBOMs with releases
@@ -207,6 +263,15 @@ Output parameters:
 
 `cmd` can be referenced in a workflow like other output parameters:
 `${{ steps.<step-id>.outputs.cmd }}`
+
+## anchore/sbom-action/upload-github-snapshot
+
+A sub-action to [upload dependency snapshot](upload-github-snapshot/action.yml) to Github.
+
+| Parameter                        | Description                                                         | Default |
+| -------------------------------- | ------------------------------------------------------------------- | ------- |
+| `dependency-snapshot-input-file` | Dependency snapshot path on the filesystem to upload to Github API. |         |
+
 
 ## Windows
 
