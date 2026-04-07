@@ -28,7 +28,6 @@ export const SYFT_VERSION = core.getInput("syft-version") || VERSION;
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
 
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
-const githubDependencySnapshotFile = `${tempDir}/github.sbom.json`;
 
 const exeSuffix = process.platform == "win32" ? ".exe" : "";
 
@@ -100,6 +99,14 @@ function getArtifactNameInput() {
   return core.getInput("artifact-name");
 }
 
+function getGitHubDependencySnapshotPath(): string {
+  const inputPath = core.getInput("dependency-snapshot-output-file");
+  if (inputPath) {
+    return inputPath;
+  }
+  return path.join(tempDir, "github.sbom.json");
+}
+
 /**
  * Gets a reference to the syft command and executes the syft action
  * @param input syft input parameters
@@ -123,6 +130,7 @@ async function executeSyft({
   const registryUser = core.getInput("registry-username");
   const registryPass = core.getInput("registry-password");
   const dependencySnapshotOutputFile = core.getInput("dependency-snapshot-output-file");
+  const githubSnapshotPath = getGitHubDependencySnapshotPath();
 
   if (registryUser) {
     env.SYFT_REGISTRY_AUTH_USERNAME = registryUser;
@@ -158,13 +166,9 @@ async function executeSyft({
 
   args = [...args, "-o", format];
 
-  if (opts.uploadToDependencySnapshotAPI) {
+  if (opts.uploadToDependencySnapshotAPI || dependencySnapshotOutputFile) {
     // generate github dependency format
-    args = [...args, "-o", `github=${githubDependencySnapshotFile}`];
-  }
-
-  if (dependencySnapshotOutputFile) {
-    args = [...args, "-o", `github=${dependencySnapshotOutputFile}`];
+    args = [...args, "-o", `github=${githubSnapshotPath}`];
   }
 
   if (opts.configFile) {
@@ -382,12 +386,8 @@ async function comparePullRequestTargetArtifact(): Promise<void> {
   }
 }
 
-function dependencySnapshotRun() {
-  return core.getInput("run") === "upload-github-snapshot";
-}
-
 function uploadToSnapshotAPI() {
-  return dependencySnapshotRun() ? true : getBooleanInput("dependency-snapshot", false);
+  return core.getInput("run") === "upload-github-snapshot" || getBooleanInput("dependency-snapshot", false);
 }
 
 export async function runSyftAction(): Promise<void> {
@@ -445,16 +445,12 @@ export async function uploadDependencySnapshot(): Promise<void> {
     return;
   }
 
-  const dependencySnapshotFile = core.getInput("dependency-snapshot-input-file") || githubDependencySnapshotFile;
+  const dependencySnapshotFile = core.getInput("dependency-snapshot-input-file") || getGitHubDependencySnapshotPath();
 
   if (!fs.existsSync(dependencySnapshotFile)) {
-    const message = `No dependency snapshot found at '${dependencySnapshotFile}'`;
-
-    if (dependencySnapshotRun())
-      return core.setFailed(message);
-
-    return core.warning(message);
+    return core.setFailed(`No dependency snapshot found at '${dependencySnapshotFile}'`);
   }
+  
   const { workflow, job, runId, repo, ref } = github.context;
   const sha = getSha();
   const client = getClient(repo, core.getInput("github-token"));
