@@ -96479,7 +96479,6 @@ var SYFT_BINARY_NAME = "syft";
 var SYFT_VERSION = getInput("syft-version") || VERSION7;
 var PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
 var tempDir = fs11.mkdtempSync(import_path4.default.join(import_os7.default.tmpdir(), "sbom-action-"));
-var githubDependencySnapshotFile = `${tempDir}/github.sbom.json`;
 var exeSuffix = process.platform == "win32" ? ".exe" : "";
 function getArtifactName() {
   const fileName = getArtifactNameInput();
@@ -96530,6 +96529,13 @@ function getArtifactName() {
 function getArtifactNameInput() {
   return getInput("artifact-name");
 }
+function getGitHubDependencySnapshotPath() {
+  const inputPath = getInput("dependency-snapshot-output-file");
+  if (inputPath) {
+    return inputPath;
+  }
+  return import_path4.default.join(tempDir, "github.sbom.json");
+}
 async function executeSyft({
   input,
   format,
@@ -96543,6 +96549,8 @@ async function executeSyft({
   };
   const registryUser = getInput("registry-username");
   const registryPass = getInput("registry-password");
+  const dependencySnapshotOutputFile = getInput("dependency-snapshot-output-file");
+  const githubSnapshotPath = getGitHubDependencySnapshotPath();
   if (registryUser) {
     env.SYFT_REGISTRY_AUTH_USERNAME = registryUser;
     if (registryPass) {
@@ -96571,8 +96579,8 @@ async function executeSyft({
     throw new Error("Invalid input, no image or path specified");
   }
   args = [...args, "-o", format];
-  if (opts.uploadToDependencySnapshotAPI) {
-    args = [...args, "-o", `github=${githubDependencySnapshotFile}`];
+  if (opts.uploadToDependencySnapshotAPI || dependencySnapshotOutputFile) {
+    args = [...args, "-o", `github=${githubSnapshotPath}`];
   }
   if (opts.configFile) {
     args = [...args, "-c", opts.configFile];
@@ -96720,7 +96728,7 @@ async function comparePullRequestTargetArtifact() {
   }
 }
 function uploadToSnapshotAPI() {
-  return getBooleanInput("dependency-snapshot", false);
+  return getInput("run") === "upload-github-snapshot" || getBooleanInput("dependency-snapshot", false);
 }
 async function runSyftAction() {
   info(dashWrap("Running SBOM Action"));
@@ -96760,17 +96768,15 @@ async function uploadDependencySnapshot() {
   if (!uploadToSnapshotAPI()) {
     return;
   }
-  if (!fs11.existsSync(githubDependencySnapshotFile)) {
-    warning(
-      `No dependency snapshot found at '${githubDependencySnapshotFile}'`
-    );
-    return;
+  const dependencySnapshotFile = getInput("dependency-snapshot-input-file") || getGitHubDependencySnapshotPath();
+  if (!fs11.existsSync(dependencySnapshotFile)) {
+    return setFailed(`No dependency snapshot found at '${dependencySnapshotFile}'`);
   }
   const { workflow, job, runId, repo: repo2, ref } = context2;
   const sha = getSha();
   const client2 = getClient2(repo2, getInput("github-token"));
   const snapshot2 = JSON.parse(
-    fs11.readFileSync(githubDependencySnapshotFile).toString("utf8")
+    fs11.readFileSync(dependencySnapshotFile).toString("utf8")
   );
   let correlator = `${workflow}_${job}`;
   const artifactInput = getArtifactNameInput();
@@ -96786,7 +96792,7 @@ async function uploadDependencySnapshot() {
   snapshot2.sha = sha;
   snapshot2.ref = ref;
   info(
-    `Uploading GitHub dependency snapshot from ${githubDependencySnapshotFile}`
+    `Uploading GitHub dependency snapshot from ${dependencySnapshotFile}`
   );
   debugLog("Snapshot:", snapshot2);
   await client2.postDependencySnapshot(snapshot2);
@@ -96910,6 +96916,9 @@ runAndFailBuildOnException(async () => {
     }
     case "publish-sbom":
       await attachReleaseAssets();
+      break;
+    case "upload-github-snapshot":
+      await uploadDependencySnapshot();
       break;
     default:
       throw new Error(`Unknown run mode: '${run}'`);

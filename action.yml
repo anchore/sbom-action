@@ -48,6 +48,10 @@ inputs:
     required: false
     description: "The version of Syft to use"
 
+  dependency-snapshot-output-file:
+    required: false
+    description: "A file location to output dependency snapshot file"
+
   dependency-snapshot:
     required: false
     description: "Upload to GitHub dependency snapshot API"
