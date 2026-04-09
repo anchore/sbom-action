@@ -103,7 +103,6 @@ Use the `dependency-snapshot-input-file` parameter, relative to the repository r
     steps:
     - uses: anchore/sbom-action/upload-github-snapshot@v0
       with:
-        file: ./build/file
         dependency-snapshot-input-file: ./dependency-snapshot.github.sbom.json
 ```
 
@@ -131,6 +130,7 @@ Use the `dependency-snapshot-input-file` parameter, relative to the repository r
   dependency-snapshot:
     ...
     if: github.ref_name == github.event.repository.default_branch
+    needs: [run-sbom]
     permissions:
      actions: read
      contents: write
