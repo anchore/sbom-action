@@ -423,7 +423,7 @@ export class GithubClient {
       );
 
       if (response.status >= 400) {
-        core.warning(
+        core.error(
           `Dependency snapshot upload failed: ${stringify(response)}`,
         );
       } else {
@@ -434,7 +434,7 @@ export class GithubClient {
       if ("response" in e) {
         v = e.response;
       }
-      core.warning(`Error uploading depdendency snapshot: ${stringify(v)}`);
+      core.error(`Error uploading depdendency snapshot: ${stringify(v)}`);
     }
   }
 }
