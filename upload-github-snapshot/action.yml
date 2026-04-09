@@ -14,6 +14,11 @@ inputs:
     required: true
     description: "The file location to Github dependency snapshot file"
 
+  github-token:
+    description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
+    required: false
+    default: ${{ github.token }}
+
 runs:
   using: "node24"
   main: "../dist/index.cjs"
