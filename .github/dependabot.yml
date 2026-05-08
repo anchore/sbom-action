@@ -1,11 +1,14 @@
 version: 2
 updates:
   - package-ecosystem: "github-actions"
-    directory: "/"
+    directories:
+      - "/"
+      - "/.github/actions/*"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     cooldown:
       default-days: 7
+    open-pull-requests-limit: 10
 
   - package-ecosystem: "npm"
     directory: "/"
@@ -13,6 +16,7 @@ updates:
       interval: "weekly"
     cooldown:
       default-days: 7
+    open-pull-requests-limit: 10
     groups:
       dev-dependencies:
         dependency-type: "development"
