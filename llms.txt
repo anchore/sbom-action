@@ -51,5 +51,5 @@ Scan container image:
 - `/src/` - TypeScript source code
 - `/dist/` - Compiled JavaScript for distribution
 - `/tests/` - Test files and fixtures
-- `/download-syft/`, `/publish-sbom/` - Sub-actions
+- `/download-syft/`, `/publish-sbom/`, `/upload-github-snapshot/` - Sub-actions
 - `action.yml` - Main action configuration
