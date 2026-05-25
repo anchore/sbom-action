@@ -1,0 +1,205 @@
+name: "Validations"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions: {}
+
+jobs:
+
+  Static-Analysis:
+    # Note: changing this job name requires making the same update in the .github/workflows/release.yaml pipeline
+    name: "Static analysis"
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Bootstrap environment
+        uses: ./.github/actions/bootstrap
+
+      - name: Run static analysis
+        run: make static-analysis
+
+  Build:
+    # Note: changing this job name requires making the same update in the .github/workflows/release.yaml pipeline
+    #
+    # ensure dist/ is up-to-date with src/ — protects against forgetting to run the
+    # pre-commit hook that bundles the action.
+    name: "Build"
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Bootstrap environment
+        uses: ./.github/actions/bootstrap
+
+      - name: Build action distributable
+        run: make build
+
+      - name: Verify dist/ is up-to-date
+        run: |
+          git status --porcelain
+          git diff --exit-code
+
+  Unit-Test:
+    # Note: changing this job name requires making the same update in the .github/workflows/release.yaml pipeline
+    name: "Unit tests"
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Bootstrap environment
+        uses: ./.github/actions/bootstrap
+
+      - name: Build fixture images
+        run: |
+          for distro in alpine centos debian; do
+            docker build -t localhost:5000/match-coverage/$distro ./tests/fixtures/image-$distro-match-coverage
+            docker push localhost:5000/match-coverage/${distro}:latest
+          done
+
+      - name: Run unit tests
+        run: make unit
+
+  Action-Fixtures-Linux:
+    name: "Action fixtures (Linux)"
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          path: ./
+          persist-credentials: false
+
+      - uses: ./
+        with:
+          path: ./tests/fixtures/npm-project
+          artifact-name: linux-1.spdx
+
+      - uses: ./
+        with:
+          path: ./tests/fixtures/yarn-project
+          artifact-name: linux-2.spdx
+
+      - uses: ./
+        id: yarn-scan
+        with:
+          path: ./tests/fixtures/yarn-project
+          artifact-name: linux-3.spdx
+
+      - uses: ./
+        with:
+          path: ./tests/fixtures/yarn-project
+          artifact-name: linux-SBOM.txt
+
+  Action-Fixtures-Windows:
+    name: "Action fixtures (Windows)"
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          path: ./
+          persist-credentials: false
+
+      - uses: ./
+        with:
+          path: ./tests/fixtures/npm-project
+          artifact-name: windows-1.spdx
+
+      - uses: ./
+        with:
+          path: ./tests/fixtures/yarn-project
+          artifact-name: windows-2.spdx
+
+      - uses: ./
+        id: yarn-scan
+        with:
+          path: ./tests/fixtures/yarn-project
+          artifact-name: windows-3.spdx
+
+      - uses: ./
+        with:
+          path: ./tests/fixtures/yarn-project
+          artifact-name: windows-SBOM.txt
+
+  Action-Smoke-Test:
+    name: "Action smoke test"
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          path: ./
+          persist-credentials: false
+
+      - uses: ./download-syft # anchore/sbom-action/download-syft
+        id: syft
+
+      - env:
+          SYFT_CMD: ${{ steps.syft.outputs.cmd }}
+        run: |
+          echo "$SYFT_CMD"
+          "$SYFT_CMD" dir:.
+
+      - uses: ./ # anchore/sbom-action
+        id: dirscan
+        with:
+          artifact-name: dirscan-sbom.spdx
+          output-file: dirscan-sbom.spdx
+          format: spdx
+      - run: |
+          echo DIR SCAN SBOM:
+          cat dirscan-sbom.spdx
+
+      - uses: ./ # anchore/sbom-action
+        id: imagescan
+        with:
+          image: alpine:latest
+          artifact-name: imagescan-sbom.spdx
+          output-file: my.sbom
+      - run: |
+          echo IMAGE SCAN SBOM:
+          cat my.sbom
+
+      - uses: ./publish-sbom # anchore/sbom-action/publish-sbom
+        with:
+          sbom-artifact-match: imagescan-sbom.spdx
+
+      - uses: ./publish-sbom # anchore/sbom-action/publish-sbom
+        with:
+          sbom-artifact-match: "^dont-match-anything$"
+
+      - uses: ./ # anchore/sbom-action with artifact retention
+        name: "One day artifact retention test"
+        id: one-day
+        with:
+          image: alpine:latest
+          upload-artifact-retention: 1
+          artifact-name: one-day.sbom.spdx
+          output-file: one-day-sbom.spdx
+          format: spdx
