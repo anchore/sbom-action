@@ -34,7 +34,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@actions/artifact": "^6.2.1",
-    "@actions/core": "^3.0.0",
+    "@actions/core": "^3.0.1",
     "@actions/exec": "^3.0.0",
     "@actions/github": "^9.0.0",
     "@actions/tool-cache": "^4.0.0",
