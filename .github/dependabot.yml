@@ -1,27 +1,37 @@
 version: 2
+
 updates:
   - package-ecosystem: "github-actions"
     directories:
       - "/"
       - "/.github/actions/*"
-    schedule:
-      interval: "weekly"
     cooldown:
       default-days: 7
+    schedule:
+      interval: "weekly"
+      day: "friday"
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
 
   - package-ecosystem: "npm"
     directory: "/"
-    schedule:
-      interval: "weekly"
     cooldown:
       default-days: 7
+    schedule:
+      interval: "weekly"
+      day: "friday"
     open-pull-requests-limit: 10
-    groups:
-      dev-dependencies:
-        dependency-type: "development"
-      non-major:
-        dependency-type: "production"
-        update-types:
-          - "minor"
-          - "patch"
+    labels:
+      - "dependencies"
+
+  - package-ecosystem: "gomod"
+    directory: "/.make"
+    cooldown:
+      default-days: 7
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
