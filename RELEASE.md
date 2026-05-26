@@ -10,4 +10,4 @@ make release
 
 ## Updating Syft
 
-`make update-syft` repins `src/SyftVersion.ts` and rebuilds `dist/` — review the diff and open a PR. Requires `gh` auth.
+`make update-syft-release` repins `src/SyftVersion.ts` and rebuilds `dist/` — review the diff and open a PR. Requires `gh` auth.

@@ -42,7 +42,7 @@ func main() {
 		// who can then commit the diff and open a PR by hand. Requires `gh`
 		// to be authenticated (gh auth login).
 		Task{
-			Name:        "update-syft",
+			Name:        "update-syft-release",
 			Description: "bump src/SyftVersion.ts to the latest syft release and rebuild dist/",
 			Run: func() {
 				version := strings.TrimSpace(Run(`gh release view --json name -q '.name' -R anchore/syft`))
