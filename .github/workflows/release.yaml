@@ -16,7 +16,7 @@ on:
 
 jobs:
   version-available:
-    uses: anchore/workflows/.github/workflows/check-version-available.yaml@15122524ced7906bfa9685eeae12e22647773ea6 # v0.6.0
+    uses: anchore/workflows/.github/workflows/check-version-available.yaml@b3e328b5ae31ba96297e2ed9a6124e5e6352a4c5 # v0.7.0
     permissions:
       contents: read # for getting existing tags
     with:
