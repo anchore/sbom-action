@@ -43,7 +43,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@octokit/webhooks-types": "^7.6.1",
-    "@types/node": "^25.9.3",
+    "@types/node": "^26.0.1",
     "eol-converter-cli": "^1.1.0",
     "esbuild": "^0.28.0",
     "eslint": "^10.5.0",
