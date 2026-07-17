@@ -64,6 +64,8 @@ export function getMocks(test: testType) {
       enabled: false,
       log: [],
     }
+
+    downloadToolFailures: string[] = [];
   }
 
   const data = Object.freeze(new Data());
@@ -185,6 +187,10 @@ export function getMocks(test: testType) {
 
       "@actions/tool-cache": () => ({
         downloadTool() {
+          const failure = data.downloadToolFailures.shift();
+          if (failure) {
+            throw new Error(failure);
+          }
           return "download-tool";
         },
         extractZip() {

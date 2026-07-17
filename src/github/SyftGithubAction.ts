@@ -31,6 +31,8 @@ const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "sbom-action-"));
 const githubDependencySnapshotFile = `${tempDir}/github.sbom.json`;
 
 const exeSuffix = process.platform == "win32" ? ".exe" : "";
+const DEFAULT_SYFT_DOWNLOAD_RETRY_COUNT = 3;
+const DEFAULT_SYFT_DOWNLOAD_RETRY_DELAY_SECONDS = 5;
 
 /**
  * Tries to get a unique artifact name or otherwise as appropriate as possible
@@ -208,11 +210,64 @@ function isWindows(): boolean {
   return process.platform == "win32";
 }
 
+function getNonNegativeIntegerInput(
+  name: string,
+  defaultValue: number,
+): number {
+  const value = core.getInput(name);
+  if (!value) {
+    return defaultValue;
+  }
+
+  const parsed = Number(value);
+  if (!Number.isInteger(parsed) || parsed < 0) {
+    throw new Error(`${name} must be a non-negative integer`);
+  }
+
+  return parsed;
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function downloadToolWithRetry(url: string): Promise<string> {
+  const retryCount = getNonNegativeIntegerInput(
+    "syft-download-retry-count",
+    DEFAULT_SYFT_DOWNLOAD_RETRY_COUNT,
+  );
+  const retryDelaySeconds = getNonNegativeIntegerInput(
+    "syft-download-retry-delay",
+    DEFAULT_SYFT_DOWNLOAD_RETRY_DELAY_SECONDS,
+  );
+  const maxAttempts = retryCount + 1;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await cache.downloadTool(url);
+    } catch (error) {
+      if (attempt >= maxAttempts) {
+        throw error;
+      }
+
+      const message = error instanceof Error ? error.message : String(error);
+      core.warning(
+        `Syft download attempt ${attempt} of ${maxAttempts} failed: ${message}. Retrying in ${retryDelaySeconds} seconds.`,
+      );
+      if (retryDelaySeconds > 0) {
+        await sleep(retryDelaySeconds * 1000);
+      }
+    }
+  }
+
+  throw new Error("Syft download retry loop exited unexpectedly");
+}
+
 async function downloadSyftWindowsWorkaround(version: string): Promise<string> {
   const versionNoV = version.replace(/^v/, "");
   const url = `https://github.com/anchore/syft/releases/download/${version}/syft_${versionNoV}_windows_amd64.zip`;
   core.info(`Downloading syft from ${url}`);
-  const zipPath = await cache.downloadTool(url);
+  const zipPath = await downloadToolWithRetry(url);
   const toolDir = await cache.extractZip(zipPath);
   return path.join(toolDir, `${SYFT_BINARY_NAME}${exeSuffix}`);
 }
@@ -232,7 +287,7 @@ export async function downloadSyft(): Promise<string> {
   core.debug(`Installing ${name} ${version}`);
 
   // Download the installer, and run
-  const installPath = await cache.downloadTool(url);
+  const installPath = await downloadToolWithRetry(url);
 
   const syftBinaryPath = `${installPath}_${name}`;
 

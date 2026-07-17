@@ -20,6 +20,10 @@ const action = await import("../src/github/SyftGithubAction");
 const { downloadSyft, runAndFailBuildOnException } = action;
 const { mapToWSLPath } = await import("../src/github/Executor");
 
+function assertSyftCommand(command: string) {
+  assert.ok(command.endsWith("syft") || command.endsWith("syft.exe"));
+}
+
 describe("Action", { timeout: 30000 }, () => {
   beforeEach(() => {
     restoreInitialData();
@@ -27,7 +31,31 @@ describe("Action", { timeout: 30000 }, () => {
 
   it("downloads syft", async () => {
     const path = await downloadSyft();
-    assert.equal(path, "download-tool_syft/syft");
+    assertSyftCommand(path);
+  });
+
+  it("retries transient syft download failures", async () => {
+    setData({
+      downloadToolFailures: ["received HTTP status=504"],
+      inputs: {
+        "syft-download-retry-delay": "0",
+      },
+    });
+
+    const path = await downloadSyft();
+
+    assertSyftCommand(path);
+    assert.equal(data.downloadToolFailures.length, 0);
+  });
+
+  it("rejects invalid syft download retry input", async () => {
+    setData({
+      inputs: {
+        "syft-download-retry-count": "-1",
+      },
+    });
+
+    await assert.rejects(downloadSyft, /syft-download-retry-count/);
   });
 
   it("runs with default inputs on push", async () => {
@@ -322,7 +350,7 @@ describe("Action", { timeout: 30000 }, () => {
 
     const { cmd, args, env } = data.execArgs;
 
-    assert.ok(cmd.endsWith("syft"));
+    assertSyftCommand(cmd);
     assert.ok(args.includes("somewhere/org/img"));
     assert.ok(!env.SYFT_REGISTRY_AUTH_USERNAME);
     assert.ok(!env.SYFT_REGISTRY_AUTH_PASSWORD);
@@ -341,7 +369,7 @@ describe("Action", { timeout: 30000 }, () => {
 
     const { cmd, args, env } = data.execArgs;
 
-    assert.ok(cmd.endsWith("syft"));
+    assertSyftCommand(cmd);
     assert.ok(args.includes("registry:somewhere/org/img"));
     assert.equal(env.SYFT_REGISTRY_AUTH_USERNAME, "mr_awesome");
     assert.equal(env.SYFT_REGISTRY_AUTH_PASSWORD, "super_secret");

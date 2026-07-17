@@ -96481,6 +96481,8 @@ var PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
 var tempDir = fs11.mkdtempSync(import_path4.default.join(import_os7.default.tmpdir(), "sbom-action-"));
 var githubDependencySnapshotFile = `${tempDir}/github.sbom.json`;
 var exeSuffix = process.platform == "win32" ? ".exe" : "";
+var DEFAULT_SYFT_DOWNLOAD_RETRY_COUNT = 3;
+var DEFAULT_SYFT_DOWNLOAD_RETRY_DELAY_SECONDS = 5;
 function getArtifactName() {
   const fileName = getArtifactNameInput();
   if (fileName) {
@@ -96611,11 +96613,53 @@ async function executeSyft({
 function isWindows() {
   return process.platform == "win32";
 }
+function getNonNegativeIntegerInput(name, defaultValue) {
+  const value = getInput(name);
+  if (!value) {
+    return defaultValue;
+  }
+  const parsed = Number(value);
+  if (!Number.isInteger(parsed) || parsed < 0) {
+    throw new Error(`${name} must be a non-negative integer`);
+  }
+  return parsed;
+}
+function sleep(ms) {
+  return new Promise((resolve3) => setTimeout(resolve3, ms));
+}
+async function downloadToolWithRetry(url2) {
+  const retryCount = getNonNegativeIntegerInput(
+    "syft-download-retry-count",
+    DEFAULT_SYFT_DOWNLOAD_RETRY_COUNT
+  );
+  const retryDelaySeconds = getNonNegativeIntegerInput(
+    "syft-download-retry-delay",
+    DEFAULT_SYFT_DOWNLOAD_RETRY_DELAY_SECONDS
+  );
+  const maxAttempts = retryCount + 1;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await downloadTool(url2);
+    } catch (error2) {
+      if (attempt >= maxAttempts) {
+        throw error2;
+      }
+      const message = error2 instanceof Error ? error2.message : String(error2);
+      warning(
+        `Syft download attempt ${attempt} of ${maxAttempts} failed: ${message}. Retrying in ${retryDelaySeconds} seconds.`
+      );
+      if (retryDelaySeconds > 0) {
+        await sleep(retryDelaySeconds * 1e3);
+      }
+    }
+  }
+  throw new Error("Syft download retry loop exited unexpectedly");
+}
 async function downloadSyftWindowsWorkaround(version3) {
   const versionNoV = version3.replace(/^v/, "");
   const url2 = `https://github.com/anchore/syft/releases/download/${version3}/syft_${versionNoV}_windows_amd64.zip`;
   info(`Downloading syft from ${url2}`);
-  const zipPath = await downloadTool(url2);
+  const zipPath = await downloadToolWithRetry(url2);
   const toolDir = await extractZip(zipPath);
   return import_path4.default.join(toolDir, `${SYFT_BINARY_NAME}${exeSuffix}`);
 }
@@ -96627,7 +96671,7 @@ async function downloadSyft() {
   }
   const url2 = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
   debug(`Installing ${name} ${version3}`);
-  const installPath = await downloadTool(url2);
+  const installPath = await downloadToolWithRetry(url2);
   const syftBinaryPath = `${installPath}_${name}`;
   await execute("sh", [installPath, "-d", "-b", syftBinaryPath, version3]);
   return import_path4.default.join(syftBinaryPath, name) + exeSuffix;
