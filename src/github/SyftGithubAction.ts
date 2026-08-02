@@ -33,6 +33,8 @@ const githubDependencySnapshotFile = `${tempDir}/github.sbom.json`;
 const exeSuffix = process.platform == "win32" ? ".exe" : "";
 const DEFAULT_SYFT_DOWNLOAD_RETRY_COUNT = 3;
 const DEFAULT_SYFT_DOWNLOAD_RETRY_DELAY_SECONDS = 5;
+const MAX_SYFT_DOWNLOAD_RETRY_COUNT = 10;
+const MAX_SYFT_DOWNLOAD_RETRY_DELAY_SECONDS = 300;
 
 /**
  * Tries to get a unique artifact name or otherwise as appropriate as possible
@@ -210,9 +212,10 @@ function isWindows(): boolean {
   return process.platform == "win32";
 }
 
-function getNonNegativeIntegerInput(
+function getBoundedNonNegativeIntegerInput(
   name: string,
   defaultValue: number,
+  maximumValue: number,
 ): number {
   const value = core.getInput(name);
   if (!value) {
@@ -220,8 +223,8 @@ function getNonNegativeIntegerInput(
   }
 
   const parsed = Number(value);
-  if (!Number.isInteger(parsed) || parsed < 0) {
-    throw new Error(`${name} must be a non-negative integer`);
+  if (!Number.isInteger(parsed) || parsed < 0 || parsed > maximumValue) {
+    throw new Error(`${name} must be an integer between 0 and ${maximumValue}`);
   }
 
   return parsed;
@@ -231,14 +234,27 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function isTransientDownloadError(error: unknown): boolean {
+  const message = error instanceof Error ? error.message : String(error);
+  return (
+    /\b(?:408|425|429|5\d{2})\b/.test(message) ||
+    /\b(?:EAI_AGAIN|ECONNREFUSED|ECONNRESET|EHOSTUNREACH|ENETUNREACH|ETIMEDOUT)\b/i.test(
+      message,
+    ) ||
+    /socket hang up|network.*timeout|timed out/i.test(message)
+  );
+}
+
 async function downloadToolWithRetry(url: string): Promise<string> {
-  const retryCount = getNonNegativeIntegerInput(
+  const retryCount = getBoundedNonNegativeIntegerInput(
     "syft-download-retry-count",
     DEFAULT_SYFT_DOWNLOAD_RETRY_COUNT,
+    MAX_SYFT_DOWNLOAD_RETRY_COUNT,
   );
-  const retryDelaySeconds = getNonNegativeIntegerInput(
+  const retryDelaySeconds = getBoundedNonNegativeIntegerInput(
     "syft-download-retry-delay",
     DEFAULT_SYFT_DOWNLOAD_RETRY_DELAY_SECONDS,
+    MAX_SYFT_DOWNLOAD_RETRY_DELAY_SECONDS,
   );
   const maxAttempts = retryCount + 1;
 
@@ -246,7 +262,7 @@ async function downloadToolWithRetry(url: string): Promise<string> {
     try {
       return await cache.downloadTool(url);
     } catch (error) {
-      if (attempt >= maxAttempts) {
+      if (attempt >= maxAttempts || !isTransientDownloadError(error)) {
         throw error;
       }
 

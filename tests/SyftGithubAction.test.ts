@@ -48,6 +48,23 @@ describe("Action", { timeout: 30000 }, () => {
     assert.equal(data.downloadToolFailures.length, 0);
   });
 
+  it("does not retry permanent syft download failures", async () => {
+    setData({
+      downloadToolFailures: [
+        "received HTTP status=404",
+        "this failure must not be consumed",
+      ],
+      inputs: {
+        "syft-download-retry-delay": "0",
+      },
+    });
+
+    await assert.rejects(downloadSyft, /HTTP status=404/);
+    assert.deepEqual(data.downloadToolFailures, [
+      "this failure must not be consumed",
+    ]);
+  });
+
   it("rejects invalid syft download retry input", async () => {
     setData({
       inputs: {
@@ -56,6 +73,25 @@ describe("Action", { timeout: 30000 }, () => {
     });
 
     await assert.rejects(downloadSyft, /syft-download-retry-count/);
+  });
+
+  it("rejects excessive syft download retry settings", async () => {
+    setData({
+      inputs: {
+        "syft-download-retry-count": "11",
+      },
+    });
+
+    await assert.rejects(downloadSyft, /between 0 and 10/);
+
+    setData({
+      inputs: {
+        "syft-download-retry-count": "3",
+        "syft-download-retry-delay": "301",
+      },
+    });
+
+    await assert.rejects(downloadSyft, /between 0 and 300/);
   });
 
   it("runs with default inputs on push", async () => {
