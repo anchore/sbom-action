@@ -55,7 +55,7 @@
     "pretty-quick": "^4.2.2",
     "tsx": "^4.23.11",
     "type-fest": "^5.8.0",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "typescript-eslint": "^8.65.0"
   },
   "engines": {
