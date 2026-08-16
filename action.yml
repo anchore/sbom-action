@@ -48,6 +48,16 @@ inputs:
     required: false
     description: "The version of Syft to use"
 
+  syft-download-retry-count:
+    required: false
+    description: "Number of times to retry transient Syft download failures (0-10)"
+    default: "3"
+
+  syft-download-retry-delay:
+    required: false
+    description: "Seconds to wait between Syft download retry attempts (0-300)"
+    default: "5"
+
   dependency-snapshot:
     required: false
     description: "Upload to GitHub dependency snapshot API"

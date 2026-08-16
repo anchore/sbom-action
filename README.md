@@ -19,13 +19,14 @@ and upload the SBOM as a release asset.
 
 > [!IMPORTANT]
 > To upload the SBOM to releases, you will need to give the action permission to read the artifact from the action, and write it to the release:
+>
 > ```yaml
 > jobs:
->  build:
->    permissions:
->      actions: read
->      contents: write
->    steps:
+>   build:
+>     permissions:
+>       actions: read
+>       contents: write
+>     steps:
 > ```
 
 ## Example Usage
@@ -169,6 +170,8 @@ and uploading them as workflow artifacts and release assets.
 | `upload-artifact-retention` | Retention policy in days for uploaded artifact to workflow.                                                                                             |                                  |
 | `upload-release-assets`     | Upload release assets                                                                                                                                   | `true`                           |
 | `syft-version`              | The version of Syft to use                                                                                                                              |                                  |
+| `syft-download-retry-count` | Number of times to retry transient Syft download failures (0-10)                                                                                        | `3`                              |
+| `syft-download-retry-delay` | Seconds to wait between Syft download retry attempts (0-300)                                                                                            | `5`                              |
 | `github-token`              | Authorized secret GitHub Personal Access Token.                                                                                                         | `github.token`                   |
 | `config `                   | Syft configuration file to use.                                                                                                                         |                                  |
 
@@ -184,9 +187,11 @@ A sub-action to [upload multiple SBOMs](publish-sbom/action.yml) to GitHub relea
 
 A sub-action to [download Syft](download-syft/action.yml).
 
-| Parameter      | Description                     | Default |
-| -------------- | ------------------------------- | ------- |
-| `syft-version` | The version of Syft to download |         |
+| Parameter                   | Description                                                      | Default |
+| --------------------------- | ---------------------------------------------------------------- | ------- |
+| `syft-version`              | The version of Syft to download                                  |         |
+| `syft-download-retry-count` | Number of times to retry transient Syft download failures (0-10) | `3`     |
+| `syft-download-retry-delay` | Seconds to wait between Syft download retry attempts (0-300)     | `5`     |
 
 Output parameters:
 
