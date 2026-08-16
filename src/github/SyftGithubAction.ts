@@ -349,28 +349,34 @@ async function comparePullRequestTargetArtifact(): Promise<void> {
     const client = getClient(repo, core.getInput("github-token"));
 
     const pr = (payload as PullRequestEvent).pull_request;
-    const branchWorkflow = await client.findLatestWorkflowRunForBranch({
+    const branchWorkflows = await client.findLatestWorkflowRunsForBranch({
       branch: pr.base.ref,
     });
 
-    debugLog("Got branchWorkflow:", branchWorkflow);
+    if (!branchWorkflows) {
+      return;
+    }
 
-    if (branchWorkflow) {
-      const baseBranchArtifacts = await client.listWorkflowRunArtifacts({
-        runId: branchWorkflow.id,
-      });
+    for (const branchWorkflow of branchWorkflows) {
+      debugLog("Got branchWorkflow:", branchWorkflow);
 
-      debugLog("Got baseBranchArtifacts:", baseBranchArtifacts);
+      if (branchWorkflow) {
+        const baseBranchArtifacts = await client.listWorkflowRunArtifacts({
+          runId: branchWorkflow.id,
+        });
 
-      for (const artifact of baseBranchArtifacts) {
-        if (artifact.name === getArtifactName()) {
-          const baseArtifact = await client.downloadWorkflowRunArtifact({
-            artifactId: artifact.id,
-          });
+        debugLog("Got baseBranchArtifacts:", baseBranchArtifacts);
 
-          core.info(
-            `Downloaded SBOM from ref '${pr.base.ref}' to ${baseArtifact}`,
-          );
+        for (const artifact of baseBranchArtifacts) {
+          if (artifact.name === getArtifactName()) {
+            const baseArtifact = await client.downloadWorkflowRunArtifact({
+              artifactId: artifact.id,
+            });
+
+            core.info(
+              `Downloaded SBOM from ref '${pr.base.ref}' to ${baseArtifact}`,
+            );
+          }
         }
       }
     }
@@ -519,7 +525,7 @@ export async function attachReleaseAssets(): Promise<void> {
     const matcher = new RegExp(sbomArtifactPattern);
 
     const artifacts = await client.listCurrentWorkflowArtifacts();
-    let matched = artifacts.filter((a) => {
+    const matched = artifacts.filter((a) => {
       const matches = matcher.test(a.name);
       if (matches) {
         core.debug(`Found artifact: ${a.name}`);
@@ -534,28 +540,36 @@ export async function attachReleaseAssets(): Promise<void> {
       core.info(
         "No artifacts found in this workflow. Searching for release artifacts from prior workflow...",
       );
-      const latestRun = await client.findLatestWorkflowRunForBranch({
+      const latestRuns = await client.findLatestWorkflowRunsForBranch({
         branch: release.target_commitish,
       });
 
-      debugLog("Got latest run for prior workflow", latestRun);
+      if (!latestRuns) {
+        return;
+      }
 
-      if (latestRun) {
-        const runArtifacts = await client.listWorkflowRunArtifacts({
-          runId: latestRun.id,
-        });
+      for (const latestRun of latestRuns) {
+        debugLog("Got latest run for prior workflow", latestRun);
 
-        matched = runArtifacts.filter((a) => {
-          const matches = matcher.test(a.name);
-          if (matches) {
-            core.debug(`Found run artifact: ${a.name}`);
-          } else {
-            core.debug(
-              `Run artifact: ${a.name} not matching ${sbomArtifactPattern}`,
-            );
-          }
-          return matches;
-        });
+        if (latestRun) {
+          const runArtifacts = await client.listWorkflowRunArtifacts({
+            runId: latestRun.id,
+          });
+
+          matched.push(
+            ...runArtifacts.filter((a) => {
+              const matches = matcher.test(a.name);
+              if (matches) {
+                core.debug(`Found run artifact: ${a.name}`);
+              } else {
+                core.debug(
+                  `Run artifact: ${a.name} not matching ${sbomArtifactPattern}`,
+                );
+              }
+              return matches;
+            }),
+          );
+        }
       }
     }
 
