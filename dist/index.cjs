@@ -96608,6 +96608,9 @@ async function executeSyft({
     return stdout;
   }
 }
+function describeError(e) {
+  return e instanceof Error ? e.message : stringify(e);
+}
 function isWindows() {
   return process.platform == "win32";
 }
@@ -96615,7 +96618,15 @@ async function downloadSyftWindowsWorkaround(version3) {
   const versionNoV = version3.replace(/^v/, "");
   const url2 = `https://github.com/anchore/syft/releases/download/${version3}/syft_${versionNoV}_windows_amd64.zip`;
   info(`Downloading syft from ${url2}`);
-  const zipPath = await downloadTool(url2);
+  let zipPath;
+  try {
+    zipPath = await downloadTool(url2);
+  } catch (e) {
+    throw new Error(
+      `Unable to download Syft from ${url2}: ${describeError(e)}. If this is not a transient network failure, check that '${version3}' is a released version of Syft: https://github.com/anchore/${SYFT_BINARY_NAME}/releases`,
+      { cause: e }
+    );
+  }
   const toolDir = await extractZip(zipPath);
   return import_path4.default.join(toolDir, `${SYFT_BINARY_NAME}${exeSuffix}`);
 }
@@ -96639,7 +96650,7 @@ async function downloadSyft() {
     installPath = await downloadTool(url2);
   } catch (e) {
     throw new Error(
-      `Unable to download the Syft installer from ${url2}. Check that '${version3}' is a released version of Syft: https://github.com/anchore/${name}/releases`,
+      `Unable to download the Syft installer from ${url2}: ${describeError(e)}. If this is not a transient network failure, check that '${version3}' is a released version of Syft: https://github.com/anchore/${name}/releases`,
       { cause: e }
     );
   }

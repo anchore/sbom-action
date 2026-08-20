@@ -204,6 +204,14 @@ async function executeSyft({
   }
 }
 
+/**
+ * Renders a caught value for a message, as only the message of a thrown error
+ * is reported to the build; a cause is not.
+ */
+function describeError(e: unknown): string {
+  return e instanceof Error ? e.message : stringify(e);
+}
+
 function isWindows(): boolean {
   return process.platform == "win32";
 }
@@ -212,7 +220,15 @@ async function downloadSyftWindowsWorkaround(version: string): Promise<string> {
   const versionNoV = version.replace(/^v/, "");
   const url = `https://github.com/anchore/syft/releases/download/${version}/syft_${versionNoV}_windows_amd64.zip`;
   core.info(`Downloading syft from ${url}`);
-  const zipPath = await cache.downloadTool(url);
+  let zipPath;
+  try {
+    zipPath = await cache.downloadTool(url);
+  } catch (e) {
+    throw new Error(
+      `Unable to download Syft from ${url}: ${describeError(e)}. If this is not a transient network failure, check that '${version}' is a released version of Syft: https://github.com/anchore/${SYFT_BINARY_NAME}/releases`,
+      { cause: e },
+    );
+  }
   const toolDir = await cache.extractZip(zipPath);
   return path.join(toolDir, `${SYFT_BINARY_NAME}${exeSuffix}`);
 }
@@ -245,7 +261,7 @@ export async function downloadSyft(): Promise<string> {
     installPath = await cache.downloadTool(url);
   } catch (e) {
     throw new Error(
-      `Unable to download the Syft installer from ${url}. Check that '${version}' is a released version of Syft: https://github.com/anchore/${name}/releases`,
+      `Unable to download the Syft installer from ${url}: ${describeError(e)}. If this is not a transient network failure, check that '${version}' is a released version of Syft: https://github.com/anchore/${name}/releases`,
       { cause: e },
     );
   }
