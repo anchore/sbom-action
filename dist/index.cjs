@@ -96609,7 +96609,7 @@ async function executeSyft({
   }
 }
 function isReleaseTag(version3) {
-  return /^v\d+\.\d+\.\d+([-+][\w.]+)?$/.test(version3);
+  return /^v\d+\.\d+\.\d+([-+][\w.+-]+)?$/.test(version3);
 }
 function describeError(e) {
   return e instanceof Error ? e.message : stringify(e);
@@ -96636,10 +96636,15 @@ async function downloadSyftWindowsWorkaround(version3) {
 async function downloadSyft() {
   const name = SYFT_BINARY_NAME;
   const version3 = SYFT_VERSION;
+  const isTag = isReleaseTag(version3);
   if (isWindows()) {
+    if (!isTag) {
+      throw new Error(
+        `Syft version '${version3}' is not a release tag. Specify a tag such as '${VERSION7}': https://github.com/anchore/${name}/releases`
+      );
+    }
     return downloadSyftWindowsWorkaround(version3);
   }
-  const isTag = isReleaseTag(version3);
   if (!isTag) {
     warning(
       `Syft version '${version3}' is not a release tag, so the installer cannot be pinned to it. Specify a tag such as '${VERSION7}' to install a pinned version of Syft.`
@@ -96659,12 +96664,21 @@ async function downloadSyft() {
     );
   }
   const syftBinaryPath = `${installPath}_${name}`;
-  await execute("sh", [installPath, "-d", "-b", syftBinaryPath, version3], {
-    env: {
-      ...process.env,
-      DOWNLOAD_TAG_INSTALL_SCRIPT: isTag ? "false" : "true"
+  const exitCode = await execute(
+    "sh",
+    [installPath, "-d", "-b", syftBinaryPath, version3],
+    {
+      env: {
+        ...process.env,
+        DOWNLOAD_TAG_INSTALL_SCRIPT: isTag ? "false" : "true"
+      }
     }
-  });
+  );
+  if (exitCode > 0) {
+    throw new Error(
+      `The Syft installer failed to install ${version3}; see the log above for details`
+    );
+  }
   return import_path4.default.join(syftBinaryPath, name) + exeSuffix;
 }
 async function getSyftCommand() {

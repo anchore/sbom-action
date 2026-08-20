@@ -211,7 +211,7 @@ async function executeSyft({
  * would otherwise resolve to an installer from another repository.
  */
 export function isReleaseTag(version: string): boolean {
-  return /^v\d+\.\d+\.\d+([-+][\w.]+)?$/.test(version);
+  return /^v\d+\.\d+\.\d+([-+][\w.+-]+)?$/.test(version);
 }
 
 /**
@@ -249,12 +249,20 @@ async function downloadSyftWindowsWorkaround(version: string): Promise<string> {
 export async function downloadSyft(): Promise<string> {
   const name = SYFT_BINARY_NAME;
   const version = SYFT_VERSION;
+  const isTag = isReleaseTag(version);
+
   if (isWindows()) {
+    // Only release assets are downloaded here, so a version that is not a
+    // release tag has nothing to download.
+    if (!isTag) {
+      throw new Error(
+        `Syft version '${version}' is not a release tag. Specify a tag such as '${VERSION}': https://github.com/anchore/${name}/releases`,
+      );
+    }
     return downloadSyftWindowsWorkaround(version);
   }
 
   // Pin the installer to the tag of the release being installed
-  const isTag = isReleaseTag(version);
   if (!isTag) {
     core.warning(
       `Syft version '${version}' is not a release tag, so the installer cannot be pinned to it. Specify a tag such as '${VERSION}' to install a pinned version of Syft.`,
@@ -281,12 +289,21 @@ export async function downloadSyft(): Promise<string> {
 
   const syftBinaryPath = `${installPath}_${name}`;
 
-  await execute("sh", [installPath, "-d", "-b", syftBinaryPath, version], {
-    env: {
-      ...process.env,
-      DOWNLOAD_TAG_INSTALL_SCRIPT: isTag ? "false" : "true",
-    } as { [key: string]: string },
-  });
+  const exitCode = await execute(
+    "sh",
+    [installPath, "-d", "-b", syftBinaryPath, version],
+    {
+      env: {
+        ...process.env,
+        DOWNLOAD_TAG_INSTALL_SCRIPT: isTag ? "false" : "true",
+      } as { [key: string]: string },
+    },
+  );
+  if (exitCode > 0) {
+    throw new Error(
+      `The Syft installer failed to install ${version}; see the log above for details`,
+    );
+  }
 
   return path.join(syftBinaryPath, name) + exeSuffix;
 }
