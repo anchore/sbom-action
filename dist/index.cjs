@@ -96625,11 +96625,31 @@ async function downloadSyft() {
   if (isWindows()) {
     return downloadSyftWindowsWorkaround(version3);
   }
-  const url2 = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
+  const isTag = /^v\d/.test(version3);
+  if (!isTag) {
+    warning(
+      `Syft version '${version3}' is not a release tag, so the installer cannot be pinned to it. Specify a tag such as '${VERSION7}' to install a pinned version of Syft.`
+    );
+  }
+  const ref = isTag ? version3 : "main";
+  const url2 = `https://raw.githubusercontent.com/anchore/${name}/${ref}/install.sh`;
   debug(`Installing ${name} ${version3}`);
-  const installPath = await downloadTool(url2);
+  let installPath;
+  try {
+    installPath = await downloadTool(url2);
+  } catch (e) {
+    throw new Error(
+      `Unable to download the Syft installer from ${url2}. Check that '${version3}' is a released version of Syft: https://github.com/anchore/${name}/releases`,
+      { cause: e }
+    );
+  }
   const syftBinaryPath = `${installPath}_${name}`;
-  await execute("sh", [installPath, "-d", "-b", syftBinaryPath, version3]);
+  await execute("sh", [installPath, "-d", "-b", syftBinaryPath, version3], {
+    env: {
+      ...process.env,
+      DOWNLOAD_TAG_INSTALL_SCRIPT: isTag ? "false" : "true"
+    }
+  });
   return import_path4.default.join(syftBinaryPath, name) + exeSuffix;
 }
 async function getSyftCommand() {
