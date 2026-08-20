@@ -227,10 +227,7 @@ export async function downloadSyft(): Promise<string> {
     return downloadSyftWindowsWorkaround(version);
   }
 
-  // Pin the installer to the tag of the release being installed, so that the
-  // script we execute is as immutable as the release artifacts it verifies.
-  // A version alias such as "latest" is not a tag, so there is nothing to pin
-  // to; fall back to the installer on the default branch in that case.
+  // Pin the installer to the tag of the release being installed
   const isTag = /^v\d/.test(version);
   if (!isTag) {
     core.warning(
@@ -255,12 +252,6 @@ export async function downloadSyft(): Promise<string> {
 
   const syftBinaryPath = `${installPath}_${name}`;
 
-  // The installer re-downloads and re-executes the installer belonging to the
-  // release tag unless told otherwise, which would defeat pinning above.
-  // The installer also sets this to false itself when signature verification
-  // (-v) is requested for a release whose own installer predates that flag, so
-  // the value never conflicts with ours. If -v is ever passed here, note that
-  // the pinned installer has to be new enough to support the flag.
   await execute("sh", [installPath, "-d", "-b", syftBinaryPath, version], {
     env: {
       ...process.env,
