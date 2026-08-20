@@ -205,6 +205,16 @@ async function executeSyft({
 }
 
 /**
+ * Reports whether the given version is a Syft release tag. The version is
+ * interpolated into the URL of a script that gets executed, so this has to
+ * match the whole string: a value such as "v1/../../../someone/else/main"
+ * would otherwise resolve to an installer from another repository.
+ */
+export function isReleaseTag(version: string): boolean {
+  return /^v\d+\.\d+\.\d+([-+][\w.]+)?$/.test(version);
+}
+
+/**
  * Renders a caught value for a message, as only the message of a thrown error
  * is reported to the build; a cause is not.
  */
@@ -244,7 +254,7 @@ export async function downloadSyft(): Promise<string> {
   }
 
   // Pin the installer to the tag of the release being installed
-  const isTag = /^v\d/.test(version);
+  const isTag = isReleaseTag(version);
   if (!isTag) {
     core.warning(
       `Syft version '${version}' is not a release tag, so the installer cannot be pinned to it. Specify a tag such as '${VERSION}' to install a pinned version of Syft.`,
@@ -260,8 +270,11 @@ export async function downloadSyft(): Promise<string> {
   try {
     installPath = await cache.downloadTool(url);
   } catch (e) {
+    const hint = isTag
+      ? ` If this is not a transient network failure, check that '${version}' is a released version of Syft: https://github.com/anchore/${name}/releases`
+      : "";
     throw new Error(
-      `Unable to download the Syft installer from ${url}: ${describeError(e)}. If this is not a transient network failure, check that '${version}' is a released version of Syft: https://github.com/anchore/${name}/releases`,
+      `Unable to download the Syft installer from ${url}: ${describeError(e)}.${hint}`,
       { cause: e },
     );
   }

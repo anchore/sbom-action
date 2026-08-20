@@ -96608,6 +96608,9 @@ async function executeSyft({
     return stdout;
   }
 }
+function isReleaseTag(version3) {
+  return /^v\d+\.\d+\.\d+([-+][\w.]+)?$/.test(version3);
+}
 function describeError(e) {
   return e instanceof Error ? e.message : stringify(e);
 }
@@ -96636,7 +96639,7 @@ async function downloadSyft() {
   if (isWindows()) {
     return downloadSyftWindowsWorkaround(version3);
   }
-  const isTag = /^v\d/.test(version3);
+  const isTag = isReleaseTag(version3);
   if (!isTag) {
     warning(
       `Syft version '${version3}' is not a release tag, so the installer cannot be pinned to it. Specify a tag such as '${VERSION7}' to install a pinned version of Syft.`
@@ -96649,8 +96652,9 @@ async function downloadSyft() {
   try {
     installPath = await downloadTool(url2);
   } catch (e) {
+    const hint = isTag ? ` If this is not a transient network failure, check that '${version3}' is a released version of Syft: https://github.com/anchore/${name}/releases` : "";
     throw new Error(
-      `Unable to download the Syft installer from ${url2}: ${describeError(e)}. If this is not a transient network failure, check that '${version3}' is a released version of Syft: https://github.com/anchore/${name}/releases`,
+      `Unable to download the Syft installer from ${url2}: ${describeError(e)}.${hint}`,
       { cause: e }
     );
   }

@@ -17,7 +17,7 @@ import * as os from "os";
 import * as path from "path";
 
 const action = await import("../src/github/SyftGithubAction");
-const { downloadSyft, runAndFailBuildOnException } = action;
+const { downloadSyft, isReleaseTag, runAndFailBuildOnException } = action;
 const { mapToWSLPath } = await import("../src/github/Executor");
 const { VERSION } = await import("../src/SyftVersion");
 
@@ -29,6 +29,23 @@ describe("Action", { timeout: 30000 }, () => {
   it("downloads syft", async () => {
     const path = await downloadSyft();
     assert.equal(path, "download-tool_syft/syft");
+  });
+
+  it("treats only whole release tags as pinnable", () => {
+    for (const version of ["v1.42.3", "v0.1.0", "v1.0.0-rc.1"]) {
+      assert.ok(isReleaseTag(version), `expected '${version}' to be a tag`);
+    }
+    // the version ends up in the URL of a script that gets executed, so
+    // anything that could point at another repository has to be rejected
+    for (const version of [
+      "latest",
+      "1.42.3",
+      "main",
+      "v1.42.3/../../../someone/else/main",
+      "v1/../../../someone/else/main",
+    ]) {
+      assert.ok(!isReleaseTag(version), `expected '${version}' not to be a tag`);
+    }
   });
 
   it("downloads the installer pinned to the syft release tag", async () => {
