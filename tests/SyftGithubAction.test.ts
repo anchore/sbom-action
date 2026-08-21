@@ -19,6 +19,7 @@ import * as path from "path";
 const action = await import("../src/github/SyftGithubAction");
 const { downloadSyft, runAndFailBuildOnException } = action;
 const { mapToWSLPath } = await import("../src/github/Executor");
+const { VERSION } = await import("../src/SyftVersion");
 
 describe("Action", { timeout: 30000 }, () => {
   beforeEach(() => {
@@ -28,6 +29,32 @@ describe("Action", { timeout: 30000 }, () => {
   it("downloads syft", async () => {
     const path = await downloadSyft();
     assert.equal(path, "download-tool_syft/syft");
+  });
+
+  it("downloads the installer pinned to the syft release tag", async () => {
+    await downloadSyft();
+
+    assert.deepEqual(data.downloadedUrls, [
+      `https://raw.githubusercontent.com/anchore/syft/${VERSION}/install.sh`,
+    ]);
+    // otherwise the installer would fetch and run an unpinned copy of itself
+    assert.equal(data.execArgs.env.DOWNLOAD_TAG_INSTALL_SCRIPT, "false");
+  });
+
+  it("falls back to the default branch for a version that is not a tag", async () => {
+    setData({
+      inputs: {
+        "syft-version": "latest",
+      },
+    });
+
+    await downloadSyft();
+
+    assert.deepEqual(data.downloadedUrls, [
+      "https://raw.githubusercontent.com/anchore/syft/main/install.sh",
+    ]);
+    // the installer resolves "latest" itself and fetches its tagged version
+    assert.equal(data.execArgs.env.DOWNLOAD_TAG_INSTALL_SCRIPT, "true");
   });
 
   it("runs with default inputs on push", async () => {

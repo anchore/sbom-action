@@ -20,10 +20,17 @@ import {
   getClient,
 } from "./GithubClient";
 import { downloadSyftFromZip } from "./SyftDownloader";
-import { stringify, stripEmojis } from "./Util";
+import { isReleaseTag, stringify, stripEmojis } from "./Util";
 
 export const SYFT_BINARY_NAME = "syft";
-export const SYFT_VERSION = core.getInput("syft-version") || VERSION;
+
+/**
+ * Gets the version of Syft to install, which is the pinned default unless the
+ * workflow requested another one.
+ */
+export function getSyftVersion(): string {
+  return core.getInput("syft-version") || VERSION;
+}
 
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
 
@@ -204,6 +211,14 @@ async function executeSyft({
   }
 }
 
+/**
+ * Renders a caught value for a message, as only the message of a thrown error
+ * is reported to the build; a cause is not.
+ */
+function describeError(e: unknown): string {
+  return e instanceof Error ? e.message : stringify(e);
+}
+
 function isWindows(): boolean {
   return process.platform == "win32";
 }
@@ -212,7 +227,15 @@ async function downloadSyftWindowsWorkaround(version: string): Promise<string> {
   const versionNoV = version.replace(/^v/, "");
   const url = `https://github.com/anchore/syft/releases/download/${version}/syft_${versionNoV}_windows_amd64.zip`;
   core.info(`Downloading syft from ${url}`);
-  const zipPath = await cache.downloadTool(url);
+  let zipPath;
+  try {
+    zipPath = await cache.downloadTool(url);
+  } catch (e) {
+    throw new Error(
+      `Unable to download Syft from ${url}: ${describeError(e)}. If this is not a transient network failure, check that '${version}' is a released version of Syft: https://github.com/anchore/${SYFT_BINARY_NAME}/releases`,
+      { cause: e },
+    );
+  }
   const toolDir = await cache.extractZip(zipPath);
   return path.join(toolDir, `${SYFT_BINARY_NAME}${exeSuffix}`);
 }
@@ -222,21 +245,67 @@ async function downloadSyftWindowsWorkaround(version: string): Promise<string> {
  */
 export async function downloadSyft(): Promise<string> {
   const name = SYFT_BINARY_NAME;
-  const version = SYFT_VERSION;
+  const version = getSyftVersion();
+  const isTag = isReleaseTag(version);
+
   if (isWindows()) {
+    // Only release assets are downloaded here, so a version that is not a
+    // release tag has nothing to download.
+    if (!isTag) {
+      throw new Error(
+        `Syft version '${version}' is not a release tag. Specify a tag such as '${VERSION}': https://github.com/anchore/${name}/releases`,
+      );
+    }
     return downloadSyftWindowsWorkaround(version);
   }
 
-  const url = `https://raw.githubusercontent.com/anchore/${name}/main/install.sh`;
+  // Pin the installer to the tag of the release being installed
+  if (!isTag) {
+    core.warning(
+      `Syft version '${version}' is not a release tag, so the installer cannot be pinned to it. Specify a tag such as '${VERSION}' to install a pinned version of Syft.`,
+    );
+  }
+  const ref = isTag ? version : "main";
+  const url = `https://raw.githubusercontent.com/anchore/${name}/${ref}/install.sh`;
 
   core.debug(`Installing ${name} ${version}`);
 
   // Download the installer, and run
-  const installPath = await cache.downloadTool(url);
+  let installPath;
+  try {
+    installPath = await cache.downloadTool(url);
+  } catch (e) {
+    const hint = isTag
+      ? ` If this is not a transient network failure, check that '${version}' is a released version of Syft: https://github.com/anchore/${name}/releases`
+      : "";
+    throw new Error(
+      `Unable to download the Syft installer from ${url}: ${describeError(e)}.${hint}`,
+      { cause: e },
+    );
+  }
 
   const syftBinaryPath = `${installPath}_${name}`;
 
-  await execute("sh", [installPath, "-d", "-b", syftBinaryPath, version]);
+  const exitCode = await execute(
+    "sh",
+    [installPath, "-d", "-b", syftBinaryPath, version],
+    {
+      env: {
+        ...process.env,
+        // The installer fetches and re-executes the copy of itself belonging to
+        // the tag it is installing, which would undo the pin above; tell the
+        // pinned script to install directly instead. A version that is not a
+        // tag is resolved by the installer, so it has to do that fetch itself.
+        DOWNLOAD_TAG_INSTALL_SCRIPT: isTag ? "false" : "true",
+      } as { [key: string]: string },
+      ignoreReturnCode: true,
+    },
+  );
+  if (exitCode > 0) {
+    throw new Error(
+      `The Syft installer failed to install ${version}; see the log above for details`,
+    );
+  }
 
   return path.join(syftBinaryPath, name) + exeSuffix;
 }
@@ -246,7 +315,7 @@ export async function downloadSyft(): Promise<string> {
  */
 export async function getSyftCommand(): Promise<string> {
   const name = SYFT_BINARY_NAME + exeSuffix;
-  const version = SYFT_VERSION;
+  const version = getSyftVersion();
 
   const sourceSyft = await downloadSyftFromZip(version);
   if (sourceSyft) {
