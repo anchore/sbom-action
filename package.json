@@ -56,7 +56,7 @@
     "tsx": "^4.23.11",
     "type-fest": "^5.8.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.65.0"
+    "typescript-eslint": "^8.67.0"
   },
   "engines": {
     "node": ">=v24"
