@@ -20,10 +20,17 @@ import {
   getClient,
 } from "./GithubClient";
 import { downloadSyftFromZip } from "./SyftDownloader";
-import { stringify, stripEmojis } from "./Util";
+import { isReleaseTag, stringify, stripEmojis } from "./Util";
 
 export const SYFT_BINARY_NAME = "syft";
-export const SYFT_VERSION = core.getInput("syft-version") || VERSION;
+
+/**
+ * Gets the version of Syft to install, which is the pinned default unless the
+ * workflow requested another one.
+ */
+export function getSyftVersion(): string {
+  return core.getInput("syft-version") || VERSION;
+}
 
 const PRIOR_ARTIFACT_ENV_VAR = "ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT";
 
@@ -205,16 +212,6 @@ async function executeSyft({
 }
 
 /**
- * Reports whether the given version is a Syft release tag. The version is
- * interpolated into the URL of a script that gets executed, so this has to
- * match the whole string: a value such as "v1/../../../someone/else/main"
- * would otherwise resolve to an installer from another repository.
- */
-export function isReleaseTag(version: string): boolean {
-  return /^v\d+\.\d+\.\d+([-+][\w.+-]+)?$/.test(version);
-}
-
-/**
  * Renders a caught value for a message, as only the message of a thrown error
  * is reported to the build; a cause is not.
  */
@@ -248,7 +245,7 @@ async function downloadSyftWindowsWorkaround(version: string): Promise<string> {
  */
 export async function downloadSyft(): Promise<string> {
   const name = SYFT_BINARY_NAME;
-  const version = SYFT_VERSION;
+  const version = getSyftVersion();
   const isTag = isReleaseTag(version);
 
   if (isWindows()) {
@@ -295,8 +292,13 @@ export async function downloadSyft(): Promise<string> {
     {
       env: {
         ...process.env,
+        // The installer fetches and re-executes the copy of itself belonging to
+        // the tag it is installing, which would undo the pin above; tell the
+        // pinned script to install directly instead. A version that is not a
+        // tag is resolved by the installer, so it has to do that fetch itself.
         DOWNLOAD_TAG_INSTALL_SCRIPT: isTag ? "false" : "true",
       } as { [key: string]: string },
+      ignoreReturnCode: true,
     },
   );
   if (exitCode > 0) {
@@ -313,7 +315,7 @@ export async function downloadSyft(): Promise<string> {
  */
 export async function getSyftCommand(): Promise<string> {
   const name = SYFT_BINARY_NAME + exeSuffix;
-  const version = SYFT_VERSION;
+  const version = getSyftVersion();
 
   const sourceSyft = await downloadSyftFromZip(version);
   if (sourceSyft) {
