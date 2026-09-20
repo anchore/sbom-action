@@ -1,6 +1,7 @@
 import test, { describe, it, beforeEach, mock } from "node:test";
 import assert from "node:assert";
 import { getMocks } from "./mocks";
+import type { Release, WorkflowRun } from "@octokit/webhooks-types";
 
 const { data, mocks, setData, restoreInitialData } = getMocks(test);
 
@@ -10,8 +11,6 @@ for (const [name, factory] of Object.entries(mocks)) {
 }
 
 mock.method(Date, "now", () => 1482363367071);
-
-import type { Release } from "@octokit/webhooks-types";
 
 const githubClient = await import("../src/github/GithubClient");
 const { debugLog } = githubClient;
@@ -71,23 +70,24 @@ describe("Github Client", { timeout: 30000 }, () => {
   });
 
   it("calls workflow run for branch methods", async () => {
+    const expected: Partial<WorkflowRun>[] = [
+      {
+        id: 3,
+        head_branch: "main",
+        conclusion: "success",
+      },
+    ];
     setData({
-      workflowRuns: [
-        {
-          id: 3,
-          head_branch: "main",
-          conclusion: "success",
-        },
-      ],
+      workflowRuns: expected,
     });
     const client = githubClient.getClient(
       { owner: "test-owner", repo: "test-repo" },
       "token"
     );
-    const run: any = await client.findLatestWorkflowRunForBranch({
+    const runs: any = await client.findLatestWorkflowRunsForBranch({
       branch: "main",
     });
-    assert.equal(run.id, 3);
+    assert.deepEqual(runs, expected);
   });
 
   it("calls findRelease methods", async () => {
@@ -201,7 +201,7 @@ describe("Github Client", { timeout: 30000 }, () => {
     }
 
     try {
-      await client.findLatestWorkflowRunForBranch({
+      await client.findLatestWorkflowRunsForBranch({
         branch: "main",
       });
       assert.fail("exception should be thrown");
