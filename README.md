@@ -19,13 +19,14 @@ and upload the SBOM as a release asset.
 
 > [!IMPORTANT]
 > To upload the SBOM to releases, you will need to give the action permission to read the artifact from the action, and write it to the release:
+>
 > ```yaml
 > jobs:
->  build:
->    permissions:
->      actions: read
->      contents: write
->    steps:
+>   build:
+>     permissions:
+>       actions: read
+>       contents: write
+>     steps:
 > ```
 
 ## Example Usage
@@ -154,23 +155,25 @@ actions: read # to find workflow artifacts when attaching release assets
 The main [SBOM action](action.yml), responsible for generating SBOMs
 and uploading them as workflow artifacts and release assets.
 
-| Parameter                   | Description                                                                                                                                             | Default                          |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| `path`                      | A path on the filesystem to scan. This is mutually exclusive to `file` and `image`.                                                                     | \<current directory>             |
-| `file`                      | A file on the filesystem to scan. This is mutually exclusive to `path` and `image`.                                                                     |                                  |
-| `image`                     | A container image to scan. This is mutually exclusive to `path` and `file`. See [Scan a container image](#scan-a-container-image) for more information. |                                  |
-| `registry-username`         | The registry username to use when authenticating to an external registry                                                                                |                                  |
-| `registry-password`         | The registry password to use when authenticating to an external registry                                                                                |                                  |
-| `artifact-name`             | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output)                                                 | `sbom-<job>-<step-id>.spdx.json` |
-| `output-file`               | The location to output a resulting SBOM                                                                                                                 |                                  |
-| `format`                    | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`, `cyclonedx-json`                                                                   | `spdx-json`                      |
-| `dependency-snapshot`       | Whether to upload the SBOM to the GitHub Dependency submission API                                                                                      | `false`                          |
-| `upload-artifact`           | Upload artifact to workflow                                                                                                                             | `true`                           |
-| `upload-artifact-retention` | Retention policy in days for uploaded artifact to workflow.                                                                                             |                                  |
-| `upload-release-assets`     | Upload release assets                                                                                                                                   | `true`                           |
-| `syft-version`              | The version of Syft to use                                                                                                                              |                                  |
-| `github-token`              | Authorized secret GitHub Personal Access Token.                                                                                                         | `github.token`                   |
-| `config `                   | Syft configuration file to use.                                                                                                                         |                                  |
+| Parameter                        | Description                                                                                                                                             | Default                          |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| `path`                           | A path on the filesystem to scan. This is mutually exclusive to `file` and `image`.                                                                     | \<current directory>             |
+| `file`                           | A file on the filesystem to scan. This is mutually exclusive to `path` and `image`.                                                                     |                                  |
+| `image`                          | A container image to scan. This is mutually exclusive to `path` and `file`. See [Scan a container image](#scan-a-container-image) for more information. |                                  |
+| `registry-username`              | The registry username to use when authenticating to an external registry                                                                                |                                  |
+| `registry-password`              | The registry password to use when authenticating to an external registry                                                                                |                                  |
+| `artifact-name`                  | The name to use for the generated SBOM artifact. See: [Naming the SBOM output](#naming-the-sbom-output)                                                 | `sbom-<job>-<step-id>.spdx.json` |
+| `output-file`                    | The location to output a resulting SBOM                                                                                                                 |                                  |
+| `format`                         | The SBOM format to export. One of: `spdx`, `spdx-json`, `cyclonedx`, `cyclonedx-json`                                                                   | `spdx-json`                      |
+| `dependency-snapshot`            | Whether to upload the SBOM to the GitHub Dependency submission API                                                                                      | `false`                          |
+| `dependency-snapshot-correlator` | Custom correlator identifier for GitHub dependency snapshot                                                                                             |                                  |
+| `correlator`                     | Alias for `dependency-snapshot-correlator`                                                                                                              |                                  |
+| `upload-artifact`                | Upload artifact to workflow                                                                                                                             | `true`                           |
+| `upload-artifact-retention`      | Retention policy in days for uploaded artifact to workflow.                                                                                             |                                  |
+| `upload-release-assets`          | Upload release assets                                                                                                                                   | `true`                           |
+| `syft-version`                   | The version of Syft to use                                                                                                                              |                                  |
+| `github-token`                   | Authorized secret GitHub Personal Access Token.                                                                                                         | `github.token`                   |
+| `config `                        | Syft configuration file to use.                                                                                                                         |                                  |
 
 ### anchore/sbom-action/publish-sbom
 
