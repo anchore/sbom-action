@@ -99091,7 +99091,7 @@ async function uploadDependencySnapshot() {
   }
   snapshot2.job = {
     correlator: stripEmojis(
-      getInput("dependency-snapshot-correlator") || correlator
+      getInput("correlator") || getInput("dependency-snapshot-correlator") || correlator
     ),
     id: `${runId}`
   };
