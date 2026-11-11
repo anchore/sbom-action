@@ -227,11 +227,11 @@ export class GithubClient {
    * Lists the workflow run artifacts for a completed workflow
    * @param branch the branch name
    */
-  async findLatestWorkflowRunForBranch({
+  async findLatestWorkflowRunsForBranch({
     branch,
   }: {
     branch: string;
-  }): Promise<WorkflowRun | undefined> {
+  }): Promise<WorkflowRun[] | undefined> {
     const response = await this.client.rest.actions.listWorkflowRunsForRepo({
       ...this.repo,
       branch,
@@ -240,13 +240,13 @@ export class GithubClient {
       page: 1,
     });
 
-    debugLog("findLatestWorkflowRunForBranch response:", response);
+    debugLog("findLatestWorkflowRunsForBranch response:", response);
 
     if (response.status >= 400) {
-      throw new Error("Unable to findLatestWorkflowRunForBranch");
+      throw new Error("Unable to findLatestWorkflowRunsForBranch");
     }
 
-    return response.data.workflow_runs[0];
+    return response.data.workflow_runs;
   }
 
   /**
