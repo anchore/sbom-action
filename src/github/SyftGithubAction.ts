@@ -532,7 +532,9 @@ export async function uploadDependencySnapshot(): Promise<void> {
   // Need to add the job and repo details
   snapshot.job = {
     correlator: stripEmojis(
-      core.getInput("dependency-snapshot-correlator") || correlator,
+      core.getInput("correlator") ||
+        core.getInput("dependency-snapshot-correlator") ||
+        correlator,
     ),
     id: `${runId}`,
   };

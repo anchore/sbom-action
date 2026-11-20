@@ -53,6 +53,14 @@ inputs:
     description: "Upload to GitHub dependency snapshot API"
     default: "false"
 
+  dependency-snapshot-correlator:
+    required: false
+    description: "Custom correlator identifier for GitHub dependency snapshot"
+
+  correlator:
+    required: false
+    description: "Alias for dependency-snapshot-correlator"
+
   upload-artifact:
     required: false
     description: "Upload artifact to workflow"

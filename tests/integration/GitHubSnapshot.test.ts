@@ -182,4 +182,50 @@ describe("GitHub Snapshot", { timeout: 30000 }, () => {
 
     t.assert.snapshot(submission);
   });
+
+  it("runs with correlator defined", async (t) => {
+    setData({
+      inputs: {
+        path: "tests/fixtures/npm-project",
+        "dependency-snapshot": "true",
+        "upload-artifact": "false",
+        correlator: "custom-correlator",
+      },
+      context: {
+        ...context.push({
+          ref: "main",
+        }),
+        sha: "f293f09uaw90gwa09f9wea",
+        workflow: "my-workflow",
+        job: "default-import-job",
+        action: "__anchore_sbom-action",
+      },
+    });
+
+    await action.runSyftAction();
+    await action.uploadDependencySnapshot();
+
+    // validate the request was made
+    assert.ok(requestArgs);
+    assert.equal(requestArgs.length, 2);
+    assert.equal(
+      requestArgs[0],
+      "POST /repos/test-org/test-repo/dependency-graph/snapshots"
+    );
+
+    // check the resulting snapshot file
+    const data = requestArgs[1].data;
+    const submission = JSON.parse(data);
+
+    assert.ok(submission.scanned);
+
+    // redact changing data
+    submission.scanned = "";
+    submission.detector.version = "";
+
+    assert.ok(submission.job);
+    assert.deepEqual(submission.job.correlator, "custom-correlator");
+
+    t.assert.snapshot(submission);
+  });
 });
