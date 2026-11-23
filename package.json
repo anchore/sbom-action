@@ -10,9 +10,7 @@
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
-    "package": "run-s package:build post-package:*",
-    "package:build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=cjs --outfile=dist/index.cjs",
-    "post-package:fix-line-endings": "eolConverter 'dist/**/*.cjs'",
+    "package": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=cjs --outfile=dist/index.cjs",
     "test": "node --import tsx --test --experimental-test-module-mocks tests/*.test.ts tests/integration/*.test.ts",
     "test:update-snapshots": "node --import tsx --test --test-update-snapshots --experimental-test-module-mocks tests/*.test.ts tests/integration/*.test.ts",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
@@ -33,10 +31,10 @@
   "author": "Keith Zantow <keith.zantow@anchore.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@actions/artifact": "^6.2.1",
+    "@actions/artifact": "^6.3.1",
     "@actions/core": "^3.0.1",
     "@actions/exec": "^3.0.0",
-    "@actions/github": "^9.0.0",
+    "@actions/github": "^9.1.1",
     "@actions/tool-cache": "^4.0.0",
     "fast-safe-stringify": "^2.1.1"
   },
@@ -44,19 +42,17 @@
     "@eslint/js": "^10.0.1",
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^26.6.6",
-    "eol-converter-cli": "^1.1.0",
-    "esbuild": "^0.28.0",
-    "eslint": "^10.14.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.15.0",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
-    "npm-run-all": "^4.1.5",
     "prettier": "^3.10.1",
     "prettier-plugin-organize-imports": "^4.3.0",
     "pretty-quick": "^4.2.2",
     "tsx": "^4.23.15",
-    "type-fest": "^5.10.0",
+    "type-fest": "^6.0.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.72.1"
+    "typescript-eslint": "^8.73.0"
   },
   "engines": {
     "node": ">=v24"

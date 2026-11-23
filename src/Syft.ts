@@ -32,10 +32,7 @@ export interface SyftImageInput {
  */
 export interface SyftOptions {
   input:
-    | SyftDirectoryInput
-    | SyftFileInput
-    | SyftRegistryInput
-    | SyftImageInput;
+    SyftDirectoryInput | SyftFileInput | SyftRegistryInput | SyftImageInput;
   format:
     | "spdx"
     | "spdx-tag-value"
